@@ -8,8 +8,14 @@
 ## Nome do Grupo
 
 #### Nomes dos integrantes do grupo
-
-
+- <a href="https://www.linkedin.com/in/filipe-salotti-9ab184310/">Arthur Morais </a>
+- <a href="https://www.linkedin.com/in/eduardo-gabriel-de-oliveira-1ab818220/">Eduardo Oliveira</a>
+- <a href="https://www.linkedin.com/in/enzo-santos-bezerra-1904403bb/">Enzo Santos Bezerra</a>
+- <a href="https://www.linkedin.com/in/guilherme-beltrame-18b1b429b/">Guilherme Munhoz Beltrame</a>
+- <a href="https://www.linkedin.com/in/laiza-guimar%C3%A3es-2748b2313/">Laiza Guimaraes</a>
+- <a href="https://www.linkedin.com/in/kaylan-alexandre/">Lorena Kopke</a>
+- <a href="https://www.linkedin.com/in/mateus-galatro/">Mateus Gongora Pereira Galatro</a>
+- <a href="https://www.linkedin.com/in/miguel-cristiano-costa-160b96320/">Miguel Cristiano Costa</a>
 
 ## Sumário
 
