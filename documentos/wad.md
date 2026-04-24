@@ -36,13 +36,10 @@
 
 # <a name="c1"></a>1. Introdução (sprints 1 a 5)
 
-*Preencha com até 300 palavras – sem necessidade de fonte*
-
-A BrPec enfrenta desafios na gestão e no fluxo de informações entre o campo e o escritório. Atualmente, o registro de atividades e das movimentações do rebanho é feito de forma manual, em papel, o que demanda tempo e trabalho dobrado, pois é necessário reescrever em planilhas digitais.
-
-Para solucionar esse problema, nós desenvolvemos uma aplicação web que digitaliza o gerenciamento das atividades e o registro das movimentações do rebanho.
-
-A solução centraliza e padroniza as informações, reduz falhas e melhora a comunicação entre a equipe, tornando a operação mais ágil, organizada e eficiente.
+O agronegócio ocupa um papel central na economia brasileira, não apenas pela produção de alimentos, mas também por gerar empregos e desenvolvimento de diversas regiões do país. Nesse contexto, a pecuária exige organização e supervisão constantes das operações, principalmente no monitoramento das atividades de campo e da movimentação do rebanho, que afetam diretamente a produtividade e a tomada de decisões.
+A BrPec Agropecuária S.A, incluída nesse cenário, enfrenta desafios na gestão e no fluxo de informações entre o campo e o escritório. Atualmente, o registro de atividades e das movimentações do rebanho é feito de forma manual, em papel, o que demanda tempo e trabalho dobrado, pois é necessário reescrever em planilhas digitais. Além disso, a falta de conexão com a internet nas áreas operacionais piora essa situação.
+Para resolver esse problema, nós desenvolvemos uma aplicação web permitindo que as equipes de campo possam digitalizar o gerenciamento das atividades e o registro das movimentações do rebanho. Além disso, essa solução foi projetada para funcionar offline, permitindo que os dados sejam registrados diretamente no campo e sincronizados posteriormente, quando houver acesso à internet.
+O software centraliza e padroniza as informações, reduz falhas humanas e melhora a comunicação entre gerentes, capatazes e coordenadores. Dessa maneira, ele contribui para uma operação mais eficiente, organizada e alinhada às necessidades do cliente, mesmo em uma área com baixa conectividade.
 
 # <a name="c2"></a>2. Visão Geral da Aplicação Web (sprint 1)
 
