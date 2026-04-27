@@ -181,6 +181,8 @@ O canvas evidencia que o a aplicação web resolve dores concretas dos Capatazes
 
 A matriz de riscos é uma ferramenta que permite identificar, analisar e priorizar ameaças e oportunidades de um projeto. A classificação é feita com base na probabilidade de ocorrência e no impacto, auxiliando na definição de ações para cada caso. Dessa forma, foi elaborada a matriz de riscos para o desenvolvimento da aplicação web da BrPec Agropecuária S.A, considerando seus principais desafios.
 
+<img src="../assets/matrizdeRisco-BrPec.png" width="600"/>
+
 ---
 
 ### AMEAÇAS
