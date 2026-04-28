@@ -514,6 +514,16 @@ _Esta seção formaliza o que o sistema deve fazer, sob quais regras e com quais
 | RF002 | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão com a internet | Alta       | Planejado    |
 | RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline | Alta       | Planejado    |
 | RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline | Média      | Planejado    |
+| RF005 | O sistema deve permitir que o capataz preencha e confirme o formulário de registro de morte de animal mesmo sem conexão com a internet, salvando os dados localmente no dispositivo | alta    | Planejado    |
+| RF006 | O sistema deve detectar automaticamente o restabelecimento da conexão com a rede e iniciar a transmissão dos registros locais pendentes para o servidor remoto, sem exigir nenhuma ação manual do capataz | alta    | Planejado    |
+| RF007 | O sistema deve notificar o capataz com uma mensagem de confirmação após a sincronização bem-sucedida dos dados com o servidor ("Registro sincronizado com sucesso") | Média   | Planejado    |
+| RF008 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso | Alta  | Planejado    |
+| RF008 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
+| RF009 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
+
+
+
+
 
 ### 3.1.2. Regras de Negócio (sprint 1, refinar até sprint 5)
 
