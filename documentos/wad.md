@@ -531,19 +531,19 @@ _Numere e redija as RN de forma implementável e testável. Toda RN deve ter pel
 
                                                                
 
-| ID   | Descrição                                                                                                                                                         | RF associado  |
+| ID   | Descrição                                                                                                                                                         |  |
 |------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro                                                                                               | RF001         |
-| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                                                                                                         | RF002         |
-| RN03 | As tarefas devem ser armazenadas localmente após sincronização                                                                                                    | RF003         |
-| RN04 | A mensagem exibida deve utilizar linguagem simples e direta                                                                                                       | RF004         |
-| RN05 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                                                                          | RF002, RF003  |
-| RN06 | Um registro de óbito só pode ser marcado como "sincronizado" e removido da fila local após o servidor retornar HTTP 200 ou 201                                   | RF006, RF008  |
-| RN07 | O formulário de óbito não pode ser salvo — online ou offline — se qualquer campo obrigatório (identificação, categoria, causa da morte ou data) estiver vazio     | RF005, RF009  |
-| RN08 | A sincronização deve ser iniciada automaticamente ao detectar conexão, sem depender de nenhuma ação manual do capataz                                             | RF006         |
-| RN09 | Em falha parcial de sincronização, apenas registros com HTTP 200/201 são marcados como enviados; os demais permanecem na fila e são reenviados sem duplicação     | RF008         |
-| RN10 | Cada registro de óbito sincronizado deve ser vinculado ao retiro e ao capataz responsável, sendo imutável após confirmação do servidor                            | RF005, RF010  |
-| RN11 | Um registro de óbito só deve aparecer no painel do coordenador após sincronização bem-sucedida; registros em fila local são invisíveis para outros perfis         | RF010         |
+| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro                                                                                              
+| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                                                                                                        
+| RN03 | As tarefas devem ser armazenadas localmente após sincronização                                                                                                   
+| RN04 | A mensagem exibida deve utilizar linguagem simples e direta                                                                                                      
+| RN05 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                                                                          
+| RN06 | Um registro de óbito só pode ser marcado como "sincronizado" e removido da fila local após o servidor retornar HTTP 200 ou 201                                 
+| RN07 | O formulário de óbito não pode ser salvo — online ou offline — se qualquer campo obrigatório (identificação, categoria, causa da morte ou data) estiver vazio     | 
+| RN08 | A sincronização deve ser iniciada automaticamente ao detectar conexão, sem depender de nenhuma ação manual do capataz                                             |
+| RN09 | Em falha parcial de sincronização, apenas registros com HTTP 200/201 são marcados como enviados; os demais permanecem na fila e são reenviados sem duplicação        |
+| RN10 | Cada registro de óbito sincronizado deve ser vinculado ao retiro e ao capataz responsável, sendo imutável após confirmação do servidor                            
+| RN11 | Um registro de óbito só deve aparecer no painel do coordenador após sincronização bem-sucedida; registros em fila local são invisíveis para outros perfis                 |
 
 ### 3.1.3. Requisitos Não Funcionais — 8 Eixos ISO/IEC 25010 (sprints 1 a 5)
 
