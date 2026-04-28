@@ -518,8 +518,8 @@ _Esta seção formaliza o que o sistema deve fazer, sob quais regras e com quais
 | RF006 | O sistema deve detectar automaticamente o restabelecimento da conexão com a rede e iniciar a transmissão dos registros locais pendentes para o servidor remoto, sem exigir nenhuma ação manual do capataz | alta    | Planejado    |
 | RF007 | O sistema deve notificar o capataz com uma mensagem de confirmação após a sincronização bem-sucedida dos dados com o servidor ("Registro sincronizado com sucesso") | Média   | Planejado    |
 | RF008 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso | Alta  | Planejado    |
-| RF008 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
-| RF009 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
+| RF009 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
+| RF010 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
 
 
 
@@ -529,13 +529,21 @@ _Esta seção formaliza o que o sistema deve fazer, sob quais regras e com quais
 
 _Numere e redija as RN de forma implementável e testável. Toda RN deve ter pelo menos um teste automatizado associado a partir da sprint 3._
 
-| ID   | Descrição                                                                 | RF associado |
-|------|---------------------------------------------------------------------------|--------------|
-| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro      | RF001        |
-| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                | RF002        |
-| RN03 | As tarefas devem ser armazenadas localmente após sincronização           | RF003        |
-| RN04 | A mensagem exibida deve utilizar linguagem simples e direta              | RF004        |
-| RN05 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas | RF002        |
+                                                               
+
+| ID   | Descrição                                                                                                                                                         | RF associado  |
+|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
+| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro                                                                                               | RF001         |
+| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                                                                                                         | RF002         |
+| RN03 | As tarefas devem ser armazenadas localmente após sincronização                                                                                                    | RF003         |
+| RN04 | A mensagem exibida deve utilizar linguagem simples e direta                                                                                                       | RF004         |
+| RN05 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                                                                          | RF002, RF003  |
+| RN06 | Um registro de óbito só pode ser marcado como "sincronizado" e removido da fila local após o servidor retornar HTTP 200 ou 201                                   | RF006, RF008  |
+| RN07 | O formulário de óbito não pode ser salvo — online ou offline — se qualquer campo obrigatório (identificação, categoria, causa da morte ou data) estiver vazio     | RF005, RF009  |
+| RN08 | A sincronização deve ser iniciada automaticamente ao detectar conexão, sem depender de nenhuma ação manual do capataz                                             | RF006         |
+| RN09 | Em falha parcial de sincronização, apenas registros com HTTP 200/201 são marcados como enviados; os demais permanecem na fila e são reenviados sem duplicação     | RF008         |
+| RN10 | Cada registro de óbito sincronizado deve ser vinculado ao retiro e ao capataz responsável, sendo imutável após confirmação do servidor                            | RF005, RF010  |
+| RN11 | Um registro de óbito só deve aparecer no painel do coordenador após sincronização bem-sucedida; registros em fila local são invisíveis para outros perfis         | RF010         |
 
 ### 3.1.3. Requisitos Não Funcionais — 8 Eixos ISO/IEC 25010 (sprints 1 a 5)
 
