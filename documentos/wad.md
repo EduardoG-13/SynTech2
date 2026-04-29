@@ -619,6 +619,7 @@ _Esta seção formaliza o que o sistema deve fazer, sob quais regras e com quais
 | RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline | Alta | Planejado |
 | RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline | Média | Planejado |
 | RF005 | O sistema deve permitir que o capataz grave um áudio curto e o anexe a uma tarefa | Média | Planejado |
+| RF006 | O sistema deve permitir que o capataz crie alertas de infraestrutura (ticket), informando: tipo de problema, retirada e localização | Média | Planejado |
 | RF007 | O sistema deve exibir ao gerente um painel com o status de todas as tarefas (pendente, em andamento, concluída) e alertas em aberto, agrupados por retiro. | Média | Planejado |
 | RF008 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade | Média | Planejado |
 
