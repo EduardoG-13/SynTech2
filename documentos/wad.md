@@ -129,7 +129,7 @@ João se comunica com supervisores e coordenadores frequentemente, mas essa comu
 - Idade: 35 anos;
 - Cargo: Coordenador na BrPec Agropecuária S.A.;
 - Localização: Miranda- MS;
-- Escolaridade: Pós-graduado em administração.
+- Escolaridade: Pós-graduado em administração [1].
 
 #### Motivações:
 Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisão e confiabilidade dos dados que gerencia.
@@ -139,27 +139,55 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 - Pecuária;
 - Tecnologia aplicada ao campo.
 
-Desafios/Dores:
+#### Desafios/Dores:
 - Demanda-se tempo para consolidação e redigitação em planilhas eletrônicas;
 - Registros de campo não são padronizados.
 
-Metas:
+#### Metas:
 - Conseguir validar rapidamente as movimentações dos capatazes;
 - Ter dados consolidados e confiáveis sem depender de redigitação manual.
 
-Necessidades:
-
+#### Necessidades:
 - Visualização das movimentações reportadas pelos Capatazes;
 - Visão consolidada das movimentações de todos os retiros sob sua responsabilidade;
 - Função para gerar e baixar planilhas referentes às movimentações.
 
-Biografia:
+#### Habilidades:
+- Análise e validação de dados operacionais;
+- Gestão de planilhas e relatórios;
+- Comunicação entre campo e gestão;
+- Tomada de decisão baseada em dados.
+
+#### Familiaridade com Tecnologia [2]:
+
+| Aspecto     | Nível / Situação    |
+|---------------------------|-------------------------------|
+| Smartphone | Intermediate (DigComp) — uso ativo de WhatsApp, e-mail e câmera no trabalho   |
+| Aplicativos de gestão  | Basic (DigComp) — sem experiência com sistemas ERP ou plataformas operacionais  |
+| Planilhas e formulários   | Intermediate (DigComp) — usa Excel para consolidação manual de dados de campo |
+| Sistemas web  | Basic (DigComp) — acessa e-mail e portais simples, sem dashboards ou sistemas  |
+
+**Informações extras:**
+- Conectividade: Boa, trabalha em ambiente de escritório com acesso à internet;
+- Meio de comunicação principal: WhatsApp, e-mail e telefone;
+- Adaptação a novas tecnologias: Moderada — aberto a ferramentas que simplifiquem seu fluxo de trabalho;
+- Dispositivo disponível: Computador e celular.
+
+#### Notas e Justificativas
+
+**[1] Escolaridade do gestor no agronegócio**
+O Portal CNA Brasil aponta que, para cargos de coordenação técnica no agronegócio, o perfil mais buscado combina forte conhecimento técnico com boas noções de gestão, habilidade de comunicação e liderança. (CNA BRASIL, [s.d.])
+
+**[2] Framework de Competência Digital — DigComp 3.0**
+Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo. (COSGROVE; CACHIA, 2025)
+
+#### Biografia:
 
 Marcos Cesar tem 35 anos, está na BRPec há 5 anos e é responsável por validar as informações enviadas pelos Capatazes em campo. Além disso, tem como grande desafio hoje receber registros em boletas de papel, muitas vezes incompletos ou ilegíveis e ter que redigitar tudo manualmente em planilhas. Essa situação o deixa frustrado, ainda mais por esse processo estar sujeito a erros. 
 
 "Recebo a boleta, tento decifrar o que está escrito e ainda tenho que digitar tudo no Excel. Qualquer erro no campo vira problema aqui."
 
-### Persona 3
+### Persona 3: Gabriel Galdino
 #### Informações: 
 - Nome e sobrenome: Gabriel Galdino;
 - Idade: 33 anos [1];
@@ -205,14 +233,14 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 - Comunicação direta com equipe de vaqueiros;
 - Resiliência devido aos diversos problemas que ocorrem.
 
-#### Familiaridade com Tecnologia:
+#### Familiaridade com Tecnologia [4]
 
-| Aspecto  | Nível / Situação     |
-|----------------------|---------------------------------------------------------|
-| Smartphone   | Básico  |
-| Aplicativos de gestão | Nenhum — sem experiência com apps de controle de tarefas ou relatórios  |
-| Planilhas e formulários | Nenhum — não utiliza ferramentas como Excel |
-| Sistemas web  | Nenhum — nunca utilizou plataformas digitais no trabalho  |
+| Aspecto            | Nível / Situação       |
+|---------------------------|-----------------------------------------------------|
+| Smartphone         | Basic (DigComp) — uso restrito a ligações e WhatsApp       |
+| Aplicativos de gestão   | Abaixo do Basic — sem experiência com apps de controle de tarefas ou relatórios |
+| Planilhas e formulários  | Abaixo do Basic — registro em planilhas é feito por outros a partir de suas anotações |
+| Sistemas web ou digitais  | Abaixo do Basic — depende de boletas físicas e comunicação verbal   |
 
 Informações extras:
 - Conectividade no campo: Instável ou ausente — sinal de internet limitado ou inexistente nos retiros;
@@ -232,13 +260,16 @@ As atribuições descritas, como exemplo a administração de mão de obra ou o 
 **[3] Baixa familiaridade com tecnologias digitais na pecuária**  
 A pesquisa acadêmica publicada na SciELO expõe a dificuldade de adoção de tecnologias por trabalhadores rurais na pecuária. O estudo aponta que características individuais como formação profissional e a posição ocupada dentro da propriedade influenciam diretamente a adoção ou rejeição de tecnologias, sendo a baixa escolaridade um fator determinante para a resistência ao uso de ferramentas digitais no campo. (MACHADO; NANTES, 2011)
 
-"Quando o bicho adoece ou a cerca arrebenta, não tem tempo de procurar papel — tem que resolver na hora. O que não ficou na cabeça, ficou perdido."
+**[5] Framework de Competência Digital — DigComp 3.0**
+Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo. (COSGROVE; CACHIA, 2025)
 
 #### Biografia:
 
 Gabriel Galdino tem 33 anos e atua como capataz na BrPec Agropecuária S.A, sendo responsável pela gestão do retiro da Barra Bonita. Sua rotina é voltada à execução das atividades operacionais, organização da equipe de vaqueiros e acompanhamento direto das demandas relacionadas ao rebanho. Com forte experiência prática no campo, coordena tarefas como movimentação de gado, manutenção de cercas e resolução de imprevistos. Também realiza registros básicos das atividades e comunica atualizações ao coordenador.
 
 Comprometido com o sustento da família e com o bom funcionamento do retiro, Gabriel é um profissional que se destaca ao ser um ótimo capataz para seu retiro e comunidade de vaqueiros. Entretanto, enfrenta limitações no uso de ferramentas digitais e depende, em grande parte, de anotações informais e comunicação via rádio, o que dificulta o controle das informações e o acompanhamento das tarefas.
+
+"Quando o bicho adoece ou a cerca arrebenta, não tem tempo de procurar papel — tem que resolver na hora. O que não ficou na cabeça, ficou perdido."
 
 
 ## 2.3. User Stories (sprints 1 a 5)
@@ -523,6 +554,10 @@ Descreva os principais segmentos de mercado a serem atendidos pela aplicação. 
 *Relacione também quaisquer outras ideias que o grupo tenha para melhorias futuras*
 
 # <a name="c8"></a>8. Referências (sprints 1 a 5)
+
+CONFEDERAÇÃO DA AGRICULTURA E PECUÁRIA DO BRASIL. Conheça as 4 carreiras mais quentes do agronegócio brasileiro. CNA Brasil, [s.d.]. Disponível em: https://www.cnabrasil.org.br/noticias/conheca-as-4-carreiras-mais-quentes-do-agronegocio-brasileiro. Acesso em: 28 abr. 2026.
+
+COSGROVE, J.; CACHIA, R. DigComp 3.0: European Digital Competence Framework. 5. ed. Luxembourg: Publications Office of the European Union, 2025. Disponível em: https://data.europa.eu/doi/10.2760/0001149. Acesso em: 28 abr. 2026.
 
 PORTAL SALÁRIO. Capataz na Pecuária - Salário 2026, Piso Salarial. 2026. Disponível em: https://www.salario.com.br/profissao/capataz-na-pecuaria-cbo-620115/. Acesso em: 28 abr. 2026. <br>
 
