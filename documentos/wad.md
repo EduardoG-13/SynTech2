@@ -67,7 +67,7 @@ Ameaça de substitutos: A ameaça é moderada e crescente. No mercado interno, f
 Análise estrutural: A BrPec opera em setor com barreiras de entrada relevantes e integração vertical como diferencial, mas enfrenta forte pressão de canais de compra concentrados, alta rivalidade por escala e dependência de fornecedores especializados. O passivo ambiental representa risco estratégico: a empresa figura entre os maiores desmatadores do Pantanal segundo o Ibama (DE OLHO NOS RURALISTAS, 2020), podendo restringir o acesso aos segmentos de maior rentabilidade.
 
 <center>
-  <img src="../assets/porterForcas.png" width="600"/>
+  <img src="../assets/porterForcas.png" width="800"/>
   <p><strong>Figura 1</strong> — Análise das 5 Forças de Porter aplicada à BrPec Agropecuária<br/>
   Fonte: Próprios autores (2026).</p>
 </center>
@@ -75,10 +75,6 @@ Análise estrutural: A BrPec opera em setor com barreiras de entrada relevantes 
 ### 2.1.2. Análise SWOT da Instituição Parceira (sprint 1)
 
 A análise SWOT a seguir avalia o posicionamento estratégico da BRPec considerando seu ambiente interno — forças operacionais e financeiras e fraquezas estruturais e regulatórias — e fatores externos: oportunidades de mercado e ameaças setoriais. O contexto de análise é o agronegócio brasileiro de pecuária e grãos, especificamente o segmento de produção integrada em larga escala no Pantanal mato-grossense, caracterizado por crescente pressão ESG sobre crédito e certificações, restrições regulatórias à expansão de novas áreas e acirrada competição fundiária com players institucionalizados.
-
-![Canvas proposta de valor](../documentos/análiseSWOT-BRPec.png)
-
-**Fonte: Elaborado pelos autores (2026).**
 
 A leitura integrada dos quadrantes revela que a principal vantagem competitiva sustentável da BRPec reside em sua escala fundiária no Pantanal e no modelo integrado grãos-pecuária, atributos que concorrentes de médio porte não replicam no curto prazo. Por outro lado, o passivo ambiental ativo representa não apenas uma fraqueza interna de compliance, mas um vetor de amplificação de ameaças externas: é simultaneamente a causa do risco de bloqueio ao mercado europeu via EUDR e do encarecimento do custo de capital frente a concorrentes com certificações ESG consolidadas — concentrando dois dos três riscos externos mapeados em uma única vulnerabilidade de origem interna. Essa sobreposição indica que a resolução do passivo ambiental não é apenas uma pauta regulatória, mas a condição estrutural para que a BRPec converta sua escala operacional em acesso real a mercados premium e crédito qualificado.
 
@@ -167,8 +163,11 @@ O projeto será considerado bem-sucedido quando:
 
 A proposta de valor é uma declaração curta e objetiva que resume a essência da aplicação web: o que ela oferece, para quem e por que vale a pena jogar. Ela funciona como o núcleo de toda a visão do projeto, orientando decisões de design e comunicando de forma clara o diferencial do jogo antes de qualquer detalhe técnico ou mecânico ser apresentado.
 
-![Canvas proposta de valor](../documentos/canvasPropostaDeValor.png)
-**Fonte: Elaborado pelos autores (2026).**
+<center>
+  <img src="../assets/canvasPropostaDeValor.png" width="800"/>
+  <p><strong>Figura 2</strong> — Canvas Proposta de Valor aplicada à BrPec Agropecuária<br/>
+  Fonte: Próprios autores (2026).</p>
+</center>
 
 O canvas evidencia que o a aplicação web resolve dores concretas dos Capatazes em campo — como a dependência de boletas de papel, a impossibilidade de usar soluções convencionais sem internet e a comunicação informal com o Gerente, garantindo que haja um maior controle pelos Capatazes. Os ganhos gerados, como a eliminação do retrabalho de transcrição, o registro ágil de eventos zootécnicos em poucos toques e a confirmação automática de tarefas com envio de evidências, se alinham diretamente às entregas do produto: formulários digitais de manejo bovino, sistema de alertas multimídia e exportação em Excel para o Coordenador. A proposta de valor da aplicação web, portanto, não se limita a digitalizar uma planilha existente, mas redefine o fluxo de informações entre o campo e o escritório — tornando os registros operacionais mais confiáveis, rastreáveis e acessíveis para toda a cadeia de gestão da fazenda.
 
@@ -176,9 +175,11 @@ O canvas evidencia que o a aplicação web resolve dores concretas dos Capatazes
 
 A matriz de riscos é uma ferramenta que permite identificar, analisar e priorizar ameaças e oportunidades de um projeto. A classificação é feita com base na probabilidade de ocorrência e no impacto, auxiliando na definição de ações para cada caso. Dessa forma, foi elaborada a matriz de riscos para o desenvolvimento da aplicação web da BrPec Agropecuária S.A, considerando seus principais desafios.
 
-<img src="../assets/matrizdeRisco-BrPec.png" width="600"/>
-
----
+<center>
+  <img src="../assets/matrizDeRisco.png" width="800"/>
+  <p><strong>Figura 3</strong> — Matriz De Risco aplicada à BrPec Agropecuária<br/>
+  Fonte: Próprios autores (2026).</p>
+</center>
 
 ### AMEAÇAS
 
@@ -317,6 +318,7 @@ Desenvolver arquitetura simples e modular, facilitando futuras melhorias.
 _Posicione aqui suas Personas em forma de texto markdown com imagens, ou como imagem de template preenchido. Atualize esta seção ao longo do módulo se necessário._
 
 ### Persona 1
+
 Nome e sobrenome: João Pereira.
 
 Idade: 39 anos.
@@ -331,6 +333,7 @@ Motivações:
 Conseguir manter sua família e garantir educação para seus filhos. Além disso, deseja ser um funcionário de destaque para a BrPec.
 
 Interesses:
+
 - Animais;
 - Tecnologias aplicadas ao agronegócio;
 - Gestão de fazendas;
@@ -338,14 +341,17 @@ Interesses:
 - Livros.
 
 Desafios/Dores:
+
 - Dificuldade de visualizar todo o cenário em tempo real;
 - Comunicação lenta e fragmentada.
 
 Metas:
+
 - Ter maior controle sobre as atividades do campo;
 - Garantir que as rotinas do campo sejam executadas seguindo o planejamento.
 
 Necessidades:
+
 - Painel de acompanhamento do status das atividades;
 - Painel para a criação e gestão de tarefas calendarizadas para os Capatazes;
 - Infomações atualizadas.
@@ -359,6 +365,7 @@ João Pereira tem 39 anos, trabalha na BrPec há 6 anos e é responsável por ge
 João se comunica com supervisores e coordenadores frequentemente, mas essa comunicação ainda é lenta e fragmentada. Além disso, está aberto a ferramentas digitais, porque sabe que elas o ajudariam a ter uma visão atualizada e completa sobre o cenário geral da fazenda.
 
 ### Persona 2
+
 Nome e sobrenome: Marcos Cesar Filho
 
 Idade: 35 anos
@@ -373,15 +380,18 @@ Motivações:
 Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisão e confiabilidade dos dados que gerencia.
 
 Interesses:
+
 - Gestão de dados;
 - Pecuária;
 - Tecnologia aplicada ao campo.
 
 Desafios/Dores:
+
 - Demanda-se tempo para consolidação e redigitação em planilhas eletrônicas;
 - Registros de campo não são padronizados.
 
 Metas:
+
 - Conseguir validar rapidamente as movimentações dos capatazes;
 - Ter dados consolidados e confiáveis sem depender de redigitação manual.
 
@@ -393,12 +403,12 @@ Necessidades:
 
 Biografia:
 
-Marcos Cesar tem 35 anos, está na BRPec há 5 anos e é responsável por validar as informações enviadas pelos Capatazes em campo. Além disso, tem como grande desafio hoje receber registros em boletas de papel, muitas vezes incompletos ou ilegíveis e ter que redigitar tudo manualmente em planilhas. Essa situação o deixa frustrado, ainda mais por esse processo estar sujeito a erros. 
+Marcos Cesar tem 35 anos, está na BRPec há 5 anos e é responsável por validar as informações enviadas pelos Capatazes em campo. Além disso, tem como grande desafio hoje receber registros em boletas de papel, muitas vezes incompletos ou ilegíveis e ter que redigitar tudo manualmente em planilhas. Essa situação o deixa frustrado, ainda mais por esse processo estar sujeito a erros.
 
 "Recebo a boleta, tento decifrar o que está escrito e ainda tenho que digitar tudo no Excel. Qualquer erro no campo vira problema aqui."
 
-
 ### Persona 3
+
 Nome e sobrenome: Gabriel Galdino;
 
 Idade: 45 anos;
@@ -448,6 +458,7 @@ Interesses
 - Comunicação mais direta e eficiente com a equipe.
 
 ## 2.3. User Stories (sprints 1 a 5)
+
 | Campo                    | Descrição                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Identificação**        | US01                                                                                                                                                                                     |
@@ -456,18 +467,19 @@ Interesses
 | **Critério de Aceite 1** | CR1: Dado que João acessa o sistema, quando cria uma tarefa e seleciona um retiro, então a tarefa deve ser salva corretamente vinculada ao retiro                                        |
 | **Critério de Aceite 2** | CR2: Dado que a tarefa foi criada, quando o sistema sincronizar, então ela deve ficar disponível para os capatazes responsáveis pelo retiro                                              |
 
-## Critérios INVEST
-Independente: Pode ser implementada sem depender da visualização offline
+### Critérios INVEST
 
-Negociável: Campos e detalhes da tarefa podem ser ajustados conforme necessidade do gerente
+**Independente:** Pode ser implementada sem depender da visualização offline
 
-Valorosa: Permite maior controle e organização das atividades da fazenda
+**Negociável:** Campos e detalhes da tarefa podem ser ajustados conforme necessidade do gerente
 
-Estimável: Escopo claro de criação e associação de tarefas
+**Valorosa:** Permite maior controle e organização das atividades da fazenda
 
-Pequena: Foco apenas na criação e atribuição de tarefas
+**Estimável:** Escopo claro de criação e associação de tarefas
 
-Testável: Possível validar criação e vínculo com retiro
+**Pequena:** Foco apenas na criação e atribuição de tarefas
+
+**Testável:** Possível validar criação e vínculo com retiro
 
 | Campo                    | Descrição                                                                                                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -478,27 +490,170 @@ Testável: Possível validar criação e vínculo com retiro
 | **Critério de Aceite 2** | CR2: Dado que não há tarefas sincronizadas, quando acessar offline, então o sistema deve exibir uma mensagem simples informando ausência de tarefas        |
 | **Critério de Aceite 3** | CR3: Dado que Gabriel acessa as tarefas, quando exibidas, então devem estar organizadas de forma simples e de fácil entendimento                           |
 
-## Critérios INVEST
-Independente: Depende apenas da sincronização de tarefas
+### Critérios INVEST
 
-Negociável: Forma de exibição pode ser adaptada ao nível de letramento digital
+**Independente:** Depende apenas da sincronização de tarefas
 
-Valorosa: Garante execução das atividades mesmo sem internet
+**Negociável:** Forma de exibição pode ser adaptada ao nível de letramento digital
 
-Estimável: Escopo técnico claro (armazenamento local e leitura)
+**Valorosa:** Garante execução das atividades mesmo sem internet
 
-Pequena: Foco na visualização das tarefas do dia
+**Estimável:** Escopo técnico claro (armazenamento local e leitura)
 
-Testável: Cenários offline verificáveis
+**Pequena:** Foco na visualização das tarefas do dia
 
-| **Identificação**        | US09                                                                                                                                                      |
-| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                  |
-| **User Story**           | Como capataz, posso registrar a morte de um animal offline para reportar rapidamente a baixa ao coordenador, garantindo que nenhuma informação se perca mesmo sem conexão disponível no campo. |
-| **Critério de Aceite 1** | CR1: Dado que Gabriel está sem conexão Starlink no momento do óbito, quando ele preenche os campos obrigatórios do formulário de morte (identificação do animal, categoria, causa e data) e confirma, então o sistema deve salvar o registro localmente no dispositivo e exibir a mensagem "Registro salvo. Será enviado quando houver conexão"   |
- | **Critério de Aceite 2** | CR2: Dado que Gabriel registrou a morte offline durante o período sem sinal, quando o dispositivo detectar automaticamente a conexão com a rede Starlink, então o sistema deve sincronizar o registro com o servidor sem nenhuma ação manual de Gabriel e notificar "Registro sincronizado com sucesso"  |
- | **Critério de Aceite 3** | CCR3: Dado que Gabriel está preenchendo o formulário de óbito, quando ele tentar confirmar sem preencher todos os campos obrigatórios, então o sistema deve bloquear o envio e destacar visualmente os campos faltantes com uma mensagem de alerta, considerando que Gabriel tem dificuldade de leitura, o destaque visual é tão importante quanto o texto da mensagem  |    
- | **Critério de Aceite 4** | CR4: Dado que o registro foi sincronizado com sucesso, quando o coordenador acessar o sistema, então a baixa do animal deve estar disponível e visível no painel do retiro de Gabriel |                                          
+**Testável:** Cenários offline verificáveis
 
+---
+
+| Campo                    | Descrição                                                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US03                                                                                                                                                |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                           |
+| **User Story**           | Como capataz, posso marcar uma tarefa como concluída para informar o gerente sobre o avanço do trabalho de forma simples e rápida                   |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel visualiza uma tarefa, quando marcar como concluída, então o status da tarefa deve ser atualizado no sistema                   |
+| **Critério de Aceite 2** | CR2: Dado que a tarefa foi marcada como concluída offline, quando o dispositivo sincronizar, então o status deve ser atualizado para o gerente      |
+| **Critério de Aceite 3** | CR3: Dado que Gabriel interage com a tarefa, quando marcar como concluída, então a ação deve ser simples, com botão visível e de fácil entendimento |
+
+### Critérios INVEST
+
+**Independente:** Pode ser implementada separadamente da criação de tarefas
+
+**Negociável:** Forma de interação pode ser ajustada (botão, ícone, etc.)
+
+**Valorosa:** Permite acompanhamento do progresso das atividades
+
+**Estimável:** Escopo claro (alteração de status + sincronização)
+
+**Pequena:** Foco apenas na atualização de status
+
+**Testável:** Possível validar mudança de status e sincronização
+
+---
+
+| Campo                    | Descrição                                                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US04                                                                                                                                               |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                          |
+| **User Story**           | Como capataz, posso anexar fotos na conclusão de uma tarefa para comprovar visualmente o serviço realizado, mesmo em ambiente com conexão limitada |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel conclui uma tarefa, quando anexar uma foto, então ela deve ser associada corretamente à tarefa                               |
+| **Critério de Aceite 2** | CR2: Dado que a foto foi registrada offline, quando o dispositivo sincronizar, então a imagem deve ser enviada ao sistema                          |
+| **Critério de Aceite 3** | CR3: Dado que Gabriel utiliza a funcionalidade, quando anexar a foto, então o processo deve ser simples e intuitivo                                |
+
+### Critérios INVEST
+
+**Independente:** Pode ser implementada separadamente do fluxo de conclusão
+
+**Negociável:** Forma de captura/anexo pode ser ajustada
+
+**Valorosa:** Garante evidência visual do trabalho realizado
+
+**Estimável:** Escopo claro (upload + vínculo com tarefa)
+
+**Pequena:** Foco no anexo de imagens
+
+**Testável:** Possível validar envio e associação da imagem
+
+---
+
+| Campo                    | Descrição                                                                                                                                    |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US05                                                                                                                                         |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                    |
+| **User Story**           | Como capataz, posso gravar e anexar um áudio curto à tarefa, para explicar detalhes complexos sem precisar digitar textos longos             |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel está visualizando uma tarefa, quando clicar na opção de gravar áudio, então o sistema deve permitir iniciar a gravação |
+| **Critério de Aceite 2** | CR2: Dado que a gravação foi finalizada, quando salvar, então o áudio deve ser anexado corretamente à tarefa                                 |
+| **Critério de Aceite 3** | CR3: Dado que o áudio foi anexado, quando o supervisor acessar a tarefa, então deve conseguir reproduzir o áudio                             |
+
+### Critérios INVEST
+
+**Independente:** Não depende de outras funcionalidades além da tarefa
+
+**Negociável:** Tempo máximo e formato do áudio podem ser ajustados
+
+**Valorosa:** Reduz a necessidade de digitação para usuários com baixa instrução
+
+**Estimável:** Escopo claro envolvendo gravação e anexação de áudio
+
+**Pequena:** Funcionalidade focada apenas no envio de áudio
+
+**Testável:** Possível testar gravação, salvamento e reprodução do áudio
+
+---
+
+| Campo                    | Descrição                                                                                                                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US06                                                                                                                                   |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                              |
+| **User Story**           | Como capataz, posso criar um alerta de infraestrutura (ticket), para avisar a gerência sobre cercas ou bebedouros quebrados            |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel deseja registrar um problema, quando acessar a opção de novo alerta, então deve visualizar um formulário simples |
+| **Critério de Aceite 2** | CR2: Dado que o alerta está sendo criado, quando preencher os dados, então deve ser obrigatório informar o tipo de problema            |
+| **Critério de Aceite 3** | CR3: Dado que o alerta é enviado, então o sistema deve registrar automaticamente a localização (GPS)                                   |
+| **Critério de Aceite 4** | CR4: Dado que o alerta foi criado, quando o supervisor acessar o sistema, então deve visualizar o novo chamado                         |
+
+**Critérios INVEST** | Não se aplica
+
+---
+
+| Campo                    | Descrição                                                                                                                                                                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US07                                                                                                                                                                                                                                                        |
+| **Persona**              | João Pereira (Gerente)                                                                                                                                                                                                                                      |
+| **User Story**           | Como gerente, posso visualizar um painel com o status de todas as tarefas e alertas em aberto, para priorizar a equipe de manutenção e garantir que as rotinas de campo sejam executadas conforme o planejamento.                                           |
+| **Critério de Aceite 1** | CR1: Dado que João acessa o painel de acompanhamento, quando a tela é carregada, então são exibidas todas as tarefas atribuídas aos capatazes com seus respectivos status (pendente, em andamento, concluída), agrupadas por retiro ou capataz responsável. |
+| **Critério de Aceite 2** | CR2: Dado que um ou mais capatazes enviaram alertas ao gerente, quando João visualiza o painel, então os alertas aparecem em seção destacada, com identificação do capataz, do retiro e da data/hora de envio, ordenados do mais recente ao mais antigo.    |
+| **Critério de Aceite 3** | CR3: Dado que um usuário com perfil diferente de gerente tenta acessar o painel de acompanhamento, quando a requisição é feita, então o sistema nega o acesso e redireciona para a interface correspondente ao seu perfil.                                  |
+| **Critérios INVEST**     | Não se aplica (US07 é de prioridade secundária).                                                                                                                                                                                                            |
+
+---
+
+
+Campo | Descrição
+--- | ---
+**Identificação** | US08
+**Persona** | Gabriel Galdino (Capataz)
+**User Story** | Como capataz, posso registrar o nascimento de bezerros de forma offline para manter o rebanho atualizado sem usar boletas de papel.
+**Critério de Aceite 1** | CR1: Dado que Gabriel está no pasto sem acesso à internet, quando ele acessa o formulário de registro de nascimento e preenche os campos obrigatórios (data, retiro, categoria e quantidade), então o registro é salvo localmente no dispositivo com confirmação visual de que foi armazenado com sucesso.
+**Critério de Aceite 2** | CR2: Dado que Gabriel registrou um ou mais nascimentos enquanto estava offline, quando o dispositivo se conecta à internet, então os registros são sincronizados automaticamente com o servidor e Gabriel recebe uma confirmação visual de que os dados foram enviados.
+**Critério de Aceite 3** | CR3: Dado que Gabriel tenta salvar um registro de nascimento sem preencher todos os campos obrigatórios, quando ele tenta confirmar o formulário, então o sistema exibe uma mensagem indicando quais campos estão incompletos e não permite o salvamento do registro.
+**Critérios INVEST** | Não se aplica (US08 é de prioridade secundária).
+
+---
+
+| Campo                    | Descrição                                                                                                                                                                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US09                                                                                                                                                                                                                                                        |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                                                                                                                  |
+| **User Story**           | Como capataz, posso registrar a morte de um animal offline para reportar rapidamente a baixa ao coordenador, garantindo que nenhuma informação se perca mesmo sem conexão disponível no campo.                                                             |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel está sem conexão Starlink no momento do óbito, quando ele preenche os campos obrigatórios do formulário de morte (identificação do animal, categoria, causa e data) e confirma, então o sistema deve salvar o registro localmente no dispositivo e exibir a mensagem "Registro salvo. Será enviado quando houver conexão" |
+
+### Critérios INVEST
+
+**Independente:** Pode ser registrado separadamente sem depender de outras funcionalidades
+
+**Negociável:** Campos e estrutura do formulário podem ser refinados com cliente
+
+**Valorosa:** Garante que óbitos não sejam perdidos mesmo offline
+
+**Estimável:** Escopo claro (formulário + salvamento local + sincronização)
+
+**Pequena:** Foco no registro da morte do animal
+
+**Testável:** Possível validar salvamento offline e sincronização posterior
+
+---
+
+| Campo | Descrição |
+|-----------|-----------|
+| **Identificação** | US10 |
+| **Persona** | Gabriel Galdino (Capataz) |
+| **User Story** | Como capataz, posso (e devo) anexar a foto do animal no registro de óbito para cumprir as regras de auditoria e controle sanitário da fazenda. |
+| **Critério de Aceite 1** | CR1: Dado que o capataz está registrando um óbito, quando preencher as informações do registro, então o sistema deve exigir o anexo de pelo menos uma foto do animal antes de finalizar o cadastro. |
+| **Critério de Aceite 2** | CR2: Dado que o capataz esteja sem conexão com a internet, quando anexar a foto ao registro de óbito, então o sistema deve armazenar a imagem localmente para sincronização posterior. |
+| **Critério de Aceite 3** | CR3: Dado que o registro de óbito foi sincronizado com sucesso, quando o gerente ou coordenador acessar o sistema, então a foto anexada deve estar vinculada ao respectivo registro para consulta e auditoria. |
+| **Critérios INVEST** | Não se aplica (US10 é de prioridade secundária). |
+
+---
 
 # <a name="c3"></a>3. Projeto da Aplicação Web (sprints 1 a 5)
 
@@ -508,42 +663,49 @@ _Esta seção formaliza o que o sistema deve fazer, sob quais regras e com quais
 
 ### 3.1.1. Requisitos Funcionais (sprint 1, refinar até sprint 5)
 
-| ID    | Descrição                                                                 | Prioridade | Status       |
-|-------|---------------------------------------------------------------------------|------------|--------------|
-| RF001 | O sistema deve permitir que o gerente crie tarefas e as associe a um retiro específico | Alta       | Planejado    |
-| RF002 | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão com a internet | Alta       | Planejado    |
-| RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline | Alta       | Planejado    |
-| RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline | Média      | Planejado    |
-| RF005 | O sistema deve permitir que o capataz preencha e confirme o formulário de registro de morte de animal mesmo sem conexão com a internet, salvando os dados localmente no dispositivo | alta    | Planejado    |
-| RF006 | O sistema deve detectar automaticamente o restabelecimento da conexão com a rede e iniciar a transmissão dos registros locais pendentes para o servidor remoto, sem exigir nenhuma ação manual do capataz | alta    | Planejado    |
-| RF007 | O sistema deve notificar o capataz com uma mensagem de confirmação após a sincronização bem-sucedida dos dados com o servidor ("Registro sincronizado com sucesso") | Média   | Planejado    |
-| RF008 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso | Alta  | Planejado    |
-| RF009 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
-| RF010 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
-
-
-
-
+| ID    | Descrição                                                                                                                                                  | Prioridade | Status    |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
+| RF001 | O sistema deve permitir que o gerente crie tarefas e as associe a um retiro específico                                                                     | Alta       | Planejado |
+| RF002 | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão com a internet                                                         | Alta       | Planejado |
+| RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline                                                                           | Alta       | Planejado |
+| RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline                                                                       | Média      | Planejado |
+| RF005 | O sistema deve permitir que o capataz grave um áudio curto e o anexe a uma tarefa                                                                          | Média      | Planejado |
+| RF006 | O sistema deve permitir que o capataz crie alertas de infraestrutura (ticket), informando: tipo de problema, retirada e localização                        | Média      | Planejado |
+| RF007 | O sistema deve exibir ao gerente um painel com o status de todas as tarefas (pendente, em andamento, concluída) e alertas em aberto, agrupados por retiro. | Média      | Planejado |
+| RF008 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade                 | Média      | Planejado |
+| RF009 | O sistema deve permitir que o capataz preencha e confirme o formulário de registro de morte de animal mesmo sem conexão com a internet, salvando os dados localmente no dispositivo | Alta    | Planejado    |
+| RF010 | O sistema deve detectar automaticamente o restabelecimento da conexão com a rede e iniciar a transmissão dos registros locais pendentes para o servidor remoto, sem exigir nenhuma ação manual do capataz | Alta    | Planejado    |
+| RF011 | O sistema deve notificar o capataz com uma mensagem de confirmação após a sincronização bem-sucedida dos dados com o servidor ("Registro sincronizado com sucesso") | Média   | Planejado    |
+| RF012 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso | Alta  | Planejado    |
+| RF013 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
+| RF014 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
 
 ### 3.1.2. Regras de Negócio (sprint 1, refinar até sprint 5)
 
 _Numere e redija as RN de forma implementável e testável. Toda RN deve ter pelo menos um teste automatizado associado a partir da sprint 3._
 
-                                                               
-
-| ID   | Descrição                                                                                                                                                         |  |
-|------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
-| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro                                                                                              
-| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                                                                                                        
-| RN03 | As tarefas devem ser armazenadas localmente após sincronização                                                                                                   
-| RN04 | A mensagem exibida deve utilizar linguagem simples e direta                                                                                                      
-| RN05 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                                                                          
-| RN06 | Um registro de óbito só pode ser marcado como "sincronizado" e removido da fila local após o servidor retornar HTTP 200 ou 201                                 
-| RN07 | O formulário de óbito não pode ser salvo — online ou offline — se qualquer campo obrigatório (identificação, categoria, causa da morte ou data) estiver vazio     | 
-| RN08 | A sincronização deve ser iniciada automaticamente ao detectar conexão, sem depender de nenhuma ação manual do capataz                                             |
-| RN09 | Em falha parcial de sincronização, apenas registros com HTTP 200/201 são marcados como enviados; os demais permanecem na fila e são reenviados sem duplicação        |
-| RN10 | Cada registro de óbito sincronizado deve ser vinculado ao retiro e ao capataz responsável, sendo imutável após confirmação do servidor                            
-| RN11 | Um registro de óbito só deve aparecer no painel do coordenador após sincronização bem-sucedida; registros em fila local são invisíveis para outros perfis                 |
+| ID   | Descrição                                                                                                  | RF associado        |
+| ---- | ---------------------------------------------------------------------------------------------------------- | ------------------- |
+| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro                                        | RF001               |
+| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                                                  | RF002               |
+| RN03 | As tarefas devem ser armazenadas localmente após sincronização                                             | RF003               |
+| RN04 | A mensagem exibida deve utilizar linguagem simples e direta                                                | RF004               |
+| RN05 | Apenas tarefas associadas ao retiro do capataz devem ser exibidas para ele.                                | RF002               |
+| RN06 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                   | RF002               |
+| RN07 | As tarefas do dia devem ficar disponíveis offline quando houver sincronização prévia.                      | RF002               |
+| RN08 | A marcação de conclusão feita offline deve ser armazenada localmente até a próxima sincronização.          | RF003               |
+| RN09 | Uma tarefa concluída deve ter seu status atualizado para o gerente após sincronização.                     | RF003               |
+| RN10 | As fotos anexadas devem estar vinculadas à tarefa correspondente.                                          | RF004               |
+| RN11 | Fotos registradas offline devem ser enviadas ao sistema quando houver conexão.                             | RF004               |
+| RN12 | O painel do gerente deve exibir tarefas organizadas por retiro e por status.                               | RF007               |
+| RN13 | O painel deve apresentar informações atualizadas conforme a última sincronização disponível.               | RF007               |
+| RN14 | As telas destinadas ao capataz devem usar linguagem simples, botões visíveis e poucos passos de interação. | RF002, RF003, RF004 |
+| RN15 | Um registro de óbito só pode ser marcado como "sincronizado" e removido da fila local após o servidor retornar HTTP 200 ou 201 | RF010, RF012 |
+| RN16 | O formulário de óbito não pode ser salvo — online ou offline — se qualquer campo obrigatório (identificação, categoria, causa da morte ou data) estiver vazio | RF009, RF013 |
+| RN17 | A sincronização deve ser iniciada automaticamente ao detectar conexão, sem depender de nenhuma ação manual do capataz | RF010 |
+| RN18 | Em falha parcial de sincronização, apenas registros com HTTP 200/201 são marcados como enviados; os demais permanecem na fila e são reenviados sem duplicação | RF012 |
+| RN19 | Cada registro de óbito sincronizado deve ser vinculado ao retiro e ao capataz responsável, sendo imutável após confirmação do servidor | RF009, RF014 |
+| RN20 | Um registro de óbito só deve aparecer no painel do coordenador após sincronização bem-sucedida; registros em fila local são invisíveis para outros perfis | RF014 |
 
 ### 3.1.3. Requisitos Não Funcionais — 8 Eixos ISO/IEC 25010 (sprints 1 a 5)
 
@@ -564,12 +726,20 @@ _Preencha os 8 eixos. Cada eixo deve ter ao menos um RNF verificável (com métr
 
 _Matriz de cobertura mostrando quais RN e endpoints implementam cada RF._
 
-| RF    | RN associadas        | Endpoint                  | Método |
-|-------|----------------------|---------------------------|--------|
-| RF001 | RN01                 | /tarefas                  | POST   |
-| RF002 | RN02, RN05           | /tarefas/hoje             | GET    |
-| RF003 | RN03                 | /tarefas/sincronizar      | GET    |
-| RF004 | RN04                 | /tarefas/hoje/offline     | GET    |
+| RF    | RN associadas | Endpoint              | Método |
+| ----- | ------------- | --------------------- | ------ |
+| RF001 | RN01          | /tarefas              | POST   |
+| RF002 | RN02, RN05    | /tarefas/hoje         | GET    |
+| RF003 | RN03          | /tarefas/sincronizar  | GET    |
+| RF004 | RN04          | /tarefas/hoje/offline | GET    |
+| RF005 | RN05          | /tarefas/concluir     | POST   |
+| RF006 | RN06          | /chamados             | POST   |
+| RF007 | RN07          | /eventos/zootecnicos  | POST   |
+| RF008 | RN08          | /transacoes/gado      | POST   |
+| RF009 | RN09          | /transferencias       | POST   |
+| RF010 | RN10          | Armazenamento Local   | INSERT |
+| RF011 | RN11          | /sincronizar          | POST   |
+| RF012 | RN12          | Consulta Banco Local  | GET    |
 
 ## 3.2. Arquitetura (sprints 1 a 5)
 
@@ -579,7 +749,50 @@ _Posicione aqui o diagrama de arquitetura da solução, indicando as camadas pri
 
 ### 3.2.2. Diagrama de Casos de Uso (sprint 1)
 
-_Apresente o diagrama de casos de uso com atores (boneco), casos (elipse) e as relações `<<include>>` / `<<extend>>` com semântica correta. Consulte a notação de referência em `in02/suporte/use-case_3.0_v1.0.pdf`._
+@startuml
+left to right direction
+
+actor "Gerente (João)" as Gerente
+actor "Coordenador (Marcos)" as Coordenador
+actor "Capataz (Gabriel)" as Capataz
+
+rectangle "Sistema BrPec" {
+
+usecase "Criar tarefa" as UC1
+usecase "Atribuir tarefa ao retiro" as UC2
+usecase "Visualizar painel de status" as UC3
+
+usecase "Visualizar tarefas do dia" as UC4
+usecase "Marcar tarefa como concluída" as UC5
+usecase "Anexar foto na tarefa" as UC6
+
+usecase "Visualizar movimentações" as UC7
+usecase "Validar movimentações" as UC8
+usecase "Exportar relatórios" as UC9
+}
+
+Gerente --> UC1
+Gerente --> UC3
+
+Capataz --> UC4
+Capataz --> UC5
+
+Coordenador --> UC7
+Coordenador --> UC8
+Coordenador --> UC9
+
+UC1 ..> UC2 : <<include>>
+UC8 ..> UC7 : <<include>>
+
+UC6 ..> UC5 : <<extend>>
+
+@enduml
+
+<center>
+  <img src="../assets/diagramaDeUso.png" width="800"/>
+  <p><strong>Figura 4</strong> — Diagrama de Caso De Uso aplicada à BrPec Agropecuária<br/>
+  Fonte: Próprios autores (2026).</p>
+</center>
 
 ### 3.2.3. Diagrama de Classes do Domínio (sprint 2)
 
