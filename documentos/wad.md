@@ -178,7 +178,10 @@ O canvas evidencia que o a aplicação web resolve dores concretas dos Capatazes
 
 ### 2.1.5. Matriz de Riscos do Projeto (sprint 1)
 
-A matriz de riscos é uma ferramenta que permite identificar, analisar e priorizar ameaças e oportunidades de um projeto. A classificação é feita com base na probabilidade de ocorrência e no impacto, auxiliando na definição de ações para cada caso. Dessa forma, foi elaborada a matriz de riscos para o desenvolvimento da aplicação web da BrPec Agropecuária S.A, considerando seus principais desafios.
+A matriz de riscos é uma ferramenta que permite identificar, analisar e priorizar ameaças e oportunidades de um projeto. A classificação é feita com base na probabilidade de ocorrência e no impacto, auxiliando na definição de ações para cada caso. Dessa forma, foi elaborada a matriz de riscos para o desenvolvimento da aplicação web da BrPec Agropecuária S.A, considerando seus principais desafios. 
+
+Nesse contexto, a figura a seguir apresenta a matriz de riscos elaborada para o projeto, que usa como base os padrões da ISO 31000 e PMBOK(REVISTA DE GESTÃO E PROJETOS, 2013), na qual são organizadas as principais ameaças e oportunidades identificadas, considerando seus respectivos níveis de impacto e probabilidade. 
+
 
 <center>
   <img src="../assets/matrizDeRisco.png" width="800"/>
@@ -186,64 +189,60 @@ A matriz de riscos é uma ferramenta que permite identificar, analisar e prioriz
   Fonte: Próprios autores (2026).</p>
 </center>
 
-### AMEAÇAS
+## Ameaças
 
-### 1. Não entrega do MVP no prazo
-
-**Probabilidade:** 10%  
-**Impacto:** Muito Alto
-
-**Explicação:**  
-Existe risco real de atraso devido à complexidade do sistema (offline + integração + múltiplas funcionalidades). O grupo pode focar em detalhes ou features secundárias e não finalizar o núcleo do projeto.
-
-**Plano de ação:**  
-Definir claramente o escopo do MVP (tarefas + registro + exportação), priorizar backlog semanalmente, dividir responsabilidades por membro e realizar checkpoints frequentes para garantir evolução contínua.
-
----
-
-### 2. Falha na sincronização offline
-
-**Probabilidade:** 50%  
-**Impacto:** Muito Alto
-
-**Explicação:**  
-O sistema depende de funcionamento offline, o que aumenta a complexidade técnica. Problemas na sincronização podem gerar perda ou duplicação de dados, comprometendo a confiança no sistema.
-
-**Plano de ação:**  
-Implementar armazenamento local, criar lógica de fila para sincronização, testar cenários offline/online e registrar logs para identificar falhas.
-
----
-
-### 3. Baixa adoção pelos usuários de campo
-
-**Probabilidade:** 50%  
-**Impacto:** Alto
-
-**Explicação:**  
-Os capatazes podem resistir à mudança por hábito ou dificuldade com tecnologia. Se o sistema não for simples e rápido, há risco de continuarem utilizando papel.
-
-**Plano de ação:**  
-Focar em interface simples e intuitiva, reduzir o número de campos obrigatórios, validar protótipos com o parceiro e priorizar rapidez no uso.
-
----
-
-### 4. Falta de alinhamento com o parceiro
-
+### A01 — Falha na sincronização de dados offline  
 **Probabilidade:** 30%  
-**Impacto:** Alto
+**Impacto:** Muito Alto  
 
 **Explicação:**  
-Caso o grupo não valide decisões com a BrPec Agropecuária S.A, pode desenvolver funcionalidades que não atendem às necessidades reais.
+A operação ocorre majoritariamente offline nos retiros, o que torna a sincronização um elemento crítico do sistema. Falhas nesse processo podem resultar na perda, duplicidade ou inconsistência de dados. Por exemplo, uma movimentação de rebanho registrada no campo pode não ser refletida no sistema central, gerando divergência entre o estoque real de animais e os dados disponíveis para gestão.
 
 **Plano de ação:**  
-Realizar reuniões frequentes, validar protótipos e funcionalidades, documentar decisões e confirmar requisitos antes de implementar.
+Para mitigar esse risco, deve-se adotar uma arquitetura orientada ao funcionamento offline, com armazenamento local de dados e sincronização assíncrona. É fundamental implementar mecanismos de controle de consistência, como filas de envio, registros de log e reprocessamento automático em caso de falhas. Além disso, devem ser realizados testes que simulem cenários reais de perda e retomada de conexão, garantindo que o sistema mantenha a integridade dos dados mesmo em condições adversas.
 
 ---
 
-### 5. Problemas de integração entre frontend e backend
-
+### A02 — Baixa usabilidade para capatazes  
 **Probabilidade:** 50%  
-**Impacto:** Alto
+**Impacto:** Alto  
+
+**Explicação:**  
+Os capatazes, principais usuários do sistema, apresentam baixo nível de instrução formal e estão habituados ao uso de ferramentas simples, como o WhatsApp. Uma interface complexa pode dificultar a utilização do sistema e comprometer sua adoção no dia a dia.
+
+**Plano de ação:**  
+A mitigação desse risco exige o desenvolvimento de uma interface altamente intuitiva, baseada em elementos visuais e fluxos simplificados. Deve-se reduzir ao máximo a necessidade de leitura e digitação, priorizando ações rápidas e diretas. A validação contínua com o parceiro, por meio de protótipos e simulações de uso real, é essencial para garantir aderência ao perfil do usuário. Além disso, a comparação com ferramentas já utilizadas pelos capatazes pode orientar decisões de design mais eficazes.
+
+---
+
+### A03 — Registro incorreto ou incompleto de dados  
+**Probabilidade:** 30%  
+**Impacto:** Alto  
+
+**Explicação:**  
+Erros no registro de eventos como nascimento, morte ou transferência de animais comprometem diretamente a confiabilidade das informações. Um exemplo crítico seria a ausência de registro de morte, que pode gerar inconsistência no inventário e impactar decisões de venda ou manejo.
+
+**Plano de ação:**  
+Para reduzir esse risco, o sistema deve impor validações estruturais nos registros, garantindo o preenchimento de campos essenciais, como origem, destino e tipo de movimentação. A exigência de evidências, como fotos georreferenciadas em eventos críticos, contribui para aumentar a confiabilidade dos dados. Além disso, a implementação de histórico de alterações permite rastrear inconsistências e corrigir eventuais erros ao longo do tempo.
+
+---
+
+### A04 — Resistência à mudança no processo operacional  
+**Probabilidade:** 50%  
+**Impacto:** Muito Alto  
+
+**Explicação:**  
+Mesmo com uma interface adequada, existe o risco de resistência à mudança por parte dos capatazes, que estão habituados ao uso de papel e ferramentas informais no dia a dia. A introdução de um novo sistema pode ser percebida como uma complexidade adicional à rotina, especialmente em um ambiente operacional já consolidado. Por exemplo, mesmo com o aplicativo disponível, o usuário pode optar por continuar registrando informações manualmente e postergar o uso da solução digital, comprometendo a centralização e a confiabilidade dos dados.
+
+**Plano de ação:**  
+A mitigação desse risco exige não apenas uma solução tecnicamente adequada, mas também uma estratégia de implementação alinhada ao contexto da fazenda. É necessário garantir que o sistema seja percebido como facilitador da rotina, reduzindo esforço operacional em comparação ao método atual. Além disso, o envolvimento de supervisores no acompanhamento do uso e a validação contínua com o parceiro contribuem para reforçar a adoção. A demonstração prática de benefícios, como redução de retrabalho e maior agilidade no registro, também atua como fator de incentivo ao uso contínuo da ferramenta.
+
+
+---
+
+### A05 — Problemas de integração entre frontend e backend  
+**Probabilidade:** 30%  
+**Impacto:** Moderado  
 
 **Explicação:**  
 Diferenças nos formatos de dados ou endpoints podem causar falhas no sistema, atrasando o desenvolvimento.
@@ -253,51 +252,35 @@ Definir contratos de API (JSON padronizado), documentar endpoints, realizar test
 
 ---
 
-### 6. Desempenho ruim em dispositivos do campo
-
-**Probabilidade:** 30%  
-**Impacto:** Moderado
+### A06 — Desempenho inadequado em dispositivos de campo  
+**Probabilidade:** 10%  
+**Impacto:** Moderado  
 
 **Explicação:**  
-O sistema pode ser utilizado em celulares simples, e baixa performance pode dificultar o uso no dia a dia.
+O sistema será utilizado em dispositivos móveis no campo, que podem apresentar limitações de hardware. Baixo desempenho pode dificultar o uso durante as atividades diárias.
 
 **Plano de ação:**  
-Otimizar carregamento das páginas, reduzir uso de recursos pesados, testar em dispositivos reais e simplificar interface.
+Para garantir uma experiência adequada, o sistema deve ser otimizado para dispositivos móveis, com interfaces leves e baixo consumo de recursos. A utilização de cache local e a minimização de requisições externas contribuem para melhorar o desempenho. Além disso, testes em dispositivos reais são essenciais para validar a usabilidade em condições próximas à operação.
 
 ---
 
-### OPORTUNIDADES
+## Oportunidades
 
-### 1. Redução significativa de retrabalho
-
+### O01 — Redução de retrabalho e erros operacionais  
 **Probabilidade:** 90%  
-**Impacto:** Muito Alto
+**Impacto:** Muito Alto  
 
 **Explicação:**  
-A digitalização elimina a necessidade de transcrever dados do papel para o Excel, reduzindo tempo e erros operacionais.
+Atualmente, os dados são registrados em papel e posteriormente transcritos para planilhas, o que gera retrabalho e aumenta a probabilidade de erros. A digitalização permite eliminar esse processo intermediário, tornando o fluxo mais eficiente e confiável.
 
 **Plano de ação:**  
-Garantir que o sistema permita registro direto no campo e exportação automática de dados.
+A digitalização dos registros deve garantir que todas as informações sejam coletadas diretamente no campo, de forma estruturada e padronizada. A integração com relatórios e exportações automatizadas assegura que os dados possam ser utilizados imediatamente, reduzindo tempo operacional e falhas humanas.
 
 ---
 
-### 2. Desenvolvimento técnico do grupo
-
-**Probabilidade:** 90%  
-**Impacto:** Muito Alto
-
-**Explicação:**  
-O projeto envolve tecnologias reais (frontend, backend e banco de dados), proporcionando aprendizado prático relevante.
-
-**Plano de ação:**  
-Dividir tarefas técnicas, compartilhar conhecimento entre membros e documentar aprendizados.
-
----
-
-### 3. Entendimento do setor agro
-
+### O02 — Entendimento do setor agro 
 **Probabilidade:** 50%  
-**Impacto:** Alto
+**Impacto:** Alto  
 
 **Explicação:**  
 O contato com a realidade da pecuária permite aprendizado de um setor relevante e pouco explorado por estudantes de tecnologia.
@@ -307,16 +290,34 @@ Aproveitar reuniões com o parceiro, fazer perguntas estratégicas e validar ent
 
 ---
 
-### 4. Possibilidade de expansão futura da solução
-
-**Probabilidade:** 30%  
-**Impacto:** Alto
+### O03 — Melhoria na tomada de decisão gerencial  
+**Probabilidade:** 70%  
+**Impacto:** Alto  
 
 **Explicação:**  
-A solução pode ser expandida para outras fazendas ou funcionalidades, gerando valor adicional.
+Atualmente, as decisões são tomadas com base em dados que chegam com atraso ou podem conter inconsistências. Com a digitalização, os gestores passam a ter acesso a informações mais atualizadas e confiáveis. Por exemplo, o controle preciso do número de animais por categoria permite decisões mais assertivas sobre venda e manejo.
 
 **Plano de ação:**  
-Desenvolver arquitetura simples e modular, facilitando futuras melhorias.
+A disponibilização de dados estruturados deve ser acompanhada pela criação de dashboards e relatórios que facilitem a visualização das informações. A organização por retiro, tipo de atividade e categoria de animal contribui para análises mais rápidas e eficazes.
+
+---
+
+### O04 — Geração de vantagem competitiva operacional  
+**Probabilidade:** 50%  
+**Impacto:** Alto  
+
+**Explicação:**  
+Em um setor altamente competitivo, a eficiência operacional é um fator determinante. O uso de dados confiáveis permite reduzir perdas, melhorar o controle do rebanho e otimizar a execução das atividades. A identificação rápida de falhas operacionais possibilita correções ágeis, evitando impactos maiores na produção.
+
+**Plano de ação:**  
+Para potencializar essa oportunidade, é necessário garantir que os dados coletados sejam utilizados estrategicamente. A análise contínua por meio de indicadores e relatórios permite transformar informações operacionais em vantagens competitivas, fortalecendo a posição da empresa no mercado.
+
+---
+
+## Síntese
+
+A análise da matriz de riscos permite identificar fatores críticos que podem impactar tanto o desenvolvimento do projeto quanto a efetividade da solução no contexto da BrPec. Ao estabelecer estratégias de mitigação e potencialização, torna-se possível conduzir o projeto de forma mais segura, alinhada às necessidades do parceiro e orientada à geração de valor, contribuindo para a qualidade e confiabilidade das entregas.
+
 
 ## 2.2. Personas (sprint 1)
 
@@ -976,11 +977,8 @@ _Incluir as principais referências de seu projeto, para que seu parceiro possa 
 
 CEPEA. PIB do Agronegócio Brasileiro. Disponível em: https://www.cepea.esalq.usp.br. Acesso em: 29 abr. 2026.
 
-LUCK, Heloisa. Liderança em gestão escolar. 4. ed. Petrópolis: Vozes, 2010. <br>
-SOBRENOME, Nome. Título do livro: subtítulo do livro. Edição. Cidade de publicação: Nome da editora, Ano de publicação. <br>
+REVISTA DE GESTÃO E PROJETOS — GeP. Gestão de riscos em projetos: uma análise comparativa da norma ISO 31000 e o Guia PMBOK®, 2012. Revista de Gestão e Projetos — GeP, São Paulo, v. 4, n. 3, p. 46–72, set./dez. 2013. Disponível em: https://www.bibliotecadeseguranca.com.br/wp-content/uploads/2020/05/gerenciamento-de-riscos-em-projetos-uma-comparacao-entre-o-pmbok-e-a-iso-31000.pdf. Acesso em: 29 abr. 2026. 
 
-INTELI. Adalove. Disponível em: https://adalove.inteli.edu.br/feed. Acesso em: 1 out. 2023 <br>
-SOBRENOME, Nome. Título do site. Disponível em: link do site. Acesso em: Dia Mês Ano
 
 
 # <a name="c9"></a>Anexos
