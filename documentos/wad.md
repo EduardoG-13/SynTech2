@@ -90,6 +90,7 @@ Personas são, de forma resumida, representaçôes fictícia dos diferentes tipo
 - Nome e sobrenome: João Pereira;
 - Idade: 40 anos [1];
 - Cargo: Gerente geral na BrPec Agropecuária S.A.;
+- Estado Civil: Casado;
 - Localização: Miranda-MS;
 - Escolaridade: Pós-graduado em veterinária.
 
@@ -113,7 +114,7 @@ Conseguir manter sua família e garantir educação para seus filhos. Além diss
 #### Necessidades:
 - Painel de acompanhamento do status das atividades;
 - Painel para a criação e gestão de tarefas calendarizadas para os Capatazes;
-- Infomações atualizadas.
+- Infomações diariamente atualizadas.
 
 #### Habilidades [3]:
 - Planejamento de atividades operacionais;
@@ -126,15 +127,15 @@ Conseguir manter sua família e garantir educação para seus filhos. Além diss
 
 | Aspecto   | Nível / Situação    |
 |-------------------|---------------------------------|
-| Smartphone | Intermediate (DigComp) — uso ativo de WhatsApp, e-mail, chamadas de trabalho e outros   |
-| Aplicativos de gestão | Basic (DigComp) — uso limitado, sem experiência com sistemas ERP ou dashboards |
-| Planilhas e formulários | Intermediate (DigComp) — utiliza planilhas para acompanhar as atividades |
-| Sistemas web  | Basic (DigComp) — acessa portais e e-mail, sem uso de plataformas integradas  |
+| Smartphone | Intermediate (DigComp) - uso ativo de WhatsApp, e-mail, chamadas de trabalho e outros   |
+| Aplicativos de gestão | Basic (DigComp) - uso limitado, sem experiência com sistemas ERP ou dashboards |
+| Planilhas e formulários | Intermediate (DigComp) - utiliza planilhas para acompanhar as atividades |
+| Sistemas web  | Basic (DigComp) - acessa portais e e-mail, sem uso de plataformas integradas  |
 
 Informações extras:
-- Conectividade: Boa — trabalha em escritório com acesso estável à internet;
+- Conectividade: Boa - trabalha em escritório com acesso estável à internet;
 - Meio de comunicação principal: WhatsApp, rádio e telefone com capatazes e coordenadores;
-- Adaptação a novas tecnologias: Moderada a alta — reconhece o valor das ferramentas digitais e está aberto a adotá-las [3];
+- Adaptação a novas tecnologias: Moderada a alta - reconhece o valor das ferramentas digitais e está aberto a adotá-las [3];
 - Dispositivo disponível: Computador e celular.
 
 #### Notas e Justificativas
@@ -142,7 +143,7 @@ Informações extras:
 **[1] Idade e perfil do cargo**
 A faixa etária de 40 anos foi baseada no perfil médio do Gerente de Produção e Operações Agropecuárias (CBO 1411-15), que aponta 40 anos como idade mais recorrente segundo o Portal Salário a partir de dados do CAGED. Além disso, outras informações sobre o perfil do foram baseadas a partir dessa fonte. (PORTAL SALÁRIO, 2025)
 
-**[2] Framework de Competência Digital — DigComp 3.0**
+**[2] Framework de Competência Digital - DigComp 3.0**
 Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo. (COSGROVE; CACHIA, 2025)
 
 **[3] Habilidades do gestor no agronegócio**
@@ -158,11 +159,12 @@ João começa seu dia sempre verificando mensagens dos capatazes e coordenadores
 
 João se comunica com supervisores e coordenadores frequentemente, mas essa comunicação ainda é lenta e fragmentada. Além disso, está aberto a ferramentas digitais, porque sabe que elas o ajudariam a ter uma visão atualizada e completa sobre o cenário geral da fazenda.
 
-### Persona 2
+### Persona 2: Marcos Cesar Filho
 #### Informações:
 - Nome e sobrenome: Marcos Cesar Filho;
 - Idade: 35 anos;
 - Cargo: Coordenador na BrPec Agropecuária S.A.;
+- Estado Civil: Solteiro;
 - Localização: Miranda- MS;
 - Escolaridade: Pós-graduado em administração [1].
 
@@ -175,12 +177,12 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 - Tecnologia aplicada ao campo.
 
 #### Desafios/Dores:
-- Demanda-se tempo para consolidação e redigitação em planilhas eletrônicas;
+- Demanda-se tempo para consolidação e transcrição em planilhas eletrônicas;
 - Registros de campo não são padronizados.
 
 #### Metas:
 - Conseguir validar rapidamente as movimentações dos capatazes;
-- Ter dados consolidados e confiáveis sem depender de redigitação manual.
+- Ter dados consolidados e confiáveis sem depender de transcrição manual.
 
 #### Necessidades:
 - Visualização das movimentações reportadas pelos Capatazes;
@@ -197,15 +199,15 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 
 | Aspecto | Nível / Situação  |
 |---------------------------|-------------------------------|
-| Smartphone | Intermediate (DigComp) — uso ativo de WhatsApp, e-mail e câmera no trabalho   |
-| Aplicativos de gestão  | Basic (DigComp) — sem experiência com sistemas ERP ou plataformas operacionais  |
-| Planilhas e formulários   | Intermediate (DigComp) — usa Excel para consolidação manual de dados de campo |
-| Sistemas web  | Basic (DigComp) — acessa e-mail e portais simples, sem dashboards ou sistemas  |
+| Smartphone | Intermediate (DigComp) - uso ativo de WhatsApp, e-mail e câmera no trabalho   |
+| Aplicativos de gestão  | Basic (DigComp) - sem experiência com sistemas ERP ou plataformas operacionais  |
+| Planilhas e formulários   | Intermediate (DigComp) - usa Excel para consolidação manual de dados de campo |
+| Sistemas web  | Basic (DigComp) - acessa e-mail e portais simples, sem dashboards ou sistemas  |
 
 **Informações extras:**
 - Conectividade: Boa, trabalha em ambiente de escritório com acesso à internet;
 - Meio de comunicação principal: WhatsApp, e-mail e telefone;
-- Adaptação a novas tecnologias: Moderada — aberto a ferramentas que simplifiquem seu fluxo de trabalho;
+- Adaptação a novas tecnologias: Moderada - aberto a ferramentas que simplifiquem seu fluxo de trabalho;
 - Dispositivo disponível: Computador e celular.
 
 #### Notas e Justificativas
@@ -213,12 +215,14 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 **[1] Escolaridade do gestor no agronegócio**
 O Portal CNA Brasil aponta que, para cargos de coordenação técnica no agronegócio, o perfil mais buscado combina forte conhecimento técnico com boas noções de gestão, habilidade de comunicação e liderança. (CNA BRASIL, [s.d.])
 
-**[2] Framework de Competência Digital — DigComp 3.0**
+**[2] Framework de Competência Digital - DigComp 3.0**
 Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo. (COSGROVE; CACHIA, 2025)
 
 #### Biografia:
 
 Marcos Cesar tem 35 anos, está na BRPec há 5 anos e é responsável por validar as informações enviadas pelos Capatazes em campo. Além disso, tem como grande desafio hoje receber registros em boletas de papel, muitas vezes incompletos ou ilegíveis e ter que redigitar tudo manualmente em planilhas. Essa situação o deixa frustrado, ainda mais por esse processo estar sujeito a erros. 
+
+Sua rotina começa organizando as boletas vindas dos capatazes. Assim, ele tenta decifrar as caligrafias para depois iniciar a transcrição no Excel. Durante o dia, alterna entre a consolidação dos dados de movimentação do rebanho, validação de registros e comunicação com os capatazes para esclarecer dúvidas. Ao fim do dia, revisa as planilhas para garantir que nenhum dado ficou incorreto.
 
 "Recebo a boleta, tento decifrar o que está escrito e ainda tenho que digitar tudo no Excel. Qualquer erro no campo vira problema aqui."
 
@@ -226,7 +230,8 @@ Marcos Cesar tem 35 anos, está na BRPec há 5 anos e é responsável por valida
 #### Informações: 
 - Nome e sobrenome: Gabriel Galdino;
 - Idade: 33 anos [1];
-- Cargo: Capataz na BrPec Agropecuária S.A [2];
+- Cargo: Capataz na BrPec Agropecuária S.A. [2];
+- Estado Civil: Casado;
 - Localização: Aquidauana (MS) – Atua em retiros na região do Pantanal;
 - Escolaridade: Ensino Fundamental completo;
 
@@ -240,7 +245,7 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 - Ter maior controle sobre as atividades realizadas no dia.
 
 #### Necessidades:
-- Sistema facil de navegar e se utilizar, por ter maior dificuldade com tecnologias [3];
+- Sistema fácil de usar sem conhecimento técnico prévio, por ter maior dificuldade com tecnologias [3];
 - Registro rápido de tarefas e ocorrências;
 - Visualização clara das atividades do dia;
 - Funcionamento offline devido à limitação de internet;
@@ -249,15 +254,14 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 #### Desafios/dores:
 - Baixa familiaridade com tecnologias digitais [3];
 - Dependência de registros manuais e memória;
-- Dificuldade em acompanhar várias tarefas simultaneamente;
-- Falhas na comunicação com níveis superiores;
-- Tempo limitado para registrar informações durante o trabalho.
+- Dificuldade para acompanhar tarefas em tempo real;
+- Dificuldade de comunicação com níveis superiores;
 
 #### Interesses:
-- Ferramentas fáceis de usar no dia a dia;
+- Animais e agricultura;
 - Soluções que reduzam esforço operacional;
 - Organização das tarefas no campo;
-- Comunicação mais direta e eficiente com a equipe.
+- Comunicação direta e eficiente.
 
 #### Habilidades:
 - Administração de mão de obra rural;
@@ -272,17 +276,16 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 
 | Aspecto            | Nível / Situação       |
 |---------------------------|-----------------------------------------------------|
-| Smartphone         | Basic (DigComp) — uso restrito a ligações e WhatsApp       |
-| Aplicativos de gestão   | Abaixo do Basic — sem experiência com apps de controle de tarefas ou relatórios |
-| Planilhas e formulários  | Abaixo do Basic — registro em planilhas é feito por outros a partir de suas anotações |
-| Sistemas web ou digitais  | Abaixo do Basic — depende de boletas físicas e comunicação verbal   |
+| Smartphone      | Basic (DigComp) - uso restrito a ligações e WhatsApp       |
+| Aplicativos de gestão   | Abaixo do Basic - sem experiência com apps de controle de tarefas ou relatórios |
+| Planilhas e formulários  | Abaixo do Basic - registro em planilhas é feito por outros a partir de suas anotações |
+| Sistemas web ou digitais  | Abaixo do Basic - boletas são físicas e comunicação é verbal |
 
 Informações extras:
-- Conectividade no campo: Instável ou ausente — sinal de internet limitado ou inexistente nos retiros;
+- Conectividade no campo: Instável ou ausente - sinal de internet limitado ou inexistente nos retiros;
 - Meio de comunicação principal: Rádio, comunicação verbal e anotações;
-- Adaptação a novas tecnologias: Baixa — resistência natural e por pouco contato com dispositivos ao longo da vida [3];
+- Adaptação a novas tecnologias: Baixa - resistência natural e por pouco contato com dispositivos ao longo da vida [3];
 - Dispositivo disponível: Celular.
-
 
 #### Notas e Justificativas: 
 
@@ -295,16 +298,16 @@ As atribuições descritas, como exemplo a administração de mão de obra ou o 
 **[3] Baixa familiaridade com tecnologias digitais na pecuária**  
 A pesquisa acadêmica publicada na SciELO expõe a dificuldade de adoção de tecnologias por trabalhadores rurais na pecuária. O estudo aponta que características individuais como formação profissional e a posição ocupada dentro da propriedade influenciam diretamente a adoção ou rejeição de tecnologias, sendo a baixa escolaridade um fator determinante para a resistência ao uso de ferramentas digitais no campo. (MACHADO; NANTES, 2011)
 
-**[4] Framework de Competência Digital — DigComp 3.0**
+**[4] Framework de Competência Digital - DigComp 3.0**
 Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo. (COSGROVE; CACHIA, 2025)
 
 #### Biografia:
 
 Gabriel Galdino tem 33 anos e atua como capataz na BrPec Agropecuária S.A, sendo responsável pela gestão do retiro da Barra Bonita. Sua rotina é voltada à execução das atividades operacionais, organização da equipe de vaqueiros e acompanhamento direto das demandas relacionadas ao rebanho. Com forte experiência prática no campo, coordena tarefas como movimentação de gado, manutenção de cercas e resolução de imprevistos. Também realiza registros básicos das atividades e comunica atualizações ao coordenador.
 
-Comprometido com o sustento da família e com o bom funcionamento do retiro, Gabriel é um profissional que se destaca ao ser um ótimo capataz para seu retiro e comunidade de vaqueiros. Entretanto, enfrenta limitações no uso de ferramentas digitais e depende, em grande parte, de anotações informais e comunicação via rádio, o que dificulta o controle das informações e o acompanhamento das tarefas.
+Comprometido com o sustento da família e com o bom funcionamento do retiro, Gabriel é um profissional que se destaca ao ser um ótimo capataz para seu retiro e comunidade. Apesar disso, enfrenta limitações no uso de ferramentas digitais e depende, em grande parte, de anotações informais e comunicação via rádio, o que dificulta o controle das informações e o acompanhamento das tarefas.
 
-"Quando o bicho adoece ou a cerca arrebenta, não tem tempo de procurar papel — tem que resolver na hora. O que não ficou na cabeça, ficou perdido."
+"Quando o bicho adoece ou a cerca arrebenta, não tem tempo de procurar papel, tem que resolver na hora. O que não ficou na cabeça, ficou perdido."
 
 
 ## 2.3. User Stories (sprints 1 a 5)
@@ -347,20 +350,20 @@ Critérios INVEST | *(Por que é Independente? Por que é Negociável? Por que �
 | RN01 | ...       | RF001        |
 | RN02 | ...       | RF001        |
 
-### 3.1.3. Requisitos Não Funcionais — 8 Eixos ISO/IEC 25010 (sprints 1 a 5)
+### 3.1.3. Requisitos Não Funcionais - 8 Eixos ISO/IEC 25010 (sprints 1 a 5)
 
 *Preencha os 8 eixos. Cada eixo deve ter ao menos um RNF verificável (com métrica, limite ou critério concreto) ou justificativa explícita de ausência. Evolua do conceitual (sprint 1) ao técnico mensurável (sprint 5).*
 
 | Eixo                     | Requisito | Métrica / Critério | Como atendido |
 |--------------------------|-----------|--------------------|---------------|
-| USAB — Usabilidade       | ...       | ...                | ...           |
-| CONF — Confiabilidade    | ...       | ...                | ...           |
-| DES — Desempenho         | ...       | p95 < X ms         | ...           |
-| SUP — Suportabilidade    | ...       | ...                | ...           |
-| SEG — Segurança          | ...       | ...                | ...           |
-| CAP — Capacidade         | ...       | ...                | ...           |
-| REST — Restrições Design | ...       | ...                | ...           |
-| ORG — Organizacionais    | ...       | ...                | ...           |
+| USAB - Usabilidade       | ...       | ...                | ...           |
+| CONF - Confiabilidade    | ...       | ...                | ...           |
+| DES - Desempenho         | ...       | p95 < X ms         | ...           |
+| SUP - Suportabilidade    | ...       | ...                | ...           |
+| SEG - Segurança          | ...       | ...                | ...           |
+| CAP - Capacidade         | ...       | ...                | ...           |
+| REST - Restrições Design | ...       | ...                | ...           |
+| ORG - Organizacionais    | ...       | ...                | ...           |
 
 ### 3.1.4. Matriz RF → RN → Endpoint (sprints 3 a 5)
 
@@ -430,7 +433,7 @@ Critérios INVEST | *(Por que é Independente? Por que é Negociável? Por que �
 
 ### 3.6.1. Modelo Entidade-Relacionamento (ER) (sprint 2)
 
-*Apresente o modelo ER conceitual com entidades, atributos e relacionamentos. Use notação consistente (Chen ou Crow's Foot — não misture).*
+*Apresente o modelo ER conceitual com entidades, atributos e relacionamentos. Use notação consistente (Chen ou Crow's Foot - não misture).*
 
 ### 3.6.2. Diagrama Entidade-Relacionamento (DER) (sprint 2)
 
@@ -472,7 +475,7 @@ Critérios INVEST | *(Por que é Independente? Por que é Negociável? Por que �
 
 ### 3.8.3. Autorização
 
-*Descreva as regras de autorização por rota e por operação, baseadas no perfil do usuário autenticado. A verificação deve ocorrer no backend — o frontend nunca é fonte de verdade para autorização.*
+*Descreva as regras de autorização por rota e por operação, baseadas no perfil do usuário autenticado. A verificação deve ocorrer no backend - o frontend nunca é fonte de verdade para autorização.*
 
 ### 3.8.4. Estratégias de Resiliência
 
@@ -480,7 +483,7 @@ Critérios INVEST | *(Por que é Independente? Por que é Negociável? Por que �
 
 ## 3.9. Matriz de Rastreabilidade (RTM) (sprints 3 a 5)
 
-*A RTM consolida a rastreabilidade completa do sistema. Um elo quebrado invalida toda a cadeia — mantenha-a atualizada a cada sprint. A partir da sprint 3 não deve haver lacunas nos fluxos centrais.*
+*A RTM consolida a rastreabilidade completa do sistema. Um elo quebrado invalida toda a cadeia - mantenha-a atualizada a cada sprint. A partir da sprint 3 não deve haver lacunas nos fluxos centrais.*
 
 | Persona | RF    | RN   | Endpoint    | Tela     | Teste | Evidência        |
 |---------|-------|------|-------------|----------|-------|------------------|
@@ -506,8 +509,8 @@ Critérios INVEST | *(Por que é Independente? Por que é Negociável? Por que �
 
 *Liste e descreva os testes automatizados dos endpoints criados e planejados para sua solução, implementados com **Jest**. Cubra as duas abordagens:*
 
-- ***White-box*** *— testes unitários de Service que exercitam ramos internos, exceções e regras de negócio (conhecimento da implementação).*
-- ***Black-box*** *— testes de integração dos endpoints via Jest + Supertest, verificando apenas o contrato HTTP (status, body, efeito observável), sem depender da implementação interna.*
+- ***White-box*** *- testes unitários de Service que exercitam ramos internos, exceções e regras de negócio (conhecimento da implementação).*
+- ***Black-box*** *- testes de integração dos endpoints via Jest + Supertest, verificando apenas o contrato HTTP (status, body, efeito observável), sem depender da implementação interna.*
 
 *Posicione aqui também o relatório de cobertura de testes Jest se houver (através de link ou transcrito para estrutura markdown).*
 
@@ -600,7 +603,7 @@ CONFEDERAÇÃO DA AGRICULTURA E PECUÁRIA DO BRASIL. Conheça as 4 carreiras mai
 
 PORTAL SALÁRIO. Capataz na Pecuária - Salário 2026, Piso Salarial. 2026. Disponível em: https://www.salario.com.br/profissao/capataz-na-pecuaria-cbo-620115/. Acesso em: 28 abr. 2026. <br>
 
-BRASIL. Ministério do Trabalho e Emprego. Classificação Brasileira de Ocupações (CBO): Capataz na Agropecuária — CBO 6210-05. [S.d.]. Disponível em: https://www.mtecbo.gov.br. Acesso em: 28 abr. 2026. <br>
+BRASIL. Ministério do Trabalho e Emprego. Classificação Brasileira de Ocupações (CBO): Capataz na Agropecuária - CBO 6210-05. [S.d.]. Disponível em: https://www.mtecbo.gov.br. Acesso em: 28 abr. 2026. <br>
 
 MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026. <br>
 
