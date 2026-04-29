@@ -41,7 +41,7 @@
 
 # <a name="c1"></a>1. Introdução (sprints 1 a 5)
 
-O agronegócio brasileiro desempenha papel central na economia nacional, sendo responsável pela significativa geração de empregos e pela produção de alimentos em larga escala. Nesse contexto, a pecuária demanda elevado nível de controle operacional, especialmente no registro de atividades de campo e na gestão da movimentação do rebanho, fatores diretamente relacionados à produtividade e à qualidade da tomada de decisão.
+O agronegócio brasileiro desempenha papel central na economia nacional, sendo responsável pela significativa geração de empregos e pela produção de alimentos em larga escala(CEPEA, 2023). Nesse contexto, a pecuária demanda elevado nível de controle operacional, especialmente no registro de atividades de campo e na gestão da movimentação do rebanho, fatores diretamente relacionados à produtividade e à qualidade da tomada de decisão.
 
 No cenário da BrPec Agropecuária S.A., identificou-se que o fluxo de informações entre o campo e o escritório ocorre de forma manual, por meio de anotações em boletas de papel. Esse modelo gera ineficiências operacionais relevantes: registros podem ser preenchidos de forma incompleta ou ilegível, há atraso no envio das informações até o escritório e torna-se necessário redigitar todos os dados em planilhas digitais. Como consequência, ocorrem retrabalho, risco de erros na consolidação dos dados e atrasos que podem comprometer a visibilidade das operações por horas ou até dias, impactando diretamente a tomada de decisão dos gestores.  
 
@@ -974,11 +974,14 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 
 _Incluir as principais referências de seu projeto, para que seu parceiro possa consultar caso ele se interessar em aprofundar. Um exemplo de referência de livro e de site:_<br>
 
+CEPEA. PIB do Agronegócio Brasileiro. Disponível em: https://www.cepea.esalq.usp.br. Acesso em: 29 abr. 2026.
+
 LUCK, Heloisa. Liderança em gestão escolar. 4. ed. Petrópolis: Vozes, 2010. <br>
 SOBRENOME, Nome. Título do livro: subtítulo do livro. Edição. Cidade de publicação: Nome da editora, Ano de publicação. <br>
 
 INTELI. Adalove. Disponível em: https://adalove.inteli.edu.br/feed. Acesso em: 1 out. 2023 <br>
 SOBRENOME, Nome. Título do site. Disponível em: link do site. Acesso em: Dia Mês Ano
+
 
 # <a name="c9"></a>Anexos
 
