@@ -729,6 +729,29 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
 
 ---
 
+| Campo                    | Descrição                                                                                                                                                                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US09                                                                                                                                                                                                                                                        |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                                                                                                                  |
+| **User Story**           | Como capataz, posso registrar a morte de um animal offline para reportar rapidamente a baixa ao coordenador, garantindo que nenhuma informação se perca mesmo sem conexão disponível no campo.                                                             |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel está sem conexão Starlink no momento do óbito, quando ele preenche os campos obrigatórios do formulário de morte (identificação do animal, categoria, causa e data) e confirma, então o sistema deve salvar o registro localmente no dispositivo e exibir a mensagem "Registro salvo. Será enviado quando houver conexão" |
+
+### Critérios INVEST
+
+**Independente:** Pode ser registrado separadamente sem depender de outras funcionalidades
+
+**Negociável:** Campos e estrutura do formulário podem ser refinados com cliente
+
+**Valorosa:** Garante que óbitos não sejam perdidos mesmo offline
+
+**Estimável:** Escopo claro (formulário + salvamento local + sincronização)
+
+**Pequena:** Foco no registro da morte do animal
+
+**Testável:** Possível validar salvamento offline e sincronização posterior
+
+---
+
 | Campo | Descrição |
 |-----------|-----------|
 | **Identificação** | US10 |
@@ -749,16 +772,22 @@ _Esta seção formaliza o que o sistema deve fazer, sob quais regras e com quais
 
 ### 3.1.1. Requisitos Funcionais (sprint 1, refinar até sprint 5)
 
-| ID | Descrição | Prioridade | Status |
-|------|------|------|------|
-| RF001 | O sistema deve permitir que o gerente crie tarefas e as associe a um retiro específico | Alta | Planejado |
-| RF002 | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão com a internet | Alta | Planejado |
-| RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline | Alta | Planejado |
-| RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline | Média | Planejado |
-| RF005 | O sistema deve permitir que o capataz grave um áudio curto e o anexe a uma tarefa | Média | Planejado |
-| RF006 | O sistema deve permitir que o capataz crie alertas de infraestrutura (ticket), informando: tipo de problema, retirada e localização | Média | Planejado |
-| RF007 | O sistema deve exibir ao gerente um painel com o status de todas as tarefas (pendente, em andamento, concluída) e alertas em aberto, agrupados por retiro. | Média | Planejado |
-| RF008 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade | Média | Planejado |
+| ID    | Descrição                                                                                                                                                  | Prioridade | Status    |
+| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
+| RF001 | O sistema deve permitir que o gerente crie tarefas e as associe a um retiro específico                                                                     | Alta       | Planejado |
+| RF002 | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão com a internet                                                         | Alta       | Planejado |
+| RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline                                                                           | Alta       | Planejado |
+| RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline                                                                       | Média      | Planejado |
+| RF005 | O sistema deve permitir que o capataz grave um áudio curto e o anexe a uma tarefa                                                                          | Média      | Planejado |
+| RF006 | O sistema deve permitir que o capataz crie alertas de infraestrutura (ticket), informando: tipo de problema, retirada e localização                        | Média      | Planejado |
+| RF007 | O sistema deve exibir ao gerente um painel com o status de todas as tarefas (pendente, em andamento, concluída) e alertas em aberto, agrupados por retiro. | Média      | Planejado |
+| RF008 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade                 | Média      | Planejado |
+| RF009 | O sistema deve permitir que o capataz preencha e confirme o formulário de registro de morte de animal mesmo sem conexão com a internet, salvando os dados localmente no dispositivo | Alta    | Planejado    |
+| RF010 | O sistema deve detectar automaticamente o restabelecimento da conexão com a rede e iniciar a transmissão dos registros locais pendentes para o servidor remoto, sem exigir nenhuma ação manual do capataz | Alta    | Planejado    |
+| RF011 | O sistema deve notificar o capataz com uma mensagem de confirmação após a sincronização bem-sucedida dos dados com o servidor ("Registro sincronizado com sucesso") | Média   | Planejado    |
+| RF012 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso | Alta  | Planejado    |
+| RF013 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
+| RF014 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
 
 ### 3.1.2. Regras de Negócio (sprint 1, refinar até sprint 5)
 
@@ -791,7 +820,30 @@ _Esta seção formaliza o que o sistema deve fazer, sob quais regras e com quais
 | RN26 | O sistema deve associar o alerta ao retiro selecionado pelo capataz | RF006 |
 | RN27 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade | RF006 |
 
-### 3.1.3. Requisitos Não Funcionais - 8 Eixos ISO/IEC 25010 (sprints 1 a 5)
+| ID   | Descrição                                                                                                  | RF associado        |
+| ---- | ---------------------------------------------------------------------------------------------------------- | ------------------- |
+| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro                                        | RF001               |
+| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                                                  | RF002               |
+| RN03 | As tarefas devem ser armazenadas localmente após sincronização                                             | RF003               |
+| RN04 | A mensagem exibida deve utilizar linguagem simples e direta                                                | RF004               |
+| RN05 | Apenas tarefas associadas ao retiro do capataz devem ser exibidas para ele.                                | RF002               |
+| RN06 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                   | RF002               |
+| RN07 | As tarefas do dia devem ficar disponíveis offline quando houver sincronização prévia.                      | RF002               |
+| RN08 | A marcação de conclusão feita offline deve ser armazenada localmente até a próxima sincronização.          | RF003               |
+| RN09 | Uma tarefa concluída deve ter seu status atualizado para o gerente após sincronização.                     | RF003               |
+| RN10 | As fotos anexadas devem estar vinculadas à tarefa correspondente.                                          | RF004               |
+| RN11 | Fotos registradas offline devem ser enviadas ao sistema quando houver conexão.                             | RF004               |
+| RN12 | O painel do gerente deve exibir tarefas organizadas por retiro e por status.                               | RF007               |
+| RN13 | O painel deve apresentar informações atualizadas conforme a última sincronização disponível.               | RF007               |
+| RN14 | As telas destinadas ao capataz devem usar linguagem simples, botões visíveis e poucos passos de interação. | RF002, RF003, RF004 |
+| RN15 | Um registro de óbito só pode ser marcado como "sincronizado" e removido da fila local após o servidor retornar HTTP 200 ou 201 | RF010, RF012 |
+| RN16 | O formulário de óbito não pode ser salvo — online ou offline — se qualquer campo obrigatório (identificação, categoria, causa da morte ou data) estiver vazio | RF009, RF013 |
+| RN17 | A sincronização deve ser iniciada automaticamente ao detectar conexão, sem depender de nenhuma ação manual do capataz | RF010 |
+| RN18 | Em falha parcial de sincronização, apenas registros com HTTP 200/201 são marcados como enviados; os demais permanecem na fila e são reenviados sem duplicação | RF012 |
+| RN19 | Cada registro de óbito sincronizado deve ser vinculado ao retiro e ao capataz responsável, sendo imutável após confirmação do servidor | RF009, RF014 |
+| RN20 | Um registro de óbito só deve aparecer no painel do coordenador após sincronização bem-sucedida; registros em fila local são invisíveis para outros perfis | RF014 |
+
+### 3.1.3. Requisitos Não Funcionais — 8 Eixos ISO/IEC 25010 (sprints 1 a 5)
 
 _Preencha os 8 eixos. Cada eixo deve ter ao menos um RNF verificável (com métrica, limite ou critério concreto) ou justificativa explícita de ausência. Evolua do conceitual (sprint 1) ao técnico mensurável (sprint 5)._
 
