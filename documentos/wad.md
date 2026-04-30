@@ -84,8 +84,9 @@ A ameaça de substitutos é moderada. No mercado doméstico, foco atual da BRPec
  A BrPec opera em setor com barreiras de entrada relevantes e integração vertical como diferencial, mas enfrenta forte pressão de canais de compra concentrados, alta rivalidade por escala e dependência de fornecedores especializados. O passivo ambiental representa risco estratégico: a empresa figura entre os maiores desmatadores do Pantanal segundo o Ibama (DE OLHO NOS RURALISTAS, 2020), podendo restringir o acesso aos segmentos de maior rentabilidade.
 
 <center>
-  <img src="../assets/5ForçasDePorter-BRPec.png" width="800"/>
   <p><strong>Figura 1</strong> — Análise das 5 Forças de Porter aplicada à BRPec Agropecuária<br/>
+  <img src="../assets/5ForçasDePorter-BRPec.png" width="800"/>
+  
   Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -108,14 +109,13 @@ A BRPec depende atualmente de processos manuais e anotações em papel (boletas)
 
 #### 2. Dados Disponíveis
 
-Os dados disponíveis para o projeto incluem:
-
-- Estrutura de papéis (Gerente, Capataz, Coordenador de Retiro)
-- Tipos de eventos zootécnicos registrados manualmente: nascimento, morte, compra, venda e transferência entre retiros
-- Tipos de tarefas de campo: cercas, pasto, infraestrutura
-- Formato de saída esperado: planilha Excel/CSV
-- Stack técnica definida: HTML/CSS/JS (front), Node.js (servidor), SQLite (banco)
-- Restrições: sem autenticação formal de usuários, sem integração com WebAPIs externas
+Os dados disponibilizados para o desenvolvimento do projeto compreendem exclusivamente informações de negócio e operacionais da fazenda, incluindo:
+- Estrutura hierárquica e definição de papéis de usuários, contemplando as funções de Gerente Geral, Coordenador, Supervisor e Capataz.  
+- Tipologias de eventos zootécnicos e sanitários passíveis de registro, tais como nascimentos, óbitos, aquisições, vendas e transferências de animais entre retiros.  
+- Categorização do rebanho por faixa etária e estágio de desenvolvimento (bezerro, garrote, boi, touro, bezerra, novilha e vaca).  
+- Lista fixa dos 14 retiros operacionais que compõem a infraestrutura da propriedade.  
+- Tipologias de chamados de infraestrutura para manutenção de instalações (ex: hidráulica, elétrica e cercas).  
+- Modelos de boletas físicas atualmente utilizadas no campo e templates de planilhas eletrônicas utilizadas pela administração para a exportação e consolidação final das movimentações.  
 
 ---
 
@@ -147,18 +147,16 @@ Desenvolvimento de uma aplicação web com arquitetura cliente-servidor (HTML/CS
 ---
 
 #### 6. Critérios de Sucesso
-
-O projeto será considerado bem-sucedido quando:
-
-- O MVP funcional integrar o gerenciamento de tarefas e o formulário de movimentação bovina
-- Os três perfis (Gerente, Capataz, Coordenador) conseguirem executar seus fluxos principais sem erros
-- A funcionalidade offline operar corretamente com sincronização posterior
-- A exportação de dados em Excel/CSV gerar arquivos utilizáveis pelos Coordenadores sem necessidade de redigitação
-- Os registros de campo eliminarem o uso de boletas de papel no dia a dia
+O projeto será considerado bem-sucedido quando atender às seguintes métricas e indicadores de validação:
+- A integração entre o módulo de gerenciamento de tarefas e o formulário de movimentação zootécnica for concluída, apresentando uma taxa de sucesso de processamento igual ou superior a 95% nas operações submetidas.  
+- Os fluxos de interação para os perfis autorizados (Gerente, Coordenador e Capataz) forem executados com tempo de resposta local (no dispositivo) inferior a 200 ms, assegurando fluidez operacional.  
+- A funcionalidade de operação offline garantir 100% de persistência local dos dados durante a ausência de conectividade, com sincronização automática e taxa de perda de dados nula (0%) no restabelecimento do sinal da rede da fazenda.  
+- A exportação de dados consolidados em formato Excel/CSV for gerada em estrita conformidade estrutural, mitigando em 100% a necessidade de redigitação manual pela equipe de coordenação responsável pela recepção das informações.  
+- O sistema registrar a eliminação do uso de boletas físicas de papel em pelo menos 80% das rotinas de registro de campo reportadas pelos capatazes.  
 
 ### 2.1.4. Value Proposition Canvas (sprint 1):
 
-A proposta de valor é uma declaração curta e objetiva que resume a essência da aplicação web: o que ela oferece, para quem e por que vale a pena jogar. Ela funciona como o núcleo de toda a visão do projeto, orientando decisões de design e comunicando de forma clara o diferencial do jogo antes de qualquer detalhe técnico ou mecânico ser apresentado.
+A proposta de valor constitui uma declaração objetiva que sintetiza a essência da aplicação web desenvolvida, definindo as funcionalidades entregues, o público-alvo atendido e os benefícios operacionais gerados. Essa ferramenta atua como o eixo analítico do projeto, fundamentando as decisões de arquitetura de software e comunicando o diferencial competitivo da solução digital de modo estruturado. A análise do canvas evidencia que o sistema mitiga ineficiências operacionais concretas enfrentadas pelos capatazes em campo, tais como a dependência exclusiva de registros físicos, a inviabilidade de uso de sistemas convencionais em áreas desprovidas de cobertura de internet e a assincronicidade na comunicação com as instâncias gerenciais.  
 
 <center>
   <p><strong>Figura 3</strong> — Canvas Proposta de Valor aplicada à BrPec Agropecuária</p>
@@ -166,7 +164,7 @@ A proposta de valor é uma declaração curta e objetiva que resume a essência 
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-O canvas evidencia que a aplicação web resolve dores concretas dos Capatazes em campo — como a dependência de boletas de papel, a impossibilidade de usar soluções convencionais sem internet e a comunicação informal com o Gerente, garantindo que haja um maior controle pelos Capatazes. Os ganhos gerados, como a eliminação do retrabalho de transcrição, o registro ágil de eventos zootécnicos em poucos toques e a confirmação automática de tarefas com envio de evidências, se alinham diretamente às entregas do produto: formulários digitais de manejo bovino, sistema de alertas multimídia e exportação em Excel para o Coordenador. A proposta de valor da aplicação web, portanto, não se limita a digitalizar uma planilha existente, mas redefine o fluxo de informações entre o campo e o escritório — tornando os registros operacionais mais confiáveis, rastreáveis e acessíveis para toda a cadeia de gestão da fazenda.
+Os benefícios gerados pela adoção do sistema — incluindo a supressão do retrabalho de transcrição de dados, o registro otimizado de eventos zootécnicos em interface acessível e a confirmação documental de ordens de serviço com suporte a evidências fotográficas — estão em conformidade direta com os requisitos estabelecidos pela propriedade rural. Conclui-se, portanto, que a proposta de valor promovida não se restringe à mera digitalização de planilhas de controle, mas consolida a reestruturação integral do fluxo de dados operacionais, assegurando que o inventário pecuário e o status das infraestruturas se tornem mais precisos, rastreáveis e tempestivos para o suporte à tomada de decisão administrativa.  
 
 ### 2.1.5. Matriz de Riscos do Projeto (sprint 1)
 
@@ -819,7 +817,9 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
 | **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                                                                                                                  |
 | **User Story**           | Como capataz, posso registrar a morte de um animal offline para reportar rapidamente a baixa ao coordenador, garantindo que nenhuma informação se perca mesmo sem conexão disponível no campo.                                                             |
 | **Critério de Aceite 1** | CR1: Dado que Gabriel está sem conexão Starlink no momento do óbito, quando ele preenche os campos obrigatórios do formulário de morte (identificação do animal, categoria, causa e data) e confirma, então o sistema deve salvar o registro localmente no dispositivo e exibir a mensagem "Registro salvo. Será enviado quando houver conexão" |
-| **Critérios INVEST** | Não se aplica (US10 é de prioridade secundária). |
+|**Critério de Aceite 2:** | Dado que o formulário exige evidências sanitárias, quando o usuário realizar o registro de óbito, então o sistema deve requerer a captura e a anexação obrigatória de uma fotografia georreferenciada da carcaça do animal.|
+|**Critério de Aceite 3:** | Dado que o registro foi persistido localmente, quando a conectividade com a rede de satélite for restabelecida nos horários de cobertura, então a sincronização com o servidor central deve ser executada de forma assíncrona, e o status do relatório deve ser alterado para "Sincronizado". 
+| **Critérios INVEST** | Não se aplica (US09 é de prioridade secundária). |
 ---
 
 | Campo | Descrição |
@@ -876,6 +876,8 @@ Os Requisitos Funcionais (RF) determinam a competência computacional e os servi
 | RF012 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso | Alta  | Planejado    |
 | RF013 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
 | RF014 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
+| RF015 | O sistema deve permitir que o coordenador exporte os dados consolidados das movimentações zootécnicas e do status operacional em arquivos formatados como planilha eletrônica (Excel/CSV) | Alta | Planejado |
+
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -914,9 +916,11 @@ As Regras de Negócio (RN) balizam as lógicas limitantes, condições contingen
 | RN21 | Se não houver conexão, o alerta deve ser armazenado localmente e enviado na próxima sincronização | RF006 |
 | RN22 | O sistema deve exibir uma mensagem de confirmação após o envio bem-sucedido do alerta | RF006 |
 | RN23 | Se o alerta não puder ser enviado devido à falta de conexão, o sistema deve informar ao capataz que o registro foi salvo localmente e será enviado posteriormente | RF006 |
+| RN24 | As coordenadas geográficas (GPS) anexadas ao alerta de infraestrutura devem ser imutáveis e não editáveis pelo usuário, visando garantir a precisão do georreferenciamento | RF006 |
 | RN25 | O sistema deve registrar a data e hora exatas da criação do alerta | RF006 |
 | RN26 | O sistema deve associar o alerta ao retiro selecionado pelo capataz | RF006 |
-| RN27 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade | RF006 |
+| RN27 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade | RF008 |
+| RN28 | A exportação de relatórios pelo coordenador deve refletir estritamente os dados que já foram submetidos a validação estrutural no banco de dados central | RF015 |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -950,36 +954,36 @@ No contexto do nosso projeto para a BrPec, esses requisitos são fundamentais, p
 #### Detalhamento e Contextualização dos Eixos
 
 **1. Usabilidade (Facilidade de Uso)**
-* **O que é:** Garantir que o sistema não seja um "bicho de sete cabeças" para quem está no trecho.
-* **Explicação:** O aplicativo tem que ser mais rápido e fácil que a boleta de papel. Se o Capataz precisar de mais de 4 toques na tela para registrar que um bezerro nasceu, o sistema falhou. Criamos botões grandes e cores fortes para que, mesmo debaixo de sol forte ou com o celular sujo, ele consiga resolver a vida dele rápido e voltar para o gado.
+* **O que é:** Refere-se à mitigação da curva de aprendizado e à maximização da operabilidade das interfaces em contextos rurais e sob condições ergonômicas restritas.
+* **Explicação:** A interface do usuário foi concebida para demandar esforço cognitivo mínimo e alta responsividade. A arquitetura de navegação determina que o registro de intercorrências ou eventos zootécnicos exija uma quantidade reduzida de interações táteis. Elementos de interface (botões) foram projetados com dimensões adequadas e padrões de contraste elevados para garantir a legibilidade dos dados sob alta incidência solar e mitigar falhas de seleção durante as inspeções de campo.
 
 **2. Confiabilidade (Segurança de que funciona)**
-* **O que é:** O dado não pode sumir se a internet cair.
-* **Explicação:** Sabe quando você manda um WhatsApp e ele fica com aquele 'reloginho' porque não tem sinal? O nosso sistema faz algo parecido, mas ele salva tudo dentro do celular primeiro. Se o sinal cair na hora de enviar, o dado fica guardado em uma 'caixinha segura' no aparelho e sobe sozinho assim que o celular ver o Wi-Fi da sede. Nada se perde.
+* **O que é:** Consiste na garantia de disponibilidade e na persistência integral dos dados frente à instabilidade ou latência extrema das conexões de rede.
+* **Explicação:** A arquitetura do sistema adota o paradigma "offline-first". O processamento primário da aplicação assegura que as entradas sejam armazenadas localmente no dispositivo. Tão logo os terminais identifiquem a comunicação com a rede via satélite da propriedade, uma rotina de sincronização é inicializada em segundo plano. Essa metodologia assegura que nenhuma anotação operacional seja descartada durante os períodos de indisponibilidade de sinal.
 
 **3. Desempenho (Velocidade)**
-* **O que é:** O sistema não pode ficar "travando" ou "pensando".
-* **Explicação:** Ninguém tem paciência para ficar olhando para uma tela carregando no meio do curral. A regra aqui é: clicou, salvou. O tempo que o celular leva para processar uma informação tem que ser instantâneo (menos de meio segundo), para não atrasar o manejo.
+* **O que é:** Define os limites toleráveis de latência para a execução de transações e a resposta de interface frente aos estímulos do usuário.
+* **Explicação:** A fluidez computacional é exigida para evitar interrupções no fluxo de trabalho operacional. A estrutura computacional determina que as requisições de leitura e inserção de dados no banco local ocorram de maneira instantânea (inferior a 200 milissegundos). Essa limitação é imposta para atestar que as tarefas de manejo e vistoria não sejam prorrogadas por tempos ociosos do software.
 
 **4. Suportabilidade (Conserto Rápido)**
-* **O que é:** Se der problema, tem que ser fácil de arrumar.
-* **Explicação:** Montamos o software como se fosse um trator modular: se uma peça quebra, a gente troca só aquela peça sem precisar desmontar o motor inteiro. Se aparecer um erro, conseguimos consertar e devolver o sistema funcionando no mesmo dia.
+* **O que é:** Refere-se à modularidade do código-fonte e à agilidade na execução de correções ou melhorias na arquitetura técnica.
+* **Explicação:** O código foi estruturado em um padrão arquitetural modular, propiciando que falhas ou atualizações específicas sejam mitigadas e implementadas sem a necessidade de reescritura em outras camadas de abstração. Dessa forma, a identificação e a remediação de defeitos críticos ocorrem com alta precisão, restringindo o Tempo Médio de Reparo (MTTR) de anomalias.
 
 **5. Segurança (Quem fez o quê?)**
-* **O que é:** Saber a origem da informação.
-* **Explicação:** Para evitar confusão ou erro de digitação, o sistema carimba automaticamente quem enviou a informação e que horas isso aconteceu. Se o Coordenador vir um erro no escritório, ele sabe exatamente com quem falar para tirar a dúvida, sem precisar investigar 'quem escreveu esse papel'.
+* **O que é:** Estabelece o princípio da integridade autoral e o rastreamento das submissões por meio de controles lógicos irrefutáveis.
+* **Explicação:** O sistema injeta algoritmicamente parâmetros de identificação nas requisições, vinculando todo o ciclo de vida dos dados aos identificadores dos capatazes e registrando carimbos de tempo sistêmicos invioláveis. Este controle de auditoria possibilita que os níveis de coordenação e gerência isolem responsabilidades, procedam com validações precisas e identifiquem com exatidão a procedência e a temporalidade das informações colhidas.
 
-**6. Capacidade (Funciona com muitas informações)**
-* **O que é:** Suportar muita informação de uma vez.
-* **Explicação:** Imagina que o Capataz ficou a semana toda sem internet e acumulou 300 registros. O sistema foi feito para 'engolir' tudo isso de uma vez só quando chegar na sede, sem travar o servidor ou dar erro de sistema cheio.
+**6. Capacidade (Adequação Funcional)**
+* **O que é:** Indica o dimensionamento de volume de requisições tolerado pelo sistema para operações de sincronização sem ocorrência de gargalos ou falhas (timeout).
+* **Explicação:** O sistema foi parametrizado para processar em lote volumes de dados substanciais provenientes do trabalho acumulado durante períodos sem conexão. A implementação de divisão de carga de dados assegura a recepção de inúmeros registros simultâneos no servidor central na janela de contato restabelecido, impedindo sobrecargas de processamento do banco de dados na consolidação final do estoque e do manejo.
 
-**7. Restrições de Design (Funcionar em qualquer celular)**
-* **O que é:** Não importa o aparelho, o sistema se adapta.
-* **Explicação:** Não importa se o funcionário usa um tablet moderno ou um celular mais simples e antigo. O sistema 'estica e encolhe' para caber na tela de um jeito que a letra continue legível e os botões continuem no lugar certo.
+**7. Restrições de Design (Adaptabilidade de Dispositivos)**
+* **O que é:** Especifica a necessidade de portabilidade e adequação do sistema de modo fluído e responsivo a diferentes resoluções e hardwares.
+* **Explicação:** A solução exige o uso de metodologias responsivas de desenvolvimento. As matrizes de grade flexível (Flexbox/Grid) moldam dinamicamente a apresentação da interface para preservar a simetria de leitura e garantir o acesso contínuo, independente das dimensões nativas do terminal operado pelo agente produtivo no campo.
 
-**8. Organizacionais (Conversar com o Excel)**
-* **O que é:** O dado tem que chegar pronto para o Coordenador usar.
-* **Explicação:** O objetivo final é matar o trabalho de ter que digitar tudo de novo no computador. O sistema já entrega os dados 'mastigados' no formato que o Excel entende. É só clicar em exportar e a planilha está pronta, sem erro de português ou número trocado.
+**8. Organizacionais (Compatibilidade)**
+* **O que é:** Trata do nível de conformidade e padronização das informações exportadas em relação aos ecossistemas computacionais adotados pela entidade parceira.
+* **Explicação:** O tratamento de dados foi arquitetado para extinguir os processos passivos de transcrição manual, que tradicionalmente incitam a geração de inconsistências qualitativas. O artefato consolida a geração de relatórios diretos, padronizados e homologados, viabilizando o consumo nativo e direto desses arquivos por manipuladores de planilhas eletrônicas.
 
 ### 3.1.4. Matriz RF → RN → Endpoint (sprints 3 a 5)
 
