@@ -1044,55 +1044,98 @@ _Posicione aqui o diagrama de arquitetura da solução, indicando as camadas pri
 
 ### 3.2.2. Diagrama de Casos de Uso (sprint 1)
 
-@startuml
-left to right direction
+Os casos de uso do Sistema BrPec foram definidos com o objetivo de representar, de forma estruturada, as principais interações entre os atores do sistema e as funcionalidades disponibilizadas pela plataforma. Esses casos de uso refletem os processos críticos da operação pecuária, com foco na gestão de tarefas, registro de movimentações e consolidação de dados para tomada de decisão.
 
-actor "Gerente Geral\n(João Pereira)" as Gerente
-actor "Coordenador\n(Marcos Cesar)" as Coordenador
-actor "Capataz\n(Gabriel Galdino)" as Capataz
+Cada caso de uso está associado a um requisito funcional (RF), garantindo rastreabilidade entre as necessidades identificadas e as funcionalidades implementadas. A seguir, são detalhados os principais casos de uso do sistema.
 
-rectangle "Sistema BrPec" {
+<center>
+  <p><strong>Tabelas 8 a 17</strong> — Casos de Uso</p>
+</center>
 
-usecase "Planejar tarefas" as UC1
-usecase "Distribuir tarefas\npor retiro" as UC2
-usecase "Acompanhar execução\ndas tarefas" as UC3
+UC01 — Planejar tarefas (RF001)
+| Campo              | Descrição                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| Ator principal     | Gerente Geral                                                                              |
+| Atores secundários | Não se aplica                                                                              |
+| Pré-condições      | O sistema deve estar acessível e o usuário autenticado                                     |
+| Fluxo principal    | O gerente define uma nova tarefa, estabelece prazos e descreve a atividade a ser executada |
+| Pós-condições      | A tarefa é registrada no sistema e fica disponível para distribuição                       |
 
-usecase "Consultar painel\nde desempenho" as UC4
+UC02 — Distribuir tarefas por retiro (RF002)
+| Campo              | Descrição                                                               |
+| ------------------ | ----------------------------------------------------------------------- |
+| Ator principal     | Gerente Geral                                                           |
+| Atores secundários | Não se aplica                                                           |
+| Pré-condições      | Deve existir ao menos uma tarefa previamente cadastrada                 |
+| Fluxo principal    | O gerente associa a tarefa a um ou mais retiros, definindo responsáveis |
+| Pós-condições      | A tarefa é atribuída e visível para execução pelos capatazes            |
 
-usecase "Visualizar tarefas\ndo dia" as UC5
-usecase "Registrar execução\nde tarefa" as UC6
-usecase "Anexar evidência\n(foto/áudio)" as UC7
+UC03 — Visualizar tarefas do dia (RF003)
+| Campo              | Descrição                                                           |
+| ------------------ | ------------------------------------------------------------------- |
+| Ator principal     | Capataz                                                             |
+| Atores secundários | Não se aplica                                                       |
+| Pré-condições      | O capataz deve estar autenticado no sistema                         |
+| Fluxo principal    | O capataz acessa a lista de tarefas disponíveis para o dia corrente |
+| Pós-condições      | As tarefas são exibidas para execução                               |
 
-usecase "Registrar movimentação\n(zootécnica)" as UC8
+UC04 — Registrar execução de tarefa (RF004)
+| Campo              | Descrição                                                    |
+| ------------------ | ------------------------------------------------------------ |
+| Ator principal     | Capataz                                                      |
+| Atores secundários | Não se aplica                                                |
+| Pré-condições      | Deve existir uma tarefa atribuída ao capataz                 |
+| Fluxo principal    | O capataz marca a tarefa como concluída no sistema           |
+| Pós-condições      | A tarefa é registrada como concluída e atualizada no sistema |
 
-usecase "Consultar dados\nconsolidados por retiro" as UC9
-usecase "Validar movimentações" as UC10
-usecase "Exportar relatórios" as UC11
-}
+UC05 — Anexar evidência (RF005)
+| Campo              | Descrição                                                       |
+| ------------------ | --------------------------------------------------------------- |
+| Ator principal     | Capataz                                                         |
+| Atores secundários | Não se aplica                                                   |
+| Pré-condições      | A tarefa deve estar em processo de conclusão                    |
+| Fluxo principal    | O capataz adiciona uma foto ou áudio como evidência da execução |
+| Pós-condições      | A evidência é armazenada e vinculada à tarefa                   |
 
-' --- Atores ---
-Gerente --> UC1
-Gerente --> UC4
-Gerente --> UC3
+UC06 — Registrar movimentação (RF006)
+| Campo              | Descrição                                                  |
+| ------------------ | ---------------------------------------------------------- |
+| Ator principal     | Capataz                                                    |
+| Atores secundários | Não se aplica                                              |
+| Pré-condições      | O sistema deve estar disponível para registro              |
+| Fluxo principal    | O capataz registra uma movimentação relacionada ao rebanho |
+| Pós-condições      | A movimentação é armazenada para posterior validação       |
 
-Capataz --> UC5
-Capataz --> UC6
-Capataz --> UC8
+UC07 — Validar movimentações (RF007)
+| Campo              | Descrição                                                  |
+| ------------------ | ---------------------------------------------------------- |
+| Ator principal     | Coordenador                                                |
+| Atores secundários | Não se aplica                                              |
+| Pré-condições      | Devem existir movimentações previamente registradas        |
+| Fluxo principal    | O coordenador revisa e valida as movimentações registradas |
+| Pós-condições      | As movimentações são confirmadas e consideradas válidas    |
 
-Coordenador --> UC9
-Coordenador --> UC10
-Coordenador --> UC11
+UC08 — Consultar dados consolidados (RF008)
+| Campo              | Descrição                                           |
+| ------------------ | --------------------------------------------------- |
+| Ator principal     | Coordenador                                         |
+| Atores secundários | Gerente Geral                                       |
+| Pré-condições      | Devem existir dados registrados no sistema          |
+| Fluxo principal    | O usuário acessa relatórios consolidados por retiro |
+| Pós-condições      | As informações são exibidas para análise            |
 
-' --- Relações ---
-UC1 ..> UC2 : <<include>>
-UC3 ..> UC2 : <<include>>
+UC09 — Exportar relatórios (RF009)
+| Campo              | Descrição                                                            |
+| ------------------ | -------------------------------------------------------------------- |
+| Ator principal     | Coordenador                                                          |
+| Atores secundários | Não se aplica                                                        |
+| Pré-condições      | Deve haver dados consolidados disponíveis                            |
+| Fluxo principal    | O coordenador solicita a exportação dos dados em formato estruturado |
+| Pós-condições      | O relatório é gerado e disponibilizado para download                 |
 
-UC6 ..> UC7 : <<extend>>
-
-UC10 ..> UC9 : <<include>>
-UC11 ..> UC9 : <<include>>
-
-@enduml
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 <center>
   <p><strong>Figura 8</strong> — Diagrama de Caso De Uso aplicada à BrPec Agropecuária</p>
