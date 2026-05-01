@@ -1049,8 +1049,11 @@ Os casos de uso do Sistema BrPec foram definidos com o objetivo de representar, 
 Cada caso de uso está associado a um requisito funcional (RF), garantindo rastreabilidade entre as necessidades identificadas e as funcionalidades implementadas. A seguir, são detalhados os principais casos de uso do sistema.
 
 <center>
-  <p><strong>Tabelas 8 a 17</strong> — Casos de Uso</p>
+  <p><strong>Figura 8</strong> — Diagrama de Caso De Uso aplicada à BrPec Agropecuária</p>
+  <img src="../assets/diagramaDeUso.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
 </center>
+
 
 UC01 — Planejar tarefas (RF001)
 | Campo              | Descrição                                                                                  |
@@ -1061,6 +1064,14 @@ UC01 — Planejar tarefas (RF001)
 | Fluxo principal    | O gerente define uma nova tarefa, estabelece prazos e descreve a atividade a ser executada |
 | Pós-condições      | A tarefa é registrada no sistema e fica disponível para distribuição                       |
 
+<center>
+  <p><strong> Quadro 1 </strong> — Casos de Uso</p>
+</center>
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 UC02 — Distribuir tarefas por retiro (RF002)
 | Campo              | Descrição                                                               |
 | ------------------ | ----------------------------------------------------------------------- |
@@ -1069,6 +1080,14 @@ UC02 — Distribuir tarefas por retiro (RF002)
 | Pré-condições      | Deve existir ao menos uma tarefa previamente cadastrada                 |
 | Fluxo principal    | O gerente associa a tarefa a um ou mais retiros, definindo responsáveis |
 | Pós-condições      | A tarefa é atribuída e visível para execução pelos capatazes            |
+
+<center>
+  <p><strong> Quadro 2 </strong> — Casos de Uso</p>
+</center>
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 UC03 — Visualizar tarefas do dia (RF003)
 | Campo              | Descrição                                                           |
@@ -1079,6 +1098,14 @@ UC03 — Visualizar tarefas do dia (RF003)
 | Fluxo principal    | O capataz acessa a lista de tarefas disponíveis para o dia corrente |
 | Pós-condições      | As tarefas são exibidas para execução                               |
 
+<center>
+  <p><strong> Quadro 3 </strong> — Casos de Uso</p>
+</center> 
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 UC04 — Registrar execução de tarefa (RF004)
 | Campo              | Descrição                                                    |
 | ------------------ | ------------------------------------------------------------ |
@@ -1087,6 +1114,14 @@ UC04 — Registrar execução de tarefa (RF004)
 | Pré-condições      | Deve existir uma tarefa atribuída ao capataz                 |
 | Fluxo principal    | O capataz marca a tarefa como concluída no sistema           |
 | Pós-condições      | A tarefa é registrada como concluída e atualizada no sistema |
+
+<center>
+  <p><strong> Quadro 4  </strong> — Casos de Uso</p>
+</center> 
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 UC05 — Anexar evidência (RF005)
 | Campo              | Descrição                                                       |
@@ -1097,6 +1132,14 @@ UC05 — Anexar evidência (RF005)
 | Fluxo principal    | O capataz adiciona uma foto ou áudio como evidência da execução |
 | Pós-condições      | A evidência é armazenada e vinculada à tarefa                   |
 
+<center>
+  <p><strong> Quadro 5 </strong> — Casos de Uso</p>
+</center> 
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 UC06 — Registrar movimentação (RF006)
 | Campo              | Descrição                                                  |
 | ------------------ | ---------------------------------------------------------- |
@@ -1105,6 +1148,14 @@ UC06 — Registrar movimentação (RF006)
 | Pré-condições      | O sistema deve estar disponível para registro              |
 | Fluxo principal    | O capataz registra uma movimentação relacionada ao rebanho |
 | Pós-condições      | A movimentação é armazenada para posterior validação       |
+
+<center>
+  <p><strong> Quadro 6 </strong> — Casos de Uso</p>
+</center> 
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 UC07 — Validar movimentações (RF007)
 | Campo              | Descrição                                                  |
@@ -1115,6 +1166,14 @@ UC07 — Validar movimentações (RF007)
 | Fluxo principal    | O coordenador revisa e valida as movimentações registradas |
 | Pós-condições      | As movimentações são confirmadas e consideradas válidas    |
 
+<center>
+  <p><strong> Quadro 7 </strong> — Casos de Uso</p>
+</center> 
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 UC08 — Consultar dados consolidados (RF008)
 | Campo              | Descrição                                           |
 | ------------------ | --------------------------------------------------- |
@@ -1123,6 +1182,14 @@ UC08 — Consultar dados consolidados (RF008)
 | Pré-condições      | Devem existir dados registrados no sistema          |
 | Fluxo principal    | O usuário acessa relatórios consolidados por retiro |
 | Pós-condições      | As informações são exibidas para análise            |
+
+<center>
+  <p><strong> Quadro 8 </strong> — Casos de Uso</p>
+</center> 
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 UC09 — Exportar relatórios (RF009)
 | Campo              | Descrição                                                            |
@@ -1134,12 +1201,10 @@ UC09 — Exportar relatórios (RF009)
 | Pós-condições      | O relatório é gerado e disponibilizado para download                 |
 
 <center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
+  <p><strong> Quadro 9 </strong> — Casos de Uso</p>
+</center> 
 
 <center>
-  <p><strong>Figura 8</strong> — Diagrama de Caso De Uso aplicada à BrPec Agropecuária</p>
-  <img src="../assets/diagramaDeUso.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
