@@ -1259,7 +1259,8 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 
 ## 3.3. Wireframes (sprint 2)
 
-_Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização)_
+Wireframes são esboços estruturais de telas de produtos digitais, como sites e aplicativos. Eles têm como objetivo pôr as ideias dos desenvolvedores em prática e as validar. Eles mostram onde cada elemento fica na tela, o que é mais importante visualmente, como o usuário navega de uma tela para outra e o que cada elemento faz em questão de funcionalidade. Assim, eles demonstram de forma direta a arquitetura final de uma interface. 
+
 
 ## 3.4. Guia de estilos (sprint 3)
 
