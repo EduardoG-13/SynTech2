@@ -11,7 +11,7 @@
 - <a href="https://www.linkedin.com/in/enzo-santos-bezerra-1904403bb/">Enzo Santos Bezerra</a>
 - <a href="https://www.linkedin.com/in/guilherme-beltrame-18b1b429b/">Guilherme Munhoz Beltrame</a>
 - <a href="https://www.linkedin.com/in/laiza-guimar%C3%A3es-2748b2313/">Laiza Guimaraes</a>
-- <a href="https://www.linkedin.com/in/kaylan-alexandre/">Lorena Kopke</a>
+- <a href="https://www.linkedin.com/in/lorena-cordeiro-kopke/">Lorena Kopke</a>
 - <a href="https://www.linkedin.com/in/mateus-galatro/">Mateus Gongora Pereira Galatro</a>
 - <a href="https://www.linkedin.com/in/miguel-cristiano-costa-160b96320/">Miguel Cristiano Costa</a>
 
@@ -89,7 +89,21 @@ a transparência das operações e apoia a tomada de decisão dos gestores, alin
 
 ### 2.1.1. Modelo de 5 Forças de Porter (sprint 1)
 
-A análise das Cinco Forças de Porter é uma ferramenta estratégica utilizada para diagnosticar a atratividade e a competitividade de um setor econômico. Desenvolvido por Michael Porter, o modelo examina a interação entre a rivalidade dos concorrentes, a ameaça de novos entrantes, o poder de barganha de fornecedores e clientes, e a pressão de produtos substitutos. No contexto da BRPec, essa análise é fundamental para mapear as forças externas que moldam o agronegócio pecuário brasileiro, permitindo identificar onde residem as vulnerabilidades estruturais da empresa, quais diferenciais operacionais merecem ser desenvolvidos e como decisões de gestão, como a digitalização do controle de retiros, se conectam diretamente à capacidade de sustentar margens e acessar mercados de maior valor agregado.
+As 5 forças de Porter são uma metodologia de análise estratégica criada por Michael Porter para avaliar a competitividade e o potencial de lucro de uma indústria. Assim, o objetivo é analisar as principais forças do ambiente externo de uma empresa, e como elas impactam na entrega de valor ao cliente e a rentabilidade do negócio.
+
+O Modelo das 5 Forças de Porter foi aplicado para analisar a estrutura competitiva do setor agropecuário no qual a BrPec Agropecuária está inserida (PORTER, 2008), setor marcado por dependência de commodities, capital intensivo, pressão regulatória ambiental crescente.
+
+**Rivalidade entre concorrentes:** A rivalidade é alta. O mercado bovino e de grãos compete por escala, eficiência e acesso a canais de comercialização, dada a limitada diferenciação em commodities. A BrPec disputa com grupos integrados como Bom Futuro (MT), Jacarezinho, ligada a Marcos Molina da Marfrig, e Rio Vermelho (PA), além de fundos de investimento em terras (COMPRERURAL, 2024). Num ambiente de preços de mercado, eficiência de custo e volume são o campo de batalha (PORTER, 2008).
+
+**Ameaça de novos entrantes:** A ameaça é média a baixa. Operar em larga escala exige capital intensivo para aquisição de terras, infraestrutura e formação de rebanho, além de licenciamento ambiental complexo em biomas como Pantanal e Cerrado. Essas barreiras restringem a entrada de concorrentes de grande porte, embora fundos agropecuários nacionais e estrangeiros sustentem ameaça relevante no longo prazo (CASALE, 2024).
+
+**Poder de barganha dos fornecedores:** O poder é moderado. A BrPec depende de fertilizantes (Yara, Mosaic), defensivos e sementes (Bayer, BASF, Syngenta) e medicamentos veterinários (Zoetis, Boehringer Ingelheim), segmentos dominados por multinacionais com poder de precificação. A produção própria de soja e milho atenua parcialmente essa dependência (FEED&FOOD, 2024).
+
+**Poder de barganha dos clientes:** O poder é alto. Os principais compradores JBS, Marfrig e Minerva Foods, operam em oligopsônio e pressionam os preços pagos por arroba (INFOMONEY, 2024). A concentração do lado comprador mantém o produtor em posição estruturalmente desfavorável, com margens sensíveis à política de compra desses grupos (REPÓRTER BRASIL, 2024).
+
+**Ameaça de substitutos:** A ameaça é moderada e crescente. No mercado interno, frango e suíno competem com a carne bovina em custo-benefício (CEPEA, 2023). Externamente, o regulamento anti-desmatamento da União Europeia, em vigor a partir de 2026, restringe produtores com histórico ambiental negativo, limitando o acesso a mercados de maior valor agregado (REHAGRO, 2024).
+
+**Análise estrutural:** A BrPec opera em setor com barreiras de entrada relevantes e integração vertical como diferencial, mas enfrenta forte pressão de canais de compra concentrados, alta rivalidade por escala e dependência de fornecedores especializados. O passivo ambiental representa risco estratégico: a empresa figura entre os maiores desmatadores do Pantanal segundo o Ibama (DE OLHO NOS RURALISTAS, 2020), podendo restringir o acesso aos segmentos de maior rentabilidade.
 
 <center>
   <p><strong>Figura 1</strong> — Análise das 5 Forças de Porter aplicada à BRPec Agropecuária<br/>
@@ -115,6 +129,7 @@ Identifica-se que a conformidade ambiental em biomas sensíveis (como o Pantanal
 
 ### 2.1.2. Análise SWOT da Instituição Parceira (sprint 1)
 A análise SWOT a seguir avalia o posicionamento estratégico da BRPec considerando seu ambiente interno — forças operacionais e financeiras e fraquezas estruturais e regulatórias — e fatores externos: oportunidades de mercado e ameaças setoriais. O contexto de análise é o agronegócio brasileiro de pecuária e grãos, especificamente o segmento de produção integrada em larga escala no Pantanal mato-grossense, caracterizado por crescente pressão ESG sobre crédito e certificações, restrições regulatórias à expansão de novas áreas e acirrada competição fundiária com players institucionalizados.
+
 <center>
   <p><strong>Figura 2</strong> — Análise SWOT da BRPec Agropecuária</p>
   <img src="../assets/analiseSWOT.png" width="800"/>
@@ -170,12 +185,26 @@ Desenvolvimento de uma aplicação web com arquitetura cliente-servidor (HTML/CS
 ---
 
 #### 6. Critérios de Sucesso
-O projeto será considerado bem-sucedido quando atender às seguintes métricas e indicadores de validação:
-- A integração entre o módulo de gerenciamento de tarefas e o formulário de movimentação zootécnica for concluída, apresentando uma taxa de sucesso de processamento igual ou superior a 95% nas operações submetidas.  
-- Os fluxos de interação para os perfis autorizados (Gerente, Coordenador e Capataz) forem executados com tempo de resposta local (no dispositivo) inferior a 200 ms, assegurando fluidez operacional.  
-- A funcionalidade de operação offline garantir 100% de persistência local dos dados durante a ausência de conectividade, com sincronização automática e taxa de perda de dados nula (0%) no restabelecimento do sinal da rede da fazenda.  
-- A exportação de dados consolidados em formato Excel/CSV for gerada em estrita conformidade estrutural, mitigando em 100% a necessidade de redigitação manual pela equipe de coordenação responsável pela recepção das informações.  
-- O sistema registrar a eliminação do uso de boletas físicas de papel em pelo menos 80% das rotinas de registro de campo reportadas pelos capatazes.  
+
+O projeto será considerado bem-sucedido quando:
+
+- O MVP funcional integrar o gerenciamento de tarefas e o formulário de movimentação bovina
+- Os três perfis (Gerente, Capataz, Coordenador) conseguirem executar seus fluxos principais sem erros
+- A funcionalidade offline operar corretamente com sincronização posterior
+- A exportação de dados em Excel/CSV gerar arquivos utilizáveis pelos Coordenadores sem necessidade de redigitação
+- Os registros de campo eliminarem o uso de boletas de papel no dia a dia
+
+---
+
+#### 7. Alinhamento com SWOT e Canvas
+
+#### Alinhamento com a Análise SWOT
+
+- **SWOT:** Os pontos levantados na análise devem refletir os problemas (fraquezas/ameaças) e oportunidades descritos na TAPI
+
+#### Alinhamento com o Business Model Canvas
+
+- **Canvas:** O bloco de "Proposta de Valor" deve estar coerente com os benefícios esperados; "Segmentos de Clientes" com os atores; "Canais" com a interface web/offline
 
 ### 2.1.4. Value Proposition Canvas (sprint 1):
 
@@ -403,7 +432,7 @@ Informações extras:
 - Adaptação a novas tecnologias: Moderada a alta - reconhece o valor das ferramentas digitais e está aberto a adotá-las [5];
 - Dispositivo disponível: Computador e celular.
 
-#### Notas e Justificativas
+#### Notas e Justificativas:
 
 **Idade e perfil do cargo:**
 A faixa etária de 40 anos foi baseada no perfil médio do Gerente de Produção e Operações Agropecuárias (CBO 1411-15), que aponta 40 anos como idade mais recorrente segundo o Portal Salário a partir de dados do CAGED. Além disso, outras informações sobre o perfil do foram baseadas a partir dessa fonte [3].
@@ -490,7 +519,7 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 - Adaptação a novas tecnologias: Moderada - aberto a ferramentas que simplifiquem seu fluxo de trabalho;
 - Dispositivo disponível: Computador e celular.
 
-#### Notas e Justificativas
+#### Notas e Justificativas:
 
 **Escolaridade do gestor no agronegócio:**
 O Portal CNA Brasil aponta que, para cargos de coordenação técnica no agronegócio, o perfil mais buscado combina forte conhecimento técnico com boas noções de gestão, habilidade de comunicação e liderança [6].
@@ -559,7 +588,7 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 - Comunicação direta com equipe de vaqueiros;
 - Resiliência devido aos diversos problemas que ocorrem.
 
-#### Familiaridade com Tecnologia [4]
+#### Familiaridade com Tecnologia [4]:
 
 <center>
   <p><strong>Tabela 3</strong> — Familiaridade com Tecnologia (Gabriel Galdino)</p>
@@ -1291,7 +1320,8 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 
 ## 3.3. Wireframes (sprint 2)
 
-_Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização)_
+Wireframes são esboços estruturais de telas de produtos digitais, como sites e aplicativos. Eles têm como objetivo pôr as ideias dos desenvolvedores em prática e as validar. Eles mostram onde cada elemento fica na tela, o que é mais importante visualmente, como o usuário navega de uma tela para outra e o que cada elemento faz em questão de funcionalidade. Assim, eles demonstram de forma direta a arquitetura final de uma interface. 
+
 
 ## 3.4. Guia de estilos (sprint 3)
 
@@ -1328,6 +1358,36 @@ _Posicione aqui o DER com cardinalidades explícitas em ambos os lados de cada r
 ### 3.6.3. Modelo Relacional e Modelo Físico (sprints 2 e 4)
 
 _Posicione aqui os diagramas de modelos relacionais do banco de dados, apresentando todos os esquemas de tabelas e suas relações. Inclua as migrations DDL numeradas e reproduzíveis (`CREATE TABLE`, `CREATE INDEX`, constraints `NOT NULL`, `UNIQUE`, `FOREIGN KEY`, `CHECK`). Utilize texto para complementar suas explicações quando necessário._
+
+
+#### Nota Técnica - Estratégia de UUID para criação e atualização offline 
+
+**Contexto:** Como evidenciado nas User Stories US03, US08 e US09, o sistema prevê criação e atualização de registros em ambiente sem conexão, com sincronização posterior ao banco central. Assim, existe a possibilidade de ocorrerem conflitos de IDs. Isso porque um dispositivo que não está online pode acabar gerando um mesmo ID que outro dispositivo.  Dessa forma, na hora da sincronização haveria uma colisão, e para evitar conflito de PKs (IDs) ao sincronizar com o banco central, adota-se UUID versão 7 como identificador primário de todas as entidades criadas [8].
+
+**Justificativa:** IDs sequenciais dependem de coordenação com o servidor, já UUIDs são usados para nomear informações de forma única em sistemas sem precisar de uma autoridade central. São essenciais em sistemas distribuídos e sua probabilidade de duplicidade é quase zero, eliminando conflito na sincronização.
+Assim, utilizaremos a versão 7 do UUID por uma questão de ordenação cronológica e melhor performance de índices no banco.
+
+**Implementação:**
+- PKs do tipo UUID em todas as tabelas sujeitas a criação e atualização offline;
+- UUID gerado no momento da criação e atualização de registros criados nos dispositivos dos clientes;
+- UUID armazenado como tipo de dado nativo no PostgreSQL;
+- Sincronização via UPSERT (INSERT ... ON CONFLICT DO UPDATE) 
+
+UPSERT é uma operação que combina UPdate (atualizar) e inSERT (inserir). Ele insere uma nova linha se ela não existir ou atualiza um registro existente se já houver uma correspondência. Assim, evitando erros de duplicidade e facilitando a sincronização de dados. 
+
+**Alternativas consideradas:**
+
+- ID sequencial com namespace por dispositivo (rejeitado: complexidade) 
+Justificativa: Nesse caso cada dispositivo teria um identificador próprio, que se combinaria com o ID sequencial comum. Porém, essa abordagem apresenta dois problemas centrais.
+O primeiro é estrutural: a geração de cada ID sequencial exige uma consulta ao servidor para garantir que o número não foi usado por outro dispositivo. Isso torna o sistema incapaz de criar registros offline por natureza, contradizendo diretamente o requisito de operação sem conexão.
+O segundo é de confiabilidade: se a distribuição de IDs para o dispositivo falhar, como dois dispositivos acabarem tendo o mesmo identificador, por exemplo, ou se o sistema for mal implementado, o problema original de conflito volta. Além disso, aumenta-se a complexidade no banco, pois as PKs viram strings compostas ou há a necessidade de utilizar duas colunas como chave primária.
+
+- ULID (considerado: vantagem de ordenação, porém menos suporte nativo)
+Justificativa: O ULID (Universally Unique Lexicographically Sortable Identifier) é um formato de identificador único que começa com timestamp. Apesar de resolver o problema e os registros ficarem ordenados cronologicamente, ele não é nativo em nenhum banco de dados popular, como no PostgreSQL e é necessário instalar bibliotecas externas no cliente e no servidor, algo que não é necessário com o UUIDv7.
+
+- UUIDv4 (opção viável, mas houve uma preferência para a UUIDv7)
+Justificativa: O UUIDv4 funcionaria perfeitamente para o problema de conflito de IDs, porém, ele é puramente aleatório. Isso significa que os registros inseridos no banco não ficam em nenhuma ordem que possa ser utilizada para organizar o banco ou para outras ações. Nele, cada novo UUID vai para uma posição aleatória no índice, causando fragmentação ao longo do tempo e prejudicando a performance de consultas. 
+
 
 ### 3.6.4. Consultas SQL e lógica proposicional (sprint 2)
 
@@ -1512,6 +1572,7 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 
 [9] MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026.
 
+[8] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
 
 # <a name="c9"></a>Anexos
 
