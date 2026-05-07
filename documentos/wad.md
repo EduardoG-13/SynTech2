@@ -1298,6 +1298,36 @@ _Posicione aqui o DER com cardinalidades explícitas em ambos os lados de cada r
 
 _Posicione aqui os diagramas de modelos relacionais do banco de dados, apresentando todos os esquemas de tabelas e suas relações. Inclua as migrations DDL numeradas e reproduzíveis (`CREATE TABLE`, `CREATE INDEX`, constraints `NOT NULL`, `UNIQUE`, `FOREIGN KEY`, `CHECK`). Utilize texto para complementar suas explicações quando necessário._
 
+
+#### Nota Técnica - Estratégia de UUID para criação e atualização offline 
+
+**Contexto:** Como evidenciado nas User Stories US03, US08 e US09, o sistema prevê criação e atualização de registros em ambiente sem conexão, com sincronização posterior ao banco central. Assim, existe a possibilidade de ocorrerem conflitos de IDs. Isso porque um dispositivo que não está online pode acabar gerando um mesmo ID que outro dispositivo.  Dessa forma, na hora da sincronização haveria uma colisão, e para evitar conflito de PKs (IDs) ao sincronizar com o banco central, adota-se UUID versão 7 como identificador primário de todas as entidades criadas [8].
+
+**Justificativa:** IDs sequenciais dependem de coordenação com o servidor, já UUIDs são usados para nomear informações de forma única em sistemas sem precisar de uma autoridade central. São essenciais em sistemas distribuídos e sua probabilidade de duplicidade é quase zero, eliminando conflito na sincronização.
+Assim, utilizaremos a versão 7 do UUID por uma questão de ordenação cronológica e melhor performance de índices no banco.
+
+**Implementação:**
+- PKs do tipo UUID em todas as tabelas sujeitas a criação e atualização offline;
+- UUID gerado no momento da criação e atualização de registros criados nos dispositivos dos clientes;
+- UUID armazenado como tipo de dado nativo no PostgreSQL;
+- Sincronização via UPSERT (INSERT ... ON CONFLICT DO UPDATE) 
+
+UPSERT é uma operação que combina UPdate (atualizar) e inSERT (inserir). Ele insere uma nova linha se ela não existir ou atualiza um registro existente se já houver uma correspondência. Assim, evitando erros de duplicidade e facilitando a sincronização de dados. 
+
+**Alternativas consideradas:**
+
+- ID sequencial com namespace por dispositivo (rejeitado: complexidade) 
+Justificativa: Nesse caso cada dispositivo teria um identificador próprio, que se combinaria com o ID sequencial comum. Porém, essa abordagem apresenta dois problemas centrais.
+O primeiro é estrutural: a geração de cada ID sequencial exige uma consulta ao servidor para garantir que o número não foi usado por outro dispositivo. Isso torna o sistema incapaz de criar registros offline por natureza, contradizendo diretamente o requisito de operação sem conexão.
+O segundo é de confiabilidade: se a distribuição de IDs para o dispositivo falhar, como dois dispositivos acabarem tendo o mesmo identificador, por exemplo, ou se o sistema for mal implementado, o problema original de conflito volta. Além disso, aumenta-se a complexidade no banco, pois as PKs viram strings compostas ou há a necessidade de utilizar duas colunas como chave primária.
+
+- ULID (considerado: vantagem de ordenação, porém menos suporte nativo)
+Justificativa: O ULID (Universally Unique Lexicographically Sortable Identifier) é um formato de identificador único que começa com timestamp. Apesar de resolver o problema e os registros ficarem ordenados cronologicamente, ele não é nativo em nenhum banco de dados popular, como no PostgreSQL e é necessário instalar bibliotecas externas no cliente e no servidor, algo que não é necessário com o UUIDv7.
+
+- UUIDv4 (opção viável, mas houve uma preferência para a UUIDv7)
+Justificativa: O UUIDv4 funcionaria perfeitamente para o problema de conflito de IDs, porém, ele é puramente aleatório. Isso significa que os registros inseridos no banco não ficam em nenhuma ordem que possa ser utilizada para organizar o banco ou para outras ações. Nele, cada novo UUID vai para uma posição aleatória no índice, causando fragmentação ao longo do tempo e prejudicando a performance de consultas. 
+
+
 ### 3.6.4. Consultas SQL e lógica proposicional (sprint 2)
 
 _posicione aqui uma lista de consultas SQL compostas, realizadas pelo back-end da aplicação web, com sua respectiva lógica proposicional, descrita conforme template abaixo. Lembre-se que para usar LaTeX em markdown, basta você colocar as expressões entre $ ou $$_
@@ -1481,6 +1511,7 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 
 [9] MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026.
 
+[8] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
 
 # <a name="c9"></a>Anexos
 
