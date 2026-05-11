@@ -11,7 +11,7 @@
 - <a href="https://www.linkedin.com/in/enzo-santos-bezerra-1904403bb/">Enzo Santos Bezerra</a>
 - <a href="https://www.linkedin.com/in/guilherme-beltrame-18b1b429b/">Guilherme Munhoz Beltrame</a>
 - <a href="https://www.linkedin.com/in/laiza-guimar%C3%A3es-2748b2313/">Laiza Guimaraes</a>
-- <a href="https://www.linkedin.com/in/kaylan-alexandre/">Lorena Kopke</a>
+- <a href="https://www.linkedin.com/in/lorena-cordeiro-kopke/">Lorena Kopke</a>
 - <a href="https://www.linkedin.com/in/mateus-galatro/">Mateus Gongora Pereira Galatro</a>
 - <a href="https://www.linkedin.com/in/miguel-cristiano-costa-160b96320/">Miguel Cristiano Costa</a>
 
@@ -39,49 +39,47 @@
 
 # <a name="c1"></a>1. Introdução (sprints 1 a 5)
 
-O agronegócio brasileiro desempenha papel central na economia nacional, sendo responsável 
-por aproximadamente 25% do PIB e pela geração de empregos em larga escala, especialmente 
-em regiões de interior [1]. Nesse contexto, a pecuária demanda elevado nível de 
-controle operacional, especialmente no registro de atividades de campo e na gestão da 
-movimentação do rebanho, fatores diretamente relacionados à produtividade e à qualidade 
+O agronegócio brasileiro desempenha papel central na economia nacional, sendo responsável
+por aproximadamente 25% do PIB e pela geração de empregos em larga escala, especialmente
+em regiões de interior [1]. Nesse contexto, a pecuária demanda elevado nível de
+controle operacional, especialmente no registro de atividades de campo e na gestão da
+movimentação do rebanho, fatores diretamente relacionados à produtividade e à qualidade
 da tomada de decisão.
 
-No cenário da BrPec Agropecuária S.A., empresa com 14 retiros operacionais distribuídos 
-na região do Pantanal sul-mato-grossense e aproximadamente 25 usuários operacionais, 
-identificou-se que o fluxo de informações entre o campo e o escritório ocorre de forma 
-inteiramente manual, por meio de anotações em boletas de papel. Esse modelo gera 
-ineficiências operacionais relevantes: registros são frequentemente preenchidos de forma 
-incompleta ou ilegível, agravado pelo fato de parte dos capatazes apresentar dificuldade 
-de leitura e escrita. Há, ainda, atraso significativo no envio das informações ao escritório 
-e torna-se necessário redigitar todos os dados em planilhas digitais. Como consequência, 
-ocorrem retrabalho, risco de erros na consolidação e atrasos que podem comprometer a 
-visibilidade das operações por horas ou até dias, impactando diretamente a tomada de 
-decisão dos gestores. Um exemplo concreto identificado no kickoff com o parceiro: boletas 
-de entrada e saída de animais frequentemente não coincidem, gerando inconsistências no 
+No cenário da BrPec Agropecuária S.A., empresa com 14 retiros operacionais distribuídos
+na região do Pantanal sul-mato-grossense e aproximadamente 25 usuários operacionais,
+identificou-se que o fluxo de informações entre o campo e o escritório ocorre de forma
+inteiramente manual, por meio de anotações em boletas de papel. Esse modelo gera
+ineficiências operacionais relevantes: registros são frequentemente preenchidos de forma
+incompleta ou ilegível, agravado pelo fato de parte dos capatazes apresentar dificuldade
+de leitura e escrita. Há, ainda, atraso significativo no envio das informações ao escritório
+e torna-se necessário redigitar todos os dados em planilhas digitais. Como consequência,
+ocorrem retrabalho, risco de erros na consolidação e atrasos que podem comprometer a
+visibilidade das operações por horas ou até dias, impactando diretamente a tomada de
+decisão dos gestores. Um exemplo concreto identificado no kickoff com o parceiro: boletas
+de entrada e saída de animais frequentemente não coincidem, gerando inconsistências no
 controle do rebanho.
 
-Além disso, a ausência de conectividade contínua nas áreas operacionais, com 
-sincronização disponível apenas pela manhã e à noite via Starlink nos retiros, impede o 
-uso de soluções digitais convencionais, dificultando ainda mais a padronização e a 
-confiabilidade das informações registradas. Atualmente, o WhatsApp é a principal 
-ferramenta de comunicação entre capatazes e gestores, o que evidencia tanto a familiaridade 
-dos usuários com dispositivos móveis quanto a ausência de um canal estruturado para o 
+Além disso, a ausência de conectividade contínua nas áreas operacionais, com
+sincronização disponível apenas pela manhã e à noite via Starlink nos retiros, impede o
+uso de soluções digitais convencionais, dificultando ainda mais a padronização e a
+confiabilidade das informações registradas. Atualmente, o WhatsApp é a principal
+ferramenta de comunicação entre capatazes e gestores, o que evidencia tanto a familiaridade
+dos usuários com dispositivos móveis quanto a ausência de um canal estruturado para o
 fluxo de dados operacionais.
 
-Diante desse contexto, foi proposta a construção de uma aplicação web capaz de digitalizar 
-o gerenciamento de tarefas e o registro das movimentações do rebanho, contemplando 
-nascimentos, mortes, compras, vendas e transferências entre retiros, com funcionamento 
-offline obrigatório. A solução permite que os dados sejam coletados diretamente no campo, 
-por meio de celulares fornecidos pela própria BrPec, e sincronizados automaticamente quando 
+Diante desse contexto, foi proposta a construção de uma aplicação web capaz de digitalizar
+o gerenciamento de tarefas e o registro das movimentações do rebanho, contemplando
+nascimentos, mortes, compras, vendas e transferências entre retiros, com funcionamento
+offline obrigatório. A solução permite que os dados sejam coletados diretamente no campo,
+por meio de celulares fornecidos pela própria BrPec, e sincronizados automaticamente quando
 houver conexão com a internet.
 
-Como principal criação de valor, o sistema promove a padronização dos registros, elimina 
-a necessidade de redigitação manual, reduz erros operacionais e melhora a rastreabilidade 
-das informações. Dessa forma, possibilita maior agilidade na atualização dos dados, aumenta 
-a transparência das operações e apoia a tomada de decisão dos gestores, alinhando-se 
+Como principal criação de valor, o sistema promove a padronização dos registros, elimina
+a necessidade de redigitação manual, reduz erros operacionais e melhora a rastreabilidade
+das informações. Dessa forma, possibilita maior agilidade na atualização dos dados, aumenta
+a transparência das operações e apoia a tomada de decisão dos gestores, alinhando-se
 às necessidades reais da BrPec e ao seu contexto operacional.
-
-
 
 # <a name="c2"></a>2. Visão Geral da Aplicação Web (sprint 1)
 
@@ -89,7 +87,21 @@ a transparência das operações e apoia a tomada de decisão dos gestores, alin
 
 ### 2.1.1. Modelo de 5 Forças de Porter (sprint 1)
 
-A análise das Cinco Forças de Porter é uma ferramenta estratégica utilizada para diagnosticar a atratividade e a competitividade de um setor econômico. Desenvolvido por Michael Porter, o modelo examina a interação entre a rivalidade dos concorrentes, a ameaça de novos entrantes, o poder de barganha de fornecedores e clientes, e a pressão de produtos substitutos. No contexto da BRPec, essa análise é fundamental para mapear as forças externas que moldam o agronegócio pecuário brasileiro, permitindo identificar onde residem as vulnerabilidades estruturais da empresa, quais diferenciais operacionais merecem ser desenvolvidos e como decisões de gestão, como a digitalização do controle de retiros, se conectam diretamente à capacidade de sustentar margens e acessar mercados de maior valor agregado.
+As 5 forças de Porter são uma metodologia de análise estratégica criada por Michael Porter para avaliar a competitividade e o potencial de lucro de uma indústria. Assim, o objetivo é analisar as principais forças do ambiente externo de uma empresa, e como elas impactam na entrega de valor ao cliente e a rentabilidade do negócio.
+
+O Modelo das 5 Forças de Porter foi aplicado para analisar a estrutura competitiva do setor agropecuário no qual a BrPec Agropecuária está inserida (PORTER, 2008), setor marcado por dependência de commodities, capital intensivo, pressão regulatória ambiental crescente.
+
+**Rivalidade entre concorrentes:** A rivalidade é alta. O mercado bovino e de grãos compete por escala, eficiência e acesso a canais de comercialização, dada a limitada diferenciação em commodities. A BrPec disputa com grupos integrados como Bom Futuro (MT), Jacarezinho, ligada a Marcos Molina da Marfrig, e Rio Vermelho (PA), além de fundos de investimento em terras (COMPRERURAL, 2024). Num ambiente de preços de mercado, eficiência de custo e volume são o campo de batalha (PORTER, 2008).
+
+**Ameaça de novos entrantes:** A ameaça é média a baixa. Operar em larga escala exige capital intensivo para aquisição de terras, infraestrutura e formação de rebanho, além de licenciamento ambiental complexo em biomas como Pantanal e Cerrado. Essas barreiras restringem a entrada de concorrentes de grande porte, embora fundos agropecuários nacionais e estrangeiros sustentem ameaça relevante no longo prazo (CASALE, 2024).
+
+**Poder de barganha dos fornecedores:** O poder é moderado. A BrPec depende de fertilizantes (Yara, Mosaic), defensivos e sementes (Bayer, BASF, Syngenta) e medicamentos veterinários (Zoetis, Boehringer Ingelheim), segmentos dominados por multinacionais com poder de precificação. A produção própria de soja e milho atenua parcialmente essa dependência (FEED&FOOD, 2024).
+
+**Poder de barganha dos clientes:** O poder é alto. Os principais compradores JBS, Marfrig e Minerva Foods, operam em oligopsônio e pressionam os preços pagos por arroba (INFOMONEY, 2024). A concentração do lado comprador mantém o produtor em posição estruturalmente desfavorável, com margens sensíveis à política de compra desses grupos (REPÓRTER BRASIL, 2024).
+
+**Ameaça de substitutos:** A ameaça é moderada e crescente. No mercado interno, frango e suíno competem com a carne bovina em custo-benefício (CEPEA, 2023). Externamente, o regulamento anti-desmatamento da União Europeia, em vigor a partir de 2026, restringe produtores com histórico ambiental negativo, limitando o acesso a mercados de maior valor agregado (REHAGRO, 2024).
+
+**Análise estrutural:** A BrPec opera em setor com barreiras de entrada relevantes e integração vertical como diferencial, mas enfrenta forte pressão de canais de compra concentrados, alta rivalidade por escala e dependência de fornecedores especializados. O passivo ambiental representa risco estratégico: a empresa figura entre os maiores desmatadores do Pantanal segundo o Ibama (DE OLHO NOS RURALISTAS, 2020), podendo restringir o acesso aos segmentos de maior rentabilidade.
 
 <center>
   <p><strong>Figura 1</strong> — Análise das 5 Forças de Porter aplicada à BRPec Agropecuária<br/>
@@ -114,7 +126,9 @@ Nota-se que o poder dos compradores é evidenciado pela pressão exercida por gr
 Identifica-se que a conformidade ambiental em biomas sensíveis (como o Pantanal monitorado pelo Ibama) e a rastreabilidade são credenciais essenciais para acessar mercados premium, nichos de alto valor que são menos vulneráveis à substituição por outras proteínas. Portanto, o sistema é a camada tecnológica fundamental que viabiliza essa exigência, registrando a origem, o destino e as evidências fotográficas georreferenciadas de cada movimentação animal.
 
 ### 2.1.2. Análise SWOT da Instituição Parceira (sprint 1)
+
 A análise SWOT a seguir avalia o posicionamento estratégico da BRPec considerando seu ambiente interno — forças operacionais e financeiras e fraquezas estruturais e regulatórias — e fatores externos: oportunidades de mercado e ameaças setoriais. O contexto de análise é o agronegócio brasileiro de pecuária e grãos, especificamente o segmento de produção integrada em larga escala no Pantanal mato-grossense, caracterizado por crescente pressão ESG sobre crédito e certificações, restrições regulatórias à expansão de novas áreas e acirrada competição fundiária com players institucionalizados.
+
 <center>
   <p><strong>Figura 2</strong> — Análise SWOT da BRPec Agropecuária</p>
   <img src="../assets/analiseSWOT.png" width="800"/>
@@ -124,6 +138,7 @@ A análise SWOT a seguir avalia o posicionamento estratégico da BRPec considera
 A leitura integrada dos quadrantes revela que a principal vantagem competitiva sustentável da BRPec reside em sua escala fundiária no Pantanal e no modelo integrado grãos-pecuária, atributos que concorrentes de médio porte não replicam no curto prazo. Por outro lado, o passivo ambiental ativo representa não apenas uma fraqueza interna de compliance, mas um vetor de amplificação de ameaças externas: é simultaneamente a causa do risco de bloqueio ao mercado europeu via EUDR e do encarecimento do custo de capital frente a concorrentes com certificações ESG consolidadas — concentrando dois dos três riscos externos mapeados em uma única vulnerabilidade de origem interna. Essa sobreposição indica que a resolução do passivo ambiental não é apenas uma pauta regulatória, mas a condição estrutural para que a BRPec converta sua escala operacional em acesso real a mercados premium e crédito qualificado.
 
 ### 2.1.3. Solução (sprints 1 a 5)
+
 #### 1. Definição do Problema
 
 A BRPec depende atualmente de processos manuais e anotações em papel (boletas) para comunicar ordens de serviço entre o campo e o escritório, além de registrar movimentações do rebanho (nascimentos, óbitos e transferências). Isso gera retrabalho na consolidação dos dados, redigitação em planilhas eletrônicas e atraso na visibilidade das informações operacionais.
@@ -133,12 +148,13 @@ A BRPec depende atualmente de processos manuais e anotações em papel (boletas)
 #### 2. Dados Disponíveis
 
 Os dados disponibilizados para o desenvolvimento do projeto compreendem exclusivamente informações de negócio e operacionais da fazenda, incluindo:
-- Estrutura hierárquica e definição de papéis de usuários, contemplando as funções de Gerente Geral, Coordenador, Supervisor e Capataz.  
-- Tipologias de eventos zootécnicos e sanitários passíveis de registro, tais como nascimentos, óbitos, aquisições, vendas e transferências de animais entre retiros.  
-- Categorização do rebanho por faixa etária e estágio de desenvolvimento (bezerro, garrote, boi, touro, bezerra, novilha e vaca).  
-- Lista fixa dos 14 retiros operacionais que compõem a infraestrutura da propriedade.  
-- Tipologias de chamados de infraestrutura para manutenção de instalações (ex: hidráulica, elétrica e cercas).  
-- Modelos de boletas físicas atualmente utilizadas no campo e templates de planilhas eletrônicas utilizadas pela administração para a exportação e consolidação final das movimentações.  
+
+- Estrutura hierárquica e definição de papéis de usuários, contemplando as funções de Gerente Geral, Coordenador, Supervisor e Capataz.
+- Tipologias de eventos zootécnicos e sanitários passíveis de registro, tais como nascimentos, óbitos, aquisições, vendas e transferências de animais entre retiros.
+- Categorização do rebanho por faixa etária e estágio de desenvolvimento (bezerro, garrote, boi, touro, bezerra, novilha e vaca).
+- Lista fixa dos 14 retiros operacionais que compõem a infraestrutura da propriedade.
+- Tipologias de chamados de infraestrutura para manutenção de instalações (ex: hidráulica, elétrica e cercas).
+- Modelos de boletas físicas atualmente utilizadas no campo e templates de planilhas eletrônicas utilizadas pela administração para a exportação e consolidação final das movimentações.
 
 ---
 
@@ -170,16 +186,30 @@ Desenvolvimento de uma aplicação web com arquitetura cliente-servidor (HTML/CS
 ---
 
 #### 6. Critérios de Sucesso
-O projeto será considerado bem-sucedido quando atender às seguintes métricas e indicadores de validação:
-- A integração entre o módulo de gerenciamento de tarefas e o formulário de movimentação zootécnica for concluída, apresentando uma taxa de sucesso de processamento igual ou superior a 95% nas operações submetidas.  
-- Os fluxos de interação para os perfis autorizados (Gerente, Coordenador e Capataz) forem executados com tempo de resposta local (no dispositivo) inferior a 200 ms, assegurando fluidez operacional.  
-- A funcionalidade de operação offline garantir 100% de persistência local dos dados durante a ausência de conectividade, com sincronização automática e taxa de perda de dados nula (0%) no restabelecimento do sinal da rede da fazenda.  
-- A exportação de dados consolidados em formato Excel/CSV for gerada em estrita conformidade estrutural, mitigando em 100% a necessidade de redigitação manual pela equipe de coordenação responsável pela recepção das informações.  
-- O sistema registrar a eliminação do uso de boletas físicas de papel em pelo menos 80% das rotinas de registro de campo reportadas pelos capatazes.  
+
+O projeto será considerado bem-sucedido quando:
+
+- O MVP funcional integrar o gerenciamento de tarefas e o formulário de movimentação bovina
+- Os três perfis (Gerente, Capataz, Coordenador) conseguirem executar seus fluxos principais sem erros
+- A funcionalidade offline operar corretamente com sincronização posterior
+- A exportação de dados em Excel/CSV gerar arquivos utilizáveis pelos Coordenadores sem necessidade de redigitação
+- Os registros de campo eliminarem o uso de boletas de papel no dia a dia
+
+---
+
+#### 7. Alinhamento com SWOT e Canvas
+
+#### Alinhamento com a Análise SWOT
+
+- **SWOT:** Os pontos levantados na análise devem refletir os problemas (fraquezas/ameaças) e oportunidades descritos na TAPI
+
+#### Alinhamento com o Business Model Canvas
+
+- **Canvas:** O bloco de "Proposta de Valor" deve estar coerente com os benefícios esperados; "Segmentos de Clientes" com os atores; "Canais" com a interface web/offline
 
 ### 2.1.4. Value Proposition Canvas (sprint 1):
 
-A proposta de valor constitui uma declaração objetiva que sintetiza a essência da aplicação web desenvolvida, definindo as funcionalidades entregues, o público-alvo atendido e os benefícios operacionais gerados. Essa ferramenta atua como o eixo analítico do projeto, fundamentando as decisões de arquitetura de software e comunicando o diferencial competitivo da solução digital de modo estruturado. A análise do canvas evidencia que o sistema mitiga ineficiências operacionais concretas enfrentadas pelos capatazes em campo, tais como a dependência exclusiva de registros físicos, a inviabilidade de uso de sistemas convencionais em áreas desprovidas de cobertura de internet e a assincronicidade na comunicação com as instâncias gerenciais.  
+A proposta de valor constitui uma declaração objetiva que sintetiza a essência da aplicação web desenvolvida, definindo as funcionalidades entregues, o público-alvo atendido e os benefícios operacionais gerados. Essa ferramenta atua como o eixo analítico do projeto, fundamentando as decisões de arquitetura de software e comunicando o diferencial competitivo da solução digital de modo estruturado. A análise do canvas evidencia que o sistema mitiga ineficiências operacionais concretas enfrentadas pelos capatazes em campo, tais como a dependência exclusiva de registros físicos, a inviabilidade de uso de sistemas convencionais em áreas desprovidas de cobertura de internet e a assincronicidade na comunicação com as instâncias gerenciais.
 
 <center>
   <p><strong>Figura 3</strong> — Canvas Proposta de Valor aplicada à BrPec Agropecuária</p>
@@ -187,14 +217,13 @@ A proposta de valor constitui uma declaração objetiva que sintetiza a essênci
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-Os benefícios gerados pela adoção do sistema — incluindo a supressão do retrabalho de transcrição de dados, o registro otimizado de eventos zootécnicos em interface acessível e a confirmação documental de ordens de serviço com suporte a evidências fotográficas — estão em conformidade direta com os requisitos estabelecidos pela propriedade rural. Conclui-se, portanto, que a proposta de valor promovida não se restringe à mera digitalização de planilhas de controle, mas consolida a reestruturação integral do fluxo de dados operacionais, assegurando que o inventário pecuário e o status das infraestruturas se tornem mais precisos, rastreáveis e tempestivos para o suporte à tomada de decisão administrativa.  
+Os benefícios gerados pela adoção do sistema — incluindo a supressão do retrabalho de transcrição de dados, o registro otimizado de eventos zootécnicos em interface acessível e a confirmação documental de ordens de serviço com suporte a evidências fotográficas — estão em conformidade direta com os requisitos estabelecidos pela propriedade rural. Conclui-se, portanto, que a proposta de valor promovida não se restringe à mera digitalização de planilhas de controle, mas consolida a reestruturação integral do fluxo de dados operacionais, assegurando que o inventário pecuário e o status das infraestruturas se tornem mais precisos, rastreáveis e tempestivos para o suporte à tomada de decisão administrativa.
 
 ### 2.1.5. Matriz de Riscos do Projeto (sprint 1)
 
 A matriz de riscos é uma ferramenta que permite identificar, analisar e priorizar ameaças e oportunidades de um projeto. A classificação é feita com base na probabilidade de ocorrência e no impacto, auxiliando na definição de ações para cada caso. Dessa forma, foi elaborada a matriz de riscos para o desenvolvimento da aplicação web da BrPec Agropecuária S.A, considerando seus principais desafios.
 
-Nesse contexto, a figura a seguir apresenta a matriz de riscos elaborada para o projeto, que usa como base os padrões da ISO 31000 e PMBOK [2], na qual são organizadas as principais ameaças e oportunidades identificadas, considerando seus respectivos níveis de impacto e probabilidade. 
-
+Nesse contexto, a figura a seguir apresenta a matriz de riscos elaborada para o projeto, que usa como base os padrões da ISO 31000 e PMBOK [2], na qual são organizadas as principais ameaças e oportunidades identificadas, considerando seus respectivos níveis de impacto e probabilidade.
 
 <center>
   <p><strong>Figura 4</strong> — Matriz de Risco aplicada à BrPec Agropecuária</p>
@@ -204,9 +233,10 @@ Nesse contexto, a figura a seguir apresenta a matriz de riscos elaborada para o 
 
 ## Ameaças
 
-### A01 — Falha na sincronização de dados offline  
+### A01 — Falha na sincronização de dados offline
+
 **Probabilidade:** 30%  
-**Impacto:** Muito Alto  
+**Impacto:** Muito Alto
 
 **Explicação:**  
 Constata-se que a operação é realizada maioritariamente em modo offline nos retiros, razão pela qual a sincronização de dados é considerada um elemento estruturalmente crítico do sistema. Verifica-se que falhas neste processo podem resultar na perda, duplicidade ou inconsistência de registos. A título de exemplo, observa-se que uma movimentação de rebanho registada no campo pode não ser refletida no sistema central, gerando divergência entre o inventário real de animais e os dados disponibilizados para a gestão.
@@ -216,9 +246,10 @@ Constata-se que a mitigação deste risco exige a adoção de uma arquitetura or
 
 ---
 
-### A02 — Baixa usabilidade para capatazes  
+### A02 — Baixa usabilidade para capatazes
+
 **Probabilidade:** 50%  
-**Impacto:** Alto  
+**Impacto:** Alto
 
 **Explicação:**  
 Verifica-se que os capatazes, identificados como os principais utilizadores do sistema, apresentam reduzido nível de instrução formal e encontram-se habituados ao uso de ferramentas de comunicação elementares, como o WhatsApp. Observa-se que uma interface dotada de elevada complexidade pode dificultar a utilização do sistema e comprometer a sua adoção na rotina operacional diária.
@@ -228,9 +259,10 @@ Constata-se que a mitigação deste risco exige o desenvolvimento de uma interfa
 
 ---
 
-### A03 — Registro incorreto ou incompleto de dados  
+### A03 — Registro incorreto ou incompleto de dados
+
 **Probabilidade:** 30%  
-**Impacto:** Alto  
+**Impacto:** Alto
 
 **Explicação:**  
 Observa-se que erros no registro de eventos zootécnicos, tais como nascimento, óbito ou transferência de animais, comprometem diretamente a fiabilidade das informações. A título ilustrativo, constata-se que a ausência de registro de um óbito pode gerar inconsistência no inventário e impactar decisões de venda ou de manejo.
@@ -240,9 +272,10 @@ Verifica-se que a redução deste risco requer a imposição de validações est
 
 ---
 
-### A04 — Resistência à mudança no processo operacional  
+### A04 — Resistência à mudança no processo operacional
+
 **Probabilidade:** 50%  
-**Impacto:** Muito Alto  
+**Impacto:** Muito Alto
 
 **Explicação:**  
 Constata-se que, mesmo perante uma interface considerada adequada, persiste o risco de resistência à mudança por parte dos capatazes, habituados ao uso de registos em papel e ferramentas informais na rotina diária. Observa-se que a introdução de um novo sistema pode ser percecionada como uma complexidade adicional ao fluxo operacional já consolidado. A título de exemplo, verifica-se a possibilidade de o utilizador optar por continuar a registar informações manualmente e postergar a utilização da solução digital, comprometendo a centralização e a fiabilidade dos dados.
@@ -252,9 +285,10 @@ Identifica-se que a mitigação deste risco exige não apenas uma solução tecn
 
 ---
 
-### A05 — Incompatibilidade na exportação de dados  
+### A05 — Incompatibilidade na exportação de dados
+
 **Probabilidade:** 30%  
-**Impacto:** Moderado  
+**Impacto:** Moderado
 
 **Explicação:**  
 Identifica-se o risco de os ficheiros CSV gerados pelo sistema não serem interpretados corretamente pelos templates legados de Excel utilizados pela coordenação da fazenda para a consolidação das movimentações. Observa-se que divergências na codificação de caracteres, na delimitação de campos ou na ordenação das colunas podem resultar na importação incorreta dos dados, gerando inconsistências nos relatórios gerenciais e comprometendo a fiabilidade da informação consolidada.
@@ -264,9 +298,10 @@ Constata-se que a mitigação deste risco exige a homologação rigorosa dos esq
 
 ---
 
-### A06 — Desempenho inadequado em dispositivos de campo  
+### A06 — Desempenho inadequado em dispositivos de campo
+
 **Probabilidade:** 10%  
-**Impacto:** Moderado  
+**Impacto:** Moderado
 
 **Explicação:**  
 Verifica-se que o sistema será utilizado em dispositivos móveis no campo, os quais podem apresentar limitações de capacidade de processamento e memória. Observa-se que um desempenho insuficiente pode dificultar a utilização do sistema durante as atividades operacionais diárias.
@@ -278,9 +313,10 @@ Constata-se que a garantia de uma experiência de utilização adequada requer a
 
 ## Oportunidades
 
-### O01 — Redução de retrabalho e erros operacionais  
+### O01 — Redução de retrabalho e erros operacionais
+
 **Probabilidade:** 90%  
-**Impacto:** Muito Alto  
+**Impacto:** Muito Alto
 
 **Explicação:**  
 Constata-se que, no modelo atual, os dados são registrados em papel e posteriormente transcritos para planilhas eletrônicas, processo que gera retrabalho e aumenta a probabilidade de erros. Verifica-se que a digitalização permite a eliminação deste processo intermediário, tornando o fluxo informacional mais eficiente e viável.
@@ -290,9 +326,10 @@ Observa-se que a digitalização dos registros requer a garantia de que todas as
 
 ---
 
-### O02 — Entendimento do setor agro 
+### O02 — Entendimento do setor agro
+
 **Probabilidade:** 50%  
-**Impacto:** Alto  
+**Impacto:** Alto
 
 **Explicação:**  
 Identifica-se que o contacto direto com a realidade operacional da pecuária proporciona uma oportunidade de aprendizagem significativa acerca de um setor economicamente relevante e ainda pouco explorado por profissionais e equipes de desenvolvimento tecnológico
@@ -302,9 +339,10 @@ Recomenda-se que as interações com o parceiro sejam aproveitadas como oportuni
 
 ---
 
-### O03 — Melhoria na tomada de decisão gerencial  
+### O03 — Melhoria na tomada de decisão gerencial
+
 **Probabilidade:** 70%  
-**Impacto:** Alto  
+**Impacto:** Alto
 
 **Explicação:**  
 Verifica-se que, no modelo atual, as decisões são tomadas com base em dados que chegam com atraso ou que podem conter inconsistências. Observa-se que, com a digitalização, os gestores passam a dispor de acesso a informações mais atualizadas e fiáveis. A título de exemplo, constata-se que o controlo preciso do número de animais por categoria permite decisões mais assertivas sobre venda e maneio.
@@ -314,9 +352,10 @@ Considera-se que a disponibilização de dados estruturados requer o acompanhame
 
 ---
 
-### O04 — Geração de vantagem competitiva operacional  
+### O04 — Geração de vantagem competitiva operacional
+
 **Probabilidade:** 50%  
-**Impacto:** Alto  
+**Impacto:** Alto
 
 **Explicação:**  
 Constata-se que, num setor de elevada competitividade, a eficiência operacional constitui um fator determinante de diferenciação. Verifica-se que a utilização de dados fiáveis permite a redução de perdas, a melhoria do controlo do rebanho e a otimização da execução das atividades. Observa-se, ainda, que a identificação célere de falhas operacionais possibilita correções ágeis, evitando-se impactos de maior magnitude na produção.
@@ -342,8 +381,8 @@ Personas são, de forma resumida, representaçôes fictícia dos diferentes tipo
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-
 #### Informações:
+
 - Nome e sobrenome: João Pereira;
 - Idade: 40 anos [3];
 - Cargo: Gerente geral na BrPec Agropecuária S.A.;
@@ -352,28 +391,34 @@ Personas são, de forma resumida, representaçôes fictícia dos diferentes tipo
 - Escolaridade: Pós-graduado em veterinária.
 
 #### Motivações:
+
 Conseguir manter sua família e garantir educação para seus filhos. Além disso, deseja ser um funcionário de destaque para a BrPec.
 
 #### Interesses [3]:
+
 - Animais;
 - Tecnologias aplicadas ao agronegócio;
 - Gestão Logística e Operações;
 - Gestão de tempo.
 
 #### Desafios/Dores:
+
 - Dificuldade de visualizar todo o cenário em tempo real;
 - Comunicação lenta e fragmentada.
 
 #### Metas:
+
 - Ter maior controle sobre as atividades do campo;
 - Garantir que as rotinas do campo sejam executadas seguindo o planejamento.
 
 #### Necessidades:
+
 - Painel de acompanhamento do status das atividades;
 - Painel para a criação e gestão de tarefas calendarizadas para os Capatazes;
 - Infomações diariamente atualizadas.
 
 #### Habilidades [5]:
+
 - Planejamento de atividades operacionais;
 - Monitoramento e controle de metas de produção;
 - Elaboração de relatórios;
@@ -386,24 +431,25 @@ Conseguir manter sua família e garantir educação para seus filhos. Além diss
   <p><strong>Tabela 1</strong> — Familiaridade com Tecnologia (João Pereira)</p>
 </center>
 
-| Aspecto   | Nível / Situação    |
-|-------------------|---------------------------------|
-| Smartphone | Intermediate (DigComp) - uso ativo de WhatsApp, e-mail, chamadas de trabalho e outros   |
-| Aplicativos de gestão | Basic (DigComp) - uso limitado, sem experiência com sistemas ERP ou dashboards |
-| Planilhas e formulários | Intermediate (DigComp) - utiliza planilhas para acompanhar as atividades |
-| Sistemas web  | Basic (DigComp) - acessa portais e e-mail, sem uso de plataformas integradas  |
+| Aspecto                 | Nível / Situação                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------- |
+| Smartphone              | Intermediate (DigComp) - uso ativo de WhatsApp, e-mail, chamadas de trabalho e outros |
+| Aplicativos de gestão   | Basic (DigComp) - uso limitado, sem experiência com sistemas ERP ou dashboards        |
+| Planilhas e formulários | Intermediate (DigComp) - utiliza planilhas para acompanhar as atividades              |
+| Sistemas web            | Basic (DigComp) - acessa portais e e-mail, sem uso de plataformas integradas          |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 Informações extras:
+
 - Conectividade: Boa - trabalha em escritório com acesso estável à internet;
 - Meio de comunicação principal: WhatsApp, rádio e telefone com capatazes e coordenadores;
 - Adaptação a novas tecnologias: Moderada a alta - reconhece o valor das ferramentas digitais e está aberto a adotá-las [5];
 - Dispositivo disponível: Computador e celular.
 
-#### Notas e Justificativas
+#### Notas e Justificativas:
 
 **Idade e perfil do cargo:**
 A faixa etária de 40 anos foi baseada no perfil médio do Gerente de Produção e Operações Agropecuárias (CBO 1411-15), que aponta 40 anos como idade mais recorrente segundo o Portal Salário a partir de dados do CAGED. Além disso, outras informações sobre o perfil do foram baseadas a partir dessa fonte [3].
@@ -416,9 +462,9 @@ As habilidades listadas foram baseadas no perfil de profissionais que ocupam car
 
 #### Biografia:
 
-João Pereira tem 40 anos, trabalha na BrPec há 6 anos e é responsável por gerar as atividades calendarizadas  para os Capatazes, como por exemplo: "Segunda-feira, Gabriel deve verificar as cercas do retiro 3". Além disso, ele acompanha a evolução das atividades da fazenda. 
+João Pereira tem 40 anos, trabalha na BrPec há 6 anos e é responsável por gerar as atividades calendarizadas para os Capatazes, como por exemplo: "Segunda-feira, Gabriel deve verificar as cercas do retiro 3". Além disso, ele acompanha a evolução das atividades da fazenda.
 
-João começa seu dia sempre verificando mensagens dos capatazes e coordenadores, depois disso, distribui tarefas para os retiros consultando anotações e planilhas. Ao longo do dia, participa de diversas reuniões, mas sempre sofre com o atraso das informações, que o impedem de identificar e corrigir imprevistos rapidamente, além de impedir que ele garanta que as rotinas de campo sejam cumpridas conforme o planejado. No final do dia, consolida o que foi executado, mas se sente frustrado por  saber que poderia ter tomado decisões melhores se tivesse acesso a dados em tempo real.
+João começa seu dia sempre verificando mensagens dos capatazes e coordenadores, depois disso, distribui tarefas para os retiros consultando anotações e planilhas. Ao longo do dia, participa de diversas reuniões, mas sempre sofre com o atraso das informações, que o impedem de identificar e corrigir imprevistos rapidamente, além de impedir que ele garanta que as rotinas de campo sejam cumpridas conforme o planejado. No final do dia, consolida o que foi executado, mas se sente frustrado por saber que poderia ter tomado decisões melhores se tivesse acesso a dados em tempo real.
 
 "Demoro muito para saber o que está acontecendo nas terras, o que torna difícil gerar as atividades para os Capatazes e garantir que tudo está ocorrendo conforme planejado na fazenda. Isso, porque as informações que tenho nem sempre são as mais atualizadas."
 
@@ -433,6 +479,7 @@ João se comunica com supervisores e coordenadores frequentemente, mas essa comu
 </center>
 
 #### Informações:
+
 - Nome e sobrenome: Marcos Cesar Filho;
 - Idade: 35 anos;
 - Cargo: Coordenador na BrPec Agropecuária S.A.;
@@ -441,27 +488,33 @@ João se comunica com supervisores e coordenadores frequentemente, mas essa comu
 - Escolaridade: Pós-graduado em administração [6].
 
 #### Motivações:
+
 Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisão e confiabilidade dos dados que gerencia.
 
 #### Interesses:
+
 - Gestão de dados;
 - Pecuária;
 - Tecnologia aplicada ao campo.
 
 #### Desafios/Dores:
+
 - Demanda-se tempo para consolidação e transcrição em planilhas eletrônicas;
 - Registros de campo não são padronizados.
 
 #### Metas:
+
 - Conseguir validar rapidamente as movimentações dos capatazes;
 - Ter dados consolidados e confiáveis sem depender de transcrição manual.
 
 #### Necessidades:
+
 - Visualização das movimentações reportadas pelos Capatazes;
 - Visão consolidada das movimentações de todos os retiros sob sua responsabilidade;
 - Função para gerar e baixar planilhas referentes às movimentações.
 
 #### Habilidades:
+
 - Análise e validação de dados operacionais;
 - Gestão de planilhas e relatórios;
 - Comunicação entre campo e gestão;
@@ -473,24 +526,25 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
   <p><strong>Tabela 2</strong> — Familiaridade com Tecnologia (Marcos Cesar Filho)</p>
 </center>
 
-| Aspecto | Nível / Situação  |
-|---------------------------|-------------------------------|
-| Smartphone | Intermediate (DigComp) - uso ativo de WhatsApp, e-mail e câmera no trabalho   |
-| Aplicativos de gestão  | Basic (DigComp) - sem experiência com sistemas ERP ou plataformas operacionais  |
-| Planilhas e formulários   | Intermediate (DigComp) - usa Excel para consolidação manual de dados de campo |
-| Sistemas web  | Basic (DigComp) - acessa e-mail e portais simples, sem dashboards ou sistemas  |
+| Aspecto                 | Nível / Situação                                                               |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| Smartphone              | Intermediate (DigComp) - uso ativo de WhatsApp, e-mail e câmera no trabalho    |
+| Aplicativos de gestão   | Basic (DigComp) - sem experiência com sistemas ERP ou plataformas operacionais |
+| Planilhas e formulários | Intermediate (DigComp) - usa Excel para consolidação manual de dados de campo  |
+| Sistemas web            | Basic (DigComp) - acessa e-mail e portais simples, sem dashboards ou sistemas  |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 **Informações extras:**
+
 - Conectividade: Boa, trabalha em ambiente de escritório com acesso à internet;
 - Meio de comunicação principal: WhatsApp, e-mail e telefone;
 - Adaptação a novas tecnologias: Moderada - aberto a ferramentas que simplifiquem seu fluxo de trabalho;
 - Dispositivo disponível: Computador e celular.
 
-#### Notas e Justificativas
+#### Notas e Justificativas:
 
 **Escolaridade do gestor no agronegócio:**
 O Portal CNA Brasil aponta que, para cargos de coordenação técnica no agronegócio, o perfil mais buscado combina forte conhecimento técnico com boas noções de gestão, habilidade de comunicação e liderança [6].
@@ -514,7 +568,8 @@ Sua rotina começa organizando as boletas vindas dos capatazes. Assim, ele tenta
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-#### Informações: 
+#### Informações:
+
 - Nome e sobrenome: Gabriel Galdino;
 - Idade: 33 anos [7];
 - Cargo: Capataz na BrPec Agropecuária S.A. [8];
@@ -522,16 +577,19 @@ Sua rotina começa organizando as boletas vindas dos capatazes. Assim, ele tenta
 - Localização: Aquidauana (MS) – Atua em retiros na região do Pantanal;
 - Escolaridade: Ensino Fundamental completo;
 
-#### Motivações: 
+#### Motivações:
+
 Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer ser reconhecido como alguém de confiança no retiro.
 
 #### Metas:
+
 - Manter o retiro organizado e funcionando corretamente;
 - Garantir a execução das tarefas dentro do prazo;
 - Evitar retrabalho e falhas na comunicação;
 - Ter maior controle sobre as atividades realizadas no dia.
 
 #### Necessidades:
+
 - Sistema fácil de usar sem conhecimento técnico prévio, por ter maior dificuldade com tecnologias [9];
 - Registro rápido de tarefas e ocorrências;
 - Visualização clara das atividades do dia;
@@ -539,18 +597,21 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 - Padronização das informações registradas.
 
 #### Desafios/dores:
+
 - Baixa familiaridade com tecnologias digitais [9];
 - Dependência de registros manuais e memória;
 - Dificuldade para acompanhar tarefas em tempo real;
 - Dificuldade de comunicação com níveis superiores;
 
 #### Interesses:
+
 - Animais e agricultura;
 - Soluções que reduzam esforço operacional;
 - Organização das tarefas no campo;
 - Comunicação direta e eficiente.
 
 #### Habilidades:
+
 - Administração de mão de obra rural;
 - Controle de qualidade e produtividade do rebanho;
 - Planejamento e supervisão de atividades no campo;
@@ -559,30 +620,31 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 - Comunicação direta com equipe de vaqueiros;
 - Resiliência devido aos diversos problemas que ocorrem.
 
-#### Familiaridade com Tecnologia [4]
+#### Familiaridade com Tecnologia [4]:
 
 <center>
   <p><strong>Tabela 3</strong> — Familiaridade com Tecnologia (Gabriel Galdino)</p>
 </center>
 
-| Aspecto            | Nível / Situação       |
-|---------------------------|-----------------------------------------------------|
-| Smartphone      | Basic (DigComp) - uso restrito a ligações e WhatsApp       |
-| Aplicativos de gestão   | Abaixo do Basic - sem experiência com apps de controle de tarefas ou relatórios |
+| Aspecto                  | Nível / Situação                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------------- |
+| Smartphone               | Basic (DigComp) - uso restrito a ligações e WhatsApp                                  |
+| Aplicativos de gestão    | Abaixo do Basic - sem experiência com apps de controle de tarefas ou relatórios       |
 | Planilhas e formulários  | Abaixo do Basic - registro em planilhas é feito por outros a partir de suas anotações |
-| Sistemas web ou digitais  | Abaixo do Basic - boletas são físicas e comunicação é verbal |
+| Sistemas web ou digitais | Abaixo do Basic - boletas são físicas e comunicação é verbal                          |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 Informações extras:
+
 - Conectividade no campo: Instável ou ausente - sinal de internet limitado ou inexistente nos retiros;
 - Meio de comunicação principal: Rádio, comunicação verbal e anotações;
 - Adaptação a novas tecnologias: Baixa - resistência natural e por pouco contato com dispositivos ao longo da vida [9];
 - Dispositivo disponível: Celular.
 
-#### Notas e Justificativas: 
+#### Notas e Justificativas:
 
 **Idade e perfil salarial do capataz:**  
 A faixa etária de 33 anos foi baseada no perfil médio de trabalhadores que ocupam o cargo de capataz na pecuária, conforme levantamento disponível no site consultado [7].
@@ -604,20 +666,19 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
 
 "Quando o bicho adoece ou a cerca arrebenta, não tem tempo de procurar papel, tem que resolver na hora. O que não ficou na cabeça, ficou perdido."
 
-
 ## 2.3. User Stories (sprints 1 a 5)
 
 <center>
   <p><strong>Quadro 1</strong> — User Story 01</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US01 |
-| **Persona** | João Pereira (Gerente Geral) |
-| **User Story** | Como gerente geral, posso criar tarefas e atribuí-las a um retiro específico para organizar a rotina diária da equipe de campo e garantir que o planejamento seja executado corretamente |
-| **Critério de Aceite 1** | CR1: Dado que João acessa o sistema, quando cria uma tarefa e seleciona um retiro, então a tarefa deve ser salva corretamente vinculada ao retiro |
-| **Critério de Aceite 2** | CR2: Dado que a tarefa foi criada, quando o sistema sincronizar, então ela deve ficar disponível para os capatazes responsáveis pelo retiro |
+| Campo                    | Descrição                                                                                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US01                                                                                                                                                                                     |
+| **Persona**              | João Pereira (Gerente Geral)                                                                                                                                                             |
+| **User Story**           | Como gerente geral, posso criar tarefas e atribuí-las a um retiro específico para organizar a rotina diária da equipe de campo e garantir que o planejamento seja executado corretamente |
+| **Critério de Aceite 1** | CR1: Dado que João acessa o sistema, quando cria uma tarefa e seleciona um retiro, então a tarefa deve ser salva corretamente vinculada ao retiro                                        |
+| **Critério de Aceite 2** | CR2: Dado que a tarefa foi criada, quando o sistema sincronizar, então ela deve ficar disponível para os capatazes responsáveis pelo retiro                                              |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -641,14 +702,14 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 2</strong> — User Story 02</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US02 |
-| **Persona** | Gabriel Galdino (Capataz) |
-| **User Story** | Como capataz, posso visualizar minha lista de tarefas do dia offline para saber o que precisa ser executado, mesmo longe da sede, de forma simples e clara |
-| **Critério de Aceite 1** | CR1: Dado que as tarefas foram previamente sincronizadas, quando Gabriel estiver sem internet, então deve conseguir visualizar a lista de tarefas do dia |
-| **Critério de Aceite 2** | CR2: Dado que não há tarefas sincronizadas, quando acessar offline, então o sistema deve exibir uma mensagem simples informando ausência de tarefas |
-| **Critério de Aceite 3** | CR3: Dado que Gabriel acessa as tarefas, quando exibidas, então devem estar organizadas de forma simples e de fácil entendimento |
+| Campo                    | Descrição                                                                                                                                                  |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US02                                                                                                                                                       |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                  |
+| **User Story**           | Como capataz, posso visualizar minha lista de tarefas do dia offline para saber o que precisa ser executado, mesmo longe da sede, de forma simples e clara |
+| **Critério de Aceite 1** | CR1: Dado que as tarefas foram previamente sincronizadas, quando Gabriel estiver sem internet, então deve conseguir visualizar a lista de tarefas do dia   |
+| **Critério de Aceite 2** | CR2: Dado que não há tarefas sincronizadas, quando acessar offline, então o sistema deve exibir uma mensagem simples informando ausência de tarefas        |
+| **Critério de Aceite 3** | CR3: Dado que Gabriel acessa as tarefas, quando exibidas, então devem estar organizadas de forma simples e de fácil entendimento                           |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -674,13 +735,13 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 3</strong> — User Story 03</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US03 |
-| **Persona** | Gabriel Galdino (Capataz) |
-| **User Story** | Como capataz, posso marcar uma tarefa como concluída para informar o gerente sobre o avanço do trabalho de forma simples e rápida |
-| **Critério de Aceite 1** | CR1: Dado que Gabriel visualiza uma tarefa, quando marcar como concluída, então o status da tarefa deve ser atualizado no sistema |
-| **Critério de Aceite 2** | CR2: Dado que a tarefa foi marcada como concluída offline, quando o dispositivo sincronizar, então o status deve ser atualizado para o gerente |
+| Campo                    | Descrição                                                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US03                                                                                                                                                |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                           |
+| **User Story**           | Como capataz, posso marcar uma tarefa como concluída para informar o gerente sobre o avanço do trabalho de forma simples e rápida                   |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel visualiza uma tarefa, quando marcar como concluída, então o status da tarefa deve ser atualizado no sistema                   |
+| **Critério de Aceite 2** | CR2: Dado que a tarefa foi marcada como concluída offline, quando o dispositivo sincronizar, então o status deve ser atualizado para o gerente      |
 | **Critério de Aceite 3** | CR3: Dado que Gabriel interage com a tarefa, quando marcar como concluída, então a ação deve ser simples, com botão visível e de fácil entendimento |
 
 <center>
@@ -707,14 +768,14 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 4</strong> — User Story 04</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US04 |
-| **Persona** | Gabriel Galdino (Capataz) |
-| **User Story** | Como capataz, posso anexar fotos na conclusão de uma tarefa para comprovar visualmente o serviço realizado, mesmo em ambiente com conexão limitada |
-| **Critério de Aceite 1** | CR1: Dado que Gabriel conclui uma tarefa, quando anexar uma foto, então ela deve ser associada corretamente à tarefa |
-| **Critério de Aceite 2** | CR2: Dado que a foto foi registrada offline, quando o dispositivo sincronizar, então a imagem deve ser enviada ao sistema |
-| **Critério de Aceite 3** | CR3: Dado que Gabriel utiliza a funcionalidade, quando anexar a foto, então o processo deve ser simples e intuitivo |
+| Campo                    | Descrição                                                                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US04                                                                                                                                               |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                          |
+| **User Story**           | Como capataz, posso anexar fotos na conclusão de uma tarefa para comprovar visualmente o serviço realizado, mesmo em ambiente com conexão limitada |
+| **Critério de Aceite 1** | CR1: Dado que Gabriel conclui uma tarefa, quando anexar uma foto, então ela deve ser associada corretamente à tarefa                               |
+| **Critério de Aceite 2** | CR2: Dado que a foto foi registrada offline, quando o dispositivo sincronizar, então a imagem deve ser enviada ao sistema                          |
+| **Critério de Aceite 3** | CR3: Dado que Gabriel utiliza a funcionalidade, quando anexar a foto, então o processo deve ser simples e intuitivo                                |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -740,14 +801,14 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 5</strong> — User Story 05</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US05 |
-| **Persona** | Gabriel Galdino (Capataz) |
-| **User Story** | Como capataz, posso gravar e anexar um áudio curto à tarefa, para explicar detalhes complexos sem precisar digitar textos longos |
+| Campo                    | Descrição                                                                                                                                    |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US05                                                                                                                                         |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                    |
+| **User Story**           | Como capataz, posso gravar e anexar um áudio curto à tarefa, para explicar detalhes complexos sem precisar digitar textos longos             |
 | **Critério de Aceite 1** | CR1: Dado que Gabriel está visualizando uma tarefa, quando clicar na opção de gravar áudio, então o sistema deve permitir iniciar a gravação |
-| **Critério de Aceite 2** | CR2: Dado que a gravação foi finalizada, quando salvar, então o áudio deve ser anexado corretamente à tarefa |
-| **Critério de Aceite 3** | CR3: Dado que o áudio foi anexado, quando o supervisor acessar a tarefa, então deve conseguir reproduzir o áudio |
+| **Critério de Aceite 2** | CR2: Dado que a gravação foi finalizada, quando salvar, então o áudio deve ser anexado corretamente à tarefa                                 |
+| **Critério de Aceite 3** | CR3: Dado que o áudio foi anexado, quando o supervisor acessar a tarefa, então deve conseguir reproduzir o áudio                             |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -773,15 +834,15 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 6</strong> — User Story 06</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US06 |
-| **Persona** | Gabriel Galdino (Capataz) |
-| **User Story** | Como capataz, posso criar um alerta de infraestrutura (ticket), para avisar a gerência sobre cercas ou bebedouros quebrados |
+| Campo                    | Descrição                                                                                                                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US06                                                                                                                                   |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                              |
+| **User Story**           | Como capataz, posso criar um alerta de infraestrutura (ticket), para avisar a gerência sobre cercas ou bebedouros quebrados            |
 | **Critério de Aceite 1** | CR1: Dado que Gabriel deseja registrar um problema, quando acessar a opção de novo alerta, então deve visualizar um formulário simples |
-| **Critério de Aceite 2** | CR2: Dado que o alerta está sendo criado, quando preencher os dados, então deve ser obrigatório informar o tipo de problema |
-| **Critério de Aceite 3** | CR3: Dado que o alerta é enviado, então o sistema deve registrar automaticamente a localização (GPS) |
-| **Critério de Aceite 4** | CR4: Dado que o alerta foi criado, quando o supervisor acessar o sistema, então deve visualizar o novo chamado |
+| **Critério de Aceite 2** | CR2: Dado que o alerta está sendo criado, quando preencher os dados, então deve ser obrigatório informar o tipo de problema            |
+| **Critério de Aceite 3** | CR3: Dado que o alerta é enviado, então o sistema deve registrar automaticamente a localização (GPS)                                   |
+| **Critério de Aceite 4** | CR4: Dado que o alerta foi criado, quando o supervisor acessar o sistema, então deve visualizar o novo chamado                         |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -793,14 +854,14 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 7</strong> — User Story 07</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US07 |
-| **Persona** | João Pereira (Gerente) |
-| **User Story** | Como gerente, posso visualizar um painel com o status de todas as tarefas e alertas em aberto, para priorizar a equipe de manutenção e garantir que as rotinas de campo sejam executadas conforme o planejamento |
+| Campo                    | Descrição                                                                                                                                                                                                                                                  |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US07                                                                                                                                                                                                                                                       |
+| **Persona**              | João Pereira (Gerente)                                                                                                                                                                                                                                     |
+| **User Story**           | Como gerente, posso visualizar um painel com o status de todas as tarefas e alertas em aberto, para priorizar a equipe de manutenção e garantir que as rotinas de campo sejam executadas conforme o planejamento                                           |
 | **Critério de Aceite 1** | CR1: Dado que João acessa o painel de acompanhamento, quando a tela é carregada, então são exibidas todas as tarefas atribuídas aos capatazes com seus respectivos status (pendente, em andamento, concluída), agrupadas por retiro ou capataz responsável |
-| **Critério de Aceite 2** | CR2: Dado que um ou mais capatazes enviaram alertas ao gerente, quando João visualiza o painel, então os alertas aparecem em seção destacada, com identificação do capataz, do retiro e da data/hora de envio, ordenados do mais recente ao mais antigo |
-| **Critério de Aceite 3** | CR3: Dado que um usuário com perfil diferente de gerente tenta acessar o painel de acompanhamento, quando a requisição é feita, então o sistema nega o acesso e redireciona para a interface correspondente ao seu perfil |
+| **Critério de Aceite 2** | CR2: Dado que um ou mais capatazes enviaram alertas ao gerente, quando João visualiza o painel, então os alertas aparecem em seção destacada, com identificação do capataz, do retiro e da data/hora de envio, ordenados do mais recente ao mais antigo    |
+| **Critério de Aceite 3** | CR3: Dado que um usuário com perfil diferente de gerente tenta acessar o painel de acompanhamento, quando a requisição é feita, então o sistema nega o acesso e redireciona para a interface correspondente ao seu perfil                                  |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -812,15 +873,15 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 8</strong> — User Story 08</p>
 </center>
 
-| Campo | Descrição |
-| ----- | ----- |
-| **Identificação** | US08 |
-| **Persona** | Gabriel Galdino (Capataz) |
-| **User Story** | Como capataz, posso registrar o nascimento de bezerros de forma offline para manter o rebanho atualizado sem usar boletas de papel |
+| Campo                    | Descrição                                                                                                                                                                                                                                                                                                 |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US08                                                                                                                                                                                                                                                                                                      |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                                                                                                                                                                 |
+| **User Story**           | Como capataz, posso registrar o nascimento de bezerros de forma offline para manter o rebanho atualizado sem usar boletas de papel                                                                                                                                                                        |
 | **Critério de Aceite 1** | CR1: Dado que Gabriel está no pasto sem acesso à internet, quando ele acessa o formulário de registro de nascimento e preenche os campos obrigatórios (data, retiro, categoria e quantidade), então o registro é salvo localmente no dispositivo com confirmação visual de que foi armazenado com sucesso |
-| **Critério de Aceite 2** | CR2: Dado que Gabriel registrou um ou mais nascimentos enquanto estava offline, quando o dispositivo se conecta à internet, então os registros são sincronizados automaticamente com o servidor e Gabriel recebe uma confirmação visual de que os dados foram enviados |
-| **Critério de Aceite 3** | CR3: Dado que Gabriel tenta salvar um registro de nascimento sem preencher todos os campos obrigatórios, quando ele tenta confirmar o formulário, então o sistema exibe uma mensagem indicando quais campos estão incompletos e não permite o salvamento do registro |
-| **Critérios INVEST** | Não se aplica (US08 é de prioridade secundária). |
+| **Critério de Aceite 2** | CR2: Dado que Gabriel registrou um ou mais nascimentos enquanto estava offline, quando o dispositivo se conecta à internet, então os registros são sincronizados automaticamente com o servidor e Gabriel recebe uma confirmação visual de que os dados foram enviados                                    |
+| **Critério de Aceite 3** | CR3: Dado que Gabriel tenta salvar um registro de nascimento sem preencher todos os campos obrigatórios, quando ele tenta confirmar o formulário, então o sistema exibe uma mensagem indicando quais campos estão incompletos e não permite o salvamento do registro                                      |
+| **Critérios INVEST**     | Não se aplica (US08 é de prioridade secundária).                                                                                                                                                                                                                                                          |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -832,29 +893,31 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
   <p><strong>Quadro 9</strong> — User Story 09</p>
 </center>
 
-| Campo                    | Descrição                                                                                                                                                                                                                                                   |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Identificação**        | US09                                                                                                                                                                                                                                                        |
-| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                                                                                                                  |
-| **User Story**           | Como capataz, posso registrar a morte de um animal offline para reportar rapidamente a baixa ao coordenador, garantindo que nenhuma informação se perca mesmo sem conexão disponível no campo.                                                             |
-| **Critério de Aceite 1** | CR1: Dado que Gabriel está sem conexão Starlink no momento do óbito, quando ele preenche os campos obrigatórios do formulário de morte (identificação do animal, categoria, causa e data) e confirma, então o sistema deve salvar o registro localmente no dispositivo e exibir a mensagem "Registro salvo. Será enviado quando houver conexão" |
-|**Critério de Aceite 2:** | Dado que o formulário exige evidências sanitárias, quando o usuário realizar o registro de óbito, então o sistema deve requerer a captura e a anexação obrigatória de uma fotografia georreferenciada da carcaça do animal.|
-|**Critério de Aceite 3:** | Dado que o registro foi persistido localmente, quando a conectividade com a rede de satélite for restabelecida nos horários de cobertura, então a sincronização com o servidor central deve ser executada de forma assíncrona, e o status do relatório deve ser alterado para "Sincronizado". 
-| **Critérios INVEST** | Não se aplica (US09 é de prioridade secundária). |
+| Campo                     | Descrição                                                                                                                                                                                                                                                                                                                                       |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**         | US09                                                                                                                                                                                                                                                                                                                                            |
+| **Persona**               | Gabriel Galdino (Capataz)                                                                                                                                                                                                                                                                                                                       |
+| **User Story**            | Como capataz, posso registrar a morte de um animal offline para reportar rapidamente a baixa ao coordenador, garantindo que nenhuma informação se perca mesmo sem conexão disponível no campo.                                                                                                                                                  |
+| **Critério de Aceite 1**  | CR1: Dado que Gabriel está sem conexão Starlink no momento do óbito, quando ele preenche os campos obrigatórios do formulário de morte (identificação do animal, categoria, causa e data) e confirma, então o sistema deve salvar o registro localmente no dispositivo e exibir a mensagem "Registro salvo. Será enviado quando houver conexão" |
+| **Critério de Aceite 2:** | Dado que o formulário exige evidências sanitárias, quando o usuário realizar o registro de óbito, então o sistema deve requerer a captura e a anexação obrigatória de uma fotografia georreferenciada da carcaça do animal.                                                                                                                     |
+| **Critério de Aceite 3:** | Dado que o registro foi persistido localmente, quando a conectividade com a rede de satélite for restabelecida nos horários de cobertura, então a sincronização com o servidor central deve ser executada de forma assíncrona, e o status do relatório deve ser alterado para "Sincronizado".                                                   |
+| **Critérios INVEST**      | Não se aplica (US09 é de prioridade secundária).                                                                                                                                                                                                                                                                                                |
+
 ---
+
 <center>
   <p><strong>Quadro 10</strong> — User Story 10</p>
 </center>
 
-| Campo | Descrição |
-|-----------|-----------|
-| **Identificação** | US10 |
-| **Persona** | Gabriel Galdino (Capataz) |
-| **User Story** | Como capataz, posso (e devo) anexar a foto do animal no registro de óbito para cumprir as regras de auditoria e controle sanitário da fazenda. |
-| **Critério de Aceite 1** | CR1: Dado que o capataz está registrando um óbito, quando preencher as informações do registro, então o sistema deve exigir o anexo de pelo menos uma foto do animal antes de finalizar o cadastro. |
-| **Critério de Aceite 2** | CR2: Dado que o capataz esteja sem conexão com a internet, quando anexar a foto ao registro de óbito, então o sistema deve armazenar a imagem localmente para sincronização posterior. |
+| Campo                    | Descrição                                                                                                                                                                                                      |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Identificação**        | US10                                                                                                                                                                                                           |
+| **Persona**              | Gabriel Galdino (Capataz)                                                                                                                                                                                      |
+| **User Story**           | Como capataz, posso (e devo) anexar a foto do animal no registro de óbito para cumprir as regras de auditoria e controle sanitário da fazenda.                                                                 |
+| **Critério de Aceite 1** | CR1: Dado que o capataz está registrando um óbito, quando preencher as informações do registro, então o sistema deve exigir o anexo de pelo menos uma foto do animal antes de finalizar o cadastro.            |
+| **Critério de Aceite 2** | CR2: Dado que o capataz esteja sem conexão com a internet, quando anexar a foto ao registro de óbito, então o sistema deve armazenar a imagem localmente para sincronização posterior.                         |
 | **Critério de Aceite 3** | CR3: Dado que o registro de óbito foi sincronizado com sucesso, quando o gerente ou coordenador acessar o sistema, então a foto anexada deve estar vinculada ao respectivo registro para consulta e auditoria. |
-| **Critérios INVEST** | Não se aplica (US10 é de prioridade secundária). |
+| **Critérios INVEST**     | Não se aplica (US10 é de prioridade secundária).                                                                                                                                                               |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -870,11 +933,11 @@ O sistema a ser desenvolvido abrange a modernização do fluxo de informações 
 
 **Atores e Responsabilidades**
 
-*   **Capatazes:** A aplicação é utilizada como ferramenta diária no campo, operando de modo offline. As tarefas designadas são visualizadas e o status é reportado mediante o envio de evidências (fotos, áudios e textos). Os eventos zootécnicos do retiro são registrados e alertas de infraestrutura são enviados aos gerentes.
+- **Capatazes:** A aplicação é utilizada como ferramenta diária no campo, operando de modo offline. As tarefas designadas são visualizadas e o status é reportado mediante o envio de evidências (fotos, áudios e textos). Os eventos zootécnicos do retiro são registrados e alertas de infraestrutura são enviados aos gerentes.
 
-*   **Gerentes:** As atividades calendarizadas são criadas, editadas, deletadas e designadas aos capatazes. A evolução e o status das tarefas em campo, bem como os alertas reportados, são monitorados por meio de um painel de acompanhamento.
+- **Gerentes:** As atividades calendarizadas são criadas, editadas, deletadas e designadas aos capatazes. A evolução e o status das tarefas em campo, bem como os alertas reportados, são monitorados por meio de um painel de acompanhamento.
 
-*   **Coordenadores:** As informações e movimentações enviadas pelos capatazes são visualizadas e validadas. Os dados consolidados são exportados em formato de planilha (Excel/CSV) para a atualização dos controles centrais da empresa, eliminando a necessidade de redigitação manual.
+- **Coordenadores:** As informações e movimentações enviadas pelos capatazes são visualizadas e validadas. Os dados consolidados são exportados em formato de planilha (Excel/CSV) para a atualização dos controles centrais da empresa, eliminando a necessidade de redigitação manual.
 
 ### 3.1.1. Requisitos Funcionais (sprint 1, refinar até sprint 5)
 
@@ -884,24 +947,23 @@ Os Requisitos Funcionais (RF) determinam a competência computacional e os servi
   <p><strong>Tabela 4</strong> — Requisitos Funcionais</p>
 </center>
 
-| ID    | Descrição                                                                                                                                                  | Prioridade | Status    |
-| ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
-| RF001 | O sistema deve permitir que o gerente crie tarefas e as associe a um retiro específico                                                                     | Alta       | Planejado |
-| RF002 | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão com a internet                                                         | Alta       | Planejado |
-| RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline                                                                           | Alta       | Planejado |
-| RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline                                                                       | Média      | Planejado |
-| RF005 | O sistema deve permitir que o capataz grave um áudio curto e o anexe a uma tarefa                                                                          | Média      | Planejado |
-| RF006 | O sistema deve permitir que o capataz crie alertas de infraestrutura (ticket), informando: tipo de problema, retirada e localização                        | Média      | Planejado |
-| RF007 | O sistema deve exibir ao gerente um painel com o status de todas as tarefas (pendente, em andamento, concluída) e alertas em aberto, agrupados por retiro. | Média      | Planejado |
-| RF008 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade                 | Média      | Planejado |
-| RF009 | O sistema deve permitir que o capataz preencha e confirme o formulário de registro de morte de animal mesmo sem conexão com a internet, salvando os dados localmente no dispositivo | Alta    | Planejado    |
-| RF010 | O sistema deve detectar automaticamente o restabelecimento da conexão com a rede e iniciar a transmissão dos registros locais pendentes para o servidor remoto, sem exigir nenhuma ação manual do capataz | Alta    | Planejado    |
-| RF011 | O sistema deve notificar o capataz com uma mensagem de confirmação após a sincronização bem-sucedida dos dados com o servidor ("Registro sincronizado com sucesso") | Média   | Planejado    |
-| RF012 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso | Alta  | Planejado    |
-| RF013 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta  | Planejado    |
-| RF014 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento | Média | Planejado    |
-| RF015 | O sistema deve permitir que o coordenador exporte os dados consolidados das movimentações zootécnicas e do status operacional em arquivos formatados como planilha eletrônica (Excel/CSV) | Alta | Planejado |
-
+| ID    | Descrição                                                                                                                                                                                                                                                             | Prioridade | Status    |
+| ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
+| RF001 | O sistema deve permitir que o gerente crie tarefas e as associe a um retiro específico                                                                                                                                                                                | Alta       | Planejado |
+| RF002 | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão com a internet                                                                                                                                                                    | Alta       | Planejado |
+| RF003 | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline                                                                                                                                                                                      | Alta       | Planejado |
+| RF004 | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline                                                                                                                                                                                  | Média      | Planejado |
+| RF005 | O sistema deve permitir que o capataz grave um áudio curto e o anexe a uma tarefa                                                                                                                                                                                     | Média      | Planejado |
+| RF006 | O sistema deve permitir que o capataz crie alertas de infraestrutura (ticket), informando: tipo de problema, retirada e localização                                                                                                                                   | Média      | Planejado |
+| RF007 | O sistema deve exibir ao gerente um painel com o status de todas as tarefas (pendente, em andamento, concluída) e alertas em aberto, agrupados por retiro.                                                                                                            | Média      | Planejado |
+| RF008 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade                                                                                                                            | Média      | Planejado |
+| RF009 | O sistema deve permitir que o capataz preencha e confirme o formulário de registro de morte de animal mesmo sem conexão com a internet, salvando os dados localmente no dispositivo                                                                                   | Alta       | Planejado |
+| RF010 | O sistema deve detectar automaticamente o restabelecimento da conexão com a rede e iniciar a transmissão dos registros locais pendentes para o servidor remoto, sem exigir nenhuma ação manual do capataz                                                             | Alta       | Planejado |
+| RF011 | O sistema deve notificar o capataz com uma mensagem de confirmação após a sincronização bem-sucedida dos dados com o servidor ("Registro sincronizado com sucesso")                                                                                                   | Média      | Planejado |
+| RF012 | O sistema deve manter os registros com falha de envio salvos localmente e tentar reenvio automático a cada nova conexão disponível, até que a sincronização seja concluída com sucesso                                                                                | Alta       | Planejado |
+| RF013 | O sistema deve validar o preenchimento dos campos obrigatórios do formulário de óbito (identificação do animal, categoria, causa da morte e data) antes de permitir o salvamento local, bloqueando o registro incompleto e sinalizando visualmente os campos faltante | Alta       | Planejado |
+| RF014 | Após a sincronização, o sistema deve disponibilizar automaticamente o registro de óbito no painel do coordenador, vinculado ao retiro do capataz que realizou o lançamento                                                                                            | Média      | Planejado |
+| RF015 | O sistema deve permitir que o coordenador exporte os dados consolidados das movimentações zootécnicas e do status operacional em arquivos formatados como planilha eletrônica (Excel/CSV)                                                                             | Alta       | Planejado |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -915,36 +977,36 @@ As Regras de Negócio (RN) balizam as lógicas limitantes, condições contingen
   <p><strong>Tabela 5</strong> — Regras de Negócio</p>
 </center>
 
-| ID   | Descrição | RF associado |
-|------|------|------|
-| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro | RF001 |
-| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz | RF002 |
-| RN03 | As tarefas devem ser armazenadas localmente após sincronização | RF003 |
-| RN04 | A mensagem exibida deve utilizar linguagem simples e direta | RF004 |
-| RN05 | Apenas tarefas associadas ao retiro do capataz devem ser exibidas para ele | RF002 |
-| RN06 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas | RF002 |
-| RN07 | As tarefas do dia devem ficar disponíveis offline quando houver sincronização prévia | RF002 |
-| RN08 | A marcação de conclusão feita offline deve ser armazenada localmente até a próxima sincronização | RF003 |
-| RN09 | Uma tarefa concluída deve ter seu status atualizado para o gerente após sincronização | RF003 |
-| RN10 | As fotos anexadas devem estar vinculadas à tarefa correspondente | RF004 |
-| RN11 | Fotos registradas offline devem ser enviadas ao sistema quando houver conexão | RF004 |
-| RN12 | As telas destinadas ao capataz devem usar linguagem simples, botões visíveis e poucos passos de interação | RF002, RF003, RF004 |
-| RN13 | O áudio anexado pelo capataz deve estar vinculado a uma tarefa existente | RF005 |
-| RN14 | O capataz deve conseguir gravar um áudio curto para complementar a conclusão ou atualização de uma tarefa | RF005 |
-| RN15 | O áudio gravado sem conexão com a internet deve ser armazenado localmente até a próxima sincronização | RF005 |
-| RN16 | O áudio registrado offline deve ser enviado ao sistema quando houver conexão disponível | RF005 |
-| RN17 | O sistema deve exibir uma mensagem simples de confirmação após o áudio ser salvo ou sincronizado | RF005 |
-| RN18 | O áudio anexado deve ficar disponível junto aos detalhes da tarefa correspondente | RF005 |
-| RN19 | O sistema deve capturar automaticamente a localização (GPS) quando o capataz criar um alerta | RF006 |
-| RN20 | O alerta deve ser enviado imediatamente ao servidor caso haja conexão com a internet | RF006 |
-| RN21 | Se não houver conexão, o alerta deve ser armazenado localmente e enviado na próxima sincronização | RF006 |
-| RN22 | O sistema deve exibir uma mensagem de confirmação após o envio bem-sucedido do alerta | RF006 |
-| RN23 | Se o alerta não puder ser enviado devido à falta de conexão, o sistema deve informar ao capataz que o registro foi salvo localmente e será enviado posteriormente | RF006 |
-| RN24 | As coordenadas geográficas (GPS) anexadas ao alerta de infraestrutura devem ser imutáveis e não editáveis pelo usuário, visando garantir a precisão do georreferenciamento | RF006 |
-| RN25 | O sistema deve registrar a data e hora exatas da criação do alerta | RF006 |
-| RN26 | O sistema deve associar o alerta ao retiro selecionado pelo capataz | RF006 |
-| RN27 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade | RF008 |
-| RN28 | A exportação de relatórios pelo coordenador deve refletir estritamente os dados que já foram submetidos a validação estrutural no banco de dados central | RF015 |
+| ID   | Descrição                                                                                                                                                                  | RF associado        |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
+| RN01 | Toda tarefa deve estar obrigatoriamente vinculada a um único retiro                                                                                                        | RF001               |
+| RN02 | Apenas tarefas do dia atual devem ser exibidas ao capataz                                                                                                                  | RF002               |
+| RN03 | As tarefas devem ser armazenadas localmente após sincronização                                                                                                             | RF003               |
+| RN04 | A mensagem exibida deve utilizar linguagem simples e direta                                                                                                                | RF004               |
+| RN05 | Apenas tarefas associadas ao retiro do capataz devem ser exibidas para ele                                                                                                 | RF002               |
+| RN06 | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                                                                                   | RF002               |
+| RN07 | As tarefas do dia devem ficar disponíveis offline quando houver sincronização prévia                                                                                       | RF002               |
+| RN08 | A marcação de conclusão feita offline deve ser armazenada localmente até a próxima sincronização                                                                           | RF003               |
+| RN09 | Uma tarefa concluída deve ter seu status atualizado para o gerente após sincronização                                                                                      | RF003               |
+| RN10 | As fotos anexadas devem estar vinculadas à tarefa correspondente                                                                                                           | RF004               |
+| RN11 | Fotos registradas offline devem ser enviadas ao sistema quando houver conexão                                                                                              | RF004               |
+| RN12 | As telas destinadas ao capataz devem usar linguagem simples, botões visíveis e poucos passos de interação                                                                  | RF002, RF003, RF004 |
+| RN13 | O áudio anexado pelo capataz deve estar vinculado a uma tarefa existente                                                                                                   | RF005               |
+| RN14 | O capataz deve conseguir gravar um áudio curto para complementar a conclusão ou atualização de uma tarefa                                                                  | RF005               |
+| RN15 | O áudio gravado sem conexão com a internet deve ser armazenado localmente até a próxima sincronização                                                                      | RF005               |
+| RN16 | O áudio registrado offline deve ser enviado ao sistema quando houver conexão disponível                                                                                    | RF005               |
+| RN17 | O sistema deve exibir uma mensagem simples de confirmação após o áudio ser salvo ou sincronizado                                                                           | RF005               |
+| RN18 | O áudio anexado deve ficar disponível junto aos detalhes da tarefa correspondente                                                                                          | RF005               |
+| RN19 | O sistema deve capturar automaticamente a localização (GPS) quando o capataz criar um alerta                                                                               | RF006               |
+| RN20 | O alerta deve ser enviado imediatamente ao servidor caso haja conexão com a internet                                                                                       | RF006               |
+| RN21 | Se não houver conexão, o alerta deve ser armazenado localmente e enviado na próxima sincronização                                                                          | RF006               |
+| RN22 | O sistema deve exibir uma mensagem de confirmação após o envio bem-sucedido do alerta                                                                                      | RF006               |
+| RN23 | Se o alerta não puder ser enviado devido à falta de conexão, o sistema deve informar ao capataz que o registro foi salvo localmente e será enviado posteriormente          | RF006               |
+| RN24 | As coordenadas geográficas (GPS) anexadas ao alerta de infraestrutura devem ser imutáveis e não editáveis pelo usuário, visando garantir a precisão do georreferenciamento | RF006               |
+| RN25 | O sistema deve registrar a data e hora exatas da criação do alerta                                                                                                         | RF006               |
+| RN26 | O sistema deve associar o alerta ao retiro selecionado pelo capataz                                                                                                        | RF006               |
+| RN27 | O sistema deve permitir que o capataz registre o nascimento de bezerros de forma offline, informando: data, retiro, categoria e quantidade                                 | RF008               |
+| RN28 | A exportação de relatórios pelo coordenador deve refletir estritamente os dados que já foram submetidos a validação estrutural no banco de dados central                   | RF015               |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -960,16 +1022,16 @@ No contexto do nosso projeto para a BrPec, esses requisitos são fundamentais, p
   <p><strong>Tabela 6</strong> — Requisitos Não Funcionais</p>
 </center>
 
-| Eixo | Requisito | Métrica / Critério | Como atendido |
-|---|---|---|---|
-| USAB — Usabilidade | Facilidade de Operação em Campo | O Capataz deve registrar uma movimentação (nascimento/morte) em no máximo 4 cliques/toques. | Interface com botões grandes (&gt;44px), alto contraste para leitura sob sol e fluxo de formulário simplificado. |
-| CONF — Confiabilidade | Integridade da Sincronização | 0% de perda de dados em falhas de conexão durante o envio de registros para o servidor. | Uso de Service Workers e persistência local no SQLite/IndexedDB antes de tentar o upload (estratégia Offline-first). |
-| DES — Desempenho | Tempo de Resposta Local | Latência p95 &lt; 200 ms para salvar registros no banco de dados local do dispositivo. | Processamento assíncrono no JavaScript e banco de dados SQLite otimizado com indexação por ID de animal. |
-| SUP — Suportabilidade (Manutenibilidade) | Facilidade de Atualização | O tempo médio de reparo (MTTR) de um bug crítico na lógica de negócio não deve exceder 8 horas. | Código modular em Node.js com separação clara entre rotas de API e controladores de persistência. |
-| SEG — Segurança | Rastreabilidade de Ações | 100% dos registros devem conter metadados de autoria (ID do perfil) e timestamp não editável. | Injeção automática de log de auditoria no backend para cada transação enviada ao banco de dados. |
-| CAP — Capacidade (Adequação Funcional) | Volume de Dados Sincronizados | O sistema deve suportar a sincronização em lote de até 500 eventos pendentes em um único ciclo. | Implementação de chunking (divisão em pedaços) no envio de dados para evitar timeout em conexões 3G oscilantes. |
-| REST — Restrições Design (Portabilidade) | Adaptabilidade de Dispositivo | A aplicação deve manter 100% da funcionalidade em telas de 5" a 12" (celular a tablet). | Design Responsivo (Mobile-first) utilizando CSS Flexbox/Grid e suporte a modo PWA. |
-| ORG — Organizacionais (Compatibilidade) | Conformidade de Exportação | Os arquivos gerados devem ser validados pelo esquema RFC 4180 (CSV) para leitura em Excel/BI. | Biblioteca de exportação de dados configurada para padrão Windows-1252 (comum no agronegócio para evitar erros de acentuação). |
+| Eixo                                     | Requisito                       | Métrica / Critério                                                                              | Como atendido                                                                                                                  |
+| ---------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| USAB — Usabilidade                       | Facilidade de Operação em Campo | O Capataz deve registrar uma movimentação (nascimento/morte) em no máximo 4 cliques/toques.     | Interface com botões grandes (&gt;44px), alto contraste para leitura sob sol e fluxo de formulário simplificado.               |
+| CONF — Confiabilidade                    | Integridade da Sincronização    | 0% de perda de dados em falhas de conexão durante o envio de registros para o servidor.         | Uso de Service Workers e persistência local no SQLite/IndexedDB antes de tentar o upload (estratégia Offline-first).           |
+| DES — Desempenho                         | Tempo de Resposta Local         | Latência p95 &lt; 200 ms para salvar registros no banco de dados local do dispositivo.          | Processamento assíncrono no JavaScript e banco de dados SQLite otimizado com indexação por ID de animal.                       |
+| SUP — Suportabilidade (Manutenibilidade) | Facilidade de Atualização       | O tempo médio de reparo (MTTR) de um bug crítico na lógica de negócio não deve exceder 8 horas. | Código modular em Node.js com separação clara entre rotas de API e controladores de persistência.                              |
+| SEG — Segurança                          | Rastreabilidade de Ações        | 100% dos registros devem conter metadados de autoria (ID do perfil) e timestamp não editável.   | Injeção automática de log de auditoria no backend para cada transação enviada ao banco de dados.                               |
+| CAP — Capacidade (Adequação Funcional)   | Volume de Dados Sincronizados   | O sistema deve suportar a sincronização em lote de até 500 eventos pendentes em um único ciclo. | Implementação de chunking (divisão em pedaços) no envio de dados para evitar timeout em conexões 3G oscilantes.                |
+| REST — Restrições Design (Portabilidade) | Adaptabilidade de Dispositivo   | A aplicação deve manter 100% da funcionalidade em telas de 5" a 12" (celular a tablet).         | Design Responsivo (Mobile-first) utilizando CSS Flexbox/Grid e suporte a modo PWA.                                             |
+| ORG — Organizacionais (Compatibilidade)  | Conformidade de Exportação      | Os arquivos gerados devem ser validados pelo esquema RFC 4180 (CSV) para leitura em Excel/BI.   | Biblioteca de exportação de dados configurada para padrão Windows-1252 (comum no agronegócio para evitar erros de acentuação). |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -978,36 +1040,44 @@ No contexto do nosso projeto para a BrPec, esses requisitos são fundamentais, p
 #### Detalhamento e Contextualização dos Eixos
 
 **1. Usabilidade (Facilidade de Uso)**
-* **O que é:** Refere-se à mitigação da curva de aprendizado e à maximização da operabilidade das interfaces em contextos rurais e sob condições ergonômicas restritas.
-* **Explicação:** A interface do usuário foi concebida para demandar esforço cognitivo mínimo e alta responsividade. A arquitetura de navegação determina que o registro de intercorrências ou eventos zootécnicos exija uma quantidade reduzida de interações táteis. Elementos de interface (botões) foram projetados com dimensões adequadas e padrões de contraste elevados para garantir a legibilidade dos dados sob alta incidência solar e mitigar falhas de seleção durante as inspeções de campo.
+
+- **O que é:** Refere-se à mitigação da curva de aprendizado e à maximização da operabilidade das interfaces em contextos rurais e sob condições ergonômicas restritas.
+- **Explicação:** A interface do usuário foi concebida para demandar esforço cognitivo mínimo e alta responsividade. A arquitetura de navegação determina que o registro de intercorrências ou eventos zootécnicos exija uma quantidade reduzida de interações táteis. Elementos de interface (botões) foram projetados com dimensões adequadas e padrões de contraste elevados para garantir a legibilidade dos dados sob alta incidência solar e mitigar falhas de seleção durante as inspeções de campo.
 
 **2. Confiabilidade (Segurança de que funciona)**
-* **O que é:** Consiste na garantia de disponibilidade e na persistência integral dos dados frente à instabilidade ou latência extrema das conexões de rede.
-* **Explicação:** A arquitetura do sistema adota o paradigma "offline-first". O processamento primário da aplicação assegura que as entradas sejam armazenadas localmente no dispositivo. Tão logo os terminais identifiquem a comunicação com a rede via satélite da propriedade, uma rotina de sincronização é inicializada em segundo plano. Essa metodologia assegura que nenhuma anotação operacional seja descartada durante os períodos de indisponibilidade de sinal.
+
+- **O que é:** Consiste na garantia de disponibilidade e na persistência integral dos dados frente à instabilidade ou latência extrema das conexões de rede.
+- **Explicação:** A arquitetura do sistema adota o paradigma "offline-first". O processamento primário da aplicação assegura que as entradas sejam armazenadas localmente no dispositivo. Tão logo os terminais identifiquem a comunicação com a rede via satélite da propriedade, uma rotina de sincronização é inicializada em segundo plano. Essa metodologia assegura que nenhuma anotação operacional seja descartada durante os períodos de indisponibilidade de sinal.
 
 **3. Desempenho (Velocidade)**
-* **O que é:** Define os limites toleráveis de latência para a execução de transações e a resposta de interface frente aos estímulos do usuário.
-* **Explicação:** A fluidez computacional é exigida para evitar interrupções no fluxo de trabalho operacional. A estrutura computacional determina que as requisições de leitura e inserção de dados no banco local ocorram de maneira instantânea (inferior a 200 milissegundos). Essa limitação é imposta para atestar que as tarefas de manejo e vistoria não sejam prorrogadas por tempos ociosos do software.
+
+- **O que é:** Define os limites toleráveis de latência para a execução de transações e a resposta de interface frente aos estímulos do usuário.
+- **Explicação:** A fluidez computacional é exigida para evitar interrupções no fluxo de trabalho operacional. A estrutura computacional determina que as requisições de leitura e inserção de dados no banco local ocorram de maneira instantânea (inferior a 200 milissegundos). Essa limitação é imposta para atestar que as tarefas de manejo e vistoria não sejam prorrogadas por tempos ociosos do software.
 
 **4. Suportabilidade (Conserto Rápido)**
-* **O que é:** Refere-se à modularidade do código-fonte e à agilidade na execução de correções ou melhorias na arquitetura técnica.
-* **Explicação:** O código foi estruturado em um padrão arquitetural modular, propiciando que falhas ou atualizações específicas sejam mitigadas e implementadas sem a necessidade de reescritura em outras camadas de abstração. Dessa forma, a identificação e a remediação de defeitos críticos ocorrem com alta precisão, restringindo o Tempo Médio de Reparo (MTTR) de anomalias.
+
+- **O que é:** Refere-se à modularidade do código-fonte e à agilidade na execução de correções ou melhorias na arquitetura técnica.
+- **Explicação:** O código foi estruturado em um padrão arquitetural modular, propiciando que falhas ou atualizações específicas sejam mitigadas e implementadas sem a necessidade de reescritura em outras camadas de abstração. Dessa forma, a identificação e a remediação de defeitos críticos ocorrem com alta precisão, restringindo o Tempo Médio de Reparo (MTTR) de anomalias.
 
 **5. Segurança (Quem fez o quê?)**
-* **O que é:** Estabelece o princípio da integridade autoral e o rastreamento das submissões por meio de controles lógicos irrefutáveis.
-* **Explicação:** O sistema injeta algoritmicamente parâmetros de identificação nas requisições, vinculando todo o ciclo de vida dos dados aos identificadores dos capatazes e registrando carimbos de tempo sistêmicos invioláveis. Este controle de auditoria possibilita que os níveis de coordenação e gerência isolem responsabilidades, procedam com validações precisas e identifiquem com exatidão a procedência e a temporalidade das informações colhidas.
+
+- **O que é:** Estabelece o princípio da integridade autoral e o rastreamento das submissões por meio de controles lógicos irrefutáveis.
+- **Explicação:** O sistema injeta algoritmicamente parâmetros de identificação nas requisições, vinculando todo o ciclo de vida dos dados aos identificadores dos capatazes e registrando carimbos de tempo sistêmicos invioláveis. Este controle de auditoria possibilita que os níveis de coordenação e gerência isolem responsabilidades, procedam com validações precisas e identifiquem com exatidão a procedência e a temporalidade das informações colhidas.
 
 **6. Capacidade (Adequação Funcional)**
-* **O que é:** Indica o dimensionamento de volume de requisições tolerado pelo sistema para operações de sincronização sem ocorrência de gargalos ou falhas (timeout).
-* **Explicação:** O sistema foi parametrizado para processar em lote volumes de dados substanciais provenientes do trabalho acumulado durante períodos sem conexão. A implementação de divisão de carga de dados assegura a recepção de inúmeros registros simultâneos no servidor central na janela de contato restabelecido, impedindo sobrecargas de processamento do banco de dados na consolidação final do estoque e do manejo.
+
+- **O que é:** Indica o dimensionamento de volume de requisições tolerado pelo sistema para operações de sincronização sem ocorrência de gargalos ou falhas (timeout).
+- **Explicação:** O sistema foi parametrizado para processar em lote volumes de dados substanciais provenientes do trabalho acumulado durante períodos sem conexão. A implementação de divisão de carga de dados assegura a recepção de inúmeros registros simultâneos no servidor central na janela de contato restabelecido, impedindo sobrecargas de processamento do banco de dados na consolidação final do estoque e do manejo.
 
 **7. Restrições de Design (Adaptabilidade de Dispositivos)**
-* **O que é:** Especifica a necessidade de portabilidade e adequação do sistema de modo fluído e responsivo a diferentes resoluções e hardwares.
-* **Explicação:** A solução exige o uso de metodologias responsivas de desenvolvimento. As matrizes de grade flexível (Flexbox/Grid) moldam dinamicamente a apresentação da interface para preservar a simetria de leitura e garantir o acesso contínuo, independente das dimensões nativas do terminal operado pelo agente produtivo no campo.
+
+- **O que é:** Especifica a necessidade de portabilidade e adequação do sistema de modo fluído e responsivo a diferentes resoluções e hardwares.
+- **Explicação:** A solução exige o uso de metodologias responsivas de desenvolvimento. As matrizes de grade flexível (Flexbox/Grid) moldam dinamicamente a apresentação da interface para preservar a simetria de leitura e garantir o acesso contínuo, independente das dimensões nativas do terminal operado pelo agente produtivo no campo.
 
 **8. Organizacionais (Compatibilidade)**
-* **O que é:** Trata do nível de conformidade e padronização das informações exportadas em relação aos ecossistemas computacionais adotados pela entidade parceira.
-* **Explicação:** O tratamento de dados foi arquitetado para extinguir os processos passivos de transcrição manual, que tradicionalmente incitam a geração de inconsistências qualitativas. O artefato consolida a geração de relatórios diretos, padronizados e homologados, viabilizando o consumo nativo e direto desses arquivos por manipuladores de planilhas eletrônicas.
+
+- **O que é:** Trata do nível de conformidade e padronização das informações exportadas em relação aos ecossistemas computacionais adotados pela entidade parceira.
+- **Explicação:** O tratamento de dados foi arquitetado para extinguir os processos passivos de transcrição manual, que tradicionalmente incitam a geração de inconsistências qualitativas. O artefato consolida a geração de relatórios diretos, padronizados e homologados, viabilizando o consumo nativo e direto desses arquivos por manipuladores de planilhas eletrônicas.
 
 ### 3.1.4. Matriz RF → RN → Endpoint (sprints 3 a 5)
 
@@ -1054,15 +1124,14 @@ Cada caso de uso está associado a um requisito funcional (RF), garantindo rastr
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-
 UC01 — Planejar tarefas (RF001)
-| Campo              | Descrição                                                                                  |
+| Campo | Descrição |
 | ------------------ | ------------------------------------------------------------------------------------------ |
-| Ator principal     | Gerente Geral                                                                              |
-| Atores secundários | Não se aplica                                                                              |
-| Pré-condições      | O sistema deve estar acessível e o usuário autenticado                                     |
-| Fluxo principal    | O gerente define uma nova tarefa, estabelece prazos e descreve a atividade a ser executada |
-| Pós-condições      | A tarefa é registrada no sistema e fica disponível para distribuição                       |
+| Ator principal | Gerente Geral |
+| Atores secundários | Não se aplica |
+| Pré-condições | O sistema deve estar acessível e o usuário autenticado |
+| Fluxo principal | O gerente define uma nova tarefa, estabelece prazos e descreve a atividade a ser executada |
+| Pós-condições | A tarefa é registrada no sistema e fica disponível para distribuição |
 
 <center>
   <p><strong>Quadro 11</strong> — Caso de Uso UC01</p>
@@ -1073,13 +1142,13 @@ UC01 — Planejar tarefas (RF001)
 </center>
 
 UC02 — Distribuir tarefas por retiro (RF002)
-| Campo              | Descrição                                                               |
+| Campo | Descrição |
 | ------------------ | ----------------------------------------------------------------------- |
-| Ator principal     | Gerente Geral                                                           |
-| Atores secundários | Não se aplica                                                           |
-| Pré-condições      | Deve existir ao menos uma tarefa previamente cadastrada                 |
-| Fluxo principal    | O gerente associa a tarefa a um ou mais retiros, definindo responsáveis |
-| Pós-condições      | A tarefa é atribuída e visível para execução pelos capatazes            |
+| Ator principal | Gerente Geral |
+| Atores secundários | Não se aplica |
+| Pré-condições | Deve existir ao menos uma tarefa previamente cadastrada |
+| Fluxo principal | O gerente associa a tarefa a um ou mais retiros, definindo responsáveis |
+| Pós-condições | A tarefa é atribuída e visível para execução pelos capatazes |
 
 <center>
   <p><strong>Quadro 12</strong> — Caso de Uso UC02</p>
@@ -1090,119 +1159,119 @@ UC02 — Distribuir tarefas por retiro (RF002)
 </center>
 
 UC03 — Visualizar tarefas do dia (RF003)
-| Campo              | Descrição                                                           |
+| Campo | Descrição |
 | ------------------ | ------------------------------------------------------------------- |
-| Ator principal     | Capataz                                                             |
-| Atores secundários | Não se aplica                                                       |
-| Pré-condições      | O capataz deve estar autenticado no sistema                         |
-| Fluxo principal    | O capataz acessa a lista de tarefas disponíveis para o dia corrente |
-| Pós-condições      | As tarefas são exibidas para execução                               |
+| Ator principal | Capataz |
+| Atores secundários | Não se aplica |
+| Pré-condições | O capataz deve estar autenticado no sistema |
+| Fluxo principal | O capataz acessa a lista de tarefas disponíveis para o dia corrente |
+| Pós-condições | As tarefas são exibidas para execução |
 
 <center>
   <p><strong>Quadro 13</strong> — Caso de Uso UC03</p>
-</center> 
+</center>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 UC04 — Registrar execução de tarefa (RF004)
-| Campo              | Descrição                                                    |
+| Campo | Descrição |
 | ------------------ | ------------------------------------------------------------ |
-| Ator principal     | Capataz                                                      |
-| Atores secundários | Não se aplica                                                |
-| Pré-condições      | Deve existir uma tarefa atribuída ao capataz                 |
-| Fluxo principal    | O capataz marca a tarefa como concluída no sistema           |
-| Pós-condições      | A tarefa é registrada como concluída e atualizada no sistema |
+| Ator principal | Capataz |
+| Atores secundários | Não se aplica |
+| Pré-condições | Deve existir uma tarefa atribuída ao capataz |
+| Fluxo principal | O capataz marca a tarefa como concluída no sistema |
+| Pós-condições | A tarefa é registrada como concluída e atualizada no sistema |
 
 <center>
   <p><strong>Quadro 14</strong> — Caso de Uso UC04</p>
-</center> 
+</center>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 UC05 — Anexar evidência (RF005)
-| Campo              | Descrição                                                       |
+| Campo | Descrição |
 | ------------------ | --------------------------------------------------------------- |
-| Ator principal     | Capataz                                                         |
-| Atores secundários | Não se aplica                                                   |
-| Pré-condições      | A tarefa deve estar em processo de conclusão                    |
-| Fluxo principal    | O capataz adiciona uma foto ou áudio como evidência da execução |
-| Pós-condições      | A evidência é armazenada e vinculada à tarefa                   |
+| Ator principal | Capataz |
+| Atores secundários | Não se aplica |
+| Pré-condições | A tarefa deve estar em processo de conclusão |
+| Fluxo principal | O capataz adiciona uma foto ou áudio como evidência da execução |
+| Pós-condições | A evidência é armazenada e vinculada à tarefa |
 
 <center>
   <p><strong>Quadro 15</strong> — Caso de Uso UC05</p>
-</center> 
+</center>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 UC06 — Registrar movimentação (RF006)
-| Campo              | Descrição                                                  |
+| Campo | Descrição |
 | ------------------ | ---------------------------------------------------------- |
-| Ator principal     | Capataz                                                    |
-| Atores secundários | Não se aplica                                              |
-| Pré-condições      | O sistema deve estar disponível para registro              |
-| Fluxo principal    | O capataz registra uma movimentação relacionada ao rebanho |
-| Pós-condições      | A movimentação é armazenada para posterior validação       |
+| Ator principal | Capataz |
+| Atores secundários | Não se aplica |
+| Pré-condições | O sistema deve estar disponível para registro |
+| Fluxo principal | O capataz registra uma movimentação relacionada ao rebanho |
+| Pós-condições | A movimentação é armazenada para posterior validação |
 
 <center>
   <p><strong>Quadro 16</strong> — Caso de Uso UC06</p>
-</center> 
+</center>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 UC07 — Validar movimentações (RF007)
-| Campo              | Descrição                                                  |
+| Campo | Descrição |
 | ------------------ | ---------------------------------------------------------- |
-| Ator principal     | Coordenador                                                |
-| Atores secundários | Não se aplica                                              |
-| Pré-condições      | Devem existir movimentações previamente registradas        |
-| Fluxo principal    | O coordenador revisa e valida as movimentações registradas |
-| Pós-condições      | As movimentações são confirmadas e consideradas válidas    |
+| Ator principal | Coordenador |
+| Atores secundários | Não se aplica |
+| Pré-condições | Devem existir movimentações previamente registradas |
+| Fluxo principal | O coordenador revisa e valida as movimentações registradas |
+| Pós-condições | As movimentações são confirmadas e consideradas válidas |
 
 <center>
   <p><strong>Quadro 17</strong> — Caso de Uso UC07</p>
-</center> 
+</center>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 UC08 — Consultar dados consolidados (RF008)
-| Campo              | Descrição                                           |
+| Campo | Descrição |
 | ------------------ | --------------------------------------------------- |
-| Ator principal     | Coordenador                                         |
-| Atores secundários | Gerente Geral                                       |
-| Pré-condições      | Devem existir dados registrados no sistema          |
-| Fluxo principal    | O usuário acessa relatórios consolidados por retiro |
-| Pós-condições      | As informações são exibidas para análise            |
+| Ator principal | Coordenador |
+| Atores secundários | Gerente Geral |
+| Pré-condições | Devem existir dados registrados no sistema |
+| Fluxo principal | O usuário acessa relatórios consolidados por retiro |
+| Pós-condições | As informações são exibidas para análise |
 
 <center>
   <p><strong>Quadro 18</strong> — Caso de Uso UC08</p>
-</center> 
+</center>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 UC09 — Exportar relatórios (RF009)
-| Campo              | Descrição                                                            |
+| Campo | Descrição |
 | ------------------ | -------------------------------------------------------------------- |
-| Ator principal     | Coordenador                                                          |
-| Atores secundários | Não se aplica                                                        |
-| Pré-condições      | Deve haver dados consolidados disponíveis                            |
-| Fluxo principal    | O coordenador solicita a exportação dos dados em formato estruturado |
-| Pós-condições      | O relatório é gerado e disponibilizado para download                 |
+| Ator principal | Coordenador |
+| Atores secundários | Não se aplica |
+| Pré-condições | Deve haver dados consolidados disponíveis |
+| Fluxo principal | O coordenador solicita a exportação dos dados em formato estruturado |
+| Pós-condições | O relatório é gerado e disponibilizado para download |
 
 <center>
   <p><strong>Quadro 19</strong> — Caso de Uso UC09</p>
-</center> 
+</center>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1212,9 +1281,211 @@ UC09 — Exportar relatórios (RF009)
 
 _Diagrama UML de classes com entidades, atributos, relacionamentos e responsabilidades. Diferencie **associação**, **agregação** (losango vazio), **composição** (losango cheio) e **herança** (triângulo vazio). Multiplicidade explícita em toda associação._
 
+#### Atributos e Tipos das Classes do Domínio
+
+---
+
+**Classe: Usuario** *(abstrata)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| id | Identificador único | Obrigatório |
+| nome | Texto | Obrigatório |
+| perfil | Enumeração (gerente, capataz, coordenador) | Obrigatório |
+| retiro_id | Referência a Retiro | Obrigatório |
+| created_at | Data e hora | Obrigatório |
+
+---
+
+**Classe: Gerente** *(herda de Usuario)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| area_responsavel | Texto | Opcional |
+
+---
+
+**Classe: Capataz** *(herda de Usuario)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| retiro_id | Referência a Retiro | Obrigatório |
+
+---
+
+**Classe: Coordenador** *(herda de Usuario)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| (sem atributos adicionais além dos herdados) | — | — |
+
+---
+
+**Classe: Retiro**
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| id | Identificador único | Obrigatório |
+| nome | Texto | Obrigatório |
+| localizacao | Texto | Opcional |
+
+---
+
+**Classe: Tarefa**
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| id | Identificador único | Obrigatório |
+| titulo | Texto | Obrigatório |
+| descricao | Texto longo | Opcional |
+| status | Enumeração (pendente, em_andamento, concluida) | Obrigatório |
+| data_execucao | Data | Obrigatório |
+| gerente_id | Referência a Gerente | Obrigatório |
+| capataz_id | Referência a Capataz | Obrigatório |
+| retiro_id | Referência a Retiro | Obrigatório |
+| created_at | Data e hora | Obrigatório |
+
+---
+
+**Classe: Evidencia**
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| id | Identificador único | Obrigatório |
+| tipo | Enumeração (foto, audio, texto) | Obrigatório |
+| conteudo | Binário / Texto | Obrigatório |
+| tarefa_id | Referência a Tarefa | Obrigatório |
+| created_at | Data e hora | Obrigatório |
+
+---
+
+**Classe: Alerta**
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| id | Identificador único | Obrigatório |
+| descricao | Texto | Obrigatório |
+| tipo | Enumeração (cerca, bebedouro, infraestrutura, outro) | Obrigatório |
+| resolvido | Booleano | Obrigatório |
+| capataz_id | Referência a Capataz | Obrigatório |
+| retiro_id | Referência a Retiro | Obrigatório |
+| created_at | Data e hora | Obrigatório |
+
+---
+
+**Classe: Movimentacao** *(abstrata)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| id | Identificador único | Obrigatório |
+| data | Data | Obrigatório |
+| categoria | Enumeração (bezerro, garrote, boi_touro, bezerra, novilha, vaca) | Obrigatório |
+| quantidade | Número inteiro positivo | Obrigatório |
+| sincronizado | Booleano | Obrigatório |
+| usuario_id | Referência a Usuario | Obrigatório |
+| retiro_id | Referência a Retiro | Obrigatório |
+| created_at | Data e hora | Obrigatório |
+
+---
+
+**Classe: Nascimento** *(herda de Movimentacao)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| mae_id | Referência a animal (identificador opcional) | Opcional |
+| foto | Binário | Opcional |
+
+---
+
+**Classe: Obito** *(herda de Movimentacao)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| causa | Texto | Obrigatório |
+| foto | Binário | Obrigatório |
+
+---
+
+**Classe: Transferencia** *(herda de Movimentacao)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| retiro_origem_id | Referência a Retiro | Obrigatório |
+| retiro_destino_id | Referência a Retiro | Obrigatório |
+
+---
+
+**Classe: CompraVenda** *(herda de Movimentacao)*
+
+| Atributo | Tipo Conceitual | Obrigatoriedade |
+|---|---|---|
+| tipo_operacao | Enumeração (compra, venda) | Obrigatório |
+| valor | Decimal | Opcional |
+
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
 
-_Ao menos um fluxo prioritário, mostrando a interação entre as camadas Controller → Service → Repository → Banco. Linhas de vida verticais, ativação correta, mensagens síncronas e assíncronas diferenciadas, retornos tracejados._
+### 3.2.4. Diagrama de Sequência UML
+
+#### DS01 — Criar Tarefa (US01)
+
+Fluxo que representa a criação de uma tarefa pelo Gerente, percorrendo as camadas Controller → Service → Repository → Banco. Mensagens síncronas são representadas por setas contínuas (`->>`) e retornos por setas tracejadas (`-->>`)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor G as Gerente
+    participant CTR as Controller
+    participant SRV as Service
+    participant REP as Repository
+    participant DB as SQLite
+
+    G->>CTR: POST /tarefas {titulo, descricao, retiro_id, capataz_id, data_execucao}
+    CTR->>CTR: Valida campos obrigatórios
+
+    alt Campos obrigatórios ausentes
+        CTR-->>G: 400 Bad Request {erro: "campos obrigatórios não preenchidos"}
+    else Dados válidos
+        CTR->>SRV: criarTarefa(dados)
+        SRV->>SRV: Verifica se capataz pertence ao retiro (RN01)
+
+        alt Capataz não pertence ao retiro (RN01)
+            SRV-->>CTR: throw CapatazRetiroInvalidoError
+            CTR-->>G: 422 Unprocessable Entity {erro: "capataz não pertence ao retiro"}
+        else Validação aprovada
+            SRV->>REP: inserirTarefa(dados)
+            REP->>DB: INSERT INTO tarefas (...) VALUES (...)
+            DB-->>REP: id = 7
+            REP-->>SRV: {id: 7}
+            SRV-->>CTR: {id: 7, status: "pendente"}
+            CTR-->>G: 201 Created {id: 7, mensagem: "Tarefa criada com sucesso"}
+        end
+    end
+```
+
+**Descrição das camadas:**
+
+- **Controller (`TarefaController`):** recebe a requisição HTTP do Gerente, valida a presença dos campos obrigatórios e delega a lógica de negócio ao Service. Não acessa o banco diretamente.
+- **Service (`TarefaService`):** aplica as regras de negócio do domínio — em especial a RN01, que impede a atribuição de uma tarefa a um capataz que não pertence ao retiro informado. Orquestra a chamada ao Repository.
+- **Repository (`TarefaRepository`):** responsável exclusivamente pelo acesso ao banco de dados. Executa o `INSERT` e retorna o `id` gerado.
+- **Banco (`SQLite`):** persiste o registro com `status = "pendente"` e retorna o identificador da nova linha.
+
+**Fluxos cobertos:**
+
+| Fluxo         | Descrição                                                                       |
+| ------------- | ------------------------------------------------------------------------------- |
+| Principal     | Gerente envia dados válidos → tarefa criada com status "pendente" → 201 Created |
+| Alternativo 1 | Campo obrigatório ausente → Controller retorna 400 sem acionar o Service        |
+| Alternativo 2 | Capataz não pertence ao retiro → Service lança erro → Controller retorna 422    |
+
+**Rastreabilidade:**
+
+| Elemento  | Referência                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------------ |
+| US01      | Como gerente, posso criar tarefas e atribuí-las a um retiro específico                           |
+| RF001     | O sistema deve permitir que o gerente crie tarefas com título, descrição, retiro, capataz e data |
+| RN01      | Uma tarefa só pode ser atribuída a um capataz vinculado ao retiro selecionado                    |
+| RNF — SEG | Todas as rotas do gerente retornam 403 para perfis não autorizados                               |
+| RNF — DES | Endpoint responde em p95 < 200ms com até 200 registros no banco                                  |
 
 ### 3.2.5. Diagrama de Atividades ou Estados (sprint 3)
 
@@ -1230,7 +1501,41 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 
 ## 3.3. Wireframes (sprint 2)
 
-_Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização)_
+<center>
+<p>Wireframe capataz - acompanhamento de tarefas (mobile/tablet)</p>
+ <img src="./assets/wireframeCapatazTarefas.png" width="800"/>
+ <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
+<p>Wireframe capataz - anexar fotos (mobile/tablet)</p>
+ <img src="./assets/wireframeCapatazAnexarFotos.png" width="800"/>
+ <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
+<p>Wireframe infraestrutura - acompanhamento de chamados (mobile/tablet/desktop)</p>
+ <img src="./assets/wireframeInfraestrutura.png" width="800"/>
+ <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
+<p>Wireframe infraestrutura - registrar resolução (mobile/tablet/desktop)</p>
+ <img src="./assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
+ <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
+<p>Wireframe infraestrutura - detalhe do chamado (desktop/tablet)</p>
+ <img src="./assets/wireframe_infra_detalhe_do_chamado_0.png" width="800"/>
+ <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
+<p>Wireframe infraestrutura - detalhe do chamado (mobile)</p>
+ <img src="./assets/wireframe_infra_detalhe_do_chamado_1.png" width="800"/>
+ <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ## 3.4. Guia de estilos (sprint 3)
 
@@ -1258,7 +1563,7 @@ _posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelid
 
 ### 3.6.1. Modelo Entidade-Relacionamento (ER) (sprint 2)
 
-*Apresente o modelo ER conceitual com entidades, atributos e relacionamentos. Use notação consistente (Chen ou Crow's Foot - não misture).*
+_Apresente o modelo ER conceitual com entidades, atributos e relacionamentos. Use notação consistente (Chen ou Crow's Foot - não misture)._
 
 ### 3.6.2. Diagrama Entidade-Relacionamento (DER) (sprint 2)
 
@@ -1267,6 +1572,35 @@ _Posicione aqui o DER com cardinalidades explícitas em ambos os lados de cada r
 ### 3.6.3. Modelo Relacional e Modelo Físico (sprints 2 e 4)
 
 _Posicione aqui os diagramas de modelos relacionais do banco de dados, apresentando todos os esquemas de tabelas e suas relações. Inclua as migrations DDL numeradas e reproduzíveis (`CREATE TABLE`, `CREATE INDEX`, constraints `NOT NULL`, `UNIQUE`, `FOREIGN KEY`, `CHECK`). Utilize texto para complementar suas explicações quando necessário._
+
+#### Nota Técnica - Estratégia de UUID para criação e atualização offline
+
+**Contexto:** Como evidenciado nas User Stories US03, US08 e US09, o sistema prevê criação e atualização de registros em ambiente sem conexão, com sincronização posterior ao banco central. Assim, existe a possibilidade de ocorrerem conflitos de IDs. Isso porque um dispositivo que não está online pode acabar gerando um mesmo ID que outro dispositivo. Dessa forma, na hora da sincronização haveria uma colisão, e para evitar conflito de PKs (IDs) ao sincronizar com o banco central, adota-se UUID versão 7 como identificador primário de todas as entidades criadas [8].
+
+**Justificativa:** IDs sequenciais dependem de coordenação com o servidor, já UUIDs são usados para nomear informações de forma única em sistemas sem precisar de uma autoridade central. São essenciais em sistemas distribuídos e sua probabilidade de duplicidade é quase zero, eliminando conflito na sincronização.
+Assim, utilizaremos a versão 7 do UUID por uma questão de ordenação cronológica e melhor performance de índices no banco.
+
+**Implementação:**
+
+- PKs do tipo UUID em todas as tabelas sujeitas a criação e atualização offline;
+- UUID gerado no momento da criação e atualização de registros criados nos dispositivos dos clientes;
+- UUID armazenado como tipo de dado nativo no PostgreSQL;
+- Sincronização via UPSERT (INSERT ... ON CONFLICT DO UPDATE)
+
+UPSERT é uma operação que combina UPdate (atualizar) e inSERT (inserir). Ele insere uma nova linha se ela não existir ou atualiza um registro existente se já houver uma correspondência. Assim, evitando erros de duplicidade e facilitando a sincronização de dados.
+
+**Alternativas consideradas:**
+
+- ID sequencial com namespace por dispositivo (rejeitado: complexidade)
+  Justificativa: Nesse caso cada dispositivo teria um identificador próprio, que se combinaria com o ID sequencial comum. Porém, essa abordagem apresenta dois problemas centrais.
+  O primeiro é estrutural: a geração de cada ID sequencial exige uma consulta ao servidor para garantir que o número não foi usado por outro dispositivo. Isso torna o sistema incapaz de criar registros offline por natureza, contradizendo diretamente o requisito de operação sem conexão.
+  O segundo é de confiabilidade: se a distribuição de IDs para o dispositivo falhar, como dois dispositivos acabarem tendo o mesmo identificador, por exemplo, ou se o sistema for mal implementado, o problema original de conflito volta. Além disso, aumenta-se a complexidade no banco, pois as PKs viram strings compostas ou há a necessidade de utilizar duas colunas como chave primária.
+
+- ULID (considerado: vantagem de ordenação, porém menos suporte nativo)
+  Justificativa: O ULID (Universally Unique Lexicographically Sortable Identifier) é um formato de identificador único que começa com timestamp. Apesar de resolver o problema e os registros ficarem ordenados cronologicamente, ele não é nativo em nenhum banco de dados popular, como no PostgreSQL e é necessário instalar bibliotecas externas no cliente e no servidor, algo que não é necessário com o UUIDv7.
+
+- UUIDv4 (opção viável, mas houve uma preferência para a UUIDv7)
+  Justificativa: O UUIDv4 funcionaria perfeitamente para o problema de conflito de IDs, porém, ele é puramente aleatório. Isso significa que os registros inseridos no banco não ficam em nenhuma ordem que possa ser utilizada para organizar o banco ou para outras ações. Nele, cada novo UUID vai para uma posição aleatória no índice, causando fragmentação ao longo do tempo e prejudicando a performance de consultas.
 
 ### 3.6.4. Consultas SQL e lógica proposicional (sprint 2)
 
@@ -1278,12 +1612,12 @@ _Template de SQL + lógica proposicional_
   <p><strong>Tabela 8</strong> — Expressões SQL e Lógica Proposicional</p>
 </center>
 
-#1 | ---
---- | ---
-**Expressão SQL** | SELECT \* FROM suppliers WHERE (state = 'California' AND supplier_id <> 900) OR (supplier_id = 100);
-**Proposições lógicas** | $A$: O estado é 'California' (state = 'California') <br> $B$: O ID do fornecedor não é 900 (supplier_id ≠ 900) <br> $C$: O ID do fornecedor é 100 (supplier_id = 100)
-**Expressão lógica proposicional** | $(A \land B) \lor C$
-**Tabela Verdade** | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$(A \land B)$</th> <th>$(A \land B) \lor C$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table>
+| #1                                 | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Expressão SQL**                  | SELECT \* FROM suppliers WHERE (state = 'California' AND supplier_id <> 900) OR (supplier_id = 100);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Proposições lógicas**            | $A$: O estado é 'California' (state = 'California') <br> $B$: O ID do fornecedor não é 900 (supplier_id ≠ 900) <br> $C$: O ID do fornecedor é 100 (supplier_id = 100)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **Expressão lógica proposicional** | $(A \land B) \lor C$                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Tabela Verdade**                 | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$(A \land B)$</th> <th>$(A \land B) \lor C$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table> |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1309,7 +1643,7 @@ _Descreva o controle de sessão baseado em `session id` persistido em tabela pr�
 
 ### 3.8.3. Autorização
 
-*Descreva as regras de autorização por rota e por operação, baseadas no perfil do usuário autenticado. A verificação deve ocorrer no backend - o frontend nunca é fonte de verdade para autorização.*
+_Descreva as regras de autorização por rota e por operação, baseadas no perfil do usuário autenticado. A verificação deve ocorrer no backend - o frontend nunca é fonte de verdade para autorização._
 
 ### 3.8.4. Estratégias de Resiliência
 
@@ -1317,7 +1651,7 @@ _Descreva as estratégias aplicadas no tratamento de falhas de rede: timeout, re
 
 ## 3.9. Matriz de Rastreabilidade (RTM) (sprints 3 a 5)
 
-*A RTM consolida a rastreabilidade completa do sistema. Um elo quebrado invalida toda a cadeia - mantenha-a atualizada a cada sprint. A partir da sprint 3 não deve haver lacunas nos fluxos centrais.*
+_A RTM consolida a rastreabilidade completa do sistema. Um elo quebrado invalida toda a cadeia - mantenha-a atualizada a cada sprint. A partir da sprint 3 não deve haver lacunas nos fluxos centrais._
 
 <center>
   <p><strong>Tabela 9</strong> — Matriz de Rastreabilidade (RTM)</p>
@@ -1351,8 +1685,8 @@ _Descreva e ilustre aqui o desenvolvimento da versão final do sistema web, com 
 
 _Liste e descreva os testes automatizados dos endpoints criados e planejados para sua solução, implementados com **Jest**. Cubra as duas abordagens:_
 
-- ***White-box*** *- testes unitários de Service que exercitam ramos internos, exceções e regras de negócio (conhecimento da implementação).*
-- ***Black-box*** *- testes de integração dos endpoints via Jest + Supertest, verificando apenas o contrato HTTP (status, body, efeito observável), sem depender da implementação interna.*
+- **_White-box_** _- testes unitários de Service que exercitam ramos internos, exceções e regras de negócio (conhecimento da implementação)._
+- **_Black-box_** _- testes de integração dos endpoints via Jest + Supertest, verificando apenas o contrato HTTP (status, body, efeito observável), sem depender da implementação interna._
 
 _Posicione aqui também o relatório de cobertura de testes Jest se houver (através de link ou transcrito para estrutura markdown)._
 
@@ -1451,6 +1785,7 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 
 [9] MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026.
 
+[8] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
 
 # <a name="c9"></a>Anexos
 
