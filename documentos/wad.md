@@ -1236,7 +1236,7 @@ UC07 — Validar movimentações (RF007)
 | Pós-condições | As movimentações são confirmadas e consideradas válidas |
 
 <center>
-  <p><strong>Quadro 17</strong> — Caso de Uso UC07</p>
+  <p><strong> +Quadro 17</strong> — Caso de Uso UC07</p>
 </center>
 
 <center>
@@ -1420,17 +1420,20 @@ _posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelid
 
 ## 3.6. Modelagem do banco de dados (sprints 2 e 4)
 
-### 3.6.1. Modelo Entidade-Relacionamento (ER) (sprint 2)
+### 3.6.1. Modelo Entidade-Relacionamento (MER) (sprint 2)
 
 _Apresente o modelo ER conceitual com entidades, atributos e relacionamentos. Use notação consistente (Chen ou Crow's Foot - não misture)._
 
 ### 3.6.2. Diagrama Entidade-Relacionamento (DER) (sprint 2)
+
+O Diagrama Entidade-Relacionamento (DER) é uma representação gráfica da estrutura de um banco de dados, baseada no Modelo Entidade-Relacionamento (MER) proposto por Peter Chen (1976). No diagrama, entidades (objetos do mundo real com existência independente) são representadas por retângulos. Seus atributos, por elipses, e os relacionamentos entre elas, por losangos. Essa notação auxilia desenvolvedores a visualizar e comunicar a arquitetura de dados de um sistema antes de sua implementação. [9]
 
 _Posicione aqui o DER com cardinalidades explícitas em ambos os lados de cada relação e identificação de PK/FK. O DER deve ser coerente com o diagrama de classes (3.2.3)._
 
 ### 3.6.3. Modelo Relacional e Modelo Físico (sprints 2 e 4)
 
 _Posicione aqui os diagramas de modelos relacionais do banco de dados, apresentando todos os esquemas de tabelas e suas relações. Inclua as migrations DDL numeradas e reproduzíveis (`CREATE TABLE`, `CREATE INDEX`, constraints `NOT NULL`, `UNIQUE`, `FOREIGN KEY`, `CHECK`). Utilize texto para complementar suas explicações quando necessário._
+
 
 #### Nota Técnica - Estratégia de UUID para criação e atualização offline
 
@@ -1645,6 +1648,8 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 [9] MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026.
 
 [8] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
+
+[9] CHEN, Peter Pin-Shan. The entity-relationship model: toward a unified view of data. ACM Transactions on Database Systems, v. 1, n. 1, p. 9–36, 1976.
 
 # <a name="c9"></a>Anexos
 
