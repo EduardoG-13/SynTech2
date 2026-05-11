@@ -1508,6 +1508,12 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 </center>
 
 <center>
+<p>Wireframe capataz - concluir tarefa (mobile)</p>
+ <img src="./assets/wireframeCapatazConcluirTarefa.png" width="800"/>
+ <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
 <p>Wireframe capataz - anexar fotos (mobile/tablet)</p>
  <img src="./assets/wireframeCapatazAnexarFotos.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
