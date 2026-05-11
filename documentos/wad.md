@@ -1640,7 +1640,31 @@ erDiagram
         valor decimal
     }
 
+USUARIO ||--o{ TAREFA : "cria ou executa"
+    USUARIO ||--o{ ALERTA : "cria"
+    USUARIO ||--o{ MOVIMENTACAO : "registra"
+    USUARIO }o--|| RETIRO : "pertence a"
+    RETIRO ||--o{ TAREFA : "agrupa"
+    RETIRO ||--o{ MOVIMENTACAO : "origina"
+    TAREFA ||--o{ EVIDENCIA : "possui"
+    MOVIMENTACAO ||--o| NASCIMENTO : "especializa"
+    MOVIMENTACAO ||--o| OBITO : "especializa"
+    MOVIMENTACAO ||--o| TRANSFERENCIA : "especializa"
+    MOVIMENTACAO ||--o| COMPRAVENDA : "especializa"
 ```
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Decisões de modelagem:**
+
+- **USUARIO** é uma entidade genérica que representa os três perfis do sistema (gerente, capataz e coordenador). A distinção é feita pelo atributo `perfil`, evitando redundância de entidades com atributos idênticos. As especializações são tratadas no diagrama de classes (seção 3.2.3).
+- **MOVIMENTACAO** é uma entidade genérica que se especializa em quatro tipos: NASCIMENTO, OBITO, TRANSFERENCIA e COMPRAVENDA. Cada especialização herda os atributos comuns e acrescenta os próprios. A cardinalidade `||--o|` indica que cada movimentação pertence a exatamente um tipo.
+- **EVIDENCIA** possui relacionamento de dependência existencial com TAREFA: uma evidência só existe se houver uma tarefa à qual esteja vinculada (cardinalidade `||--o{`).
+- **ALERTA** é criado por um USUARIO do tipo capataz e permanece visível até ser marcado como resolvido, conforme a RN10 da seção 3.1.2.
+- **RETIRO** centraliza dois relacionamentos principais: agrega TAREFAS (uma tarefa sempre pertence a um retiro) e origina MOVIMENTACOES (toda movimentação parte de um retiro de origem).
+- A notação Crow's Foot foi mantida de forma consistente em todo o diagrama, sem mistura com a notação Chen.
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
