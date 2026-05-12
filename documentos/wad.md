@@ -1093,20 +1093,19 @@ _Matriz de cobertura mostrando quais RN e endpoints implementam cada RF._
   <p><strong>Tabela 7</strong> — Matriz RF → RN → Endpoint</p>
 </center>
 
-| RF    | RN associadas | Endpoint              | Método |
-| ----- | ------------- | --------------------- | ------ |
-| RF001 | RN01          | /tarefas              | POST   |
-| RF002 | RN02, RN05    | /tarefas/hoje         | GET    |
-| RF003 | RN03          | /tarefas/sincronizar  | GET    |
-| RF004 | RN04          | /tarefas/hoje/offline | GET    |
-| RF005 | RN05          | /tarefas/concluir     | POST   |
-| RF006 | RN06          | /chamados             | POST   |
-| RF007 | RN07          | /eventos/zootecnicos  | POST   |
-| RF008 | RN08          | /transacoes/gado      | POST   |
-| RF009 | RN09          | /transferencias       | POST   |
-| RF010 | RN10          | Armazenamento Local   | INSERT |
-| RF011 | RN11          | /sincronizar          | POST   |
-| RF012 | RN12          | Consulta Banco Local  | GET    |
+| RF | RN associada(s) | Endpoint / Operação | Método | Finalidade da Operação |
+| --- | ------------- | ------------------- | ------ | ---------------------- |
+| RF001 | RN01 | /tarefas | POST | Criar tarefa vinculada a um retiro. |
+| RF002 | RN02, RN05, RN06 | /tarefas/hoje | GET | Listar tarefas do dia para o capataz logado. |
+| RF003 | RN03, RN07, RN08 | /tarefas/sincronizar | GET | Download de dados para uso offline. |
+| RF004 | RN04, RN12 | Consulta Local | N/A | Exibição de estado vazio (Offline). |
+| RF005 | RN13, RN14, RN15, RN16 | /tarefas/{id}/evidencia | POST | Upload de áudio/evidência da tarefa. |
+| RF006 | RN19, RN20, RN21, RN24 | /chamados | POST | Registrar alerta de infraestrutura (GPS imutável). |
+| RF007 | RN11 | /gerencia/status | GET | Visualização do painel de controle (Coordenador). |
+| RF008 | RN27, RN28, RN30 | /movimentacoes/nascimento | POST | Registrar novo animal no sistema. |
+| RF009 | RN31, RN33, RN34 | /movimentacoes/obito | POST | Registrar óbito com foto obrigatória. |
+| RF010 | RN37 | /sincronizacao/push | POST | Envio automático de dados ao detectar rede. |
+| RF015 | RN41 | /relatorios/exportar | GET | Gerar CSV/Excel para integração BrPec. |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1532,16 +1531,11 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 </center>
 
 <center>
-<p>Wireframe infraestrutura - detalhe do chamado (desktop/tablet)</p>
- <img src="./assets/wireframe_infra_detalhe_do_chamado_0.png" width="800"/>
+<p>Wireframe infraestrutura - detalhe do chamado (desktop/tablet/mobile)</p>
+ <img src="./assets/wireframeDetalheDoChamado.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-<p>Wireframe infraestrutura - detalhe do chamado (mobile)</p>
- <img src="./assets/wireframe_infra_detalhe_do_chamado_1.png" width="800"/>
- <p>Fonte: Próprios autores (2026).</p>
-</center>
 
 ## 3.4. Guia de estilos (sprint 3)
 
@@ -1569,7 +1563,7 @@ _posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelid
 
 ### 3.6.1. Modelo Entidade-Relacionamento (MER) (sprint 2)
 
-O modelo Entidade-Relacionamento (ER) conceitual representa as principais entidades do domínio da aplicação, seus atributos e os relacionamentos existentes entre elas, utilizando a notação **Crow’s Foot** de forma consistente em toda a modelagem. O objetivo deste modelo é estruturar conceitualmente os dados necessários para suportar o gerenciamento operacional da BRPec Agropecuária, contemplando usuários, tarefas, evidências, alertas, retiros e movimentações do rebanho.
+O modelo Entidade-Relacionamento (ER) conceitual representa as principais entidades do domínio da aplicação, seus atributos e relacionamentos existentes entre elas, utilizando a notação **Crow’s Foot** de forma consistente em toda a modelagem. O objetivo deste modelo é estruturar conceitualmente os dados necessários para suportar o gerenciamento operacional da BRPec Agropecuária, contemplando usuários, tarefas, evidências, alertas, retiros e movimentações do rebanho.
 
 Nesta etapa conceitual, não são representados detalhes físicos de implementação, como tipos específicos de banco de dados, chaves primárias ou estrangeiras, pois esses elementos serão tratados posteriormente no DER lógico e no modelo físico da aplicação.
 
@@ -1648,6 +1642,126 @@ erDiagram
     MOVIMENTACAO ||--o| TRANSFERENCIA : "caracteriza"
     MOVIMENTACAO ||--o| COMPRAVENDA : "caracteriza"
     TRANSFERENCIA }o--|| RETIRO : "destino"
+```
+#### Migrations DDL
+
+As migrations abaixo são reproduzíveis e idempotentes (`CREATE TABLE IF NOT EXISTS`). A ordem de execução deve ser respeitada para satisfazer as dependências de chave estrangeira.
+
+##### Migration 001 — `retiros`
+
+```sql
+CREATE TABLE IF NOT EXISTS retiros (
+    id          TEXT PRIMARY KEY,
+    nome        TEXT NOT NULL,
+    localizacao TEXT NOT NULL,
+    created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+```
+
+##### Migration 002 — `usuarios`
+
+```sql
+CREATE TABLE IF NOT EXISTS usuarios (
+    id         TEXT PRIMARY KEY,
+    retiro_id  TEXT NOT NULL REFERENCES retiros(id),
+    nome       TEXT NOT NULL,
+    email      TEXT NOT NULL UNIQUE,
+    senha_hash TEXT NOT NULL,
+    perfil     TEXT NOT NULL
+                   CHECK (perfil IN ('gerente','capataz','coordenador','tecnico_infra')),
+    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+CREATE INDEX IF NOT EXISTS idx_usuarios_retiro ON usuarios(retiro_id);
+CREATE INDEX IF NOT EXISTS idx_usuarios_perfil ON usuarios(perfil);
+```
+
+##### Migration 003 — `tarefas`
+
+```sql
+CREATE TABLE IF NOT EXISTS tarefas (
+    id             TEXT PRIMARY KEY,
+    retiro_id      TEXT NOT NULL REFERENCES retiros(id),
+    responsavel_id TEXT NOT NULL REFERENCES usuarios(id),
+    titulo         TEXT NOT NULL,
+    descricao      TEXT,
+    status         TEXT NOT NULL DEFAULT 'pendente'
+                       CHECK (status IN ('pendente','em_andamento','concluida','cancelada')),
+    data_prevista  TEXT,
+    data_conclusao TEXT,
+    sincronizado   INTEGER NOT NULL DEFAULT 0 CHECK (sincronizado IN (0,1)),
+    created_at     TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at     TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+CREATE INDEX IF NOT EXISTS idx_tarefas_retiro      ON tarefas(retiro_id);
+CREATE INDEX IF NOT EXISTS idx_tarefas_responsavel ON tarefas(responsavel_id);
+CREATE INDEX IF NOT EXISTS idx_tarefas_status      ON tarefas(status);
+```
+
+##### Migration 004 — `alertas`
+
+```sql
+CREATE TABLE IF NOT EXISTS alertas (
+    id                  TEXT PRIMARY KEY,
+    criado_por_id       TEXT NOT NULL REFERENCES usuarios(id),
+    tecnico_id          TEXT REFERENCES usuarios(id),
+    titulo              TEXT NOT NULL,
+    descricao           TEXT NOT NULL,
+    status              TEXT NOT NULL DEFAULT 'aberto'
+                            CHECK (status IN ('aberto','em_andamento','fechado')),
+    localizacao_lat     REAL NOT NULL,
+    localizacao_lng     REAL NOT NULL,
+    data_resolucao      TEXT,
+    descricao_resolucao TEXT,
+    created_at          TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at          TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    CHECK (
+        (status = 'fechado' AND data_resolucao IS NOT NULL)
+        OR status != 'fechado'
+    )
+);
+CREATE INDEX IF NOT EXISTS idx_alertas_status     ON alertas(status);
+CREATE INDEX IF NOT EXISTS idx_alertas_criado_por ON alertas(criado_por_id);
+CREATE INDEX IF NOT EXISTS idx_alertas_tecnico    ON alertas(tecnico_id);
+```
+
+##### Migration 005 — `evidencias`
+
+```sql
+CREATE TABLE IF NOT EXISTS evidencias (
+    id         TEXT PRIMARY KEY,
+    tarefa_id  TEXT REFERENCES tarefas(id),
+    alerta_id  TEXT REFERENCES alertas(id),
+    tipo       TEXT NOT NULL CHECK (tipo IN ('foto','audio','video','documento')),
+    url        TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    CHECK (
+        (tarefa_id IS NOT NULL AND alerta_id IS NULL)
+        OR (tarefa_id IS NULL  AND alerta_id IS NOT NULL)
+    )
+);
+CREATE INDEX IF NOT EXISTS idx_evidencias_tarefa ON evidencias(tarefa_id);
+CREATE INDEX IF NOT EXISTS idx_evidencias_alerta ON evidencias(alerta_id);
+```
+
+##### Migration 006 — `movimentacoes`
+
+```sql
+CREATE TABLE IF NOT EXISTS movimentacoes (
+    id                TEXT PRIMARY KEY,
+    retiro_id         TEXT NOT NULL REFERENCES retiros(id),
+    responsavel_id    TEXT NOT NULL REFERENCES usuarios(id),
+    tipo              TEXT NOT NULL
+                          CHECK (tipo IN ('nascimento','obito','transferencia','compravenda')),
+    data_movimentacao TEXT NOT NULL,
+    observacoes       TEXT,
+    created_at        TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at        TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+CREATE INDEX IF NOT EXISTS idx_movimentacoes_retiro      ON movimentacoes(retiro_id);
+CREATE INDEX IF NOT EXISTS idx_movimentacoes_responsavel ON movimentacoes(responsavel_id);
+CREATE INDEX IF NOT EXISTS idx_movimentacoes_tipo        ON movimentacoes(tipo);
 ```
 
 <center>
@@ -1777,8 +1891,134 @@ erDiagram
 
 ### 3.6.3. Modelo Relacional e Modelo Físico (sprints 2 e 4)
 
+O modelo físico deriva do modelo conceitual (ER) apresentado na seção 3.6.1, refinando as entidades em tabelas com tipos de dados concretos, chaves primárias em UUID v7, chaves estrangeiras explícitas e constraints de integridade referencial e de domínio. A estratégia de UUID v7 descrita acima é aplicada em todas as tabelas sujeitas a operações offline, garantindo unicidade global sem coordenação com o servidor.
+
+O banco de dados adotado é **SQLite** (modo offline-first nos dispositivos dos usuários de campo), com sincronização posterior para o banco central via UPSERT. A estrutura abaixo representa as 10 tabelas do sistema e seus relacionamentos.
+
 _Posicione aqui os diagramas de modelos relacionais do banco de dados, apresentando todos os esquemas de tabelas e suas relações. Inclua as migrations DDL numeradas e reproduzíveis (`CREATE TABLE`, `CREATE INDEX`, constraints `NOT NULL`, `UNIQUE`, `FOREIGN KEY`, `CHECK`). Utilize texto para complementar suas explicações quando necessário._
 
+
+```mermaid
+erDiagram
+    retiros {
+        TEXT id PK
+        TEXT nome
+        TEXT localizacao
+        TEXT created_at
+        TEXT updated_at
+    }
+    usuarios {
+        TEXT id PK
+        TEXT retiro_id FK
+        TEXT nome
+        TEXT email
+        TEXT senha_hash
+        TEXT perfil
+        TEXT created_at
+        TEXT updated_at
+    }
+    tarefas {
+        TEXT id PK
+        TEXT retiro_id FK
+        TEXT responsavel_id FK
+        TEXT titulo
+        TEXT descricao
+        TEXT status
+        TEXT data_prevista
+        TEXT data_conclusao
+        INTEGER sincronizado
+        TEXT created_at
+        TEXT updated_at
+    }
+    alertas {
+        TEXT id PK
+        TEXT criado_por_id FK
+        TEXT tecnico_id FK
+        TEXT titulo
+        TEXT descricao
+        TEXT status
+        REAL localizacao_lat
+        REAL localizacao_lng
+        TEXT data_resolucao
+        TEXT descricao_resolucao
+        TEXT created_at
+        TEXT updated_at
+    }
+    evidencias {
+        TEXT id PK
+        TEXT tarefa_id FK
+        TEXT alerta_id FK
+        TEXT tipo
+        TEXT url
+        TEXT created_at
+    }
+    movimentacoes {
+        TEXT id PK
+        TEXT retiro_id FK
+        TEXT responsavel_id FK
+        TEXT tipo
+        TEXT data_movimentacao
+        TEXT observacoes
+        TEXT created_at
+        TEXT updated_at
+    }
+    nascimentos {
+        TEXT id PK
+        TEXT movimentacao_id FK
+        INTEGER quantidade
+        TEXT raca
+    }
+    obitos {
+        TEXT id PK
+        TEXT movimentacao_id FK
+        INTEGER quantidade
+        TEXT causa
+    }
+    transferencias {
+        TEXT id PK
+        TEXT movimentacao_id FK
+        TEXT retiro_origem_id FK
+        TEXT retiro_destino_id FK
+        INTEGER quantidade
+    }
+    compravendas {
+        TEXT id PK
+        TEXT movimentacao_id FK
+        TEXT tipo_negocio
+        REAL valor_financeiro
+        INTEGER quantidade
+    }
+
+    retiros ||--o{ usuarios : "aloca"
+    retiros ||--o{ tarefas : "sedia"
+    retiros ||--o{ movimentacoes : "origina"
+    usuarios ||--o{ tarefas : "responsavel"
+    usuarios ||--o{ alertas : "cria"
+    usuarios ||--o{ alertas : "atende"
+    usuarios ||--o{ movimentacoes : "efetua"
+    tarefas ||--o{ evidencias : "comprova"
+    alertas ||--o{ evidencias : "documenta"
+    movimentacoes ||--o| nascimentos : "detalha"
+    movimentacoes ||--o| obitos : "detalha"
+    movimentacoes ||--o| transferencias : "detalha"
+    movimentacoes ||--o| compravendas : "detalha"
+    retiros ||--o{ transferencias : "origem"
+    retiros ||--o{ transferencias : "destino"
+```
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Decisões de modelagem físico:**
+
+- **`usuarios.perfil`** — `CHECK (perfil IN ('gerente','capataz','coordenador','tecnico_infra'))`. O perfil `tecnico_infra` foi adicionado após a Sprint 1, representando profissionais de infraestrutura que gerenciam tarefas próprias e atualizam seus status.
+- **`alertas.status`** — Ciclo completo `aberto → em_andamento → fechado` via `CHECK (status IN ('aberto','em_andamento','fechado'))`. Inclui GPS (`localizacao_lat`, `localizacao_lng`), técnico responsável (`tecnico_id`, nullable) e campos de resolução (`data_resolucao`, `descricao_resolucao`).
+- **`alertas` — constraint de resolução** — `CHECK ((status='fechado' AND data_resolucao IS NOT NULL) OR status!='fechado')`: toda resolução exige data preenchida.
+- **`evidencias` polimórfica** — `CHECK ((tarefa_id IS NOT NULL AND alerta_id IS NULL) OR (tarefa_id IS NULL AND alerta_id IS NOT NULL))`: cada evidência pertence a exatamente uma tarefa **ou** um alerta.
+- **`tarefas.sincronizado`** — `INTEGER NOT NULL DEFAULT 0 CHECK (sincronizado IN (0,1))`: flag booleana de controle offline→online.
+- **`transferencias` — constraint de consistência** — `CHECK (retiro_origem_id != retiro_destino_id)`: impede transferência para o mesmo retiro.
+- **Herança por tabela (table-per-type)** — `nascimentos`, `obitos`, `transferencias` e `compravendas` são tabelas-filhas de `movimentacoes`, cada uma com FK `movimentacao_id` e atributos específicos do tipo. Evita colunas nullable e mantém integridade referencial.
 
 #### Nota Técnica - Estratégia de UUID para criação e atualização offline
 
@@ -1794,7 +2034,9 @@ Assim, utilizaremos a versão 7 do UUID por uma questão de ordenação cronoló
 - UUID armazenado como tipo de dado nativo no PostgreSQL;
 - Sincronização via UPSERT (INSERT ... ON CONFLICT DO UPDATE)
 
-UPSERT é uma operação que combina UPdate (atualizar) e inSERT (inserir). Ele insere uma nova linha se ela não existir ou atualiza um registro existente se já houver uma correspondência. Assim, evitando erros de duplicidade e facilitando a sincronização de dados.
+As tabelas que receberão UUID v7 como chave primária são: `usuario`, `retiro`, `tarefa`, `evidencia`, `alerta`, `movimentacao`, `nascimento`, `obito`, `transferencia` e `compravenda`. Todas essas entidades podem ser criadas ou editadas em campo sem conexão.
+
+UPSERT é uma operação que combina UPDATE (atualizar) e INSERT (inserir). Ele insere uma nova linha se ela não existir ou atualiza um registro existente se já houver uma correspondência. Para resolver conflitos de atualização, caso dois dispositivos offline editem o mesmo registro, todas as tabelas mantêm um campo `updated_at` (timestamp com fuso horário). Na sincronização, prevalece a versão com o `updated_at` mais recente, garantindo que a edição mais nova vença sem rejeitar o registro.
 
 **Alternativas consideradas:**
 
