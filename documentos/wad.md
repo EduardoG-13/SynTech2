@@ -1823,6 +1823,8 @@ CREATE TABLE IF NOT EXISTS compravendas (
 );
 CREATE INDEX IF NOT EXISTS idx_compravendas_movimentacao ON compravendas(movimentacao_id);
 ```
+> O arquivo executável completo está disponível em [`src/migration.sql`](../src/src/migration.sql).
+
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
