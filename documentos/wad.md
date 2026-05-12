@@ -1532,16 +1532,11 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 </center>
 
 <center>
-<p>Wireframe infraestrutura - detalhe do chamado (desktop/tablet)</p>
- <img src="./assets/wireframe_infra_detalhe_do_chamado_0.png" width="800"/>
+<p>Wireframe infraestrutura - detalhe do chamado (desktop/tablet/mobile)</p>
+ <img src="./assets/wireframeDetalheDoChamado.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-<p>Wireframe infraestrutura - detalhe do chamado (mobile)</p>
- <img src="./assets/wireframe_infra_detalhe_do_chamado_1.png" width="800"/>
- <p>Fonte: Próprios autores (2026).</p>
-</center>
 
 ## 3.4. Guia de estilos (sprint 3)
 
