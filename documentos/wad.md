@@ -1648,6 +1648,61 @@ erDiagram
     MOVIMENTACAO ||--o| COMPRAVENDA : "caracteriza"
     TRANSFERENCIA }o--|| RETIRO : "destino"
 ```
+#### Migrations DDL
+
+As migrations abaixo são reproduzíveis e idempotentes (`CREATE TABLE IF NOT EXISTS`). A ordem de execução deve ser respeitada para satisfazer as dependências de chave estrangeira.
+
+##### Migration 001 — `retiros`
+
+```sql
+CREATE TABLE IF NOT EXISTS retiros (
+    id          TEXT PRIMARY KEY,
+    nome        TEXT NOT NULL,
+    localizacao TEXT NOT NULL,
+    created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+```
+
+##### Migration 002 — `usuarios`
+
+```sql
+CREATE TABLE IF NOT EXISTS usuarios (
+    id         TEXT PRIMARY KEY,
+    retiro_id  TEXT NOT NULL REFERENCES retiros(id),
+    nome       TEXT NOT NULL,
+    email      TEXT NOT NULL UNIQUE,
+    senha_hash TEXT NOT NULL,
+    perfil     TEXT NOT NULL
+                   CHECK (perfil IN ('gerente','capataz','coordenador','tecnico_infra')),
+    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+CREATE INDEX IF NOT EXISTS idx_usuarios_retiro ON usuarios(retiro_id);
+CREATE INDEX IF NOT EXISTS idx_usuarios_perfil ON usuarios(perfil);
+```
+
+##### Migration 003 — `tarefas`
+
+```sql
+CREATE TABLE IF NOT EXISTS tarefas (
+    id             TEXT PRIMARY KEY,
+    retiro_id      TEXT NOT NULL REFERENCES retiros(id),
+    responsavel_id TEXT NOT NULL REFERENCES usuarios(id),
+    titulo         TEXT NOT NULL,
+    descricao      TEXT,
+    status         TEXT NOT NULL DEFAULT 'pendente'
+                       CHECK (status IN ('pendente','em_andamento','concluida','cancelada')),
+    data_prevista  TEXT,
+    data_conclusao TEXT,
+    sincronizado   INTEGER NOT NULL DEFAULT 0 CHECK (sincronizado IN (0,1)),
+    created_at     TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
+    updated_at     TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+CREATE INDEX IF NOT EXISTS idx_tarefas_retiro      ON tarefas(retiro_id);
+CREATE INDEX IF NOT EXISTS idx_tarefas_responsavel ON tarefas(responsavel_id);
+CREATE INDEX IF NOT EXISTS idx_tarefas_status      ON tarefas(status);
+```
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
