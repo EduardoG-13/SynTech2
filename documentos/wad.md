@@ -1959,26 +1959,78 @@ UPSERT é uma operação que combina UPDATE (atualizar) e INSERT (inserir). Ele 
 
 ### 3.6.4. Consultas SQL e lógica proposicional (sprint 2)
 
-_posicione aqui uma lista de consultas SQL compostas, realizadas pelo back-end da aplicação web, com sua respectiva lógica proposicional, descrita conforme template abaixo. Lembre-se que para usar LaTeX em markdown, basta você colocar as expressões entre $ ou $$_
+### 3.6.4. Consultas SQL e lógica proposicional (sprint 2)
 
-_Template de SQL + lógica proposicional_
+As consultas abaixo representam os fluxos priorizados do sistema BRPec, conforme as User Stories da seção 2.3 e o modelo físico da seção 3.6.3. Cada consulta é acompanhada de suas proposições lógicas, expressão proposicional e tabela verdade.
+
+---
 
 <center>
   <p><strong>Tabela 8</strong> — Expressões SQL e Lógica Proposicional</p>
 </center>
 
-| #1                                 | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Expressão SQL**                  | SELECT \* FROM suppliers WHERE (state = 'California' AND supplier_id <> 900) OR (supplier_id = 100);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| **Proposições lógicas**            | $A$: O estado é 'California' (state = 'California') <br> $B$: O ID do fornecedor não é 900 (supplier_id ≠ 900) <br> $C$: O ID do fornecedor é 100 (supplier_id = 100)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| **Expressão lógica proposicional** | $(A \land B) \lor C$                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| **Tabela Verdade**                 | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$(A \land B)$</th> <th>$(A \land B) \lor C$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table> |
+| #1 | Fluxo: Lista de tarefas offline do capataz (US02 / RF002) |
+|---|---|
+| **Expressão SQL** | `SELECT id, titulo, descricao, status, data_execucao FROM tarefas WHERE capataz_id = $1 AND data_execucao = CURRENT_DATE AND (status = 'pendente' OR status = 'em_andamento');` |
+| **Proposições lógicas** | $A$: A tarefa pertence ao capataz autenticado (`capataz_id = $1`) <br> $B$: A tarefa está agendada para hoje (`data_execucao = CURRENT_DATE`) <br> $C$: O status é "pendente" (`status = 'pendente'`) <br> $D$: O status é "em andamento" (`status = 'em_andamento'`) |
+| **Expressão lógica proposicional** | $A \land B \land (C \lor D)$ |
+| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$D$</th><th>$(C \lor D)$</th><th>$A \land B \land (C \lor D)$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>F</td><td>V</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>V</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-_Dica: edite a tabela verdade fora do markdown, para ter melhor controle_
+---
+
+| #2 | Fluxo: Conclusão de tarefa com evidência (US03 / RF003) |
+|---|---|
+| **Expressão SQL** | `UPDATE tarefas SET status = 'concluida', updated_at = NOW() WHERE id = $1 AND capataz_id = $2 AND status <> 'concluida';` |
+| **Proposições lógicas** | $A$: A tarefa corresponde ao ID informado (`id = $1`) <br> $B$: A tarefa pertence ao capataz autenticado (`capataz_id = $2`) <br> $C$: A tarefa ainda não está concluída (`status <> 'concluida'`) |
+| **Expressão lógica proposicional** | $A \land B \land C$ |
+| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$A \land B$</th><th>$A \land B \land C$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
+
+| #3 | Fluxo: Alerta de infraestrutura em aberto (US06 / RF007) |
+|---|---|
+| **Expressão SQL** | `SELECT a.id, a.descricao, a.tipo, a.created_at, r.nome AS retiro, u.nome AS capataz FROM alertas a JOIN retiros r ON a.retiro_id = r.id JOIN usuarios u ON a.capataz_id = u.id WHERE a.gerente_id = $1 AND a.resolvido = false AND (a.tipo = 'infraestrutura' OR a.tipo = 'cerca' OR a.tipo = 'bebedouro') ORDER BY a.created_at DESC;` |
+| **Proposições lógicas** | $A$: O alerta pertence ao gerente autenticado (`gerente_id = $1`) <br> $B$: O alerta ainda não foi resolvido (`resolvido = false`) <br> $C$: O tipo é "infraestrutura" (`tipo = 'infraestrutura'`) <br> $D$: O tipo é "cerca" (`tipo = 'cerca'`) <br> $E$: O tipo é "bebedouro" (`tipo = 'bebedouro'`) |
+| **Expressão lógica proposicional** | $A \land B \land (C \lor D \lor E)$ |
+| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$D$</th><th>$E$</th><th>$(C \lor D \lor E)$</th><th>$A \land B \land (C \lor D \lor E)$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
+
+| #4 | Fluxo: Painel do gerente — tarefas por status e retiro (US07 / RF007) |
+|---|---|
+| **Expressão SQL** | `SELECT t.id, t.titulo, t.status, t.data_execucao, r.nome AS retiro, u.nome AS capataz FROM tarefas t JOIN retiros r ON t.retiro_id = r.id JOIN usuarios u ON t.capataz_id = u.id WHERE t.gerente_id = $1 AND (t.status = 'pendente' OR t.status = 'em_andamento') AND t.data_execucao >= CURRENT_DATE ORDER BY t.data_execucao ASC, r.nome ASC;` |
+| **Proposições lógicas** | $A$: A tarefa foi criada pelo gerente autenticado (`gerente_id = $1`) <br> $B$: O status é "pendente" (`status = 'pendente'`) <br> $C$: O status é "em andamento" (`status = 'em_andamento'`) <br> $D$: A data de execução é hoje ou futura (`data_execucao >= CURRENT_DATE`) |
+| **Expressão lógica proposicional** | $A \land (B \lor C) \land D$ |
+| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$D$</th><th>$(B \lor C)$</th><th>$A \land (B \lor C) \land D$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td></tr></tbody></table> |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
+
+| #5 | Fluxo: Registro de nascimento offline — inserção com flag de sincronização (US08 / RF008) |
+|---|---|
+| **Expressão SQL** | `INSERT INTO movimentacoes (id, tipo, data, categoria, quantidade, retiro_id, usuario_id, sincronizado, created_at) VALUES ($1, 'nascimento', $2, $3, $4, $5, $6, false, NOW()) ON CONFLICT (id) DO UPDATE SET sincronizado = false, updated_at = NOW() WHERE movimentacoes.sincronizado = false AND movimentacoes.usuario_id = EXCLUDED.usuario_id;` |
+| **Proposições lógicas** | $A$: O registro ainda não existe no banco (`id` não encontrado — INSERT) <br> $B$: O registro já existe mas ainda não foi sincronizado (`sincronizado = false`) <br> $C$: O registro pertence ao mesmo usuário que tenta sobrescrever (`usuario_id = EXCLUDED.usuario_id`) |
+| **Expressão lógica proposicional** | $A \lor (B \land C)$ |
+| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$(B \land C)$</th><th>$A \lor (B \land C)$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>V</td></tr><tr><td>V</td><td>F</td><td>V</td><td>F</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ## 3.7. WebAPI e endpoints (sprints 3 e 4)
 
