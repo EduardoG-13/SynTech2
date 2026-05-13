@@ -1745,6 +1745,18 @@ As consultas abaixo representam os fluxos priorizados do sistema BRPec, conforme
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
+---
+
+| #3 | Fluxo: Alerta de infraestrutura em aberto (US06 / RF007) |
+|---|---|
+| **Expressão SQL** | `SELECT a.id, a.descricao, a.tipo, a.created_at, r.nome AS retiro, u.nome AS capataz FROM alertas a JOIN retiros r ON a.retiro_id = r.id JOIN usuarios u ON a.capataz_id = u.id WHERE a.gerente_id = $1 AND a.resolvido = false AND (a.tipo = 'infraestrutura' OR a.tipo = 'cerca' OR a.tipo = 'bebedouro') ORDER BY a.created_at DESC;` |
+| **Proposições lógicas** | $A$: O alerta pertence ao gerente autenticado (`gerente_id = $1`) <br> $B$: O alerta ainda não foi resolvido (`resolvido = false`) <br> $C$: O tipo é "infraestrutura" (`tipo = 'infraestrutura'`) <br> $D$: O tipo é "cerca" (`tipo = 'cerca'`) <br> $E$: O tipo é "bebedouro" (`tipo = 'bebedouro'`) |
+| **Expressão lógica proposicional** | $A \land B \land (C \lor D \lor E)$ |
+| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$D$</th><th>$E$</th><th>$(C \lor D \lor E)$</th><th>$A \land B \land (C \lor D \lor E)$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ## 3.7. WebAPI e endpoints (sprints 3 e 4)
 
