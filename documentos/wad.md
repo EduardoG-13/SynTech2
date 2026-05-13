@@ -46,8 +46,7 @@ controle operacional, especialmente no registro de atividades de campo e na gest
 movimentação do rebanho, fatores diretamente relacionados à produtividade e à qualidade
 da tomada de decisão.
 
-No cenário da BrPec Agropecuária S.A., empresa com 14 retiros operacionais distribuídos
-na região do Pantanal sul-mato-grossense e aproximadamente 25 usuários operacionais,
+No cenário da BrPec Agropecuária S.A., empresa com 14 retiros operacionais distribuídos na região do Pantanal sul-mato-grossense e aproximadamente 240 colaboradores, dos quais cerca de 25 atuam diretamente como usuários operacionais da solução,
 identificou-se que o fluxo de informações entre o campo e o escritório ocorre de forma
 inteiramente manual, por meio de anotações em boletas de papel. Esse modelo gera
 ineficiências operacionais relevantes: registros são frequentemente preenchidos de forma
@@ -99,9 +98,9 @@ O Modelo das 5 Forças de Porter foi aplicado para analisar a estrutura competit
 
 **Poder de barganha dos clientes:** O poder é alto. Os principais compradores JBS, Marfrig e Minerva Foods, operam em oligopsônio e pressionam os preços pagos por arroba (INFOMONEY, 2024). A concentração do lado comprador mantém o produtor em posição estruturalmente desfavorável, com margens sensíveis à política de compra desses grupos (REPÓRTER BRASIL, 2024).
 
-**Ameaça de substitutos:** A ameaça é moderada e crescente. No mercado interno, frango e suíno competem com a carne bovina em custo-benefício (CEPEA, 2023). Externamente, o regulamento anti-desmatamento da União Europeia, em vigor a partir de 2026, restringe produtores com histórico ambiental negativo, limitando o acesso a mercados de maior valor agregado (REHAGRO, 2024).
+**Ameaça de substitutos:** A ameaça de produtos substitutos é moderada e crescente. No mercado interno, frango e suíno competem diretamente com a carne bovina por apresentarem, em muitos períodos, melhor relação custo-benefício ao consumidor (CEPEA, 2023). Em momentos de redução do poder de compra, essa substituição tende a se intensificar, pressionando a demanda pela carne bovina. Além disso, proteínas vegetais e outras alternativas sustentáveis vêm ganhando espaço em nichos específicos de consumo, especialmente entre públicos mais atentos a questões ambientais e de saúde. Externamente, o regulamento anti-desmatamento da União Europeia, em vigor a partir de 2026, aumenta as exigências de rastreabilidade e conformidade para acesso a mercados de maior valor agregado (REHAGRO, 2024). Nesse contexto, a BrPec precisa fortalecer sua eficiência operacional e sua capacidade de comprovar a origem e a regularidade de sua produção, reduzindo sua vulnerabilidade frente a produtos substitutos e ampliando sua competitividade.
 
-**Análise estrutural:** A BrPec opera em setor com barreiras de entrada relevantes e integração vertical como diferencial, mas enfrenta forte pressão de canais de compra concentrados, alta rivalidade por escala e dependência de fornecedores especializados. O passivo ambiental representa risco estratégico: a empresa figura entre os maiores desmatadores do Pantanal segundo o Ibama (DE OLHO NOS RURALISTAS, 2020), podendo restringir o acesso aos segmentos de maior rentabilidade.
+**Análise estrutural:** A BrPec opera em setor com barreiras de entrada relevantes e integração vertical como diferencial, mas enfrenta forte pressão de canais de compra concentrados, alta rivalidade por escala e dependência de fornecedores especializados. Além disso, desafios de conformidade ambiental podem representar riscos estratégicos, especialmente em um contexto de crescente rigor regulatório e ampliação das exigências ESG. A empresa já foi mencionada em levantamentos sobre desmatamento no Pantanal (DE OLHO NOS RURALISTAS, 2020), o que pode restringir o acesso a mercados premium, linhas de crédito e segmentos de maior rentabilidade. Nesse contexto, a digitalização dos registros operacionais contribui para ampliar a rastreabilidade, fortalecer a governança das informações e apoiar a mitigação de riscos reputacionais e regulatórios.
 
 <center>
   <p><strong>Figura 1</strong> — Análise das 5 Forças de Porter aplicada à BRPec Agropecuária<br/>
@@ -135,7 +134,7 @@ A análise SWOT a seguir avalia o posicionamento estratégico da BRPec considera
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-A leitura integrada dos quadrantes revela que a principal vantagem competitiva sustentável da BRPec reside em sua escala fundiária no Pantanal e no modelo integrado grãos-pecuária, atributos que concorrentes de médio porte não replicam no curto prazo. Por outro lado, o passivo ambiental ativo representa não apenas uma fraqueza interna de compliance, mas um vetor de amplificação de ameaças externas: é simultaneamente a causa do risco de bloqueio ao mercado europeu via EUDR e do encarecimento do custo de capital frente a concorrentes com certificações ESG consolidadas — concentrando dois dos três riscos externos mapeados em uma única vulnerabilidade de origem interna. Essa sobreposição indica que a resolução do passivo ambiental não é apenas uma pauta regulatória, mas a condição estrutural para que a BRPec converta sua escala operacional em acesso real a mercados premium e crédito qualificado.
+A leitura integrada dos quadrantes revela que a principal força da BrPec está em sua escala fundiária no Pantanal e no modelo integrado entre grãos e pecuária, atributos que fortalecem sua capacidade produtiva e dificultam a replicação por concorrentes de menor porte no curto prazo. Entre as fraquezas, destacam-se a dependência de registros manuais, a baixa padronização das informações operacionais, as limitações de conectividade nos retiros e os desafios de conformidade ambiental associados à atuação em biomas sensíveis. Como oportunidades, a digitalização dos processos, a rastreabilidade do rebanho, a melhoria da gestão operacional e o acesso a mercados mais exigentes podem ampliar a eficiência e o posicionamento competitivo da empresa. Já as ameaças envolvem o aumento da pressão regulatória ambiental, a concentração de compradores, a intensificação das exigências ESG e o possível encarecimento do custo de capital frente a concorrentes com certificações consolidadas. Dessa forma, a solução proposta atua sobre as principais fragilidades operacionais da BrPec, criando condições para reduzir riscos, aumentar a confiabilidade dos dados e transformar sua escala produtiva em uma vantagem competitiva mais sustentável.
 
 ### 2.1.3. Solução (sprints 1 a 5)
 
@@ -197,7 +196,13 @@ O projeto será considerado bem-sucedido quando:
 
 ---
 
-#### 7. Alinhamento com SWOT e Canvas
+#### 7. Análise Estratégica da Solução
+
+Além dos ganhos operacionais imediatos, a solução proposta cria uma base estruturada de dados para apoiar a evolução digital da BrPec. Ao substituir registros físicos por dados padronizados, o sistema permite que informações antes dispersas em boletas, mensagens e planilhas passem a compor um fluxo único, rastreável e reutilizável. Isso abre caminho para análises gerenciais mais precisas, criação de indicadores por retiro, acompanhamento de produtividade, identificação de gargalos operacionais e auditoria das movimentações do rebanho.
+
+## A aplicação também contribui para reduzir a dependência de conhecimento informal, pois transforma registros individuais em informação institucional acessível aos perfis autorizados. No médio prazo, essa base pode apoiar dashboards, relatórios comparativos, integrações com sistemas corporativos e mecanismos de validação mais robustos. Assim, o projeto não se limita à digitalização das boletas: ele estabelece uma infraestrutura informacional capaz de melhorar a governança operacional, fortalecer a rastreabilidade e apoiar decisões estratégicas na gestão agropecuária.
+
+#### 8. Alinhamento com SWOT e Canvas
 
 #### Alinhamento com a Análise SWOT
 
@@ -217,7 +222,7 @@ A proposta de valor constitui uma declaração objetiva que sintetiza a essênci
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-Os benefícios gerados pela adoção do sistema — incluindo a supressão do retrabalho de transcrição de dados, o registro otimizado de eventos zootécnicos em interface acessível e a confirmação documental de ordens de serviço com suporte a evidências fotográficas — estão em conformidade direta com os requisitos estabelecidos pela propriedade rural. Conclui-se, portanto, que a proposta de valor promovida não se restringe à mera digitalização de planilhas de controle, mas consolida a reestruturação integral do fluxo de dados operacionais, assegurando que o inventário pecuário e o status das infraestruturas se tornem mais precisos, rastreáveis e tempestivos para o suporte à tomada de decisão administrativa.
+Os benefícios esperados com a adoção do sistema incluem a redução do retrabalho de transcrição de dados, o registro otimizado de eventos zootécnicos em uma interface acessível e a possibilidade de confirmação documental de ordens de serviço por meio de evidências fotográficas. Esses elementos estão alinhados às necessidades identificadas junto à propriedade rural, mas ainda dependem de validação prática durante a evolução do MVP. Assim, a proposta de valor não se restringe à digitalização de planilhas: ela busca reorganizar o fluxo de dados operacionais da BrPec, tornando o inventário pecuário, os chamados de infraestrutura e o acompanhamento das tarefas mais precisos, rastreáveis e úteis para a tomada de decisão.
 
 ### 2.1.5. Matriz de Riscos do Projeto (sprint 1)
 
@@ -239,10 +244,10 @@ Nesse contexto, a figura a seguir apresenta a matriz de riscos elaborada para o 
 **Impacto:** Muito Alto
 
 **Explicação:**  
-Constata-se que a operação é realizada maioritariamente em modo offline nos retiros, razão pela qual a sincronização de dados é considerada um elemento estruturalmente crítico do sistema. Verifica-se que falhas neste processo podem resultar na perda, duplicidade ou inconsistência de registos. A título de exemplo, observa-se que uma movimentação de rebanho registada no campo pode não ser refletida no sistema central, gerando divergência entre o inventário real de animais e os dados disponibilizados para a gestão.
+Como a operação nos retiros ocorre majoritariamente em modo offline, a sincronização de dados é um ponto crítico do sistema. Falhas nesse processo podem causar perda, duplicidade ou inconsistência de registros. Por exemplo, uma movimentação de rebanho registrada no campo pode não ser refletida no sistema central, gerando divergência entre o inventário real e os dados disponíveis para a gestão.
 
 **Plano de ação:**  
-Constata-se que a mitigação deste risco exige a adoção de uma arquitetura orientada ao funcionamento offline, com armazenamento local de dados e sincronização assíncrona. Considera-se fundamental a implementação de mecanismos de controlo de consistência, tais como filas de envio, registos de log e reprocessamento automatizado em caso de falhas. Adicionalmente, recomenda-se a realização de testes que simulem cenários reais de perda e retomada de conexão, assegurando que a integridade dos dados seja mantida mesmo em condições adversas.
+Para reduzir esse risco, o sistema será desenvolvido com arquitetura offline-first, armazenamento local de dados e sincronização assíncrona. Também serão implementados mecanismos de consistência, como filas de envio, logs de sincronização e reprocessamento automático em caso de falha. Além disso, os testes devem simular perda e retomada de conexão para validar a integridade dos dados em condições próximas ao uso real.
 
 ---
 
@@ -252,10 +257,10 @@ Constata-se que a mitigação deste risco exige a adoção de uma arquitetura or
 **Impacto:** Alto
 
 **Explicação:**  
-Verifica-se que os capatazes, identificados como os principais utilizadores do sistema, apresentam reduzido nível de instrução formal e encontram-se habituados ao uso de ferramentas de comunicação elementares, como o WhatsApp. Observa-se que uma interface dotada de elevada complexidade pode dificultar a utilização do sistema e comprometer a sua adoção na rotina operacional diária.
+Os capatazes são usuários centrais da solução e podem apresentar baixa familiaridade com sistemas digitais complexos. Uma interface com muitos campos, textos longos ou etapas excessivas pode dificultar o uso diário e comprometer a adoção do sistema na rotina operacional.
 
 **Plano de ação:**  
-Constata-se que a mitigação deste risco exige o desenvolvimento de uma interface altamente intuitiva, fundamentada em elementos visuais e fluxos simplificados. Recomenda-se que a necessidade de leitura e digitação seja reduzida ao mínimo, priorizando-se ações rápidas e diretas. Considera-se essencial a validação contínua com o parceiro, por meio de protótipos e simulações de uso real, para garantir a aderência ao perfil do utilizador. Adicionalmente, observa-se que a comparação com ferramentas já utilizadas pelos capatazes pode orientar decisões de design mais eficazes.
+Para mitigar esse risco, a interface deve priorizar botões grandes, linguagem simples, poucos passos de interação e elementos visuais claros. A necessidade de leitura e digitação deve ser reduzida sempre que possível. A validação com o parceiro e a comparação com ferramentas já conhecidas pelos capatazes, como o WhatsApp, devem orientar as decisões de design.
 
 ---
 
@@ -265,10 +270,10 @@ Constata-se que a mitigação deste risco exige o desenvolvimento de uma interfa
 **Impacto:** Alto
 
 **Explicação:**  
-Observa-se que erros no registro de eventos zootécnicos, tais como nascimento, óbito ou transferência de animais, comprometem diretamente a fiabilidade das informações. A título ilustrativo, constata-se que a ausência de registro de um óbito pode gerar inconsistência no inventário e impactar decisões de venda ou de manejo.
+Erros no registro de eventos zootécnicos, como nascimento, óbito ou transferência de animais, comprometem diretamente a confiabilidade do inventário. A ausência de um registro de óbito, por exemplo, pode gerar divergências na contagem do rebanho e afetar decisões de manejo, venda ou controle sanitário.
 
 **Plano de ação:**  
-Verifica-se que a redução deste risco requer a imposição de validações estruturais nos registros, garantindo-se o preenchimento de campos essenciais, tais como origem, destino e tipo de movimentação. Considera-se que a exigência de evidências, como fotografias georreferenciadas em eventos críticos, contribui para o aumento da fiabilidade dos dados. Adicionalmente, recomenda-se a implementação de histórico de alterações, de modo a permitir a rastreabilidade de inconsistências e a correção de eventuais erros ao longo do tempo.
+Para reduzir esse risco, o sistema deve validar campos obrigatórios antes do salvamento, impedindo registros incompletos. Campos como tipo de movimentação, data, retiro, categoria e quantidade devem ser tratados como essenciais. Em eventos críticos, como óbito, o sistema pode exigir evidências adicionais, como fotografia, além de manter histórico de alterações para permitir rastreabilidade e correção de inconsistências.
 
 ---
 
@@ -278,10 +283,10 @@ Verifica-se que a redução deste risco requer a imposição de validações est
 **Impacto:** Muito Alto
 
 **Explicação:**  
-Constata-se que, mesmo perante uma interface considerada adequada, persiste o risco de resistência à mudança por parte dos capatazes, habituados ao uso de registos em papel e ferramentas informais na rotina diária. Observa-se que a introdução de um novo sistema pode ser percecionada como uma complexidade adicional ao fluxo operacional já consolidado. A título de exemplo, verifica-se a possibilidade de o utilizador optar por continuar a registar informações manualmente e postergar a utilização da solução digital, comprometendo a centralização e a fiabilidade dos dados.
+Mesmo com uma interface simples, existe o risco de resistência à mudança por parte dos usuários de campo, que já estão habituados ao uso de boletas físicas, comunicação verbal e ferramentas informais. Caso o sistema seja percebido como uma etapa adicional ou mais difícil do que o processo atual, sua adoção pode ser prejudicada.
 
 **Plano de ação:**  
-Identifica-se que a mitigação deste risco exige não apenas uma solução tecnicamente adequada, mas também uma estratégia de implementação alinhada ao contexto operacional da fazenda. Considera-se necessário assegurar que o sistema seja percecionado como facilitador da rotina, evidenciando-se a redução do esforço operacional em comparação ao método vigente. Recomenda-se, ainda, o envolvimento de supervisores no acompanhamento da utilização e a condução de validação contínua com o parceiro, de forma a reforçar a adoção. Verifica-se que a demonstração prática de benefícios — tais como a redução do retrabalho e a maior agilidade no registo — atua como fator de incentivo ao uso continuado da ferramenta.
+Para mitigar esse risco, a implantação deve mostrar claramente que o sistema reduz esforço, evita retrabalho e facilita a comunicação com a gestão. A solução deve ser apresentada como apoio à rotina do capataz, não como fiscalização excessiva. Também é importante envolver supervisores e coordenadores no acompanhamento do uso, reforçando os benefícios práticos da ferramenta.
 
 ---
 
@@ -291,10 +296,10 @@ Identifica-se que a mitigação deste risco exige não apenas uma solução tecn
 **Impacto:** Moderado
 
 **Explicação:**  
-Identifica-se o risco de os ficheiros CSV gerados pelo sistema não serem interpretados corretamente pelos templates legados de Excel utilizados pela coordenação da fazenda para a consolidação das movimentações. Observa-se que divergências na codificação de caracteres, na delimitação de campos ou na ordenação das colunas podem resultar na importação incorreta dos dados, gerando inconsistências nos relatórios gerenciais e comprometendo a fiabilidade da informação consolidada.
+Existe o risco de os arquivos CSV ou Excel gerados pelo sistema não serem interpretados corretamente pelos modelos de planilhas já utilizados pela coordenação. Problemas de codificação, separação de campos ou ordem das colunas podem prejudicar a importação dos dados e gerar inconsistências nos relatórios.
 
 **Plano de ação:**  
-Constata-se que a mitigação deste risco exige a homologação rigorosa dos esquemas de dados exportados, confrontando-se a estrutura dos ficheiros gerados pelo sistema com os templates legados atualmente em uso pela coordenação. Recomenda-se a realização de testes de importação com dados representativos em diferentes versões de Excel, bem como a validação da codificação de caracteres (UTF-8 com BOM) e dos delimitadores utilizados. Adicionalmente, considera-se necessária a documentação formal do esquema de exportação, de modo a garantir a compatibilidade contínua e a rastreabilidade de eventuais alterações no formato dos dados.
+Para reduzir esse risco, o esquema de exportação deve ser homologado com base nos templates atuais da BrPec. Os arquivos devem ser testados em diferentes versões do Excel, validando codificação, delimitadores, cabeçalhos e ordem das colunas. A estrutura final da exportação também deve ser documentada para evitar alterações não controladas.
 
 ---
 
@@ -304,10 +309,10 @@ Constata-se que a mitigação deste risco exige a homologação rigorosa dos esq
 **Impacto:** Moderado
 
 **Explicação:**  
-Verifica-se que o sistema será utilizado em dispositivos móveis no campo, os quais podem apresentar limitações de capacidade de processamento e memória. Observa-se que um desempenho insuficiente pode dificultar a utilização do sistema durante as atividades operacionais diárias.
+O sistema será utilizado em dispositivos móveis no campo, que podem ter limitações de processamento, memória e conexão. Caso a aplicação seja lenta ou pesada, o uso durante as atividades operacionais pode se tornar difícil, reduzindo a eficiência esperada.
 
 **Plano de ação:**  
-Constata-se que a garantia de uma experiência de utilização adequada requer a otimização do sistema para dispositivos móveis, com interfaces leves e reduzido consumo de recursos computacionais. Verifica-se que a utilização de cache local e a minimização de requisições externas contribuem para a melhoria do desempenho. Recomenda-se, adicionalmente, a realização de testes em dispositivos reais, de modo a validar a usabilidade em condições próximas ao ambiente operacional efetivo.
+Para evitar esse problema, a aplicação deve ser otimizada para dispositivos móveis, com telas leves, cache local e redução de requisições externas. Também devem ser realizados testes em dispositivos reais ou equivalentes aos usados pela BrPec, garantindo que os fluxos principais funcionem com boa resposta.
 
 ---
 
@@ -367,13 +372,11 @@ Identifica-se que a potencialização desta oportunidade requer a garantia de qu
 
 ## Síntese
 
-Conclui-se que a análise da matriz de riscos permite a identificação de fatores críticos suscetíveis de impactar tanto o desenvolvimento do projeto quanto a efetividade da solução no contexto operacional da BrPec. Verifica-se que, ao serem estabelecidas estratégias de mitigação e potencialização, torna-se possível a condução do projeto de forma mais segura, alinhada às necessidades do parceiro e orientada à geração de valor. Observa-se, assim, que a presente análise contribui para a qualidade, a fiabilidade e a rastreabilidade das entregas projetadas.
+A matriz de riscos evidencia que os principais desafios do projeto estão relacionados à operação offline, à adoção pelos usuários de campo, à qualidade dos registros e à compatibilidade dos dados exportados com os processos já utilizados pela BrPec. Ao mesmo tempo, o projeto apresenta oportunidades relevantes, como redução de retrabalho, melhoria da tomada de decisão, aumento da rastreabilidade e fortalecimento da eficiência operacional. Dessa forma, os planos de ação definidos buscam reduzir ameaças técnicas, humanas e operacionais, ao mesmo tempo em que potencializam os ganhos esperados com a digitalização dos registros de campo.
 
 ## 2.2. Personas (sprint 1)
 
-Personas são representações semifictícias dos usuários finais construídas a partir de dados reais, hipóteses fundamentadas e observações do contexto de negócio. Seu objetivo é sintetizar características, necessidades, dores e comportamentos dos usuários, permitindo que as decisões de design e desenvolvimento sejam orientadas pelas necessidades concretas das pessoas que utilizarão o sistema. Segundo Cooper et al. (2014), o uso de personas contribui para o alinhamento da equipe em torno de perfis de usuários claramente definidos, reduzindo ambiguidades e aumentando a aderência da solução ao contexto operacional.
-
-No contexto da BrPec Agropecuária S.A., as personas representam os três principais perfis envolvidos no fluxo operacional da fazenda: o Gerente Geral, que atua no escritório corporativo em São Paulo; o Coordenador, responsável pela consolidação das informações no escritório operacional em Miranda (MS); e o Capataz, que executa atividades diretamente nos retiros localizados no Pantanal sul-mato-grossense. Esses diferentes ambientes de atuação influenciam diretamente as necessidades, limitações e expectativas em relação ao sistema.
+Personas são, de forma resumida, representaçôes fictícia dos diferentes tipos de usuários. Elas permitem que a ferramenta seja mais eficiente e focada para atender as necessidades reais do cliente. Dessa forma, as Figuras 5, 6 e 7 mostram as personas criadas para o projeto.
 
 ### Persona 1: João Pereira
 
@@ -670,10 +673,6 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
 
 ## 2.3. User Stories (sprints 1 a 5)
 
-User Stories são descrições curtas e objetivas de funcionalidades sob a perspectiva do usuário final. Segundo Cohn (2004), esse artefato permite expressar necessidades de negócio de forma simples, priorizável e orientada à geração de valor. Cada história descreve quem é o usuário, qual ação deseja executar e qual benefício espera obter, servindo como base para planejamento, implementação e validação do sistema.
-
-No projeto BrPec, as User Stories foram elaboradas a partir das personas definidas anteriormente e representam as funcionalidades essenciais da aplicação, com ênfase na operação offline, no gerenciamento de tarefas e no registro das movimentações do rebanho. As cinco histórias prioritárias incluem ainda uma análise segundo o método INVEST, garantindo que sejam independentes, negociáveis, valiosas, estimáveis, pequenas e testáveis.
-
 <center>
   <p><strong>Quadro 1</strong> — User Story 01</p>
 </center>
@@ -705,7 +704,7 @@ No projeto BrPec, as User Stories foram elaboradas a partir das personas definid
 **Testável:** Possível validar criação e vínculo com retiro
 
 <center>
-  <p><strong> Quadro 2 </strong> — User Story 02</p>
+  <p><strong>Quadro 2</strong> — User Story 02</p>
 </center>
 
 | Campo                    | Descrição                                                                                                                                                  |
@@ -1093,19 +1092,20 @@ _Matriz de cobertura mostrando quais RN e endpoints implementam cada RF._
   <p><strong>Tabela 7</strong> — Matriz RF → RN → Endpoint</p>
 </center>
 
-| RF | RN associada(s) | Endpoint / Operação | Método | Finalidade da Operação |
-| --- | ------------- | ------------------- | ------ | ---------------------- |
-| RF001 | RN01 | /tarefas | POST | Criar tarefa vinculada a um retiro. |
-| RF002 | RN02, RN05, RN06 | /tarefas/hoje | GET | Listar tarefas do dia para o capataz logado. |
-| RF003 | RN03, RN07, RN08 | /tarefas/sincronizar | GET | Download de dados para uso offline. |
-| RF004 | RN04, RN12 | Consulta Local | N/A | Exibição de estado vazio (Offline). |
-| RF005 | RN13, RN14, RN15, RN16 | /tarefas/{id}/evidencia | POST | Upload de áudio/evidência da tarefa. |
-| RF006 | RN19, RN20, RN21, RN24 | /chamados | POST | Registrar alerta de infraestrutura (GPS imutável). |
-| RF007 | RN11 | /gerencia/status | GET | Visualização do painel de controle (Coordenador). |
-| RF008 | RN27, RN28, RN30 | /movimentacoes/nascimento | POST | Registrar novo animal no sistema. |
-| RF009 | RN31, RN33, RN34 | /movimentacoes/obito | POST | Registrar óbito com foto obrigatória. |
-| RF010 | RN37 | /sincronizacao/push | POST | Envio automático de dados ao detectar rede. |
-| RF015 | RN41 | /relatorios/exportar | GET | Gerar CSV/Excel para integração BrPec. |
+| RF    | RN associadas | Endpoint              | Método |
+| ----- | ------------- | --------------------- | ------ |
+| RF001 | RN01          | /tarefas              | POST   |
+| RF002 | RN02, RN05    | /tarefas/hoje         | GET    |
+| RF003 | RN03          | /tarefas/sincronizar  | GET    |
+| RF004 | RN04          | /tarefas/hoje/offline | GET    |
+| RF005 | RN05          | /tarefas/concluir     | POST   |
+| RF006 | RN06          | /chamados             | POST   |
+| RF007 | RN07          | /eventos/zootecnicos  | POST   |
+| RF008 | RN08          | /transacoes/gado      | POST   |
+| RF009 | RN09          | /transferencias       | POST   |
+| RF010 | RN10          | Armazenamento Local   | INSERT |
+| RF011 | RN11          | /sincronizar          | POST   |
+| RF012 | RN12          | Consulta Banco Local  | GET    |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1241,7 +1241,7 @@ UC07 — Validar movimentações (RF007)
 | Pós-condições | As movimentações são confirmadas e consideradas válidas |
 
 <center>
-  <p><strong> +Quadro 17</strong> — Caso de Uso UC07</p>
+  <p><strong>Quadro 17</strong> — Caso de Uso UC07</p>
 </center>
 
 <center>
@@ -1285,147 +1285,6 @@ UC09 — Exportar relatórios (RF009)
 ### 3.2.3. Diagrama de Classes do Domínio (sprint 2)
 
 _Diagrama UML de classes com entidades, atributos, relacionamentos e responsabilidades. Diferencie **associação**, **agregação** (losango vazio), **composição** (losango cheio) e **herança** (triângulo vazio). Multiplicidade explícita em toda associação._
-
-#### Atributos e Tipos das Classes do Domínio
-
----
-
-**Classe: Usuario** *(abstrata)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| id | Identificador único | Obrigatório |
-| nome | Texto | Obrigatório |
-| perfil | Enumeração (gerente, capataz, coordenador) | Obrigatório |
-| retiro_id | Referência a Retiro | Obrigatório |
-| created_at | Data e hora | Obrigatório |
-
----
-
-**Classe: Gerente** *(herda de Usuario)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| area_responsavel | Texto | Opcional |
-
----
-
-**Classe: Capataz** *(herda de Usuario)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| retiro_id | Referência a Retiro | Obrigatório |
-
----
-
-**Classe: Coordenador** *(herda de Usuario)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| (sem atributos adicionais além dos herdados) | — | — |
-
----
-
-**Classe: Retiro**
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| id | Identificador único | Obrigatório |
-| nome | Texto | Obrigatório |
-| localizacao | Texto | Opcional |
-
----
-
-**Classe: Tarefa**
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| id | Identificador único | Obrigatório |
-| titulo | Texto | Obrigatório |
-| descricao | Texto longo | Opcional |
-| status | Enumeração (pendente, em_andamento, concluida) | Obrigatório |
-| data_execucao | Data | Obrigatório |
-| gerente_id | Referência a Gerente | Obrigatório |
-| capataz_id | Referência a Capataz | Obrigatório |
-| retiro_id | Referência a Retiro | Obrigatório |
-| created_at | Data e hora | Obrigatório |
-
----
-
-**Classe: Evidencia**
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| id | Identificador único | Obrigatório |
-| tipo | Enumeração (foto, audio, texto) | Obrigatório |
-| conteudo | Binário / Texto | Obrigatório |
-| tarefa_id | Referência a Tarefa | Obrigatório |
-| created_at | Data e hora | Obrigatório |
-
----
-
-**Classe: Alerta**
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| id | Identificador único | Obrigatório |
-| descricao | Texto | Obrigatório |
-| tipo | Enumeração (cerca, bebedouro, infraestrutura, outro) | Obrigatório |
-| resolvido | Booleano | Obrigatório |
-| capataz_id | Referência a Capataz | Obrigatório |
-| retiro_id | Referência a Retiro | Obrigatório |
-| created_at | Data e hora | Obrigatório |
-
----
-
-**Classe: Movimentacao** *(abstrata)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| id | Identificador único | Obrigatório |
-| data | Data | Obrigatório |
-| categoria | Enumeração (bezerro, garrote, boi_touro, bezerra, novilha, vaca) | Obrigatório |
-| quantidade | Número inteiro positivo | Obrigatório |
-| sincronizado | Booleano | Obrigatório |
-| usuario_id | Referência a Usuario | Obrigatório |
-| retiro_id | Referência a Retiro | Obrigatório |
-| created_at | Data e hora | Obrigatório |
-
----
-
-**Classe: Nascimento** *(herda de Movimentacao)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| mae_id | Referência a animal (identificador opcional) | Opcional |
-| foto | Binário | Opcional |
-
----
-
-**Classe: Obito** *(herda de Movimentacao)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| causa | Texto | Obrigatório |
-| foto | Binário | Obrigatório |
-
----
-
-**Classe: Transferencia** *(herda de Movimentacao)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| retiro_origem_id | Referência a Retiro | Obrigatório |
-| retiro_destino_id | Referência a Retiro | Obrigatório |
-
----
-
-**Classe: CompraVenda** *(herda de Movimentacao)*
-
-| Atributo | Tipo Conceitual | Obrigatoriedade |
-|---|---|---|
-| tipo_operacao | Enumeração (compra, venda) | Obrigatório |
-| valor | Decimal | Opcional |
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
 
@@ -1507,35 +1366,28 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 ## 3.3. Wireframes (sprint 2)
 
 <center>
-<p>Wireframe capataz - acompanhamento de tarefas (mobile/tablet)</p>
- <img src="./assets/wireframeCapatazTarefas.png" width="800"/>
+<p>Wireframe da tela de tarefas do capataz</p>
+ <img src="../assets/wireframeCapatazTarefas.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-<p>Wireframe capataz - anexar fotos (mobile/tablet)</p>
- <img src="./assets/wireframeCapatazAnexarFotos.png" width="800"/>
+<p>Wireframe da tela de anexar fotos pelo capataz</p>
+ <img src="../assets/wireframeCapatazAnexarFotos.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-<p>Wireframe infraestrutura - acompanhamento de chamados (mobile/tablet/desktop)</p>
- <img src="./assets/wireframeInfraestrutura.png" width="800"/>
+<p>Wireframe da tela de infraestrutura </p>
+ <img src="../assets/wireframeInfraestrutura.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-<p>Wireframe infraestrutura - registrar resolução (mobile/tablet/desktop)</p>
- <img src="./assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
+<p>Wireframe da tela de infraestrutura registrar resolução</p>
+ <img src="../assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
-
-<center>
-<p>Wireframe infraestrutura - detalhe do chamado (desktop/tablet/mobile)</p>
- <img src="./assets/wireframeDetalheDoChamado.png" width="800"/>
- <p>Fonte: Próprios autores (2026).</p>
-</center>
-
 
 ## 3.4. Guia de estilos (sprint 3)
 
@@ -1561,464 +1413,17 @@ _posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelid
 
 ## 3.6. Modelagem do banco de dados (sprints 2 e 4)
 
-### 3.6.1. Modelo Entidade-Relacionamento (MER) (sprint 2)
+### 3.6.1. Modelo Entidade-Relacionamento (ER) (sprint 2)
 
-O modelo Entidade-Relacionamento (ER) conceitual representa as principais entidades do domínio da aplicação, seus atributos e relacionamentos existentes entre elas, utilizando a notação **Crow’s Foot** de forma consistente em toda a modelagem. O objetivo deste modelo é estruturar conceitualmente os dados necessários para suportar o gerenciamento operacional da BRPec Agropecuária, contemplando usuários, tarefas, evidências, alertas, retiros e movimentações do rebanho.
-
-Nesta etapa conceitual, não são representados detalhes físicos de implementação, como tipos específicos de banco de dados, chaves primárias ou estrangeiras, pois esses elementos serão tratados posteriormente no DER lógico e no modelo físico da aplicação.
-
-<center>
-  <p><strong>Figura 9</strong> — Modelo Entidade-Relacionamento Conceitual — BRPec Agropecuária</p>
-</center>
-
-```mermaid
-erDiagram
-    USUARIO {
-        Nome Atributo
-        Perfil Atributo
-        DataCriacao Atributo
-    }
-
-    RETIRO {
-        Nome Atributo
-        Localizacao Atributo
-    }
-
-    TAREFA {
-        Titulo Atributo
-        Descricao Atributo
-        Status Atributo
-        DataExecucao Atributo
-        DataCriacao Atributo
-    }
-
-    EVIDENCIA {
-        Tipo Atributo
-        Arquivo Atributo
-        DataRegistro Atributo
-    }
-
-    ALERTA {
-        Descricao Atributo
-        Categoria Atributo
-        Resolvido Atributo
-    }
-
-    MOVIMENTACAO {
-        Data Atributo
-        Tipo Atributo
-        Quantidade Atributo
-        StatusSincronizacao Atributo
-    }
-
-    NASCIMENTO {
-        RegistroMae Atributo
-        FotoNascimento Atributo
-    }
-
-    OBITO {
-        CausaMorte Atributo
-        FotoComprovacao Atributo
-    }
-
-    TRANSFERENCIA {
-        VolumeTransf Atributo
-    }
-
-    COMPRAVENDA {
-        TipoNegocio Atributo
-        ValorFinanceiro Atributo
-    }
-
-    RETIRO ||--o{ USUARIO : "aloca"
-    USUARIO ||--o{ TAREFA : "gerencia"
-    USUARIO ||--o{ ALERTA : "gera"
-    USUARIO ||--o{ MOVIMENTACAO : "efetua"
-    RETIRO ||--o{ TAREFA : "sedia"
-    RETIRO ||--o{ MOVIMENTACAO : "origina"
-    TAREFA ||--o{ EVIDENCIA : "comprova"
-    MOVIMENTACAO ||--o| NASCIMENTO : "caracteriza"
-    MOVIMENTACAO ||--o| OBITO : "caracteriza"
-    MOVIMENTACAO ||--o| TRANSFERENCIA : "caracteriza"
-    MOVIMENTACAO ||--o| COMPRAVENDA : "caracteriza"
-    TRANSFERENCIA }o--|| RETIRO : "destino"
-```
-#### Migrations DDL
-
-As migrations abaixo são reproduzíveis e idempotentes (`CREATE TABLE IF NOT EXISTS`). A ordem de execução deve ser respeitada para satisfazer as dependências de chave estrangeira.
-
-##### Migration 001 — `retiros`
-
-```sql
-CREATE TABLE IF NOT EXISTS retiros (
-    id          TEXT PRIMARY KEY,
-    nome        TEXT NOT NULL,
-    localizacao TEXT NOT NULL,
-    created_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-    updated_at  TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
-);
-```
-
-##### Migration 002 — `usuarios`
-
-```sql
-CREATE TABLE IF NOT EXISTS usuarios (
-    id         TEXT PRIMARY KEY,
-    retiro_id  TEXT NOT NULL REFERENCES retiros(id),
-    nome       TEXT NOT NULL,
-    email      TEXT NOT NULL UNIQUE,
-    senha_hash TEXT NOT NULL,
-    perfil     TEXT NOT NULL
-                   CHECK (perfil IN ('gerente','capataz','coordenador','tecnico_infra')),
-    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-    updated_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
-);
-CREATE INDEX IF NOT EXISTS idx_usuarios_retiro ON usuarios(retiro_id);
-CREATE INDEX IF NOT EXISTS idx_usuarios_perfil ON usuarios(perfil);
-```
-
-##### Migration 003 — `tarefas`
-
-```sql
-CREATE TABLE IF NOT EXISTS tarefas (
-    id             TEXT PRIMARY KEY,
-    retiro_id      TEXT NOT NULL REFERENCES retiros(id),
-    responsavel_id TEXT NOT NULL REFERENCES usuarios(id),
-    titulo         TEXT NOT NULL,
-    descricao      TEXT,
-    status         TEXT NOT NULL DEFAULT 'pendente'
-                       CHECK (status IN ('pendente','em_andamento','concluida','cancelada')),
-    data_prevista  TEXT,
-    data_conclusao TEXT,
-    sincronizado   INTEGER NOT NULL DEFAULT 0 CHECK (sincronizado IN (0,1)),
-    created_at     TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-    updated_at     TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
-);
-CREATE INDEX IF NOT EXISTS idx_tarefas_retiro      ON tarefas(retiro_id);
-CREATE INDEX IF NOT EXISTS idx_tarefas_responsavel ON tarefas(responsavel_id);
-CREATE INDEX IF NOT EXISTS idx_tarefas_status      ON tarefas(status);
-```
-
-##### Migration 004 — `alertas`
-
-```sql
-CREATE TABLE IF NOT EXISTS alertas (
-    id                  TEXT PRIMARY KEY,
-    criado_por_id       TEXT NOT NULL REFERENCES usuarios(id),
-    tecnico_id          TEXT REFERENCES usuarios(id),
-    titulo              TEXT NOT NULL,
-    descricao           TEXT NOT NULL,
-    status              TEXT NOT NULL DEFAULT 'aberto'
-                            CHECK (status IN ('aberto','em_andamento','fechado')),
-    localizacao_lat     REAL NOT NULL,
-    localizacao_lng     REAL NOT NULL,
-    data_resolucao      TEXT,
-    descricao_resolucao TEXT,
-    created_at          TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-    updated_at          TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-    CHECK (
-        (status = 'fechado' AND data_resolucao IS NOT NULL)
-        OR status != 'fechado'
-    )
-);
-CREATE INDEX IF NOT EXISTS idx_alertas_status     ON alertas(status);
-CREATE INDEX IF NOT EXISTS idx_alertas_criado_por ON alertas(criado_por_id);
-CREATE INDEX IF NOT EXISTS idx_alertas_tecnico    ON alertas(tecnico_id);
-```
-
-##### Migration 005 — `evidencias`
-
-```sql
-CREATE TABLE IF NOT EXISTS evidencias (
-    id         TEXT PRIMARY KEY,
-    tarefa_id  TEXT REFERENCES tarefas(id),
-    alerta_id  TEXT REFERENCES alertas(id),
-    tipo       TEXT NOT NULL CHECK (tipo IN ('foto','audio','video','documento')),
-    url        TEXT NOT NULL,
-    created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-    CHECK (
-        (tarefa_id IS NOT NULL AND alerta_id IS NULL)
-        OR (tarefa_id IS NULL  AND alerta_id IS NOT NULL)
-    )
-);
-CREATE INDEX IF NOT EXISTS idx_evidencias_tarefa ON evidencias(tarefa_id);
-CREATE INDEX IF NOT EXISTS idx_evidencias_alerta ON evidencias(alerta_id);
-```
-
-##### Migration 006 — `movimentacoes`
-
-```sql
-CREATE TABLE IF NOT EXISTS movimentacoes (
-    id                TEXT PRIMARY KEY,
-    retiro_id         TEXT NOT NULL REFERENCES retiros(id),
-    responsavel_id    TEXT NOT NULL REFERENCES usuarios(id),
-    tipo              TEXT NOT NULL
-                          CHECK (tipo IN ('nascimento','obito','transferencia','compravenda')),
-    data_movimentacao TEXT NOT NULL,
-    observacoes       TEXT,
-    created_at        TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now')),
-    updated_at        TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
-);
-CREATE INDEX IF NOT EXISTS idx_movimentacoes_retiro      ON movimentacoes(retiro_id);
-CREATE INDEX IF NOT EXISTS idx_movimentacoes_responsavel ON movimentacoes(responsavel_id);
-CREATE INDEX IF NOT EXISTS idx_movimentacoes_tipo        ON movimentacoes(tipo);
-```
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
-### Decisões de modelagem
-
-- A entidade **USUARIO** representa genericamente os perfis operacionais do sistema, incluindo gerente, coordenador e capataz. A diferenciação entre os tipos de usuário é realizada pelo atributo `perfil`, evitando redundância estrutural entre entidades com atributos equivalentes.
-
-- A entidade **RETIRO** representa as unidades operacionais da fazenda e centraliza os relacionamentos relacionados às tarefas e movimentações realizadas em campo.
-
-- A entidade **TAREFA** foi modelada para representar atividades operacionais atribuídas aos usuários, permitindo acompanhamento de execução, status e data planejada.
-
-- A entidade **EVIDENCIA** armazena registros comprobatórios relacionados às tarefas executadas, como fotografias, áudios ou anexos utilizados para validação operacional.
-
-- A entidade **ALERTA** representa notificações operacionais geradas pelos usuários durante a execução das atividades em campo, permanecendo disponíveis até serem resolvidas.
-
-- A entidade **MOVIMENTACAO** representa eventos relacionados ao manejo do rebanho bovino, incluindo nascimentos, óbitos, transferências e operações de compra e venda.
-
-- As entidades **NASCIMENTO**, **OBITO**, **TRANSFERENCIA** e **COMPRAVENDA** foram modeladas como detalhamentos específicos de movimentações, permitindo representar atributos particulares de cada tipo de operação sem duplicação de informações comuns.
-
-- O relacionamento entre **TAREFA** e **EVIDENCIA** representa dependência operacional, indicando que evidências somente podem existir associadas a uma tarefa previamente cadastrada.
-
-- A notação **Crow’s Foot** foi utilizada de forma consistente em toda a modelagem conceitual, sem mistura com elementos de UML ou notação Chen.
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
+_Apresente o modelo ER conceitual com entidades, atributos e relacionamentos. Use notação consistente (Chen ou Crow's Foot - não misture)._
 
 ### 3.6.2. Diagrama Entidade-Relacionamento (DER) (sprint 2)
 
-O Diagrama Entidade-Relacionamento (DER) é uma representação gráfica da estrutura de um banco de dados, baseada no Modelo Entidade-Relacionamento (MER) proposto por Peter Chen (1976). No diagrama, entidades (objetos do mundo real com existência independente) são representadas por retângulos. Seus atributos, por elipses, e os relacionamentos entre elas, por losangos. Essa notação auxilia desenvolvedores a visualizar e comunicar a arquitetura de dados de um sistema antes de sua implementação. [9]
-
-
-```mermaid
-erDiagram
-    RETIROS {
-        uuid id PK
-        varchar(100) nome
-        text localizacao
-    }
-    USUARIOS {
-        uuid id PK
-        varchar(150) nome
-        varchar(255) senha_hash
-        varchar(20) perfil
-        text area_responsavel
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    TAREFAS {
-        uuid id PK
-        varchar(200) titulo
-        text descricao
-        varchar(20) status
-        date data_execucao
-        uuid gerente_id FK
-        uuid capataz_id FK
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    EVIDENCIAS {
-        uuid id PK
-        varchar(10) tipo
-        bytea conteudo
-        uuid tarefa_id FK
-        timestamptz created_at
-    }
-    ALERTAS {
-        uuid id PK
-        text descricao
-        varchar(30) tipo
-        boolean resolvido
-        uuid capataz_id FK
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    MOVIMENTACOES {
-        uuid id PK
-        date data
-        varchar(20) categoria
-        integer quantidade
-        boolean sincronizado
-        uuid usuario_id FK
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    NASCIMENTOS {
-        uuid movimentacao_id PK
-        uuid mae_id
-        bytea foto
-    }
-    OBITOS {
-        uuid movimentacao_id PK
-        text causa
-        bytea foto
-    }
-    TRANSFERENCIAS {
-        uuid movimentacao_id PK
-        uuid retiro_origem_id FK
-        uuid retiro_destino_id FK
-    }
-    COMPRAVENDAS {
-        uuid movimentacao_id PK
-        varchar(10) tipo_operacao
-        numeric(12) valor
-    }
-
-    USUARIOS }o--|| RETIROS : "retiro_id"
-    TAREFAS }o--|| USUARIOS : "gerente_id"
-    TAREFAS }o--|| USUARIOS : "capataz_id"
-    TAREFAS }o--|| RETIROS : "retiro_id"
-    EVIDENCIAS }o--|| TAREFAS : "tarefa_id"
-    ALERTAS }o--|| USUARIOS : "capataz_id"
-    ALERTAS }o--|| RETIROS : "retiro_id"
-    MOVIMENTACOES }o--|| USUARIOS : "usuario_id"
-    MOVIMENTACOES }o--|| RETIROS : "retiro_id"
-    NASCIMENTOS ||--|| MOVIMENTACOES : "movimentacao_id"
-    OBITOS ||--|| MOVIMENTACOES : "movimentacao_id"
-    TRANSFERENCIAS ||--|| MOVIMENTACOES : "movimentacao_id"
-    TRANSFERENCIAS }o--|| RETIROS : "retiro_origem_id"
-    TRANSFERENCIAS }o--|| RETIROS : "retiro_destino_id"
-    COMPRAVENDAS ||--|| MOVIMENTACOES : "movimentacao_id"
-```
-
+_Posicione aqui o DER com cardinalidades explícitas em ambos os lados de cada relação e identificação de PK/FK. O DER deve ser coerente com o diagrama de classes (3.2.3)._
 
 ### 3.6.3. Modelo Relacional e Modelo Físico (sprints 2 e 4)
 
-O modelo físico deriva do modelo conceitual (ER) apresentado na seção 3.6.1, refinando as entidades em tabelas com tipos de dados concretos, chaves primárias em UUID v7, chaves estrangeiras explícitas e constraints de integridade referencial e de domínio. A estratégia de UUID v7 descrita acima é aplicada em todas as tabelas sujeitas a operações offline, garantindo unicidade global sem coordenação com o servidor.
-
-O banco de dados adotado é **SQLite** (modo offline-first nos dispositivos dos usuários de campo), com sincronização posterior para o banco central via UPSERT. A estrutura abaixo representa as 10 tabelas do sistema e seus relacionamentos.
-
 _Posicione aqui os diagramas de modelos relacionais do banco de dados, apresentando todos os esquemas de tabelas e suas relações. Inclua as migrations DDL numeradas e reproduzíveis (`CREATE TABLE`, `CREATE INDEX`, constraints `NOT NULL`, `UNIQUE`, `FOREIGN KEY`, `CHECK`). Utilize texto para complementar suas explicações quando necessário._
-
-
-```mermaid
-erDiagram
-    retiros {
-        TEXT id PK
-        TEXT nome
-        TEXT localizacao
-        TEXT created_at
-        TEXT updated_at
-    }
-    usuarios {
-        TEXT id PK
-        TEXT retiro_id FK
-        TEXT nome
-        TEXT email
-        TEXT senha_hash
-        TEXT perfil
-        TEXT created_at
-        TEXT updated_at
-    }
-    tarefas {
-        TEXT id PK
-        TEXT retiro_id FK
-        TEXT responsavel_id FK
-        TEXT titulo
-        TEXT descricao
-        TEXT status
-        TEXT data_prevista
-        TEXT data_conclusao
-        INTEGER sincronizado
-        TEXT created_at
-        TEXT updated_at
-    }
-    alertas {
-        TEXT id PK
-        TEXT criado_por_id FK
-        TEXT tecnico_id FK
-        TEXT titulo
-        TEXT descricao
-        TEXT status
-        REAL localizacao_lat
-        REAL localizacao_lng
-        TEXT data_resolucao
-        TEXT descricao_resolucao
-        TEXT created_at
-        TEXT updated_at
-    }
-    evidencias {
-        TEXT id PK
-        TEXT tarefa_id FK
-        TEXT alerta_id FK
-        TEXT tipo
-        TEXT url
-        TEXT created_at
-    }
-    movimentacoes {
-        TEXT id PK
-        TEXT retiro_id FK
-        TEXT responsavel_id FK
-        TEXT tipo
-        TEXT data_movimentacao
-        TEXT observacoes
-        TEXT created_at
-        TEXT updated_at
-    }
-    nascimentos {
-        TEXT id PK
-        TEXT movimentacao_id FK
-        INTEGER quantidade
-        TEXT raca
-    }
-    obitos {
-        TEXT id PK
-        TEXT movimentacao_id FK
-        INTEGER quantidade
-        TEXT causa
-    }
-    transferencias {
-        TEXT id PK
-        TEXT movimentacao_id FK
-        TEXT retiro_origem_id FK
-        TEXT retiro_destino_id FK
-        INTEGER quantidade
-    }
-    compravendas {
-        TEXT id PK
-        TEXT movimentacao_id FK
-        TEXT tipo_negocio
-        REAL valor_financeiro
-        INTEGER quantidade
-    }
-
-    retiros ||--o{ usuarios : "aloca"
-    retiros ||--o{ tarefas : "sedia"
-    retiros ||--o{ movimentacoes : "origina"
-    usuarios ||--o{ tarefas : "responsavel"
-    usuarios ||--o{ alertas : "cria"
-    usuarios ||--o{ alertas : "atende"
-    usuarios ||--o{ movimentacoes : "efetua"
-    tarefas ||--o{ evidencias : "comprova"
-    alertas ||--o{ evidencias : "documenta"
-    movimentacoes ||--o| nascimentos : "detalha"
-    movimentacoes ||--o| obitos : "detalha"
-    movimentacoes ||--o| transferencias : "detalha"
-    movimentacoes ||--o| compravendas : "detalha"
-    retiros ||--o{ transferencias : "origem"
-    retiros ||--o{ transferencias : "destino"
-```
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
-**Decisões de modelagem físico:**
-
-- **`usuarios.perfil`** — `CHECK (perfil IN ('gerente','capataz','coordenador','tecnico_infra'))`. O perfil `tecnico_infra` foi adicionado após a Sprint 1, representando profissionais de infraestrutura que gerenciam tarefas próprias e atualizam seus status.
-- **`alertas.status`** — Ciclo completo `aberto → em_andamento → fechado` via `CHECK (status IN ('aberto','em_andamento','fechado'))`. Inclui GPS (`localizacao_lat`, `localizacao_lng`), técnico responsável (`tecnico_id`, nullable) e campos de resolução (`data_resolucao`, `descricao_resolucao`).
-- **`alertas` — constraint de resolução** — `CHECK ((status='fechado' AND data_resolucao IS NOT NULL) OR status!='fechado')`: toda resolução exige data preenchida.
-- **`evidencias` polimórfica** — `CHECK ((tarefa_id IS NOT NULL AND alerta_id IS NULL) OR (tarefa_id IS NULL AND alerta_id IS NOT NULL))`: cada evidência pertence a exatamente uma tarefa **ou** um alerta.
-- **`tarefas.sincronizado`** — `INTEGER NOT NULL DEFAULT 0 CHECK (sincronizado IN (0,1))`: flag booleana de controle offline→online.
-- **`transferencias` — constraint de consistência** — `CHECK (retiro_origem_id != retiro_destino_id)`: impede transferência para o mesmo retiro.
-- **Herança por tabela (table-per-type)** — `nascimentos`, `obitos`, `transferencias` e `compravendas` são tabelas-filhas de `movimentacoes`, cada uma com FK `movimentacao_id` e atributos específicos do tipo. Evita colunas nullable e mantém integridade referencial.
 
 #### Nota Técnica - Estratégia de UUID para criação e atualização offline
 
@@ -2034,9 +1439,7 @@ Assim, utilizaremos a versão 7 do UUID por uma questão de ordenação cronoló
 - UUID armazenado como tipo de dado nativo no PostgreSQL;
 - Sincronização via UPSERT (INSERT ... ON CONFLICT DO UPDATE)
 
-As tabelas que receberão UUID v7 como chave primária são: `usuario`, `retiro`, `tarefa`, `evidencia`, `alerta`, `movimentacao`, `nascimento`, `obito`, `transferencia` e `compravenda`. Todas essas entidades podem ser criadas ou editadas em campo sem conexão.
-
-UPSERT é uma operação que combina UPDATE (atualizar) e INSERT (inserir). Ele insere uma nova linha se ela não existir ou atualiza um registro existente se já houver uma correspondência. Para resolver conflitos de atualização, caso dois dispositivos offline editem o mesmo registro, todas as tabelas mantêm um campo `updated_at` (timestamp com fuso horário). Na sincronização, prevalece a versão com o `updated_at` mais recente, garantindo que a edição mais nova vença sem rejeitar o registro.
+UPSERT é uma operação que combina UPdate (atualizar) e inSERT (inserir). Ele insere uma nova linha se ela não existir ou atualiza um registro existente se já houver uma correspondência. Assim, evitando erros de duplicidade e facilitando a sincronização de dados.
 
 **Alternativas consideradas:**
 
@@ -2053,78 +1456,26 @@ UPSERT é uma operação que combina UPDATE (atualizar) e INSERT (inserir). Ele 
 
 ### 3.6.4. Consultas SQL e lógica proposicional (sprint 2)
 
-### 3.6.4. Consultas SQL e lógica proposicional (sprint 2)
+_posicione aqui uma lista de consultas SQL compostas, realizadas pelo back-end da aplicação web, com sua respectiva lógica proposicional, descrita conforme template abaixo. Lembre-se que para usar LaTeX em markdown, basta você colocar as expressões entre $ ou $$_
 
-As consultas abaixo representam os fluxos priorizados do sistema BRPec, conforme as User Stories da seção 2.3 e o modelo físico da seção 3.6.3. Cada consulta é acompanhada de suas proposições lógicas, expressão proposicional e tabela verdade.
-
----
+_Template de SQL + lógica proposicional_
 
 <center>
   <p><strong>Tabela 8</strong> — Expressões SQL e Lógica Proposicional</p>
 </center>
 
-| #1 | Fluxo: Lista de tarefas offline do capataz (US02 / RF002) |
-|---|---|
-| **Expressão SQL** | `SELECT id, titulo, descricao, status, data_execucao FROM tarefas WHERE capataz_id = $1 AND data_execucao = CURRENT_DATE AND (status = 'pendente' OR status = 'em_andamento');` |
-| **Proposições lógicas** | $A$: A tarefa pertence ao capataz autenticado (`capataz_id = $1`) <br> $B$: A tarefa está agendada para hoje (`data_execucao = CURRENT_DATE`) <br> $C$: O status é "pendente" (`status = 'pendente'`) <br> $D$: O status é "em andamento" (`status = 'em_andamento'`) |
-| **Expressão lógica proposicional** | $A \land B \land (C \lor D)$ |
-| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$D$</th><th>$(C \lor D)$</th><th>$A \land B \land (C \lor D)$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>F</td><td>V</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>V</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
+| #1                                 | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Expressão SQL**                  | SELECT \* FROM suppliers WHERE (state = 'California' AND supplier_id <> 900) OR (supplier_id = 100);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Proposições lógicas**            | $A$: O estado é 'California' (state = 'California') <br> $B$: O ID do fornecedor não é 900 (supplier_id ≠ 900) <br> $C$: O ID do fornecedor é 100 (supplier_id = 100)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| **Expressão lógica proposicional** | $(A \land B) \lor C$                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Tabela Verdade**                 | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$(A \land B)$</th> <th>$(A \land B) \lor C$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table> |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
----
-
-| #2 | Fluxo: Conclusão de tarefa com evidência (US03 / RF003) |
-|---|---|
-| **Expressão SQL** | `UPDATE tarefas SET status = 'concluida', updated_at = NOW() WHERE id = $1 AND capataz_id = $2 AND status <> 'concluida';` |
-| **Proposições lógicas** | $A$: A tarefa corresponde ao ID informado (`id = $1`) <br> $B$: A tarefa pertence ao capataz autenticado (`capataz_id = $2`) <br> $C$: A tarefa ainda não está concluída (`status <> 'concluida'`) |
-| **Expressão lógica proposicional** | $A \land B \land C$ |
-| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$A \land B$</th><th>$A \land B \land C$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
----
-
-| #3 | Fluxo: Alerta de infraestrutura em aberto (US06 / RF007) |
-|---|---|
-| **Expressão SQL** | `SELECT a.id, a.descricao, a.tipo, a.created_at, r.nome AS retiro, u.nome AS capataz FROM alertas a JOIN retiros r ON a.retiro_id = r.id JOIN usuarios u ON a.capataz_id = u.id WHERE a.gerente_id = $1 AND a.resolvido = false AND (a.tipo = 'infraestrutura' OR a.tipo = 'cerca' OR a.tipo = 'bebedouro') ORDER BY a.created_at DESC;` |
-| **Proposições lógicas** | $A$: O alerta pertence ao gerente autenticado (`gerente_id = $1`) <br> $B$: O alerta ainda não foi resolvido (`resolvido = false`) <br> $C$: O tipo é "infraestrutura" (`tipo = 'infraestrutura'`) <br> $D$: O tipo é "cerca" (`tipo = 'cerca'`) <br> $E$: O tipo é "bebedouro" (`tipo = 'bebedouro'`) |
-| **Expressão lógica proposicional** | $A \land B \land (C \lor D \lor E)$ |
-| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$D$</th><th>$E$</th><th>$(C \lor D \lor E)$</th><th>$A \land B \land (C \lor D \lor E)$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
----
-
-| #4 | Fluxo: Painel do gerente — tarefas por status e retiro (US07 / RF007) |
-|---|---|
-| **Expressão SQL** | `SELECT t.id, t.titulo, t.status, t.data_execucao, r.nome AS retiro, u.nome AS capataz FROM tarefas t JOIN retiros r ON t.retiro_id = r.id JOIN usuarios u ON t.capataz_id = u.id WHERE t.gerente_id = $1 AND (t.status = 'pendente' OR t.status = 'em_andamento') AND t.data_execucao >= CURRENT_DATE ORDER BY t.data_execucao ASC, r.nome ASC;` |
-| **Proposições lógicas** | $A$: A tarefa foi criada pelo gerente autenticado (`gerente_id = $1`) <br> $B$: O status é "pendente" (`status = 'pendente'`) <br> $C$: O status é "em andamento" (`status = 'em_andamento'`) <br> $D$: A data de execução é hoje ou futura (`data_execucao >= CURRENT_DATE`) |
-| **Expressão lógica proposicional** | $A \land (B \lor C) \land D$ |
-| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$D$</th><th>$(B \lor C)$</th><th>$A \land (B \lor C) \land D$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>V</td><td>V</td><td>F</td></tr><tr><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td><td>F</td></tr><tr><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>F</td><td>V</td><td>F</td></tr></tbody></table> |
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
----
-
-| #5 | Fluxo: Registro de nascimento offline — inserção com flag de sincronização (US08 / RF008) |
-|---|---|
-| **Expressão SQL** | `INSERT INTO movimentacoes (id, tipo, data, categoria, quantidade, retiro_id, usuario_id, sincronizado, created_at) VALUES ($1, 'nascimento', $2, $3, $4, $5, $6, false, NOW()) ON CONFLICT (id) DO UPDATE SET sincronizado = false, updated_at = NOW() WHERE movimentacoes.sincronizado = false AND movimentacoes.usuario_id = EXCLUDED.usuario_id;` |
-| **Proposições lógicas** | $A$: O registro ainda não existe no banco (`id` não encontrado — INSERT) <br> $B$: O registro já existe mas ainda não foi sincronizado (`sincronizado = false`) <br> $C$: O registro pertence ao mesmo usuário que tenta sobrescrever (`usuario_id = EXCLUDED.usuario_id`) |
-| **Expressão lógica proposicional** | $A \lor (B \land C)$ |
-| **Tabela Verdade** | <table><thead><tr><th>$A$</th><th>$B$</th><th>$C$</th><th>$(B \land C)$</th><th>$A \lor (B \land C)$</th></tr></thead><tbody><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>V</td></tr><tr><td>V</td><td>F</td><td>V</td><td>F</td><td>V</td></tr><tr><td>V</td><td>V</td><td>F</td><td>F</td><td>V</td></tr><tr><td>V</td><td>V</td><td>V</td><td>V</td><td>V</td></tr></tbody></table> |
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
+_Dica: edite a tabela verdade fora do markdown, para ter melhor controle_
 
 ## 3.7. WebAPI e endpoints (sprints 3 e 4)
 
@@ -2286,13 +1637,7 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 
 [9] MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026.
 
-[10] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
-
-[11] COOPER, Alan; REIMANN, Robert; CRONIN, David; NOESSEL, Christopher. About Face: The Essentials of Interaction Design. 4. ed. Indianapolis: Wiley, 2014.
-
-[12] COHN, Mike. User Stories Applied: For Agile Software Development. Boston: Addison-Wesley, 2004.
-
-[9] CHEN, Peter Pin-Shan. The entity-relationship model: toward a unified view of data. ACM Transactions on Database Systems, v. 1, n. 1, p. 9–36, 1976.
+[8] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
 
 # <a name="c9"></a>Anexos
 
