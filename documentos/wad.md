@@ -1785,76 +1785,79 @@ Nesta etapa conceitual, não são representados detalhes físicos de implementa�
   <p><strong>Figura 13</strong> — Modelo Entidade-Relacionamento Conceitual — BRPec Agropecuária</p>
 </center>
 
+### 3.6.1 Modelo Entidade-Relacionamento (ER) conceitual
+
+O modelo conceitual a seguir utiliza a notação de Chen para representar as entidades e relacionamentos do sistema Salli-AI. Esta modelagem foca exclusivamente nas regras de negócio da BrPec Agropecuária, omitindo detalhes técnicos de implementação, tipos de dados ou chaves primárias, conforme as diretrizes desta etapa.
+
 ```mermaid
-erDiagram
-    USUARIO {
-        Nome Atributo
-        Perfil Atributo
-        DataCriacao Atributo
-    }
+flowchart TD
+    %% Entidades
+    USUARIO[USUARIO]
+    RETIRO[RETIRO]
+    TAREFA[TAREFA]
+    ALERTA[ALERTA]
+    MOVIMENTACAO[MOVIMENTACAO]
+    EVIDENCIA[EVIDENCIA]
+    LOTE[LOTE]
+    
+    %% Especializações da Movimentação
+    NASCIMENTO[NASCIMENTO]
+    OBITO[OBITO]
+    TRANSFERENCIA[TRANSFERENCIA]
+    COMPRAVENDA[COMPRAVENDA]
 
-    RETIRO {
-        Nome Atributo
-        Localizacao Atributo
-    }
+    %% Atributos (Círculos/Pílulas)
+    attrU1([Perfil_Acesso]) --- USUARIO
+    attrU2([Nome]) --- USUARIO
+    
+    attrR1([Nome_Retiro]) --- RETIRO
+    attrR2([Localizacao_Curral]) --- RETIRO
+    
+    attrT1([Prioridade]) --- TAREFA
+    attrT2([Status_Validacao]) --- TAREFA
+    
+    attrE1([Georreferenciamento]) --- EVIDENCIA
+    attrE2([Arquivo_Foto]) --- EVIDENCIA
+    
+    attrM1([Data_Sincronizacao]) --- MOVIMENTACAO
+    attrM2([Status_Confirmacao]) --- MOVIMENTACAO
+    
+    attrL1([Identificacao_Lote]) --- LOTE
 
-    TAREFA {
-        Titulo Atributo
-        Descricao Atributo
-        Status Atributo
-        DataExecucao Atributo
-    }
+    %% Relacionamentos (Losangos)
+    R1{aloca}
+    R2{executa}
+    R3{emite}
+    R4{registra}
+    R5{sedia}
+    R6{origina}
+    R7{comprova}
+    R8{detalha}
+    R9{destino}
+    R10{contem}
 
-    EVIDENCIA {
-        Tipo Atributo
-        Arquivo Atributo
-        DataRegistro Atributo
-    }
+    %% Conexões do Fluxo Central
+    RETIRO --- R1 --- USUARIO
+    RETIRO --- R5 --- TAREFA
+    RETIRO --- R6 --- MOVIMENTACAO
+    
+    USUARIO --- R2 --- TAREFA
+    USUARIO --- R3 --- ALERTA
+    USUARIO --- R4 --- MOVIMENTACAO
 
-    ALERTA {
-        Descricao Atributo
-        Categoria Atributo
-        Resolvido Atributo
-    }
-
-    MOVIMENTACAO {
-        Data Atributo
-        Tipo Atributo
-        Quantidade Atributo
-        StatusSincronizacao Atributo
-    }
-
-    NASCIMENTO {
-        RegistroMae Atributo
-        FotoNascimento Atributo
-    }
-
-    OBITO {
-        CausaMorte Atributo
-        FotoComprovacao Atributo
-    }
-
-    TRANSFERENCIA {
-        VolumeTransf Atributo
-    }
-
-    COMPRAVENDA {
-        TipoNegocio Atributo
-        ValorFinanceiro Atributo
-    }
-
-    RETIRO ||--o{ USUARIO : "aloca"
-    USUARIO ||--o{ TAREFA : "gerencia"
-    USUARIO ||--o{ ALERTA : "gera"
-    USUARIO ||--o{ MOVIMENTACAO : "efetua"
-    RETIRO ||--o{ TAREFA : "sedia"
-    RETIRO ||--o{ MOVIMENTACAO : "origina"
-    TAREFA ||--o{ EVIDENCIA : "comprova"
-    MOVIMENTACAO ||--o| NASCIMENTO : "caracteriza"
-    MOVIMENTACAO ||--o| OBITO : "caracteriza"
-    MOVIMENTACAO ||--o| TRANSFERENCIA : "caracteriza"
-    MOVIMENTACAO ||--o| COMPRAVENDA : "caracteriza"
-    TRANSFERENCIA }o--|| RETIRO : "destino"
+    TAREFA --- R7 --- EVIDENCIA
+    
+    %% Relacionamento com Lote (Conforme Insight 4)
+    MOVIMENTACAO --- R10 --- LOTE
+    
+    %% Especializações
+    MOVIMENTACAO --- R8 --- NASCIMENTO
+    MOVIMENTACAO --- R8 --- OBITO
+    MOVIMENTACAO --- R8 --- TRANSFERENCIA
+    MOVIMENTACAO --- R8 --- COMPRAVENDA
+    
+    %% Ciclo de Origem e Destino (Insight 4)
+    TRANSFERENCIA --- R9 --- RETIRO
 ```
 
 ### Decisões de modelagem
