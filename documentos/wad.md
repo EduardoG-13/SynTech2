@@ -7,7 +7,7 @@
 #### Nomes dos integrantes do grupo
 
 - <a href="https://www.linkedin.com/in/filipe-salotti-9ab184310/">Arthur Morais </a>
-- <a href="https://www.linkedin.com/in/eduardo-gabriel-de-oliveira-1ab818220/">Eduardo Oliveira</a>
+- <a href="https://www.linkedin.com/in/eduardo-oliveira05/">Eduardo Gabriel de Oliveira</a>
 - <a href="https://www.linkedin.com/in/enzo-santos-bezerra-1904403bb/">Enzo Santos Bezerra</a>
 - <a href="https://www.linkedin.com/in/guilherme-beltrame-18b1b429b/">Guilherme Munhoz Beltrame</a>
 - <a href="https://www.linkedin.com/in/laiza-guimar%C3%A3es-2748b2313/">Laiza Guimaraes</a>
@@ -1300,8 +1300,8 @@ em *The Unified Modeling Language User Guide* [21], obra de referência dos cria
 originais da linguagem, que estabelece o diagrama de classes como o bloco fundamental
 de construção do UML, sendo todos os outros diagramas coleções de classes ou
 representações de relações entre elas. Complementarmente, as boas práticas de
-modelagem estrutural adotadas no projeto baseiam-se em Fowler [15], cuja obra *UML
-Distilled* orienta o uso do diagrama de classes como ferramenta de comunicação de
+modelagem estrutural adotadas no projeto baseiam-se em Fowler [15], cuja obra _UML
+Distilled_ orienta o uso do diagrama de classes como ferramenta de comunicação de
 design orientado a objetos, enfatizando clareza, coesão e rastreabilidade entre modelo
 e requisitos. A estrutura de classes abstratas e a organização das responsabilidades
 entre as entidades seguem ainda os princípios de modelagem de domínio descritos por
@@ -1320,24 +1320,24 @@ projeto.
 
 <center>
   <p><strong>Figura 9</strong> — Diagrama de Classes do Domínio do Sistema BrPec</p>
-  <img src="/documentos/assets/DiagramaClasses.jpeg" width="800"/>
+  <img src="./assets/DiagramaClasses.jpeg" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 O diagrama é organizado em três camadas conceituais:
 
 - **Camada de Identidade e Acesso:** agrupa a hierarquia de usuários do sistema
-(`Usuario`, `Gerente`, `Coordenador` e `Capataz`), modelada por herança, refletindo
-os três perfis de acesso e as responsabilidades distintas de cada ator, conforme
-descritos na seção 3.1;
+  (`Usuario`, `Gerente`, `Coordenador` e `Capataz`), modelada por herança, refletindo
+  os três perfis de acesso e as responsabilidades distintas de cada ator, conforme
+  descritos na seção 3.1;
 - **Camada Operacional:** concentra as entidades centrais do fluxo de trabalho —
-`Retiro`, `Tarefa`, `Evidencia` e `AlertaInfraestrutura` —, que materializam o
-planejamento, a execução e o reporte das atividades de campo (US01 a US07);
+  `Retiro`, `Tarefa`, `Evidencia` e `AlertaInfraestrutura` —, que materializam o
+  planejamento, a execução e o reporte das atividades de campo (US01 a US07);
 - **Camada Zootécnica e de Controle:** reúne os registros de eventos do rebanho —
-`EventoZootecnico`, `RegistroNascimento` e `RegistroObito` —, que suportam o controle
-pecuário offline (US08 a US10), além da entidade `Sincronizacao`, responsável pela
-gestão do ciclo de envio de dados ao servidor central, e `Exportacao`, que atende à
-demanda do Coordenador de geração de relatórios estruturados (RF015).
+  `EventoZootecnico`, `RegistroNascimento` e `RegistroObito` —, que suportam o controle
+  pecuário offline (US08 a US10), além da entidade `Sincronizacao`, responsável pela
+  gestão do ciclo de envio de dados ao servidor central, e `Exportacao`, que atende à
+  demanda do Coordenador de geração de relatórios estruturados (RF015).
 
 A decisão de modelar `Evidencia` e `EventoZootecnico` como classes abstratas decorre
 da necessidade de encapsular atributos e comportamentos comuns — como o vínculo com
@@ -1353,7 +1353,6 @@ entidade independente para suportar o requisito não funcional de Confiabilidade
 sobrecarregar as demais classes com atributos de controle de rede — decisão alinhada
 ao princípio de responsabilidade única descrito por Fowler [15] como critério de
 coesão em modelos orientados a objetos.
-
 
 A seguir, são detalhados os atributos, tipos de dado e métodos de cada classe
 modelada no diagrama, organizados por camada conceitual. Os tipos adotam a notação
@@ -1374,13 +1373,13 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
   <p><strong>Tabela 8</strong> — Atributos da Classe <em>Usuario</em> (superclasse abstrata)</p>
 </center>
 
-| Atributo   | Tipo     | Obrigatório | Descrição                                                  |
-| ---------- | -------- | ----------- | ---------------------------------------------------------- |
-| id         | UUID     | Sim         | Identificador único do usuário, gerado automaticamente     |
-| nome       | String   | Sim         | Nome completo do usuário                                   |
-| senha      | String   | Sim         | Credencial de acesso; para Capataz, senha simples definida pelo Gerente |
-| perfil     | Enum     | Sim         | Tipo do ator: `GERENTE`, `COORDENADOR` ou `CAPATAZ`        |
-| criadoEm  | DateTime | Sim         | Timestamp de criação do registro, gerado pelo sistema       |
+| Atributo | Tipo     | Obrigatório | Descrição                                                               |
+| -------- | -------- | ----------- | ----------------------------------------------------------------------- |
+| id       | UUID     | Sim         | Identificador único do usuário, gerado automaticamente                  |
+| nome     | String   | Sim         | Nome completo do usuário                                                |
+| senha    | String   | Sim         | Credencial de acesso; para Capataz, senha simples definida pelo Gerente |
+| perfil   | Enum     | Sim         | Tipo do ator: `GERENTE`, `COORDENADOR` ou `CAPATAZ`                     |
+| criadoEm | DateTime | Sim         | Timestamp de criação do registro, gerado pelo sistema                   |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1390,14 +1389,14 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
   <p><strong>Tabela 9</strong> — Atributos e Métodos da Classe <em>Gerente</em></p>
 </center>
 
-| Elemento        | Tipo/Retorno | Descrição                                                            |
-| --------------- | ------------ | -------------------------------------------------------------------- |
-| *(herda de Usuario)* | —       | Todos os atributos da superclasse são herdados                       |
-| criarTarefa()   | Tarefa       | Instancia uma nova tarefa e a associa a um retiro e a um capataz     |
-| editarTarefa()  | Tarefa       | Atualiza os dados de uma tarefa existente                            |
-| deletarTarefa() | void         | Remove uma tarefa do sistema, desde que não esteja concluída         |
-| visualizarPainel() | void      | Acessa o painel consolidado de status de tarefas e alertas (RF007)   |
-| visualizarAlertas() | void     | Acessa os alertas de infraestrutura abertos pelos capatazes (RF006)  |
+| Elemento             | Tipo/Retorno | Descrição                                                           |
+| -------------------- | ------------ | ------------------------------------------------------------------- |
+| _(herda de Usuario)_ | —            | Todos os atributos da superclasse são herdados                      |
+| criarTarefa()        | Tarefa       | Instancia uma nova tarefa e a associa a um retiro e a um capataz    |
+| editarTarefa()       | Tarefa       | Atualiza os dados de uma tarefa existente                           |
+| deletarTarefa()      | void         | Remove uma tarefa do sistema, desde que não esteja concluída        |
+| visualizarPainel()   | void         | Acessa o painel consolidado de status de tarefas e alertas (RF007)  |
+| visualizarAlertas()  | void         | Acessa os alertas de infraestrutura abertos pelos capatazes (RF006) |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1407,12 +1406,12 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
   <p><strong>Tabela 10</strong> — Atributos e Métodos da Classe <em>Coordenador</em></p>
 </center>
 
-| Elemento                  | Tipo/Retorno        | Descrição                                                                       |
-| ------------------------- | ------------------- | ------------------------------------------------------------------------------- |
-| *(herda de Usuario)*      | —                   | Todos os atributos da superclasse são herdados                                  |
-| visualizarMovimentacoes() | List\<EventoZootecnico\> | Recupera todos os eventos zootécnicos dos retiros sob sua responsabilidade |
-| validarMovimentacao()     | void                | Confirma a integridade de um evento zootécnico, alterando seu status para validado |
-| exportarRelatorio()       | Exportacao          | Gera e disponibiliza arquivo CSV/XLSX com os dados consolidados (RF015)         |
+| Elemento                  | Tipo/Retorno             | Descrição                                                                          |
+| ------------------------- | ------------------------ | ---------------------------------------------------------------------------------- |
+| _(herda de Usuario)_      | —                        | Todos os atributos da superclasse são herdados                                     |
+| visualizarMovimentacoes() | List\<EventoZootecnico\> | Recupera todos os eventos zootécnicos dos retiros sob sua responsabilidade         |
+| validarMovimentacao()     | void                     | Confirma a integridade de um evento zootécnico, alterando seu status para validado |
+| exportarRelatorio()       | Exportacao               | Gera e disponibiliza arquivo CSV/XLSX com os dados consolidados (RF015)            |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1422,14 +1421,14 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
   <p><strong>Tabela 11</strong> — Atributos e Métodos da Classe <em>Capataz</em></p>
 </center>
 
-| Elemento                      | Tipo/Retorno              | Descrição                                                                 |
-| ----------------------------- | ------------------------- | ------------------------------------------------------------------------- |
-| *(herda de Usuario)*          | —                         | Todos os atributos da superclasse são herdados                            |
-| retiro_id                     | UUID                      | Chave estrangeira que vincula o Capataz a um único Retiro (RN01, RN05)    |
-| visualizarTarefas()           | List\<Tarefa\>            | Recupera as tarefas do dia do retiro ao qual o capataz pertence (RF002)   |
-| concluirTarefa()              | void                      | Atualiza o status de uma tarefa para `CONCLUIDA` e aciona o envio de evidências (RF003) |
-| abrirAlerta()                 | AlertaInfraestrutura      | Registra um novo alerta de infraestrutura com geolocalização (RF006)      |
-| registrarEventoZootecnico()   | EventoZootecnico          | Preenche e persiste localmente um evento de nascimento ou óbito (RF008, RF009) |
+| Elemento                    | Tipo/Retorno         | Descrição                                                                               |
+| --------------------------- | -------------------- | --------------------------------------------------------------------------------------- |
+| _(herda de Usuario)_        | —                    | Todos os atributos da superclasse são herdados                                          |
+| retiro_id                   | UUID                 | Chave estrangeira que vincula o Capataz a um único Retiro (RN01, RN05)                  |
+| visualizarTarefas()         | List\<Tarefa\>       | Recupera as tarefas do dia do retiro ao qual o capataz pertence (RF002)                 |
+| concluirTarefa()            | void                 | Atualiza o status de uma tarefa para `CONCLUIDA` e aciona o envio de evidências (RF003) |
+| abrirAlerta()               | AlertaInfraestrutura | Registra um novo alerta de infraestrutura com geolocalização (RF006)                    |
+| registrarEventoZootecnico() | EventoZootecnico     | Preenche e persiste localmente um evento de nascimento ou óbito (RF008, RF009)          |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1443,13 +1442,13 @@ Essa camada concentra as entidades que sustentam o fluxo principal de trabalho d
   <p><strong>Tabela 12</strong> — Atributos da Classe <em>Retiro</em></p>
 </center>
 
-| Atributo         | Tipo     | Obrigatório | Descrição                                                         |
-| ---------------- | -------- | ----------- | ----------------------------------------------------------------- |
-| id               | UUID     | Sim         | Identificador único do retiro                                     |
-| nome             | String   | Sim         | Nome de identificação do retiro na fazenda                        |
-| localizacao      | String   | Sim         | Descrição geográfica ou referência da área do retiro              |
-| coordenador_id   | UUID     | Sim         | Chave estrangeira para o Coordenador responsável pelo retiro      |
-| criadoEm         | DateTime | Sim         | Timestamp de cadastro do retiro no sistema                        |
+| Atributo       | Tipo     | Obrigatório | Descrição                                                    |
+| -------------- | -------- | ----------- | ------------------------------------------------------------ |
+| id             | UUID     | Sim         | Identificador único do retiro                                |
+| nome           | String   | Sim         | Nome de identificação do retiro na fazenda                   |
+| localizacao    | String   | Sim         | Descrição geográfica ou referência da área do retiro         |
+| coordenador_id | UUID     | Sim         | Chave estrangeira para o Coordenador responsável pelo retiro |
+| criadoEm       | DateTime | Sim         | Timestamp de cadastro do retiro no sistema                   |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1459,19 +1458,19 @@ Essa camada concentra as entidades que sustentam o fluxo principal de trabalho d
   <p><strong>Tabela 13</strong> — Atributos da Classe <em>Tarefa</em></p>
 </center>
 
-| Atributo       | Tipo     | Obrigatório | Descrição                                                                         |
-| -------------- | -------- | ----------- | --------------------------------------------------------------------------------- |
-| id             | UUID     | Sim         | Identificador único da tarefa                                                     |
-| titulo         | String   | Sim         | Título resumido da atividade a ser executada                                      |
-| descricao      | String   | Não         | Detalhamento das instruções para o capataz                                        |
-| status         | Enum     | Sim         | Estado atual da tarefa: `PENDENTE`, `EM_ANDAMENTO` ou `CONCLUIDA`                 |
-| dataExecucao   | Date     | Sim         | Data prevista para execução da tarefa (base para a regra RN02)                    |
-| retiro_id      | UUID     | Sim         | Chave estrangeira para o Retiro ao qual a tarefa está vinculada (RN01)            |
-| capataz_id     | UUID     | Sim         | Chave estrangeira para o Capataz responsável pela execução (RN01)                 |
-| gerente_id     | UUID     | Sim         | Chave estrangeira para o Gerente que criou a tarefa (RF001)                       |
-| criadaEm       | DateTime | Sim         | Timestamp de criação da tarefa, injetado automaticamente pelo sistema (RNF — SEG) |
-| concluidaEm    | DateTime | Não         | Timestamp de conclusão, preenchido quando o status é alterado para `CONCLUIDA`    |
-| sincronizada   | Boolean  | Sim         | Indica se o registro já foi transmitido ao servidor central (RF010)               |
+| Atributo     | Tipo     | Obrigatório | Descrição                                                                         |
+| ------------ | -------- | ----------- | --------------------------------------------------------------------------------- |
+| id           | UUID     | Sim         | Identificador único da tarefa                                                     |
+| titulo       | String   | Sim         | Título resumido da atividade a ser executada                                      |
+| descricao    | String   | Não         | Detalhamento das instruções para o capataz                                        |
+| status       | Enum     | Sim         | Estado atual da tarefa: `PENDENTE`, `EM_ANDAMENTO` ou `CONCLUIDA`                 |
+| dataExecucao | Date     | Sim         | Data prevista para execução da tarefa (base para a regra RN02)                    |
+| retiro_id    | UUID     | Sim         | Chave estrangeira para o Retiro ao qual a tarefa está vinculada (RN01)            |
+| capataz_id   | UUID     | Sim         | Chave estrangeira para o Capataz responsável pela execução (RN01)                 |
+| gerente_id   | UUID     | Sim         | Chave estrangeira para o Gerente que criou a tarefa (RF001)                       |
+| criadaEm     | DateTime | Sim         | Timestamp de criação da tarefa, injetado automaticamente pelo sistema (RNF — SEG) |
+| concluidaEm  | DateTime | Não         | Timestamp de conclusão, preenchido quando o status é alterado para `CONCLUIDA`    |
+| sincronizada | Boolean  | Sim         | Indica se o registro já foi transmitido ao servidor central (RF010)               |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1483,19 +1482,19 @@ A classe `Evidencia` é modelada como abstrata por reunir o comportamento comum 
   <p><strong>Tabela 14</strong> — Atributos da Classe Abstrata <em>Evidencia</em> e Subclasses</p>
 </center>
 
-| Classe              | Atributo          | Tipo    | Obrigatório | Descrição                                                          |
-| ------------------- | ----------------- | ------- | ----------- | ------------------------------------------------------------------ |
-| **Evidencia**       | id                | UUID    | Sim         | Identificador único da evidência                                   |
-| **Evidencia**       | tarefa_id         | UUID    | Sim         | Chave estrangeira para a Tarefa à qual a evidência está vinculada  |
-| **Evidencia**       | tipo              | Enum    | Sim         | Natureza da evidência: `FOTO`, `AUDIO` ou `TEXTO`                  |
-| **Evidencia**       | criadaEm          | DateTime| Sim         | Timestamp de criação, gerado automaticamente pelo sistema          |
-| **Evidencia**       | sincronizada      | Boolean | Sim         | Indica se o arquivo já foi transmitido ao servidor (RF010, RN11)   |
-| **Foto**            | urlArquivo        | String  | Sim         | Caminho ou URL do arquivo de imagem após sincronização             |
-| **Foto**            | tamanhoBytes      | Integer | Sim         | Tamanho do arquivo em bytes, para controle de capacidade           |
-| **Foto**            | geolocalizacao    | String  | Sim         | Coordenadas GPS capturadas no momento do registro (RN19, RN24)     |
-| **Audio**           | urlArquivo        | String  | Sim         | Caminho ou URL do arquivo de áudio após sincronização              |
-| **Audio**           | duracaoSegundos   | Integer | Sim         | Duração da gravação em segundos (RF005, RN14)                      |
-| **TextoComplementar** | conteudo        | String  | Sim         | Conteúdo textual inserido pelo capataz como complemento da tarefa  |
+| Classe                | Atributo        | Tipo     | Obrigatório | Descrição                                                         |
+| --------------------- | --------------- | -------- | ----------- | ----------------------------------------------------------------- |
+| **Evidencia**         | id              | UUID     | Sim         | Identificador único da evidência                                  |
+| **Evidencia**         | tarefa_id       | UUID     | Sim         | Chave estrangeira para a Tarefa à qual a evidência está vinculada |
+| **Evidencia**         | tipo            | Enum     | Sim         | Natureza da evidência: `FOTO`, `AUDIO` ou `TEXTO`                 |
+| **Evidencia**         | criadaEm        | DateTime | Sim         | Timestamp de criação, gerado automaticamente pelo sistema         |
+| **Evidencia**         | sincronizada    | Boolean  | Sim         | Indica se o arquivo já foi transmitido ao servidor (RF010, RN11)  |
+| **Foto**              | urlArquivo      | String   | Sim         | Caminho ou URL do arquivo de imagem após sincronização            |
+| **Foto**              | tamanhoBytes    | Integer  | Sim         | Tamanho do arquivo em bytes, para controle de capacidade          |
+| **Foto**              | geolocalizacao  | String   | Sim         | Coordenadas GPS capturadas no momento do registro (RN19, RN24)    |
+| **Audio**             | urlArquivo      | String   | Sim         | Caminho ou URL do arquivo de áudio após sincronização             |
+| **Audio**             | duracaoSegundos | Integer  | Sim         | Duração da gravação em segundos (RF005, RN14)                     |
+| **TextoComplementar** | conteudo        | String   | Sim         | Conteúdo textual inserido pelo capataz como complemento da tarefa |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1505,19 +1504,19 @@ A classe `Evidencia` é modelada como abstrata por reunir o comportamento comum 
   <p><strong>Tabela 15</strong> — Atributos da Classe <em>AlertaInfraestrutura</em></p>
 </center>
 
-| Atributo      | Tipo     | Obrigatório | Descrição                                                                         |
-| ------------- | -------- | ----------- | --------------------------------------------------------------------------------- |
-| id            | UUID     | Sim         | Identificador único do alerta                                                     |
-| tipo          | Enum     | Sim         | Categoria do problema: `CERCA`, `BEBEDOURO`, `EQUIPAMENTO` ou `OUTRO` (RF006)     |
-| descricao     | String   | Não         | Detalhamento adicional fornecido pelo capataz                                     |
-| status        | Enum     | Sim         | Situação do chamado: `ABERTO`, `EM_ATENDIMENTO` ou `RESOLVIDO`                    |
-| capataz_id    | UUID     | Sim         | Chave estrangeira para o Capataz que originou o alerta                            |
-| retiro_id     | UUID     | Sim         | Chave estrangeira para o Retiro onde o problema foi identificado (RN26)           |
-| latitude      | Decimal  | Sim         | Coordenada geográfica capturada automaticamente pelo sistema (RN19, RN24)         |
-| longitude     | Decimal  | Sim         | Coordenada geográfica capturada automaticamente pelo sistema (RN19, RN24)         |
-| criadoEm      | DateTime | Sim         | Timestamp de criação do alerta, registrado automaticamente (RN25)                 |
-| sincronizado  | Boolean  | Sim         | Indica se o alerta já foi transmitido ao servidor (RN20, RN21)                    |
-| foto_id       | UUID     | Não         | Chave estrangeira opcional para uma Foto associada ao chamado                     |
+| Atributo     | Tipo     | Obrigatório | Descrição                                                                     |
+| ------------ | -------- | ----------- | ----------------------------------------------------------------------------- |
+| id           | UUID     | Sim         | Identificador único do alerta                                                 |
+| tipo         | Enum     | Sim         | Categoria do problema: `CERCA`, `BEBEDOURO`, `EQUIPAMENTO` ou `OUTRO` (RF006) |
+| descricao    | String   | Não         | Detalhamento adicional fornecido pelo capataz                                 |
+| status       | Enum     | Sim         | Situação do chamado: `ABERTO`, `EM_ATENDIMENTO` ou `RESOLVIDO`                |
+| capataz_id   | UUID     | Sim         | Chave estrangeira para o Capataz que originou o alerta                        |
+| retiro_id    | UUID     | Sim         | Chave estrangeira para o Retiro onde o problema foi identificado (RN26)       |
+| latitude     | Decimal  | Sim         | Coordenada geográfica capturada automaticamente pelo sistema (RN19, RN24)     |
+| longitude    | Decimal  | Sim         | Coordenada geográfica capturada automaticamente pelo sistema (RN19, RN24)     |
+| criadoEm     | DateTime | Sim         | Timestamp de criação do alerta, registrado automaticamente (RN25)             |
+| sincronizado | Boolean  | Sim         | Indica se o alerta já foi transmitido ao servidor (RN20, RN21)                |
+| foto_id      | UUID     | Não         | Chave estrangeira opcional para uma Foto associada ao chamado                 |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1531,22 +1530,22 @@ Essa camada concentra os registros de eventos do rebanho e as entidades de supor
   <p><strong>Tabela 16</strong> — Atributos da Classe Abstrata <em>EventoZootecnico</em> e Subclasses</p>
 </center>
 
-| Classe                  | Atributo              | Tipo     | Obrigatório | Descrição                                                                              |
-| ----------------------- | --------------------- | -------- | ----------- | -------------------------------------------------------------------------------------- |
-| **EventoZootecnico**    | id                    | UUID     | Sim         | Identificador único do evento                                                          |
-| **EventoZootecnico**    | capataz_id            | UUID     | Sim         | Chave estrangeira para o Capataz que realizou o registro                               |
-| **EventoZootecnico**    | retiro_id             | UUID     | Sim         | Chave estrangeira para o Retiro de origem do evento                                    |
-| **EventoZootecnico**    | data                  | Date     | Sim         | Data de ocorrência do evento no campo                                                  |
-| **EventoZootecnico**    | categoria             | String   | Sim         | Categoria do animal envolvido (ex.: bezerro, vaca, touro)                              |
-| **EventoZootecnico**    | quantidade            | Integer  | Sim         | Quantidade de animais envolvidos no evento                                             |
-| **EventoZootecnico**    | sincronizado          | Boolean  | Sim         | Indica se o registro foi transmitido ao servidor central (RF010, RF012)                |
-| **EventoZootecnico**    | validado              | Boolean  | Sim         | Indica se o Coordenador confirmou a integridade do registro (RF014)                    |
-| **EventoZootecnico**    | coordenador_id        | UUID     | Não         | Chave estrangeira preenchida pelo sistema após validação pelo Coordenador              |
-| **EventoZootecnico**    | criadoEm              | DateTime | Sim         | Timestamp de criação local do registro, injetado automaticamente (RNF — SEG)          |
-| **RegistroNascimento**  | *(sem atributos adicionais)* | — | —          | Especialização de EventoZootecnico para nascimentos (US08, RF008)                     |
-| **RegistroObito**       | identificacaoAnimal   | String   | Sim         | Identificação individual do animal (brinco, marca ou descrição) (RF013)               |
-| **RegistroObito**       | causaMorte            | String   | Sim         | Causa declarada do óbito, campo obrigatório para validação sanitária (RF013)           |
-| **RegistroObito**       | foto_id               | UUID     | Sim         | Chave estrangeira para a Foto obrigatória da carcaça, exigida para auditoria (US09, CR2) |
+| Classe                 | Atributo                     | Tipo     | Obrigatório | Descrição                                                                                |
+| ---------------------- | ---------------------------- | -------- | ----------- | ---------------------------------------------------------------------------------------- |
+| **EventoZootecnico**   | id                           | UUID     | Sim         | Identificador único do evento                                                            |
+| **EventoZootecnico**   | capataz_id                   | UUID     | Sim         | Chave estrangeira para o Capataz que realizou o registro                                 |
+| **EventoZootecnico**   | retiro_id                    | UUID     | Sim         | Chave estrangeira para o Retiro de origem do evento                                      |
+| **EventoZootecnico**   | data                         | Date     | Sim         | Data de ocorrência do evento no campo                                                    |
+| **EventoZootecnico**   | categoria                    | String   | Sim         | Categoria do animal envolvido (ex.: bezerro, vaca, touro)                                |
+| **EventoZootecnico**   | quantidade                   | Integer  | Sim         | Quantidade de animais envolvidos no evento                                               |
+| **EventoZootecnico**   | sincronizado                 | Boolean  | Sim         | Indica se o registro foi transmitido ao servidor central (RF010, RF012)                  |
+| **EventoZootecnico**   | validado                     | Boolean  | Sim         | Indica se o Coordenador confirmou a integridade do registro (RF014)                      |
+| **EventoZootecnico**   | coordenador_id               | UUID     | Não         | Chave estrangeira preenchida pelo sistema após validação pelo Coordenador                |
+| **EventoZootecnico**   | criadoEm                     | DateTime | Sim         | Timestamp de criação local do registro, injetado automaticamente (RNF — SEG)             |
+| **RegistroNascimento** | _(sem atributos adicionais)_ | —        | —           | Especialização de EventoZootecnico para nascimentos (US08, RF008)                        |
+| **RegistroObito**      | identificacaoAnimal          | String   | Sim         | Identificação individual do animal (brinco, marca ou descrição) (RF013)                  |
+| **RegistroObito**      | causaMorte                   | String   | Sim         | Causa declarada do óbito, campo obrigatório para validação sanitária (RF013)             |
+| **RegistroObito**      | foto_id                      | UUID     | Sim         | Chave estrangeira para a Foto obrigatória da carcaça, exigida para auditoria (US09, CR2) |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1556,15 +1555,15 @@ Essa camada concentra os registros de eventos do rebanho e as entidades de supor
   <p><strong>Tabela 17</strong> — Atributos da Classe <em>Sincronizacao</em></p>
 </center>
 
-| Atributo        | Tipo     | Obrigatório | Descrição                                                                                         |
-| --------------- | -------- | ----------- | ------------------------------------------------------------------------------------------------- |
-| id              | UUID     | Sim         | Identificador único do registro de sincronização                                                  |
-| entidadeTipo    | String   | Sim         | Nome da classe da entidade gerenciada (ex.: `"Tarefa"`, `"RegistroObito"`)                        |
-| entidadeId      | UUID     | Sim         | Identificador da instância específica da entidade a ser sincronizada                              |
-| statusEnvio     | Enum     | Sim         | Estado da transmissão: `PENDENTE`, `ENVIADO` ou `FALHA`                                           |
-| tentativas      | Integer  | Sim         | Contador de tentativas de envio realizadas pelo sistema (RF012)                                   |
-| ultimaTentativa | DateTime | Não         | Timestamp da última tentativa de sincronização, atualizado a cada ciclo                           |
-| criadaEm        | DateTime | Sim         | Timestamp de criação do registro de controle, gerado no momento do salvamento local               |
+| Atributo        | Tipo     | Obrigatório | Descrição                                                                           |
+| --------------- | -------- | ----------- | ----------------------------------------------------------------------------------- |
+| id              | UUID     | Sim         | Identificador único do registro de sincronização                                    |
+| entidadeTipo    | String   | Sim         | Nome da classe da entidade gerenciada (ex.: `"Tarefa"`, `"RegistroObito"`)          |
+| entidadeId      | UUID     | Sim         | Identificador da instância específica da entidade a ser sincronizada                |
+| statusEnvio     | Enum     | Sim         | Estado da transmissão: `PENDENTE`, `ENVIADO` ou `FALHA`                             |
+| tentativas      | Integer  | Sim         | Contador de tentativas de envio realizadas pelo sistema (RF012)                     |
+| ultimaTentativa | DateTime | Não         | Timestamp da última tentativa de sincronização, atualizado a cada ciclo             |
+| criadaEm        | DateTime | Sim         | Timestamp de criação do registro de controle, gerado no momento do salvamento local |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1574,15 +1573,15 @@ Essa camada concentra os registros de eventos do rebanho e as entidades de supor
   <p><strong>Tabela 18</strong> — Atributos da Classe <em>Exportacao</em></p>
 </center>
 
-| Atributo         | Tipo     | Obrigatório | Descrição                                                                              |
-| ---------------- | -------- | ----------- | -------------------------------------------------------------------------------------- |
-| id               | UUID     | Sim         | Identificador único do registro de exportação                                          |
-| coordenador_id   | UUID     | Sim         | Chave estrangeira para o Coordenador que solicitou a exportação                        |
-| formato          | Enum     | Sim         | Formato do arquivo gerado: `CSV` ou `XLSX` (RF015, RN28, RNF — ORG)                    |
-| filtroRetiro     | UUID     | Não         | Filtro opcional por retiro específico, aplicado na consulta dos dados                  |
-| filtroDataInicio | Date     | Não         | Limite inferior do intervalo de datas aplicado ao conjunto de dados exportado          |
-| filtroDataFim    | Date     | Não         | Limite superior do intervalo de datas aplicado ao conjunto de dados exportado          |
-| geradaEm         | DateTime | Sim         | Timestamp de geração do arquivo, registrado automaticamente pelo sistema               |
+| Atributo         | Tipo     | Obrigatório | Descrição                                                                     |
+| ---------------- | -------- | ----------- | ----------------------------------------------------------------------------- |
+| id               | UUID     | Sim         | Identificador único do registro de exportação                                 |
+| coordenador_id   | UUID     | Sim         | Chave estrangeira para o Coordenador que solicitou a exportação               |
+| formato          | Enum     | Sim         | Formato do arquivo gerado: `CSV` ou `XLSX` (RF015, RN28, RNF — ORG)           |
+| filtroRetiro     | UUID     | Não         | Filtro opcional por retiro específico, aplicado na consulta dos dados         |
+| filtroDataInicio | Date     | Não         | Limite inferior do intervalo de datas aplicado ao conjunto de dados exportado |
+| filtroDataFim    | Date     | Não         | Limite superior do intervalo de datas aplicado ao conjunto de dados exportado |
+| geradaEm         | DateTime | Sim         | Timestamp de geração do arquivo, registrado automaticamente pelo sistema      |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1596,34 +1595,34 @@ A Tabela 19 consolida todos os relacionamentos modelados no diagrama, com seus t
   <p><strong>Tabela 19</strong> — Síntese dos Relacionamentos do Diagrama de Classes</p>
 </center>
 
-| Classe Origem        | Tipo UML              | Classe Destino       | Multiplicidade      | Rastreabilidade   |
-| -------------------- | --------------------- | -------------------- | ------------------- | ----------------- |
-| Usuario              | Herança (△)           | Gerente              | —                   | UC01, UC02        |
-| Usuario              | Herança (△)           | Coordenador          | —                   | UC07, UC08, UC09  |
-| Usuario              | Herança (△)           | Capataz              | —                   | UC03 a UC06       |
-| Evidencia            | Herança (△)           | Foto                 | —                   | RF004, US04       |
-| Evidencia            | Herança (△)           | Audio                | —                   | RF005, US05       |
-| Evidencia            | Herança (△)           | TextoComplementar    | —                   | RF005             |
-| EventoZootecnico     | Herança (△)           | RegistroNascimento   | —                   | RF008, US08       |
-| EventoZootecnico     | Herança (△)           | RegistroObito        | —                   | RF009, US09       |
-| Gerente              | Associação            | Tarefa               | 1 para N            | RF001, RN01       |
-| Capataz              | Associação            | Tarefa               | 1 para N            | RF002, RN05       |
-| Capataz              | Associação            | Retiro               | N para 1            | RN01, RN05        |
-| Tarefa               | Composição (◆)        | Evidencia            | 1 para 0..N         | RF004, RF005, RN10|
-| Tarefa               | Associação            | Retiro               | N para 1            | RF001, RN01       |
-| Retiro               | Associação            | Coordenador          | N para 1            | UC07              |
-| Capataz              | Associação            | AlertaInfraestrutura | 1 para N            | RF006, RN19       |
-| AlertaInfraestrutura | Associação            | Retiro               | N para 1            | RN26              |
-| AlertaInfraestrutura | Associação            | Foto                 | 1 para 0..1         | RF006             |
-| Capataz              | Associação            | EventoZootecnico     | 1 para N            | RF008, RF009      |
-| EventoZootecnico     | Associação            | Retiro               | N para 1            | RF008, RF009      |
-| Coordenador          | Associação            | EventoZootecnico     | 1 para N            | RF014, RN28       |
-| RegistroObito        | Associação            | Foto                 | 1 para 1            | US09, CR2, RF013  |
-| Coordenador          | Associação            | Exportacao           | 1 para N            | RF015, RN28       |
-| Sincronizacao        | Dependência (- - →)   | Tarefa               | 1 para 1            | RF010, RF012      |
-| Sincronizacao        | Dependência (- - →)   | Evidencia            | 1 para 1            | RF010, RF012      |
-| Sincronizacao        | Dependência (- - →)   | AlertaInfraestrutura | 1 para 1            | RN20, RN21        |
-| Sincronizacao        | Dependência (- - →)   | EventoZootecnico     | 1 para 1            | RF010, RF012      |
+| Classe Origem        | Tipo UML            | Classe Destino       | Multiplicidade | Rastreabilidade    |
+| -------------------- | ------------------- | -------------------- | -------------- | ------------------ |
+| Usuario              | Herança (△)         | Gerente              | —              | UC01, UC02         |
+| Usuario              | Herança (△)         | Coordenador          | —              | UC07, UC08, UC09   |
+| Usuario              | Herança (△)         | Capataz              | —              | UC03 a UC06        |
+| Evidencia            | Herança (△)         | Foto                 | —              | RF004, US04        |
+| Evidencia            | Herança (△)         | Audio                | —              | RF005, US05        |
+| Evidencia            | Herança (△)         | TextoComplementar    | —              | RF005              |
+| EventoZootecnico     | Herança (△)         | RegistroNascimento   | —              | RF008, US08        |
+| EventoZootecnico     | Herança (△)         | RegistroObito        | —              | RF009, US09        |
+| Gerente              | Associação          | Tarefa               | 1 para N       | RF001, RN01        |
+| Capataz              | Associação          | Tarefa               | 1 para N       | RF002, RN05        |
+| Capataz              | Associação          | Retiro               | N para 1       | RN01, RN05         |
+| Tarefa               | Composição (◆)      | Evidencia            | 1 para 0..N    | RF004, RF005, RN10 |
+| Tarefa               | Associação          | Retiro               | N para 1       | RF001, RN01        |
+| Retiro               | Associação          | Coordenador          | N para 1       | UC07               |
+| Capataz              | Associação          | AlertaInfraestrutura | 1 para N       | RF006, RN19        |
+| AlertaInfraestrutura | Associação          | Retiro               | N para 1       | RN26               |
+| AlertaInfraestrutura | Associação          | Foto                 | 1 para 0..1    | RF006              |
+| Capataz              | Associação          | EventoZootecnico     | 1 para N       | RF008, RF009       |
+| EventoZootecnico     | Associação          | Retiro               | N para 1       | RF008, RF009       |
+| Coordenador          | Associação          | EventoZootecnico     | 1 para N       | RF014, RN28        |
+| RegistroObito        | Associação          | Foto                 | 1 para 1       | US09, CR2, RF013   |
+| Coordenador          | Associação          | Exportacao           | 1 para N       | RF015, RN28        |
+| Sincronizacao        | Dependência (- - →) | Tarefa               | 1 para 1       | RF010, RF012       |
+| Sincronizacao        | Dependência (- - →) | Evidencia            | 1 para 1       | RF010, RF012       |
+| Sincronizacao        | Dependência (- - →) | AlertaInfraestrutura | 1 para 1       | RN20, RN21         |
+| Sincronizacao        | Dependência (- - →) | EventoZootecnico     | 1 para 1       | RF010, RF012       |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1631,9 +1630,50 @@ A Tabela 19 consolida todos os relacionamentos modelados no diagrama, com seus t
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
 
-_Ao menos um fluxo prioritário, mostrando a interação entre as camadas Controller → Service → Repository → Banco. Linhas de vida verticais, ativação correta, mensagens síncronas e assíncronas diferenciadas, retornos tracejadas._
+O Diagrama de Sequência UML constitui um dos quatro tipos de diagrama de interação previstos pela especificação UML 2.5.1, sendo formalmente classificado como um diagrama comportamental que enfatiza a troca ordenada de mensagens entre participantes ao longo do tempo [13]. Segundo o Object Management Group (OMG), a semântica de uma interação é definida como um par de conjuntos de *traces* — sequências válidas e inválidas de ocorrências de eventos —, de modo que cada diagrama de sequência representa, de forma gráfica, os cenários de comunicação aceitos pelo sistema modelado [13][18]. A notação adotada emprega linhas de vida (*lifelines*) para representar os participantes, setas contínuas para mensagens síncronas e setas tracejadas para retornos, com fragmentos combinados (*combined fragments*) do tipo `alt` para expressar ramificações condicionais no fluxo de execução, conforme as convenções consolidadas por Fowler [15] e detalhadas na norma ISO/IEC 19505-2:2012 [17].
 
-### 3.2.4. Diagrama de Sequência UML
+No contexto do sistema BrPec, os diagramas de sequência foram elaborados para representar os fluxos operacionais críticos identificados nas User Stories (US01 a US05) e nos Requisitos Funcionais (RF001 a RF015), detalhando a interação entre o ator externo — Gerente ou Capataz — e as camadas internas da arquitetura da aplicação. A estrutura de camadas adotada segue o padrão Controller–Service–Repository, amplamente documentado na literatura de engenharia de software como uma instância concreta da arquitetura em camadas (*layered architecture*) [19], na qual cada componente possui responsabilidade única e bem delimitada:
+
+- **Controller:** recebe a requisição HTTP, valida a presença dos campos obrigatórios e delega o processamento à camada de negócio, sem acessar o banco de dados diretamente;
+- **Service:** aplica as regras de negócio do domínio (RNs) e orquestra as chamadas ao Repository, encapsulando a lógica que determina se a operação será executada localmente ou remotamente;
+- **Repository:** abstrai o acesso ao mecanismo de persistência — banco de dados central (SQLite no servidor) ou armazenamento local (IndexedDB no dispositivo) —, expondo uma interface uniforme ao Service independentemente da origem dos dados;
+- **Banco de dados / Armazenamento Local:** camada de persistência que varia conforme o modo de operação do dispositivo (online ou offline).
+
+Essa separação garante que as regras de negócio permaneçam isoladas das preocupações de transporte HTTP e de persistência, facilitando a manutenção e a evolução do sistema — critério alinhado ao requisito não funcional de Suportabilidade (RNF — SUP), que limita o Tempo Médio de Reparo (MTTR) a 8 horas para defeitos críticos.
+
+Os diagramas subsequentes cobrem tanto operações executadas em ambiente conectado (DS01) quanto fluxos que operam integralmente em modo offline, com sincronização assíncrona posterior (DS02, DS03, DS04). A diferenciação explícita entre os dois modos de operação constitui um requisito estrutural do projeto, visto que os retiros da BrPec dispõem de conectividade Starlink apenas em janelas limitadas (manhã e noite), exigindo que a aplicação funcione como fonte primária de dados localmente e trate a rede como camada de sincronização secundária — paradigma denominado *offline-first* na literatura de sistemas distribuídos [20]. Cada diagrama inclui, ao final, tabela de rastreabilidade que vincula os elementos representados às User Stories, Requisitos Funcionais, Regras de Negócio e Requisitos Não Funcionais correspondentes, assegurando a coerência com os demais artefatos de engenharia de requisitos do projeto.
+
+#### Fundamentação Tecnológica: Persistência Offline e Sincronização
+
+Os diagramas de sequência apresentados nesta seção referenciam, de forma recorrente, componentes de persistência local e mecanismos de sincronização assíncrona que fundamentam a operação offline da aplicação. A presente subseção detalha as tecnologias adotadas e justifica as decisões arquiteturais que sustentam o funcionamento do sistema nos retiros da BrPec, onde a conectividade à internet é restrita a janelas de cobertura Starlink.
+
+**SQLite — Banco de dados relacional do servidor**
+
+O SQLite é um sistema de gerenciamento de banco de dados relacional (*RDBMS*) autocontido (*self-contained*), sem servidor (*serverless*) e de configuração zero (*zero-configuration*) [21]. Diferentemente de sistemas cliente-servidor convencionais — como PostgreSQL ou MySQL —, o SQLite opera como uma biblioteca vinculada diretamente ao processo da aplicação, lendo e gravando o banco de dados como um arquivo único no disco, sem a necessidade de um processo daemon separado [21]. Essa característica o torna particularmente adequado ao contexto da BrPec, em que a infraestrutura de servidor deve ser leve e de fácil implantação, dado que os nós de processamento central operam em ambientes com recursos computacionais limitados.
+
+No escopo da arquitetura do sistema, o SQLite é empregado como banco de dados central do servidor Node.js, persistindo todas as entidades modeladas no Diagrama de Classes (seção 3.2.3): `Usuario`, `Tarefa`, `Evidencia`, `EventoZootecnico`, `AlertaInfraestrutura`, `Sincronizacao` e `Exportacao`. Os diagramas de sequência DS01 (Criar Tarefa) e os fluxos de sincronização dos diagramas DS03 e DS04 representam a interação do Repository com esse banco central por meio de instruções SQL padrão (`INSERT`, `SELECT`, `UPDATE`), garantindo a compatibilidade com o modelo relacional definido nas tabelas de atributos da seção 3.2.3. A escolha pelo SQLite no servidor está alinhada ao requisito não funcional de Desempenho (RNF — DES), que exige latência p95 inferior a 200 ms para operações de leitura e escrita, e ao requisito de Suportabilidade (RNF — SUP), dado que o SQLite dispensa a administração de processos, usuários e permissões de banco de dados, reduzindo a complexidade operacional de manutenção.
+
+A escolha pelo SQLite no servidor fundamenta-se em três critérios: (i) suporte nativo a transações ACID garante integridade mesmo em interrupções abruptas (RNF — CONF); (ii) consultas SQL relacionais permitem filtrar tarefas por `capataz_id`, `retiro_id` e `data_execucao` sem carregar conjuntos completos em memória; (iii) ausência de processo daemon reduz a complexidade operacional de manutenção (RNF — SUP).
+
+**IndexedDB — Armazenamento local no dispositivo do capataz**
+
+O IndexedDB é uma API de armazenamento local de baixo nível, padronizada pelo W3C, projetada para a persistência de volumes significativos de dados estruturados no navegador do cliente [22]. Trata-se de um banco de dados transacional não relacional (*NoSQL*), com suporte a índices sobre propriedades de objetos, que opera de forma inteiramente assíncrona para evitar o bloqueio da interface do usuário [22].
+
+No sistema BrPec, o IndexedDB é utilizado nos dispositivos móveis dos capatazes como camada de armazenamento local para as tarefas sincronizadas, evidências (fotos e áudios), registros de eventos zootécnicos e alertas de infraestrutura. Conforme representado nos diagramas DS02, DS03 e DS04, o Repository abstrai o acesso ao IndexedDB por meio da mesma interface exposta ao Service, de modo que as operações de leitura e escrita sejam transparentes à camada de negócio — independentemente de o dispositivo estar online ou offline. A tabela `sincronizacoes`, persistida no IndexedDB, funciona como fila de controle de envio, registrando cada entidade modificada localmente com status `PENDENTE`, `ENVIADO` ou `FALHA`, e o respectivo contador de tentativas de reenvio, conforme previsto nos requisitos RF010, RF011 e RF012.
+
+A decisão de adotar o IndexedDB como mecanismo de armazenamento local, em complemento ao SQLite do servidor, decorre de três fatores técnicos: (i) o IndexedDB é nativamente disponível em todos os navegadores modernos, sem necessidade de extensões ou plugins; (ii) sua natureza transacional garante a integridade dos dados mesmo em cenários de interrupção abrupta da aplicação, como queda de bateria ou encerramento involuntário do navegador; e (iii) sua capacidade de armazenamento excede amplamente as limitações do Web Storage (5 MB típico), suportando os volumes de fotos codificadas em base64 e registros acumulados durante os períodos sem conexão — requisito crítico dado que os capatazes podem operar offline durante todo o intervalo entre as janelas de Starlink.
+
+**Service Workers e Background Sync — Sincronização assíncrona**
+
+O mecanismo de sincronização representado nos diagramas DS03 e DS04 pelo participante `SyncService` é implementado tecnicamente por meio de Service Workers em combinação com a Background Synchronization API [23]. O Service Worker é um script executado pelo navegador em segundo plano, separado do contexto da página web, que permite interceptar requisições de rede, gerenciar o cache da aplicação e executar tarefas assíncronas mesmo quando o usuário não está interagindo ativamente com a interface [23].
+
+A Background Sync API estende as capacidades do Service Worker ao permitir que ações diferidas — como o envio de tarefas concluídas ou evidências fotográficas — sejam registradas como eventos de sincronização pendentes e executadas automaticamente pelo navegador assim que uma conexão de rede estável for detectada [23]. No contexto operacional da BrPec, esse comportamento é essencial: o capataz registra a conclusão de tarefas e anexa evidências durante o período offline, e o SyncService, ativado automaticamente pela reconexão Starlink, percorre a fila de sincronizações pendentes no IndexedDB, transmite os dados ao servidor remoto e atualiza o status local para `ENVIADO` ou incrementa o contador de tentativas em caso de falha, conforme modelado nas ramificações `alt` dos diagramas DS03 e DS04.
+
+Esse mecanismo implementa o padrão de *Outbox* [24], no qual toda operação que altera o estado local gera um registro de controle com status `PENDENTE` consumido pelo SyncService ao reconectar, garantindo que nenhuma operação seja perdida mesmo que o dispositivo seja desligado entre o registro e a sincronização (RF012).
+
+A combinação dessas três camadas tecnológicas — SQLite no servidor, IndexedDB no cliente e Service Workers para sincronização — materializa a arquitetura *offline-first* exigida pelo contexto operacional do projeto, assegurando o cumprimento dos requisitos não funcionais de Confiabilidade (RNF — CONF: 0% de perda de dados em falhas de conexão), Desempenho (RNF — DES: latência p95 < 200 ms no armazenamento local) e Capacidade (RNF — CAP: sincronização em lote de até 500 eventos pendentes).
+
+---
 
 #### DS01 — Criar Tarefa (US01)
 
@@ -1696,6 +1736,349 @@ sequenceDiagram
 | RNF — SEG | Todas as rotas do gerente retornam 403 para perfis não autorizados                               |
 | RNF — DES | Endpoint responde em p95 < 200ms com até 200 registros no banco                                  |
 
+#### DS02 — Consultar Tarefas Offline (US02)
+
+Fluxo que representa a consulta das tarefas do dia pelo Capataz em ambiente sem conexão com a internet, percorrendo as camadas Cliente (PWA) → Controller → Service → Repository → Armazenamento Local (IndexedDB/SQLite local). O diagrama diferencia explicitamente o que ocorre no dispositivo do capataz (offline) do que depende de sincronização prévia com o servidor. Mensagens síncronas são representadas por setas contínuas (`->>`) e retornos por setas tracejadas (`-->>`)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Capataz
+    participant PWA as Cliente (PWA)
+    participant CTR as Controller
+    participant SRV as Service
+    participant REP as Repository
+    participant LS as Armazenamento Local (IndexedDB)
+
+    note over C,LS: Dispositivo sem conexão com a internet
+
+    C->>PWA: Acessa tela "Minhas Tarefas"
+    PWA->>CTR: GET /tarefas/hoje {capataz_id}
+    CTR->>CTR: Verifica perfil do usuário (RN05)
+
+    alt Perfil não autorizado
+        CTR-->>PWA: 403 Forbidden {erro: "acesso negado"}
+        PWA-->>C: Exibe mensagem de acesso negado
+    else Perfil autorizado (Capataz)
+        CTR->>SRV: buscarTarefasHoje(capataz_id)
+        SRV->>SRV: Verifica conectividade com servidor
+
+        alt Sem conexão com servidor (modo offline)
+            SRV->>REP: buscarTarefasLocais(capataz_id, data_hoje)
+            REP->>LS: SELECT * FROM tarefas WHERE capataz_id = ? AND data_execucao = ? AND sincronizada = true
+            
+            alt Tarefas sincronizadas encontradas (RN06, RN07)
+                LS-->>REP: [{id, titulo, descricao, status, data_execucao}]
+                REP-->>SRV: List<Tarefa>
+                SRV->>SRV: Filtra apenas tarefas do retiro do capataz (RN05)
+                SRV-->>CTR: List<Tarefa> ordenada
+                CTR-->>PWA: 200 OK {tarefas: [...], modo: "offline"}
+                PWA-->>C: Exibe lista de tarefas do dia (RN12)
+            else Nenhuma tarefa sincronizada (RF004, RN04)
+                LS-->>REP: []
+                REP-->>SRV: []
+                SRV-->>CTR: []
+                CTR-->>PWA: 200 OK {tarefas: [], modo: "offline"}
+                PWA-->>C: Exibe mensagem "Nenhuma tarefa disponível. Sincronize quando houver conexão."
+            end
+
+        else Com conexão disponível
+            SRV->>REP: buscarTarefasServidor(capataz_id, data_hoje)
+            REP-->>SRV: List<Tarefa> atualizada
+            SRV->>REP: atualizarArmazenamentoLocal(tarefas)
+            REP->>LS: INSERT OR REPLACE INTO tarefas (...) (sincronizada = true)
+            LS-->>REP: ok
+            SRV-->>CTR: List<Tarefa>
+            CTR-->>PWA: 200 OK {tarefas: [...], modo: "online"}
+            PWA-->>C: Exibe lista de tarefas do dia atualizada
+        end
+    end
+```
+
+**Descrição das camadas:**
+
+- **Cliente PWA (`Cliente`):** interface do dispositivo do capataz no campo. Detecta o estado de conectividade e apresenta a lista de tarefas com indicação visual do modo de operação (online ou offline).
+- **Controller (`TarefaController`):** recebe a requisição de listagem, valida o perfil do usuário e delega ao Service. Não acessa o armazenamento local diretamente.
+- **Service (`TarefaService`):** verifica a disponibilidade de conexão e decide a estratégia de busca — servidor remoto (online) ou armazenamento local (offline). Aplica a regra RN05, garantindo que apenas tarefas do retiro do capataz sejam retornadas.
+- **Repository (`TarefaRepository`):** abstrai tanto o acesso ao banco remoto quanto ao armazenamento local (IndexedDB/SQLite local), expondo a mesma interface ao Service independentemente da origem dos dados.
+- **Armazenamento Local (`IndexedDB`):** persiste localmente as tarefas previamente sincronizadas. Só contém tarefas com `sincronizada = true`, garantindo que dados incompletos nunca sejam exibidos ao capataz (RN06).
+
+**Fluxos cobertos:**
+
+| Fluxo         | Descrição                                                                                           |
+| ------------- | --------------------------------------------------------------------------------------------------- |
+| Principal     | Capataz offline com tarefas sincronizadas → lista exibida a partir do armazenamento local           |
+| Alternativo 1 | Capataz offline sem tarefas sincronizadas → mensagem de ausência exibida com linguagem simples (RN04)|
+| Alternativo 2 | Capataz online → tarefas buscadas do servidor, armazenamento local atualizado e lista exibida       |
+| Alternativo 3 | Perfil não autorizado → acesso negado com 403                                                        |
+
+**Rastreabilidade:**
+
+| Elemento     | Referência                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------- |
+| US02         | Como capataz, posso visualizar minha lista de tarefas do dia offline                                    |
+| RF002        | O sistema deve permitir que o capataz visualize as tarefas do dia mesmo sem conexão                     |
+| RF003        | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline                        |
+| RF004        | O sistema deve exibir mensagem simples quando não houver tarefas disponíveis offline                    |
+| RN02         | Apenas tarefas do dia atual devem ser exibidas ao capataz                                               |
+| RN05         | Apenas tarefas do retiro do capataz devem ser exibidas para ele                                         |
+| RN06         | O sistema deve permitir visualização offline apenas de tarefas previamente sincronizadas                |
+| RN07         | As tarefas do dia devem ficar disponíveis offline quando houver sincronização prévia                    |
+| RN12         | As telas do capataz devem usar linguagem simples, botões visíveis e poucos passos de interação          |
+| RNF — CONF   | 0% de perda de dados em falhas de conexão; estratégia offline-first                                     |
+| RNF — DES    | Latência p95 < 200ms para salvar e ler registros no banco de dados local                                |
+
+---
+
+#### DS03 — Concluir Tarefa Offline (US03)
+
+Fluxo que representa a marcação de uma tarefa como concluída pelo Capataz em ambiente sem conexão, com persistência local imediata e sincronização automática posterior com o servidor quando a conectividade for restabelecida. Mensagens síncronas são representadas por setas contínuas (`->>`) e retornos por setas tracejadas (`-->>`)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Capataz
+    participant PWA as Cliente (PWA)
+    participant CTR as Controller
+    participant SRV as Service
+    participant REP as Repository
+    participant LS as Armazenamento Local (IndexedDB)
+    participant SYNC as SyncService
+    participant API as Servidor Remoto
+
+    note over C,LS: Dispositivo sem conexão com a internet
+
+    C->>PWA: Toca botão "Concluir Tarefa" (tarefa_id)
+    PWA->>CTR: PATCH /tarefas/{id}/concluir {capataz_id}
+    CTR->>CTR: Valida presença de tarefa_id e capataz_id
+
+    alt Campos obrigatórios ausentes
+        CTR-->>PWA: 400 Bad Request {erro: "campos obrigatórios não preenchidos"}
+        PWA-->>C: Exibe alerta de erro
+    else Dados válidos
+        CTR->>SRV: concluirTarefa(tarefa_id, capataz_id)
+        SRV->>REP: buscarTarefaLocal(tarefa_id)
+        REP->>LS: SELECT * FROM tarefas WHERE id = ? AND capataz_id = ?
+        
+        alt Tarefa não encontrada ou não pertence ao capataz (RN05)
+            LS-->>REP: null
+            REP-->>SRV: null
+            SRV-->>CTR: throw TarefaNaoEncontradaError
+            CTR-->>PWA: 404 Not Found {erro: "tarefa não encontrada"}
+            PWA-->>C: Exibe mensagem de erro
+        else Tarefa encontrada
+            LS-->>REP: {id, titulo, status: "pendente", sincronizada: true}
+            REP-->>SRV: Tarefa
+
+            SRV->>SRV: Atualiza status para "concluida" e registra timestamp (RNF — SEG)
+            SRV->>REP: salvarConclusaoLocal(tarefa_id, concluidaEm, capataz_id)
+            REP->>LS: UPDATE tarefas SET status = "concluida", concluida_em = ?, sincronizada = false WHERE id = ?
+            LS-->>REP: ok
+            REP-->>SRV: ok
+            SRV->>REP: registrarSincronizacaoPendente(tarefa_id, "Tarefa")
+            REP->>LS: INSERT INTO sincronizacoes (entidade_tipo, entidade_id, status_envio, tentativas) VALUES ("Tarefa", ?, "PENDENTE", 0)
+            LS-->>REP: ok
+            SRV-->>CTR: {status: "concluida", sincronizado: false}
+            CTR-->>PWA: 200 OK {mensagem: "Tarefa concluída. Será sincronizada quando houver conexão.", sincronizado: false}
+            PWA-->>C: Exibe confirmação visual com indicador de pendente (RN08, RN12)
+
+            note over SYNC,API: Quando conexão for restabelecida (RF010)
+
+            SYNC->>LS: SELECT * FROM sincronizacoes WHERE status_envio = "PENDENTE"
+            LS-->>SYNC: [{entidade_tipo: "Tarefa", entidade_id: ?}]
+            SYNC->>LS: SELECT * FROM tarefas WHERE id = ? AND sincronizada = false
+            LS-->>SYNC: {id, status: "concluida", concluida_em, capataz_id}
+            SYNC->>API: PATCH /tarefas/{id}/concluir {status, concluida_em, capataz_id}
+
+            alt Sincronização bem-sucedida (RF011)
+                API-->>SYNC: 200 OK
+                SYNC->>LS: UPDATE tarefas SET sincronizada = true WHERE id = ?
+                SYNC->>LS: UPDATE sincronizacoes SET status_envio = "ENVIADO" WHERE entidade_id = ?
+                LS-->>SYNC: ok
+                SYNC-->>PWA: Evento: "tarefa-sincronizada"
+                PWA-->>C: Exibe notificação "Tarefa sincronizada com sucesso" (RF011)
+            else Falha na sincronização (RF012)
+                API-->>SYNC: 5xx / timeout
+                SYNC->>LS: UPDATE sincronizacoes SET status_envio = "FALHA", tentativas = tentativas + 1 WHERE entidade_id = ?
+                LS-->>SYNC: ok
+                note over SYNC: Retentar na próxima conexão (RF012)
+            end
+        end
+    end
+```
+
+**Descrição das camadas:**
+
+- **Cliente PWA (`Cliente`):** captura a ação do capataz, dispara a requisição de conclusão e exibe confirmações visuais simples e de alto contraste, adequadas ao uso em campo (RN12). Escuta eventos de sincronização emitidos pelo SyncService para atualizar o indicador de status.
+- **Controller (`TarefaController`):** valida a presença dos identificadores obrigatórios e delega ao Service. Não acessa o armazenamento local diretamente.
+- **Service (`TarefaService`):** aplica as regras de negócio — verifica se a tarefa pertence ao capataz (RN05), atualiza o status e injeta o timestamp de conclusão (RNF — SEG). Orquestra o registro de sincronização pendente.
+- **Repository (`TarefaRepository`):** persiste a conclusão localmente com `sincronizada = false` e insere o registro de controle na tabela `sincronizacoes` (RF012).
+- **Armazenamento Local (`IndexedDB`):** mantém o estado da tarefa e o registro de pendência de sincronização até que o envio seja confirmado pelo servidor.
+- **SyncService (`SyncService`):** processo em segundo plano (background sync via Service Worker) responsável por detectar a reconexão, consultar registros pendentes e transmiti-los ao servidor remoto. Atualiza o status para `ENVIADO` em caso de sucesso ou incrementa o contador de tentativas em caso de falha (RF012).
+- **Servidor Remoto (`API`):** recebe a atualização de status da tarefa e confirma a persistência no banco de dados central, tornando a informação visível ao Gerente no painel de acompanhamento (RF007).
+
+**Fluxos cobertos:**
+
+| Fluxo         | Descrição                                                                                                    |
+| ------------- | ------------------------------------------------------------------------------------------------------------ |
+| Principal     | Capataz offline → conclusão persistida localmente → sincronização automática ao reconectar → confirmação visual |
+| Alternativo 1 | Campo obrigatório ausente → Controller retorna 400 sem acionar o Service                                     |
+| Alternativo 2 | Tarefa não encontrada ou não pertence ao capataz → Service lança erro → 404                                  |
+| Alternativo 3 | Falha na sincronização com o servidor → tentativa registrada e reenvio automático na próxima conexão (RF012) |
+
+**Rastreabilidade:**
+
+| Elemento     | Referência                                                                                              |
+| ------------ | ------------------------------------------------------------------------------------------------------- |
+| US03         | Como capataz, posso marcar uma tarefa como concluída para informar o gerente sobre o avanço             |
+| RF003        | O sistema deve armazenar localmente as tarefas sincronizadas para acesso offline                        |
+| RF010        | O sistema deve detectar automaticamente o restabelecimento da conexão e iniciar a transmissão           |
+| RF011        | O sistema deve notificar o capataz após sincronização bem-sucedida                                      |
+| RF012        | Registros com falha devem ser mantidos e reenviados automaticamente a cada nova conexão                 |
+| RN05         | Apenas tarefas do retiro do capataz devem ser exibidas e manipuladas por ele                            |
+| RN08         | A marcação de conclusão feita offline deve ser armazenada localmente até a próxima sincronização        |
+| RN09         | A tarefa concluída deve ter seu status atualizado para o gerente após sincronização                     |
+| RN12         | As telas do capataz devem usar linguagem simples, botões visíveis e poucos passos de interação          |
+| RNF — SEG    | 100% dos registros devem conter metadados de autoria (ID do capataz) e timestamp não editável           |
+| RNF — CONF   | 0% de perda de dados em falhas de conexão; estratégia offline-first com reenvio automático              |
+
+---
+
+#### DS04 — Anexar Foto na Conclusão de Tarefa (US04)
+
+Fluxo que representa o anexo de uma foto como evidência de conclusão de tarefa pelo Capataz em ambiente sem conexão, com armazenamento local da imagem e sincronização automática em lote quando a conectividade for restabelecida. Mensagens síncronas são representadas por setas contínuas (`->>`) e retornos por setas tracejadas (`-->>`)
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Capataz
+    participant PWA as Cliente (PWA)
+    participant CTR as Controller
+    participant SRV as Service
+    participant REP as Repository
+    participant LS as Armazenamento Local (IndexedDB)
+    participant SYNC as SyncService
+    participant API as Servidor Remoto
+
+    note over C,LS: Dispositivo sem conexão com a internet
+
+    C->>PWA: Toca botão "Anexar Foto" na tela de conclusão (tarefa_id)
+    PWA->>PWA: Aciona câmera nativa do dispositivo
+    C->>PWA: Captura foto
+    PWA->>CTR: POST /tarefas/{id}/evidencias {tipo: "FOTO", arquivo: base64, capataz_id}
+    CTR->>CTR: Valida presença de tarefa_id, tipo e arquivo
+
+    alt Campos obrigatórios ausentes
+        CTR-->>PWA: 400 Bad Request {erro: "campos obrigatórios não preenchidos"}
+        PWA-->>C: Exibe alerta de erro
+    else Dados válidos
+        CTR->>SRV: anexarFoto(tarefa_id, arquivo_base64, capataz_id)
+        SRV->>REP: buscarTarefaLocal(tarefa_id)
+        REP->>LS: SELECT * FROM tarefas WHERE id = ? AND capataz_id = ?
+
+        alt Tarefa não encontrada ou não pertence ao capataz (RN05)git 
+            LS-->>REP: null
+            REP-->>SRV: null
+            SRV-->>CTR: throw TarefaNaoEncontradaError
+            CTR-->>PWA: 404 Not Found {erro: "tarefa não encontrada"}
+            PWA-->>C: Exibe mensagem de erro
+        else Tarefa encontrada
+            LS-->>REP: {id, status, capataz_id}
+            REP-->>SRV: Tarefa
+
+            SRV->>SRV: Captura geolocalização do dispositivo (GPS)
+            SRV->>SRV: Gera evidencia_id e registra timestamp (RNF — SEG)
+            SRV->>REP: salvarFotoLocal(evidencia_id, tarefa_id, arquivo_base64, geolocalizacao, capataz_id)
+            REP->>LS: INSERT INTO evidencias (id, tarefa_id, tipo, arquivo_base64, geolocalizacao, criada_em, sincronizada) VALUES (?, ?, "FOTO", ?, ?, ?, false)
+            LS-->>REP: ok
+            REP-->>SRV: {evidencia_id}
+
+            SRV->>REP: registrarSincronizacaoPendente(evidencia_id, "Evidencia")
+            REP->>LS: INSERT INTO sincronizacoes (entidade_tipo, entidade_id, status_envio, tentativas) VALUES ("Evidencia", ?, "PENDENTE", 0)
+            LS-->>REP: ok
+            SRV-->>CTR: {evidencia_id, sincronizado: false}
+            CTR-->>PWA: 201 Created {mensagem: "Foto salva. Será enviada quando houver conexão.", sincronizado: false}
+            PWA-->>C: Exibe confirmação visual com thumbnail da foto e indicador de pendente (RN11, RN12)
+
+            note over SYNC,API: Quando conexão for restabelecida (RF010)
+
+            SYNC->>LS: SELECT * FROM sincronizacoes WHERE status_envio = "PENDENTE" AND entidade_tipo = "Evidencia"
+            LS-->>SYNC: [{entidade_id: evidencia_id}]
+            SYNC->>LS: SELECT * FROM evidencias WHERE id = ? AND sincronizada = false
+            LS-->>SYNC: {id, tarefa_id, tipo: "FOTO", arquivo_base64, geolocalizacao, criada_em}
+
+            SYNC->>SYNC: Verifica tamanho do arquivo (RNF — CAP: chunking se > limite)
+
+            alt Arquivo dentro do limite de envio
+                SYNC->>API: POST /tarefas/{tarefa_id}/evidencias {tipo: "FOTO", arquivo: base64, geolocalizacao, criada_em}
+                alt Sincronização bem-sucedida (RF011)
+                    API-->>SYNC: 201 Created {url_arquivo}
+                    SYNC->>LS: UPDATE evidencias SET sincronizada = true, url_arquivo = ? WHERE id = ?
+                    SYNC->>LS: UPDATE sincronizacoes SET status_envio = "ENVIADO" WHERE entidade_id = ?
+                    LS-->>SYNC: ok
+                    SYNC-->>PWA: Evento: "evidencia-sincronizada"
+                    PWA-->>C: Exibe notificação "Foto enviada com sucesso" (RF011)
+                else Falha na sincronização (RF012)
+                    API-->>SYNC: 5xx / timeout
+                    SYNC->>LS: UPDATE sincronizacoes SET status_envio = "FALHA", tentativas = tentativas + 1 WHERE entidade_id = ?
+                    LS-->>SYNC: ok
+                    note over SYNC: Retentar na próxima conexão (RF012)
+                end
+            else Arquivo acima do limite (RNF — CAP)
+                SYNC->>SYNC: Divide arquivo em chunks
+                loop Para cada chunk
+                    SYNC->>API: POST /tarefas/{tarefa_id}/evidencias/chunk {chunk_index, chunk_data, total_chunks}
+                    API-->>SYNC: 200 OK {chunk_recebido}
+                end
+                SYNC->>API: POST /tarefas/{tarefa_id}/evidencias/finalizar {evidencia_id}
+                API-->>SYNC: 201 Created {url_arquivo}
+                SYNC->>LS: UPDATE evidencias SET sincronizada = true, url_arquivo = ? WHERE id = ?
+                SYNC->>LS: UPDATE sincronizacoes SET status_envio = "ENVIADO" WHERE entidade_id = ?
+                SYNC-->>PWA: Evento: "evidencia-sincronizada"
+                PWA-->>C: Exibe notificação "Foto enviada com sucesso" (RF011)
+            end
+        end
+    end
+```
+
+**Descrição das camadas:**
+
+- **Cliente PWA (`Cliente`):** aciona a câmera nativa do dispositivo, exibe um thumbnail da imagem capturada e apresenta indicador visual de status de envio (pendente/sincronizado) com linguagem simples e botões de alto contraste (RN12). Escuta eventos de sincronização emitidos pelo SyncService.
+- **Controller (`TarefaController`):** valida a presença dos campos obrigatórios (identificador da tarefa, tipo de evidência e arquivo) e delega ao Service. Não acessa o armazenamento local diretamente.
+- **Service (`TarefaService`):** captura a geolocalização do dispositivo no momento do anexo, injeta metadados de autoria e timestamp (RNF — SEG), e orquestra o armazenamento local da imagem em formato base64 e o registro de sincronização pendente.
+- **Repository (`TarefaRepository`):** persiste a evidência no armazenamento local com `sincronizada = false` e a imagem codificada em base64, mantendo o vínculo com a tarefa correspondente (RN10). Insere o registro de controle na tabela `sincronizacoes`.
+- **Armazenamento Local (`IndexedDB`):** armazena a imagem em base64 até que a sincronização com o servidor seja concluída com sucesso, prevenindo qualquer perda de evidência durante períodos offline (RN11, RNF — CONF).
+- **SyncService (`SyncService`):** detecta a reconexão via Service Worker e transmite as evidências pendentes ao servidor. Implementa chunking para arquivos de imagem que excedam o limite de transmissão segura em conexões instáveis (RNF — CAP), garantindo a integridade do envio em lote.
+- **Servidor Remoto (`API`):** recebe a evidência, persiste o arquivo e retorna a URL definitiva do arquivo armazenado, que é então atualizada no registro local. A evidência fica disponível para consulta pelo Gerente e Coordenador (RF014, UC05).
+
+**Fluxos cobertos:**
+
+| Fluxo         | Descrição                                                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Principal     | Capataz offline → foto capturada e salva localmente em base64 → sincronização automática ao reconectar             |
+| Alternativo 1 | Campo obrigatório ausente → Controller retorna 400                                                                  |
+| Alternativo 2 | Tarefa não encontrada ou não pertence ao capataz → Service lança erro → 404                                        |
+| Alternativo 3 | Falha na sincronização → tentativa registrada e reenvio automático na próxima conexão (RF012)                      |
+| Alternativo 4 | Arquivo acima do limite → SyncService divide em chunks e transmite sequencialmente ao servidor (RNF — CAP)         |
+
+**Rastreabilidade:**
+
+| Elemento     | Referência                                                                                                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------ |
+| US04         | Como capataz, posso anexar fotos na conclusão de uma tarefa para comprovar visualmente o serviço realizado   |
+| RF004        | O sistema deve armazenar localmente as tarefas e evidências sincronizadas para acesso offline                |
+| RF010        | O sistema deve detectar automaticamente o restabelecimento da conexão e iniciar a transmissão pendente       |
+| RF011        | O sistema deve notificar o capataz com confirmação após sincronização bem-sucedida                           |
+| RF012        | Registros com falha de envio devem ser mantidos e reenviados automaticamente a cada nova conexão             |
+| RN10         | As fotos anexadas devem estar vinculadas à tarefa correspondente                                             |
+| RN11         | Fotos registradas offline devem ser enviadas ao sistema quando houver conexão                                |
+| RN12         | As telas do capataz devem usar linguagem simples, botões visíveis e poucos passos de interação               |
+| RN19         | O sistema deve capturar automaticamente a localização GPS quando o capataz criar um registro com foto        |
+| RNF — SEG    | 100% dos registros devem conter metadados de autoria e timestamp não editável                                |
+| RNF — CONF   | 0% de perda de dados em falhas de conexão; imagem mantida localmente até confirmação do servidor             |
+| RNF — CAP    | Suporte a sincronização em lote de até 500 eventos; chunking para arquivos grandes em conexões instáveis     |
+
+
 ### 3.2.5. Diagrama de Atividades ou Estados (sprint 3)
 
 _Ao menos um fluxo relevante em UML ou BPMN. Use a notação da ferramenta escolhida de forma consistente (sem misturar convenções)._
@@ -1710,44 +2093,47 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 
 ## 3.3. Wireframes (sprint 2)
 
-_Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização)_
-
 <center>
   <p><strong>Figura 9</strong> — Wireframe da tela de tarefas do capataz</p>
-  <img src="../assets/wireframeCapatazTarefas.png" width="800"/>
+  <img src="./assets/wireframeCapatazTarefas.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-<p>Wireframe capataz - concluir tarefa (mobile)</p>
- <img src="./assets/wireframeCapatazConcluirTarefaMobile.png" width="800"/>
- <p>Fonte: Próprios autores (2026).</p>
-</center>
-
-<center>
-<p>Wireframe capataz - concluir tarefa (tablet/desktop)</p>
+<p><strong>Figura 10</strong> — Wireframe capataz - concluir tarefa (mobile/tablet/desktop)</p>
  <img src="./assets/wireframeCapatazConcluirTarefaTablet.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 10</strong> — Wireframe da tela de anexar fotos pelo capataz</p>
-  <img src="../assets/wireframeCapatazAnexarFotos.png" width="800"/>
+  <p><strong>Figura 11</strong> — Wireframe da tela de anexar fotos pelo capataz</p>
+  <img src="./assets/wireframeCapatazAnexarFotos.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 11</strong> — Wireframe da tela de infraestrutura</p>
-  <img src="../assets/wireframeInfraestrutura.png" width="800"/>
+  <p><strong>Figura 12</strong> — Wireframe da tela de infraestrutura</p>
+  <img src="./assets/wireframeInfraestrutura.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 12</strong> — Wireframe da tela de infraestrutura registrar resolução</p>
-  <img src="../assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
+  <p><strong>Figura 13</strong> — Wireframe da tela de infraestrutura registrar resolução</p>
+  <img src="./assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
+<center>
+  <p><strong>Figura 14</strong> — Wireframe da tela de dashboard do gerente</p>
+  <img src="./assets/wireframeGerenteDashboard.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
+  <p><strong>Figura 15</strong> — Wireframe da tela de nova O.S do gerente</p>
+  <img src="./assets/wireframeGerenteNovaOs.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ## 3.4. Guia de estilos (sprint 3)
 
@@ -1775,9 +2161,7 @@ _posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelid
 
 ### 3.6.1. Modelo Entidade-Relacionamento (ER) (sprint 2)
 
-_Apresente o modelo ER conceitual com entidades, atributos e relacionamentos. Use notação consistente (Chen ou Crow's Foot - não misture)._
-
-O modelo Entidade-Relacionamento (ER) conceitual representa as principais entidades do domínio da aplicação, seus atributos e relacionamentos existentes entre elas, utilizando a notação **Crow's Foot** de forma consistente em toda a modelagem. O objetivo deste modelo é estruturar conceitualmente os dados necessários para suportar o gerenciamento operacional da BRPec Agropecuária, contemplando usuários, tarefas, evidências, alertas, retiros e movimentações do rebanho.
+O modelo Entidade-Relacionamento (ER) conceitual representa as principais entidades do domínio da aplicação, seus atributos e relacionamentos existentes entre elas, utilizando a notação **Chen** de forma consistente em toda a modelagem. O objetivo deste modelo é estruturar conceitualmente os dados necessários para suportar o gerenciamento operacional da BRPec Agropecuária, contemplando usuários, boletas, alertas, retiros e tipos operacionais (nascimento, óbito, transferência, compra, venda).
 
 Nesta etapa conceitual, não são representados detalhes físicos de implementação, como tipos específicos de banco de dados, chaves primárias ou estrangeiras, pois esses elementos serão tratados posteriormente no DER lógico e no modelo físico da aplicação.
 
@@ -1785,100 +2169,27 @@ Nesta etapa conceitual, não são representados detalhes físicos de implementa�
   <p><strong>Figura 13</strong> — Modelo Entidade-Relacionamento Conceitual — BRPec Agropecuária</p>
 </center>
 
-### 3.6.1 Modelo Entidade-Relacionamento (ER) conceitual
-
-O modelo conceitual a seguir utiliza a notação de Chen para representar as entidades e relacionamentos do sistema Salli-AI. Esta modelagem foca exclusivamente nas regras de negócio da BrPec Agropecuária, omitindo detalhes técnicos de implementação, tipos de dados ou chaves primárias, conforme as diretrizes desta etapa.
-
-```mermaid
-flowchart TD
-    %% Entidades
-    USUARIO[USUARIO]
-    RETIRO[RETIRO]
-    TAREFA[TAREFA]
-    ALERTA[ALERTA]
-    MOVIMENTACAO[MOVIMENTACAO]
-    EVIDENCIA[EVIDENCIA]
-    LOTE[LOTE]
-    
-    %% Especializações da Movimentação
-    NASCIMENTO[NASCIMENTO]
-    OBITO[OBITO]
-    TRANSFERENCIA[TRANSFERENCIA]
-    COMPRAVENDA[COMPRAVENDA]
-
-    %% Atributos (Círculos/Pílulas)
-    attrU1([Perfil_Acesso]) --- USUARIO
-    attrU2([Nome]) --- USUARIO
-    
-    attrR1([Nome_Retiro]) --- RETIRO
-    attrR2([Localizacao_Curral]) --- RETIRO
-    
-    attrT1([Prioridade]) --- TAREFA
-    attrT2([Status_Validacao]) --- TAREFA
-    
-    attrE1([Georreferenciamento]) --- EVIDENCIA
-    attrE2([Arquivo_Foto]) --- EVIDENCIA
-    
-    attrM1([Data_Sincronizacao]) --- MOVIMENTACAO
-    attrM2([Status_Confirmacao]) --- MOVIMENTACAO
-    
-    attrL1([Identificacao_Lote]) --- LOTE
-
-    %% Relacionamentos (Losangos)
-    R1{aloca}
-    R2{executa}
-    R3{emite}
-    R4{registra}
-    R5{sedia}
-    R6{origina}
-    R7{comprova}
-    R8{detalha}
-    R9{destino}
-    R10{contem}
-
-    %% Conexões do Fluxo Central
-    RETIRO --- R1 --- USUARIO
-    RETIRO --- R5 --- TAREFA
-    RETIRO --- R6 --- MOVIMENTACAO
-    
-    USUARIO --- R2 --- TAREFA
-    USUARIO --- R3 --- ALERTA
-    USUARIO --- R4 --- MOVIMENTACAO
-
-    TAREFA --- R7 --- EVIDENCIA
-    
-    %% Relacionamento com Lote (Conforme Insight 4)
-    MOVIMENTACAO --- R10 --- LOTE
-    
-    %% Especializações
-    MOVIMENTACAO --- R8 --- NASCIMENTO
-    MOVIMENTACAO --- R8 --- OBITO
-    MOVIMENTACAO --- R8 --- TRANSFERENCIA
-    MOVIMENTACAO --- R8 --- COMPRAVENDA
-    
-    %% Ciclo de Origem e Destino (Insight 4)
-    TRANSFERENCIA --- R9 --- RETIRO
-```
+<img src="./assets/modelo-er-brpec.png" width="800"/>
 
 ### Decisões de modelagem
 
-- A entidade **USUARIO** representa genericamente os perfis operacionais do sistema, incluindo gerente, coordenador e capataz. A diferenciação entre os tipos de usuário é realizada pelo atributo `perfil`, evitando redundância estrutural entre entidades com atributos equivalentes.
+- A entidade USUÁRIO representa os perfis operacionais do sistema (Gerente, Coordenador e Capataz). A distinção de funções é realizada pelo atributo perfil, centralizando a gestão de acessos e garantindo que cada ação no sistema seja vinculada a um id único para fins de rastreabilidade.
 
-- A entidade **RETIRO** representa as unidades operacionais da fazenda e centraliza os relacionamentos relacionados às tarefas e movimentações realizadas em campo.
+- A entidade RETIRO representa as unidades físicas e operacionais da fazenda.  O relacionamento "pertence" (1,1 para 1,n) estabelece que um usuário deve estar vinculado a pelo menos um retiro para operar, enquanto um retiro pode possuir múltiplos usuários associados.
 
-- A entidade **TAREFA** foi modelada para representar atividades operacionais atribuídas aos usuários, permitindo acompanhamento de execução, status e data planejada.
+- A entidade ALERTA é utilizada para reportar problemas de infraestrutura (hidráulica, cerca, elétrica). O relacionamento "emite" (1,1 para 1,n) garante que cada alerta seja rastreável a um único autor (Usuário), permitindo que o Gerente saiba exatamente quem reportou a ocorrência.
 
-- A entidade **EVIDENCIA** armazena registros comprobatórios relacionados às tarefas executadas, como fotografias, áudios ou anexos utilizados para validação operacional.
+- A entidade BOLETA é o núcleo do registro de manejo, substituindo os processos manuais em papel.  Inclui atributos essenciais para a fiscalização e transporte, como RG/CPF, tipo_transporte (rodoviário/estrada) e georreferenciamento, conforme exigido pelos formulários físicos da empresa.
 
-- A entidade **ALERTA** representa notificações operacionais geradas pelos usuários durante a execução das atividades em campo, permanecendo disponíveis até serem resolvidas.
+- Relacionamento REGISTRA (Usuário-Boleta): Estabelece uma conexão (1,n para 1,1), onde cada boleta digitalizada é obrigatoriamente vinculada ao usuário que a criou, eliminando falhas de transcrição e garantindo a autoria dos dados.
 
-- A entidade **MOVIMENTACAO** representa eventos relacionados ao manejo do rebanho bovino, incluindo nascimentos, óbitos, transferências e operações de compra e venda.
+- Relacionamento CONTÉM (Retiro-Boleta): Define que cada boleta pertence a um retiro de referência (1,1), permitindo a organização dos registros por localidade e facilitando a exportação de dados consolidados por área.
 
-- As entidades **NASCIMENTO**, **OBITO**, **TRANSFERENCIA** e **COMPRAVENDA** foram modeladas como detalhamentos específicos de movimentações, permitindo representar atributos particulares de cada tipo de operação sem duplicação de informações comuns.
+- Especialização DETALHA (Nascimento, Óbito, Transferência, Compra e Venda): A entidade BOLETA atua como uma classe base que se ramifica em eventos zootécnicos específicos.
 
-- O relacionamento entre **TAREFA** e **EVIDENCIA** representa dependência operacional, indicando que evidências somente podem existir associadas a uma tarefa previamente cadastrada.
+A cardinalidade (1,1) entre o losango detalha e a Boleta indica que um registro de manejo deve corresponder obrigatoriamente a um desses tipos.
 
-- A notação **Crow's Foot** foi utilizada de forma consistente em toda a modelagem conceitual, sem mistura com elementos de UML ou notação Chen.
+Cada subtipo (ex: Óbito ou Nascimento) possui seus próprios campos de evidência, como foto e áudio, para validar a execução da tarefa em campo.
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -1988,8 +2299,6 @@ erDiagram
 
 ### 3.6.3. Modelo Relacional e Modelo Físico (sprints 2 e 4)
 
-_Posicione aqui os diagramas de modelos relacionais do banco de dados, apresentando todos os esquemas de tabelas e suas relações. Inclua as migrations DDL numeradas e reproduzíveis (`CREATE TABLE`, `CREATE INDEX`, constraints `NOT NULL`, `UNIQUE`, `FOREIGN KEY`, `CHECK`). Utilize texto para complementar suas explicações quando necessário._
-
 O modelo físico deriva do modelo conceitual (ER) apresentado na seção 3.6.1 e materializa as entidades em tabelas SQLite, usando chaves primárias textuais em UUID v7, chaves estrangeiras explícitas, constraints de domínio e índices para consultas frequentes. A escolha por SQLite está associada ao requisito offline-first: os dados operacionais são gravados no dispositivo antes de qualquer tentativa de sincronização, evitando dependência exclusiva de cache do navegador.
 
 A aplicação PWA mantém os dados estruturados no banco local SQLite. Quando a conexão retorna, a camada de sincronização envia os registros pendentes para uma API central; arquivos de mídia, como fotos e áudios, são enviados a um serviço de armazenamento de evidências pela API. O banco local mantém metadados, caminho local do arquivo antes do upload e a referência remota (`storage_key` ou `url`) após a sincronização.
@@ -1998,46 +2307,25 @@ O DER lógico com cardinalidades, PKs e FKs está apresentado na seção 3.6.2. 
 
 #### Modelo Relacional
 
-| Relação | Chave primária | Chaves estrangeiras principais | Observação |
-|---|---|---|---|
-| `retiros` | `id` | — | Unidades operacionais da fazenda |
-| `usuarios` | `id` | `retiro_id -> retiros(id)` | `retiro_id` é obrigatório apenas para capatazes |
-| `tarefas` | `id` | `retiro_id`, `criado_por_id`, `responsavel_id` | Registra quem criou e quem executa a tarefa |
-| `alertas` | `id` | `retiro_id`, `criado_por_id`, `tecnico_id` | Chamados com tipo, GPS e ciclo de resolução |
-| `movimentacoes` | `id` | `retiro_id`, `responsavel_id` | Evento-base de manejo do rebanho |
-| `evidencias` | `id` | `tarefa_id`, `alerta_id`, `movimentacao_id` | Cada evidência pertence a exatamente uma origem |
-| `nascimentos` | `id` | `movimentacao_id -> movimentacoes(id)` | Especialização 1:1 de movimentação |
-| `obitos` | `id` | `movimentacao_id -> movimentacoes(id)` | Especialização 1:1 com exigência de foto |
-| `transferencias` | `id` | `movimentacao_id`, `retiro_origem_id`, `retiro_destino_id` | Especialização 1:1 entre retiros distintos |
-| `compravendas` | `id` | `movimentacao_id -> movimentacoes(id)` | Especialização 1:1 de compra ou venda |
-| `sync_queue` | `id` | — | Fila técnica de sincronização offline-online |
+| Relação          | Chave primária | Chaves estrangeiras principais                             | Observação                                      |
+| ---------------- | -------------- | ---------------------------------------------------------- | ----------------------------------------------- |
+| `retiros`        | `id`           | —                                                          | Unidades operacionais da fazenda                |
+| `usuarios`       | `id`           | `retiro_id -> retiros(id)`                                 | `retiro_id` é obrigatório apenas para capatazes |
+| `tarefas`        | `id`           | `retiro_id`, `criado_por_id`, `responsavel_id`             | Registra quem criou e quem executa a tarefa     |
+| `alertas`        | `id`           | `retiro_id`, `criado_por_id`, `tecnico_id`                 | Chamados com tipo, GPS e ciclo de resolução     |
+| `movimentacoes`  | `id`           | `retiro_id`, `responsavel_id`                              | Evento-base de manejo do rebanho                |
+| `evidencias`     | `id`           | `tarefa_id`, `alerta_id`, `movimentacao_id`                | Cada evidência pertence a exatamente uma origem |
+| `nascimentos`    | `id`           | `movimentacao_id -> movimentacoes(id)`                     | Especialização 1:1 de movimentação              |
+| `obitos`         | `id`           | `movimentacao_id -> movimentacoes(id)`                     | Especialização 1:1 com exigência de foto        |
+| `transferencias` | `id`           | `movimentacao_id`, `retiro_origem_id`, `retiro_destino_id` | Especialização 1:1 entre retiros distintos      |
+| `compravendas`   | `id`           | `movimentacao_id -> movimentacoes(id)`                     | Especialização 1:1 de compra ou venda           |
+| `sync_queue`     | `id`           | —                                                          | Fila técnica de sincronização offline-online    |
 
 <center>
   <p><strong>Figura 15</strong> — Modelo Relacional</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-O modelo físico deriva do modelo conceitual (ER) apresentado na seção 3.6.1 e materializa as entidades em tabelas SQLite, usando chaves primárias textuais em UUID v7, chaves estrangeiras explícitas, constraints de domínio e índices para consultas frequentes. A escolha por SQLite está associada ao requisito offline-first: os dados operacionais são gravados no dispositivo antes de qualquer tentativa de sincronização, evitando dependência exclusiva de cache do navegador.
-
-A aplicação PWA mantém os dados estruturados no banco local SQLite. Quando a conexão retorna, a camada de sincronização envia os registros pendentes para uma API central; arquivos de mídia, como fotos e áudios, são enviados a um serviço de armazenamento de evidências pela API. O banco local mantém metadados, caminho local do arquivo antes do upload e a referência remota (`storage_key` ou `url`) após a sincronização.
-
-O DER lógico com cardinalidades, PKs e FKs está apresentado na seção 3.6.2. Nesta seção, o mesmo desenho é transformado em modelo relacional e em DDL executável.
-
-#### Modelo Relacional
-
-| Relação | Chave primária | Chaves estrangeiras principais | Observação |
-|---|---|---|---|
-| `retiros` | `id` | — | Unidades operacionais da fazenda |
-| `usuarios` | `id` | `retiro_id -> retiros(id)` | `retiro_id` é obrigatório apenas para capatazes |
-| `tarefas` | `id` | `retiro_id`, `criado_por_id`, `responsavel_id` | Registra quem criou e quem executa a tarefa |
-| `alertas` | `id` | `retiro_id`, `criado_por_id`, `tecnico_id` | Chamados com tipo, GPS e ciclo de resolução |
-| `movimentacoes` | `id` | `retiro_id`, `responsavel_id` | Evento-base de manejo do rebanho |
-| `evidencias` | `id` | `tarefa_id`, `alerta_id`, `movimentacao_id` | Cada evidência pertence a exatamente uma origem |
-| `nascimentos` | `id` | `movimentacao_id -> movimentacoes(id)` | Especialização 1:1 de movimentação |
-| `obitos` | `id` | `movimentacao_id -> movimentacoes(id)` | Especialização 1:1 com exigência de foto |
-| `transferencias` | `id` | `movimentacao_id`, `retiro_origem_id`, `retiro_destino_id` | Especialização 1:1 entre retiros distintos |
-| `compravendas` | `id` | `movimentacao_id -> movimentacoes(id)` | Especialização 1:1 de compra ou venda |
-| `sync_queue` | `id` | — | Fila técnica de sincronização offline-online |
 
 **Decisões de modelagem física:**
 
@@ -2356,21 +2644,12 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
   <p><strong>Tabela 8</strong> — Expressões SQL e Lógica Proposicional</p>
 </center>
 
-| #1 | Fluxo: Listagem de tarefas do dia pelo capataz |
-|---|---|
-| **Expressão SQL** | `SELECT id, titulo, descricao, status, data_prevista FROM tarefas WHERE responsavel_id = $1 AND date(data_prevista) = date('now') AND (status = 'pendente' OR status = 'em_andamento') ORDER BY data_prevista ASC;` |
-| **Proposições lógicas** | $A$: a tarefa pertence ao capataz autenticado (`responsavel_id = $1`) <br> $B$: a tarefa está prevista para hoje (`date(data_prevista) = date('now')`) <br> $C$: o status é pendente (`status = 'pendente'`) <br> $D$: o status é em andamento (`status = 'em_andamento'`) |
-| **Expressão lógica proposicional** | $A \land B \land (C \lor D)$ |
-
-| $A$ | $B$ | $C$ | $D$ | $A \land B \land (C \lor D)$ |
-|---|---|---|---|---|
-| F | F | F | F | F |
-| F | V | V | F | F |
-| V | F | V | F | F |
-| V | V | F | F | F |
-| V | V | V | F | V |
-| V | V | F | V | V |
-| V | V | V | V | V |
+#1 | ---
+--- | ---
+**Expressão SQL** | `SELECT id, titulo, descricao, status, data_prevista FROM tarefas WHERE responsavel_id = $1 AND date(data_prevista) = date('now') AND (status = 'pendente' OR status = 'em_andamento') ORDER BY data_prevista ASC;` |
+**Proposições lógicas** | $A$: a tarefa pertence ao capataz autenticado (`responsavel_id = $1`) <br> $B$: a tarefa está prevista para hoje (`date(data_prevista) = date('now')`) <br> $C$: o status é pendente (`status = 'pendente'`) <br> $D$: o status é em andamento (`status = 'em_andamento'`) |
+**Expressão lógica proposicional** | $A \land B \land (C \lor D)$ |
+**Tabela Verdade** | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$D$</th> <th>$A \land B \land (C \lor D)$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>V</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -2379,19 +2658,12 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
 
 ---
 
-| #2 | Fluxo: Conclusão de tarefa pelo capataz responsável |
-|---|---|
-| **Expressão SQL** | `UPDATE tarefas SET status = 'concluida', data_conclusao = strftime('%Y-%m-%dT%H:%M:%fZ','now'), sync_status = 'pendente', updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now') WHERE id = $1 AND responsavel_id = $2 AND status <> 'concluida';` |
-| **Proposições lógicas** | $A$: a tarefa corresponde ao ID informado (`id = $1`) <br> $B$: a tarefa pertence ao responsável autenticado (`responsavel_id = $2`) <br> $C$: a tarefa ainda não está concluída (`status <> 'concluida'`) |
-| **Expressão lógica proposicional** | $A \land B \land C$ |
-
-| $A$ | $B$ | $C$ | $A \land B \land C$ |
-|---|---|---|---|
-| F | F | F | F |
-| F | V | V | F |
-| V | F | V | F |
-| V | V | F | F |
-| V | V | V | V |
+#2 | ---
+--- | ---
+**Expressão SQL** | `UPDATE tarefas SET status = 'concluida', data_conclusao = strftime('%Y-%m-%dT%H:%M:%fZ','now'), sync_status = 'pendente', updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now') WHERE id = $1 AND responsavel_id = $2 AND status <> 'concluida';` |
+**Proposições lógicas** | $A$: a tarefa corresponde ao ID informado (`id = $1`) <br> $B$: a tarefa pertence ao responsável autenticado (`responsavel_id = $2`) <br> $C$: a tarefa ainda não está concluída (`status <> 'concluida'`) |
+**Expressão lógica proposicional** | $A \land B \land C$ |
+**Tabela Verdade** | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$A \land B \land C$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>V</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -2399,71 +2671,52 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
 
 ---
 
-| #3 | Fluxo: Consulta de alertas de infraestrutura abertos ou em andamento |
-|---|---|
-| **Expressão SQL** | `SELECT a.id, a.titulo, a.descricao, a.tipo, a.status, a.created_at, r.nome AS retiro, u.nome AS criado_por FROM alertas a JOIN retiros r ON a.retiro_id = r.id JOIN usuarios u ON a.criado_por_id = u.id WHERE (a.status = 'aberto' OR a.status = 'em_andamento') AND (a.tipo = 'infraestrutura' OR a.tipo = 'cerca' OR a.tipo = 'bebedouro') ORDER BY a.created_at DESC;` |
-| **Proposições lógicas** | $A$: o alerta está aberto (`status = 'aberto'`) <br> $B$: o alerta está em andamento (`status = 'em_andamento'`) <br> $C$: o tipo é infraestrutura (`tipo = 'infraestrutura'`) <br> $D$: o tipo é cerca (`tipo = 'cerca'`) <br> $E$: o tipo é bebedouro (`tipo = 'bebedouro'`) |
-| **Expressão lógica proposicional** | $(A \lor B) \land (C \lor D \lor E)$ |
+#3 | ---
+--- | ---
+**Expressão SQL** | `SELECT a.id, a.titulo, a.descricao, a.tipo, a.status, a.created_at, r.nome AS retiro, u.nome AS criado_por FROM alertas a JOIN retiros r ON a.retiro_id = r.id JOIN usuarios u ON a.criado_por_id = u.id WHERE (a.status = 'aberto' OR a.status = 'em_andamento') AND (a.tipo = 'infraestrutura' OR a.tipo = 'cerca' OR a.tipo = 'bebedouro') ORDER BY a.created_at DESC;` |
+**Proposições lógicas** | $A$: o alerta está aberto (`status = 'aberto'`) <br> $B$: o alerta está em andamento (`status = 'em_andamento'`) <br> $C$: o tipo é infraestrutura (`tipo = 'infraestrutura'`) <br> $D$: o tipo é cerca (`tipo = 'cerca'`) <br> $E$: o tipo é bebedouro (`tipo = 'bebedouro'`) |
+**Expressão lógica proposicional** | $(A \lor B) \land (C \lor D \lor E)$ |
+**Tabela Verdade** | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$D$</th> <th>$E$</th> <th>$(A \lor B) \land (C \lor D \lor E)$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>V</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>V</td> <td>F</td> <td>V</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table>
 
-| $A$ | $B$ | $C$ | $D$ | $E$ | $(A \lor B) \land (C \lor D \lor E)$ |
-|---|---|---|---|---|---|
-| F | F | F | F | F | F |
-| F | F | V | F | F | F |
-| V | F | F | F | F | F |
-| F | V | F | F | F | F |
-| V | F | V | F | F | V |
-| V | F | F | V | F | V |
-| F | V | F | F | V | V |
-| V | V | V | V | V | V |
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
+
+#4 | ---
+--- | ---
+**Expressão SQL** | `SELECT t.id, t.titulo, t.status, t.data_prevista, r.nome AS retiro, u.nome AS responsavel FROM tarefas t JOIN retiros r ON t.retiro_id = r.id JOIN usuarios u ON t.responsavel_id = u.id WHERE t.criado_por_id = $1 AND (t.status = 'pendente' OR t.status = 'em_andamento') AND date(t.data_prevista) >= date('now') ORDER BY t.data_prevista ASC, r.nome ASC;` |
+**Proposições lógicas** | $A$: a tarefa foi criada pelo gerente autenticado (`criado_por_id = $1`) <br> $B$: o status é pendente (`status = 'pendente'`) <br> $C$: o status é em andamento (`status = 'em_andamento'`) <br> $D$: a data prevista é hoje ou futura (`date(data_prevista) >= date('now')`) |
+**Expressão lógica proposicional** | $A \land (B \lor C) \land D$ |
+**Tabela Verdade** | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$D$</th> <th>$A \land (B \lor C) \land D$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>V</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>V</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table>
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 ---
 
---- 
-
-| #4 | Fluxo: Painel de acompanhamento de tarefas ativas pelo gerente |
-|---|---|
-| **Expressão SQL** | `SELECT t.id, t.titulo, t.status, t.data_prevista, r.nome AS retiro, u.nome AS responsavel FROM tarefas t JOIN retiros r ON t.retiro_id = r.id JOIN usuarios u ON t.responsavel_id = u.id WHERE t.criado_por_id = $1 AND (t.status = 'pendente' OR t.status = 'em_andamento') AND date(t.data_prevista) >= date('now') ORDER BY t.data_prevista ASC, r.nome ASC;` |
-| **Proposições lógicas** | $A$: a tarefa foi criada pelo gerente autenticado (`criado_por_id = $1`) <br> $B$: o status é pendente (`status = 'pendente'`) <br> $C$: o status é em andamento (`status = 'em_andamento'`) <br> $D$: a data prevista é hoje ou futura (`date(data_prevista) >= date('now')`) |
-| **Expressão lógica proposicional** | $A \land (B \lor C) \land D$ |
-
-| $A$ | $B$ | $C$ | $D$ | $A \land (B \lor C) \land D$ |
-|---|---|---|---|---|
-| F | F | F | F | F |
-| F | V | F | V | F |
-| V | F | F | V | F |
-| V | V | F | F | F |
-| V | V | F | V | V |
-| V | F | V | V | V |
-| V | V | V | V | V |
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
----
-
-| #5 | Fluxo: Registro de nascimento offline com fila de sincronização (US08 / RF008) |
-|---|---|
-| **Expressão SQL** | `BEGIN; INSERT INTO movimentacoes (id, retiro_id, responsavel_id, tipo, categoria, data_movimentacao, observacoes, sync_status) VALUES ($1, $2, $3, 'nascimento', $4, $5, $6, 'pendente') ON CONFLICT(id) DO UPDATE SET categoria = excluded.categoria, data_movimentacao = excluded.data_movimentacao, observacoes = excluded.observacoes, sync_status = 'pendente', updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now') WHERE movimentacoes.sync_status != 'sincronizado' AND movimentacoes.responsavel_id = excluded.responsavel_id; INSERT INTO nascimentos (id, movimentacao_id, quantidade, raca) VALUES ($7, $1, $8, $9) ON CONFLICT(id) DO UPDATE SET quantidade = excluded.quantidade, raca = excluded.raca; INSERT INTO sync_queue (id, tabela, registro_id, operacao, payload_json) VALUES ($10, 'movimentacoes', $1, 'insert', $11); COMMIT;` |
-| **Proposições lógicas** | $A$: o registro ainda não existe no banco local <br> $B$: o registro existe, mas ainda não foi sincronizado (`sync_status != 'sincronizado'`) <br> $C$: o registro pertence ao mesmo responsável (`responsavel_id = excluded.responsavel_id`) |
-| **Expressão lógica proposicional** | $A \lor (B \land C)$ |
+| #5                                 | Fluxo: Registro de nascimento offline com fila de sincronização (US08 / RF008)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Expressão SQL**                  | `BEGIN; INSERT INTO movimentacoes (id, retiro_id, responsavel_id, tipo, categoria, data_movimentacao, observacoes, sync_status) VALUES ($1, $2, $3, 'nascimento', $4, $5, $6, 'pendente') ON CONFLICT(id) DO UPDATE SET categoria = excluded.categoria, data_movimentacao = excluded.data_movimentacao, observacoes = excluded.observacoes, sync_status = 'pendente', updated_at = strftime('%Y-%m-%dT%H:%M:%fZ','now') WHERE movimentacoes.sync_status != 'sincronizado' AND movimentacoes.responsavel_id = excluded.responsavel_id; INSERT INTO nascimentos (id, movimentacao_id, quantidade, raca) VALUES ($7, $1, $8, $9) ON CONFLICT(id) DO UPDATE SET quantidade = excluded.quantidade, raca = excluded.raca; INSERT INTO sync_queue (id, tabela, registro_id, operacao, payload_json) VALUES ($10, 'movimentacoes', $1, 'insert', $11); COMMIT;` |
+| **Proposições lógicas**            | $A$: o registro ainda não existe no banco local <br> $B$: o registro existe, mas ainda não foi sincronizado (`sync_status != 'sincronizado'`) <br> $C$: o registro pertence ao mesmo responsável (`responsavel_id = excluded.responsavel_id`)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Expressão lógica proposicional** | $A \lor (B \land C)$                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 | $A$ | $B$ | $C$ | $A \lor (B \land C)$ |
-|---|---|---|---|
-| F | F | F | F |
-| F | F | V | F |
-| F | V | F | F |
-| F | V | V | V |
-| V | F | F | V |
-| V | F | V | V |
-| V | V | F | V |
-| V | V | V | V |
+| --- | --- | --- | -------------------- |
+| F   | F   | F   | F                    |
+| F   | F   | V   | F                    |
+| F   | V   | F   | F                    |
+| F   | V   | V   | V                    |
+| V   | F   | F   | V                    |
+| V   | F   | V   | V                    |
+| V   | V   | F   | V                    |
+| V   | V   | V   | V                    |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
 --- 
 
 | #6 | Fluxo: Registro de óbito offline com fila de sincronização (US09 / RF009) |
@@ -2491,8 +2744,30 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
----
 
+| **Proposições lógicas** | $A$: o registro de óbito ainda não existe no banco local <br> $B$: o registro existe, mas ainda não foi sincronizado (`sync_status != 'sincronizado'`) <br> $C$: o registro pertence ao mesmo responsável (`responsavel_id = excluded.responsavel_id`) <br> $D$: a causa da morte foi informada (`causa IS NOT NULL`) |
+| **Expressão lógica proposicional** | $(A \lor (B \land C)) \land D$ |
+
+| $A$ | $B$ | $C$ | $D$ | $(A \lor (B \land C)) \land D$ |
+| --- | --- | --- | --- | ------------------------------ |
+| F   | F   | F   | F   | F                              |
+| F   | F   | F   | V   | F                              |
+| F   | F   | V   | V   | F                              |
+| F   | V   | F   | V   | F                              |
+| F   | V   | V   | F   | F                              |
+| F   | V   | V   | V   | V                              |
+| V   | F   | F   | F   | F                              |
+| V   | F   | F   | V   | V                              |
+| V   | F   | V   | V   | V                              |
+| V   | V   | F   | V   | V                              |
+| V   | V   | V   | F   | F                              |
+| V   | V   | V   | V   | V                              |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
 | #7 | Fluxo: Busca de registros pendentes na fila de sincronização (RF010 / RF012) |
 |---|---|
 | **Expressão SQL** | `SELECT id, tabela, registro_id, operacao, payload_json, tentativas FROM sync_queue WHERE status = 'pendente' AND tentativas < 5 ORDER BY created_at ASC LIMIT 50;` |
@@ -2500,11 +2775,11 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
 | **Expressão lógica proposicional** | $A \land B$ |
 
 | $A$ | $B$ | $A \land B$ |
-|---|---|---|
-| F | F | F |
-| F | V | F |
-| V | F | F |
-| V | V | V |
+| --- | --- | ----------- |
+| F   | F   | F           |
+| F   | V   | F           |
+| V   | F   | F           |
+| V   | V   | V           |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
@@ -2518,15 +2793,15 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
 | **Expressão lógica proposicional** | $A \land B \land C$ |
 
 | $A$ | $B$ | $C$ | $A \land B$ | $A \land B \land C$ |
-|---|---|---|---|---|
-| F | F | F | F | F |
-| F | F | V | F | F |
-| F | V | F | F | F |
-| F | V | V | F | F |
-| V | F | F | F | F |
-| V | F | V | F | F |
-| V | V | F | V | F |
-| V | V | V | V | V |
+| --- | --- | --- | ----------- | ------------------- |
+| F   | F   | F   | F           | F                   |
+| F   | F   | V   | F           | F                   |
+| F   | V   | F   | F           | F                   |
+| F   | V   | V   | F           | F                   |
+| V   | F   | F   | F           | F                   |
+| V   | F   | V   | F           | F                   |
+| V   | V   | F   | V           | F                   |
+| V   | V   | V   | V           | V                   |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
