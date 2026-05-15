@@ -2094,43 +2094,43 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 ## 3.3. Wireframes (sprint 2)
 
 <center>
-  <p><strong>Figura 9</strong> — Wireframe da tela de tarefas do capataz</p>
+  <p><strong>Figura 10</strong> — Wireframe da tela de tarefas do capataz</p>
   <img src="./assets/wireframeCapatazTarefas.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-<p><strong>Figura 10</strong> — Wireframe capataz - concluir tarefa (mobile/tablet/desktop)</p>
+<p><strong>Figura 11</strong> — Wireframe capataz - concluir tarefa (mobile/tablet/desktop)</p>
  <img src="./assets/wireframeCapatazConcluirTarefaTablet.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 11</strong> — Wireframe da tela de anexar fotos pelo capataz</p>
+  <p><strong>Figura 12</strong> — Wireframe da tela de anexar fotos pelo capataz</p>
   <img src="./assets/wireframeCapatazAnexarFotos.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 12</strong> — Wireframe da tela de infraestrutura</p>
+  <p><strong>Figura 13</strong> — Wireframe da tela de infraestrutura</p>
   <img src="./assets/wireframeInfraestrutura.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 13</strong> — Wireframe da tela de infraestrutura registrar resolução</p>
+  <p><strong>Figura 14</strong> — Wireframe da tela de infraestrutura registrar resolução</p>
   <img src="./assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 14</strong> — Wireframe da tela de dashboard do gerente</p>
+  <p><strong>Figura 15</strong> — Wireframe da tela de dashboard do gerente</p>
   <img src="./assets/wireframeGerenteDashboard.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 <center>
-  <p><strong>Figura 15</strong> — Wireframe da tela de nova O.S do gerente</p>
+  <p><strong>Figura 16</strong> — Wireframe da tela de nova O.S do gerente</p>
   <img src="./assets/wireframeGerenteNovaOs.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2161,141 +2161,48 @@ _posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelid
 
 ### 3.6.1. Modelo Entidade-Relacionamento (ER) (sprint 2)
 
-O modelo Entidade-Relacionamento (ER) conceitual representa as principais entidades do domínio da aplicação, seus atributos e relacionamentos existentes entre elas, utilizando a notação **Chen** de forma consistente em toda a modelagem. O objetivo deste modelo é estruturar conceitualmente os dados necessários para suportar o gerenciamento operacional da BRPec Agropecuária, contemplando usuários, boletas, alertas, retiros e tipos operacionais (nascimento, óbito, transferência, compra, venda).
+O modelo Entidade-Relacionamento (ER) conceitual descreve as principais entidades do domínio da aplicação, seus atributos e os relacionamentos existentes entre elas. O objetivo é estruturar conceitualmente os dados necessários para suportar o gerenciamento operacional da BRPec Agropecuária, contemplando usuários, retiros, tarefas, alertas, movimentações de rebanho e evidências.
 
-Nesta etapa conceitual, não são representados detalhes físicos de implementação, como tipos específicos de banco de dados, chaves primárias ou estrangeiras, pois esses elementos serão tratados posteriormente no DER lógico e no modelo físico da aplicação.
+No contexto do projeto, a boleta representa o formulário digital utilizado pelo capataz para registrar as informações de campo que antes eram anotadas em papel. Conceitualmente, a boleta funciona como o fluxo operacional de entrada de dados: por meio dela o capataz visualiza e conclui tarefas, registra movimentações do rebanho, emite alertas de infraestrutura e anexa evidências. Por não possuir ciclo de vida independente das informações registradas, a boleta não é modelada como uma entidade isolada; ela é materializada no modelo pelos registros de tarefa, alerta, movimentação e evidência. Para cada relacionamento são indicadas as cardinalidades mínima e máxima em ambos os lados, expressando diretamente as regras de negócio do domínio.
+
+
+#### Decisões de modelagem
+
+- **USUÁRIO:** representa os perfis operacionais do sistema (Gerente, Coordenador, Capataz e Técnico de Infraestrutura). A distinção de funções é realizada pelo atributo `perfil`, centralizando a gestão de acessos e garantindo que cada ação no sistema seja vinculada a um identificador único para fins de rastreabilidade.
+
+- **RETIRO:** representa as unidades físicas e operacionais da fazenda. O relacionamento *pertence* estabelece que cada capataz deve estar vinculado a exatamente um retiro (USUÁRIO 1,1), enquanto um retiro pode possuir nenhum, um ou múltiplos usuários associados (RETIRO 0,n), considerando que perfis como gerente, coordenador e técnico podem atuar em escopo mais amplo.
+
+- **TAREFA:** registra ordens de serviço criadas por gerentes ou coordenadores e atribuídas a capatazes para execução em campo. Cada tarefa é criada por exatamente um usuário autorizado (TAREFA 1,1) e um usuário pode criar várias tarefas (USUÁRIO 0,n). Cada tarefa também possui exatamente um responsável pela execução (TAREFA 1,1), enquanto um capataz pode executar várias tarefas ao longo do tempo (USUÁRIO 0,n). Toda tarefa pertence obrigatoriamente a um retiro (TAREFA 1,1; RETIRO 0,n).
+
+- **ALERTA:** é utilizado para reportar problemas de infraestrutura (cerca, bebedouro, hidráulica, elétrica, entre outros), com localização geográfica e ciclo de resolução rastreável. Cada alerta é emitido por exatamente um usuário (ALERTA 1,1), enquanto um usuário pode emitir nenhum, um ou vários alertas (USUÁRIO 0,n). Um alerta pode ainda ser atendido por no máximo um técnico de infraestrutura (ALERTA 0,1), e um técnico pode atender vários alertas (USUÁRIO 0,n). Todo alerta pertence obrigatoriamente a um retiro (ALERTA 1,1; RETIRO 0,n).
+
+- **MOVIMENTAÇÃO:** é o núcleo do registro de manejo do rebanho realizado na boleta digital, substituindo os processos manuais em papel. Registra o tipo de evento zootécnico (nascimento, óbito, transferência ou compravenda), a categoria do animal, a quantidade e a data da ocorrência. Cada movimentação é registrada por exatamente um usuário responsável (MOVIMENTAÇÃO 1,1), enquanto um usuário pode registrar várias movimentações (USUÁRIO 0,n). Cada movimentação ocorre obrigatoriamente em um retiro de referência (MOVIMENTAÇÃO 1,1; RETIRO 0,n).
+
+- **EVIDÊNCIA:** armazena mídias de comprovação (foto, áudio, vídeo, documento ou texto) anexadas durante o preenchimento da boleta digital. Cada evidência pertence a exatamente uma origem: uma tarefa, um alerta ou uma movimentação (EVIDÊNCIA 1,1 em uma única origem). A exclusividade é representada por três relacionamentos *comprova* mutuamente exclusivos, enquanto cada tarefa, alerta ou movimentação pode possuir nenhuma, uma ou várias evidências associadas (0,n). Essa decisão mantém a rastreabilidade do registro sem duplicar arquivos de mídia nas entidades operacionais.
+
+- **Tipos específicos de movimentação:** (Nascimento, Óbito, Transferência e CompraVenda): Movimentação atua como entidade genérica que se especializa em quatro subtipos zootécnicos. A especialização é total e disjunta, cada movimentação corresponde a exatamente um subtipo (cardinalidade 1,1 no lado de movimentação). Cada subtipo possui atributos próprios: nascimento registra quantidade e raça; óbito registra identificação do animal, quantidade, causa da morte e exigência de evidência fotográfica; transferência registra retiros de origem e destino e a quantidade transferida; compravenda registra tipo de negócio, valor financeiro e quantidade.
+
+Dessa forma, o ER cobre os principais fluxos de dados do sistema: planejamento e execução de tarefas, emissão e atendimento de alertas, registro de eventos zootécnicos, anexação de evidências e sincronização posterior dos dados coletados em campo.
+
+### 3.6.2. Diagrama Entidade-Relacionamento (DER) (sprint 2)
+
+O DER abaixo é a representação gráfica, na notação de Peter Chen (1976), da versão conceitual concebida durante a sprint 2. Entidades são representadas por retângulos, atributos por elipses e relacionamentos por losangos.
+
+Este diagrama registra a estrutura de dados concebida na sprint 2, com a Boleta como entidade central, concentrando os atributos comuns a todos os eventos zootécnicos (`tipo_boleta`, `data`, `RG/CPF`, `status`, `tipo_animal`, `tipo_transporte`, `quantidade_animal`, `georreferenciamento`). As especializações, Nascimento, Óbito, Transferência, Compra e Venda, conectam-se à Boleta pelo relacionamento detalha com cardinalidade (1,1) em ambos os lados, implementando herança por especialização total e disjunta: cada boleta corresponde a exatamente um tipo de evento, e cada evento pertence a exatamente uma boleta.
+
+A seção 3.6.1 apresenta a versão conceitual consolidada após a evolução deste DER: a Boleta deixa de ser uma entidade isolada e passa a ser materializada pelos registros de Movimentação, Tarefa, Alerta e Evidência. Essa decisão separou melhor as responsabilidades de cada entidade e eliminou atributos que não são pertinentes a todos os tipos de evento.
 
 <center>
-  <p><strong>Figura 13</strong> — Modelo Entidade-Relacionamento Conceitual — BRPec Agropecuária</p>
+  <p><strong>Figura 17</strong> — DER conceitual da sprint 2 — BRPec Agropecuária</p>
 </center>
 
 <img src="./assets/modelo-er-brpec.png" width="800"/>
 
-### Decisões de modelagem
-
-- A entidade USUÁRIO representa os perfis operacionais do sistema (Gerente, Coordenador e Capataz). A distinção de funções é realizada pelo atributo perfil, centralizando a gestão de acessos e garantindo que cada ação no sistema seja vinculada a um id único para fins de rastreabilidade.
-
-- A entidade RETIRO representa as unidades físicas e operacionais da fazenda.  O relacionamento "pertence" (1,1 para 1,n) estabelece que um usuário deve estar vinculado a pelo menos um retiro para operar, enquanto um retiro pode possuir múltiplos usuários associados.
-
-- A entidade ALERTA é utilizada para reportar problemas de infraestrutura (hidráulica, cerca, elétrica). O relacionamento "emite" (1,1 para 1,n) garante que cada alerta seja rastreável a um único autor (Usuário), permitindo que o Gerente saiba exatamente quem reportou a ocorrência.
-
-- A entidade BOLETA é o núcleo do registro de manejo, substituindo os processos manuais em papel.  Inclui atributos essenciais para a fiscalização e transporte, como RG/CPF, tipo_transporte (rodoviário/estrada) e georreferenciamento, conforme exigido pelos formulários físicos da empresa.
-
-- Relacionamento REGISTRA (Usuário-Boleta): Estabelece uma conexão (1,n para 1,1), onde cada boleta digitalizada é obrigatoriamente vinculada ao usuário que a criou, eliminando falhas de transcrição e garantindo a autoria dos dados.
-
-- Relacionamento CONTÉM (Retiro-Boleta): Define que cada boleta pertence a um retiro de referência (1,1), permitindo a organização dos registros por localidade e facilitando a exportação de dados consolidados por área.
-
-- Especialização DETALHA (Nascimento, Óbito, Transferência, Compra e Venda): A entidade BOLETA atua como uma classe base que se ramifica em eventos zootécnicos específicos.
-
-A cardinalidade (1,1) entre o losango detalha e a Boleta indica que um registro de manejo deve corresponder obrigatoriamente a um desses tipos.
-
-Cada subtipo (ex: Óbito ou Nascimento) possui seus próprios campos de evidência, como foto e áudio, para validar a execução da tarefa em campo.
-
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-### 3.6.2. Diagrama Entidade-Relacionamento (DER) (sprint 2)
 
-_Posicione aqui o DER com cardinalidades explícitas em ambos os lados de cada relação e identificação de PK/FK. O DER deve ser coerente com o diagrama de classes (3.2.3)._
-
-O Diagrama Entidade-Relacionamento (DER) é uma representação gráfica da estrutura de um banco de dados, baseada no Modelo Entidade-Relacionamento (MER) proposto por Peter Chen (1976). No diagrama, entidades (objetos do mundo real com existência independente) são representadas por retângulos. Seus atributos, por elipses, e os relacionamentos entre elas, por losangos. Essa notação auxilia desenvolvedores a visualizar e comunicar a arquitetura de dados de um sistema antes de sua implementação. [9]
-
-```mermaid
-erDiagram
-    RETIROS {
-        uuid id PK
-        varchar(100) nome
-        text localizacao
-    }
-    USUARIOS {
-        uuid id PK
-        varchar(150) nome
-        varchar(255) senha_hash
-        varchar(20) perfil
-        text area_responsavel
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    TAREFAS {
-        uuid id PK
-        varchar(200) titulo
-        text descricao
-        varchar(20) status
-        date data_execucao
-        uuid gerente_id FK
-        uuid capataz_id FK
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    EVIDENCIAS {
-        uuid id PK
-        varchar(10) tipo
-        bytea conteudo
-        uuid tarefa_id FK
-        timestamptz created_at
-    }
-    ALERTAS {
-        uuid id PK
-        text descricao
-        varchar(30) tipo
-        boolean resolvido
-        uuid capataz_id FK
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    MOVIMENTACOES {
-        uuid id PK
-        date data
-        varchar(20) categoria
-        integer quantidade
-        boolean sincronizado
-        uuid usuario_id FK
-        uuid retiro_id FK
-        timestamptz created_at
-    }
-    NASCIMENTOS {
-        uuid movimentacao_id PK
-        uuid mae_id
-        bytea foto
-    }
-    OBITOS {
-        uuid movimentacao_id PK
-        text causa
-        bytea foto
-    }
-    TRANSFERENCIAS {
-        uuid movimentacao_id PK
-        uuid retiro_origem_id FK
-        uuid retiro_destino_id FK
-    }
-    COMPRAVENDAS {
-        uuid movimentacao_id PK
-        varchar(10) tipo_operacao
-        numeric(12) valor
-    }
-
-    USUARIOS }o--|| RETIROS : "retiro_id"
-    TAREFAS }o--|| USUARIOS : "gerente_id"
-    TAREFAS }o--|| USUARIOS : "capataz_id"
-    TAREFAS }o--|| RETIROS : "retiro_id"
-    EVIDENCIAS }o--|| TAREFAS : "tarefa_id"
-    ALERTAS }o--|| USUARIOS : "capataz_id"
-    ALERTAS }o--|| RETIROS : "retiro_id"
-    MOVIMENTACOES }o--|| USUARIOS : "usuario_id"
-    MOVIMENTACOES }o--|| RETIROS : "retiro_id"
-    NASCIMENTOS ||--|| MOVIMENTACOES : "movimentacao_id"
-    OBITOS ||--|| MOVIMENTACOES : "movimentacao_id"
-    TRANSFERENCIAS ||--|| MOVIMENTACOES : "movimentacao_id"
-    TRANSFERENCIAS }o--|| RETIROS : "retiro_origem_id"
-    TRANSFERENCIAS }o--|| RETIROS : "retiro_destino_id"
-    COMPRAVENDAS ||--|| MOVIMENTACOES : "movimentacao_id"
-```
-
-<center>
-  <p><strong>Figura 14</strong> — Diagrama Entidade-Relacionamento (DER)</p>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
 
 ### 3.6.3. Modelo Relacional e Modelo Físico (sprints 2 e 4)
 
@@ -2303,7 +2210,7 @@ O modelo físico deriva do modelo conceitual (ER) apresentado na seção 3.6.1 e
 
 A aplicação PWA mantém os dados estruturados no banco local SQLite. Quando a conexão retorna, a camada de sincronização envia os registros pendentes para uma API central; arquivos de mídia, como fotos e áudios, são enviados a um serviço de armazenamento de evidências pela API. O banco local mantém metadados, caminho local do arquivo antes do upload e a referência remota (`storage_key` ou `url`) após a sincronização.
 
-O DER lógico com cardinalidades, PKs e FKs está apresentado na seção 3.6.2. Nesta seção, o mesmo desenho é transformado em modelo relacional e em DDL executável.
+A evolução conceitual está apresentada nas seções 3.6.1 e 3.6.2. Nesta seção, o modelo consolidado é transformado em modelo relacional e em DDL executável.
 
 #### Modelo Relacional
 
@@ -2322,7 +2229,7 @@ O DER lógico com cardinalidades, PKs e FKs está apresentado na seção 3.6.2. 
 | `sync_queue`     | `id`           | —                                                          | Fila técnica de sincronização offline-online    |
 
 <center>
-  <p><strong>Figura 15</strong> — Modelo Relacional</p>
+  <p><strong>Figura 18</strong> — Modelo Relacional</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -2337,6 +2244,7 @@ O DER lógico com cardinalidades, PKs e FKs está apresentado na seção 3.6.2. 
 - **`evidencias` com vínculo polimórfico controlado por `CHECK`**: cada evidência pertence a exatamente uma tarefa, um alerta ou uma movimentação. Isso permite registrar fotos de óbito sem guardar o arquivo binário diretamente na tabela de óbitos.
 - **Mídias fora do banco relacional**: `arquivo_local_uri` guarda o caminho local antes da sincronização; `storage_key` e `url` guardam a referência remota após upload pela API; `conteudo_texto` cobre evidências textuais simples.
 - **Especialização de `movimentacoes`**: `nascimentos`, `obitos`, `transferencias` e `compravendas` detalham uma movimentação e usam `UNIQUE (movimentacao_id)` para evitar mais de um detalhe do mesmo tipo para o mesmo evento.
+- **Regra de totalidade e disjunção das especializações**: no modelo conceitual, cada movimentação pertence a exatamente um subtipo. No SQLite local, essa regra é apoiada por `movimentacoes.tipo`, pelas tabelas especializadas e pela camada de aplicação/sincronização, que só grava o detalhe compatível com o tipo do evento. Caso a validação precise ficar totalmente no banco, a regra pode ser reforçada por triggers.
 - **Timestamp de atualização nas especializações**: as tabelas especializadas não possuem `updated_at` próprio porque mudanças de estado do evento são rastreadas na tabela-mãe `movimentacoes`.
 - **`sync_queue`**: tabela técnica que registra operações pendentes (`insert`, `update`, `delete` ou `upload`) para a camada de sincronização executar quando houver conexão.
 
