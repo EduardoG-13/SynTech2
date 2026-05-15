@@ -2106,7 +2106,7 @@ Os fluxos de navegação estão organizados em três jornadas principais:
 #### Tela de Tarefas:
  Este wireframe (figura 10) representa a interface destinada ao Capataz, com design responsivo adaptado para dispositivos móveis (parte da esquerda) e desktop (parte da direita). 
 
-Esta tela é o ponto de entrada do capataz no aplicativo. Na parte central é possível ver uma lista com as tarefas pendentes organizadas automaticamente por ordem de importância, garantindo que as atividades críticas sejam atendidas primeiro mesmo offline, atendendo a (US2). Na parte inferior da interface, há um botão "Nova O.S." que permite a criação imediata de novas Ordens de Serviço, eliminando a necessidade de anotações manuais. 
+Esta tela é o ponto de entrada do capataz no aplicativo. Na parte central é possível ver uma lista com as tarefas pendentes organizadas automaticamente por ordem de importância, garantindo que as atividades críticas sejam atendidas primeiro mesmo offline, atendendo a (US02). Na parte inferior da interface, há um botão "Nova O.S." que permite a criação imediata de novas Ordens de Serviço, eliminando a necessidade de anotações manuais. 
 
 Em relação à navegação e detalhes, o botão "Todos" permite que, ao clicar, o usuário expanda a visualização para uma gestão completa do histórico de atividades, enquanto o botão "Rebanhos" provê acesso às informações do rebanho e dados zootécnicos. Ao selecionar uma tarefa específica no detalhamento de tarefas, o sistema exibe uma tela com as especificações detalhadas e orientações para a execução. 
 
@@ -2117,20 +2117,17 @@ Em relação à navegação e detalhes, o botão "Todos" permite que, ao clicar,
 </center>
 
 #### Informações sobre a tarefa:
-A Figura 10 ilustra a interface de Detalhamento da Tarefa, acessada após o Capataz selecionar uma atividade específica na lista principal e, assim como a tela anterior, a interface é responsiva, garantindo usabilidade tanto em dispositivos móveis (campo) quanto em desktops (escritório). 
+A Figura 11 ilustra a interface de Detalhamento da Tarefa, acessada após o Capataz selecionar uma atividade específica na lista principal e, assim como a tela anterior, a interface é responsiva, garantindo usabilidade tanto em dispositivos móveis (campo) quanto em desktops (escritório). 
 
-Para assegurar a execução precisa da ordem de serviço, a tela centraliza todo o conteúdo da tarefa e as diretrizes enviadas pela gestão, incluindo a identificação com título da atividade e descrição detalhada do serviço, os parâmetros de controle com prazo de entrega e nível de prioridade, e os recursos multimídia como reprodutor de áudio (instruções gravadas pelo gerente) e visualização de fotos para referência visual do local ou do problema. 
+Para assegurar a execução precisa da ordem de serviço, a tela centraliza todo o conteúdo da tarefa, incluindo a identificação com título da atividade e descrição detalhada do serviço, os parâmetros de controle com prazo de entrega e nível de prioridade, e os recursos multimídia como reprodutor de áudio (instruções gravadas pelo gerente) e visualização de fotos para referência visual do local ou do problema, atendendo a (US02).
 
-Quanto às ações do usuário, um botão de "Iniciar Tarefa" permite o controle de fluxo para registrar o exato momento em que a atividade começa, gerando dados de produtividade, enquanto um botão de retorno estrategicamente posicionado permite a navegação para voltar à tela inicial de tarefas de forma rápida.
+Quanto às ações do usuário, um botão de "Iniciar Tarefa" permite o controle de fluxo para registrar o exato momento em que a atividade começa, mesmo offline, gerando dados de produtividade, enquanto um botão de retorno estrategicamente posicionado permite a navegação para voltar à tela inicial de tarefas de forma rápida.
 
 <center>
-<p><strong>Figura 11</strong> — Wireframe da tela de conclusão de tarefa do capataz — versões mobile, tablet e desktop (US03)</p>
-<p><strong>Figura 10</strong> — Wireframe da tela de detalhes sobre a tarefa do capataz</p>
+<p><strong>Figura 11</strong> — Wireframe da tela de detalhes sobre a tarefa do capataz (US02)</p>
  <img src="./assets/wireframeCapatazConcluirTarefaTablet.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
-
-A tela de conclusão de tarefa permite ao capataz marcar a tarefa como concluída e, opcionalmente, adicionar observações (US03). O layout foi projetado de forma responsiva, adaptando-se a dispositivos móveis, tablets e desktops. A partir desta tela, o capataz pode acessar a tela de anexo de fotos.
 
 #### Concluir tarefa:
 A Figura 11 detalha a interface de Conclusão de Atividade, etapa final do fluxo de trabalho do Capataz, com uma tela projetada para garantir a confiabilidade dos dados e o registro fiel do que foi executado em campo. 
@@ -2148,6 +2145,7 @@ Por fim, para o encerramento, o botão "Salvar e Concluir" consolida as informa�
 
 A tela de anexo de fotos permite ao capataz capturar ou selecionar imagens da galeria do dispositivo para comprovar visualmente o serviço realizado (US04).
 
+ tela de conclusão de tarefa permite ao capataz marcar a tarefa como concluída e, opcionalmente, adicionar observações (US03). O layout foi projetado de forma responsiva, adaptando-se a dispositivos móveis, tablets e desktops. A partir desta tela, o capataz pode acessar a tela de anexo de fotos.
 ---
 
 ### Fluxo 2 — Capataz e Técnico: emitir e resolver alertas de infraestrutura (US06)
