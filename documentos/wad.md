@@ -2088,15 +2088,17 @@ _Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc
 
 ## 3.3. Wireframes (sprint 2)
 
-Os wireframes apresentados nesta seção foram elaborados para representar as User Stories priorizadas junto ao orientador: **US01** (Gerente cria e distribui tarefas), **US02** (Capataz visualiza lista de tarefas offline), **US03** (Capataz conclui tarefa), **US04** (Capataz anexa fotos como evidência) e **US06/US07** (Capataz emite alerta de infraestrutura; Gerente acompanha painel de tarefas e alertas). O design foi desenvolvido no Figma, priorizando clareza e uso de grid para organização dos elementos. O arquivo completo pode ser acessado pelo link público: [Wireframes BRPec — Figma](https://www.figma.com/design/jJjDkweFhygUKwONkyivtb/Untitled?node-id=0-1&t=QpPbn00WVpCx2EiT-0).
+Os wireframes apresentados nesta seção foram elaborados para representar as User Stories priorizadas junto ao orientador: **US01** (Gerente cria e distribui tarefas), **US02** (Capataz visualiza lista de tarefas offline), **US03** (Capataz conclui tarefa), **US04** (Capataz anexa fotos como evidência), **US06/US07** (Capataz emite alerta de infraestrutura; Gerente acompanha painel de tarefas e alertas) e **US11/US12** (Coordenador visualiza movimentações e exporta dados consolidados). O design foi desenvolvido no Figma, priorizando clareza e uso de grid para organização dos elementos. O arquivo completo pode ser acessado pelo link público: [Wireframes BRPec — Figma](https://www.figma.com/design/jJjDkweFhygUKwONkyivtb/Untitled?node-id=0-1&t=QpPbn00WVpCx2EiT-0).
 
-Os fluxos de navegação estão organizados em três jornadas principais:
+Os fluxos de navegação estão organizados em quatro jornadas principais:
 
 **Fluxo 1 — Capataz (US02 → US03 → US04 → US05):** O Capataz acessa a lista de tarefas do dia (US02). Ao selecionar uma tarefa, é direcionado à tela de conclusão, onde pode marcar a tarefa como concluída (US03). A partir dessa tela, ele acessa a tela de anexo de fotos para registrar evidências fotográficas do serviço realizado (US04) e, com a possibilidade de gravar áudios (US05).
 
 **Fluxo 2 — Capataz e Técnico de Infraestrutura (US06 e US07):** O Capataz acessa a seção de infraestrutura, visualiza os chamados abertos e pode registrar um novo alerta informando tipo de problema, localização e descrição. O técnico de infraestrutura, ao acessar o mesmo módulo, visualiza o detalhe do chamado e registra a resolução, encerrando o ciclo do alerta.
 
 **Fluxo 3 — Gerente (US07 → US01):** O Gerente acessa o dashboard, onde visualiza o status consolidado de todas as tarefas e alertas por retiro (US07). A partir do painel, pode criar uma nova Ordem de Serviço (US01), preenchendo as informações da tarefa e atribuindo-a ao retiro e Capataz responsável. O Capataz também pode abrir uma O.S. em campo quando identificar uma nova demanda operacional.
+
+**Fluxo 4 — Coordenador (US11 → US12):** O Coordenador acessa o painel de movimentações, onde visualiza todas as movimentações zootécnicas registradas pelos Capatazes, organizadas por retiro e tipo de evento (US11). Após revisar e validar os registros, pode aplicar filtros por retiro, tipo de evento e período, e então exportar os dados consolidados em formato Excel/CSV para alimentar os controles centrais da empresa (US12), eliminando a necessidade de redigitação manual.
 
 ---
 
@@ -2158,13 +2160,16 @@ Ao selecionar uma categoria, o sistema permite o monitoramento de status e detal
 <center>
   <p><strong>Figura 13</strong> — Wireframe do painel de infraestrutura (US06) e (US07)</p>
   <img src="./assets/wireframeInfraestrutura.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
-  #### Nova O.S.:
+#### Nova O.S.:
 
-  A Figura 14 ilustra a interface de Abertura de Nova Ordem de Serviço (O.S.), acessível para os perfis do Gerente e do Capataz, onde a tela adota o padrão de design responsivo, operando perfeitamente em dispositivos móveis e desktop. No fluxo de acesso do Gerente, o processo de criação segue a mesma jornada padronizada de abertura de tarefas comuns, de modo que, após acessar o painel de criação, o Gerente deve selecionar o botão "Infraestrutura" para habilitar o formulário específico de manutenção. Já no fluxo do Capataz, esse acesso seria através do botão de "Nova O.S." presente na tela inicial e não apareceria a opção de selecionar a equipe "Capataz", atendendo a (US06) e a (US07). 
+A Figura 14 ilustra a interface de Abertura de Nova Ordem de Serviço (O.S.), acessível para os perfis do Gerente e do Capataz, onde a tela adota o padrão de design responsivo, operando perfeitamente em dispositivos móveis e desktop. No fluxo de acesso do Gerente, o processo de criação segue a mesma jornada padronizada de abertura de tarefas comuns, de modo que, após acessar o painel de criação, o Gerente deve selecionar o botão "Infraestrutura" para habilitar o formulário específico de manutenção. Já no fluxo do Capataz, esse acesso seria através do botão de "Nova O.S." presente na tela inicial e não apareceria a opção de selecionar a equipe "Capataz", atendendo a (US06) e a (US07). 
   
-  Para garantir o direcionamento correto da demanda, os campos e parâmetros de cadastro oferecem preenchimento para o tipo de chamado, realizando a classificação da O.S. entre as três categorias principais da fazenda, que são Hidráulica, Cerca ou Elétrica, para a definição de prioridade, com a atribuição do nível de urgência do reparo (ex: Alta, Média, Baixa) para auxiliar na organização da fila de trabalho do Capataz, para o prazo ideal, definindo uma data limite esperada para a conclusão do serviço, e para o detalhamento técnico, que consiste em um campo descritivo para que o gestor insira todas as informações, orientações e especificações necessárias, garantindo clareza para a equipe de execução em campo.
+Para garantir o direcionamento correto da demanda, os campos e parâmetros de cadastro oferecem preenchimento para o tipo de chamado, realizando a classificação da O.S. entre as três categorias principais da fazenda, que são Hidráulica, Cerca ou Elétrica, para a definição de prioridade, com a atribuição do nível de urgência do reparo (ex: Alta, Média, Baixa) para auxiliar na organização da fila de trabalho do Capataz, para o prazo ideal, definindo uma data limite esperada para a conclusão do serviço, e para o detalhamento técnico, que consiste em um campo descritivo para que o gestor insira todas as informações, orientações e especificações necessárias, garantindo clareza para a equipe de execução em campo.
 
+<center>
   <p><strong>Figura 14</strong> — Wireframe da tela de criação de nova O.S. pelo Gerente (US06) e (US07)</p>
   <img src="./assets/wireframeGerenteNovaOs.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
@@ -2185,6 +2190,9 @@ Além disso, uma funcionalidade crítica desta tela é a linha do tempo (histór
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
+---
+
+### Fluxo 3 — Gerente: acompanhar painel e criar ordens de serviço (US07, US01)
 
 ### Coordenador e Gerente:
 #### Dashboard inicial:
@@ -2201,7 +2209,9 @@ No menu de navegação lateral (desktop) / atalhos, posicionado no canto esquerd
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-A tela de infraestrutura exibe os chamados de manutenção em aberto. O Capataz pode registrar um novo alerta informando o tipo de problema (cerca, bebedouro, hidráulica, elétrica), a localização e uma descrição (US06). O técnico de infraestrutura visualiza os chamados atribuídos a ele nesta mesma lista.
+#### Nova O.S.:
+A tela de infraestrutura exibe os chamados de manutenção em aberto. O Gerente pode registrar um novo alerta informando o tipo de problema (cerca, bebedouro, hidráulica, elétrica), a localização e uma descrição (US06). O técnico de infraestrutura visualiza os chamados atribuídos a ele nesta mesma lista.
+
 
 ### Gerente
 #### Wireframe da tela de novsa O.S.:
@@ -2212,16 +2222,6 @@ A tela de infraestrutura exibe os chamados de manutenção em aberto. O Capataz 
 </center>
 
 A tela de detalhe do chamado apresenta as informações completas do alerta: tipo de problema, localização, data de abertura, Capataz responsável pela emissão e status atual. A partir desta tela, o técnico de infraestrutura acessa a opção de registrar a resolução.
-
-<center>
-  <p><strong>Figura 15</strong> — Wireframe da tela de registro de resolução de infraestrutura (US06)</p>
-  <img src="./assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
-  <p><strong>Figura 16</strong> — Wireframe da tela de nova O.S do Gerente</p>
-  <img src="./assets/wireframeGerenteNovaOs.png" width="800"/>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
-A tela de registro de resolução permite ao técnico de infraestrutura descrever a solução aplicada e encerrar o chamado.
 
 ---
 
@@ -2240,6 +2240,44 @@ A tela de registro de resolução permite ao técnico de infraestrutura descreve
 
 O dashboard do Gerente consolida o status de todas as tarefas e alertas por retiro (US07). As tarefas são agrupadas por status (pendente, em andamento, concluída) e os alertas de infraestrutura aparecem em seção destacada. A partir do painel, o Gerente pode navegar para a criação de uma nova Ordem de Serviço.
 
+---
+
+### Fluxo 4 — Coordenador: visualizar movimentações e exportar dados consolidados (US11, US12)
+
+### Coordenador:
+#### Tela de movimentações (boletas digitais):
+
+A tela de movimentações constitui o ponto de entrada do Coordenador no sistema, substituindo o processo manual de recepção e transcrição de boletas de papel. A interface foi projetada em design responsivo para uso em desktop e dispositivos móveis, permitindo ao Coordenador acessar, revisar e validar os registros enviados pelos Capatazes após a sincronização.
+
+Na parte central da tela, é exibida uma lista consolidada de todas as movimentações zootécnicas registradas, contendo as informações essenciais de cada evento: tipo de movimentação (nascimento, óbito, transferência ou compra/venda), retiro de origem, categoria animal, quantidade, data do registro e Capataz responsável (US11). Cada linha da lista é clicável, direcionando o Coordenador à tela de detalhes da movimentação.
+
+Para facilitar a gestão dos registros, a interface disponibiliza filtros por retiro, tipo de evento e período (data inicial e data final), permitindo que o Coordenador isole rapidamente os registros de interesse. Indicadores visuais na parte superior da tela apresentam um resumo quantitativo das movimentações por tipo de evento, oferecendo uma visão macro do fluxo zootécnico recente.
+
+<center>
+  <p><strong>Figura 17</strong> — Wireframe da tela de lista de movimentações do Coordenador (US11)</p>
+  <img src="./assets/wireframeListaDeBoletos.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+#### Detalhes da movimentação:
+
+Ao selecionar uma movimentação na lista, o Coordenador é direcionado à tela de detalhes, que exibe todas as informações do registro: tipo de evento, retiro, categoria animal, quantidade, data e hora, Capataz responsável, além das evidências anexadas (fotografias georreferenciadas, quando aplicável). Essa tela permite ao Coordenador verificar a consistência e a completude dos dados antes da consolidação final, garantindo que os registros estejam corretos e prontos para exportação (US11).
+
+A visualização das evidências fotográficas, especialmente nos registros de óbito, atende à exigência de auditoria e controle sanitário da fazenda, assegurando a rastreabilidade documental de cada evento zootécnico registrado no campo.
+
+#### Exportação de dados consolidados:
+
+Na tela de movimentações, o Coordenador dispõe de um botão de exportação posicionado de forma destacada na interface, permitindo gerar e baixar um arquivo em formato Excel/CSV contendo os registros filtrados (US12). A exportação respeita a estrutura de colunas padronizada e compatível com os templates legados utilizados pela coordenação da BrPec, contemplando: data, retiro, tipo de evento, categoria animal, quantidade e Capataz responsável.
+
+O sistema gera o arquivo com codificação adequada (UTF-8 com BOM) e delimitação de campos compatível com o Microsoft Excel, preservando a acentuação e evitando erros de importação. O Coordenador pode aplicar filtros de retiro, tipo de evento e período antes da exportação, garantindo que o arquivo gerado contenha exclusivamente os dados de interesse para a consolidação nos controles centrais da empresa.
+
+Essa funcionalidade elimina o processo de redigitação manual de boletas de papel em planilhas eletrônicas, reduzindo o tempo operacional, os erros de transcrição e o retrabalho, conforme identificado como necessidade prioritária na análise do problema.
+
+<center>
+  <p><strong>Figura 18</strong> — Wireframe da tela de dashboard do Coordenador com opção de exportação (US12)</p>
+  <img src="./assets/wireframeGerenteCoordenadorDashboard.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ## 3.4. Guia de estilos (sprint 3)
 
