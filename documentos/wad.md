@@ -2270,14 +2270,14 @@ No menu de navegação lateral (desktop) / atalhos, posicionado no canto esquerd
 </center>
 
 #### Nova O.S.:
-A Figura 14 ilustra a interface unificada de Abertura de Demandas, utilizada pelo Gerente para delegar atividades tanto para a equipe de manutenção quanto para os capatazes de campo, adotando o padrão de design responsivo para dispositivos móveis e desktop. 
+A Figura 17 ilustra a interface unificada de Abertura de Demandas, utilizada pelo Gerente para delegar atividades tanto para a equipe de manutenção quanto para os capatazes de campo, adotando o padrão de design responsivo para dispositivos móveis e desktop. 
 
 No fluxo de seleção de tipo, ao acessar o painel, o gestor pode alternar entre duas verticais de trabalho, sendo elas a de infraestrutura, para manutenção Hidráulica, Cerca ou Elétrica, e a de operações de manejo, para demandas zootécnicas direcionadas diretamente aos capatazes, tais como Movimentação de Rebanho, Registro de Óbito, entre outras. 
 
 Para garantir o direcionamento correto e a clareza da atividade, os campos e parâmetros de cadastro oferecem recursos como o nível de prioridade, para atribuição de urgência para organizar a fila de trabalho em campo, o prazo limite, definindo a data esperada para a conclusão do serviço, o detalhamento descritivo, em um campo de texto livre para detalhar as especificações da tarefa, e os recursos multimídia, trazendo a opção para anexar áudios (com instruções gravadas por voz) e imagens/fotos de referência, eliminando qualquer ambiguidade na comunicação entre o escritório e o campo, atendendo a (US01), (US06) e (US07).
 
 <center>
-  <p><strong>Figura 14</strong> — Wireframe da tela de criação de nova O.S. pelo Gerente (US01), (US06) e (US07)</p>
+  <p><strong>Figura 17</strong> — Wireframe da tela de criação de nova O.S. pelo Gerente (US01), (US06) e (US07)</p>
   <img src="./assets/wireframeGerenteNovaOs.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2287,25 +2287,19 @@ Para garantir o direcionamento correto e a clareza da atividade, os campos e par
 ### Fluxo 4 — Coordenador: visualizar movimentações e exportar dados consolidados (US11, US12)
 #### Dashboard inicial:
 
-A Figura 15 ilustra a Interface Principal (Dashboard) destinada aos perfis de Gerente e Coordenador, desenvolvida com design responsivo para dispositivos móveis e desktop, onde esta tela funciona como o núcleo centralizador para o monitoramento e a tomada de decisões na fazenda. Ela foi descrita anteriormente, no fluxo 3, na parte de "Dashboard inicial". Wireframe foi nomeado por "Figura 15".
-
-<center>
-  <p><strong>Figura 15</strong> — Wireframe da tela de registrar resolução- infraestrutura</p>
-  <img src="./assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
+A Interface Principal (Dashboard) destinada aos perfis de Gerente e Coordenador, desenvolvida com design responsivo para dispositivos móveis e desktop, funciona como o núcleo centralizador para o monitoramento e a tomada de decisões na fazenda. Ela foi descrita anteriormente, no fluxo 3, na parte de "Dashboard inicial". O wireframe foi apresentado na Figura 16.
 
 
 #### Tela de movimentações (boletas digitais):
 
-A Figura 17, ilustra a tela de movimentações, que constitui o ponto de entrada do Coordenador no sistema, substituindo o processo manual de recepção e transcrição de boletas de papel. A interface foi projetada em design responsivo para uso em desktop e dispositivos móveis, permitindo ao Coordenador acessar, revisar e validar os registros enviados pelos Capatazes após a sincronização.
+A Figura 18 ilustra a tela de movimentações, que constitui o ponto de entrada do Coordenador no sistema, substituindo o processo manual de recepção e transcrição de boletas de papel. A interface foi projetada em design responsivo para uso em desktop e dispositivos móveis, permitindo ao Coordenador acessar, revisar e validar os registros enviados pelos Capatazes após a sincronização.
 
 Na parte central da tela, é exibida uma lista consolidada de todas as movimentações zootécnicas registradas, contendo as informações essenciais de cada evento: tipo de movimentação (nascimento, óbito, transferência ou compra/venda), retiro de origem, categoria animal, quantidade, data do registro e Capataz responsável (US11). Cada linha da lista é clicável, direcionando o Coordenador à tela de detalhes da movimentação.
 
 Para facilitar a gestão dos registros, a interface disponibiliza filtros por retiro, tipo de evento e período (data inicial e data final), permitindo que o Coordenador isole rapidamente os registros de interesse. Indicadores visuais na parte superior da tela apresentam um resumo quantitativo das movimentações por tipo de evento, oferecendo uma visão macro do fluxo zootécnico recente.
 
 <center>
-  <p><strong>Figura 17</strong> — Wireframe da tela de lista de movimentações do Coordenador (US11)</p>
+  <p><strong>Figura 18</strong> — Wireframe da tela de lista de movimentações do Coordenador (US11)</p>
   <img src="./assets/wireframeListaDeBoletos.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2440,7 +2434,7 @@ Este diagrama registra a estrutura de dados concebida na sprint 2, com a Boleta 
 A seção 3.6.1 apresenta a versão conceitual consolidada após a evolução deste DER: a Boleta deixa de ser uma entidade isolada e passa a ser materializada pelos registros de Movimentação, Tarefa, Alerta e Evidência. Essa decisão separou melhor as responsabilidades de cada entidade e eliminou atributos que não são pertinentes a todos os tipos de evento.
 
 <center>
-  <p><strong>Figura 18</strong> — DER conceitual da sprint 2 — BRPec Agropecuária</p>
+  <p><strong>Figura 20</strong> — DER conceitual da sprint 2 — BRPec Agropecuária</p>
 </center>
 
 <img src="./assets/modelo-er-brpec.png" width="800"/>
@@ -2476,7 +2470,7 @@ A evolução conceitual está apresentada nas seções 3.6.1 e 3.6.2. Nesta seç
 | `sync_queue`     | `id`           | —                                                          | Fila técnica de sincronização offline-online    |
 
 <center>
-  <p><strong>Figura 19</strong> — Modelo Relacional</p>
+  <p><strong>Figura 21</strong> — Modelo Relacional</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
