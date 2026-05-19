@@ -2864,28 +2864,6 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
 </center>
 
 
-| **Proposições lógicas** | $A$: o registro de óbito ainda não existe no banco local <br> $B$: o registro existe, mas ainda não foi sincronizado (`sync_status != 'sincronizado'`) <br> $C$: o registro pertence ao mesmo responsável (`responsavel_id = excluded.responsavel_id`) <br> $D$: a causa da morte foi informada (`causa IS NOT NULL`) |
-| **Expressão lógica proposicional** | $(A \lor (B \land C)) \land D$ |
-
-| $A$ | $B$ | $C$ | $D$ | $(A \lor (B \land C)) \land D$ |
-| --- | --- | --- | --- | ------------------------------ |
-| F   | F   | F   | F   | F                              |
-| F   | F   | F   | V   | F                              |
-| F   | F   | V   | V   | F                              |
-| F   | V   | F   | V   | F                              |
-| F   | V   | V   | F   | F                              |
-| F   | V   | V   | V   | V                              |
-| V   | F   | F   | F   | F                              |
-| V   | F   | F   | V   | V                              |
-| V   | F   | V   | V   | V                              |
-| V   | V   | F   | V   | V                              |
-| V   | V   | V   | F   | F                              |
-| V   | V   | V   | V   | V                              |
-
-<center>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
 ---
 | #7 | Fluxo: Busca de registros pendentes na fila de sincronização (RF010 / RF012) |
 |---|---|
