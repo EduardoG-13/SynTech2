@@ -2790,7 +2790,25 @@ As consultas abaixo representam fluxos priorizados do sistema BRPec, alinhados a
 **Expressão SQL** | `SELECT t.id, t.titulo, t.status, t.data_prevista, r.nome AS retiro, u.nome AS responsavel FROM tarefas t JOIN retiros r ON t.retiro_id = r.id JOIN usuarios u ON t.responsavel_id = u.id WHERE t.criado_por_id = $1 AND (t.status = 'pendente' OR t.status = 'em_andamento') AND date(t.data_prevista) >= date('now') ORDER BY t.data_prevista ASC, r.nome ASC;` |
 **Proposições lógicas** | $A$: a tarefa foi criada pelo Gerente autenticado (`criado_por_id = $1`) <br> $B$: o status é pendente (`status = 'pendente'`) <br> $C$: o status é em andamento (`status = 'em_andamento'`) <br> $D$: a data prevista é hoje ou futura (`date(data_prevista) >= date('now')`) |
 **Expressão lógica proposicional** | $A \land (B \lor C) \land D$ |
-**Tabela Verdade** | <table> <thead> <tr> <th>$A$</th> <th>$B$</th> <th>$C$</th> <th>$D$</th> <th>$A \land (B \lor C) \land D$</th> </tr> </thead> <tbody> <tr> <td>F</td> <td>F</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>F</td> <td>V</td> <td>F</td> <td>V</td> <td>F</td> </tr> <tr> <td>V</td> <td>F</td> <td>F</td> <td>V</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>F</td> <td>F</td> </tr> <tr> <td>V</td> <td>V</td> <td>F</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>F</td> <td>V</td> <td>V</td> <td>V</td> </tr> <tr> <td>V</td> <td>V</td> <td>V</td> <td>V</td> <td>V</td> </tr> </tbody> </table>
+
+| $A$ | $B$ | $C$ | $D$ | $A \land (B \lor C) \land D$ |
+| --- | --- | --- | --- | ----------------------------- |
+| F   | F   | F   | F   | F                             |
+| F   | F   | F   | V   | F                             |
+| F   | F   | V   | F   | F                             |
+| F   | F   | V   | V   | F                             |
+| F   | V   | F   | F   | F                             |
+| F   | V   | F   | V   | F                             |
+| F   | V   | V   | F   | F                             |
+| F   | V   | V   | V   | F                             |
+| V   | F   | F   | F   | F                             |
+| V   | F   | F   | V   | F                             |
+| V   | F   | V   | F   | F                             |
+| V   | F   | V   | V   | V                             |
+| V   | V   | F   | F   | F                             |
+| V   | V   | F   | V   | V                             |
+| V   | V   | V   | F   | F                             |
+| V   | V   | V   | V   | V                             |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
