@@ -2332,6 +2332,17 @@ Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26
 
 _Apresente aqui a tipografia da solução, com famílias de fontes e suas respectivas funções_
 
+A tipografia da solução utiliza duas famílias de fontes complementares, ambas
+disponíveis gratuitamente via Google Fonts, selecionadas para garantir legibilidade
+em telas mobile e web, inclusive sob luz solar direta.
+
+A escolha tipográfica em interfaces digitais vai além da estética — fontes sem serifa
+de traço uniforme apresentam melhor desempenho em telas de baixa resolução e em
+condições adversas de luminosidade, como a exposição solar direta enfrentada pelos
+usuários deste projeto [28]. Além disso, o tamanho e o peso das fontes impactam
+diretamente a acessibilidade da interface: textos com peso insuficiente ou tamanho
+reduzido comprometem a leitura em ambientes de alta iluminância [25][27].
+
 ### 3.4.3 Iconografia e imagens
 
 _(esta subseção é opcional, caso não existam ícones e imagens, apague esta subseção)_
@@ -3097,6 +3108,7 @@ Industries and Competitors. New York: Free Press, 2008. ISBN 978-0-7432-7275-4.
 
 [27] SNAITH, M.; TORNQVIST, K. Situational Visual Impairment: Designing interfaces for outdoor and mobile usage. JMHCI, v. 12, 2020.
 
+[28] BABICH, Nick. Principles of Typography in UI Design. UX Planet, 2016. Disponível em: https://uxplanet.org/principles-of-typography-in-ui-design-bc28f1f9666d. Acesso em: 19 maio 2026.
 # <a name="c9"></a>Anexos
 
 _Inclua aqui quaisquer complementos para seu projeto, como diagramas, imagens, tabelas etc. Organize em sub-tópicos utilizando headings menores (use ## ou ### para isso)_
