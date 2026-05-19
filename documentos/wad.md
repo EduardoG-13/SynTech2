@@ -2306,21 +2306,18 @@ Um guia de estilo (style guide) é um documento de referência que centraliza to
 
 _Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução_
 
+### 3.4.1 Cores
+
+_Apresente aqui a paleta de cores, com seus códigos de aplicação e suas respectivas funções_
+
 ### Justificativa Técnica: Contraste Outdoor (Nível AAA)
 
 Justificativa Técnica: Contraste Outdoor (Nível AAA)
 A adoção do contraste mínimo de 7:1 para interfaces operadas em ambientes externos sob luz solar direta fundamenta-se na convergência entre engenharia de fatores humanos e acessibilidade, conforme o critério de sucesso 1.4.6 da WCAG (Nível AAA) [24].
 
-Em condições de exposição solar direta — que pode ultrapassar 100.000 lux [26], a incidência de luz nas camadas do display provoca o fenômeno conhecido como veiling glare: reflexões que adicionam luminância ao fundo e ao texto, "lavando" as cores e reduzindo drasticamente o contraste percebido. Para compensar essa perda física e garantir legibilidade em campo, a interface precisa partir de uma razão de contraste nativa substancialmente elevada[25].
+Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26], a luz incidente nas camadas do display desencadeia o fenômeno conhecido como veiling glare: reflexões que adicionam luminância ao fundo e ao texto, "lavando" as cores e reduzindo drasticamente o contraste percebido. Para compensar essa perda física e garantir legibilidade em campo, a interface precisa partir de uma razão de contraste nativa substancialmente elevada [25]. Nesse contexto, a iluminação extrema impõe ao usuário uma deficiência visual situacional temporária, equiparável, em termos perceptivos, à perda severa de sensibilidade ao contraste [27].
 
-A iluminação extrema impõe ao usuário uma deficiência visual situacional temporária, equiparável, em termos perceptivos, à perda severa de sensibilidade ao contraste [27]. 
-
-É exatamente esse cenário que o critério 1.4.6 da WCAG visa cobrir ao exigir a proporção de 7:1. Além do impacto direto na legibilidade, relações inferiores a esse limiar aumentam o tempo de fixação ocular, elevam a taxa de erro na leitura de dados críticos e aceleram a fadiga visual pelo esforço contínuo de acomodação. O patamar de 7:1 não é, portanto, uma escolha conservadora arbitrária, mas o requisito técnico mínimo para preservar a usabilidade em condições adversas de luminosidade.
-
-
-### 3.4.1 Cores
-
-_Apresente aqui a paleta de cores, com seus códigos de aplicação e suas respectivas funções_
+É exatamente esse cenário que o critério 1.4.6 da WCAG visa cobrir ao exigir a proporção de 7:1. Além do impacto direto na legibilidade, relações inferiores a esse limiar aumentam o tempo de fixação ocular, elevam a taxa de erro na leitura de dados críticos e aceleram a fadiga visual pelo esforço contínuo de acomodação. O patamar de 7:1 é, portanto, o requisito técnico mínimo para preservar a usabilidade em condições adversas de luminosidade.
 
 ### 3.4.2 Tipografia
 
