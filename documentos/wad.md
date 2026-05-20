@@ -2381,6 +2381,32 @@ _(esta subseção é opcional, caso não existam ícones e imagens, apague esta 
 
 _posicione aqui imagens e textos contendo exemplos padronizados de ícones e imagens, com seus respectivos atributos de aplicação, utilizadas na solução_
 
+A iconografia da solução utiliza a biblioteca **Phosphor Icons**, escolhida por seu
+traço generoso e alta legibilidade em telas mobile e web sob luz solar direta. Os
+ícones são aplicados exclusivamente nos estilos **Bold** e **Fill**, que apresentam
+melhor desempenho em condições de alta iluminância, onde traços finos tendem a
+desaparecer [27].
+
+De acordo com Nielsen [22], os ícones podem ser classificados em três categorias
+segundo seu grau de correspondência com o conceito que representam:
+
+- **Semelhança** — representam visualmente o objeto ao qual se referem
+(ex.: folha para natureza, gota para água);
+- **Referência** — estabelecem uma analogia com o conceito representado
+(ex.: engrenagem para configurações);
+- **Arbitrários** — têm significado definido apenas por convenção
+(ex.: triângulo de alerta).
+
+A biblioteca foi selecionada priorizando ícones de semelhança, categoria que
+apresenta melhor usabilidade e menor dependência cultural [22]. Ícones arbitrários
+foram adotados apenas quando já amplamente convencionados — como o símbolo de
+alerta — evitando ambiguidade para o usuário.
+
+Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizado
+de forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduz
+erros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção
+do usuário pode estar dividida [28].
+
 ## 3.5 Protótipo de alta fidelidade (sprint 3)
 
 _posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização)_
