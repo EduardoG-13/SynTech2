@@ -3005,6 +3005,66 @@ As consultas abaixo representam fluxos priorizados do sistema BrPec e foram extr
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
+
+---
+| #7 | Fluxo: Busca de registros pendentes na fila de sincronização (RF010 / RF012) |
+|---|---|
+| **Expressão SQL** | `SELECT id, tabela, registro_id, operacao, payload_json, tentativas FROM sync_queue WHERE status = 'pendente' AND tentativas < 5 ORDER BY created_at ASC LIMIT 50;` |
+| **Proposições lógicas** | $A$: o registro está com status pendente de envio (`status = 'pendente'`) <br> $B$: o número de tentativas de envio é menor que 5 (`tentativas < 5`) |
+| **Expressão lógica proposicional** | $A \land B$ |
+
+| $A$ | $B$ | $A \land B$ |
+| --- | --- | ----------- |
+| F   | F   | F           |
+| F   | V   | F           |
+| V   | F   | F           |
+| V   | V   | V           |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
+| #8 | Fluxo: Exportação de movimentações sincronizadas pelo Coordenador (RF015) |
+|---|---|
+| **Expressão SQL** | `SELECT m.id, m.tipo, m.categoria, m.data_movimentacao, m.observacoes, r.nome AS retiro, u.nome AS responsavel, o.causa AS causa_obito, o.identificacao_animal, n.quantidade AS qtd_nascimento, t.retiro_origem_id, t.retiro_destino_id, cv.tipo_negocio, cv.valor_financeiro FROM movimentacoes m JOIN retiros r ON m.retiro_id = r.id JOIN usuarios u ON m.responsavel_id = u.id LEFT JOIN obitos o ON o.movimentacao_id = m.id LEFT JOIN nascimentos n ON n.movimentacao_id = m.id LEFT JOIN transferencias t ON t.movimentacao_id = m.id LEFT JOIN compravendas cv ON cv.movimentacao_id = m.id WHERE m.sync_status = 'sincronizado' AND m.retiro_id = $1 AND date(m.data_movimentacao) BETWEEN date($2) AND date($3) ORDER BY m.data_movimentacao ASC;` |
+| **Proposições lógicas** | $A$: a movimentação já foi sincronizada com o servidor (`sync_status = 'sincronizado'`) <br> $B$: a movimentação pertence ao retiro selecionado pelo Coordenador (`retiro_id = $1`) <br> $C$: a data da movimentação está dentro do intervalo de exportação (`data_movimentacao BETWEEN $2 AND $3`) |
+| **Expressão lógica proposicional** | $A \land B \land C$ |
+
+| $A$ | $B$ | $C$ | $A \land B$ | $A \land B \land C$ |
+| --- | --- | --- | ----------- | ------------------- |
+| F   | F   | F   | F           | F                   |
+| F   | F   | V   | F           | F                   |
+| F   | V   | F   | F           | F                   |
+| F   | V   | V   | F           | F                   |
+| V   | F   | F   | F           | F                   |
+| V   | F   | V   | F           | F                   |
+| V   | V   | F   | V           | F                   |
+| V   | V   | V   | V           | V                   |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
+| #9 | Fluxo: Contagem de nascimentos sincronizados por retiro e período (US11 / RF008) |
+|---|---|
+| **Expressão SQL** | `SELECT r.nome AS retiro, SUM(n.quantidade) AS total_nascimentos FROM nascimentos n JOIN movimentacoes m ON n.movimentacao_id = m.id JOIN retiros r ON m.retiro_id = r.id WHERE m.sync_status = 'sincronizado' AND date(m.data_movimentacao) BETWEEN date($1) AND date($2) GROUP BY r.nome ORDER BY r.nome ASC;` |
+| **Proposições lógicas** | $A$: a movimentação foi sincronizada com o servidor (`sync_status = 'sincronizado'`) <br> $B$: a data da movimentação está dentro do intervalo selecionado (`date(m.data_movimentacao) BETWEEN date($1) AND date($2)`) |
+| **Expressão lógica proposicional** | $A \land B$ |
+
+| $A$ | $B$ | $A \land B$ |
+| --- | --- | ----------- |
+| F   | F   | F           |
+| F   | V   | F           |
+| V   | F   | F           |
+| V   | V   | V           |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+---
 ## 3.7. WebAPI e endpoints (sprints 3 e 4)
 
 _Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema._
