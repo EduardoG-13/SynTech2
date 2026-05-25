@@ -1938,6 +1938,10 @@ classDiagram
             +updateStatusEnvio(id, status) void
             +incrementarTentativa(id) void
         }
+        class ExportacaoRepository {
+            +registrarExportacao(dados) ExportacaoModel
+            +findByCoordenador(coordenadorId) List~ExportacaoModel~
+        }
     }
 ```
 
