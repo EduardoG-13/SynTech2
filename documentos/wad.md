@@ -1932,6 +1932,12 @@ classDiagram
             +findByRetiro(retiroId) List~AlertaInfraestruturaModel~
             +updateStatus(id, status) void
         }
+        class SincronizacaoRepository {
+            +inserirRegistro(dados) SincronizacaoModel
+            +findPendentes() List~SincronizacaoModel~
+            +updateStatusEnvio(id, status) void
+            +incrementarTentativa(id) void
+        }
     }
 ```
 
