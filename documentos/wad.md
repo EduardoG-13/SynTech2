@@ -1853,6 +1853,19 @@ classDiagram
             +String causaMorte
             +UUID foto_id
         }
+        class AlertaInfraestruturaModel {
+            +UUID id
+            +Enum tipo
+            +String descricao
+            +Enum status
+            +UUID capataz_id
+            +UUID retiro_id
+            +Decimal latitude
+            +Decimal longitude
+            +DateTime criadoEm
+            +Boolean sincronizado
+            +UUID foto_id
+        }
     }
 ```
 
