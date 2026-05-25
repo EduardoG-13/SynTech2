@@ -1800,6 +1800,19 @@ classDiagram
             +Enum perfil
             +DateTime criadoEm
         }
+        class TarefaModel {
+            +UUID id
+            +String titulo
+            +String descricao
+            +Enum status
+            +Date dataExecucao
+            +UUID retiro_id
+            +UUID capataz_id
+            +UUID gerente_id
+            +DateTime criadaEm
+            +DateTime concluidaEm
+            +Boolean sincronizada
+        }
     }
 ```
 
