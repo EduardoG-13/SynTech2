@@ -1785,6 +1785,11 @@ A Tabela 19 consolida todos os relacionamentos modelados no diagrama, com seus t
 
 #### 3.2.3.1. Diagrama de Classes Arquitetural (sprint 3)
 
+O Diagrama de Classes Arquitetural representa a estrutura técnica do backend do sistema BrPec, com foco nas responsabilidades e nos relacionamentos entre as classes concretas distribuídas pelas quatro camadas da arquitetura em camadas adotada: **Controller**, **Service**, **Repository** e **Model**. Diferentemente do Diagrama de Classes do Domínio (seção 3.2.3), que modela os conceitos do negócio e suas relações semânticas, este diagrama evidencia como o código está organizado no servidor Node.js, quais classes dependem de quais e de que forma as requisições HTTP percorrem as camadas até atingir a persistência — conforme o padrão Controller–Service–Repository descrito na seção 3.2.4.
+
+<center>
+  <p><strong>Figura 10</strong> — Diagrama de Classes Arquitetural do Sistema BrPec</p>
+</center>
 ```mermaid
 classDiagram
     direction TB
@@ -2070,6 +2075,9 @@ classDiagram
     ExportacaoController ..> ExportacaoService : delega
     RetiroController ..> RetiroService : delega
 ```
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
 
