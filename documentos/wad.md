@@ -2060,6 +2060,15 @@ classDiagram
             +GET /retiros/:id()
         }
     }
+
+    AuthController ..> AuthService : delega
+    TarefaController ..> TarefaService : delega
+    EvidenciaController ..> EvidenciaService : delega
+    EventoZootecnicoController ..> EventoZootecnicoService : delega
+    AlertaInfraestruturaController ..> AlertaInfraestruturaService : delega
+    SincronizacaoController ..> SincronizacaoService : delega
+    ExportacaoController ..> ExportacaoService : delega
+    RetiroController ..> RetiroService : delega
 ```
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
