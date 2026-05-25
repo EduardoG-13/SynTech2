@@ -1942,6 +1942,11 @@ classDiagram
             +registrarExportacao(dados) ExportacaoModel
             +findByCoordenador(coordenadorId) List~ExportacaoModel~
         }
+        class RetiroRepository {
+            +findAll() List~RetiroModel~
+            +findById(id) RetiroModel
+            +findByCoordenador(coordenadorId) List~RetiroModel~
+        }
     }
 ```
 
