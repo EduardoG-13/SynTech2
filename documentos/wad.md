@@ -2043,6 +2043,11 @@ classDiagram
             +GET /eventos()
             +PATCH /eventos/:id/validar()
         }
+        class AlertaInfraestruturaController {
+            +POST /alertas()
+            +GET /alertas()
+            +PATCH /alertas/:id/status()
+        }
     }
 ```
 
