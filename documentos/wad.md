@@ -1927,6 +1927,11 @@ classDiagram
             +findPendentesValidacao() List~EventoZootecnicoModel~
             +marcarValidado(id, coordenadorId) void
         }
+        class AlertaInfraestruturaRepository {
+            +inserirAlerta(dados) AlertaInfraestruturaModel
+            +findByRetiro(retiroId) List~AlertaInfraestruturaModel~
+            +updateStatus(id, status) void
+        }
     }
 ```
 
