@@ -1921,6 +1921,12 @@ classDiagram
             +findByTarefa(tarefaId) List~EvidenciaModel~
             +marcarSincronizada(id) void
         }
+        class EventoZootecnicoRepository {
+            +inserirEvento(dados) EventoZootecnicoModel
+            +findByRetiro(retiroId) List~EventoZootecnicoModel~
+            +findPendentesValidacao() List~EventoZootecnicoModel~
+            +marcarValidado(id, coordenadorId) void
+        }
     }
 ```
 
