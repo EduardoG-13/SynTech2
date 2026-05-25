@@ -1916,6 +1916,11 @@ classDiagram
             +updateStatus(id, status) void
             +deleteById(id) void
         }
+        class EvidenciaRepository {
+            +inserirEvidencia(dados) EvidenciaModel
+            +findByTarefa(tarefaId) List~EvidenciaModel~
+            +marcarSincronizada(id) void
+        }
     }
 ```
 
