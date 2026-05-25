@@ -1958,6 +1958,16 @@ classDiagram
     ExportacaoRepository "1" --o "0..*" ExportacaoModel
     RetiroRepository "1" --o "0..*" RetiroModel
 
+    %% ─────────────────────────────────────────
+    %% CAMADA: SERVICE
+    %% ─────────────────────────────────────────
+    namespace Service {
+        class AuthService {
+            +login(nome, senha) String
+            +validarToken(token) UsuarioModel
+            +criarUsuario(dados) UsuarioModel
+        }
+    }
 ```
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
