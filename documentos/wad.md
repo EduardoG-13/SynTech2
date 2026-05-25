@@ -1979,6 +1979,12 @@ classDiagram
             +adicionarEvidencia(tarefaId, dados) EvidenciaModel
             +listarEvidencias(tarefaId) List~EvidenciaModel~
         }
+        class EventoZootecnicoService {
+            +registrarNascimento(dados) RegistroNascimentoModel
+            +registrarObito(dados) RegistroObitoModel
+            +listarEventosPorRetiro(retiroId) List~EventoZootecnicoModel~
+            +validarEvento(id, coordenadorId) void
+        }
     }
 ```
 
