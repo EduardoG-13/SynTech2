@@ -1866,6 +1866,15 @@ classDiagram
             +Boolean sincronizado
             +UUID foto_id
         }
+        class SincronizacaoModel {
+            +UUID id
+            +String entidadeTipo
+            +UUID entidadeId
+            +Enum statusEnvio
+            +Integer tentativas
+            +DateTime ultimaTentativa
+            +DateTime criadaEm
+        }
     }
 ```
 
