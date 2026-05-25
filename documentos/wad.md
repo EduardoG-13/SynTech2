@@ -1783,6 +1783,320 @@ A Tabela 19 consolida todos os relacionamentos modelados no diagrama, com seus t
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
+#### 3.2.3.1. Diagrama de Classes Arquitetural (sprint 3)
+
+O Diagrama de Classes Arquitetural representa a estrutura técnica do backend do sistema BrPec, com foco nas responsabilidades e nos relacionamentos entre as classes concretas distribuídas pelas quatro camadas da arquitetura em camadas adotada: **Controller**, **Service**, **Repository** e **Model**. Diferentemente do Diagrama de Classes do Domínio (seção 3.2.3), que modela os conceitos do negócio e suas relações semânticas, este diagrama evidencia como o código está organizado no servidor Node.js, quais classes dependem de quais e de que forma as requisições HTTP percorrem as camadas até atingir a persistência — conforme o padrão Controller–Service–Repository descrito na seção 3.2.4.
+
+Cada camada possui responsabilidade única e bem delimitada [15][16]:
+
+- **Controller:** recebe e valida a requisição HTTP, delega ao Service correspondente e retorna a resposta HTTP ao cliente. Nunca acessa o banco de dados diretamente.
+- **Service:** concentra as regras de negócio (RNs), orquestra chamadas ao Repository e lança exceções de domínio em caso de violações.
+- **Repository:** abstrai o acesso à camada de persistência (SQLite no servidor), expondo métodos de consulta e escrita ao Service por meio de uma interface uniforme.
+- **Model:** representa as entidades persistidas no banco de dados (tabelas SQLite), correspondendo às classes do domínio com seus atributos e tipos de dado.
+
+O diagrama a seguir utiliza a notação UML 2.5.1 [14], com dependências de uso (`..>`) entre Controller → Service e Service → Repository, e associações de composição entre Repository e os Models correspondentes. As classes de mesmo domínio funcional são agrupadas por módulo: **Autenticação**, **Tarefas**, **Eventos Zootécnicos**, **Alertas de Infraestrutura**, **Sincronização** e **Exportação**.
+
+```mermaid
+classDiagram
+    direction TB
+
+    %% ─────────────────────────────────────────
+    %% CAMADA: MODEL
+    %% ─────────────────────────────────────────
+    namespace Model {
+        class UsuarioModel {
+            +UUID id
+            +String nome
+            +String senha
+            +Enum perfil
+            +DateTime criadoEm
+        }
+        class TarefaModel {
+            +UUID id
+            +String titulo
+            +String descricao
+            +Enum status
+            +Date dataExecucao
+            +UUID retiro_id
+            +UUID capataz_id
+            +UUID gerente_id
+            +DateTime criadaEm
+            +DateTime concluidaEm
+            +Boolean sincronizada
+        }
+        class EvidenciaModel {
+            <<abstract>>
+            +UUID id
+            +UUID tarefa_id
+            +Enum tipo
+            +DateTime criadaEm
+            +Boolean sincronizada
+        }
+        class FotoModel {
+            +String urlArquivo
+            +Integer tamanhoBytes
+            +String geolocalizacao
+        }
+        class AudioModel {
+            +String urlArquivo
+            +Integer duracaoSegundos
+        }
+        class TextoComplementarModel {
+            +String conteudo
+        }
+        class EventoZootecnicoModel {
+            <<abstract>>
+            +UUID id
+            +UUID capataz_id
+            +UUID retiro_id
+            +Date data
+            +String categoria
+            +Integer quantidade
+            +Boolean sincronizado
+            +Boolean validado
+            +UUID coordenador_id
+            +DateTime criadoEm
+        }
+        class RegistroNascimentoModel {
+        }
+        class RegistroObitoModel {
+            +String identificacaoAnimal
+            +String causaMorte
+            +UUID foto_id
+        }
+        class AlertaInfraestruturaModel {
+            +UUID id
+            +Enum tipo
+            +String descricao
+            +Enum status
+            +UUID capataz_id
+            +UUID retiro_id
+            +Decimal latitude
+            +Decimal longitude
+            +DateTime criadoEm
+            +Boolean sincronizado
+            +UUID foto_id
+        }
+        class SincronizacaoModel {
+            +UUID id
+            +String entidadeTipo
+            +UUID entidadeId
+            +Enum statusEnvio
+            +Integer tentativas
+            +DateTime ultimaTentativa
+            +DateTime criadaEm
+        }
+        class ExportacaoModel {
+            +UUID id
+            +UUID coordenador_id
+            +Enum formato
+            +UUID filtroRetiro
+            +Date filtroDataInicio
+            +Date filtroDataFim
+            +DateTime geradaEm
+        }
+        class RetiroModel {
+            +UUID id
+            +String nome
+            +String localizacao
+            +UUID coordenador_id
+            +DateTime criadoEm
+        }
+    }
+
+    EvidenciaModel <|-- FotoModel
+    EvidenciaModel <|-- AudioModel
+    EvidenciaModel <|-- TextoComplementarModel
+    EventoZootecnicoModel <|-- RegistroNascimentoModel
+    EventoZootecnicoModel <|-- RegistroObitoModel
+
+    %% ─────────────────────────────────────────
+    %% CAMADA: REPOSITORY
+    %% ─────────────────────────────────────────
+    namespace Repository {
+        class UsuarioRepository {
+            +findById(id) UsuarioModel
+            +findByPerfil(perfil) List~UsuarioModel~
+            +findByRetiro(retiroId) List~UsuarioModel~
+            +save(dados) UsuarioModel
+        }
+        class TarefaRepository {
+            +inserirTarefa(dados) TarefaModel
+            +findByCapatazEData(capatazId, data) List~TarefaModel~
+            +findByRetiro(retiroId) List~TarefaModel~
+            +updateStatus(id, status) void
+            +deleteById(id) void
+        }
+        class EvidenciaRepository {
+            +inserirEvidencia(dados) EvidenciaModel
+            +findByTarefa(tarefaId) List~EvidenciaModel~
+            +marcarSincronizada(id) void
+        }
+        class EventoZootecnicoRepository {
+            +inserirEvento(dados) EventoZootecnicoModel
+            +findByRetiro(retiroId) List~EventoZootecnicoModel~
+            +findPendentesValidacao() List~EventoZootecnicoModel~
+            +marcarValidado(id, coordenadorId) void
+        }
+        class AlertaInfraestruturaRepository {
+            +inserirAlerta(dados) AlertaInfraestruturaModel
+            +findByRetiro(retiroId) List~AlertaInfraestruturaModel~
+            +updateStatus(id, status) void
+        }
+        class SincronizacaoRepository {
+            +inserirRegistro(dados) SincronizacaoModel
+            +findPendentes() List~SincronizacaoModel~
+            +updateStatusEnvio(id, status) void
+            +incrementarTentativa(id) void
+        }
+        class ExportacaoRepository {
+            +registrarExportacao(dados) ExportacaoModel
+            +findByCoordenador(coordenadorId) List~ExportacaoModel~
+        }
+        class RetiroRepository {
+            +findAll() List~RetiroModel~
+            +findById(id) RetiroModel
+            +findByCoordenador(coordenadorId) List~RetiroModel~
+        }
+    }
+
+    UsuarioRepository "1" --o "0..*" UsuarioModel
+    TarefaRepository "1" --o "0..*" TarefaModel
+    EvidenciaRepository "1" --o "0..*" EvidenciaModel
+    EventoZootecnicoRepository "1" --o "0..*" EventoZootecnicoModel
+    AlertaInfraestruturaRepository "1" --o "0..*" AlertaInfraestruturaModel
+    SincronizacaoRepository "1" --o "0..*" SincronizacaoModel
+    ExportacaoRepository "1" --o "0..*" ExportacaoModel
+    RetiroRepository "1" --o "0..*" RetiroModel
+
+    %% ─────────────────────────────────────────
+    %% CAMADA: SERVICE
+    %% ─────────────────────────────────────────
+    namespace Service {
+        class AuthService {
+            +login(nome, senha) String
+            +validarToken(token) UsuarioModel
+            +criarUsuario(dados) UsuarioModel
+        }
+        class TarefaService {
+            +criarTarefa(dados) TarefaModel
+            +listarTarefasCapataz(capatazId, data) List~TarefaModel~
+            +listarTarefasRetiro(retiroId) List~TarefaModel~
+            +concluirTarefa(id, capatazId) void
+            +editarTarefa(id, dados) TarefaModel
+            +deletarTarefa(id) void
+        }
+        class EvidenciaService {
+            +adicionarEvidencia(tarefaId, dados) EvidenciaModel
+            +listarEvidencias(tarefaId) List~EvidenciaModel~
+        }
+        class EventoZootecnicoService {
+            +registrarNascimento(dados) RegistroNascimentoModel
+            +registrarObito(dados) RegistroObitoModel
+            +listarEventosPorRetiro(retiroId) List~EventoZootecnicoModel~
+            +validarEvento(id, coordenadorId) void
+        }
+        class AlertaInfraestruturaService {
+            +abrirAlerta(dados) AlertaInfraestruturaModel
+            +listarAlertas(retiroId) List~AlertaInfraestruturaModel~
+            +atualizarStatusAlerta(id, status) void
+        }
+        class SincronizacaoService {
+            +enfileirarSincronizacao(entidadeTipo, entidadeId) void
+            +processarFila() void
+            +reenviarFalhos() void
+        }
+        class ExportacaoService {
+            +gerarRelatorio(coordenadorId, filtros) Exportacao
+        }
+        class RetiroService {
+            +listarRetiros() List~RetiroModel~
+            +buscarRetiro(id) RetiroModel
+        }
+    }
+
+    AuthService ..> UsuarioRepository : usa
+    TarefaService ..> TarefaRepository : usa
+    TarefaService ..> UsuarioRepository : verifica vínculo (RN01)
+    TarefaService ..> RetiroRepository : valida retiro
+    EvidenciaService ..> EvidenciaRepository : usa
+    EvidenciaService ..> TarefaRepository : verifica tarefa
+    EventoZootecnicoService ..> EventoZootecnicoRepository : usa
+    AlertaInfraestruturaService ..> AlertaInfraestruturaRepository : usa
+    SincronizacaoService ..> SincronizacaoRepository : usa
+    ExportacaoService ..> EventoZootecnicoRepository : consulta dados
+    ExportacaoService ..> ExportacaoRepository : registra exportação
+    RetiroService ..> RetiroRepository : usa
+
+    %% ─────────────────────────────────────────
+    %% CAMADA: CONTROLLER
+    %% ─────────────────────────────────────────
+    namespace Controller {
+        class AuthController {
+            +POST /auth/login()
+            +POST /auth/usuarios()
+        }
+        class TarefaController {
+            +POST /tarefas()
+            +GET /tarefas()
+            +GET /tarefas/:id()
+            +PUT /tarefas/:id()
+            +DELETE /tarefas/:id()
+            +PATCH /tarefas/:id/concluir()
+        }
+        class EvidenciaController {
+            +POST /tarefas/:id/evidencias()
+            +GET /tarefas/:id/evidencias()
+        }
+        class EventoZootecnicoController {
+            +POST /eventos/nascimentos()
+            +POST /eventos/obitos()
+            +GET /eventos()
+            +PATCH /eventos/:id/validar()
+        }
+        class AlertaInfraestruturaController {
+            +POST /alertas()
+            +GET /alertas()
+            +PATCH /alertas/:id/status()
+        }
+        class SincronizacaoController {
+            +POST /sync()
+            +GET /sync/pendentes()
+        }
+        class ExportacaoController {
+            +GET /exportar()
+        }
+        class RetiroController {
+            +GET /retiros()
+            +GET /retiros/:id()
+        }
+    }
+
+    AuthController ..> AuthService : delega
+    TarefaController ..> TarefaService : delega
+    EvidenciaController ..> EvidenciaService : delega
+    EventoZootecnicoController ..> EventoZootecnicoService : delega
+    AlertaInfraestruturaController ..> AlertaInfraestruturaService : delega
+    SincronizacaoController ..> SincronizacaoService : delega
+    ExportacaoController ..> ExportacaoService : delega
+    RetiroController ..> RetiroService : delega
+```
+
+<center>
+  <p><strong>Figura 10</strong> — Diagrama de Classes Arquitetural do Sistema BrPec</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+O diagrama organiza o backend em quatro camadas horizontais bem delimitadas. A camada **Controller** expõe oito grupos de endpoints REST, cada um responsável por um módulo funcional do sistema: autenticação, tarefas, evidências, eventos zootécnicos, alertas de infraestrutura, sincronização, exportação e retiros. Nenhum Controller acessa repositórios ou modelos diretamente — toda lógica é delegada ao Service correspondente via dependência de uso (`..>`), conforme o princípio de responsabilidade única [15].
+
+A camada **Service** concentra as regras de negócio críticas do sistema. O `TarefaService`, por exemplo, é o único ponto onde a RN01 é aplicada (verificação de que o Capataz pertence ao retiro antes de inserir a tarefa), cruzando dados de `UsuarioRepository` e `RetiroRepository` antes de acionar o `TarefaRepository`. O `SincronizacaoService` implementa o padrão *Outbox* descrito na seção 3.2.4, enfileirando registros com status `PENDENTE` e reprocessando falhas automaticamente. O `ExportacaoService` consulta os repositórios de eventos e registra o metadado da exportação, sem expor dados brutos ao Controller.
+
+A camada **Repository** abstrai completamente a tecnologia de persistência (SQLite via `better-sqlite3`), expondo métodos nomeados por intenção de negócio (`findByCapatazEData`, `findPendentesValidacao`, `marcarValidado`) em vez de queries SQL abertas. Cada Repository é proprietário de um conjunto de Models — representado por agregação (`--o`) no diagrama —, garantindo que o acesso a cada tabela ocorra por um único ponto de entrada.
+
+A camada **Model** corresponde às entidades persistidas no banco de dados SQLite, diretamente alinhadas ao Diagrama de Classes do Domínio (seção 3.2.3). A hierarquia de herança é mantida (`EvidenciaModel` → `FotoModel`, `AudioModel`, `TextoComplementarModel`; `EventoZootecnicoModel` → `RegistroNascimentoModel`, `RegistroObitoModel`), refletindo a especialização dos tipos de registro conforme os requisitos funcionais RF004, RF005, RF008 e RF009.
+
+A separação em camadas garante que alterações na tecnologia de persistência (ex.: migração de SQLite para PostgreSQL) impactem apenas os Repositories, sem afetar Services ou Controllers — critério alinhado ao requisito não funcional de Suportabilidade (RNF — SUP), que limita o MTTR a 8 horas para defeitos críticos.
+
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
 
 O Diagrama de Sequência UML constitui um dos quatro tipos de diagrama de interação previstos pela especificação UML 2.5.1, sendo formalmente classificado como um diagrama comportamental que enfatiza a troca ordenada de mensagens entre participantes ao longo do tempo [13]. Segundo o Object Management Group (OMG), a semântica de uma interação é definida como um par de conjuntos de *traces* — sequências válidas e inválidas de ocorrências de eventos —, de modo que cada diagrama de sequência representa, de forma gráfica, os cenários de comunicação aceitos pelo sistema modelado [13][18]. A notação adotada emprega linhas de vida (*lifelines*) para representar os participantes, setas contínuas para mensagens síncronas e setas tracejadas para retornos, com fragmentos combinados (*combined fragments*) do tipo `alt` para expressar ramificações condicionais no fluxo de execução, conforme as convenções consolidadas por Fowler [15] e detalhadas na norma ISO/IEC 19505-2:2012 [17].
