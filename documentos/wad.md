@@ -2003,6 +2003,20 @@ classDiagram
             +buscarRetiro(id) RetiroModel
         }
     }
+
+    AuthService ..> UsuarioRepository : usa
+    TarefaService ..> TarefaRepository : usa
+    TarefaService ..> UsuarioRepository : verifica vínculo (RN01)
+    TarefaService ..> RetiroRepository : valida retiro
+    EvidenciaService ..> EvidenciaRepository : usa
+    EvidenciaService ..> TarefaRepository : verifica tarefa
+    EventoZootecnicoService ..> EventoZootecnicoRepository : usa
+    AlertaInfraestruturaService ..> AlertaInfraestruturaRepository : usa
+    SincronizacaoService ..> SincronizacaoRepository : usa
+    ExportacaoService ..> EventoZootecnicoRepository : consulta dados
+    ExportacaoService ..> ExportacaoRepository : registra exportação
+    RetiroService ..> RetiroRepository : usa
+
 ```
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
