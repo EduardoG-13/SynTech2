@@ -2558,7 +2558,28 @@ _Diagrama UML de deployment mostrando nós físicos, artefatos e canais de comun
 
 ### 3.2.7. Padrões de Projeto Aplicados (sprints 3 a 5)
 
-_Documente os design patterns utilizados (Repository, Strategy, Factory, DTO etc.) e quais princípios SOLID se aplicam. Justifique a adoção de cada padrão com base em uma necessidade real do projeto._
+O Sistema BrPec aplica padrões de projeto motivados por **três restrições estruturais** documentadas neste WAD: (i) a **conectividade satelital intermitente** via Starlink, que impõe arquitetura offline-first (seções 1 e 3.1.3); (ii) os **quatro perfis distintos de usuário** — Gerente, Coordenador, Capataz e Técnico — com regras de operação diferentes (seção 2.2); e (iii) a possibilidade de **evolução da camada de persistência**, hoje implementada com `better-sqlite3` para o cache local e `@supabase/supabase-js` para o servidor central (seção 3.2.1). Cada padrão a seguir é apresentado com categoria GoF [1], localização no repositório, necessidade de negócio que atende e princípios SOLID materializados [2].
+
+A tabela a seguir consolida os seis padrões adotados, indicando para cada um a categoria GoF, a pasta/arquivo correspondente no repositório, a necessidade de negócio atendida e os princípios SOLID materializados. Os padrões com status "previsto" estão planejados para sprints posteriores e serão implementados conforme as funcionalidades correspondentes forem desenvolvidas.
+
+<center>
+  <p><strong>Quadro X</strong> — Padrões de projeto aplicados ao Sistema BrPec</p>
+</center>
+
+| # | Padrão              | Categoria        | Localização no repositório                                  | Necessidade que atende                                  | SOLID    |
+|---|---------------------|------------------|-------------------------------------------------------------|---------------------------------------------------------|----------|
+| 1 | Repository          | Estrutural       | `src/repositories/` (ex.: `movimentacaoRepository.ts`)      | Isolar a troca de driver/ORM da camada de persistência  | S, D     |
+| 2 | Outbox (Sync Queue) | Arquitetural [3] | Tabela `sync_queue` (Migration 011) + `src/services/syncNotifier.ts` | Offline-first: 0% de perda de dados em falha de rede    | S, O     |
+| 3 | DTO                 | Estrutural       | `src/dtos/` (previsto na sprint 3)                          | Desacoplar schema do banco da API pública               | S, I     |
+| 4 | Singleton           | Criacional       | `src/lib/supabaseClient.js`                                 | Reuso de uma única instância do cliente Supabase        | D        |
+| 5 | Middleware Chain    | Comportamental   | `src/middlewares/` (previsto na sprint 3)                   | Pipeline plugável de cross-cutting concerns             | S, O     |
+| 6 | Strategy            | Comportamental   | `src/middlewares/permissions/` (previsto na sprint 5)       | Regras de autorização distintas por perfil de usuário   | O, L     |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+Os padrões 1, 2 e 4 já possuem implementação parcial no repositório, validando a arquitetura proposta. Os padrões 3, 5 e 6 estão planejados para as próximas sprints, conforme o cronograma de implementação dos endpoints (sprint 3), das validações de payload (sprint 3) e do controle de autorização (sprint 5). O detalhamento de cada padrão, com sua justificativa de negócio e princípios SOLID associados, é apresentado nas subseções seguintes.
 
 ## 3.3. Wireframes (sprint 2)
 
