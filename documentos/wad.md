@@ -1875,6 +1875,15 @@ classDiagram
             +DateTime ultimaTentativa
             +DateTime criadaEm
         }
+        class ExportacaoModel {
+            +UUID id
+            +UUID coordenador_id
+            +Enum formato
+            +UUID filtroRetiro
+            +Date filtroDataInicio
+            +Date filtroDataFim
+            +DateTime geradaEm
+        }
     }
 ```
 
