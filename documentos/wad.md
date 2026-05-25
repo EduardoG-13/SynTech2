@@ -1892,6 +1892,13 @@ classDiagram
             +DateTime criadoEm
         }
     }
+
+    EvidenciaModel <|-- FotoModel
+    EvidenciaModel <|-- AudioModel
+    EvidenciaModel <|-- TextoComplementarModel
+    EventoZootecnicoModel <|-- RegistroNascimentoModel
+    EventoZootecnicoModel <|-- RegistroObitoModel
+
 ```
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
