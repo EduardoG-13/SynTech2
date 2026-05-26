@@ -3961,7 +3961,11 @@ Abaixo é apresentada a especificação completa de cada endpoint ativo, incluin
 #### 12. Exportação de Dados em CSV (RF015)
 - **Endpoint**: `GET /api/exportacao/csv`
 - **Headers**: `Accept: text/csv`
-- **Parâmetros (Query)**: `?coordenador_id=coordenador-1&retiro_id=retiro-1`
+- **Parâmetros (Query)**:
+  - `coordenador_id` _(obrigatório)_ — identifica o solicitante e valida perfil de Coordenador
+  - `retiro_id` _(opcional)_ — filtra os dados de um retiro específico
+  - `data_inicio` _(opcional)_ — data de início do intervalo a exportar (formato `YYYY-MM-DD`)
+  - `data_fim` _(opcional)_ — data de fim do intervalo a exportar (formato `YYYY-MM-DD`)
 - **Resposta (200 OK)**: Retorna o corpo binário ou texto plano com os dados em formato CSV delimitado por vírgulas, com cabeçalhos personalizados:
   - `Content-Type: text/csv; charset=utf-8`
   - `Content-Disposition: attachment; filename="movimentacoes_2026-05-26.csv"`
