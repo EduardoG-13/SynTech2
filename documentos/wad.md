@@ -1176,6 +1176,21 @@ A matriz a seguir consolida a rastreabilidade entre Requisitos Funcionais (RF, s
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
+**Legenda das camadas:**
+
+- **Routes** — define o endpoint HTTP e delega ao Controller (`src/backend/routes/`)
+- **Controller** — valida payload e traduz HTTP ↔ Service (`src/backend/controllers/`)
+- **Service** — aplica regras de negócio (`src/backend/services/`)
+- **Repository** — encapsula acesso ao banco SQLite e à sincronização com PostgreSQL/Supabase (`src/backend/repositories/`)
+- **UI/cliente** — comportamento executado no PWA, fora do backend (validações client-side, leitura local, feedback visual)
+
+**Estado de implementação ao fim da sprint 3:**
+
+- ✅ **Implementados e testados** (cards #191, #192, #203, #211): `/health`, `POST /tarefas`, `GET /tarefas/hoje`, `PATCH /tarefas/:id/concluir`, `POST /tarefas/:id/evidencias`, `POST /chamados`, `GET /eventos-zootecnicos`, `POST /eventos-zootecnicos/nascimentos`, `POST /eventos-zootecnicos/obitos`, `GET /painel-gerencial`, `POST /sincronizacao/lote`, `GET /exportacao/csv`
+- ⏳ **Comportamentos client-side** previstos para a sprint 4: RF004 (mensagem offline sem tarefas), RF011 (feedback de sincronização), RF013 (validação client-side de óbito)
+
+**Rastreabilidade complementar:** os Requisitos Funcionais e Regras de Negócio referenciados nesta matriz estão detalhados nas seções 3.1.1 (RFs) e 3.1.2 (RNs). A arquitetura em camadas mencionada na coluna "Camada principal (CSR)" é descrita na seção 3.2.1, e os padrões de projeto que sustentam essa arquitetura (Repository, Outbox, DTO, etc.) constam na seção 3.2.7. A documentação completa de cada endpoint, com payloads de exemplo, body de requisição/resposta e códigos HTTP esperados, é apresentada na seção 3.7 (WebAPI e endpoints).
+
 ## 3.2. Arquitetura (sprints 1 a 5)
 
 ### 3.2.1. Diagrama de Arquitetura e Camadas (sprints 3 e 4)
