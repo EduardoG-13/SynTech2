@@ -72,8 +72,7 @@ Diante desse contexto, foi proposta a construção de uma aplicação web capaz 
 o gerenciamento de tarefas e o registro das movimentações do rebanho, contemplando
 nascimentos, mortes, compras, vendas e transferências entre retiros, com funcionamento
 offline obrigatório. A solução permite que os dados sejam coletados diretamente no campo,
-por meio de celulares fornecidos pela própria BrPec, e sincronizados automaticamente quando
-houver conexão com a internet.
+por meio de celulares fornecidos pela própria BrPec, e sincronizados automaticamente quando houver conexão com a internet.
 
 Como principal criação de valor, o sistema promove a padronização dos registros, elimina
 a necessidade de redigitação manual, reduz erros operacionais e melhora a rastreabilidade
@@ -2437,14 +2436,12 @@ em telas mobile e web, inclusive sob luz solar direta.
 
 | Imagem | Família | Uso | Pesos utilizados |
 |---|---|---|---|
-| <img src="./assets/fonte-nunito-sans.png" width="40"/> | Nunito Sans | Títulos, botões e elementos de destaque | 600 (SemiBold), 700 (Bold) |
+| <img src="./assets/fonte-inter.png" width="40"/> | Inter | Títulos, botões e elementos de destaque | 600 (SemiBold), 700 (Bold) |
 | <img src="./assets/fonte-inter.png" width="40"/> | Inter | Corpo de texto, labels e tabelas | 400 (Regular), 500 (Medium) |
 
-A **Nunito Sans** foi escolhida por sua compatibilidade visual com a identidade da
-marca Syntech. Suas formas arredondadas e traços suaves refletem a personalidade
-da logo. A **Inter**, por sua vez, foi projetada especificamente para interfaces
+ A **Inter** foi projetada especificamente para interfaces
 digitais, com alto desempenho em tamanhos reduzidos e em condições adversas de
-luminosidade [28].
+luminosidade, por isso fizemos essa escolha [28].
 
 ### Escala tipográfica
 
@@ -2456,16 +2453,14 @@ a partir de 16px no corpo do texto [27].
 
 | Nível | Família | Peso | Tamanho | Uso |
 |---|---|---|---|---|
-| Título H1 | Nunito Sans | 700 | 32px | Títulos de página |
-| Título H2 | Nunito Sans | 600 | 24px | Títulos de seção |
-| Título H3 | Nunito Sans | 600 | 20px | Subtítulos e cards |
+| Título H1 | Inter | 700 | 32px | Títulos de página |
+| Título H2 | Inter | 600 | 24px | Títulos de seção |
+| Título H3 | Inter | 600 | 20px | Subtítulos e cards |
 | Corpo | Inter | 400 | 16px | Texto principal |
 | Label | Inter | 500 | 14px | Labels de formulário e tabelas |
 | Caption | Inter | 400 | 12px | Textos auxiliares e rodapés |
 
-> Tamanho mínimo adotado: **12px**. Nenhum texto funcional da interface
-> utiliza tamanho inferior a esse valor, garantindo legibilidade mesmo em
-> dispositivos móveis sob luz solar direta [24][25].
+> Tamanho mínimo adotado: **12px**. Nenhum texto funcional da interface utiliza tamanho inferior a esse valor, garantindo legibilidade mesmo em dispositivos móveis sob luz solar direta [24][25].
 
 ### 3.4.3 Iconografia e imagens
 
