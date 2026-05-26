@@ -3840,13 +3840,20 @@ Abaixo é apresentada a especificação completa de cada endpoint ativo, incluin
 - **Status Codes**:
   - `201 Created`: Óbito registrado nas tabelas `movimentacoes` e `obitos` com sucesso.
   - `400 Bad Request`: Campos obrigatórios ausentes.
-  - `422 Unprocessable Entity`: Causa da morte inválida (violação da regra de negócio `RN28`).
+  - `422 Unprocessable Entity`: Campos obrigatórios violados na camada de serviço (violação da regra de negócio `RF013` — foto, identificação ou causa da morte ausentes).
   - `500 Internal Server Error`: Falha técnica no servidor.
 
 #### 9. Listar Eventos Zootécnicos (RF014 / US11)
 - **Endpoint**: `GET /api/eventos-zootecnicos`
 - **Headers**: `Accept: application/json`
-- **Parâmetros (Query)**: `?retiro_id=retiro-1&categoria=bezerro&limite=10`
+- **Parâmetros (Query)** — todos opcionais:
+  - `retiro_id` — filtra por retiro específico
+  - `categoria` — filtra por categoria do animal (ex.: `bezerro`, `bezerra`)
+  - `tipo` — filtra por tipo de evento (`nascimento` ou `obito`)
+  - `data_inicio` — data de início do intervalo (formato `YYYY-MM-DD`)
+  - `data_fim` — data de fim do intervalo (formato `YYYY-MM-DD`)
+  - `pagina` — número da página (padrão: `1`)
+  - `limite` — registros por página (padrão: `10`)
 - **Resposta (200 OK)**:
   ```json
   {
@@ -3868,7 +3875,7 @@ Abaixo é apresentada a especificação completa de cada endpoint ativo, incluin
   }
   ```
 - **Status Codes**:
-  - `200 OK`: Lista retornada com sucesso.
+  - `200 OK`: Lista retornada com sucesso (pode ser array vazio se não houver registros).
   - `500 Internal Server Error`: Erro ao consultar a base SQLite.
 
 #### 10. Painel Gerencial (RF007)
