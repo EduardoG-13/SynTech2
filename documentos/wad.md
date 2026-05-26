@@ -2897,6 +2897,27 @@ A tela de detalhe exibe todas as informações necessárias para que o Capataz e
 
 A tela de conclusão de tarefa centraliza todas as ações necessárias para o Capataz registrar a execução do serviço: foto da conclusão, observações em texto e registro de áudio. O design mantém o fluxo linear e sem ambiguidade, com cada elemento de entrada claramente identificado por label e ícone, reduzindo a chance de erro por parte de usuários com baixo letramento digital.
 
+**Critérios de aceite cobertos:**
+
+- **CR1 (US03):** O Capataz consegue marcar a tarefa como concluída após preencher ao menos um campo de evidência.
+- **CR1 (US04):** O Capataz anexa uma foto como evidência da conclusão diretamente pela câmera do dispositivo.
+- **CR1 (US05):** O Capataz grava e anexa um áudio curto explicando detalhes da execução sem precisar digitar.
+
+<center>
+  <p><strong>Figura X</strong> — Protótipo de Alta Fidelidade: Tela de Concluir Tarefa do Capataz (Mobile e Desktop)</p>
+  <img src="./assets/alta-fidelidade-capataz-concluir-tarefa.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Decisões de design:**
+
+- **Nome da tarefa** exibido em botão verde profundo na parte superior, permitindo que o Capataz confirme visualmente que está concluindo a tarefa correta antes de registrar qualquer evidência.
+- **Área de foto** com ícone de câmera centralizado e instrução "Tirar foto" ou "Clique ou arraste uma imagem", seguindo padrão já familiar ao usuário pelo uso cotidiano do celular.
+- **Campo de observações** em textarea com placeholder explicativo, posicionado ao lado da foto na versão desktop e abaixo na versão mobile, mantendo a hierarquia de informação consistente entre os dois layouts.
+- **Card de áudio** com botão de microfone circular em verde profundo e instrução "Grave seu áudio", permitindo que o Capataz registre detalhes complexos sem precisar digitar textos longos.
+- **Botões "Tirar Foto" e "Salvar"** posicionados lado a lado na base da tela, com alturas de 56px e diferenciação visual clara: "Tirar Foto" com borda verde e fundo off-white, "Salvar" preenchido em verde profundo.
+- **Sidebar na versão desktop** com navegação entre Início, Tarefas, Movimentação e Configurações, garantindo que o usuário possa navegar para outras seções sem perder o contexto da tarefa em andamento.
+
 ## 3.6. Modelagem do banco de dados (sprints 2 e 4)
 
 ### 3.6.1. Modelo Entidade-Relacionamento (ER) (sprint 2)
