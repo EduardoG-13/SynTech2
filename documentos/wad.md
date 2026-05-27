@@ -3121,7 +3121,7 @@ O dashboard é a tela inicial do Gerente e do Coordenador, oferecendo uma visão
 
 <center>
   <p><strong>Figura X</strong> — Protótipo de Alta Fidelidade: Dashboard do Gerente e Coordenador (Mobile e Desktop)</p>
-  <img src="./assets/alta-fidelidade-gerente-coordenador-dashboard.png.png" width="800"/>
+  <img src="./assets/alta-fidelidade-gerente-coordenador-dashboard.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
