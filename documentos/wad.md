@@ -2952,6 +2952,12 @@ A tela de criação de nova Ordem de Serviço centraliza todos os campos necess�
 - **CR2 (US01):** A seleção de equipe (Capataz ou Infra) determina os campos disponíveis no formulário, evitando preenchimento incorreto.
 - **CR3 (US01):** O Gerente pode anexar áudio e foto à O.S. para complementar as instruções enviadas ao Capataz.
 
+<center>
+  <p><strong>Figura X</strong> — Protótipo de Alta Fidelidade: Tela de Nova Ordem de Serviço do Gerente (Mobile e Desktop)</p>
+  <img src="./assets/alta-fidelidade-gerente-nova-os.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 
 ## 3.6. Modelagem do banco de dados (sprints 2 e 4)
 
