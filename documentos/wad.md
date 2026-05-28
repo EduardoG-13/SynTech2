@@ -1191,6 +1191,128 @@ A matriz a seguir consolida a rastreabilidade entre Requisitos Funcionais (RF, s
 
 **Rastreabilidade complementar:** os Requisitos Funcionais e Regras de Negócio referenciados nesta matriz estão detalhados nas seções 3.1.1 (RFs) e 3.1.2 (RNs). A arquitetura em camadas mencionada na coluna "Camada principal (CSR)" é descrita na seção 3.2.1, e os padrões de projeto que sustentam essa arquitetura (Repository, Outbox, DTO, etc.) constam na seção 3.2.7. A documentação completa de cada endpoint, com payloads de exemplo, body de requisição/resposta e códigos HTTP esperados, é apresentada na seção 3.7 (WebAPI e endpoints).
 
+#### Exemplos de payload dos endpoints implementados
+
+Os exemplos a seguir documentam request body, response body e códigos HTTP esperados para quatro endpoints já implementados em `src/backend/controllers/`. Foram escolhidos para cobrir diferentes personas (Gerente, Capataz) e fluxos representativos (criação simples, criação com geolocalização, criação com mídia em base64, criação com validação complexa).
+
+**1) `POST /tarefas` — Criar tarefa (US01, Gerente)**
+
+Request:
+
+```json
+{
+  "titulo": "Vistoria do piquete norte",
+  "descricao": "Verificar cerca elétrica e nível de bebedouro",
+  "retiro_id": "8c4f-...",
+  "capataz_id": "a1b2-...",
+  "data_execucao": "2026-05-28",
+  "gerente_id": "f9e8-..."
+}
+```
+
+Response `201 Created`:
+
+```json
+{
+  "id": "f1a2-...",
+  "mensagem": "Tarefa criada com sucesso",
+  "tarefa": { "id": "f1a2-...", "titulo": "Vistoria do piquete norte", "status": "pendente", "...": "..." }
+}
+```
+
+Códigos de erro: `400` (campos obrigatórios), `422` (violação de RN01), `500` (erro interno).
+
+**2) `POST /chamados` — Registrar alerta de infraestrutura (US06, Capataz)**
+
+Request:
+
+```json
+{
+  "tipo": "cerca_rompida",
+  "descricao": "Cerca norte do piquete 3 rompida em ~15m",
+  "capataz_id": "a1b2-...",
+  "retiro_id": "8c4f-...",
+  "latitude": -22.451823,
+  "longitude": -47.567914
+}
+```
+
+Response `201 Created`:
+
+```json
+{
+  "id": "c5d6-...",
+  "mensagem": "Alerta criado com sucesso",
+  "alerta": { "id": "c5d6-...", "tipo": "cerca_rompida", "...": "..." }
+}
+```
+
+Códigos de erro: `400` (campos obrigatórios — `tipo`, `capataz_id`, `retiro_id`, `latitude`, `longitude`), `500` (erro interno).
+
+**3) `POST /tarefas/:id/evidencias` — Anexar evidência a tarefa (US04, Capataz)**
+
+Request:
+
+```json
+{
+  "tipo": "FOTO",
+  "arquivo_base64": "iVBORw0KGgoAAAANSUhEUgAA...",
+  "capataz_id": "a1b2-...",
+  "geolocalizacao": { "latitude": -22.4518, "longitude": -47.5679 }
+}
+```
+
+Response `201 Created`:
+
+```json
+{
+  "mensagem": "Evidência salva com sucesso",
+  "evidencia_id": "e9f0-..."
+}
+```
+
+Códigos de erro: `400` (campos obrigatórios; `arquivo_base64` é dispensado apenas quando `tipo === "TEXTO"`), `404` (violação de RN05 — capataz não responsável pela tarefa), `500` (erro interno).
+
+**4) `POST /eventos-zootecnicos/obitos` — Registrar óbito de animal (US09, Capataz)**
+
+Request:
+
+```json
+{
+  "capataz_id": "a1b2-...",
+  "retiro_id": "8c4f-...",
+  "data": "2026-05-26",
+  "categoria": "bezerro_macho",
+  "quantidade": 1,
+  "identificacao_animal": "BRINCO-4471",
+  "causa_morte": "predação por onça",
+  "foto_base64": "iVBORw0KGgoAAAANSUhEUgAA...",
+  "geolocalizacao": { "latitude": -22.4518, "longitude": -47.5679 }
+}
+```
+
+Response `201 Created`:
+
+```json
+{
+  "mensagem": "Registro de óbito criado com sucesso",
+  "registro": { "id": "g7h8-...", "...": "..." }
+}
+```
+
+Response `400 Bad Request` (resposta real do controller quando faltam campos):
+
+```json
+{
+  "erro": "Campos obrigatórios não preenchidos",
+  "campos_faltantes": ["identificacao_animal", "foto_base64"]
+}
+```
+
+Códigos de erro: `400` (campos obrigatórios — validação RF013 com `campos_faltantes`), `422` (violação RF013 na camada Service), `500` (erro interno).
+
+Para a documentação completa de todos os endpoints (incluindo `GET /tarefas/hoje`, `PATCH /tarefas/:id/concluir`, `GET /painel-gerencial`, `POST /sincronizacao/lote` e `GET /exportacao/csv`), consulte a seção 3.7 (WebAPI e endpoints).
+
 ## 3.2. Arquitetura (sprints 1 a 5)
 
 ### 3.2.1. Diagrama de Arquitetura e Camadas (sprints 3 e 4)
@@ -1200,7 +1322,7 @@ O Sistema BrPec adota o padrão **Arquitetura em Camadas (Layered Architecture)*
 A solução é composta por **cinco camadas lógicas** no backend, implementadas em Node.js + Express.js, com persistência em PostgreSQL gerenciado pelo Supabase:
 
 <center>
-  <p><strong>Figura X</strong> — Diagrama de Arquitetura em Camadas do Sistema BrPec</p>
+  <p><strong>Figura 20</strong> — Diagrama de Arquitetura em Camadas do Sistema BrPec</p>
   <img src="./assets/diagramaArquitetura.png" width="800" alt="Diagrama da arquitetura em camadas Controller-Service-Repository do BrPec"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2583,7 +2705,7 @@ O Sistema BrPec aplica padrões de projeto motivados por **três restrições es
 A tabela a seguir consolida os seis padrões adotados, indicando para cada um a categoria GoF, a pasta/arquivo correspondente no repositório, a necessidade de negócio atendida e os princípios SOLID materializados. Os padrões com status "previsto" estão planejados para sprints posteriores e serão implementados conforme as funcionalidades correspondentes forem desenvolvidas.
 
 <center>
-  <p><strong>Quadro X</strong> — Padrões de projeto aplicados ao Sistema BrPec</p>
+  <p><strong>Quadro 20</strong> — Padrões de projeto aplicados ao Sistema BrPec</p>
 </center>
 
 | # | Padrão              | Categoria        | Localização no repositório                                  | Necessidade que atende                                  | SOLID    |
@@ -2626,6 +2748,57 @@ Os padrões 1, 2 e 4 já possuem implementação parcial no repositório, valida
 **Necessidade que atende:** existe uma diferença real entre o que o cliente envia, o que o banco persiste e o que a API devolve. Para a US01, o cliente envia `{titulo, retiro_id, prazo}`; o banco persiste `{id, titulo, retiro_id, autor_id, criado_em, sincronizado_em, deletado_em}` (Migration 003); e a resposta da API expõe `{id, titulo, retiro: {id, nome}, prazo, status}`, sem campos internos como `autor_id`. DTOs evitam que detalhes do schema vazem na API pública e protegem o backend de payloads mal formados, validando entrada na fronteira Controller → Service. O padrão segue a recomendação de Evans [33] de isolar o modelo de domínio da camada de apresentação.
 
 **Princípios SOLID:** **S** — separa "modelo de entrada da API" de "entidade de domínio"; **I** — clientes da API recebem apenas os campos que precisam, sem dependências desnecessárias.
+
+**Exemplo concreto — `POST /tarefas` (US01):** o caso real do endpoint implementado em `tarefaController.criarTarefa` ilustra como o padrão DTO opera nas três fronteiras (entrada da API, persistência, saída da API).
+
+`CriarTarefaDTO` (o que o cliente envia):
+
+```json
+{
+  "titulo": "Vistoria do piquete norte",
+  "descricao": "Verificar cerca elétrica e nível de bebedouro",
+  "retiro_id": "8c4f-...",
+  "capataz_id": "a1b2-...",
+  "data_execucao": "2026-05-28",
+  "gerente_id": "f9e8-..."
+}
+```
+
+Linha persistida em `tarefas` (Migration 003) — o que o banco efetivamente guarda, com campos internos adicionados pelo Service:
+
+```json
+{
+  "id": "f1a2-...",
+  "titulo": "Vistoria do piquete norte",
+  "descricao": "Verificar cerca elétrica e nível de bebedouro",
+  "retiro_id": "8c4f-...",
+  "capataz_id": "a1b2-...",
+  "gerente_id": "f9e8-...",
+  "data_execucao": "2026-05-28",
+  "status": "pendente",
+  "criado_em": "2026-05-26T21:00:00Z",
+  "atualizado_em": "2026-05-26T21:00:00Z",
+  "sincronizado_em": null,
+  "deletado_em": null
+}
+```
+
+`TarefaResponseDTO` (o que a API efetivamente devolve em `201 Created`):
+
+```json
+{
+  "id": "f1a2-...",
+  "mensagem": "Tarefa criada com sucesso",
+  "tarefa": {
+    "id": "f1a2-...",
+    "titulo": "Vistoria do piquete norte",
+    "status": "pendente",
+    "data_execucao": "2026-05-28"
+  }
+}
+```
+
+Note que o response **omite** campos internos como `criado_em`, `sincronizado_em` e `deletado_em` (relevantes só para o backend) e simplifica a estrutura para o consumidor da API. Esse é exatamente o papel do DTO: nenhum dos três representa "a tarefa" sozinho — cada um é a forma apropriada da entidade para sua fronteira específica. Exemplos completos de request/response dos demais endpoints encontram-se na seção 3.1.4.
 
 #### 4. Singleton *(criacional)*
 
