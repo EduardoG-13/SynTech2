@@ -1951,6 +1951,7 @@ classDiagram
             +String nome
             +String senha
             +Enum perfil
+            +UUID retiro_id
             +DateTime criadoEm
         }
         class TarefaModel {
@@ -1967,27 +1968,21 @@ classDiagram
             +Boolean sincronizada
         }
         class EvidenciaModel {
-            <<abstract>>
             +UUID id
             +UUID tarefa_id
+            +UUID alerta_id
+            +UUID movimentacao_id
             +Enum tipo
+            +String arquivoBase64
+            +String urlArquivo
+            +String geolocalizacao
+            +Integer duracaoSegundos
+            +String conteudo
+            +Integer tamanhoBytes
             +DateTime criadaEm
             +Boolean sincronizada
         }
-        class FotoModel {
-            +String urlArquivo
-            +Integer tamanhoBytes
-            +String geolocalizacao
-        }
-        class AudioModel {
-            +String urlArquivo
-            +Integer duracaoSegundos
-        }
-        class TextoComplementarModel {
-            +String conteudo
-        }
-        class EventoZootecnicoModel {
-            <<abstract>>
+        class MovimentacaoModel {
             +UUID id
             +UUID capataz_id
             +UUID retiro_id
@@ -1999,14 +1994,22 @@ classDiagram
             +UUID coordenador_id
             +DateTime criadoEm
         }
-        class RegistroNascimentoModel {
+        class NascimentoModel {
         }
-        class RegistroObitoModel {
+        class ObitoModel {
             +String identificacaoAnimal
             +String causaMorte
             +UUID foto_id
         }
-        class AlertaInfraestruturaModel {
+        class TransferenciaModel {
+            +UUID retiroOrigemId
+            +UUID retiroDestinoId
+        }
+        class CompravendaModel {
+            +Enum tipoNegocio
+            +Decimal valorFinanceiro
+        }
+        class AlertaModel {
             +UUID id
             +Enum tipo
             +String descricao
@@ -2018,6 +2021,7 @@ classDiagram
             +DateTime criadoEm
             +Boolean sincronizado
             +UUID foto_id
+            +UUID tecnico_id
         }
         class SincronizacaoModel {
             +UUID id
@@ -2046,11 +2050,10 @@ classDiagram
         }
     }
 
-    EvidenciaModel <|-- FotoModel
-    EvidenciaModel <|-- AudioModel
-    EvidenciaModel <|-- TextoComplementarModel
-    EventoZootecnicoModel <|-- RegistroNascimentoModel
-    EventoZootecnicoModel <|-- RegistroObitoModel
+    MovimentacaoModel <|-- NascimentoModel
+    MovimentacaoModel <|-- ObitoModel
+    MovimentacaoModel <|-- TransferenciaModel
+    MovimentacaoModel <|-- CompravendaModel
 
     %% ─────────────────────────────────────────
     %% CAMADA: REPOSITORY
