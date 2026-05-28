@@ -2443,11 +2443,7 @@ A **Inter** foi projetada especificamente para interfaces digitais, com alto des
 
 ### Escala tipográfica
 
-A escala tipográfica foi definida com base nos critérios de contraste e legibilidade
-das diretrizes WCAG 2.1, que recomendam tamanhos e pesos mínimos para garantir
-acessibilidade em diferentes contextos de uso [24]. Para ambientes externos com alta
-incidência de luz, recomenda-se priorizar pesos a partir de 500 (Medium) e tamanhos
-a partir de 16px no corpo do texto [27].
+A escala tipográfica foi definida com base nos critérios de contraste e legibilidade das diretrizes WCAG 2.1, que recomendam tamanhos e pesos mínimos para garantir acessibilidade em diferentes contextos de uso [24]. Para ambientes externos com alta incidência de luz, recomenda-se priorizar pesos a partir de 500 (Medium) e tamanhos a partir de 16px no corpo do texto [27].
 
 | Nível | Família | Peso | Tamanho | Uso |
 |---|---|---|---|---|
