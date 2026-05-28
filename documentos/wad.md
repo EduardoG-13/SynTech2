@@ -3121,7 +3121,7 @@ O dashboard é a tela inicial do Gerente e do Coordenador, oferecendo uma visão
 
 <center>
   <p><strong>Figura X</strong> — Protótipo de Alta Fidelidade: Dashboard do Gerente e Coordenador (Mobile e Desktop)</p>
-  <img src="./assets/alta-fidelidade-gerente-coordenador-dashboard.png.png" width="800"/>
+  <img src="./assets/alta-fidelidade-gerente-coordenador-dashboard.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -3134,6 +3134,31 @@ O dashboard é a tela inicial do Gerente e do Coordenador, oferecendo uma visão
 - **Cards numéricos** para "Alertas em aberto" e "Prioridades" com valor em verde profundo e tamanho de fonte generoso, garantindo identificação imediata dos indicadores mais críticos da operação.
 - **Avatar com foto real** do usuário logado no canto superior direito, substituindo as iniciais usadas nas demais telas e reforçando a identidade do gestor no painel executivo.
 - **Versão mobile** organiza os cards em lista vertical com dois itens por linha para os indicadores menores, mantendo a hierarquia de informação sem sacrificar a legibilidade em telas reduzidas.
+
+### 3.5.8. Tela de Boletas — Coordenador (US11 / US12)
+
+A tela de boletas é a interface principal do Coordenador para acesso e exportação das movimentações zootécnicas registradas pelos capatazes. A lista exibe os registros consolidados de forma clara e objetiva, com ícone de download posicionado à direita de cada item para exportação individual, eliminando a necessidade de redigitação manual dos dados em planilhas externas.
+
+**Critérios de aceite cobertos:**
+
+- **CR1 (US11):** O Coordenador visualiza em lista todas as movimentações reportadas pelos capatazes sob sua responsabilidade.
+- **CR1 (US12):** O Coordenador consegue exportar os registros de movimentação em formato Excel/CSV diretamente pela interface.
+- **CR2 (US12):** Cada boleta exibe informações suficientes para identificação do registro antes do download.
+
+<center>
+  <p><strong>Figura X</strong> — Protótipo de Alta Fidelidade: Tela de Lista de Boletas do Coordenador (Mobile e Desktop)</p>
+  <img src="./assets/alta-fidelidade-coordenador-boletas.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Decisões de design:**
+
+- **Sub-navegação "Painel / Boletas"** posicionada logo abaixo do cabeçalho, com o item ativo "Boletas" preenchido em verde profundo, permitindo alternância rápida entre a visão de painel e a lista de registros sem alterar a navegação principal.
+- **Cards de boleta** com duas linhas de texto em tons de cinza representando o título e o subtítulo do registro, e ícone de download em verde profundo posicionado à direita, mantendo a ação de exportação sempre visível sem sobrecarregar o layout.
+- **Lista em coluna única** em ambas as versões, priorizando a leitura sequencial dos registros e facilitando a localização de boletas específicas sem necessidade de grade ou tabela complexa.
+- **Sidebar na versão desktop** com navegação entre Início, Tarefas e Boletas, com o item ativo destacado em verde mais escuro, garantindo orientação espacial clara dentro do sistema.
+- **Avatar com foto real** do usuário logado no canto superior direito, mantendo consistência com o dashboard do Gerente e reforçando a identidade do Coordenador na interface.
+- **Configurações** acessíveis pelo ícone de engrenagem no rodapé da sidebar na versão desktop, mantendo a opção disponível sem ocupar espaço na área principal de conteúdo.
 
 ## 3.6. Modelagem do banco de dados (sprints 2 e 4)
 
