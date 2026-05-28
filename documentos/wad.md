@@ -2470,9 +2470,7 @@ A escala tipográfica foi definida com base nos critérios de contraste e legibi
 > Tamanho mínimo adotado: **12px**. Nenhum texto funcional da interface utiliza tamanho inferior a esse valor, garantindo legibilidade mesmo em dispositivos móveis sob luz solar direta [24][25].
 
 ### 3.4.3 Iconografia e imagens
-
-_posicione aqui imagens e textos contendo exemplos padronizados de ícones e imagens, com seus respectivos atributos de aplicação, utilizadas na solução_
-
+#### Iconografia
 A iconografia da solução utiliza a biblioteca **Phosphor Icons**, escolhida por seu traço generoso e alta legibilidade em telas mobile e web sob luz solar direta. Os ícones são aplicados exclusivamente nos estilos **Bold** e **Fill**, que apresentam melhor desempenho em condições de alta iluminância, onde traços finos tendem a desaparecer [27].
 
 De acordo com Nielsen [22], os ícones podem ser classificados em três categorias segundo seu grau de correspondência com o conceito que representam:
@@ -2486,7 +2484,7 @@ A biblioteca foi selecionada priorizando ícones de semelhança, categoria que a
 
 Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizadode forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduzerros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção do usuário pode estar dividida [28].
 
-#### Atributos de aplicação
+**Atributos de aplicação**
 
 | Imagem | Ícone | Tamanho | Uso |
 |---|---|---|---|
@@ -2508,6 +2506,20 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 | <img src="./assets/icones/boleta.png" width="40"/> | Note Pencil | 32px | Boletas |
 
 > Tamanho mínimo adotado: **24px**. Nenhum ícone funcional da interface utiliza tamanho inferior a esse valor, garantindo identificação visual mesmo em dispositivos móveis sob luz solar direta [25][27].
+
+---
+
+#### Imagens
+
+No guia de estilo, a seção de imagens define quais assets visuais estáticos fazem parte da identidade do produto e como devem ser aplicados. Diferente dos ícones, que são elementos funcionais da interface, como os da biblioteca Phosphor Icons, as imagens são representações visuais da marca em si [30].
+
+No caso desta solução, o único asset de imagem utilizado é o **logotipo da SynTech**, a plataforma web do projeto. Ele deve ser tratado como elemento protegido da identidade visual: sua proporção não deve ser alterada e sua aplicação se limita ao cabeçalho da plataforma, garantindo reconhecimento consistente da marca ao longo de toda a experiência do usuário.
+
+<center>
+  <p><strong>Figura 19</strong> - Logotipo Syntech</p>
+  <img src="./assets/syntech.png" width="800"/>
+  <p>Fonte: Próprios Autores.</p>
+</center>
 
 ## 3.5 Protótipo de alta fidelidade (sprint 3)
 
@@ -3256,6 +3268,8 @@ Industries and Competitors. New York: Free Press, 2008. ISBN 978-0-7432-7275-4.
 [28] BABICH, Nick. Principles of Typography in UI Design. UX Planet, 2016. Disponível em: https://uxplanet.org/principles-of-typography-in-ui-design-bc28f1f9666d. Acesso em: 19 maio 2026.
 
 [29] UX QUEST. Guia completo sobre paleta de cores para design de interface e UX. UX Quest, 2026. Disponível em: https://www.uxquest.com.br/blog/paleta-de-cores. Acesso em: 28 maio 2026.
+
+[30] SUA IMPRENSA. Guia de estilo da marca: o que é, como fazer e elementos essenciais. Sua Imprensa, 2025. Disponível em: https://suaimprensa.com.br/blog/guia-de-estilo-da-marca/. Acesso em: 28 maio 2026.
 
 # <a name="c9"></a>Anexos
 
