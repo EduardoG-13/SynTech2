@@ -428,9 +428,6 @@ Conseguir manter sua família e garantir educação para seus filhos. Além diss
 
 #### Familiaridade com Tecnologia [4]
 
-<center>
-  <p><strong>Tabela 1</strong> — Familiaridade com Tecnologia (João Pereira)</p>
-</center>
 
 | Aspecto                 | Nível / Situação                                                                      |
 | ----------------------- | ------------------------------------------------------------------------------------- |
@@ -440,6 +437,7 @@ Conseguir manter sua família e garantir educação para seus filhos. Além diss
 | Sistemas web            | Basic (DigComp) - acessa portais e e-mail, sem uso de plataformas integradas          |
 
 <center>
+  <p><strong>Tabela 1</strong> — Familiaridade com tecnologia </p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -523,9 +521,6 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 
 #### Familiaridade com Tecnologia [4]:
 
-<center>
-  <p><strong>Tabela 2</strong> — Familiaridade com Tecnologia (Marcos Cesar Filho)</p>
-</center>
 
 | Aspecto                 | Nível / Situação                                                               |
 | ----------------------- | ------------------------------------------------------------------------------ |
@@ -535,6 +530,7 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 | Sistemas web            | Basic (DigComp) - acessa e-mail e portais simples, sem dashboards ou sistemas  |
 
 <center>
+  <p><strong>Tabela 2</strong> — Familiaridade com tecnologia</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -623,9 +619,6 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 
 #### Familiaridade com Tecnologia [4]:
 
-<center>
-  <p><strong>Tabela 3</strong> — Familiaridade com Tecnologia (Gabriel Galdino)</p>
-</center>
 
 | Aspecto                  | Nível / Situação                                                                      |
 | ------------------------ | ------------------------------------------------------------------------------------- |
@@ -635,6 +628,7 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 | Sistemas web ou digitais | Abaixo do Basic - boletas são físicas e comunicação é verbal                          |
 
 <center>
+  <p><strong>Tabela 3</strong> — Familiaridade com tecnologia</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -671,9 +665,6 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
 
 User Stories são descrições concisas de uma funcionalidade do sistema sob a perspectiva do usuário final. Diferente de requisitos técnicos tradicionais, elas focam no valor de negócio e na necessidade do usuário, servindo como ponto de partida para a implementação técnica. [12]
 
-<center>
-  <p><strong>Quadro 1</strong> — User Story 01</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -684,6 +675,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 2** | CR2: Dado que a tarefa foi criada, quando o sistema sincronizar, então ela deve ficar disponível para os Capatazes responsáveis pelo retiro                                              |
 
 <center>
+  <p><strong>Tabela 4</strong> — User Story 01</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -701,9 +693,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 
 **Testável:** Possível validar criação e vínculo com retiro
 
-<center>
-  <p><strong> Quadro 2 </strong> — User Story 02</p>
-</center>
+
 
 | Campo                    | Descrição                                                                                                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -715,6 +705,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3** | CR3: Dado que Gabriel acessa as tarefas, quando exibidas, então devem estar organizadas de forma simples e de fácil entendimento                           |
 
 <center>
+  <p><strong>Tabela 5</strong> — User Story 02</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -734,10 +725,6 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 
 ---
 
-<center>
-  <p><strong>Quadro 3</strong> — User Story 03</p>
-</center>
-
 | Campo                    | Descrição                                                                                                                                           |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Identificação**        | US03                                                                                                                                                |
@@ -748,6 +735,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3** | CR3: Dado que Gabriel interage com a tarefa, quando marcar como concluída, então a ação deve ser simples, com botão visível e de fácil entendimento |
 
 <center>
+  <p><strong>Tabela 6</strong> — User Story 03</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -767,9 +755,6 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 
 ---
 
-<center>
-  <p><strong>Quadro 4</strong> — User Story 04</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -781,6 +766,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3** | CR3: Dado que Gabriel utiliza a funcionalidade, quando anexar a foto, então o processo deve ser simples e intuitivo                                |
 
 <center>
+  <p><strong>Tabela 7</strong> — User Story 04</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -800,10 +786,6 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 
 ---
 
-<center>
-  <p><strong>Quadro 5</strong> — User Story 05</p>
-</center>
-
 | Campo                    | Descrição                                                                                                                                    |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Identificação**        | US05                                                                                                                                         |
@@ -814,6 +796,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3** | CR3: Dado que o áudio foi anexado, quando o supervisor acessar a tarefa, então deve conseguir reproduzir o áudio                             |
 
 <center>
+  <p><strong>Tabela 8</strong> — User Story 05</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -833,9 +816,6 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 
 ---
 
-<center>
-  <p><strong>Quadro 6</strong> — User Story 06</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                              |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -848,14 +828,12 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 4** | CR4: Dado que o alerta foi criado, quando o supervisor acessar o sistema, então deve visualizar o novo chamado                         |
 
 <center>
+  <p><strong>Tabela 9</strong> — User Story 06</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 ---
 
-<center>
-  <p><strong>Quadro 7</strong> — User Story 07</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                                                                                                                                                  |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -867,14 +845,12 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3** | CR3: Dado que um usuário com perfil diferente de Gerente tenta acessar o painel de acompanhamento, quando a requisição é feita, então o sistema nega o acesso e redireciona para a interface correspondente ao seu perfil                                  |
 
 <center>
+  <p><strong>Tabela 10</strong> — User Story 07</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 ---
 
-<center>
-  <p><strong>Quadro 8</strong> — User Story 08</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                                                                                                                                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -887,14 +863,12 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critérios INVEST**     | Não se aplica (US08 é de prioridade secundária).                                                                                                                                                                                                                                                          |
 
 <center>
+  <p><strong>Tabela 11</strong> — User Story 08</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 ---
 
-<center>
-  <p><strong>Quadro 9</strong> — User Story 09</p>
-</center>
 
 | Campo                     | Descrição                                                                                                                                                                                                                                                                                                                                       |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -906,11 +880,13 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3:** | Dado que o registro foi persistido localmente, quando a conectividade com a rede de satélite for restabelecida nos horários de cobertura, então a sincronização com o servidor central deve ser executada de forma assíncrona, e o status do relatório deve ser alterado para "Sincronizado".                                                   |
 | **Critérios INVEST**      | Não se aplica (US09 é de prioridade secundária).                                                                                                                                                                                                                                                                                                |
 
+<center>
+  <p><strong>Tabela 12</strong> — User Story 09</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 ---
 
-<center>
-  <p><strong>Quadro 10</strong> — User Story 10</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                                                                                                      |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -923,14 +899,12 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critérios INVEST**     | Não se aplica (US10 é de prioridade secundária).                                                                                                                                                               |
 
 <center>
+  <p><strong>Tabela 13</strong> — User Story 10</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 ---
 
-<center>
-  <p><strong>Quadro 11</strong> — User Story 11</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                                                                                                                                                                                                                    |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -942,6 +916,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3** | CR3: Dado que Marcos seleciona uma movimentação específica, quando acessar os detalhes, então o sistema deve exibir todas as informações do registro, incluindo evidências fotográficas anexadas pelo Capataz, quando aplicável                                                                                               |
 
 <center>
+  <p><strong>Tabela 14</strong> — User Story 11</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -961,9 +936,6 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 
 ---
 
-<center>
-  <p><strong>Quadro 12</strong> — User Story 12</p>
-</center>
 
 | Campo                    | Descrição                                                                                                                                                                                                                                                                                                               |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -975,6 +947,7 @@ User Stories são descrições concisas de uma funcionalidade do sistema sob a p
 | **Critério de Aceite 3** | CR3: Dado que Marcos deseja exportar dados de um período específico, quando aplicar filtros de data e retiro antes da exportação, então o arquivo gerado deve conter exclusivamente os registros correspondentes ao período e retiro selecionados                                                                        |
 
 <center>
+  <p><strong>Tabela 15</strong> — User Story 12</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1012,9 +985,6 @@ O sistema a ser desenvolvido abrange a modernização do fluxo de informações 
 
 Os Requisitos Funcionais (RF) determinam a competência computacional e os serviços intrínsecos que devem compor a governança operacional do sistema modelado. A especificação formal destas asserções delineia a delimitação funcional entre dados, entrada, transformação interativa e respostas previstas frente aos perfis autorizados de acesso.
 
-<center>
-  <p><strong>Tabela 4</strong> — Requisitos Funcionais</p>
-</center>
 
 | ID    | Descrição                                                                                                                                                                                                                                                             | Prioridade | Status    |
 | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------- |
@@ -1035,6 +1005,7 @@ Os Requisitos Funcionais (RF) determinam a competência computacional e os servi
 | RF015 | O sistema deve permitir que o Coordenador exporte os dados consolidados das movimentações zootécnicas e do status operacional em arquivos formatados como planilha eletrônica (Excel/CSV)                                                                             | Alta       | Planejado |
 
 <center>
+  <p><strong>Tabela 16</strong> — Requisitos Funcionais</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1042,9 +1013,6 @@ Os Requisitos Funcionais (RF) determinam a competência computacional e os servi
 
 As Regras de Negócio (RN) balizam as lógicas limitantes, condições contingenciais e políticas mandatórias herdadas das rotinas produtivas e normativas da instituição parceira. A formalização axiomática das regras impõe que a instrumentação sistêmica, embora escalável em seu código subjacente, reproduza em escopo fechado a exatidão empírica da governança operacional do manejo bovino atual.
 
-<center>
-  <p><strong>Tabela 5</strong> — Regras de Negócio</p>
-</center>
 
 | ID   | Descrição                                                                                                                                                                  | RF associado        |
 | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- |
@@ -1078,6 +1046,7 @@ As Regras de Negócio (RN) balizam as lógicas limitantes, condições contingen
 | RN28 | A exportação de relatórios pelo Coordenador deve refletir estritamente os dados que já foram submetidos a validação estrutural no banco de dados central                   | RF015               |
 
 <center>
+  <p><strong>Tabela 17</strong> — Regras de Negócio</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1087,9 +1056,6 @@ Os Requisitos Não Funcionais (RNF) definem os critérios de qualidade da aplica
 
 No contexto do nosso projeto para a BrPec, esses requisitos são fundamentais, pois o sistema será operado no campo, muitas vezes sem internet, sob forte incidência solar e por usuários (como o Capataz) que necessitam de agilidade. Para garantir a qualidade da solução, nossos requisitos foram estruturados de acordo com os 8 eixos da norma ISO/IEC 25010, detalhados na tabela e explicados a seguir.
 
-<center>
-  <p><strong>Tabela 6</strong> — Requisitos Não Funcionais</p>
-</center>
 
 | Eixo                                     | Requisito                       | Métrica / Critério                                                                              | Como atendido                                                                                                                  |
 | ---------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
@@ -1103,6 +1069,7 @@ No contexto do nosso projeto para a BrPec, esses requisitos são fundamentais, p
 | ORG — Organizacionais (Compatibilidade)  | Conformidade de Exportação      | Os arquivos gerados devem ser validados pelo esquema RFC 4180 (CSV) para leitura em Excel/BI.   | Biblioteca de exportação de dados configurada para padrão Windows-1252 (comum no agronegócio para evitar erros de acentuação). |
 
 <center>
+  <p><strong>Tabela 18</strong> — Requisitos Não Funcionais</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1153,7 +1120,7 @@ No contexto do nosso projeto para a BrPec, esses requisitos são fundamentais, p
 A matriz a seguir consolida a rastreabilidade entre Requisitos Funcionais (RF, seção 3.1.1), Regras de Negócio (RN, seção 3.1.2) e os endpoints REST que materializam cada requisito no backend do BrPec. Os endpoints listados refletem a implementação real em `src/backend/routes/`, validada com os cards #191, #192, #203 e #211. A coluna "Camada principal (CSR)" indica o caminho da requisição através da arquitetura em camadas descrita na seção 3.2.1.
 
 <center>
-  <p><strong>Tabela 7</strong> — Matriz RF → RN → Endpoint</p>
+  <p><strong>Tabela 19</strong> — Matriz RF → RN → Endpoint</p>
 </center>
 
 | RF    | RN associada(s)  | Endpoint / Consulta              | Método        | Camada principal (CSR)                                              | Operação Esperada                                                |
@@ -1321,12 +1288,11 @@ O Sistema BrPec adota o padrão **Arquitetura em Camadas (Layered Architecture)*
 A solução é composta por **cinco camadas lógicas** no backend, implementadas em Node.js + Express.js, com persistência em PostgreSQL gerenciado pelo Supabase:
 
 <center>
-  <p><strong>Figura 20</strong> — Diagrama de Arquitetura em Camadas do Sistema BrPec</p>
+  <p><strong>Figura 8</strong> — Diagrama de Arquitetura em Camadas do Sistema BrPec</p>
   <img src="./assets/diagramaArquitetura.png" width="800" alt="Diagrama da arquitetura em camadas Controller-Service-Repository do BrPec"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<!-- TODO sprint 3/4: gerar PNG em g03/documentos/assets/diagramaArquitetura.png -->
 
 #### Camadas e suas responsabilidades
 
@@ -1374,6 +1340,11 @@ Cada camada conhece apenas a imediatamente inferior — uma Route não chama um 
 | Repository  | `src/backend/repositories/`   | Acesso a dados (SQL / Supabase client)            | Driver do banco | `repositories/tarefasRepository.js` (planejado)          |
 | Model       | `src/backend/models/`         | Representar entidade de domínio                   | —               | `models/Tarefa.js` (planejado)                           |
 
+<center>
+  <p><strong>Tabela 20</strong> — Arquitetura</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 #### Exemplo de fluxo end-to-end — US01 "Criar Tarefa"
 
 Para ilustrar como uma requisição atravessa as camadas, considere a **US01** (seção 2.3): "Como Gerente geral, posso criar tarefas e atribuí-las a um retiro específico". O fluxo previsto para a requisição `POST /tarefas` é:
@@ -1410,6 +1381,11 @@ A arquitetura descrita acima é a **arquitetura-alvo** do projeto. O estado da i
 | Repositories | Pasta criada, implementação prevista para a sprint 3                                  |
 | Models       | Pasta criada, implementação prevista para a sprint 3                                  |
 
+<center>
+  <p><strong>Tabela 21</strong> — Status de implementação da arquitetura</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 A configuração do banco (`src/backend/config/database.ts`) já está preparada e em uso pela camada Repository implementada nesta sprint.
 
 ### 3.2.2. Diagrama de Casos de Uso (sprint 1)
@@ -1419,7 +1395,7 @@ Os casos de uso do Sistema BrPec foram definidos com o objetivo de representar, 
 Cada caso de uso está associado a um requisito funcional (RF), garantindo rastreabilidade entre as necessidades identificadas e as funcionalidades implementadas. A seguir, são detalhados os principais casos de uso do sistema.
 
 <center>
-  <p><strong>Figura 8</strong> — Diagrama de Caso de Uso aplicado à BrPec Agropecuária</p>
+  <p><strong>Figura 9</strong> — Diagrama de Caso de Uso aplicado à BrPec Agropecuária</p>
   <img src="../assets/diagramaDeUso.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -1435,11 +1411,10 @@ UC01 — Planejar tarefas (RF001)
 
 <center>
   <p><strong>Quadro 13</strong> — Caso de Uso UC01</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC02 — Distribuir tarefas por retiro (RF002)
 | Campo | Descrição |
@@ -1452,11 +1427,10 @@ UC02 — Distribuir tarefas por retiro (RF002)
 
 <center>
   <p><strong>Quadro 14</strong> — Caso de Uso UC02</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC03 — Visualizar tarefas do dia (RF003)
 | Campo | Descrição |
@@ -1469,11 +1443,10 @@ UC03 — Visualizar tarefas do dia (RF003)
 
 <center>
   <p><strong>Quadro 15</strong> — Caso de Uso UC03</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC04 — Registrar execução de tarefa (RF004)
 | Campo | Descrição |
@@ -1486,11 +1459,10 @@ UC04 — Registrar execução de tarefa (RF004)
 
 <center>
   <p><strong>Quadro 16</strong> — Caso de Uso UC04</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC05 — Anexar evidência (RF005)
 | Campo | Descrição |
@@ -1503,11 +1475,10 @@ UC05 — Anexar evidência (RF005)
 
 <center>
   <p><strong>Quadro 17</strong> — Caso de Uso UC05</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC06 — Registrar movimentação (RF006)
 | Campo | Descrição |
@@ -1520,11 +1491,10 @@ UC06 — Registrar movimentação (RF006)
 
 <center>
   <p><strong>Quadro 18</strong> — Caso de Uso UC06</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC07 — Validar movimentações (RF007)
 | Campo | Descrição |
@@ -1537,11 +1507,10 @@ UC07 — Validar movimentações (RF007)
 
 <center>
   <p><strong>Quadro 19</strong> — Caso de Uso UC07</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC08 — Consultar dados consolidados (RF008)
 | Campo | Descrição |
@@ -1554,11 +1523,10 @@ UC08 — Consultar dados consolidados (RF008)
 
 <center>
   <p><strong>Quadro 20</strong> — Caso de Uso UC08</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 UC09 — Exportar relatórios (RF009)
 | Campo | Descrição |
@@ -1571,11 +1539,9 @@ UC09 — Exportar relatórios (RF009)
 
 <center>
   <p><strong>Quadro 21</strong> — Caso de Uso UC09</p>
-</center>
-
-<center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
 
 ### 3.2.3. Diagrama de Classes do Dominio (sprint 2) 
 
@@ -1615,8 +1581,8 @@ entre as decisões de modelagem e os demais artefatos de engenharia de requisito
 projeto.
 
 <center>
-  <p><strong>Figura 9</strong> — Diagrama de Classes do Domínio do Sistema BrPec</p>
-  <img src="./assets/DiagramaClasses.jpeg" width="800"/>
+  <p><strong>Figura 10</strong> — Diagrama de Classes do Domínio do Sistema BrPec</p>
+  <img src="./assets/diagramaClasses.jpeg" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1665,9 +1631,6 @@ em que o diagrama é produzido.
 
 A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`, que centraliza os atributos de identificação e autenticação comuns a todos os perfis. As subclasses concretas herdam esses atributos e estendem o comportamento de acordo com as responsabilidades de cada ator, conforme modelado nos casos de uso UC01 a UC09.
 
-<center>
-  <p><strong>Tabela 8</strong> — Atributos da Classe <em>Usuario</em> (superclasse abstrata)</p>
-</center>
 
 | Atributo | Tipo     | Obrigatório | Descrição                                                               |
 | -------- | -------- | ----------- | ----------------------------------------------------------------------- |
@@ -1678,12 +1641,11 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
 | criadoEm | DateTime | Sim         | Timestamp de criação do registro, gerado pelo sistema                   |
 
 <center>
+  <p><strong>Tabela 31</strong> — Atributos da classe Usuario</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-  <p><strong>Tabela 9</strong> — Atributos e Métodos da Classe <em>Gerente</em></p>
-</center>
+---
 
 | Elemento             | Tipo/Retorno | Descrição                                                           |
 | -------------------- | ------------ | ------------------------------------------------------------------- |
@@ -1695,12 +1657,11 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
 | visualizarAlertas()  | void         | Acessa os alertas de infraestrutura abertos pelos Capatazes (RF006) |
 
 <center>
+  <p><strong>Tabela 32</strong> — Métodos da classe Gerente</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-  <p><strong>Tabela 10</strong> — Atributos e Métodos da Classe <em>Coordenador</em></p>
-</center>
+---
 
 | Elemento                  | Tipo/Retorno             | Descrição                                                                          |
 | ------------------------- | ------------------------ | ---------------------------------------------------------------------------------- |
@@ -1710,12 +1671,11 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
 | exportarRelatorio()       | Exportacao               | Gera e disponibiliza arquivo CSV/XLSX com os dados consolidados (RF015)            |
 
 <center>
+  <p><strong>Tabela 33</strong> — Métodos da classe Coordenador</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-  <p><strong>Tabela 11</strong> — Atributos e Métodos da Classe <em>Capataz</em></p>
-</center>
+---
 
 | Elemento                    | Tipo/Retorno         | Descrição                                                                               |
 | --------------------------- | -------------------- | --------------------------------------------------------------------------------------- |
@@ -1727,6 +1687,7 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
 | registrarEventoZootecnico() | EventoZootecnico     | Preenche e persiste localmente um evento de nascimento ou óbito (RF008, RF009)          |
 
 <center>
+  <p><strong>Tabela 34</strong> — Métodos da classe Capataz</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1734,9 +1695,6 @@ A hierarquia de usuários é fundamentada em uma superclasse abstrata `Usuario`,
 
 Essa camada concentra as entidades que sustentam o fluxo principal de trabalho do sistema: o planejamento e a distribuição de tarefas pelo Gerente, a execução e o reporte pelo Capataz e a supervisão pelo Coordenador.
 
-<center>
-  <p><strong>Tabela 12</strong> — Atributos da Classe <em>Retiro</em></p>
-</center>
 
 | Atributo       | Tipo     | Obrigatório | Descrição                                                    |
 | -------------- | -------- | ----------- | ------------------------------------------------------------ |
@@ -1747,12 +1705,12 @@ Essa camada concentra as entidades que sustentam o fluxo principal de trabalho d
 | criadoEm       | DateTime | Sim         | Timestamp de cadastro do retiro no sistema                   |
 
 <center>
+  <p><strong>Tabela 35</strong> — Atributos da classe Retiro</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-  <p><strong>Tabela 13</strong> — Atributos da Classe <em>Tarefa</em></p>
-</center>
+---
+
 
 | Atributo     | Tipo     | Obrigatório | Descrição                                                                         |
 | ------------ | -------- | ----------- | --------------------------------------------------------------------------------- |
@@ -1769,14 +1727,12 @@ Essa camada concentra as entidades que sustentam o fluxo principal de trabalho d
 | sincronizada | Boolean  | Sim         | Indica se o registro já foi transmitido ao servidor central (RF010)               |
 
 <center>
+  <p><strong>Tabela 36</strong> — Atributos da classe Tarefa</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 A classe `Evidencia` é modelada como abstrata por reunir o comportamento comum às três formas de comprovação da execução de tarefas previstas no sistema — foto, áudio e texto —, sem que nenhuma instância de `Evidencia` pura faça sentido no domínio. Cada subclasse concreta especializa os atributos de acordo com o meio de registro.
 
-<center>
-  <p><strong>Tabela 14</strong> — Atributos da Classe Abstrata <em>Evidencia</em> e Subclasses</p>
-</center>
 
 | Classe                | Atributo        | Tipo     | Obrigatório | Descrição                                                         |
 | --------------------- | --------------- | -------- | ----------- | ----------------------------------------------------------------- |
@@ -1793,12 +1749,11 @@ A classe `Evidencia` é modelada como abstrata por reunir o comportamento comum 
 | **TextoComplementar** | conteudo        | String   | Sim         | Conteúdo textual inserido pelo Capataz como complemento da tarefa |
 
 <center>
+  <p><strong>Tabela 37</strong> — Atributos da classe Evidencia</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-  <p><strong>Tabela 15</strong> — Atributos da Classe <em>AlertaInfraestrutura</em></p>
-</center>
+---
 
 | Atributo     | Tipo     | Obrigatório | Descrição                                                                     |
 | ------------ | -------- | ----------- | ----------------------------------------------------------------------------- |
@@ -1815,16 +1770,16 @@ A classe `Evidencia` é modelada como abstrata por reunir o comportamento comum 
 | foto_id      | UUID     | Não         | Chave estrangeira opcional para uma Foto associada ao chamado                 |
 
 <center>
+  <p><strong>Tabela 38</strong> — Atributos da classe AlertaInfraestrutura</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+---
 
 **Camada Zootécnica e de Controle**
 
 Essa camada concentra os registros de eventos do rebanho e as entidades de suporte à operação offline e à geração de relatórios. A classe `EventoZootecnico` é modelada como abstrata pelo mesmo princípio aplicado a `Evidencia`: nascimentos e óbitos compartilham atributos estruturais comuns, mas possuem campos obrigatórios e regras de validação distintos, justificando a especialização em subclasses concretas.
 
-<center>
-  <p><strong>Tabela 16</strong> — Atributos da Classe Abstrata <em>EventoZootecnico</em> e Subclasses</p>
-</center>
 
 | Classe                 | Atributo                     | Tipo     | Obrigatório | Descrição                                                                                |
 | ---------------------- | ---------------------------- | -------- | ----------- | ---------------------------------------------------------------------------------------- |
@@ -1844,12 +1799,12 @@ Essa camada concentra os registros de eventos do rebanho e as entidades de supor
 | **RegistroObito**      | foto_id                      | UUID     | Sim         | Chave estrangeira para a Foto obrigatória da carcaça, exigida para auditoria (US09, CR2) |
 
 <center>
+  <p><strong>Tabela 39</strong> — Atributos da classe EventoZootecnico</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-  <p><strong>Tabela 17</strong> — Atributos da Classe <em>Sincronizacao</em></p>
-</center>
+--- 
+
 
 | Atributo        | Tipo     | Obrigatório | Descrição                                                                           |
 | --------------- | -------- | ----------- | ----------------------------------------------------------------------------------- |
@@ -1862,12 +1817,11 @@ Essa camada concentra os registros de eventos do rebanho e as entidades de supor
 | criadaEm        | DateTime | Sim         | Timestamp de criação do registro de controle, gerado no momento do salvamento local |
 
 <center>
+  <p><strong>Tabela 40</strong> — Atributos da classe Sincronizacao</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-<center>
-  <p><strong>Tabela 18</strong> — Atributos da Classe <em>Exportacao</em></p>
-</center>
+---
 
 | Atributo         | Tipo     | Obrigatório | Descrição                                                                     |
 | ---------------- | -------- | ----------- | ----------------------------------------------------------------------------- |
@@ -1880,6 +1834,7 @@ Essa camada concentra os registros de eventos do rebanho e as entidades de supor
 | geradaEm         | DateTime | Sim         | Timestamp de geração do arquivo, registrado automaticamente pelo sistema      |
 
 <center>
+  <p><strong>Tabela 41</strong> — Atributos da classe Exportacao</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1887,9 +1842,6 @@ Essa camada concentra os registros de eventos do rebanho e as entidades de supor
 
 A Tabela 19 consolida todos os relacionamentos modelados no diagrama, com seus tipos UML formais e as multiplicidades em cada extremidade, garantindo a rastreabilidade com os requisitos e regras de negócio que os originaram.
 
-<center>
-  <p><strong>Tabela 19</strong> — Síntese dos Relacionamentos do Diagrama de Classes</p>
-</center>
 
 | Classe Origem        | Tipo UML            | Classe Destino       | Multiplicidade | Rastreabilidade    |
 | -------------------- | ------------------- | -------------------- | -------------- | ------------------ |
@@ -1921,6 +1873,7 @@ A Tabela 19 consolida todos os relacionamentos modelados no diagrama, com seus t
 | Sincronizacao        | Dependência (- - →) | EventoZootecnico     | 1 para 1       | RF010, RF012       |
 
 <center>
+  <p><strong>Tabela 42</strong> — Síntese de Relacionamentos</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1935,7 +1888,7 @@ Cada camada possui responsabilidade única e bem delimitada [15][16]:
 - **Repository:** abstrai o acesso à camada de persistência (SQLite no servidor), expondo métodos de consulta e escrita ao Service por meio de uma interface uniforme.
 - **Model:** representa as entidades persistidas no banco de dados (tabelas SQLite), correspondendo às classes do domínio com seus atributos e tipos de dado.
 
-O diagrama a seguir utiliza a notação UML 2.5.1 [14], com dependências de uso (`..>`) entre Controller → Service e Service → Repository, e associações de composição entre Repository e os Models correspondentes. As classes de mesmo domínio funcional são agrupadas por módulo: **Autenticação**, **Tarefas**, **Eventos Zootécnicos**, **Alertas de Infraestrutura**, **Sincronização** e **Exportação**.
+O diagrama a seguir utiliza a notação UML 2.5.1 [14], com dependências de uso (`..>`) entre Controller → Service e Service → Repository, e associações de composição entre Repository e os Models correspondentes. As classes de mesmo domínio funcional são agrupadas por módulo: **Autenticação**, **Tarefas**, **Eventos Zootécnicos**, **Alertas de Infraestrutura**, **Sincronização** e **Exportação**. 
 
 ```mermaid
 classDiagram
@@ -1945,70 +1898,43 @@ classDiagram
     %% CAMADA: MODEL
     %% ─────────────────────────────────────────
     namespace Model {
-        class UsuarioModel {
+        class Usuario {
             +UUID id
             +String nome
             +String senha
             +Enum perfil
             +UUID retiro_id
-            +DateTime criadoEm
+            +DateTime criado_em
         }
-        class TarefaModel {
+        class Tarefa {
             +UUID id
             +String titulo
             +String descricao
             +Enum status
-            +Date dataExecucao
+            +Date data_execucao
             +UUID retiro_id
             +UUID capataz_id
             +UUID gerente_id
-            +DateTime criadaEm
-            +DateTime concluidaEm
+            +DateTime criada_em
+            +DateTime concluida_em
             +Boolean sincronizada
         }
-        class EvidenciaModel {
+        class Evidencia {
             +UUID id
             +UUID tarefa_id
             +UUID alerta_id
             +UUID movimentacao_id
             +Enum tipo
-            +String arquivoBase64
-            +String urlArquivo
+            +String arquivo_base64
+            +String url_arquivo
             +String geolocalizacao
-            +Integer duracaoSegundos
+            +Integer duracao_segundos
             +String conteudo
-            +Integer tamanhoBytes
-            +DateTime criadaEm
+            +Integer tamanho_bytes
+            +DateTime criada_em
             +Boolean sincronizada
         }
-        class MovimentacaoModel {
-            +UUID id
-            +UUID capataz_id
-            +UUID retiro_id
-            +Date data
-            +String categoria
-            +Integer quantidade
-            +Boolean sincronizado
-            +Boolean validado
-            +UUID coordenador_id
-            +DateTime criadoEm
-        }
-        class NascimentoModel {
-        }
-        class ObitoModel {
-            +String identificacaoAnimal
-            +String causaMorte
-            +UUID foto_id
-        }
-        class TransferenciaModel {
-            +UUID retiroOrigemId
-            +UUID retiroDestinoId
-        }
-        class CompravendaModel {
-            +Enum tipoNegocio
-            +Decimal valorFinanceiro
-        }
-        class AlertaModel {
+        class Alerta {
             +UUID id
             +Enum tipo
             +String descricao
@@ -2017,170 +1943,208 @@ classDiagram
             +UUID retiro_id
             +Decimal latitude
             +Decimal longitude
-            +DateTime criadoEm
+            +DateTime criado_em
             +Boolean sincronizado
             +UUID foto_id
             +UUID tecnico_id
         }
-        class SincronizacaoModel {
+        class MovimentacaoBase {
             +UUID id
-            +String entidadeTipo
-            +UUID entidadeId
-            +Enum statusEnvio
-            +Integer tentativas
-            +DateTime ultimaTentativa
-            +DateTime criadaEm
-        }
-        class ExportacaoModel {
-            +UUID id
+            +UUID capataz_id
+            +UUID retiro_id
+            +Date data
+            +Enum categoria
+            +Integer quantidade
+            +Boolean sincronizado
+            +Boolean validado
             +UUID coordenador_id
-            +Enum formato
-            +UUID filtroRetiro
-            +Date filtroDataInicio
-            +Date filtroDataFim
-            +DateTime geradaEm
+            +DateTime criado_em
         }
-        class RetiroModel {
+        class Nascimento {
+        }
+        class Obito {
+            +String identificacao_animal
+            +String causa_morte
+            +UUID foto_id
+        }
+        class Transferencia {
+            +UUID retiro_origem_id
+            +UUID retiro_destino_id
+        }
+        class Compravenda {
+            +Enum tipo_negocio
+            +Decimal valor_financeiro
+        }
+        class Sincronizacao {
+            +UUID id
+            +String entidade_tipo
+            +UUID entidade_id
+            +Enum status_envio
+            +Integer tentativas
+            +DateTime ultima_tentativa
+            +DateTime criada_em
+        }
+        class Retiro {
             +UUID id
             +String nome
             +String localizacao
             +UUID coordenador_id
-            +DateTime criadoEm
+            +DateTime criado_em
+        }
+        class Exportacao {
+            +UUID id
+            +UUID coordenador_id
+            +Enum formato
+            +UUID filtro_retiro
+            +Date filtro_data_inicio
+            +Date filtro_data_fim
+            +DateTime gerada_em
         }
     }
 
-    MovimentacaoModel <|-- NascimentoModel
-    MovimentacaoModel <|-- ObitoModel
-    MovimentacaoModel <|-- TransferenciaModel
-    MovimentacaoModel <|-- CompravendaModel
+    MovimentacaoBase <|-- Nascimento
+    MovimentacaoBase <|-- Obito
+    MovimentacaoBase <|-- Transferencia
+    MovimentacaoBase <|-- Compravenda
 
     %% ─────────────────────────────────────────
     %% CAMADA: REPOSITORY
     %% ─────────────────────────────────────────
     namespace Repository {
         class UsuarioRepository {
-            +buscarPorId(id) UsuarioModel
+            +buscarPorId(id) Usuario
         }
         class TarefaRepository {
-            +criar(dados) TarefaModel
-            +buscarPorId(id) TarefaModel
-            +buscarTarefasHoje(capatazId, data) List~TarefaModel~
-            +concluir(id, capatazId, dataConclusao) TarefaModel
-            +salvarEvidencia(tarefaId, tipo, arquivoBase64, geolocalizacao) UUID
+            +criar(dados) Tarefa
+            +buscarPorId(id) Tarefa
+            +buscarTarefasHoje(capataz_id, data) Tarefa[]
+            +concluir(id, capataz_id, data_conclusao) Tarefa
+            +salvarEvidencia(tarefa_id, tipo, arquivo_base64, geolocalizacao) UUID
         }
         class AlertaRepository {
-            +criar(dados) AlertaModel
-            +buscarPorId(id) AlertaModel
+            +criar(alerta) Alerta
+            +buscarPorId(id) Alerta
         }
         class EventoRepository {
-            +criarNascimento(dados) MovimentacaoModel
-            +criarObito(dados) MovimentacaoModel
-            +listarTodos(filtros) List~MovimentacaoModel~
-            +buscarMovimentacaoPorId(id) MovimentacaoModel
-        }
-        class SincronizacaoRepository {
-            +registrar(entidadeTipo, entidadeId, statusEnvio) UUID
-            +inserirTarefa(dados) UUID
-            +inserirAlerta(dados) UUID
-            +inserirMovimentacao(dados) UUID
-            +inserirEvidencia(dados) UUID
+            +criarNascimento(evento) MovimentacaoBase
+            +criarObito(evento) Object
+            +listarTodos(filtros) Object
+            +buscarMovimentacaoPorId(id) MovimentacaoBase
         }
         class ExportacaoRepository {
-            +consultarMovimentacoesConsolidadas(filtros) List~Object~
-            +registrarExportacao(coordenadorId, formato, filtros) UUID
+            +consultarMovimentacoesConsolidadas(filtros) Array
+            +registrarExportacao(coordenador_id, formato, filtro_retiro, filtro_data_inicio, filtro_data_fim) UUID
+        }
+        class HealthRepository {
+            +verificarConexao() Object
         }
         class PainelRepository {
-            +obterMetricasTarefas(gerenteId) List~Object~
-            +obterTarefasPorRetiro(gerenteId) List~Object~
-            +obterAlertasAbertos() List~AlertaModel~
-            +obterConcluidasHoje(gerenteId) Object
+            +obterMetricasTarefas(gerente_id) Array
+            +obterTarefasPorRetiro(gerente_id) Array
+            +obterAlertasAbertos() Alerta[]
+            +obterConcluidasHoje(gerente_id) Object
+        }
+        class SincronizacaoRepository {
+            +registrar(entidade_tipo, entidade_id, status_envio) UUID
+            +inserirTarefa(tarefa) UUID
+            +inserirAlerta(alerta) UUID
+            +inserirMovimentacao(mov) UUID
+            +inserirEvidencia(ev) UUID
         }
     }
 
-    UsuarioRepository "1" --o "0..*" UsuarioModel
-    TarefaRepository "1" --o "0..*" TarefaModel
-    TarefaRepository "1" --o "0..*" EvidenciaModel
-    AlertaRepository "1" --o "0..*" AlertaModel
-    EventoRepository "1" --o "0..*" MovimentacaoModel
-    SincronizacaoRepository "1" --o "0..*" SincronizacaoModel
-    ExportacaoRepository "1" --o "0..*" ExportacaoModel
-    PainelRepository "1" --o "0..*" TarefaModel
-    PainelRepository "1" --o "0..*" AlertaModel
+    UsuarioRepository "1" --o "0..*" Usuario
+    TarefaRepository "1" --o "0..*" Tarefa
+    TarefaRepository "1" --o "0..*" Evidencia
+    AlertaRepository "1" --o "0..*" Alerta
+    EventoRepository "1" --o "0..*" MovimentacaoBase
+    SincronizacaoRepository "1" --o "0..*" Sincronizacao
+    ExportacaoRepository "1" --o "0..*" Exportacao
+    PainelRepository "1" --o "0..*" Tarefa
+    PainelRepository "1" --o "0..*" Alerta
 
     %% ─────────────────────────────────────────
     %% CAMADA: SERVICE
     %% ─────────────────────────────────────────
     namespace Service {
-        class TarefaService {
-            +criarTarefa(dados) TarefaModel
-            +buscarTarefasHoje(capatazId) List~TarefaModel~
-            +concluirTarefa(tarefaId, capatazId) TarefaModel
-            +anexarEvidencia(tarefaId, capatazId, dados) Object
-        }
         class AlertaService {
-            +criarAlerta(dados) AlertaModel
+            +criarAlerta(dados) Alerta
         }
         class EventoService {
-            +registrarNascimento(dados) MovimentacaoModel
-            +registrarObito(dados) MovimentacaoModel
+            +registrarNascimento(dados) MovimentacaoBase
+            +registrarObito(dados) Object
             +listarEventos(filtros) Object
+        }
+        class ExportacaoService {
+            +exportarCsv(coordenador_id, filtros) Object
+        }
+        class HealthService {
+            +verificarSaude() Object
+        }
+        class PainelService {
+            +obterPainel(gerente_id) Object
         }
         class SincronizacaoService {
             +processarLote(itens) Object
         }
-        class ExportacaoService {
-            +exportarCsv(coordenadorId, filtros) Object
-        }
-        class PainelService {
-            +obterPainel(gerenteId) Object
+        class TarefaService {
+            +criarTarefa(dados) Tarefa
+            +buscarTarefasHoje(capataz_id) Tarefa[]
+            +concluirTarefa(tarefa_id, capataz_id) Tarefa
+            +anexarEvidencia(tarefa_id, capataz_id, dados) Object
         }
     }
 
-    TarefaService ..> TarefaRepository : usa
-    TarefaService ..> UsuarioRepository : verifica capataz (RN01)
     AlertaService ..> AlertaRepository : usa
     EventoService ..> EventoRepository : usa
-    SincronizacaoService ..> SincronizacaoRepository : usa
     ExportacaoService ..> ExportacaoRepository : usa
-    ExportacaoService ..> UsuarioRepository : valida coordenador
+    ExportacaoService ..> UsuarioRepository : valida perfil (Coordenador)
+    HealthService ..> HealthRepository : usa
     PainelService ..> PainelRepository : usa
-    PainelService ..> UsuarioRepository : valida gerente
+    PainelService ..> UsuarioRepository : valida perfil (Gerente)
+    SincronizacaoService ..> SincronizacaoRepository : usa
+    TarefaService ..> TarefaRepository : usa
+    TarefaService ..> UsuarioRepository : valida vínculo (RN01)
 
     %% ─────────────────────────────────────────
     %% CAMADA: CONTROLLER
     %% ─────────────────────────────────────────
     namespace Controller {
+        class AlertaController {
+            +POST /chamados()
+        }
+        class EventoController {
+            +GET /eventos-zootecnicos()
+            +POST /eventos-zootecnicos/nascimentos()
+            +POST /eventos-zootecnicos/obitos()
+        }
+        class ExportacaoController {
+            +GET /exportacao/csv()
+        }
+        class HealthController {
+            +GET /health()
+        }
+        class PainelController {
+            +GET /painel-gerencial()
+        }
+        class SincronizacaoController {
+            +POST /sincronizacao/lote()
+        }
         class TarefaController {
             +POST /tarefas()
             +GET /tarefas/hoje()
             +PATCH /tarefas/:id/concluir()
             +POST /tarefas/:id/evidencias()
         }
-        class AlertaController {
-            +POST /chamados()
-        }
-        class EventoController {
-            +POST /eventos-zootecnicos/nascimentos()
-            +POST /eventos-zootecnicos/obitos()
-            +GET /eventos-zootecnicos()
-        }
-        class SincronizacaoController {
-            +POST /sincronizacao/lote()
-        }
-        class ExportacaoController {
-            +GET /exportacao/csv()
-        }
-        class PainelController {
-            +GET /painel-gerencial()
-        }
     }
 
-    TarefaController ..> TarefaService : delega
     AlertaController ..> AlertaService : delega
     EventoController ..> EventoService : delega
-    SincronizacaoController ..> SincronizacaoService : delega
     ExportacaoController ..> ExportacaoService : delega
+    HealthController ..> HealthService : delega
     PainelController ..> PainelService : delega
+    SincronizacaoController ..> SincronizacaoService : delega
+    TarefaController ..> TarefaService : delega
 ```
 
 <center>
@@ -2188,13 +2152,13 @@ classDiagram
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-O diagrama organiza o backend em quatro camadas horizontais bem delimitadas. A camada **Controller** expõe oito grupos de endpoints REST, cada um responsável por um módulo funcional do sistema: autenticação, tarefas, evidências, eventos zootécnicos, alertas de infraestrutura, sincronização, exportação e retiros. Nenhum Controller acessa repositórios ou modelos diretamente — toda lógica é delegada ao Service correspondente via dependência de uso (`..>`), conforme o princípio de responsabilidade única [15].
+O diagrama organiza o backend em quatro camadas horizontais bem delimitadas. A camada **Controller** expõe sete grupos de endpoints REST, cada um responsável por um módulo funcional do sistema: tarefas, alertas de infraestrutura, eventos zootécnicos, sincronização em lote, exportação, painel gerencial e health check. Nenhum Controller acessa repositórios ou modelos diretamente — toda lógica é delegada ao Service correspondente via dependência de uso (`..>`), conforme o princípio de responsabilidade única [15].
 
-A camada **Service** concentra as regras de negócio críticas do sistema. O `TarefaService`, por exemplo, é o único ponto onde a RN01 é aplicada (verificação de que o Capataz pertence ao retiro antes de inserir a tarefa), cruzando dados de `UsuarioRepository` e `RetiroRepository` antes de acionar o `TarefaRepository`. O `SincronizacaoService` implementa o padrão *Outbox* descrito na seção 3.2.4, enfileirando registros com status `PENDENTE` e reprocessando falhas automaticamente. O `ExportacaoService` consulta os repositórios de eventos e registra o metadado da exportação, sem expor dados brutos ao Controller.
+A camada **Service** concentra as regras de negócio críticas do sistema. O `TarefaService`, por exemplo, é o único ponto onde a RN01 é aplicada (verificação de que o Capataz pertence ao retiro antes de inserir a tarefa), consultando o `UsuarioRepository` antes de acionar o `TarefaRepository`. O `SincronizacaoService` implementa o processamento de lote descrito na seção 3.2.4, recebendo um array de itens e delegando cada tipo ao método correspondente no `SincronizacaoRepository`; o controle de transação (`BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK`) é realizado diretamente pelo Service via acesso ao objeto `db` do SQLite, garantindo atomicidade por item do lote em caso de falha. O `ExportacaoService` valida o perfil do coordenador via `UsuarioRepository`, consulta as movimentações consolidadas via `ExportacaoRepository` e registra o metadado da exportação, sem expor dados brutos ao Controller.
 
-A camada **Repository** abstrai completamente a tecnologia de persistência (SQLite via `better-sqlite3`), expondo métodos nomeados por intenção de negócio (`findByCapatazEData`, `findPendentesValidacao`, `marcarValidado`) em vez de queries SQL abertas. Cada Repository é proprietário de um conjunto de Models — representado por agregação (`--o`) no diagrama —, garantindo que o acesso a cada tabela ocorra por um único ponto de entrada.
+A camada **Repository** abstrai completamente a tecnologia de persistência (SQLite via `node:sqlite`), expondo métodos nomeados por intenção de negócio (`buscarTarefasHoje`, `criarNascimento`, `criarObito`, `consultarMovimentacoesConsolidadas`) em vez de queries SQL abertas. Cada Repository é proprietário de um conjunto de Models — representado por agregação (`--o`) no diagrama —, garantindo que o acesso a cada tabela ocorra por um único ponto de entrada.
 
-A camada **Model** corresponde às entidades persistidas no banco de dados SQLite, diretamente alinhadas ao Diagrama de Classes do Domínio (seção 3.2.3). A hierarquia de herança é mantida (`EvidenciaModel` → `FotoModel`, `AudioModel`, `TextoComplementarModel`; `EventoZootecnicoModel` → `RegistroNascimentoModel`, `RegistroObitoModel`), refletindo a especialização dos tipos de registro conforme os requisitos funcionais RF004, RF005, RF008 e RF009.
+A camada **Model** corresponde às interfaces TypeScript das entidades persistidas no banco de dados SQLite, diretamente alinhadas ao Diagrama de Classes do Domínio (seção 3.2.3). A hierarquia de herança de `MovimentacaoBase` para os subtipos `Nascimento`, `Obito`, `Transferencia` e `Compravenda` reflete a especialização dos eventos zootécnicos conforme os requisitos funcionais RF004, RF005, RF008 e RF009. A interface `Evidencia` unifica em uma única estrutura os tipos `FOTO`, `AUDIO`, `VIDEO`, `DOCUMENTO` e `TEXTO`, discriminados pelo campo `tipo`.
 
 A separação em camadas garante que alterações na tecnologia de persistência (ex.: migração de SQLite para PostgreSQL) impactem apenas os Repositories, sem afetar Services ou Controllers — critério alinhado ao requisito não funcional de Suportabilidade (RNF — SUP), que limita o MTTR a 8 horas para defeitos críticos.
 
@@ -2221,7 +2185,7 @@ Os diagramas de sequência apresentados nesta seção referenciam, de forma reco
 
 O SQLite é um sistema de gerenciamento de banco de dados relacional (*RDBMS*) autocontido (*self-contained*), sem servidor (*serverless*) e de configuração zero (*zero-configuration*) [21]. Diferentemente de sistemas cliente-servidor convencionais — como PostgreSQL ou MySQL —, o SQLite opera como uma biblioteca vinculada diretamente ao processo da aplicação, lendo e gravando o banco de dados como um arquivo único no disco, sem a necessidade de um processo daemon separado [21]. Essa característica o torna particularmente adequado ao contexto da BrPec, em que a infraestrutura de servidor deve ser leve e de fácil implantação, dado que os nós de processamento central operam em ambientes com recursos computacionais limitados.
 
-No escopo da arquitetura do sistema, o SQLite é empregado como banco de dados central do servidor Node.js, persistindo todas as entidades modeladas no Diagrama de Classes (seção 3.2.3): `Usuario`, `Tarefa`, `Evidencia`, `EventoZootecnico`, `AlertaInfraestrutura`, `Sincronizacao` e `Exportacao`. Os diagramas de sequência DS01 (Criar Tarefa) e os fluxos de sincronização dos diagramas DS03 e DS04 representam a interação do Repository com esse banco central por meio de instruções SQL padrão (`INSERT`, `SELECT`, `UPDATE`), garantindo a compatibilidade com o modelo relacional definido nas tabelas de atributos da seção 3.2.3. A escolha pelo SQLite no servidor está alinhada ao requisito não funcional de Desempenho (RNF — DES), que exige latência p95 inferior a 200 ms para operações de leitura e escrita, e ao requisito de Suportabilidade (RNF — SUP), dado que o SQLite dispensa a administração de processos, usuários e permissões de banco de dados, reduzindo a complexidade operacional de manutenção.
+No escopo da arquitetura do sistema, o SQLite é empregado como banco de dados central do servidor Node.js, persistindo todas as entidades modeladas no Diagrama de Classes (seção 3.2.3): `Usuario`, `Tarefa`, `Evidencia`, `MovimentacaoBase` (nascimentos, óbitos, transferências e compravendas), `Alerta`, `Sincronizacao`, `Retiro` e os registros de exportação. Os diagramas de sequência DS01 (Criar Tarefa) e os fluxos de sincronização dos diagramas DS03 e DS04 representam a interação do Repository com esse banco central por meio de instruções SQL padrão (`INSERT`, `SELECT`, `UPDATE`), garantindo a compatibilidade com o modelo relacional definido nas tabelas de atributos da seção 3.2.3. A escolha pelo SQLite no servidor está alinhada ao requisito não funcional de Desempenho (RNF — DES), que exige latência p95 inferior a 200 ms para operações de leitura e escrita, e ao requisito de Suportabilidade (RNF — SUP), dado que o SQLite dispensa a administração de processos, usuários e permissões de banco de dados, reduzindo a complexidade operacional de manutenção.
 
 A escolha pelo SQLite no servidor fundamenta-se em três critérios: (i) suporte nativo a transações ACID garante integridade mesmo em interrupções abruptas (RNF — CONF); (ii) consultas SQL relacionais permitem filtrar tarefas por `capataz_id`, `retiro_id` e `data_execucao` sem carregar conjuntos completos em memória; (iii) ausência de processo daemon reduz a complexidade operacional de manutenção (RNF — SUP).
 
@@ -2253,30 +2217,34 @@ Fluxo que representa a criação de uma tarefa pelo Gerente, percorrendo as cama
 sequenceDiagram
     autonumber
     actor G as Gerente
-    participant CTR as Controller
-    participant SRV as Service
-    participant REP as Repository
+    participant CTR as TarefaController
+    participant SRV as TarefaService
+    participant UREP as UsuarioRepository
+    participant TREP as TarefaRepository
     participant DB as SQLite
 
-    G->>CTR: POST /tarefas {titulo, descricao, retiro_id, capataz_id, data_execucao}
+    G->>CTR: POST /tarefas {titulo, descricao, retiro_id, capataz_id, data_execucao, gerente_id}
     CTR->>CTR: Valida campos obrigatórios
 
     alt Campos obrigatórios ausentes
         CTR-->>G: 400 Bad Request {erro: "campos obrigatórios não preenchidos"}
     else Dados válidos
         CTR->>SRV: criarTarefa(dados)
-        SRV->>SRV: Verifica se Capataz pertence ao retiro (RN01)
+        SRV->>UREP: buscarPorId(capataz_id)
+        UREP->>DB: SELECT * FROM usuarios WHERE id = ?
+        DB-->>UREP: Usuario
+        UREP-->>SRV: {id, perfil, retiro_id}
 
         alt Capataz não pertence ao retiro (RN01)
-            SRV-->>CTR: throw CapatazRetiroInvalidoError
+            SRV-->>CTR: throw Error("RN01: Capataz não pertence ao retiro")
             CTR-->>G: 422 Unprocessable Entity {erro: "Capataz não pertence ao retiro"}
         else Validação aprovada
-            SRV->>REP: inserirTarefa(dados)
-            REP->>DB: INSERT INTO tarefas (...) VALUES (...)
-            DB-->>REP: id = 7
-            REP-->>SRV: {id: 7}
-            SRV-->>CTR: {id: 7, status: "pendente"}
-            CTR-->>G: 201 Created {id: 7, mensagem: "Tarefa criada com sucesso"}
+            SRV->>TREP: criar(dados)
+            TREP->>DB: INSERT INTO tarefas (...) VALUES (...)
+            DB-->>TREP: rowid
+            TREP-->>SRV: Tarefa {id: "uuid-v7", status: "PENDENTE", ...}
+            SRV-->>CTR: Tarefa
+            CTR-->>G: 201 Created {id, mensagem: "Tarefa criada com sucesso", tarefa}
         end
     end
 ```
@@ -2284,9 +2252,10 @@ sequenceDiagram
 **Descrição das camadas:**
 
 - **Controller (`TarefaController`):** recebe a requisição HTTP do Gerente, valida a presença dos campos obrigatórios e delega a lógica de negócio ao Service. Não acessa o banco diretamente.
-- **Service (`TarefaService`):** aplica as regras de negócio do domínio — em especial a RN01, que impede a atribuição de uma tarefa a um Capataz que não pertence ao retiro informado. Orquestra a chamada ao Repository.
-- **Repository (`TarefaRepository`):** responsável exclusivamente pelo acesso ao banco de dados. Executa o `INSERT` e retorna o `id` gerado.
-- **Banco (`SQLite`):** persiste o registro com `status = "pendente"` e retorna o identificador da nova linha.
+- **Service (`TarefaService`):** consulta o `UsuarioRepository` para obter os dados do Capataz e aplica a RN01 — impede atribuição a Capataz que não pertence ao retiro informado. Em caso de aprovação, delega a inserção ao `TarefaRepository`.
+- **UsuarioRepository:** executa `SELECT` na tabela `usuarios` e retorna a entidade com `perfil` e `retiro_id` para validação da RN01.
+- **TarefaRepository (`TarefaRepository`):** gera UUID v7, executa o `INSERT INTO tarefas` com `status = 'PENDENTE'` e `sincronizada = 1`, e retorna a tarefa criada.
+- **Banco (`SQLite`):** persiste o registro e retorna o `rowid` da nova linha.
 
 **Fluxos cobertos:**
 
@@ -2295,6 +2264,11 @@ sequenceDiagram
 | Principal     | Gerente envia dados válidos → tarefa criada com status "pendente" → 201 Created |
 | Alternativo 1 | Campo obrigatório ausente → Controller retorna 400 sem acionar o Service        |
 | Alternativo 2 | Capataz não pertence ao retiro → Service lança erro → Controller retorna 422    |
+
+<center>
+  <p><strong>Tabela 43</strong> — Fluxos Cobertos</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 **Rastreabilidade:**
 
@@ -2305,6 +2279,11 @@ sequenceDiagram
 | RN01      | Uma tarefa só pode ser atribuída a um Capataz vinculado ao retiro selecionado                    |
 | RNF — SEG | Todas as rotas do Gerente retornam 403 para perfis não autorizados                               |
 | RNF — DES | Endpoint responde em p95 < 200ms com até 200 registros no banco                                  |
+
+<center>
+  <p><strong>Tabela 44</strong> — Rastreabilidade (RF001, RN01, RNF-SEG, RNF-DES)</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 #### DS02 — Consultar Tarefas Offline (US02) 
 
@@ -2320,58 +2299,43 @@ sequenceDiagram
     participant REP as Repository
     participant LS as Armazenamento Local (IndexedDB)
 
-    note over C,LS: Dispositivo sem conexão com a internet
+    note over C,LS: Dispositivo sem conexão — tarefas foram sincronizadas previamente via GET /tarefas/hoje
 
     C->>PWA: Acessa tela "Minhas Tarefas"
-    PWA->>CTR: GET /tarefas/hoje {capataz_id}
-    CTR->>CTR: Verifica perfil do usuário (RN05)
+    PWA->>PWA: Detecta ausência de conexão (offline)
 
-    alt Perfil não autorizado
-        CTR-->>PWA: 403 Forbidden {erro: "acesso negado"}
-        PWA-->>C: Exibe mensagem de acesso negado
-    else Perfil autorizado (Capataz)
-        CTR->>SRV: buscarTarefasHoje(capataz_id)
-        SRV->>SRV: Verifica conectividade com servidor
-
-        alt Sem conexão com servidor (modo offline)
-            SRV->>REP: buscarTarefasLocais(capataz_id, data_hoje)
-            REP->>LS: SELECT * FROM tarefas WHERE capataz_id = ? AND data_execucao = ? AND sincronizada = true
-            
-            alt Tarefas sincronizadas encontradas (RN06, RN07)
-                LS-->>REP: [{id, titulo, descricao, status, data_execucao}]
-                REP-->>SRV: List<Tarefa>
-                SRV->>SRV: Filtra apenas tarefas do retiro do Capataz (RN05)
-                SRV-->>CTR: List<Tarefa> ordenada
-                CTR-->>PWA: 200 OK {tarefas: [...], modo: "offline"}
-                PWA-->>C: Exibe lista de tarefas do dia (RN12)
-            else Nenhuma tarefa sincronizada (RF004, RN04)
-                LS-->>REP: []
-                REP-->>SRV: []
-                SRV-->>CTR: []
-                CTR-->>PWA: 200 OK {tarefas: [], modo: "offline"}
-                PWA-->>C: Exibe mensagem "Nenhuma tarefa disponível. Sincronize quando houver conexão."
-            end
-
-        else Com conexão disponível
-            SRV->>REP: buscarTarefasServidor(capataz_id, data_hoje)
-            REP-->>SRV: List<Tarefa> atualizada
-            SRV->>REP: atualizarArmazenamentoLocal(tarefas)
-            REP->>LS: INSERT OR REPLACE INTO tarefas (...) (sincronizada = true)
-            LS-->>REP: ok
-            SRV-->>CTR: List<Tarefa>
-            CTR-->>PWA: 200 OK {tarefas: [...], modo: "online"}
-            PWA-->>C: Exibe lista de tarefas do dia atualizada
+    alt Modo offline — busca no IndexedDB local
+        PWA->>LS: SELECT * FROM tarefas WHERE capataz_id = ? AND data_execucao = ? AND sincronizada = true
+        
+        alt Tarefas sincronizadas encontradas (RN06, RN07)
+            LS-->>PWA: [{id, titulo, descricao, status, data_execucao}]
+            PWA-->>C: Exibe lista de tarefas do dia com indicador "offline" (RN12)
+        else Nenhuma tarefa sincronizada (RF004)
+            LS-->>PWA: []
+            PWA-->>C: Exibe mensagem "Nenhuma tarefa disponível. Sincronize quando houver conexão."
         end
+
+    else Modo online — chama o servidor
+        PWA->>CTR: GET /tarefas/hoje {capataz_id}
+        CTR->>SRV: buscarTarefasHoje(capataz_id)
+        SRV->>REP: buscarTarefasHoje(capataz_id, data_hoje)
+        REP->>LS: SELECT * FROM tarefas WHERE capataz_id = ? AND date(data_execucao) = date(?)
+        LS-->>REP: [{id, titulo, status, data_execucao, ...}]
+        REP-->>SRV: Tarefa[]
+        SRV-->>CTR: Tarefa[]
+        CTR-->>PWA: 200 OK {tarefas: [...], modo: "online"}
+        PWA->>LS: INSERT OR REPLACE INTO tarefas (...) (sincronizada = true)
+        PWA-->>C: Exibe lista de tarefas do dia atualizada
     end
 ```
 
 **Descrição das camadas:**
 
-- **Cliente PWA (`Cliente`):** interface do dispositivo do Capataz no campo. Detecta o estado de conectividade e apresenta a lista de tarefas com indicação visual do modo de operação (online ou offline).
-- **Controller (`TarefaController`):** recebe a requisição de listagem, valida o perfil do usuário e delega ao Service. Não acessa o armazenamento local diretamente.
-- **Service (`TarefaService`):** verifica a disponibilidade de conexão e decide a estratégia de busca — servidor remoto (online) ou armazenamento local (offline). Aplica a regra RN05, garantindo que apenas tarefas do retiro do Capataz sejam retornadas.
-- **Repository (`TarefaRepository`):** abstrai tanto o acesso ao banco remoto quanto ao armazenamento local (IndexedDB/SQLite local), expondo a mesma interface ao Service independentemente da origem dos dados.
-- **Armazenamento Local (`IndexedDB`):** persiste localmente as tarefas previamente sincronizadas. Só contém tarefas com `sincronizada = true`, garantindo que dados incompletos nunca sejam exibidos ao Capataz (RN06).
+- **Cliente PWA (`Cliente`):** interface do dispositivo do Capataz no campo. Detecta o estado de conectividade: se offline, lê diretamente do IndexedDB local; se online, chama o servidor e atualiza o cache local.
+- **Controller (`TarefaController`):** presente apenas no fluxo online — recebe `GET /tarefas/hoje`, repassa `capataz_id` ao Service e retorna a lista. Não aplica lógica de conectividade.
+- **Service (`TarefaService`):** delega diretamente ao `TarefaRepository.buscarTarefasHoje(capataz_id, data_hoje)`. A decisão offline/online é responsabilidade do cliente PWA, não do backend.
+- **Repository (`TarefaRepository`):** executa `SELECT * FROM tarefas WHERE capataz_id = ? AND date(data_execucao) = date(?)` no SQLite do servidor e retorna o array de tarefas.
+- **Armazenamento Local (`IndexedDB`):** no fluxo offline, é a fonte primária de dados. No fluxo online, é atualizado pelo PWA com as tarefas retornadas pelo servidor (`sincronizada = true`).
 
 **Fluxos cobertos:**
 
@@ -2381,6 +2345,11 @@ sequenceDiagram
 | Alternativo 1 | Capataz offline sem tarefas sincronizadas → mensagem de ausência exibida com linguagem simples (RN04)|
 | Alternativo 2 | Capataz online → tarefas buscadas do servidor, armazenamento local atualizado e lista exibida       |
 | Alternativo 3 | Perfil não autorizado → acesso negado com 403                                                        |
+
+<center>
+  <p><strong>Tabela 45</strong> — Fluxos Cobertos</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 **Rastreabilidade:**
 
@@ -2397,6 +2366,11 @@ sequenceDiagram
 | RN12         | As telas do Capataz devem usar linguagem simples, botões visíveis e poucos passos de interação          |
 | RNF — CONF   | 0% de perda de dados em falhas de conexão; estratégia offline-first                                     |
 | RNF — DES    | Latência p95 < 200ms para salvar e ler registros no banco de dados local                                |
+
+<center>
+  <p><strong>Tabela 46</strong> — Mapa de Rastreabilidade</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ---
 
@@ -2427,29 +2401,20 @@ sequenceDiagram
         PWA-->>C: Exibe alerta de erro
     else Dados válidos
         CTR->>SRV: concluirTarefa(tarefa_id, capataz_id)
-        SRV->>REP: buscarTarefaLocal(tarefa_id)
-        REP->>LS: SELECT * FROM tarefas WHERE id = ? AND capataz_id = ?
+        SRV->>REP: concluir(tarefa_id, capataz_id, data_conclusao)
+        REP->>LS: UPDATE tarefas SET status = 'CONCLUIDA', concluida_em = ?, sincronizada = 1 WHERE id = ? AND capataz_id = ?
         
         alt Tarefa não encontrada ou não pertence ao Capataz (RN05)
-            LS-->>REP: null
-            REP-->>SRV: null
-            SRV-->>CTR: throw TarefaNaoEncontradaError
+            LS-->>REP: 0 rows affected
+            REP-->>SRV: false
+            SRV-->>CTR: throw Error("tarefa não encontrada")
             CTR-->>PWA: 404 Not Found {erro: "tarefa não encontrada"}
             PWA-->>C: Exibe mensagem de erro
-        else Tarefa encontrada
-            LS-->>REP: {id, titulo, status: "pendente", sincronizada: true}
-            REP-->>SRV: Tarefa
-
-            SRV->>SRV: Atualiza status para "concluida" e registra timestamp (RNF — SEG)
-            SRV->>REP: salvarConclusaoLocal(tarefa_id, concluidaEm, capataz_id)
-            REP->>LS: UPDATE tarefas SET status = "concluida", concluida_em = ?, sincronizada = false WHERE id = ?
-            LS-->>REP: ok
-            REP-->>SRV: ok
-            SRV->>REP: registrarSincronizacaoPendente(tarefa_id, "Tarefa")
-            REP->>LS: INSERT INTO sincronizacoes (entidade_tipo, entidade_id, status_envio, tentativas) VALUES ("Tarefa", ?, "PENDENTE", 0)
-            LS-->>REP: ok
-            SRV-->>CTR: {status: "concluida", sincronizado: false}
-            CTR-->>PWA: 200 OK {mensagem: "Tarefa concluída. Será sincronizada quando houver conexão.", sincronizado: false}
+        else Tarefa concluída com sucesso
+            LS-->>REP: 1 row affected
+            REP-->>SRV: Tarefa {id, status: "CONCLUIDA", concluida_em, sincronizada: true}
+            SRV-->>CTR: Tarefa
+            CTR-->>PWA: 200 OK {mensagem: "Tarefa concluída com sucesso", tarefa}
             PWA-->>C: Exibe confirmação visual com indicador de pendente (RN08, RN12)
 
             note over SYNC,API: Quando conexão for restabelecida (RF010)
@@ -2480,10 +2445,10 @@ sequenceDiagram
 **Descrição das camadas:**
 
 - **Cliente PWA (`Cliente`):** captura a ação do Capataz, dispara a requisição de conclusão e exibe confirmações visuais simples e de alto contraste, adequadas ao uso em campo (RN12). Escuta eventos de sincronização emitidos pelo SyncService para atualizar o indicador de status.
-- **Controller (`TarefaController`):** valida a presença dos identificadores obrigatórios e delega ao Service. Não acessa o armazenamento local diretamente.
-- **Service (`TarefaService`):** aplica as regras de negócio — verifica se a tarefa pertence ao Capataz (RN05), atualiza o status e injeta o timestamp de conclusão (RNF — SEG). Orquestra o registro de sincronização pendente.
-- **Repository (`TarefaRepository`):** persiste a conclusão localmente com `sincronizada = false` e insere o registro de controle na tabela `sincronizacoes` (RF012).
-- **Armazenamento Local (`IndexedDB`):** mantém o estado da tarefa e o registro de pendência de sincronização até que o envio seja confirmado pelo servidor.
+- **Controller (`TarefaController`):** valida a presença dos identificadores obrigatórios e delega ao Service. Não acessa o banco diretamente.
+- **Service (`TarefaService`):** delega ao `TarefaRepository.concluir(tarefa_id, capataz_id, data_conclusao)`. A RN05 é garantida pela cláusula `WHERE capataz_id = ?` no SQL — se nenhuma linha for afetada, lança erro 404.
+- **Repository (`TarefaRepository`):** executa `UPDATE tarefas SET status = 'CONCLUIDA', concluida_em = ?, sincronizada = 1 WHERE id = ? AND capataz_id = ?` no SQLite do servidor. Retorna `false` se nenhuma linha for afetada.
+- **Armazenamento Local (`SQLite / IndexedDB`):** no backend, é o SQLite do servidor. No cliente offline, é o IndexedDB — o SyncService transmite a conclusão ao servidor quando a conexão for restabelecida.
 - **SyncService (`SyncService`):** processo em segundo plano (background sync via Service Worker) responsável por detectar a reconexão, consultar registros pendentes e transmiti-los ao servidor remoto. Atualiza o status para `ENVIADO` em caso de sucesso ou incrementa o contador de tentativas em caso de falha (RF012).
 - **Servidor Remoto (`API`):** recebe a atualização de status da tarefa e confirma a persistência no banco de dados central, tornando a informação visível ao Gerente no painel de acompanhamento (RF007).
 
@@ -2495,6 +2460,11 @@ sequenceDiagram
 | Alternativo 1 | Campo obrigatório ausente → Controller retorna 400 sem acionar o Service                                     |
 | Alternativo 2 | Tarefa não encontrada ou não pertence ao Capataz → Service lança erro → 404                                  |
 | Alternativo 3 | Falha na sincronização com o servidor → tentativa registrada e reenvio automático na próxima conexão (RF012) |
+
+<center>
+  <p><strong>Tabela 47</strong> — Fluxos Cobertos</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 **Rastreabilidade:**
 
@@ -2511,6 +2481,11 @@ sequenceDiagram
 | RN12         | As telas do Capataz devem usar linguagem simples, botões visíveis e poucos passos de interação          |
 | RNF — SEG    | 100% dos registros devem conter metadados de autoria (ID do Capataz) e timestamp não editável           |
 | RNF — CONF   | 0% de perda de dados em falhas de conexão; estratégia offline-first com reenvio automático              |
+
+<center>
+  <p><strong>Tabela 48</strong> — Mapa de Rastreabilidade (RF003, RF010, RF011, RF012, RN05, RN08, RN09, RN12, RNF-SEG, RNF-CONF)</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ---
 
@@ -2542,32 +2517,26 @@ sequenceDiagram
         CTR-->>PWA: 400 Bad Request {erro: "campos obrigatórios não preenchidos"}
         PWA-->>C: Exibe alerta de erro
     else Dados válidos
-        CTR->>SRV: anexarFoto(tarefa_id, arquivo_base64, capataz_id)
-        SRV->>REP: buscarTarefaLocal(tarefa_id)
-        REP->>LS: SELECT * FROM tarefas WHERE id = ? AND capataz_id = ?
+        CTR->>SRV: anexarEvidencia(tarefa_id, capataz_id, dados)
+        SRV->>REP: buscarPorId(tarefa_id)
+        REP->>LS: SELECT * FROM tarefas WHERE id = ?
 
-        alt Tarefa não encontrada ou não pertence ao Capataz (RN05)git 
-            LS-->>REP: null
-            REP-->>SRV: null
-            SRV-->>CTR: throw TarefaNaoEncontradaError
+        alt Tarefa não encontrada ou não pertence ao Capataz (RN05)
+            LS-->>REP: undefined
+            REP-->>SRV: undefined
+            SRV-->>CTR: throw Error("tarefa não encontrada ou não pertence ao capataz")
             CTR-->>PWA: 404 Not Found {erro: "tarefa não encontrada"}
             PWA-->>C: Exibe mensagem de erro
         else Tarefa encontrada
-            LS-->>REP: {id, status, capataz_id}
+            LS-->>REP: {id, status, capataz_id, retiro_id}
             REP-->>SRV: Tarefa
 
-            SRV->>SRV: Captura geolocalização do dispositivo (GPS)
-            SRV->>SRV: Gera evidencia_id e registra timestamp (RNF — SEG)
-            SRV->>REP: salvarFotoLocal(evidencia_id, tarefa_id, arquivo_base64, geolocalizacao, capataz_id)
-            REP->>LS: INSERT INTO evidencias (id, tarefa_id, tipo, arquivo_base64, geolocalizacao, criada_em, sincronizada) VALUES (?, ?, "FOTO", ?, ?, ?, false)
-            LS-->>REP: ok
+            SRV->>REP: salvarEvidencia(tarefa_id, tipo, arquivo_base64, geolocalizacao)
+            REP->>LS: INSERT INTO evidencias (id, tarefa_id, tipo, arquivo_base64, geolocalizacao, sincronizada) VALUES (uuid_v7, ?, ?, ?, ?, 1)
+            LS-->>REP: evidencia_id (UUID v7)
             REP-->>SRV: {evidencia_id}
-
-            SRV->>REP: registrarSincronizacaoPendente(evidencia_id, "Evidencia")
-            REP->>LS: INSERT INTO sincronizacoes (entidade_tipo, entidade_id, status_envio, tentativas) VALUES ("Evidencia", ?, "PENDENTE", 0)
-            LS-->>REP: ok
-            SRV-->>CTR: {evidencia_id, sincronizado: false}
-            CTR-->>PWA: 201 Created {mensagem: "Foto salva. Será enviada quando houver conexão.", sincronizado: false}
+            SRV-->>CTR: {evidencia_id}
+            CTR-->>PWA: 201 Created {mensagem: "Evidência anexada com sucesso", evidencia_id}
             PWA-->>C: Exibe confirmação visual com thumbnail da foto e indicador de pendente (RN11, RN12)
 
             note over SYNC,API: Quando conexão for restabelecida (RF010)
@@ -2614,10 +2583,10 @@ sequenceDiagram
 **Descrição das camadas:**
 
 - **Cliente PWA (`Cliente`):** aciona a câmera nativa do dispositivo, exibe um thumbnail da imagem capturada e apresenta indicador visual de status de envio (pendente/sincronizado) com linguagem simples e botões de alto contraste (RN12). Escuta eventos de sincronização emitidos pelo SyncService.
-- **Controller (`TarefaController`):** valida a presença dos campos obrigatórios (identificador da tarefa, tipo de evidência e arquivo) e delega ao Service. Não acessa o armazenamento local diretamente.
-- **Service (`TarefaService`):** captura a geolocalização do dispositivo no momento do anexo, injeta metadados de autoria e timestamp (RNF — SEG), e orquestra o armazenamento local da imagem em formato base64 e o registro de sincronização pendente.
-- **Repository (`TarefaRepository`):** persiste a evidência no armazenamento local com `sincronizada = false` e a imagem codificada em base64, mantendo o vínculo com a tarefa correspondente (RN10). Insere o registro de controle na tabela `sincronizacoes`.
-- **Armazenamento Local (`IndexedDB`):** armazena a imagem em base64 até que a sincronização com o servidor seja concluída com sucesso, prevenindo qualquer perda de evidência durante períodos offline (RN11, RNF — CONF).
+- **Controller (`TarefaController`):** valida a presença dos campos obrigatórios (identificador da tarefa, tipo de evidência e arquivo base64) e delega ao Service via `anexarEvidencia(tarefa_id, capataz_id, dados)`. Não acessa o banco diretamente.
+- **Service (`TarefaService`):** verifica se a tarefa existe chamando `TarefaRepository.buscarPorId(tarefa_id)` e, em caso positivo, delega a inserção via `TarefaRepository.salvarEvidencia(tarefa_id, tipo, arquivo_base64, geolocalizacao)`.
+- **Repository (`TarefaRepository`):** gera UUID v7 para a evidência, executa `INSERT INTO evidencias` com `sincronizada = 1` e retorna o `evidencia_id`. Mantém o vínculo com a tarefa pelo campo `tarefa_id` (RN10).
+- **Armazenamento Local (`SQLite / IndexedDB`):** no backend, é o SQLite do servidor, onde a evidência fica disponível imediatamente com `sincronizada = 1`. No fluxo offline do cliente PWA, é o IndexedDB — o SyncService transmite a evidência via `POST /tarefas/{id}/evidencias` ao reconectar.
 - **SyncService (`SyncService`):** detecta a reconexão via Service Worker e transmite as evidências pendentes ao servidor. Implementa chunking para arquivos de imagem que excedam o limite de transmissão segura em conexões instáveis (RNF — CAP), garantindo a integridade do envio em lote.
 - **Servidor Remoto (`API`):** recebe a evidência, persiste o arquivo e retorna a URL definitiva do arquivo armazenado, que é então atualizada no registro local. A evidência fica disponível para consulta pelo Gerente e Coordenador (RF014, UC05).
 
@@ -2630,6 +2599,11 @@ sequenceDiagram
 | Alternativo 2 | Tarefa não encontrada ou não pertence ao Capataz → Service lança erro → 404                                        |
 | Alternativo 3 | Falha na sincronização → tentativa registrada e reenvio automático na próxima conexão (RF012)                      |
 | Alternativo 4 | Arquivo acima do limite → SyncService divide em chunks e transmite sequencialmente ao servidor (RNF — CAP)         |
+
+<center>
+  <p><strong>Tabela 49</strong> — Fluxos cobertos</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 **Rastreabilidade:**
 
@@ -2648,10 +2622,20 @@ sequenceDiagram
 | RNF — CONF   | 0% de perda de dados em falhas de conexão; imagem mantida localmente até confirmação do servidor             |
 | RNF — CAP    | Suporte a sincronização em lote de até 500 eventos; chunking para arquivos grandes em conexões instáveis     |
 
+<center>
+  <p><strong>Tabela 50</strong> — Mapa de Rastreabilidade</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ### 3.2.5. Diagrama de Atividades ou Estados (sprint 3)
 
-_Ao menos um fluxo relevante em UML ou BPMN. Use a notação da ferramenta escolhida de forma consistente (sem misturar convenções)._
+O diagrama de atividades abaixo representa o fluxo de execução de tarefas no sistema BrPec, contemplando o funcionamento offline-first da aplicação. O processo inicia com a criação da tarefa pelo gerente, passando pela disponibilização ao capataz, execução da atividade em campo e sincronização dos dados com o sistema central. O fluxo foi modelado utilizando UML, mantendo consistência de notação ao longo de toda a representação.
+
+<center>
+  <p><strong>Figura 11</strong> — Diagrama de Estados do Sistema BrPec</p>
+  <img src="./assets/diagramaDeEstados.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ### 3.2.6. Diagrama de Implantação (sprints 4 e 5)
 
@@ -2821,7 +2805,7 @@ Esta tela é o ponto de entrada do Capataz no aplicativo. Na parte central é po
 Em relação à navegação e detalhes, o botão "Todos" permite que, ao clicar, o usuário expanda a visualização para uma gestão completa do histórico de atividades, enquanto o botão "Rebanhos" provê acesso às informações do rebanho e dados zootécnicos. Ao selecionar uma tarefa específica no detalhamento de tarefas, o sistema exibe uma tela com as especificações detalhadas e orientações para a execução. 
 
 <center>
-  <p><strong>Figura 10</strong> — Wireframe da tela de lista de tarefas do Capataz (US02)</p>
+  <p><strong>Figura 12</strong> — Wireframe da tela de lista de tarefas do Capataz (US02)</p>
   <img src="./assets/wireframeCapatazTarefas.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2834,7 +2818,7 @@ Para assegurar a execução precisa da ordem de serviço, a tela centraliza todo
 Quanto às ações do usuário, um botão de "Iniciar Tarefa" permite o controle de fluxo para registrar o exato momento em que a atividade começa, mesmo offline, gerando dados de produtividade, enquanto um botão de retorno estrategicamente posicionado permite a navegação para voltar à tela inicial de tarefas de forma rápida.
 
 <center>
-<p><strong>Figura 11</strong> — Wireframe da tela de detalhes sobre a tarefa do Capataz (US02)</p>
+<p><strong>Figura 13</strong> — Wireframe da tela de detalhes sobre a tarefa do Capataz (US02)</p>
  <img src="./assets/wireframeCapatazConcluirTarefaTablet.png" width="800"/>
  <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2847,7 +2831,7 @@ Para a confirmação de atividade e evitar erros operacionais, a tela exibe o t�
 Por fim, para o encerramento, o botão "Salvar" consolida as informações, e depois o de "Concluir", que só aparecerá após salvas as informações, altera o status da tarefa no sistema e prepara os dados para a sincronização com o banco de dados central.
 
 <center>
-  <p><strong>Figura 12</strong> — Wireframe da tela de concluir tarefa do Capataz (US04) e (US05) </p>
+  <p><strong>Figura 14</strong> — Wireframe da tela de concluir tarefa do Capataz (US04) e (US05) </p>
   <img src="./assets/wireframeCapatazAnexarFotos.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2864,7 +2848,7 @@ Para facilitar a organização, a categorização de chamados agrupa as demandas
 Ao selecionar uma categoria, o sistema permite o monitoramento de status e detalha o fluxo de trabalho através de indicadores específicos, como pendentes/abertos para visualização da quantidade de novos chamados, em andamento para acompanhamento dos serviços iniciados e o histórico semanal como relatório de chamados concluídos nos últimos sete dias. Como ação rápida, dentro de cada seção, existe a funcionalidade de criar uma nova Ordem de Serviço (O.S.) específica para aquele setor, garantindo que o registro seja feito no local do problema.
 
 <center>
-  <p><strong>Figura 13</strong> — Wireframe do painel de infraestrutura (US06) e (US07)</p>
+  <p><strong>Figura 15</strong> — Wireframe do painel de infraestrutura (US06) e (US07)</p>
   <img src="./assets/wireframeInfraestrutura.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2876,7 +2860,7 @@ A Figura 14 ilustra a interface de Abertura de Nova Ordem de Serviço (O.S.), ac
 Para garantir o direcionamento correto da demanda, os campos e parâmetros de cadastro oferecem preenchimento para o tipo de chamado, realizando a classificação da O.S. entre as três categorias principais da fazenda, que são Hidráulica, Cerca ou Elétrica, para a definição de prioridade, com a atribuição do nível de urgência do reparo (ex: Alta, Média, Baixa) para auxiliar na organização da fila de trabalho do Capataz, para o prazo ideal, definindo uma data limite esperada para a conclusão do serviço, e para o detalhamento técnico, que consiste em um campo descritivo para que o gestor insira todas as informações, orientações e especificações necessárias, garantindo clareza para a equipe de execução em campo.
 
 <center>
-  <p><strong>Figura 14</strong> — Wireframe da tela de criação de nova O.S. pelo Gerente (US06) e (US07)</p>
+  <p><strong>Figura 16</strong> — Wireframe da tela de criação de nova O.S. pelo Gerente (US06) e (US07)</p>
   <img src="./assets/wireframeGerenteNovaOs.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2891,7 +2875,7 @@ O formulário de registro de solução permite documentar o fechamento da tarefa
 Além disso, uma funcionalidade crítica desta tela é a linha do tempo (histórico do chamado), que permite a visualização do ciclo de vida da tarefa apresentando todas as fases até a entrega final, como a abertura, com o registro de quando o chamado foi criado e por quem, o andamento, indicando o horário em que a tarefa foi iniciada e o tempo de resposta, e a conclusão, marcando o momento exato da resolução e permitindo o cálculo da eficiência operacional. Essas informações poderão ser vistas pelos Gerentes e Capatazes também, atendendo ao (US06) e ao (US07).
 
 <center>
-  <p><strong>Figura 15</strong> — Wireframe da tela de registrar resolução- infraestrutura</p>
+  <p><strong>Figura 17</strong> — Wireframe da tela de registrar resolução- infraestrutura</p>
   <img src="./assets/wireframeInfraestruturaRegistrarResolucao.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2908,7 +2892,7 @@ Os indicadores do painel central oferecem uma visão macro e em tempo real das o
 No menu de navegação lateral (desktop), posicionado no canto esquerdo da interface, destacam-se abas estruturadas para navegação direta nas seguintes verticais: retiros, para detalhamento de estoque de rebanho e infraestrutura local; ordens, para a gestão e distribuição de novas Ordens de Serviço; e alertas, consistindo em um painel dedicado à triagem de ocorrências críticas, atendendo a (US07).
 
 <center>
-  <p><strong>Figura 16</strong> — Wireframe da tela de dashboard do Gerente e Coordenador (US07)</p>
+  <p><strong>Figura 18</strong> — Wireframe da tela de dashboard do Gerente e Coordenador (US07)</p>
   <img src="./assets/wireframeGerenteCoordenadorDashboard.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2938,7 +2922,7 @@ Para facilitar a gestão dos registros, a interface disponibiliza filtros por re
 Além disso, o Coordenador dispõe de um botão de exportação posicionado de forma destacada na interface, permitindo gerar e baixar um arquivo em formato Excel/CSV contendo os registros filtrados (US12). A exportação respeita a estrutura de colunas padronizada e compatível com os templates legados utilizados pela coordenação da BrPec, contemplando: data, retiro, tipo de evento, categoria animal, quantidade e Capataz responsável.
 
 <center>
-  <p><strong>Figura 17</strong> — Wireframe da tela de lista de movimentações do Coordenador (US11)</p>
+  <p><strong>Figura 19</strong> — Wireframe da tela de lista de movimentações do Coordenador (US11)</p>
   <img src="./assets/wireframeListaDeBoletos.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2954,10 +2938,25 @@ O quadro a seguir consolida a relação entre personas, User Stories priorizadas
 | Marcos Cesar Filho — Coordenador | US11, US12 | Visualizar movimentações, validar registros e exportar dados consolidados | Dashboard; Tela de movimentações; Exportação de dados | Desktop |
 | Técnico de Infraestrutura | US06, US07 | Visualizar chamados e registrar resolução de problemas | Painel de infraestrutura; Detalhe do chamado; Registrar resolução | Mobile/Desktop |
 
+<center>
+  <p><strong>Tabela 51</strong> — Wireframes</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 
 ## 3.4. Guia de estilos (sprint 3)
 
-Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros. Isso, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
+Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
+
+O Guia de Estilos navegável completo está disponível em: [Figma - SynTech](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=198-939)
+
+<center>
+  <p><strong>Figura 18</strong> - Guia de Estilos Completo</p>
+  <img src="./assets/guiaDeEstilos.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+A Figura 18 apresenta o guia de estilos completo da plataforma SynTech, consolidando em uma única visualização as decisões visuais do produto: paleta de cores, escala tipográfica, biblioteca de ícones e componentes de interface. O documento serve como referência central para garantir consistência entre design e desenvolvimento ao longo de todo o projeto.
 
 ### 3.4.1 Cores
 
@@ -2979,6 +2978,11 @@ Uma **paleta de cores** é o conjunto definido e limitado de cores que uma marca
 | <img src="./assets/cores/vermelho-escuro.png" width="40"/> | Vermelho Escuro | `#D32F2F` | Erro - mensagens de falha, campos inválidos, ações destrutivas |
 | <img src="./assets/cores/white.png" width="40"/> | Branco | `#FFFFFF` | Fundos Secundários - fundo de cards, mensagens e caixas |
 
+<center>
+  <p><strong>Tabela 52</strong> — Paleta de Cores</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 A paleta é composta por sete cores com funções bem delimitadas. O **Verde Profundo** (`#1A4D2E`) é a cor primária. Ele aparece nos botões principais, cabeçalhos e em qualquer elemento que precise de destaque imediato, ancorando a identidade visual do produto. O **Verde Médio** (`#2E7D52`) atua como cor secundária, reservada para estados de interação como hover, ícones ativos e badges de status, criando uma progressão tonal natural a partir da primária.
 
 As cores neutras são o **Off-white Quente** (`#F5F0E8`) e o **Quase Preto** (`#1B1B1B`). O off-white é a base de todas as telas. O tom levemente amarelado evita o reflexo agressivo do branco puro, tornando a leitura mais confortável. O quase preto é aplicado em textos de corpo, títulos e labels funcionais, oferecendo contraste adequado sem o peso visual do preto absoluto. O **Branco** (`#FFFFFF`) é aplicado exclusivamente no fundo de cards, mensagens e caixas, criando separação visual em relação ao off-white da tela base.
@@ -2987,7 +2991,6 @@ Por fim, as cores semânticas comunicam estados do sistema de forma imediata. O 
 
 #### Justificativa Técnica: Contraste Outdoor (Nível AAA)
 
-Justificativa Técnica: Contraste Outdoor (Nível AAA)
 A adoção do contraste mínimo de 7:1 para interfaces operadas em ambientes externos sob luz solar direta fundamenta-se na convergência entre engenharia de fatores humanos e acessibilidade, conforme o critério de sucesso 1.4.6 da WCAG (Nível AAA) [24].
 
 Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26], a luz incidente nas camadas do display desencadeia o fenômeno conhecido como veiling glare: reflexões que adicionam luminância ao fundo e ao texto, "lavando" as cores e reduzindo drasticamente o contraste percebido. Para compensar essa perda física e garantir legibilidade em campo, a interface precisa partir de uma razão de contraste nativa substancialmente elevada [25]. Nesse contexto, a iluminação extrema impõe ao usuário uma deficiência visual situacional temporária, equiparável, em termos perceptivos, à perda severa de sensibilidade ao contraste [27].
@@ -2998,23 +3001,25 @@ Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26
 
 A escolha tipográfica em interfaces digitais vai além da estética. Fontes sem serifa de traço uniforme apresentam melhor desempenho em telas de baixa resolução e em condições adversas de luminosidade, como a exposição solar direta enfrentada pelos usuários deste projeto [28]. Além disso, o tamanho e o peso das fontes impactam diretamente a acessibilidade da interface: textos com peso insuficiente ou tamanho reduzido comprometem a leitura em ambientes de alta iluminância [25][27].
 
-A tipografia da solução utiliza duas famílias de fontes complementares, ambas disponíveis gratuitamente via Google Fonts, selecionadas para garantir legibilidade em telas mobile e web, inclusive sob luz solar direta.
-
-A **Inter** foi projetada especificamente para interfaces digitais, com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade, por isso fizemos essa escolha [28].
+A tipografia da solução utiliza a família **Inter**, disponível gratuitamente via Google Fonts, projetada especificamente para interfaces digitais e com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade [28].
 
 <center>
-  <p><strong>Figura 18</strong> — Fonte Inter e suas variações</p>
+  <p><strong>Figura 19</strong> - Fonte Inter e suas variações</p>
   <img src="./assets/interFont.png" width="800"/>
   <p>Fonte: Font Squirrel.</p>
 </center>
- 
 
 | Uso | Pesos utilizados |
 |---|---|
 | Títulos, botões e elementos de destaque | 600 (SemiBold), 700 (Bold) |
 | Corpo de texto, labels e tabelas | 400 (Regular), 500 (Medium) |
 
-### Escala tipográfica
+<center>
+  <p><strong>Tabela 53</strong> — Tipografia da solução</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+#### Escala tipográfica
 
 A escala tipográfica foi definida com base nos critérios de contraste e legibilidade das diretrizes WCAG 2.1, que recomendam tamanhos e pesos mínimos para garantir acessibilidade em diferentes contextos de uso [24]. Para ambientes externos com alta incidência de luz, recomenda-se priorizar pesos a partir de 500 (Medium) e tamanhos a partir de 16px no corpo do texto [27].
 
@@ -3029,6 +3034,11 @@ A escala tipográfica foi definida com base nos critérios de contraste e legibi
 
 > Tamanho mínimo adotado: **12px**. Nenhum texto funcional da interface utiliza tamanho inferior a esse valor, garantindo legibilidade mesmo em dispositivos móveis sob luz solar direta [24][25].
 
+<center>
+  <p><strong>Tabela 54</strong> — Escala Tipográfica</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 ### 3.4.3 Iconografia e imagens
 #### Iconografia
 A iconografia da solução utiliza a biblioteca **Phosphor Icons**, escolhida por seu traço generoso e alta legibilidade em telas mobile e web sob luz solar direta. Os ícones são aplicados exclusivamente nos estilos **Bold** e **Fill**, que apresentam melhor desempenho em condições de alta iluminância, onde traços finos tendem a desaparecer [27].
@@ -3042,7 +3052,7 @@ De acordo com Nielsen [22], os ícones podem ser classificados em três categori
 
 A biblioteca foi selecionada priorizando ícones de semelhança, categoria que apresenta melhor usabilidade e menor dependência cultural [22]. Ícones arbitrários foram adotados apenas quando já amplamente convencionados — como o símbolo de alerta — evitando ambiguidade para o usuário.
 
-Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizadode forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduzerros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção do usuário pode estar dividida [28].
+Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizado de forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduz erros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção do usuário pode estar dividida [28].
 
 **Atributos de aplicação**
 
@@ -3052,7 +3062,7 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 | <img src="./assets/icones/concluido.png" width="40"/> | Check Circle | 35px | Confirmações e sucesso |
 | <img src="./assets/icones/engrenagem.png" width="40"/> | Gear | 24px | Configurações |
 | <img src="./assets/icones/ferramenta.png" width="40"/> | Tool | 24px | Acessar infraestrutura |
-| <img src="./assets/icones/microfone.png" width="40"/> | Microphone | 24px | Localização e área |
+| <img src="./assets/icones/microfone.png" width="40"/> | Microphone | 24px | Gravar áudios |
 | <img src="./assets/icones/camera.png" width="40"/> | Camera | 24px e 84px | Adicionar fotos |
 | <img src="./assets/icones/rebanho.png" width="40"/> | Cow | 24px | Movimentação de rebanhos |
 | <img src="./assets/icones/salvar.png" width="40"/> | Floppy Disk | 24px | Salvar informações |
@@ -3062,9 +3072,10 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 | <img src="./assets/icones/tempo.png" width="40"/> | Clock Counter Clockwise | 24px | Histórico do chamado |
 | <img src="./assets/icones/quase.png" width="40"/> | Circle Notch | 35px | Em andamento |
 | <img src="./assets/icones/notas.png" width="40"/> | Note | 35px | Chamado em aberto |
-| <img src="./assets/icones/clipe.png" width="40"/> | Paper Clip | 32px | Anexar foto |
+| <img src="./assets/icones/clipe.png" width="40"/> | Paperclip | 32px | Anexar foto |
 | <img src="./assets/icones/boleta.png" width="40"/> | Note Pencil | 32px | Boletas |
-| <img src="./assets/icones/label.png" width="40"/> | Label | 32px | Classificação |
+| <img src="./assets/icones/pessoa.png" width="40"/> | Users Three | 32px | Identificação gerente |
+| <img src="./assets/icones/tag.png" width="40"/> | Tag | 32px | Classificação da evolução |
 
 > Tamanho mínimo adotado: **24px**. Nenhum ícone funcional da interface utiliza tamanho inferior a esse valor, garantindo identificação visual mesmo em dispositivos móveis sob luz solar direta [25][27].
 
@@ -3072,14 +3083,19 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 
 #### Imagens
 
-No guia de estilo, a seção de imagens define quais assets visuais estáticos fazem parte da identidade do produto e como devem ser aplicados. Diferente dos ícones, que são elementos funcionais da interface, como os da biblioteca Phosphor Icons, as imagens são representações visuais da marca em si [35].
+No guia de estilo, a seção de imagens define quais assets visuais estáticos fazem parte da identidade do produto e como devem ser aplicados. Diferentemente dos ícones, que são elementos funcionais da interface, como os da biblioteca Phosphor Icons, as imagens são representações visuais da marca em si [35].
 
 No caso desta solução, o único asset de imagem utilizado é o **logotipo da SynTech**, a plataforma web do projeto. Ele deve ser tratado como elemento protegido da identidade visual: sua proporção não deve ser alterada e sua aplicação se limita ao cabeçalho da plataforma, garantindo reconhecimento consistente da marca ao longo de toda a experiência do usuário.
 
 <center>
-  <p><strong>Figura 19</strong> - Logotipo Syntech</p>
-  <img src="./assets/syntech.png" width="800"/>
-  <p>Fonte: Próprios Autores.</p>
+  <p><strong>Figura 20</strong> - Logotipo SynTech</p>
+  <img src="./assets/syntech.png" width="300"/>
+  <p>Fonte: Próprios autores.</p>
+</center>
+
+<center>
+  <p><strong>Tabela 55</strong> — Ícones e atributos</p>
+  <p>Fonte: Próprios autores (2026).</p>
 </center>
 
 ## 3.5 Protótipo de alta fidelidade (sprint 3)
@@ -3114,7 +3130,7 @@ de voltar no cabeçalho das telas de detalhe, sidebar fixa nas versões desktop 
 de ação primária sempre posicionados na base da tela, criando um padrão de navegação
 previsível para todos os perfis de usuário.
 
-O protótipo navegável completo está disponível em: [Figma — Alta Fidelidade BRPec](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=0-1&p=f&t=MfPDxOuXEn461uAv-0)
+O protótipo navegável completo está disponível em: [Figma — Alta Fidelidade BRPec](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=0-1&p=f&t=6lUcQJwa1x9U38DA-0)
 
 ---
 
@@ -3129,7 +3145,7 @@ A tela de tarefas é a interface principal do Capataz. Projetada para exibir ape
 - **CR3 (US02):** As tarefas são exibidas de forma organizada e de fácil entendimento.
 
 <center>
-  <p><strong>Figura 18</strong> — Protótipo de Alta Fidelidade: Tela de Tarefas do Capataz (Mobile e Desktop)</p>
+  <p><strong>Figura 20</strong> — Protótipo de Alta Fidelidade: Tela de Tarefas do Capataz (Mobile e Desktop)</p>
   <img src="./assets/mockups/mockupTarefas.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -3393,7 +3409,7 @@ Este diagrama registra a estrutura de dados concebida na sprint 2, com a Boleta 
 A seção 3.6.1 apresenta a versão conceitual consolidada após a evolução deste DER: a Boleta deixa de ser uma entidade isolada e passa a ser materializada pelos registros de Movimentação, Tarefa, Alerta e Evidência. Essa decisão separou melhor as responsabilidades de cada entidade e eliminou atributos que não são pertinentes a todos os tipos de evento.
 
 <center>
-  <p><strong>Figura 18</strong> — DER conceitual da sprint 2 — BRPec Agropecuária</p>
+  <p><strong>Figura 21</strong> — DER conceitual da sprint 2 — BRPec Agropecuária</p>
 </center>
 
 <img src="./assets/modelo-er-brpec.png" width="800"/>
@@ -3429,7 +3445,7 @@ A evolução conceitual está apresentada nas seções 3.6.1 e 3.6.2. Nesta seç
 | `sync_queue`     | `id`           | —                                                          | Fila técnica de sincronização offline-online    |
 
 <center>
-  <p><strong>Figura 19</strong> — Modelo Relacional</p>
+  <p><strong>Tabela 56</strong> — Modelo Relacional</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -3798,6 +3814,11 @@ A consulta retorna apenas as tarefas em que a tarefa está pendente e o respons�
 | V | F | F     |
 | V | V | V     |
 
+<center>
+  <p><strong>Tabela 57</strong> — Tabela-Verdade</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 ### Descrição Técnica
 
 A consulta realiza a integração entre as tabelas tarefas, usuarios e retiros, permitindo identificar quais atividades ainda permanecem pendentes dentro da operação da fazenda. Além disso, possibilita visualizar o responsável pela execução de cada tarefa e sua localização operacional.
@@ -3808,6 +3829,11 @@ A consulta realiza a integração entre as tabelas tarefas, usuarios e retiros, 
 | `tarefas`  | Armazena as tarefas cadastradas no sistema |
 | `usuarios` | Contém os responsáveis pelas tarefas       |
 | `retiros`  | Representa os retiros da fazenda           |
+
+<center>
+  <p><strong>Tabela 58</strong> — Tabelas Relacionadas</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 #### 3.6.4.2 Matriz de Rastreabilidade entre Regras de Negócio e Modelo Físico
 Com o objetivo de garantir rastreabilidade entre as regras de negócio definidas anteriormente e os artefatos de modelagem do banco de dados, a matriz a seguir relaciona cada RN às respectivas entidades do domínio, tabelas físicas e mecanismos de implementação utilizados no modelo relacional. Essa associação contribui para o sincronismo entre requisitos, modelagem conceitual e implementação física do sistema.
@@ -3826,6 +3852,10 @@ Com o objetivo de garantir rastreabilidade entre as regras de negócio definidas
 | RN27 — Nascimento deve registrar data, retiro, categoria e quantidade | Movimentacao / Nascimento | `movimentacoes`, `nascimentos` | `tipo = 'nascimento'`, `categoria`, `data_movimentacao`, `quantidade` |
 | RN28 — Exportação deve refletir dados validados | Movimentacao / Exportacao | `movimentacoes`, `sync_queue` | Uso de registros sincronizados e validados antes da exportação |
 
+<center>
+  <p><strong>Tabela 59</strong> — Matriz de Rastreabilidade</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ### 3.6.4.3 Consulta de Número de Nascimentos Registrados
 
@@ -3862,6 +3892,10 @@ A consulta contabiliza apenas as movimentações classificadas como nascimento.
 | F | F         |
 | V | V         |
 
+<center>
+  <p><strong>Tabela 60</strong> — Leitura Lógica</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ### Descrição Técnica
 A consulta relaciona os registros de nascimento às movimentações do sistema e aos respectivos retiros da propriedade rural. Seu principal objetivo é fornecer indicadores produtivos relacionados ao crescimento do rebanho.
@@ -3873,6 +3907,10 @@ A consulta relaciona os registros de nascimento às movimentações do sistema e
 | `movimentacoes` | Controla eventos relacionados ao rebanho |
 | `retiros`       | Identifica o local associado ao registro |
 
+<center>
+  <p><strong>Tabela 61</strong> — Tabelas Relacionadas</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center> 
 
 ### 3.6.4.4 Consulta de Registros Offline Não Sincronizados
 
@@ -3913,6 +3951,11 @@ A consulta retorna registros que precisam de atenção da rotina de sincronizaç
 | V | F | V     |
 | V | V | V     |
 
+<center>
+  <p><strong>Tabela 62</strong> — Leitura Lógica</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
 ### Descrição Técnica
 A consulta utiliza a tabela sync_queue, responsável pelo gerenciamento das operações executadas localmente em modo offline. Sua função é monitorar registros pendentes de sincronização ou operações que falharam devido à ausência de conectividade.
 
@@ -3920,6 +3963,11 @@ A consulta utiliza a tabela sync_queue, responsável pelo gerenciamento das oper
 | Tabela       | Função                                                       |
 | ------------ | ------------------------------------------------------------ |
 | `sync_queue` | Controla a fila de registros locais aguardando sincronização |
+
+<center>
+  <p><strong>Tabela 63</strong> — Tabelas Relacionadas</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
 
 ---
 ### 3.6.4.5 Consulta de Atualização de Tentativas de Sincronização
@@ -3963,6 +4011,11 @@ A atualização só ocorre quando o registro está em processamento e ainda não
 | F | V | F     |
 | V | F | F     |
 | V | V | V     |
+
+<center>
+  <p><strong>Tabela 64</strong> — Tabela-Verdade</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center> 
 
 ### Considerações da Seção
 
@@ -4487,9 +4540,7 @@ _Descreva as estratégias aplicadas no tratamento de falhas de rede: timeout, re
 
 A RTM rastreia cada User Story do BrPec da persona até a evidência de teste, atravessando Requisito Funcional (RF), Regra de Negócio (RN), endpoint, tela e caso de teste automatizado. Esta versão consolida os fluxos centrais já implementados e testados na sprint 3 — sem lacunas: cada linha possui endpoint funcional em `src/backend/`, tela correspondente e teste automatizado com evidência de execução.
 
-<center>
-  <p><strong>Tabela 20</strong> — Matriz de Rastreabilidade (RTM)</p>
-</center>
+
 
 | Persona | US | RF | RN | Endpoint | Tela | Teste |
 | ------- | ---- | ----- | ---------------- | ---------------------------------------- | --------------------- | ------------ |
@@ -4502,6 +4553,7 @@ A RTM rastreia cada User Story do BrPec da persona até a evidência de teste, a
 | Gabriel (Capataz) | US08 | RF008 | RN27 | `POST /eventos-zootecnicos/nascimentos` | Registrar Nascimento | E1-E2 |
 
 <center>
+  <p><strong>Tabela 65</strong> — Matriz de Rastreabilidade (RTM)</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -4513,7 +4565,245 @@ A RTM rastreia cada User Story do BrPec da persona até a evidência de teste, a
 
 ## 4.1. Primeira versão da aplicação web (sprint 3)
 
-_Descreva e ilustre aqui o desenvolvimento da primeira versão do sistema web. Utilize prints de tela para ilustrar. Indique obrigatoriamente: (a) o que foi implementado, (b) o que não foi concluído, (c) dificuldades técnicas enfrentadas e próximos passos._
+A primeira versão da aplicação web SyncTech foi desenvolvida ao longo da sprint 3, materializando a arquitetura em camadas descrita na seção 3.2.1 e os protótipos de alta fidelidade documentados na seção 3.5. O sistema é composto por dois módulos principais: o **frontend estático** (`synctech-app/`), que implementa todas as telas navegáveis do protótipo usando HTML, CSS e JavaScript puro, e o **backend REST** (`src/backend/`), que expõe a WebAPI documentada na seção 3.7 utilizando Node.js, Express e SQLite.
+
+### (a) O que foi implementado
+
+#### Frontend — Interface Navegável Completa
+
+O frontend foi implementado como uma Single Page Application (SPA) leve, sem dependências de frameworks, composta por três arquivos principais: `index.html`, `css/styles.css` e `js/app.js`. A aplicação renderiza dinamicamente 16 telas navegáveis que cobrem todos os fluxos operacionais previstos nas User Stories priorizadas:
+
+**Fluxo do Capataz (US02 → US03 → US04 → US05):**
+
+- **Tela de seleção de perfil** — ponto de entrada do sistema, onde o usuário seleciona seu perfil (Capataz, Infraestrutura, Coordenador ou Gerente) por meio de botões com ícones representativos, seguindo o princípio de redução de digitação definido na persona do Capataz.
+
+<center>
+  <p><strong>Figura 25a</strong> — Primeira versão: Tela de Seleção de Perfil (Real)</p>
+  <img src="./assets/prints-v1/01-login-perfil.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de seleção de retiro** — exibida após o Capataz selecionar seu perfil, apresenta a lista dos 15 retiros reais da BrPec (Acurizal, Aroeira, Baia Bonita, Bodoquena 1, Bodoquena 2, Boqueirão, Caieira, CMB, Confinamento, Cristo, Morada Nova, Morro Azul, Puga, São Miguel e Vista Alegre) com busca por nome, permitindo navegação rápida mesmo em dispositivos com tela reduzida.
+
+<center>
+  <p><strong>Figura 25b</strong> — Primeira versão: Tela de Seleção de Retiro (Real)</p>
+  <img src="./assets/prints-v1/02-login-retiro.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de lista de tarefas (US02)** — exibe as tarefas do dia com cards contendo barra lateral colorida por status (âmbar para "Em andamento", verde para "Pendente"), filtros por tipo ("Todos" / "Rebanhos") e botão "Nova O.S." para criação rápida.
+
+<center>
+  <p><strong>Figura 26</strong> — Primeira versão: Tela de Lista de Tarefas do Capataz (Real)</p>
+  <img src="./assets/prints-v1/03-lista-tarefas.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de detalhe da tarefa (US02)** — apresenta título, badge de status, descrição textual, player de áudio para instruções gravadas pelo Gerente e placeholder para foto de referência, com botão "Iniciar Tarefa" em largura total.
+
+<center>
+  <p><strong>Figura 27</strong> — Primeira versão: Tela de Detalhe da Tarefa do Capataz (Real)</p>
+  <img src="./assets/prints-v1/04-detalhe-tarefa.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de concluir tarefa (US03/US04/US05)** — formulário de conclusão com campos para foto da conclusão, observações em texto e registro de áudio, com botões "Tirar Foto" e "Salvar" na base.
+
+<center>
+  <p><strong>Figura 28</strong> — Primeira versão: Tela de Concluir Tarefa do Capataz (Real)</p>
+  <img src="./assets/prints-v1/05-concluir-tarefa.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Fluxo de Movimentação do Rebanho (US08/US09):**
+
+- **Tela de nova boleta** — formulário completo de movimentação de animais com seleção de tipo de operação (Movimentação, Nascimento, Morte), seleção de retiros de origem e destino, contagem categorizada de animais por sexo e faixa etária (7 categorias de machos e 5 de fêmeas, conforme planilha real da BrPec) com steppers para incremento/decremento, total geral calculado automaticamente e campo de observações.
+
+<center>
+  <p><strong>Figura 28a</strong> — Primeira versão: Tela de Nova Boleta de Movimentação (Real)</p>
+  <img src="./assets/prints-v1/06-nova-boleta.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de registrar nascimento** — formulário simplificado para registro de nascimentos com data automática, seleção de retiro, categoria (Bezerro/Bezerra), stepper de quantidade e campo de foto opcional.
+
+<center>
+  <p><strong>Figura 28b</strong> — Primeira versão: Tela de Registrar Nascimento (Real)</p>
+  <img src="./assets/prints-v1/07-registrar-nascimento.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de registrar óbito (RF013)** — formulário com campos obrigatórios sinalizados visualmente (asterisco vermelho e borda vermelha): data, retiro, identificação do animal, categoria, causa da morte (14 causas cadastradas: Acidente, Atolado, Cobra, Deficiência nutricional, etc.), quantidade e foto obrigatória.
+
+<center>
+  <p><strong>Figura 28c</strong> — Primeira versão: Tela de Registrar Óbito (Real)</p>
+  <img src="./assets/prints-v1/08-registrar-obito.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Fluxo de Infraestrutura (US06/US07):**
+
+- **Painel de infraestrutura** — interface de gestão de chamados com filtros por categoria (Hidráulica, Cerca, Elétrica), cards de contadores por status (Abertos: 12, Em andamento: 5, Fechados: 28) e botão "+ Nova O.S.".
+
+<center>
+  <p><strong>Figura 29</strong> — Primeira versão: Painel de Infraestrutura (Real)</p>
+  <img src="./assets/prints-v1/10-painel-infraestrutura.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de resolver chamado** — formulário de registro de resolução com card de identificação do chamado, campo de descrição com contador de caracteres (0/500), área de anexo de foto com especificação de formatos aceitos, botão "Salvar Resolução" e histórico do chamado em timeline com três etapas (Aberto → Em andamento → Resolvido) incluindo datas e descrições.
+
+<center>
+  <p><strong>Figura 30</strong> — Primeira versão: Tela de Registrar Resolução de Chamado (Real)</p>
+  <img src="./assets/prints-v1/11-resolver-chamado.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Fluxo do Gerente (US01/US07):**
+
+- **Dashboard** — painel consolidado com filtros de retiro e data, gráfico de barras "Chamados por retiro", card "Evolução das demandas" com indicador percentual (75%), gráfico de rosca "Tarefas por status" com legenda colorida, e cards numéricos para "Alertas em aberto" e "Prioridades".
+
+<center>
+  <p><strong>Figura 31</strong> — Primeira versão: Dashboard do Gerente e Coordenador (Real)</p>
+  <img src="./assets/prints-v1/12-dashboard-gerente.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de nova O.S. (US01)** — formulário completo de criação de Ordem de Serviço com seletor de equipe (Capataz/Infra), campos de seleção de operação, título, retiro de origem, destino opcional, responsável, descrição, prazo, indicadores de prioridade (alta/média/baixa) com dots coloridos, e cards de áudio e foto para complementar instruções.
+
+<center>
+  <p><strong>Figura 32</strong> — Primeira versão: Tela de Nova Ordem de Serviço do Gerente (Real)</p>
+  <img src="./assets/prints-v1/13-nova-os.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Fluxo do Coordenador (US11/US12):**
+
+- **Tela de boletas** — lista de boletas com sub-navegação (Painel/Boletas), cards com título e metadados (data, capataz, quantidade de animais) e botão de download individual.
+
+<center>
+  <p><strong>Figura 33</strong> — Primeira versão: Tela de Lista de Boletas do Coordenador (Real)</p>
+  <img src="./assets/prints-v1/14-boletas-lista.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de exportação (US12)** — formulário de exportação com seleção de período (De/Até), checkboxes para tipos de dados (Movimentações, Nascimentos, Óbitos, Tarefas), seleção de formato (CSV/Excel) e botão "Exportar".
+
+<center>
+  <p><strong>Figura 33a</strong> — Primeira versão: Tela de Exportação de Dados (Real)</p>
+  <img src="./assets/prints-v1/15-exportar-dados.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de evolução de rebanho** — formulário para registro de reclassificação de animais com seleção de retiro, tipo de classificação (Desmama/Evolução/Classificação), cards de "DE (origem)" e "PARA (nova categoria)" com seletores de categoria e faixa etária, stepper de quantidade e observações.
+
+<center>
+  <p><strong>Figura 33b</strong> — Primeira versão: Tela de Evolução de Rebanho (Real)</p>
+  <img src="./assets/prints-v1/09-boleta-evolucao.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Elementos transversais:**
+
+- **Sidebar desktop** — navegação lateral adaptada por perfil, com ícones e labels de navegação, exibida automaticamente após login.
+- **Bottom navigation mobile** — barra inferior com ícones para Início, Tarefas, Rebanhos e Configurações.
+- **Tela de sucesso** — feedback visual de confirmação com ícone de check, mensagem "Salvo com sucesso!" e badge offline "1 registro na fila", simulando o comportamento esperado do modo offline-first.
+
+<center>
+  <p><strong>Figura 33c</strong> — Primeira versão: Tela de Confirmação de Sucesso / Modo Offline (Real)</p>
+  <img src="./assets/prints-v1/16-tela-sucesso.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+#### Backend — Arquitetura em Camadas Completa
+
+O backend foi implementado em TypeScript com Node.js e Express, seguindo rigorosamente a arquitetura em camadas Controller–Service–Repository documentada na seção 3.2.4. A estrutura de pastas é:
+
+```
+src/backend/
+├── config/          # Configuração do banco (database.ts, initDb.ts)
+├── controllers/     # 7 controllers implementados
+├── services/        # 7 services implementados
+├── repositories/    # 8 repositories implementados
+├── models/          # 7 models implementados
+├── routes/          # 7 arquivos de rotas + index.ts
+├── database/        # migration.sql com DDL completo
+├── tests/           # 2 suítes de testes automatizados
+└── __tests__/       # Testes de endpoints
+```
+
+**Estado atual de cada camada:**
+
+<center>
+  <p><strong>Tabela 20</strong> — Estado da implementação das camadas arquiteturais (sprint 3)</p>
+</center>
+
+| Camada | Arquivos implementados | Status |
+| --- | --- | --- |
+| Routes | `index.ts`, `tarefaRoutes.ts`, `alertaRoutes.ts`, `eventoRoutes.ts`, `exportacaoRoutes.ts`, `painelRoutes.ts`, `sincronizacaoRoutes.ts` | ✅ Implementada |
+| Controllers | `tarefaController.ts`, `alertaController.ts`, `eventoController.ts`, `exportacaoController.ts`, `healthController.ts`, `painelController.ts`, `sincronizacaoController.ts` | ✅ Implementada |
+| Services | `tarefaService.ts`, `alertaService.ts`, `eventoService.ts`, `exportacaoService.ts`, `healthService.ts`, `painelService.ts`, `sincronizacaoService.ts` | ✅ Implementada |
+| Repositories | `tarefaRepository.ts`, `alertaRepository.ts`, `eventoRepository.ts`, `exportacaoRepository.ts`, `healthRepository.ts`, `painelRepository.ts`, `sincronizacaoRepository.ts`, `usuarioRepository.ts` | ✅ Implementada |
+| Models | `Tarefa.ts`, `Alerta.ts`, `Movimentacao.ts`, `Evidencia.ts`, `Retiro.ts`, `Sincronizacao.ts`, `Usuario.ts` | ✅ Implementada |
+| Database | `migration.sql` com DDL completo (11 tabelas) | ✅ Implementada |
+| Testes | `uc01-planejar-tarefas.test.ts` (14 casos), `outros-endpoints.test.ts` (5 casos) | ✅ 19/19 passando |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+Os endpoints implementados e testados cobrem os fluxos críticos da sprint 3:
+- `GET /api/health` — monitoramento do servidor e banco
+- `POST /api/tarefas` — criação de tarefas (UC01/RF001) com validação de RN01
+- `GET /api/tarefas/hoje` — busca de tarefas do dia por capataz (RF002/RN02/RN05)
+- `PATCH /api/tarefas/:id/concluir` — conclusão de tarefa pelo capataz
+- `POST /api/tarefas/:id/evidencias` — anexar evidências (foto/áudio/texto)
+- `POST /api/chamados` — criar alertas de infraestrutura com GPS (RF006)
+- `POST /api/eventos-zootecnicos/nascimentos` — registrar nascimento (RF008)
+- `GET /api/exportacao/csv` — exportação de dados em CSV (RF015)
+- `POST /api/sync/lote` — sincronização em lote
+
+#### Testes Automatizados
+
+A suíte de testes automatizados utiliza Jest 29 + ts-jest + Supertest sobre banco SQLite em memória. Todos os 19 casos de teste foram executados e aprovados com sucesso, validando contratos HTTP, regras de negócio (RN01, RN05) e persistência no banco local. A evidência de execução está registrada em `documentos/assets/jest.png`.
+
+<center>
+  <p><strong>Figura 34</strong> — Resultado da execução dos testes automatizados (19/19 passando)</p>
+  <img src="./assets/jest.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+### (b) O que não foi concluído
+
+1. **Integração frontend ↔ backend:** O frontend opera com dados estáticos (mock data hardcoded em `js/app.js`) e ainda não consome a API REST do backend. Os dados dos retiros, tarefas e categorias estão duplicados entre o frontend e o backend. A integração será priorizada na sprint 4.
+
+2. **Funcionalidade offline-first (Service Workers):** Embora a tela de sucesso simule o comportamento offline ("1 registro na fila"), os Service Workers e o armazenamento local (IndexedDB/SQLite no cliente) ainda não foram implementados. O fluxo de sincronização existe apenas no backend (`sincronizacaoService.ts` e `sync_queue`).
+
+3. **Autenticação e autorização:** O sistema opera sem autenticação. A identificação do usuário é feita por passagem explícita de IDs nas requisições, conforme decisão documentada na seção 3.7. A implementação de sessão e controle de acesso por perfil está planejada para a sprint 5.
+
+4. **Upload real de mídias:** Os campos de foto e áudio exibem placeholders visuais, mas não capturam nem armazenam arquivos reais. A integração com câmera e microfone do dispositivo será implementada nas sprints seguintes.
+
+5. **Gráficos dinâmicos no dashboard:** Os gráficos de barras e rosca no dashboard são renderizados com CSS estático, sem biblioteca de charts e sem dados reais do banco.
+
+### (c) Dificuldades técnicas enfrentadas
+
+1. **Compatibilidade do SQLite com Node.js nativo:** A utilização do módulo `node:sqlite` nativo exigiu atenção à versão do Node.js (≥ 22.5) e ao modo de execução síncrona para testes em memória. A equipe optou por banco em memória (`:memory:`) nos testes para garantir isolamento completo entre suítes.
+
+2. **Design responsivo mobile-first:** A implementação do CSS responsivo demandou ajustes extensivos para garantir que todos os elementos de interação (botões ≥ 56px, ícones ≥ 24px) mantivessem usabilidade em telas de 5" a 12", conforme o requisito não funcional REST (seção 3.1.3). O contraste AAA (7:1) sob luz solar foi validado manualmente para todas as combinações de cor da paleta.
+
+3. **Navegação SPA sem framework:** A decisão de implementar o roteamento via JavaScript puro (função `go()` com renderização dinâmica de HTML) simplificou a dependência de ferramentas, mas exigiu cuidado extra com a gestão de estado global e a reconstrução do DOM a cada navegação.
+
+4. **Validação de regras de negócio nos testes:** A implementação do teste de RN01 (capataz deve pertencer ao retiro da tarefa) exigiu seed cuidadoso de dados de teste, com inserção controlada de retiros e usuários no `beforeEach` para garantir determinismo nos cenários de sucesso e falha.
+
+### Próximos passos (sprint 4)
+
+- Integrar frontend com backend via chamadas `fetch()` à API REST
+- Implementar Service Workers para funcionamento offline-first
+- Conectar formulários de boleta ao endpoint `POST /api/eventos-zootecnicos`
+- Substituir dados mock por dados reais do banco via API
+- Implementar captura de foto via câmera do dispositivo
+- Adicionar biblioteca de gráficos ao dashboard (Chart.js ou similar)
+- Expandir suíte de testes para cobrir US09 (óbito) e US12 (exportação)
 
 ## 4.2. Segunda versão da aplicação web (sprint 4)
 
