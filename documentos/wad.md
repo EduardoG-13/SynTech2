@@ -2945,6 +2945,8 @@ O quadro a seguir consolida a relação entre personas, User Stories priorizadas
 
 Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
 
+O protótipo navegável completo está disponível em: [Figma - Alta Fidelidade BRPec](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=198-939)
+
 <center>
   <p><strong>Figura 18</strong> - Guia de Estilos Completo</p>
   <img src="./assets/guiaDeEstilos.png" width="800"/>
