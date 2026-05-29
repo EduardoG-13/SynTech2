@@ -2946,7 +2946,7 @@ O quadro a seguir consolida a relação entre personas, User Stories priorizadas
 Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
 
 <center>
-  <p><strong>Figura 18</strong> — Guia de Estilos Completo</p>
+  <p><strong>Figura 18</strong> - Guia de Estilos Completo</p>
   <img src="./assets/guiaDeEstilos.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
@@ -2989,12 +2989,10 @@ Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26
 
 A escolha tipográfica em interfaces digitais vai além da estética. Fontes sem serifa de traço uniforme apresentam melhor desempenho em telas de baixa resolução e em condições adversas de luminosidade, como a exposição solar direta enfrentada pelos usuários deste projeto [28]. Além disso, o tamanho e o peso das fontes impactam diretamente a acessibilidade da interface: textos com peso insuficiente ou tamanho reduzido comprometem a leitura em ambientes de alta iluminância [25][27].
 
-A tipografia da solução utiliza duas famílias de fontes complementares, ambas disponíveis gratuitamente via Google Fonts, selecionadas para garantir legibilidade em telas mobile e web, inclusive sob luz solar direta.
-
-A **Inter** foi projetada especificamente para interfaces digitais, com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade, sendo, por isso, a fonte selecionada [28].
+A tipografia da solução utiliza a família **Inter**, disponível gratuitamente via Google Fonts, projetada especificamente para interfaces digitais e com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade [28].
 
 <center>
-  <p><strong>Figura 18</strong> — Fonte Inter e suas variações</p>
+  <p><strong>Figura 19</strong> - Fonte Inter e suas variações</p>
   <img src="./assets/interFont.png" width="800"/>
   <p>Fonte: Font Squirrel.</p>
 </center>
@@ -3005,7 +3003,7 @@ A **Inter** foi projetada especificamente para interfaces digitais, com alto des
 | Títulos, botões e elementos de destaque | 600 (SemiBold), 700 (Bold) |
 | Corpo de texto, labels e tabelas | 400 (Regular), 500 (Medium) |
 
-### Escala tipográfica
+#### Escala tipográfica
 
 A escala tipográfica foi definida com base nos critérios de contraste e legibilidade das diretrizes WCAG 2.1, que recomendam tamanhos e pesos mínimos para garantir acessibilidade em diferentes contextos de uso [24]. Para ambientes externos com alta incidência de luz, recomenda-se priorizar pesos a partir de 500 (Medium) e tamanhos a partir de 16px no corpo do texto [27].
 
@@ -3068,9 +3066,9 @@ No guia de estilo, a seção de imagens define quais assets visuais estáticos f
 No caso desta solução, o único asset de imagem utilizado é o **logotipo da SynTech**, a plataforma web do projeto. Ele deve ser tratado como elemento protegido da identidade visual: sua proporção não deve ser alterada e sua aplicação se limita ao cabeçalho da plataforma, garantindo reconhecimento consistente da marca ao longo de toda a experiência do usuário.
 
 <center>
-  <p><strong>Figura 19</strong> - Logotipo Syntech</p>
+  <p><strong>Figura 20</strong> - Logotipo SynTech</p>
   <img src="./assets/syntech.png" width="800"/>
-  <p>Fonte: Próprios Autores.</p>
+  <p>Fonte: Próprios autores.</p>
 </center>
 
 ## 3.5 Protótipo de alta fidelidade (sprint 3)
