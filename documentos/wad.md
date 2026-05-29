@@ -1950,6 +1950,7 @@ classDiagram
             +String nome
             +String senha
             +Enum perfil
+            +UUID retiro_id
             +DateTime criadoEm
         }
         class TarefaModel {
@@ -1966,27 +1967,21 @@ classDiagram
             +Boolean sincronizada
         }
         class EvidenciaModel {
-            <<abstract>>
             +UUID id
             +UUID tarefa_id
+            +UUID alerta_id
+            +UUID movimentacao_id
             +Enum tipo
+            +String arquivoBase64
+            +String urlArquivo
+            +String geolocalizacao
+            +Integer duracaoSegundos
+            +String conteudo
+            +Integer tamanhoBytes
             +DateTime criadaEm
             +Boolean sincronizada
         }
-        class FotoModel {
-            +String urlArquivo
-            +Integer tamanhoBytes
-            +String geolocalizacao
-        }
-        class AudioModel {
-            +String urlArquivo
-            +Integer duracaoSegundos
-        }
-        class TextoComplementarModel {
-            +String conteudo
-        }
-        class EventoZootecnicoModel {
-            <<abstract>>
+        class MovimentacaoModel {
             +UUID id
             +UUID capataz_id
             +UUID retiro_id
@@ -1998,14 +1993,22 @@ classDiagram
             +UUID coordenador_id
             +DateTime criadoEm
         }
-        class RegistroNascimentoModel {
+        class NascimentoModel {
         }
-        class RegistroObitoModel {
+        class ObitoModel {
             +String identificacaoAnimal
             +String causaMorte
             +UUID foto_id
         }
-        class AlertaInfraestruturaModel {
+        class TransferenciaModel {
+            +UUID retiroOrigemId
+            +UUID retiroDestinoId
+        }
+        class CompravendaModel {
+            +Enum tipoNegocio
+            +Decimal valorFinanceiro
+        }
+        class AlertaModel {
             +UUID id
             +Enum tipo
             +String descricao
@@ -2017,6 +2020,7 @@ classDiagram
             +DateTime criadoEm
             +Boolean sincronizado
             +UUID foto_id
+            +UUID tecnico_id
         }
         class SincronizacaoModel {
             +UUID id
@@ -2045,182 +2049,138 @@ classDiagram
         }
     }
 
-    EvidenciaModel <|-- FotoModel
-    EvidenciaModel <|-- AudioModel
-    EvidenciaModel <|-- TextoComplementarModel
-    EventoZootecnicoModel <|-- RegistroNascimentoModel
-    EventoZootecnicoModel <|-- RegistroObitoModel
+    MovimentacaoModel <|-- NascimentoModel
+    MovimentacaoModel <|-- ObitoModel
+    MovimentacaoModel <|-- TransferenciaModel
+    MovimentacaoModel <|-- CompravendaModel
 
     %% ─────────────────────────────────────────
     %% CAMADA: REPOSITORY
     %% ─────────────────────────────────────────
     namespace Repository {
         class UsuarioRepository {
-            +findById(id) UsuarioModel
-            +findByPerfil(perfil) List~UsuarioModel~
-            +findByRetiro(retiroId) List~UsuarioModel~
-            +save(dados) UsuarioModel
+            +buscarPorId(id) UsuarioModel
         }
         class TarefaRepository {
-            +inserirTarefa(dados) TarefaModel
-            +findByCapatazEData(capatazId, data) List~TarefaModel~
-            +findByRetiro(retiroId) List~TarefaModel~
-            +updateStatus(id, status) void
-            +deleteById(id) void
+            +criar(dados) TarefaModel
+            +buscarPorId(id) TarefaModel
+            +buscarTarefasHoje(capatazId, data) List~TarefaModel~
+            +concluir(id, capatazId, dataConclusao) TarefaModel
+            +salvarEvidencia(tarefaId, tipo, arquivoBase64, geolocalizacao) UUID
         }
-        class EvidenciaRepository {
-            +inserirEvidencia(dados) EvidenciaModel
-            +findByTarefa(tarefaId) List~EvidenciaModel~
-            +marcarSincronizada(id) void
+        class AlertaRepository {
+            +criar(dados) AlertaModel
+            +buscarPorId(id) AlertaModel
         }
-        class EventoZootecnicoRepository {
-            +inserirEvento(dados) EventoZootecnicoModel
-            +findByRetiro(retiroId) List~EventoZootecnicoModel~
-            +findPendentesValidacao() List~EventoZootecnicoModel~
-            +marcarValidado(id, coordenadorId) void
-        }
-        class AlertaInfraestruturaRepository {
-            +inserirAlerta(dados) AlertaInfraestruturaModel
-            +findByRetiro(retiroId) List~AlertaInfraestruturaModel~
-            +updateStatus(id, status) void
+        class EventoRepository {
+            +criarNascimento(dados) MovimentacaoModel
+            +criarObito(dados) MovimentacaoModel
+            +listarTodos(filtros) List~MovimentacaoModel~
+            +buscarMovimentacaoPorId(id) MovimentacaoModel
         }
         class SincronizacaoRepository {
-            +inserirRegistro(dados) SincronizacaoModel
-            +findPendentes() List~SincronizacaoModel~
-            +updateStatusEnvio(id, status) void
-            +incrementarTentativa(id) void
+            +registrar(entidadeTipo, entidadeId, statusEnvio) UUID
+            +inserirTarefa(dados) UUID
+            +inserirAlerta(dados) UUID
+            +inserirMovimentacao(dados) UUID
+            +inserirEvidencia(dados) UUID
         }
         class ExportacaoRepository {
-            +registrarExportacao(dados) ExportacaoModel
-            +findByCoordenador(coordenadorId) List~ExportacaoModel~
+            +consultarMovimentacoesConsolidadas(filtros) List~Object~
+            +registrarExportacao(coordenadorId, formato, filtros) UUID
         }
-        class RetiroRepository {
-            +findAll() List~RetiroModel~
-            +findById(id) RetiroModel
-            +findByCoordenador(coordenadorId) List~RetiroModel~
+        class PainelRepository {
+            +obterMetricasTarefas(gerenteId) List~Object~
+            +obterTarefasPorRetiro(gerenteId) List~Object~
+            +obterAlertasAbertos() List~AlertaModel~
+            +obterConcluidasHoje(gerenteId) Object
         }
     }
 
     UsuarioRepository "1" --o "0..*" UsuarioModel
     TarefaRepository "1" --o "0..*" TarefaModel
-    EvidenciaRepository "1" --o "0..*" EvidenciaModel
-    EventoZootecnicoRepository "1" --o "0..*" EventoZootecnicoModel
-    AlertaInfraestruturaRepository "1" --o "0..*" AlertaInfraestruturaModel
+    TarefaRepository "1" --o "0..*" EvidenciaModel
+    AlertaRepository "1" --o "0..*" AlertaModel
+    EventoRepository "1" --o "0..*" MovimentacaoModel
     SincronizacaoRepository "1" --o "0..*" SincronizacaoModel
     ExportacaoRepository "1" --o "0..*" ExportacaoModel
-    RetiroRepository "1" --o "0..*" RetiroModel
+    PainelRepository "1" --o "0..*" TarefaModel
+    PainelRepository "1" --o "0..*" AlertaModel
 
     %% ─────────────────────────────────────────
     %% CAMADA: SERVICE
     %% ─────────────────────────────────────────
     namespace Service {
-        class AuthService {
-            +login(nome, senha) String
-            +validarToken(token) UsuarioModel
-            +criarUsuario(dados) UsuarioModel
-        }
         class TarefaService {
             +criarTarefa(dados) TarefaModel
-            +listarTarefasCapataz(capatazId, data) List~TarefaModel~
-            +listarTarefasRetiro(retiroId) List~TarefaModel~
-            +concluirTarefa(id, capatazId) void
-            +editarTarefa(id, dados) TarefaModel
-            +deletarTarefa(id) void
+            +buscarTarefasHoje(capatazId) List~TarefaModel~
+            +concluirTarefa(tarefaId, capatazId) TarefaModel
+            +anexarEvidencia(tarefaId, capatazId, dados) Object
         }
-        class EvidenciaService {
-            +adicionarEvidencia(tarefaId, dados) EvidenciaModel
-            +listarEvidencias(tarefaId) List~EvidenciaModel~
+        class AlertaService {
+            +criarAlerta(dados) AlertaModel
         }
-        class EventoZootecnicoService {
-            +registrarNascimento(dados) RegistroNascimentoModel
-            +registrarObito(dados) RegistroObitoModel
-            +listarEventosPorRetiro(retiroId) List~EventoZootecnicoModel~
-            +validarEvento(id, coordenadorId) void
-        }
-        class AlertaInfraestruturaService {
-            +abrirAlerta(dados) AlertaInfraestruturaModel
-            +listarAlertas(retiroId) List~AlertaInfraestruturaModel~
-            +atualizarStatusAlerta(id, status) void
+        class EventoService {
+            +registrarNascimento(dados) MovimentacaoModel
+            +registrarObito(dados) MovimentacaoModel
+            +listarEventos(filtros) Object
         }
         class SincronizacaoService {
-            +enfileirarSincronizacao(entidadeTipo, entidadeId) void
-            +processarFila() void
-            +reenviarFalhos() void
+            +processarLote(itens) Object
         }
         class ExportacaoService {
-            +gerarRelatorio(coordenadorId, filtros) Exportacao
+            +exportarCsv(coordenadorId, filtros) Object
         }
-        class RetiroService {
-            +listarRetiros() List~RetiroModel~
-            +buscarRetiro(id) RetiroModel
+        class PainelService {
+            +obterPainel(gerenteId) Object
         }
     }
 
-    AuthService ..> UsuarioRepository : usa
     TarefaService ..> TarefaRepository : usa
-    TarefaService ..> UsuarioRepository : verifica vínculo (RN01)
-    TarefaService ..> RetiroRepository : valida retiro
-    EvidenciaService ..> EvidenciaRepository : usa
-    EvidenciaService ..> TarefaRepository : verifica tarefa
-    EventoZootecnicoService ..> EventoZootecnicoRepository : usa
-    AlertaInfraestruturaService ..> AlertaInfraestruturaRepository : usa
+    TarefaService ..> UsuarioRepository : verifica capataz (RN01)
+    AlertaService ..> AlertaRepository : usa
+    EventoService ..> EventoRepository : usa
     SincronizacaoService ..> SincronizacaoRepository : usa
-    ExportacaoService ..> EventoZootecnicoRepository : consulta dados
-    ExportacaoService ..> ExportacaoRepository : registra exportação
-    RetiroService ..> RetiroRepository : usa
+    ExportacaoService ..> ExportacaoRepository : usa
+    ExportacaoService ..> UsuarioRepository : valida coordenador
+    PainelService ..> PainelRepository : usa
+    PainelService ..> UsuarioRepository : valida gerente
 
     %% ─────────────────────────────────────────
     %% CAMADA: CONTROLLER
     %% ─────────────────────────────────────────
     namespace Controller {
-        class AuthController {
-            +POST /auth/login()
-            +POST /auth/usuarios()
-        }
         class TarefaController {
             +POST /tarefas()
-            +GET /tarefas()
-            +GET /tarefas/:id()
-            +PUT /tarefas/:id()
-            +DELETE /tarefas/:id()
+            +GET /tarefas/hoje()
             +PATCH /tarefas/:id/concluir()
-        }
-        class EvidenciaController {
             +POST /tarefas/:id/evidencias()
-            +GET /tarefas/:id/evidencias()
         }
-        class EventoZootecnicoController {
-            +POST /eventos/nascimentos()
-            +POST /eventos/obitos()
-            +GET /eventos()
-            +PATCH /eventos/:id/validar()
+        class AlertaController {
+            +POST /chamados()
         }
-        class AlertaInfraestruturaController {
-            +POST /alertas()
-            +GET /alertas()
-            +PATCH /alertas/:id/status()
+        class EventoController {
+            +POST /eventos-zootecnicos/nascimentos()
+            +POST /eventos-zootecnicos/obitos()
+            +GET /eventos-zootecnicos()
         }
         class SincronizacaoController {
-            +POST /sync()
-            +GET /sync/pendentes()
+            +POST /sincronizacao/lote()
         }
         class ExportacaoController {
-            +GET /exportar()
+            +GET /exportacao/csv()
         }
-        class RetiroController {
-            +GET /retiros()
-            +GET /retiros/:id()
+        class PainelController {
+            +GET /painel-gerencial()
         }
     }
 
-    AuthController ..> AuthService : delega
     TarefaController ..> TarefaService : delega
-    EvidenciaController ..> EvidenciaService : delega
-    EventoZootecnicoController ..> EventoZootecnicoService : delega
-    AlertaInfraestruturaController ..> AlertaInfraestruturaService : delega
+    AlertaController ..> AlertaService : delega
+    EventoController ..> EventoService : delega
     SincronizacaoController ..> SincronizacaoService : delega
     ExportacaoController ..> ExportacaoService : delega
-    RetiroController ..> RetiroService : delega
+    PainelController ..> PainelService : delega
 ```
 
 <center>
