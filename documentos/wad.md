@@ -2943,7 +2943,17 @@ O quadro a seguir consolida a relação entre personas, User Stories priorizadas
 
 ## 3.4. Guia de estilos (sprint 3)
 
-Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros. Isso, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
+Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
+
+O Guia de Estilos navegável completo está disponível em: [Figma - SynTech](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=198-939)
+
+<center>
+  <p><strong>Figura 18</strong> - Guia de Estilos Completo</p>
+  <img src="./assets/guiaDeEstilos.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+A Figura 18 apresenta o guia de estilos completo da plataforma SynTech, consolidando em uma única visualização as decisões visuais do produto: paleta de cores, escala tipográfica, biblioteca de ícones e componentes de interface. O documento serve como referência central para garantir consistência entre design e desenvolvimento ao longo de todo o projeto.
 
 ### 3.4.1 Cores
 
@@ -2973,7 +2983,6 @@ Por fim, as cores semânticas comunicam estados do sistema de forma imediata. O 
 
 #### Justificativa Técnica: Contraste Outdoor (Nível AAA)
 
-Justificativa Técnica: Contraste Outdoor (Nível AAA)
 A adoção do contraste mínimo de 7:1 para interfaces operadas em ambientes externos sob luz solar direta fundamenta-se na convergência entre engenharia de fatores humanos e acessibilidade, conforme o critério de sucesso 1.4.6 da WCAG (Nível AAA) [24].
 
 Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26], a luz incidente nas camadas do display desencadeia o fenômeno conhecido como veiling glare: reflexões que adicionam luminância ao fundo e ao texto, "lavando" as cores e reduzindo drasticamente o contraste percebido. Para compensar essa perda física e garantir legibilidade em campo, a interface precisa partir de uma razão de contraste nativa substancialmente elevada [25]. Nesse contexto, a iluminação extrema impõe ao usuário uma deficiência visual situacional temporária, equiparável, em termos perceptivos, à perda severa de sensibilidade ao contraste [27].
@@ -2984,12 +2993,10 @@ Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26
 
 A escolha tipográfica em interfaces digitais vai além da estética. Fontes sem serifa de traço uniforme apresentam melhor desempenho em telas de baixa resolução e em condições adversas de luminosidade, como a exposição solar direta enfrentada pelos usuários deste projeto [28]. Além disso, o tamanho e o peso das fontes impactam diretamente a acessibilidade da interface: textos com peso insuficiente ou tamanho reduzido comprometem a leitura em ambientes de alta iluminância [25][27].
 
-A tipografia da solução utiliza duas famílias de fontes complementares, ambas disponíveis gratuitamente via Google Fonts, selecionadas para garantir legibilidade em telas mobile e web, inclusive sob luz solar direta.
-
-A **Inter** foi projetada especificamente para interfaces digitais, com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade, por isso fizemos essa escolha [28].
+A tipografia da solução utiliza a família **Inter**, disponível gratuitamente via Google Fonts, projetada especificamente para interfaces digitais e com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade [28].
 
 <center>
-  <p><strong>Figura 18</strong> — Fonte Inter e suas variações</p>
+  <p><strong>Figura 19</strong> - Fonte Inter e suas variações</p>
   <img src="./assets/interFont.png" width="800"/>
   <p>Fonte: Font Squirrel.</p>
 </center>
@@ -3000,7 +3007,7 @@ A **Inter** foi projetada especificamente para interfaces digitais, com alto des
 | Títulos, botões e elementos de destaque | 600 (SemiBold), 700 (Bold) |
 | Corpo de texto, labels e tabelas | 400 (Regular), 500 (Medium) |
 
-### Escala tipográfica
+#### Escala tipográfica
 
 A escala tipográfica foi definida com base nos critérios de contraste e legibilidade das diretrizes WCAG 2.1, que recomendam tamanhos e pesos mínimos para garantir acessibilidade em diferentes contextos de uso [24]. Para ambientes externos com alta incidência de luz, recomenda-se priorizar pesos a partir de 500 (Medium) e tamanhos a partir de 16px no corpo do texto [27].
 
@@ -3028,7 +3035,7 @@ De acordo com Nielsen [22], os ícones podem ser classificados em três categori
 
 A biblioteca foi selecionada priorizando ícones de semelhança, categoria que apresenta melhor usabilidade e menor dependência cultural [22]. Ícones arbitrários foram adotados apenas quando já amplamente convencionados — como o símbolo de alerta — evitando ambiguidade para o usuário.
 
-Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizadode forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduzerros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção do usuário pode estar dividida [28].
+Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizado de forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduz erros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção do usuário pode estar dividida [28].
 
 **Atributos de aplicação**
 
@@ -3038,7 +3045,7 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 | <img src="./assets/icones/concluido.png" width="40"/> | Check Circle | 35px | Confirmações e sucesso |
 | <img src="./assets/icones/engrenagem.png" width="40"/> | Gear | 24px | Configurações |
 | <img src="./assets/icones/ferramenta.png" width="40"/> | Tool | 24px | Acessar infraestrutura |
-| <img src="./assets/icones/microfone.png" width="40"/> | Microphone | 24px | Localização e área |
+| <img src="./assets/icones/microfone.png" width="40"/> | Microphone | 24px | Gravar áudios |
 | <img src="./assets/icones/camera.png" width="40"/> | Camera | 24px e 84px | Adicionar fotos |
 | <img src="./assets/icones/rebanho.png" width="40"/> | Cow | 24px | Movimentação de rebanhos |
 | <img src="./assets/icones/salvar.png" width="40"/> | Floppy Disk | 24px | Salvar informações |
@@ -3048,9 +3055,10 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 | <img src="./assets/icones/tempo.png" width="40"/> | Clock Counter Clockwise | 24px | Histórico do chamado |
 | <img src="./assets/icones/quase.png" width="40"/> | Circle Notch | 35px | Em andamento |
 | <img src="./assets/icones/notas.png" width="40"/> | Note | 35px | Chamado em aberto |
-| <img src="./assets/icones/clipe.png" width="40"/> | Paper Clip | 32px | Anexar foto |
+| <img src="./assets/icones/clipe.png" width="40"/> | Paperclip | 32px | Anexar foto |
 | <img src="./assets/icones/boleta.png" width="40"/> | Note Pencil | 32px | Boletas |
-| <img src="./assets/icones/label.png" width="40"/> | Label | 32px | Classificação |
+| <img src="./assets/icones/pessoa.png" width="40"/> | Users Three | 32px | Identificação gerente |
+| <img src="./assets/icones/tag.png" width="40"/> | Tag | 32px | Classificação da evolução |
 
 > Tamanho mínimo adotado: **24px**. Nenhum ícone funcional da interface utiliza tamanho inferior a esse valor, garantindo identificação visual mesmo em dispositivos móveis sob luz solar direta [25][27].
 
@@ -3058,14 +3066,14 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 
 #### Imagens
 
-No guia de estilo, a seção de imagens define quais assets visuais estáticos fazem parte da identidade do produto e como devem ser aplicados. Diferente dos ícones, que são elementos funcionais da interface, como os da biblioteca Phosphor Icons, as imagens são representações visuais da marca em si [35].
+No guia de estilo, a seção de imagens define quais assets visuais estáticos fazem parte da identidade do produto e como devem ser aplicados. Diferentemente dos ícones, que são elementos funcionais da interface, como os da biblioteca Phosphor Icons, as imagens são representações visuais da marca em si [35].
 
 No caso desta solução, o único asset de imagem utilizado é o **logotipo da SynTech**, a plataforma web do projeto. Ele deve ser tratado como elemento protegido da identidade visual: sua proporção não deve ser alterada e sua aplicação se limita ao cabeçalho da plataforma, garantindo reconhecimento consistente da marca ao longo de toda a experiência do usuário.
 
 <center>
-  <p><strong>Figura 19</strong> - Logotipo Syntech</p>
-  <img src="./assets/syntech.png" width="800"/>
-  <p>Fonte: Próprios Autores.</p>
+  <p><strong>Figura 20</strong> - Logotipo SynTech</p>
+  <img src="./assets/syntech.png" width="300"/>
+  <p>Fonte: Próprios autores.</p>
 </center>
 
 ## 3.5 Protótipo de alta fidelidade (sprint 3)
@@ -3074,7 +3082,11 @@ O protótipo de alta fidelidade foi desenvolvido no Figma com base nas personas,
 
 As telas seguem as diretrizes de contraste nível AAA (WCAG 1.4.6, razão mínima de 7:1), tipografia Inter com tamanhos mínimos de 14px e elementos de interação dimensionados para uso tátil em dispositivos móveis (altura mínima de 56px nos botões de ação principal). A paleta aplicada segue integralmente a definida na seção 3.4.1 — Verde Profundo (`#1A4D2E`) como cor primária e Off-white Quente (`#F5F0E8`) como fundo. O layout foi estruturado com base em um sistema de grid de 12 colunas com margens de 20px nas versões mobile e 48px nas versões desktop, garantindo alinhamento consistente entre todos os elementos.
 
-O protótipo navegável completo está disponível em: [Figma — Alta Fidelidade BRPec](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=0-1&p=f&t=DEUlW5hURHSp6ujr-0)
+O protótipo navegável completo está disponível em: [Figma - Alta Fidelidade BRPec](https://www.figma.com/design/hsrRfUs4i1Veye6B88vDvy/Alta-fidelidade-BrPec)
+
+### Alinhamento com os RNFs
+
+O guia de estilos e os protótipos demonstram alinhamento com os principais requisitos FURPS+ endereçáveis por interface. Em usabilidade, todos os botões de ação principal respeitam altura mínima de 56–64px, acima do limiar de 44px exigido, e o contraste de 7:1 (WCAG AAA) garante legibilidade sob luz solar direta, complementado pela tipografia Inter a partir de 14px e ícones Bold/Fill com mínimo de 24px — decisões que tornam a interface adequada para operação em campo. Em confiabilidade, as telas do Capataz documentam explicitamente o comportamento offline nos critérios de aceite, evidenciando a estratégia offline-first no nível da interface. Em portabilidade, todas as oito telas foram prototipadas em versões mobile e desktop com sistema de grid de 12 colunas e margens adaptativas, cobrindo a faixa de 5" a 12" requerida. Em compatibilidade, a tela de Boletas apresenta o acionamento de exportação CSV diretamente na listagem, com detalhes de codificação delegados ao backend. Os requisitos de desempenho (latência p95 < 200ms), suportabilidade (MTTR de bugs) e capacidade (sincronização em lote de 500 eventos) são métricas de arquitetura e infraestrutura, não representáveis nem verificáveis por meio de protótipos de interface.
 
 ---
 
