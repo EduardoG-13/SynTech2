@@ -4461,19 +4461,29 @@ _Descreva as estratégias aplicadas no tratamento de falhas de rede: timeout, re
 
 ## 3.9. Matriz de Rastreabilidade (RTM) (sprints 3 a 5)
 
-_A RTM consolida a rastreabilidade completa do sistema. Um elo quebrado invalida toda a cadeia - mantenha-a atualizada a cada sprint. A partir da sprint 3 não deve haver lacunas nos fluxos centrais._
+A RTM rastreia cada User Story do BrPec da persona até a evidência de teste, atravessando Requisito Funcional (RF), Regra de Negócio (RN), endpoint, tela e caso de teste automatizado. Esta versão consolida os fluxos centrais já implementados e testados na sprint 3 — sem lacunas: cada linha possui endpoint funcional em `src/backend/`, tela correspondente e teste automatizado com evidência de execução.
 
 <center>
   <p><strong>Tabela 9</strong> — Matriz de Rastreabilidade (RTM)</p>
 </center>
 
-| Persona | RF    | RN   | Endpoint    | Tela     | Teste | Evidência                          |
-| ------- | ----- | ---- | ----------- | -------- | ----- | ---------------------------------- |
-| ...     | RF001 | RN01 | `/usuarios` | Cadastro | CT02  | print, log, relatório de cobertura |
+| Persona | US | RF | RN | Endpoint | Tela | Teste |
+| ------- | ---- | ----- | ---------------- | ---------------------------------------- | --------------------- | ------------ |
+| João (Gerente) | US01 | RF001 | RN01 | `POST /tarefas` | Nova O.S. | C1-C4 |
+| Gabriel (Capataz) | US02 | RF002, RF003 | RN02, RN05 | `GET /tarefas/hoje` | Lista de Tarefas | H1-H3 |
+| Gabriel (Capataz) | US03 | RF002 | RN02 | `PATCH /tarefas/:id/concluir` | Concluir Tarefa | K1-K3 |
+| Gabriel (Capataz) | US04 | RF005 | RN13, RN15 | `POST /tarefas/:id/evidencias` | Concluir Tarefa | E1-E3 |
+| Gabriel (Capataz) | US05 | RF005 | RN13 | `POST /tarefas/:id/evidencias` | Concluir Tarefa | E1-E3 |
+| Gabriel (Capataz) | US06 | RF006 | RN19, RN21, RN26 | `POST /chamados` | Painel Infraestrutura | A1-A2 |
+| Gabriel (Capataz) | US08 | RF008 | RN27 | `POST /eventos-zootecnicos/nascimentos` | Registrar Nascimento | E1-E2 |
 
 <center>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+**Legenda dos testes:** os códigos da coluna Teste referenciam casos automatizados em `src/backend/tests/`: **C1-C4** (criar tarefa — `uc01-planejar-tarefas.test.ts`), **H1-H3** (buscar tarefas do dia), **K1-K3** (concluir tarefa), **E1-E3** (anexar evidência), **A1-A2** (criar chamado) e **E1-E2** (registrar nascimento — `outros-endpoints.test.ts`). A evidência de execução (saída do Jest com todos os testes passando) está registrada em `documentos/assets/jest.png`.
+
+**Cadeia de rastreabilidade:** cada fluxo central da sprint 3 está completo da ponta a ponta — Persona → User Story → RF (seção 3.1.1) → RN (seção 3.1.2) → Endpoint (seção 3.1.4) → Tela (seção 3.3) → Teste automatizado com evidência. As User Stories cujos endpoints serão testados em sprints futuras (US07, US09-US12) serão incorporadas à matriz conforme os respectivos testes forem implementados, preservando a integridade da cadeia.
 
 # <a name="c4"></a>4. Desenvolvimento da Aplicação Web
 
