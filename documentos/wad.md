@@ -2945,13 +2945,15 @@ O quadro a seguir consolida a relação entre personas, User Stories priorizadas
 
 Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
 
-O protótipo navegável completo está disponível em: [Figma - Alta Fidelidade BRPec](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=198-939)
+O Guia de Estilos navegável completo está disponível em: [Figma - SynTech](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=198-939)
 
 <center>
   <p><strong>Figura 18</strong> - Guia de Estilos Completo</p>
   <img src="./assets/guiaDeEstilos.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
+
+A Figura 18 apresenta o guia de estilos completo da plataforma SynTech, consolidando em uma única visualização as decisões visuais do produto: paleta de cores, escala tipográfica, biblioteca de ícones e componentes de interface. O documento serve como referência central para garantir consistência entre design e desenvolvimento ao longo de todo o projeto.
 
 ### 3.4.1 Cores
 
