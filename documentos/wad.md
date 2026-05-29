@@ -3104,7 +3104,7 @@ A tela de tarefas é a interface principal do Capataz. Projetada para exibir ape
 
 <center>
   <p><strong>Figura 18</strong> — Protótipo de Alta Fidelidade: Tela de Tarefas do Capataz (Mobile e Desktop)</p>
-  <img src="./assets/mockup_tela_tarefas_capataz.png" width="800"/>
+  <img src="./assets/mockups/mockupTarefas.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -3128,7 +3128,7 @@ A tela de detalhe exibe todas as informações necessárias para que o Capataz e
 
 <center>
   <p><strong>Figura 19</strong> — Protótipo de Alta Fidelidade: Tela de Detalhe da Tarefa do Capataz (Mobile e Desktop)</p>
-  <img src="./assets/alta-fidelidade-capataz-detalhe-tarefa.png" width="800"/>
+  <img src="./assets/mockups/mockupRebanho.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -3153,7 +3153,7 @@ A tela de conclusão de tarefa centraliza todas as ações necessárias para o C
 
 <center>
   <p><strong>Figura 20</strong> — Protótipo de Alta Fidelidade: Tela de Concluir Tarefa do Capataz (Mobile e Desktop)</p>
-  <img src="./assets/alta-fidelidade-capataz-concluir-tarefa.png" width="800"/>
+  <img src="./assets/mockups/mockupConcluirTarefas.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
