@@ -3170,7 +3170,7 @@ A tela de detalhe exibe todas as informações necessárias para que o Capataz e
 
 <center>
   <p><strong>Figura 19</strong> — Protótipo de Alta Fidelidade: Tela de Detalhe da Tarefa do Capataz (Mobile e Desktop)</p>
-  <img src="./assets/alta-fidelidade-capataz-detalhe-tarefa.png" width="800"/>
+  <img src="./assets/mockups/mockupRebanho.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
