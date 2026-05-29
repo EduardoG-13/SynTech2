@@ -2392,73 +2392,36 @@ Fluxo que representa a marcação de uma tarefa como concluída pelo Capataz em 
 sequenceDiagram
     autonumber
     actor C as Capataz
-    participant PWA as Cliente (PWA)
-    participant CTR as Controller
-    participant SRV as Service
-    participant REP as Repository
-    participant LS as Armazenamento Local (IndexedDB)
-    participant SYNC as SyncService
-    participant API as Servidor Remoto
+    participant CTR as TarefaController
+    participant SRV as TarefaService
+    participant REP as TarefaRepository
+    participant DB as SQLite
 
-    note over C,LS: Dispositivo sem conexão com a internet
-
-    C->>PWA: Toca botão "Concluir Tarefa" (tarefa_id)
-    PWA->>CTR: PATCH /tarefas/{id}/concluir {capataz_id}
-    CTR->>CTR: Valida presença de tarefa_id e capataz_id
+    C->>CTR: PATCH /tarefas/{id}/concluir {capataz_id}
+    CTR->>CTR: Valida presença de id e capataz_id
 
     alt Campos obrigatórios ausentes
-        CTR-->>PWA: 400 Bad Request {erro: "campos obrigatórios não preenchidos"}
-        PWA-->>C: Exibe alerta de erro
+        CTR-->>C: 400 Bad Request {erro: "campos obrigatórios não preenchidos"}
     else Dados válidos
-        CTR->>SRV: concluirTarefa(tarefa_id, capataz_id)
-        SRV->>REP: buscarTarefaLocal(tarefa_id)
-        REP->>LS: SELECT * FROM tarefas WHERE id = ? AND capataz_id = ?
-        
-        alt Tarefa não encontrada ou não pertence ao Capataz (RN05)
-            LS-->>REP: null
-            REP-->>SRV: null
-            SRV-->>CTR: throw TarefaNaoEncontradaError
-            CTR-->>PWA: 404 Not Found {erro: "tarefa não encontrada"}
-            PWA-->>C: Exibe mensagem de erro
-        else Tarefa encontrada
-            LS-->>REP: {id, titulo, status: "pendente", sincronizada: true}
-            REP-->>SRV: Tarefa
+        CTR->>SRV: concluirTarefa(id, capataz_id)
+        SRV->>SRV: Calcula timestamp de conclusão
+        SRV->>REP: concluir(id, capataz_id, dataConclusao)
+        REP->>DB: UPDATE tarefas SET status = 'CONCLUIDA', concluida_em = ?, sincronizada = 1 WHERE id = ? AND capataz_id = ?
+        DB-->>REP: changes
 
-            SRV->>SRV: Atualiza status para "concluida" e registra timestamp (RNF — SEG)
-            SRV->>REP: salvarConclusaoLocal(tarefa_id, concluidaEm, capataz_id)
-            REP->>LS: UPDATE tarefas SET status = "concluida", concluida_em = ?, sincronizada = false WHERE id = ?
-            LS-->>REP: ok
-            REP-->>SRV: ok
-            SRV->>REP: registrarSincronizacaoPendente(tarefa_id, "Tarefa")
-            REP->>LS: INSERT INTO sincronizacoes (entidade_tipo, entidade_id, status_envio, tentativas) VALUES ("Tarefa", ?, "PENDENTE", 0)
-            LS-->>REP: ok
-            SRV-->>CTR: {status: "concluida", sincronizado: false}
-            CTR-->>PWA: 200 OK {mensagem: "Tarefa concluída. Será sincronizada quando houver conexão.", sincronizado: false}
-            PWA-->>C: Exibe confirmação visual com indicador de pendente (RN08, RN12)
-
-            note over SYNC,API: Quando conexão for restabelecida (RF010)
-
-            SYNC->>LS: SELECT * FROM sincronizacoes WHERE status_envio = "PENDENTE"
-            LS-->>SYNC: [{entidade_tipo: "Tarefa", entidade_id: ?}]
-            SYNC->>LS: SELECT * FROM tarefas WHERE id = ? AND sincronizada = false
-            LS-->>SYNC: {id, status: "concluida", concluida_em, capataz_id}
-            SYNC->>API: PATCH /tarefas/{id}/concluir {status, concluida_em, capataz_id}
-
-            alt Sincronização bem-sucedida (RF011)
-                API-->>SYNC: 200 OK
-                SYNC->>LS: UPDATE tarefas SET sincronizada = true WHERE id = ?
-                SYNC->>LS: UPDATE sincronizacoes SET status_envio = "ENVIADO" WHERE entidade_id = ?
-                LS-->>SYNC: ok
-                SYNC-->>PWA: Evento: "tarefa-sincronizada"
-                PWA-->>C: Exibe notificação "Tarefa sincronizada com sucesso" (RF011)
-            else Falha na sincronização (RF012)
-                API-->>SYNC: 5xx / timeout
-                SYNC->>LS: UPDATE sincronizacoes SET status_envio = "FALHA", tentativas = tentativas + 1 WHERE entidade_id = ?
-                LS-->>SYNC: ok
-                note over SYNC: Retentar na próxima conexão (RF012)
-            end
+        alt changes === 0 — tarefa não encontrada ou não pertence ao capataz (RN05)
+            REP-->>SRV: false
+            SRV-->>CTR: throw Error
+            CTR-->>C: 404 Not Found {erro: "Tarefa não encontrada ou não pertence ao capataz"}
+        else Tarefa atualizada
+            REP->>DB: SELECT * FROM tarefas WHERE id = ?
+            DB-->>REP: tarefa atualizada
+            REP-->>SRV: tarefa
+            SRV-->>CTR: tarefa
+            CTR-->>C: 200 OK {mensagem: "Tarefa concluída com sucesso", tarefa}
         end
     end
+
 ```
 
 **Descrição das camadas:**
