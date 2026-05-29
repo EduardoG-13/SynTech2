@@ -3195,7 +3195,7 @@ A tela de conclusão de tarefa centraliza todas as ações necessárias para o C
 
 <center>
   <p><strong>Figura 20</strong> — Protótipo de Alta Fidelidade: Tela de Concluir Tarefa do Capataz (Mobile e Desktop)</p>
-  <img src="./assets/alta-fidelidade-capataz-concluir-tarefa.png" width="800"/>
+  <img src="./assets/mockups/mockupConcluirTarefas.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
