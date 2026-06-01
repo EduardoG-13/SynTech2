@@ -50,18 +50,18 @@ No cenário da BrPec Agropecuária S.A., empresa com 14 retiros operacionais na 
 do Pantanal sul-mato-grossense e aproximadamente 240 colaboradores, identificou-se que
 o fluxo de informações entre o campo e o escritório ocorre de forma inteiramente manual,
 por meio de anotações em boletas de papel preenchidas pelos capatazes e coordenadores de
-retiro — subconjunto composto por cerca de 25 usuários que atuam diretamente como
+retiro, subconjunto composto por cerca de 25 usuários que atuam diretamente como
 operadores da solução proposta. Esse modelo apresenta ineficiências relevantes: os
 registros são frequentemente incompletos ou de difícil leitura, situação agravada pelo
 fato de parte dos capatazes apresentar dificuldade com leitura e escrita formal.
 
-Além disso, a ausência de conectividade contínua nas áreas operacionais, com
-sincronização disponível apenas pela manhã e à noite via Starlink nos retiros, impede o
-uso de soluções digitais convencionais, dificultando ainda mais a padronização e a
-confiabilidade das informações registradas. Atualmente, o WhatsApp é a principal
-ferramenta de comunicação entre capatazes e gestores, o que evidencia tanto a familiaridade
-dos usuários com dispositivos móveis quanto a ausência de um canal estruturado para o
-fluxo de dados operacionais.
+Quando os dados precisam ser redigitados em sistemas digitais, como ocorre na BrPec, onde o coordenador
+transcreve as boletas para planilhas Excel na sede, o número de etapas manuais dobra,
+aumentando a chance de erros acumulados. No contexto analisado, identificaram-se
+manifestações concretas desse problema: boletas de entrada e saída de animais
+frequentemente não coincidem, gerando inconsistências no controle do rebanho; registros
+de mortes chegam ao escritório com atraso de horas ou até dias; e a redigitação consome
+tempo do coordenador sem agregar valor analítico à operação.
 
 Diante desse contexto, foi proposta a construção de uma aplicação web capaz de digitalizar
 o gerenciamento de tarefas e o registro das movimentações do rebanho, contemplando
