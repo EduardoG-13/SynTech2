@@ -4904,6 +4904,15 @@ brasileira (IBGE, 2025). No mesmo ano, o abate chegou ao recorde de 39,7 milhõe
 cabeças, com produção de 10,2 milhões de toneladas em equivalente carcaça, conforme 
 dados do Ministério da Agricultura e Pecuária (MAPA, 2024). 
 
+No plano das exportações, o setor registrou em 2024 o envio de 2,87 milhões de 
+toneladas de carne bovina, crescimento de 25,5% em relação ao ano anterior, gerando 
+receita de US$ 12,83 bilhões (MAPA, 2024). Em 2025, os resultados superaram esses 
+números: foram exportadas 3,50 milhões de toneladas, alta de 20,9%, com receita de 
+US$ 18,03 bilhões — o maior desempenho já registrado na série histórica, segundo a 
+Associação Brasileira das Indústrias Exportadoras de Carnes (ABIEC, 2026). Com isso, 
+o Brasil consolidou-se em 2025 como o maior produtor mundial de carne bovina, 
+ultrapassando os Estados Unidos pela primeira vez (IBGE, 2026).
+
 _b) Tamanho e Crescimento do Mercado (até 250 palavras)_
 _Apresente dados quantitativos sobre o tamanho atual e projeções de crescimento do mercado. Utilize fontes confiáveis._
 
