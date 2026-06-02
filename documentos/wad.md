@@ -46,39 +46,42 @@ controle operacional, especialmente no registro de atividades de campo e na gest
 movimentação do rebanho, fatores diretamente relacionados à produtividade e à qualidade
 da tomada de decisão.
 
-No cenário da BrPec Agropecuária S.A., empresa com 14 retiros operacionais distribuídos
-na região do Pantanal sul-mato-grossense e aproximadamente 240 colaboradores, dos quais cerca de 25 atuam diretamente como usuários operacionais da solução,
-identificou-se que o fluxo de informações entre o campo e o escritório ocorre de forma
-inteiramente manual, por meio de anotações em boletas de papel. Esse modelo gera
-ineficiências operacionais relevantes: registros são frequentemente preenchidos de forma
-incompleta ou ilegível, agravado pelo fato de parte dos capatazes apresentar dificuldade
-de leitura e escrita. Há, ainda, atraso significativo no envio das informações ao escritório
-e torna-se necessário redigitar todos os dados em planilhas digitais. Como consequência,
-ocorrem retrabalho, risco de erros na consolidação e atrasos que podem comprometer a
-visibilidade das operações por horas ou até dias, impactando diretamente a tomada de
-decisão dos gestores. Um exemplo concreto identificado no kickoff com o parceiro: boletas
-de entrada e saída de animais frequentemente não coincidem, gerando inconsistências no
-controle do rebanho.
+No cenário da BrPec Agropecuária S.A., empresa com 14 retiros operacionais na região
+do Pantanal sul-mato-grossense e aproximadamente 240 colaboradores, identificou-se que
+o fluxo de informações entre o campo e o escritório ocorre de forma inteiramente manual,
+por meio de anotações em boletas de papel preenchidas pelos capatazes e coordenadores de
+retiro, subconjunto composto por cerca de 25 usuários que atuam diretamente como
+operadores da solução proposta. Esse modelo apresenta ineficiências relevantes: os
+registros são frequentemente incompletos ou de difícil leitura, situação agravada pelo
+fato de parte dos capatazes apresentar dificuldade com leitura e escrita formal.
+
+Quando os dados precisam ser redigitados em sistemas digitais, como ocorre na BrPec, onde o coordenador
+transcreve as boletas para planilhas Excel na sede, o número de etapas manuais dobra,
+aumentando a chance de erros acumulados. No contexto analisado, identificaram-se
+manifestações concretas desse problema: boletas de entrada e saída de animais
+frequentemente não coincidem, gerando inconsistências no controle do rebanho; registros
+de mortes chegam ao escritório com atraso de horas ou até dias; e a redigitação consome
+tempo do coordenador sem agregar valor analítico à operação.
 
 Além disso, a ausência de conectividade contínua nas áreas operacionais, com
-sincronização disponível apenas pela manhã e à noite via Starlink nos retiros, impede o
-uso de soluções digitais convencionais, dificultando ainda mais a padronização e a
-confiabilidade das informações registradas. Atualmente, o WhatsApp é a principal
-ferramenta de comunicação entre capatazes e gestores, o que evidencia tanto a familiaridade
-dos usuários com dispositivos móveis quanto a ausência de um canal estruturado para o
-fluxo de dados operacionais.
+sincronização disponível apenas pela manhã e à noite via Starlink nos retiros, impede
+o uso de soluções digitais convencionais, dificultando a padronização e a confiabilidade
+das informações. O WhatsApp é atualmente o principal canal de comunicação entre capatazes
+e gestores, o que mostra tanto a familiaridade dos usuários com dispositivos móveis quanto
+a falta de um canal estruturado para o fluxo de dados operacionais.
 
-Diante desse contexto, foi proposta a construção de uma aplicação web capaz de digitalizar
-o gerenciamento de tarefas e o registro das movimentações do rebanho, contemplando
-nascimentos, mortes, compras, vendas e transferências entre retiros, com funcionamento
-offline obrigatório. A solução permite que os dados sejam coletados diretamente no campo,
-por meio de celulares fornecidos pela própria BrPec, e sincronizados automaticamente quando houver conexão com a internet.
+Diante desse contexto, foi proposta a construção de uma aplicação web progressiva (PWA)
+capaz de digitalizar o gerenciamento de tarefas e o registro das movimentações do rebanho,
+contemplando nascimentos, mortes, compras, vendas e transferências entre retiros, com
+funcionamento offline obrigatório. A solução permite que os dados sejam coletados
+diretamente no campo, por meio de dispositivos móveis fornecidos pela própria BrPec, e
+sincronizados automaticamente nas janelas de conectividade disponíveis.
 
 Como principal criação de valor, o sistema promove a padronização dos registros, elimina
-a necessidade de redigitação manual, reduz erros operacionais e melhora a rastreabilidade
-das informações. Dessa forma, possibilita maior agilidade na atualização dos dados, aumenta
-a transparência das operações e apoia a tomada de decisão dos gestores, alinhando-se
-às necessidades reais da BrPec e ao seu contexto operacional.
+a etapa de redigitação manual, reduz erros operacionais e amplia a rastreabilidade das
+informações. Com isso, torna-se possível atualizar os dados com mais agilidade, aumentar
+a transparência das operações e dar suporte à tomada de decisão dos gestores, atendendo
+às necessidades reais da BrPec e ao seu contexto operacional. 
 
 # <a name="c2"></a>2. Visão Geral da Aplicação Web (sprint 1)
 
@@ -4887,14 +4890,57 @@ _Posicione aqui o relatório dos testes SUS realizados._
 
 ## 6.1 Resumo Executivo
 
-_Preencher com até 300 palavras, sem necessidade de fonte_
+O Brasil é o maior exportador mundial de carne bovina, com um rebanho de 238,2 milhões
+de cabeças e receita de exportação de US$ 18,03 bilhões em 2025. Apesar dessa escala,
+a gestão operacional de grande parte das fazendas ainda depende de registros manuais em
+papel, um gargalo que compromete a qualidade das informações e a velocidade das decisões.
 
-_Apresente de forma clara e objetiva os principais destaques do projeto: oportunidades de mercado, diferenciais competitivos da aplicação web e os objetivos estratégicos pretendidos._
+É nesse contexto que se insere a solução desenvolvida para a BrPec Agropecuária S.A.,
+empresa com 14 retiros operacionais no Pantanal sul-mato-grossense. O fluxo de informações
+entre o campo e o escritório ocorre hoje por meio de boletas físicas preenchidas pelos
+capatazes, que depois são redigitadas manualmente em planilhas na sede. Esse processo
+gera inconsistências nos registros, atrasos de horas ou dias no repasse de informações
+críticas, como mortes de animais, e retrabalho constante para a equipe de coordenação.
+
+A aplicação web desenvolvida digitaliza o registro das movimentações do rebanho,
+nascimentos, mortes, compras, vendas e transferências entre retiros, com funcionamento
+offline obrigatório, resolvendo diretamente a limitação de conectividade dos retiros,
+onde o acesso à internet ocorre apenas em janelas via Starlink. Os dados são coletados
+no campo por dispositivos móveis fornecidos pela própria BrPec e sincronizados
+automaticamente quando a conexão está disponível.
+
+O objetivo estratégico do projeto é reduzir erros operacionais, aumentar a velocidade
+de atualização das informações e dar aos gestores uma visão confiável e atualizada das
+operações de campo, tornando a BrPec mais competitiva em um setor que avança
+rapidamente em direção à digitalização.
+
+
+
 
 ## 6.2 Análise de Mercado
 
-_a) Visão Geral do Setor (até 250 palavras)_
-_Contextualize o setor no qual a aplicação está inserida, considerando aspectos econômicos, tecnológicos e regulatórios. Utilize fontes confiáveis._
+_a) Visão Geral do Setor_
+O Brasil ocupa posição de destaque na pecuária bovina mundial. Em 2024, o rebanho 
+nacional atingiu 238,2 milhões de cabeças, segundo a Pesquisa da Pecuária Municipal 
+do IBGE — segundo maior da série histórica, superando em 12% a própria população 
+brasileira [36]. No mesmo ano, o abate chegou ao recorde de 39,7 milhões de 
+cabeças, com produção de 10,2 milhões de toneladas em equivalente carcaça, conforme 
+dados do Ministério da Agricultura e Pecuária [37]. 
+
+No plano das exportações, o setor registrou em 2024 o envio de 2,87 milhões de 
+toneladas de carne bovina, crescimento de 25,5% em relação ao ano anterior, gerando 
+receita de US$ 12,83 bilhões [37]. Em 2025, os resultados superaram esses 
+números: foram exportadas 3,50 milhões de toneladas, alta de 20,9%, com receita de 
+US$ 18,03 bilhões — o maior desempenho já registrado na série histórica, segundo a 
+Associação Brasileira das Indústrias Exportadoras de Carnes [38]. Com isso, 
+o Brasil consolidou-se em 2025 como o maior produtor mundial de carne bovina, 
+ultrapassando os Estados Unidos pela primeira vez [36].
+
+Do ponto de vista regulatório, o regulamento antidesmatamento da União Europeia, 
+previsto para entrar em vigor a partir de 2026, aumenta as exigências de rastreabilidade 
+e comprovação de origem para acesso a mercados externos. Esse cenário reforça a 
+necessidade de digitalização das operações de campo, tornando soluções como a 
+desenvolvida para a BrPec diretamente alinhadas às demandas do setor.
 
 _b) Tamanho e Crescimento do Mercado (até 250 palavras)_
 _Apresente dados quantitativos sobre o tamanho atual e projeções de crescimento do mercado. Utilize fontes confiáveis._
@@ -5020,6 +5066,18 @@ Industries and Competitors. New York: Free Press, 2008. ISBN 978-0-7432-7275-4.
 [34] UX QUEST. Guia completo sobre paleta de cores para design de interface e UX. UX Quest, 2026. Disponível em: https://www.uxquest.com.br/blog/paleta-de-cores. Acesso em: 28 maio 2026.
 
 [35] SUA IMPRENSA. Guia de estilo da marca: o que é, como fazer e elementos essenciais. Sua Imprensa, 2025. Disponível em: https://suaimprensa.com.br/blog/guia-de-estilo-da-marca/. Acesso em: 28 maio 2026.
+
+[36] IBGE. Pesquisa da Pecuária Municipal 2024. Rio de Janeiro: IBGE, 2025. 
+Disponível em: https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9107-producao-da-pecuaria-municipal.html. 
+Acesso em: jun. 2026.
+
+[37] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. Produção e exportações de carne bovina 
+2024. Brasília: MAPA/SCRI, 2024. Disponível em: https://www.gov.br/agricultura. 
+Acesso em: jun. 2026.
+
+[38] ABIEC. Brasil bate recorde nas exportações de carne bovina em 2025. São Paulo: 
+ABIEC, 2026. Disponível em: https://abiec.com.br/brasil-bate-recorde-nas-exportacoes-de-carne-bovina-em-2025/. 
+Acesso em: jun. 2026.
 
 # <a name="c9"></a>Anexos
 
