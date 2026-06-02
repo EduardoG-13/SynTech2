@@ -70,11 +70,18 @@ das informações. O WhatsApp é atualmente o principal canal de comunicação e
 e gestores, o que mostra tanto a familiaridade dos usuários com dispositivos móveis quanto
 a falta de um canal estruturado para o fluxo de dados operacionais.
 
+Diante desse contexto, foi proposta a construção de uma aplicação web progressiva (PWA)
+capaz de digitalizar o gerenciamento de tarefas e o registro das movimentações do rebanho,
+contemplando nascimentos, mortes, compras, vendas e transferências entre retiros, com
+funcionamento offline obrigatório. A solução permite que os dados sejam coletados
+diretamente no campo, por meio de dispositivos móveis fornecidos pela própria BrPec, e
+sincronizados automaticamente nas janelas de conectividade disponíveis.
+
 Como principal criação de valor, o sistema promove a padronização dos registros, elimina
-a necessidade de redigitação manual, reduz erros operacionais e melhora a rastreabilidade
-das informações. Dessa forma, possibilita maior agilidade na atualização dos dados, aumenta
-a transparência das operações e apoia a tomada de decisão dos gestores, alinhando-se
-às necessidades reais da BrPec e ao seu contexto operacional.
+a etapa de redigitação manual, reduz erros operacionais e amplia a rastreabilidade das
+informações. Com isso, torna-se possível atualizar os dados com mais agilidade, aumentar
+a transparência das operações e dar suporte à tomada de decisão dos gestores, atendendo
+às necessidades reais da BrPec e ao seu contexto operacional. 
 
 # <a name="c2"></a>2. Visão Geral da Aplicação Web (sprint 1)
 
@@ -4889,8 +4896,13 @@ _Apresente de forma clara e objetiva os principais destaques do projeto: oportun
 
 ## 6.2 Análise de Mercado
 
-_a) Visão Geral do Setor (até 250 palavras)_
-_Contextualize o setor no qual a aplicação está inserida, considerando aspectos econômicos, tecnológicos e regulatórios. Utilize fontes confiáveis._
+_a) Visão Geral do Setor_
+O Brasil ocupa posição de destaque na pecuária bovina mundial. Em 2024, o rebanho 
+nacional atingiu 238,2 milhões de cabeças, segundo a Pesquisa da Pecuária Municipal 
+do IBGE — segundo maior da série histórica, superando em 12% a própria população 
+brasileira (IBGE, 2025). No mesmo ano, o abate chegou ao recorde de 39,7 milhões de 
+cabeças, com produção de 10,2 milhões de toneladas em equivalente carcaça, conforme 
+dados do Ministério da Agricultura e Pecuária (MAPA, 2024). 
 
 _b) Tamanho e Crescimento do Mercado (até 250 palavras)_
 _Apresente dados quantitativos sobre o tamanho atual e projeções de crescimento do mercado. Utilize fontes confiáveis._
