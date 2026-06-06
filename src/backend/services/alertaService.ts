@@ -3,11 +3,11 @@ import { Alerta } from '../models/Alerta';
 
 class AlertaService {
   async criarAlerta(dados: Partial<Alerta>) {
-    return alertaRepository.criar(dados);
+    return await alertaRepository.criar(dados);
   }
 
   async listarChamados(status?: string) {
-    return alertaRepository.listar(status);
+    return await alertaRepository.listar(status);
   }
 
   async resolverChamado(
