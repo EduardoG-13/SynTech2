@@ -3,7 +3,6 @@ import cors from 'cors';
 import path from 'path';
 import session from 'express-session';
 import { Request, Response, NextFunction } from 'express';
-import { RETIROS } from './config/retiros';
 import routes from './routes/index';
 import viewRoutes from './routes/viewRoutes';
 import authRoutes from './routes/authRoutes';
