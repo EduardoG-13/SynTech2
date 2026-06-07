@@ -15,6 +15,22 @@ jest.mock('../config/supabasePool', () => {
   };
 });
 
+jest.mock('../config/supabasePool', () => {
+  const mockClient = {
+    query: jest.fn().mockResolvedValue({ rows: [], rowCount: 1 }),
+    release: jest.fn()
+  };
+
+  return {
+    __esModule: true,
+    default: {
+      query: jest.fn().mockResolvedValue({ rows: [], rowCount: 1 }),
+      connect: jest.fn().mockResolvedValue(mockClient),
+      end: jest.fn().mockResolvedValue(undefined)
+    }
+  };
+});
+
 import app from '../app';
 import { inicializarBanco } from '../config/initDb';
 import db from '../config/database';

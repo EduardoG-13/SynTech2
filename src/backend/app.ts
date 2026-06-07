@@ -5,6 +5,8 @@ import { Request, Response, NextFunction } from 'express';
 import { RETIROS } from './config/retiros';
 import routes from './routes/index';
 import viewRoutes from './routes/viewRoutes';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './config/swagger.json';
 
 const app = express();
 const projectRoot = process.cwd();
