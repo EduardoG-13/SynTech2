@@ -4903,6 +4903,15 @@ sede. Esse processo gera inconsistências nos registros, atrasos de horas ou dia
 repasse de informações críticas — como mortes de animais — e retrabalho constante para
 a equipe de coordenação.
 
+A aplicação web progressiva (PWA) desenvolvida digitaliza o registro das movimentações
+do rebanho — nascimentos, mortes, compras, vendas e transferências entre retiros —,
+com funcionamento offline nativo. Para isso, adota SQLite como banco de dados local
+no dispositivo, desvinculando o registro de dados da disponibilidade de rede. Os dados
+são sincronizados automaticamente com o servidor durante as janelas de conectividade
+via Starlink, eliminando a dependência de conexão contínua como pré-requisito
+operacional.
+
+
 ## 6.2 Análise de Mercado
 
 _a) Visão Geral do Setor (até 250 palavras)_
