@@ -5058,6 +5058,12 @@ foi construída sobre o fluxo real da BrPec: registro de nascimentos, mortes, co
 vendas e transferências entre retiros, com rastreabilidade por unidade operacional.
 Nenhum concorrente oferece essa estrutura de forma nativa.
 
+O quarto diferencial é a **instalação via PWA**, sem necessidade de loja de aplicativos.
+A solução é instalada diretamente pelo navegador nos dispositivos fornecidos pela BrPec,
+eliminando barreiras de configuração e atualizações manuais.
+
+Por fim, a solução não cobra licença por animal — modelo de precificação dos
+concorrentes que penaliza operações de grande rebanho como a da BrPec.
 
 ## 6.4 Público-Alvo
 
