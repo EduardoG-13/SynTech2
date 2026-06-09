@@ -5203,7 +5203,32 @@ sincroniza. A tomada de decisão deixa de depender de dados defasados e passa a
 refletir a realidade operacional do dia.
 
 _b) Estratégia de Diferenciação (até 250 palavras)_
-_Explique como sua aplicação se destacará da concorrência, evidenciando a lógica por trás do posicionamento._
+
+A estratégia de diferenciação da solução se apoia em três eixos que os concorrentes
+de mercado não endereçam de forma combinada.
+
+O primeiro eixo é a **aderência ao contexto operacional**. Sistemas como iRancho [44] e JetBov[45] oferecem funcionalidades offline, mas foram projetados para um perfil de
+usuário com maior familiaridade digital e para fazendas com infraestrutura mais
+consolidada. A solução da BrPec foi construída sobre o fluxo real da operação,
+os tipos de registro, a estrutura de retiros, o perfil dos capatazes, o que
+elimina a necessidade de adaptação do processo ao sistema. 
+
+O segundo eixo é a **simplicidade como requisito técnico**. A interface não é
+simplificada por limitação, mas por decisão de projeto: cada tela foi desenhada
+para o perfil de menor familiaridade digital, garantindo que o usuário mais
+limitado consiga operar sem auxílio. Isso aumenta a taxa de adoção e reduz erros
+de preenchimento na origem.
+
+O terceiro eixo é a **arquitetura offline-first com SQLite**. Diferentemente de
+soluções que degradam funcionalidades sem internet, a aplicação opera com
+capacidade plena sem conexão. Os dados são gravados localmente e sincronizados
+via fila estruturada (sync_queue) nas janelas de Starlink, sem perda de registros
+e sem intervenção manual do usuário.
+
+A combinação desses três eixos posiciona a solução não como uma alternativa
+genérica de gestão pecuária, mas como uma ferramenta construída especificamente
+para o problema da BrPec, o que representa uma barreira de replicação que
+produtos de prateleira não conseguem superar.
 
 ## 6.6 Estratégia de Marketing
 
