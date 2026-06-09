@@ -11,6 +11,11 @@
 
 import request from 'supertest';
 import app from '../app';
+import { inicializarBanco } from '../config/initDb';
+
+beforeAll(() => {
+  inicializarBanco();
+});
 
 describe('View Routes — EJS Template Rendering', () => {
   // ─────────────────────────────────────────────────────────
