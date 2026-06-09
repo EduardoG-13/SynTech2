@@ -1903,6 +1903,7 @@ config:
   flowchart:
     nodeSpacing: 35
     rankSpacing: 60
+    curve: basis
 ---
 flowchart TD
     %% CAMADA DE ROTAS
@@ -1990,12 +1991,58 @@ flowchart TD
     HealthRepository ~~~ TarefaRepository ~~~ TarefaPgRepository ~~~ AlertaRepository ~~~ EventoRepository ~~~ SincronizacaoRepository ~~~ ExportacaoRepository ~~~ PainelRepository ~~~ UsuarioRepository
     SQLiteDB ~~~ PostgresDB
 
-    %% Conexões principais
-    Routes --> Controllers
-    Controllers --> Services
-    Services --> Repositories
-    Repositories -. implementação .-> RepositoryImpls
-    RepositoryImpls --> Databases
+    %% Conexões de Rotas para Controllers
+    HealthRoutes --> HealthController
+    TarefaRoutes --> TarefaController
+    AlertaRoutes --> AlertaController
+    EventoRoutes --> EventoController
+    SincronizacaoRoutes --> SincronizacaoController
+    ExportacaoRoutes --> ExportacaoController
+    PainelRoutes --> PainelController
+
+    %% Conexões de Controllers para Services (Dependência de Injeção)
+    HealthController --> HealthService
+    TarefaController --> TarefaService
+    AlertaController --> AlertaService
+    EventoController --> EventoService
+    SincronizacaoController --> SincronizacaoService
+    ExportacaoController --> ExportacaoService
+    PainelController --> PainelService
+
+    %% Conexões de Services para Repositories / Interfaces (Dependência de Injeção)
+    HealthService --> IHealthRepository
+    TarefaService --> ITarefaRepository
+    TarefaService --> ITarefaPgRepository
+    TarefaService --> IUsuarioRepository
+    AlertaService --> IAlertaRepository
+    EventoService --> IEventoRepository
+    SincronizacaoService --> ISincronizacaoRepository
+    ExportacaoService --> IExportacaoRepository
+    ExportacaoService --> IUsuarioRepository
+    PainelService --> IPainelRepository
+    PainelService --> IUsuarioRepository
+
+    %% Implementações das Interfaces pelos Repositórios Concretos (Realization)
+    HealthRepository -.-> IHealthRepository
+    TarefaRepository -.-> ITarefaRepository
+    TarefaPgRepository -.-> ITarefaPgRepository
+    AlertaRepository -.-> IAlertaRepository
+    EventoRepository -.-> IEventoRepository
+    SincronizacaoRepository -.-> ISincronizacaoRepository
+    ExportacaoRepository -.-> IExportacaoRepository
+    PainelRepository -.-> IPainelRepository
+    UsuarioRepository -.-> IUsuarioRepository
+
+    %% Acesso a Banco de Dados por Repositórios Concretos
+    HealthRepository --> SQLiteDB
+    TarefaRepository --> SQLiteDB
+    TarefaPgRepository --> PostgresDB
+    AlertaRepository --> SQLiteDB
+    EventoRepository --> SQLiteDB
+    SincronizacaoRepository --> SQLiteDB
+    ExportacaoRepository --> SQLiteDB
+    PainelRepository --> SQLiteDB
+    UsuarioRepository --> SQLiteDB
     
     %% Sincronização offline-first
     SQLiteDB -.->|sincronização| PostgresDB
