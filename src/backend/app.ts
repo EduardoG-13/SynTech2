@@ -1,8 +1,11 @@
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './config/swagger.json';
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import session from 'express-session';
 import { Request, Response, NextFunction } from 'express';
+import db from './config/database';
 import { RETIROS } from './config/retiros';
 import routes from './routes/index';
 import viewRoutes from './routes/viewRoutes';
@@ -27,13 +30,18 @@ app.use(session({
   cookie: { maxAge: 365 * 24 * 60 * 60 * 1000 }
 }));
 
+// Rota para documentação da API
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 // Rotas de views (EJS)
 app.get('/', (_req, res) => {
   res.render('login');
 });
 
 app.get('/selecionar-retiro', (_req, res) => {
-  res.render('selecionar-retiro', { retiros: RETIROS });
+  const retiros = db.prepare('SELECT id, nome FROM retiros ORDER BY nome').all();
+  res.render('selecionar-retiro', { retiros });
 });
 
 app.get('/login-auth', (req, res) => {

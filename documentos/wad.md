@@ -1289,6 +1289,78 @@ Para a documentação completa de todos os endpoints (incluindo `GET /tarefas/ho
 
 ### 3.2.1. Diagrama de Arquitetura e Camadas (sprints 3 e 4)
 
+O Sistema BrPec é estruturado sob uma **arquitetura física de três camadas (3-Tier Architecture)**, projetada com base nos princípios do paradigma **Local-First / Offline-First** (KLEPPMANN et al., 2019) [1]. Essa decisão arquitetural é fundamental para mitigar a restrição de conectividade intermitente em ambientes rurais (pastos), garantindo que a operação de campo não dependa de conexões com a internet satelital (Starlink) para funcionar, ao mesmo tempo em que provê consistência eventual global.
+
+#### Arquitetura Física e Fluxo de Sincronização (3-Tier Sync)
+
+O diagrama a seguir detalha a topologia física da rede, os bancos de dados em cada nó e os mecanismos de conectividade do sistema:
+
+```mermaid
+graph TD
+  %% Camada 1: Pasto
+  subgraph Pasto ["Camada 1: Client (Pasto - Operação Offline)"]
+    direction TB
+    A["Dispositivo Móvel do Capataz (PWA)"] --> B[("Armazenamento Local: IndexedDB")]
+    style Pasto fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b
+  end
+
+  %% Camada 2: Sede
+  subgraph Sede ["Camada 2: Server (Sede da Fazenda - Gateway Local)"]
+    direction TB
+    C["Servidor Local (Node.js / Express)"] --> D[("Cache Local: SQLite (brpec.sqlite)")]
+    style Sede fill:#efebe9,stroke:#5d4037,stroke-width:2px,color:#3e2723
+  end
+
+  %% Camada 3: Nuvem
+  subgraph Nuvem ["Camada 3: Nuvem (Central - Consolidação Global)"]
+    direction TB
+    E["Servidor Nuvem (Supabase API)"] --> F[("Banco Central: PostgreSQL (Supabase)")]
+    style Nuvem fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#1b5e20
+  end
+
+  %% Conexões e Fluxo de Dados
+  B -.->|"Sincronização via Wi-Fi Local (Sede)"| C
+  D -.->|"Sincronização Assíncrona via Satélite (Starlink)"| E
+```
+
+<center>
+  <p><strong>Figura 8.1</strong> — Arquitetura de Sincronização em 3 Camadas do BrPec</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+##### Detalhamento do Fluxo de Dados, Validação e Justificativas Técnicas:
+
+1. **Camada 1 (Client - Pasto):**
+   - **Contexto Operacional:** No pasto, a latência de rede é infinita e a largura de banda é zero. O Capataz interage com um Progressive Web App (PWA) instalado em seu celular.
+   - **Fluxo de Dados:** Apontamentos zootécnicos e alterações de tarefas são capturados em tempo real. O aplicativo PWA persiste esses registros localmente no **IndexedDB** do navegador.
+   - **Fundamentação Técnica:** O **IndexedDB** (especificação W3C API 3.0) [2] foi selecionado devido à sua capacidade de armazenamento transactional assíncrono de alta capacidade. Ao contrário de tecnologias mais simples como o `localStorage` (síncrono e limitado a 5MB de dados puramente textuais), o IndexedDB permite armazenar estruturas relacionais complexas e metadados de mídias de forma assíncrona, não bloqueando a thread principal da interface do usuário (UI).
+   - **Validação:** A validação nesta camada é estritamente client-side, focando em formatos sintáticos, preenchimento de campos obrigatórios e conformidade visual para evitar erros grosseiros de digitação em campo.
+
+2. **Camada 2 (Server - Sede da Fazenda / Gateway Local):**
+   - **Contexto Operacional:** Quando o Capataz retorna para a sede da fazenda ao fim do expediente, o dispositivo móvel se conecta à rede **Wi-Fi local** e inicia a transferência de dados.
+   - **Fluxo de Sincronização e Padrão Outbox:** O PWA drena os registros acumulados do IndexedDB para o servidor Express local da fazenda. O servidor processa esses dados e os persiste no banco **SQLite** local (`brpec.sqlite`). Para garantir a entrega garantida das movimentações à nuvem sem risco de perda em caso de falha física, aplica-se o padrão de microsserviços **Transactional Outbox** (RICHARDSON, 2018) [3]: os apontamentos zootécnicos e o registro da fila de envio na tabela `sincronizacoes` são salvos de forma atômica no SQLite dentro de uma única transação de banco.
+   - **Fundamentação Técnica:** O **SQLite** (HIPP, 2020) [4] foi adotado como cache relacional local por ser uma engine de banco relacional embutida e *zero-configuration*, eliminando o overhead operacional e o risco de falhas de manutenção inerentes a servidores tradicionais (como PostgreSQL ou MySQL) no ambiente hostil de servidores locais de fazendas. O uso do módulo nativo do Node.js (`node:sqlite`) fornece sub-milissegundos de latência com baixo consumo de memória, garantindo persistência robusta e durável em disco local.
+   - **Validação:** O servidor Express local atua como o principal portão de validação de regras de negócio pecuárias (ex.: verificação zootécnica de idade para nascimentos, checagem se o responsável pertence ao retiro da tarefa). A validação em nível de banco de dados é reforçada por chaves estrangeiras (`PRAGMA foreign_keys = ON;`) e constraints de check no SQLite.
+
+3. **Camada 3 (Nuvem - Central):**
+   - **Contexto Operacional:** A sede da fazenda possui um modem satelital **Starlink** com alta taxa de transferência, porém sujeito a quedas intermitentes por fatores climáticos e obstruções físicas.
+   - **Fluxo de Sincronização e Consistência Eventual:** Um agendador em segundo plano (`cloudSyncService.ts`) monitora a conectividade remota. Quando a conexão satelital é restabelecida, o serviço consome a fila de outbox (`sincronizacoes`) e faz o push dos dados acumulados para a API centralizada do **Supabase (PostgreSQL)** na nuvem. Ao receber uma confirmação de sucesso com status HTTP 200/201, o servidor local atualiza as linhas locais como sincronizadas.
+   - **Fundamentação Técnica:** O modelo de replicação opera sob **Consistência Eventual** (VOGELS, 2009) [5], permitindo que as fazendas continuem operando de forma autônoma e convergindo os estados estruturais com o banco centralizado sem a necessidade de conexões persistentes síncronas de duas fases (2PC), impraticáveis sob redes de satélite. O **PostgreSQL** hospedado no Supabase atua como o banco de dados mestre global, fornecendo capacidades ACID de alta concorrência para consolidação de múltiplos retiros da fazenda em tempo real.
+   - **Validação:** A camada de nuvem valida a consistência relacional global (ex.: unicidade global de UUIDs gerados de forma descentralizada) e restrições globais de negócios consolidados.
+
+---
+
+### Referências Arquiteturais da Seção:
+* [1] KLEPPMANN, Martin et al. **Local-first software: You own your data, in spite of the cloud**. In: Proceedings of the 2019 ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software (Onward!). 2019. p. 154-178.
+* [2] W3C. **Indexed Database API 3.0**. W3C Recommendation, 2024. Disponível em: <https://www.w3.org/TR/IndexedDB/>.
+* [3] RICHARDSON, Chris. **Microservices Patterns: With examples in Java**. Manning Publications, 2018.
+* [4] HIPP, Richard D. **SQLite Design Principles and Architecture**. SQLite Library, 2020.
+* [5] VOGELS, Werner. **Eventually Consistent**. ACM Queue, v. 6, n. 6, p. 14-19, 2009.
+
+---
+
+#### Arquitetura Lógica de Software (CSR)
+
 O Sistema BrPec adota o padrão **Arquitetura em Camadas (Layered Architecture)** no estilo **Controller-Service-Repository (CSR)**, organizando o backend em responsabilidades isoladas que se comunicam de forma unidirecional. A escolha desse padrão se justifica por quatro motivos centrais para o projeto: (i) **separação de responsabilidades**, isolando regras de negócio do transporte HTTP e do acesso a dados; (ii) **testabilidade**, já que cada camada pode ser testada de forma independente com mocks das camadas inferiores; (iii) **manutenibilidade**, permitindo evoluir uma camada sem propagar mudanças para as demais; e (iv) **baixo acoplamento com a infraestrutura escolhida** (Supabase + PostgreSQL), de modo que uma eventual troca do provedor de banco ou do framework HTTP impacte apenas a camada correspondente.
 
 A solução é composta por **cinco camadas lógicas** no backend, implementadas em Node.js + Express.js, com persistência em PostgreSQL gerenciado pelo Supabase:
@@ -1586,9 +1658,167 @@ e dos Casos de Uso (UC) definidos nas seções anteriores, garantindo rastreabil
 entre as decisões de modelagem e os demais artefatos de engenharia de requisitos do
 projeto.
 
+```mermaid
+%%{init: {'flowchart': {'curve': 'linear'}, 'class': {'curve': 'linear'}}}%%
+classDiagram
+  direction TB
+
+  class Usuario {
+    +String id
+    +String nome
+    +String senha
+    +String perfil
+    +String retiro_id
+    +String criado_em
+    +autenticar()
+  }
+
+  class Retiro {
+    +String id
+    +String nome
+    +String localizacao
+    +String coordenador_id
+    +String criado_em
+    +obterDadosConsolidados()
+  }
+
+  class MovimentacaoBase {
+    <<abstract>>
+    +String id
+    +String capataz_id
+    +String retiro_id
+    +String data
+    +String categoria
+    +Number quantidade
+    +Boolean/Number sincronizado
+    +Boolean/Number validado
+    +String coordenador_id
+    +String criado_em
+    +validarMovimentacao()
+  }
+
+  class Alerta {
+    +String id
+    +String tipo
+    +String descricao
+    +String status
+    +String capataz_id
+    +String retiro_id
+    +Float latitude
+    +Float longitude
+    +String criado_em
+    +Boolean/Number sincronizado
+    +String foto_id
+    +String tecnico_id
+    +registrarResolucao()
+  }
+
+  class Tarefa {
+    +String id
+    +String titulo
+    +String descricao
+    +String status
+    +String data_execucao
+    +String retiro_id
+    +String capataz_id
+    +String gerente_id
+    +String criada_em
+    +String concluida_em
+    +Boolean/Number sincronizada
+    +iniciar()
+    +concluir()
+  }
+
+  class Exportacao {
+    +String id
+    +String coordenador_id
+    +String formato
+    +String filtro_retiro
+    +String filtro_data_inicio
+    +String filtro_data_fim
+    +String gerada_em
+    +gerarRelatorio()
+  }
+
+  class Nascimento {
+    +String id
+    +String movimentacao_id
+    +registrarNascimento()
+  }
+
+  class Obito {
+    +String id
+    +String movimentacao_id
+    +String identificacao_animal
+    +String causa_morte
+    +String foto_id
+    +registrarObito()
+  }
+
+  class Transferencia {
+    +String id
+    +String movimentacao_id
+    +String retiro_origem_id
+    +String retiro_destino_id
+    +registrarTransferencia()
+  }
+
+  class Compravenda {
+    +String id
+    +String movimentacao_id
+    +String tipo_negocio
+    +Float valor_financeiro
+    +registrarCompravenda()
+  }
+
+  class Evidencia {
+    +String id
+    +String tarefa_id
+    +String alerta_id
+    +String movimentacao_id
+    +String tipo
+    +String arquivo_base64
+    +String url_arquivo
+    +String geolocalizacao
+    +Number duracao_segundos
+    +String conteudo
+    +Number tamanho_bytes
+    +String criada_em
+    +Boolean/Number sincronizada
+    +uploadEvidencia()
+  }
+
+  class Sincronizacao {
+    +String id
+    +String entidade_tipo
+    +String entidade_id
+    +String status_envio
+    +Number tentativas
+    +String ultima_tentativa
+    +String criada_em
+    +executarSync()
+  }
+
+  %% Relacionamentos Principais (Simplificados para evitar cruzamentos e poluição visual)
+  Retiro "1" --> "*" Usuario : abriga
+  Usuario "1" --> "*" MovimentacaoBase : insere
+  Usuario "1" --> "*" Alerta : gerencia
+  Usuario "1" --> "*" Tarefa : executa
+  Usuario "1" --> "*" Exportacao : solicita
+
+  Tarefa "1" --> "0..1" Evidencia : possui
+  Alerta "1" --> "0..1" Evidencia : contem
+  MovimentacaoBase "1" --> "0..*" Evidencia : anexa
+
+  %% Herança (Superclasse <|-- Subclasse)
+  MovimentacaoBase <|-- Nascimento : herança
+  MovimentacaoBase <|-- Obito : herança
+  MovimentacaoBase <|-- Transferencia : herança
+  MovimentacaoBase <|-- Compravenda : herança
+```
+
 <center>
-  <p><strong>Figura 10</strong> — Diagrama de Classes do Domínio do Sistema BrPec</p>
-  <img src="./assets/diagramaClasses.jpeg" width="800"/>
+  <p><strong>Figura 10</strong> — Diagrama de Classes do Domínio do Sistema BrPec (Mermaid UML)</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1897,260 +2127,155 @@ Cada camada possui responsabilidade única e bem delimitada [15][16]:
 O diagrama a seguir utiliza a notação UML 2.5.1 [14], com dependências de uso (`..>`) entre Controller → Service e Service → Repository, e associações de composição entre Repository e os Models correspondentes. As classes de mesmo domínio funcional são agrupadas por módulo: **Autenticação**, **Tarefas**, **Eventos Zootécnicos**, **Alertas de Infraestrutura**, **Sincronização** e **Exportação**. 
 
 ```mermaid
-classDiagram
-    direction TB
+---
+config:
+  theme: neutral
+  flowchart:
+    nodeSpacing: 35
+    rankSpacing: 60
+    curve: basis
+---
+flowchart TD
+    %% CAMADA DE ROTAS
+    subgraph Routes["Camada de Rotas — HTTP Endpoints"]
+        direction LR
+        classDef route fill:#ecfeff,stroke:#22d3ee,color:#036672,font-family:sans-serif;
+        HealthRoutes["HealthRoutes<br/>GET /health"]:::route
+        TarefaRoutes["TarefaRoutes<br/>POST /tarefas<br/>GET /tarefas/hoje<br/>PATCH /tarefas/:id/concluir<br/>POST /tarefas/:id/evidencias"]:::route
+        AlertaRoutes["AlertaRoutes<br/>POST /chamados"]:::route
+        EventoRoutes["EventoRoutes<br/>GET /eventos-zootecnicos<br/>POST /eventos-zootecnicos/nascimentos<br/>POST /eventos-zootecnicos/obitos"]:::route
+        SincronizacaoRoutes["SincronizacaoRoutes<br/>POST /sincronizacao/lote"]:::route
+        ExportacaoRoutes["ExportacaoRoutes<br/>GET /exportacao/csv"]:::route
+        PainelRoutes["PainelRoutes<br/>GET /painel-gerencial"]:::route
+    end
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: MODEL
-    %% ─────────────────────────────────────────
-    namespace Model {
-        class Usuario {
-            +UUID id
-            +String nome
-            +String senha
-            +Enum perfil
-            +UUID retiro_id
-            +DateTime criado_em
-        }
-        class Tarefa {
-            +UUID id
-            +String titulo
-            +String descricao
-            +Enum status
-            +Date data_execucao
-            +UUID retiro_id
-            +UUID capataz_id
-            +UUID gerente_id
-            +DateTime criada_em
-            +DateTime concluida_em
-            +Boolean sincronizada
-        }
-        class Evidencia {
-            +UUID id
-            +UUID tarefa_id
-            +UUID alerta_id
-            +UUID movimentacao_id
-            +Enum tipo
-            +String arquivo_base64
-            +String url_arquivo
-            +String geolocalizacao
-            +Integer duracao_segundos
-            +String conteudo
-            +Integer tamanho_bytes
-            +DateTime criada_em
-            +Boolean sincronizada
-        }
-        class Alerta {
-            +UUID id
-            +Enum tipo
-            +String descricao
-            +Enum status
-            +UUID capataz_id
-            +UUID retiro_id
-            +Decimal latitude
-            +Decimal longitude
-            +DateTime criado_em
-            +Boolean sincronizado
-            +UUID foto_id
-            +UUID tecnico_id
-        }
-        class MovimentacaoBase {
-            +UUID id
-            +UUID capataz_id
-            +UUID retiro_id
-            +Date data
-            +Enum categoria
-            +Integer quantidade
-            +Boolean sincronizado
-            +Boolean validado
-            +UUID coordenador_id
-            +DateTime criado_em
-        }
-        class Nascimento {
-        }
-        class Obito {
-            +String identificacao_animal
-            +String causa_morte
-            +UUID foto_id
-        }
-        class Transferencia {
-            +UUID retiro_origem_id
-            +UUID retiro_destino_id
-        }
-        class Compravenda {
-            +Enum tipo_negocio
-            +Decimal valor_financeiro
-        }
-        class Sincronizacao {
-            +UUID id
-            +String entidade_tipo
-            +UUID entidade_id
-            +Enum status_envio
-            +Integer tentativas
-            +DateTime ultima_tentativa
-            +DateTime criada_em
-        }
-        class Retiro {
-            +UUID id
-            +String nome
-            +String localizacao
-            +UUID coordenador_id
-            +DateTime criado_em
-        }
-        class Exportacao {
-            +UUID id
-            +UUID coordenador_id
-            +Enum formato
-            +UUID filtro_retiro
-            +Date filtro_data_inicio
-            +Date filtro_data_fim
-            +DateTime gerada_em
-        }
-    }
+    %% CAMADA DE CONTROLLERS
+    subgraph Controllers["Camada de Controllers — Apresentação"]
+        direction LR
+        classDef controller fill:#f5f3ff,stroke:#a78bfa,color:#5b21b6,font-family:sans-serif;
+        HealthController["HealthController<br/>+getHealth()"]:::controller
+        TarefaController["TarefaController<br/>+criarTarefa()<br/>+buscarTarefasHoje()<br/>+concluirTarefa()<br/>+anexarEvidencias()"]:::controller
+        AlertaController["AlertaController<br/>+criarAlerta()"]:::controller
+        EventoController["EventoController<br/>+registrarNascimento()<br/>+registrarObito()<br/>+listarEventos()"]:::controller
+        SincronizacaoController["SincronizacaoController<br/>+processarLote()"]:::controller
+        ExportacaoController["ExportacaoController<br/>+exportarCsv()"]:::controller
+        PainelController["PainelController<br/>+obterPainel()"]:::controller
+    end
 
-    MovimentacaoBase <|-- Nascimento
-    MovimentacaoBase <|-- Obito
-    MovimentacaoBase <|-- Transferencia
-    MovimentacaoBase <|-- Compravenda
+    %% CAMADA DE SERVICES
+    subgraph Services["Camada de Services — Regras de Negócio"]
+        direction LR
+        classDef service fill:#f0fdf4,stroke:#4ade80,color:#166534,font-family:sans-serif;
+        HealthService["HealthService<br/>+verificarSaude()"]:::service
+        TarefaService["TarefaService<br/>+criarTarefa()<br/>+buscarTarefasHoje()<br/>+concluirTarefa()<br/>+anexarEvidencia()"]:::service
+        AlertaService["AlertaService<br/>+criarAlerta()"]:::service
+        EventoService["EventoService<br/>+registrarNascimento()<br/>+registrarObito()<br/>+listarEventos()"]:::service
+        SincronizacaoService["SincronizacaoService<br/>+processarLote()"]:::service
+        ExportacaoService["ExportacaoService<br/>+exportarCsv()"]:::service
+        PainelService["PainelService<br/>+obterPainel()"]:::service
+    end
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: REPOSITORY
-    %% ─────────────────────────────────────────
-    namespace Repository {
-        class UsuarioRepository {
-            +buscarPorId(id) Usuario
-        }
-        class TarefaRepository {
-            +criar(dados) Tarefa
-            +buscarPorId(id) Tarefa
-            +buscarTarefasHoje(capataz_id, data) Tarefa[]
-            +concluir(id, capataz_id, data_conclusao) Tarefa
-            +salvarEvidencia(tarefa_id, tipo, arquivo_base64, geolocalizacao) UUID
-        }
-        class AlertaRepository {
-            +criar(alerta) Alerta
-            +buscarPorId(id) Alerta
-        }
-        class EventoRepository {
-            +criarNascimento(evento) MovimentacaoBase
-            +criarObito(evento) Object
-            +listarTodos(filtros) Object
-            +buscarMovimentacaoPorId(id) MovimentacaoBase
-        }
-        class ExportacaoRepository {
-            +consultarMovimentacoesConsolidadas(filtros) Array
-            +registrarExportacao(coordenador_id, formato, filtro_retiro, filtro_data_inicio, filtro_data_fim) UUID
-        }
-        class HealthRepository {
-            +verificarConexao() Object
-        }
-        class PainelRepository {
-            +obterMetricasTarefas(gerente_id) Array
-            +obterTarefasPorRetiro(gerente_id) Array
-            +obterAlertasAbertos() Alerta[]
-            +obterConcluidasHoje(gerente_id) Object
-        }
-        class SincronizacaoRepository {
-            +registrar(entidade_tipo, entidade_id, status_envio) UUID
-            +inserirTarefa(tarefa) UUID
-            +inserirAlerta(alerta) UUID
-            +inserirMovimentacao(mov) UUID
-            +inserirEvidencia(ev) UUID
-        }
-    }
+    %% CAMADA DE REPOSITÓRIOS (INTERFACES)
+    subgraph Repositories["Camada de Repositories — Contratos e Interfaces"]
+        direction LR
+        classDef repository fill:#fefce8,stroke:#facc15,color:#854d0e,font-family:sans-serif;
+        IHealthRepository["«interface» IHealthRepository<br/>+verificarConexao()"]:::repository
+        ITarefaRepository["«interface» ITarefaRepository<br/>+criar()<br/>+buscarPorId()<br/>+buscarTarefasHoje()<br/>+concluir()<br/>+salvarEvidencia()"]:::repository
+        ITarefaPgRepository["«interface» ITarefaPgRepository<br/>+salvarOuAtualizar()"]:::repository
+        IAlertaRepository["«interface» IAlertaRepository<br/>+criar()<br/>+buscarPorId()"]:::repository
+        IEventoRepository["«interface» IEventoRepository<br/>+criarNascimento()<br/>+criarObito()<br/>+listarTodos()<br/>+buscarMovimentacaoPorId()"]:::repository
+        ISincronizacaoRepository["«interface» ISincronizacaoRepository<br/>+registrar()<br/>+inserirTarefa()<br/>+inserirAlerta()<br/>+inserirMovimentacao()<br/>+inserirEvidencia()"]:::repository
+        IExportacaoRepository["«interface» IExportacaoRepository<br/>+consultarMovimentacoesConsolidadas()<br/>+registrarExportacao()"]:::repository
+        IPainelRepository["«interface» IPainelRepository<br/>+obterMetricasTarefas()<br/>+obterTarefasPorRetiro()<br/>+obterAlertasAbertos()<br/>+obterConcluidasHoje()"]:::repository
+        IUsuarioRepository["«interface» IUsuarioRepository<br/>+buscarPorId()"]:::repository
+    end
 
-    UsuarioRepository "1" --o "0..*" Usuario
-    TarefaRepository "1" --o "0..*" Tarefa
-    TarefaRepository "1" --o "0..*" Evidencia
-    AlertaRepository "1" --o "0..*" Alerta
-    EventoRepository "1" --o "0..*" MovimentacaoBase
-    SincronizacaoRepository "1" --o "0..*" Sincronizacao
-    ExportacaoRepository "1" --o "0..*" Exportacao
-    PainelRepository "1" --o "0..*" Tarefa
-    PainelRepository "1" --o "0..*" Alerta
+    %% CAMADA DE IMPLEMENTAÇÕES
+    subgraph RepositoryImpls["Camada de Infraestrutura — Repositories Concretos"]
+        direction LR
+        classDef impl fill:#fff7ed,stroke:#fb923c,color:#7c2d12,font-family:sans-serif;
+        HealthRepository["HealthRepository<br/>(SQLite)"]:::impl
+        TarefaRepository["TarefaRepository<br/>(SQLite)"]:::impl
+        TarefaPgRepository["TarefaPgRepository<br/>(Supabase/Pg)"]:::impl
+        AlertaRepository["AlertaRepository<br/>(SQLite)"]:::impl
+        EventoRepository["EventoRepository<br/>(SQLite)"]:::impl
+        SincronizacaoRepository["SincronizacaoRepository<br/>(SQLite)"]:::impl
+        ExportacaoRepository["ExportacaoRepository<br/>(SQLite)"]:::impl
+        PainelRepository["PainelRepository<br/>(SQLite)"]:::impl
+        UsuarioRepository["UsuarioRepository<br/>(SQLite)"]:::impl
+    end
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: SERVICE
-    %% ─────────────────────────────────────────
-    namespace Service {
-        class AlertaService {
-            +criarAlerta(dados) Alerta
-        }
-        class EventoService {
-            +registrarNascimento(dados) MovimentacaoBase
-            +registrarObito(dados) Object
-            +listarEventos(filtros) Object
-        }
-        class ExportacaoService {
-            +exportarCsv(coordenador_id, filtros) Object
-        }
-        class HealthService {
-            +verificarSaude() Object
-        }
-        class PainelService {
-            +obterPainel(gerente_id) Object
-        }
-        class SincronizacaoService {
-            +processarLote(itens) Object
-        }
-        class TarefaService {
-            +criarTarefa(dados) Tarefa
-            +buscarTarefasHoje(capataz_id) Tarefa[]
-            +concluirTarefa(tarefa_id, capataz_id) Tarefa
-            +anexarEvidencia(tarefa_id, capataz_id, dados) Object
-        }
-    }
+    %% CAMADA DE BANCOS DE DADOS
+    subgraph Databases["Bancos de Dados — Persistência"]
+        direction LR
+        classDef db fill:#fff1f2,stroke:#fb7185,color:#7f1d1d,font-family:sans-serif;
+        SQLiteDB[("SQLite Local DB<br/>(offline-first)")]:::db
+        PostgresDB[("Supabase Cloud DB<br/>(PostgreSQL)")]:::db
+    end
 
-    AlertaService ..> AlertaRepository : usa
-    EventoService ..> EventoRepository : usa
-    ExportacaoService ..> ExportacaoRepository : usa
-    ExportacaoService ..> UsuarioRepository : valida perfil (Coordenador)
-    HealthService ..> HealthRepository : usa
-    PainelService ..> PainelRepository : usa
-    PainelService ..> UsuarioRepository : valida perfil (Gerente)
-    SincronizacaoService ..> SincronizacaoRepository : usa
-    TarefaService ..> TarefaRepository : usa
-    TarefaService ..> UsuarioRepository : valida vínculo (RN01)
+    %% Layout horizontal interno (força alinhamento lado a lado)
+    HealthRoutes ~~~ TarefaRoutes ~~~ AlertaRoutes ~~~ EventoRoutes ~~~ SincronizacaoRoutes ~~~ ExportacaoRoutes ~~~ PainelRoutes
+    HealthController ~~~ TarefaController ~~~ AlertaController ~~~ EventoController ~~~ SincronizacaoController ~~~ ExportacaoController ~~~ PainelController
+    HealthService ~~~ TarefaService ~~~ AlertaService ~~~ EventoService ~~~ SincronizacaoService ~~~ ExportacaoService ~~~ PainelService
+    IHealthRepository ~~~ ITarefaRepository ~~~ ITarefaPgRepository ~~~ IAlertaRepository ~~~ IEventoRepository ~~~ ISincronizacaoRepository ~~~ IExportacaoRepository ~~~ IUsuarioRepository ~~~ IPainelRepository
+    HealthRepository ~~~ TarefaRepository ~~~ TarefaPgRepository ~~~ AlertaRepository ~~~ EventoRepository ~~~ SincronizacaoRepository ~~~ ExportacaoRepository ~~~ PainelRepository ~~~ UsuarioRepository
+    SQLiteDB ~~~ PostgresDB
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: CONTROLLER
-    %% ─────────────────────────────────────────
-    namespace Controller {
-        class AlertaController {
-            +POST /chamados()
-        }
-        class EventoController {
-            +GET /eventos-zootecnicos()
-            +POST /eventos-zootecnicos/nascimentos()
-            +POST /eventos-zootecnicos/obitos()
-        }
-        class ExportacaoController {
-            +GET /exportacao/csv()
-        }
-        class HealthController {
-            +GET /health()
-        }
-        class PainelController {
-            +GET /painel-gerencial()
-        }
-        class SincronizacaoController {
-            +POST /sincronizacao/lote()
-        }
-        class TarefaController {
-            +POST /tarefas()
-            +GET /tarefas/hoje()
-            +PATCH /tarefas/:id/concluir()
-            +POST /tarefas/:id/evidencias()
-        }
-    }
+    %% Conexões de Rotas para Controllers
+    HealthRoutes --> HealthController
+    TarefaRoutes --> TarefaController
+    AlertaRoutes --> AlertaController
+    EventoRoutes --> EventoController
+    SincronizacaoRoutes --> SincronizacaoController
+    ExportacaoRoutes --> ExportacaoController
+    PainelRoutes --> PainelController
 
-    AlertaController ..> AlertaService : delega
-    EventoController ..> EventoService : delega
-    ExportacaoController ..> ExportacaoService : delega
-    HealthController ..> HealthService : delega
-    PainelController ..> PainelService : delega
-    SincronizacaoController ..> SincronizacaoService : delega
-    TarefaController ..> TarefaService : delega
+    %% Conexões de Controllers para Services (Dependência de Injeção)
+    HealthController --> HealthService
+    TarefaController --> TarefaService
+    AlertaController --> AlertaService
+    EventoController --> EventoService
+    SincronizacaoController --> SincronizacaoService
+    ExportacaoController --> ExportacaoService
+    PainelController --> PainelService
+
+    %% Conexões de Services para Repositories / Interfaces (Dependência de Injeção)
+    HealthService --> IHealthRepository
+    TarefaService --> ITarefaRepository
+    TarefaService --> ITarefaPgRepository
+    TarefaService --> IUsuarioRepository
+    AlertaService --> IAlertaRepository
+    EventoService --> IEventoRepository
+    SincronizacaoService --> ISincronizacaoRepository
+    ExportacaoService --> IExportacaoRepository
+    ExportacaoService --> IUsuarioRepository
+    PainelService --> IPainelRepository
+    PainelService --> IUsuarioRepository
+
+    %% Implementações das Interfaces pelos Repositórios Concretos (Realization)
+    HealthRepository -.-> IHealthRepository
+    TarefaRepository -.-> ITarefaRepository
+    TarefaPgRepository -.-> ITarefaPgRepository
+    AlertaRepository -.-> IAlertaRepository
+    EventoRepository -.-> IEventoRepository
+    SincronizacaoRepository -.-> ISincronizacaoRepository
+    ExportacaoRepository -.-> IExportacaoRepository
+    PainelRepository -.-> IPainelRepository
+    UsuarioRepository -.-> IUsuarioRepository
+
+    %% Acesso a Banco de Dados por Repositórios Concretos
+    HealthRepository --> SQLiteDB
+    TarefaRepository --> SQLiteDB
+    TarefaPgRepository --> PostgresDB
+    AlertaRepository --> SQLiteDB
+    EventoRepository --> SQLiteDB
+    SincronizacaoRepository --> SQLiteDB
+    ExportacaoRepository --> SQLiteDB
+    PainelRepository --> SQLiteDB
+    UsuarioRepository --> SQLiteDB
+    
+    %% Sincronização offline-first
+    SQLiteDB -.->|sincronização| PostgresDB
 ```
 
 <center>
@@ -4898,31 +5023,39 @@ _Posicione aqui o relatório dos testes SUS realizados._
 
 ## 6.1 Resumo Executivo
 
-O Brasil é o maior exportador mundial de carne bovina, com um rebanho de 238,2 milhões
-de cabeças e receita de exportação de US$ 18,03 bilhões em 2025. Apesar dessa escala,
-a gestão operacional de grande parte das fazendas ainda depende de registros manuais em
-papel, um gargalo que compromete a qualidade das informações e a velocidade das decisões.
+O Brasil é o maior exportador mundial de carne bovina, com receita de exportação de
+US$ 18,03 bilhões em 2025 [38] e crescente pressão por rastreabilidade de
+origem nos principais mercados internacionais. Apesar dessa escala, a gestão operacional
+de grande parte das fazendas ainda depende de registros manuais em papel um gargalo
+que compromete a qualidade das informações e a velocidade das decisões.
 
 É nesse contexto que se insere a solução desenvolvida para a BrPec Agropecuária S.A.,
-empresa com 14 retiros operacionais no Pantanal sul-mato-grossense. O fluxo de informações
-entre o campo e o escritório ocorre hoje por meio de boletas físicas preenchidas pelos
-capatazes, que depois são redigitadas manualmente em planilhas na sede. Esse processo
-gera inconsistências nos registros, atrasos de horas ou dias no repasse de informações
-críticas, como mortes de animais, e retrabalho constante para a equipe de coordenação.
+empresa com 14 retiros operacionais no Pantanal sul-mato-grossense. A região concentra
+64,5% do bioma pantaneiro no Mato Grosso do Sul [43], onde propriedades são
+extensas e retiros estão geograficamente dispersos, sem acesso a telecomunicações
+convencionais. O fluxo de informações entre o campo e o escritório ocorre por meio de
+boletas físicas preenchidas pelos capatazes, redigitadas manualmente em planilhas na
+sede. Esse processo gera inconsistências nos registros, atrasos de horas ou dias no
+repasse de informações críticas — como mortes de animais — e retrabalho constante para
+a equipe de coordenação.
 
-A aplicação web desenvolvida digitaliza o registro das movimentações do rebanho,
-nascimentos, mortes, compras, vendas e transferências entre retiros, com funcionamento
-offline obrigatório, resolvendo diretamente a limitação de conectividade dos retiros,
-onde o acesso à internet ocorre apenas em janelas via Starlink. Os dados são coletados
-no campo por dispositivos móveis fornecidos pela própria BrPec e sincronizados
-automaticamente quando a conexão está disponível.
+A aplicação web progressiva (PWA) desenvolvida digitaliza o registro das movimentações
+do rebanho — nascimentos, mortes, compras, vendas e transferências entre retiros —,
+com funcionamento offline nativo. Para isso, adota SQLite como banco de dados local
+no dispositivo, desvinculando o registro de dados da disponibilidade de rede. Os dados
+são sincronizados automaticamente com o servidor durante as janelas de conectividade
+via Starlink, eliminando a dependência de conexão contínua como pré-requisito
+operacional.
+
+Os principais diferenciais competitivos da solução são: interface adaptada ao perfil
+de baixa escolaridade digital dos capatazes, operação offline nativa via SQLite,
+eliminação da etapa de redigitação e rastreabilidade completa das movimentações em
+tempo real.
 
 O objetivo estratégico do projeto é reduzir erros operacionais, aumentar a velocidade
 de atualização das informações e dar aos gestores uma visão confiável e atualizada das
-operações de campo, tornando a BrPec mais competitiva em um setor que avança
-rapidamente em direção à digitalização.
-
-
+operações de campo — tornando a BrPec mais competitiva em um setor que avança
+rapidamente em direção à digitalização e à rastreabilidade compulsória [41].
 
 
 ## 6.2 Análise de Mercado
@@ -4957,12 +5090,12 @@ O rebanho bovino brasileiro encerrou 2024 com 238,2 milhões de cabeças, segund
 Pesquisa da Pecuária Municipal do IBGE — o segundo maior da série histórica iniciada
 em 1974 (IBGE, 2025). O volume de abate acompanhou essa escala: foram 39,27 milhões
 de cabeças abatidas em 2024, alta de 15,2% em relação ao ano anterior, com produção
-de 10,2 milhões de toneladas de carne em equivalente carcaça [39] [43].
+de 10,2 milhões de toneladas de carne em equivalente carcaça [39] [42].
 Em 2025, o crescimento continuou: somente no primeiro trimestre foram abatidas
 9,87 milhões de cabeças, recorde histórico para o período, com alta de 5,5% sobre
 igual trimestre de 2024 [40].
 
-A tabela abaixo resume a evolução do abate nos últimos anos:
+A tabela abaixo resume a evolução do abate nos últimos anos [39]:
 
 | Ano  | Cabeças abatidas (milhões) | Variação anual |
 |------|---------------------------|----------------|
@@ -4971,14 +5104,12 @@ A tabela abaixo resume a evolução do abate nos últimos anos:
 | 2024 | 39,27                     | +15,2%         |
 | 2025 (projeção) | ~42,5            | +8,2%          |
 
-[39].
-
 No plano das exportações, o Brasil embarcou 2,87 milhões de toneladas em 2024
 (+25,5% vs. 2023), gerando US$ 12,83 bilhões em receita (MAPA, 2024). Em 2025,
 esses números foram superados: 3,50 milhões de toneladas exportadas (+20,9%),
 com receita de US$ 18,03 bilhões (+40,1%), consolidando o país como maior
 exportador mundial de carne bovina (ABIEC, 2026). Para 2026, a ABIEC projeta
-crescimento adicional de 12% nas exportações totais [41].
+crescimento adicional de 12% nas exportações totais [38].
 
 | Ano  | Volume exportado (milhões de ton.) | Receita (US$ bilhões) | Variação receita |
 |------|------------------------------------|-----------------------|-----------------|
@@ -4987,14 +5118,13 @@ crescimento adicional de 12% nas exportações totais [41].
 | 2025 | 3,50                               | 18,03                 | +40,1%          |
 | 2026 | ~3,92 (proj.)                      | ~20,5 (proj.)         | ~+12%           |
 
-[41] [43]
 
 Além do crescimento em volume, o setor enfrenta uma pressão crescente por
 rastreabilidade. O Regulamento Europeu Antidesmatamento (EUDR) exige que produtos
 bovinos exportados à União Europeia comprovem origem livre de desmatamento,
 prazo previsto para o segundo semestre de 2026 (EUDR, 2023). No plano doméstico,
 o Plano Nacional de Identificação de Bovinos (PNIB) estabelece como meta a
-rastreabilidade individual de todo o rebanho nacional até 2032 [43].
+rastreabilidade individual de todo o rebanho nacional até 2032 [42].
 
 Esse cenário abre mercado direto para soluções de gestão digital de campo: fazendas
 que registram movimentações de rebanho de forma estruturada e rastreável passam a
@@ -5009,18 +5139,111 @@ _Identifique e analise tendências relevantes (tecnológicas, comportamentais e 
 ## 6.3 Análise da Concorrência
 
 _a) Principais Concorrentes (até 250 palavras)_
-_Liste os concorrentes diretos e indiretos, destacando suas principais características e posicionamento no mercado._
+
+O mercado de software para gestão pecuária no Brasil conta com soluções voltadas
+principalmente para fazendas com infraestrutura tecnológica já estabelecida.
+
+**iRancho** é um sistema ERP focado em pecuária de corte com aplicativo de campo
+offline, integração com balanças e brincos eletrônicos e, desde 2026, um ecossistema
+de IA por voz para registro sem digitação. Os planos são cobrados por faixa de rebanho, o que eleva o custo para operações de grande escala [44].
+
+**JetBov** é um aplicativo de gestão de pasto com coleta offline de dados zootécnicos
+e sincronização automática ao reconectar. Focado em indicadores de ganho de peso,
+reprodução e controle de piquetes, seu perfil de usuário pressupõe familiaridade com
+ambientes digitais [45].
+
+**Aegro** é uma plataforma de gestão rural ampla, com suporte a múltiplas culturas e
+pecuária, funcionalidade offline e integração contábil. Posicionado para produtores com
+gestão financeira complexa, apresenta curva de aprendizado mais longa [46].
+
+Nenhuma das soluções comerciais identificadas foi projetada para o modelo operacional
+de retiros geograficamente dispersos, com usuários de baixa escolaridade digital e
+conectividade dependente de janelas fixas de Starlink. 
 
 _b) Vantagens Competitivas da Aplicação Web (até 250 palavras)_
-_Descreva os diferenciais da sua aplicação em relação aos concorrentes, sem necessidade de citação de fontes._
+
+A solução desenvolvida para a BrPec se diferencia dos concorrentes por um conjunto de
+características construídas especificamente para o contexto operacional da empresa.
+
+O primeiro diferencial é a **interface adaptada ao perfil dos usuários**. Enquanto os
+sistemas concorrentes pressupõem familiaridade com ambientes digitais, a aplicação foi
+projetada para capatazes com baixa escolaridade digital, com fluxos simples, poucos
+passos por tarefa e linguagem visual direta.
+
+O segundo diferencial é o **offline nativo via SQLite**. Os dados são gravados
+localmente no dispositivo durante o trabalho de campo e sincronizados automaticamente
+com o servidor — via fila de sincronização (sync_queue) — nas janelas de conectividade
+disponíveis. Não há dependência de conexão contínua em nenhuma etapa do registro.
+
+O terceiro diferencial é a **aderência ao modelo de retiros**. A arquitetura da solução
+foi construída sobre o fluxo real da BrPec: registro de nascimentos, mortes, compras,
+vendas e transferências entre retiros, com rastreabilidade por unidade operacional.
+Nenhum concorrente oferece essa estrutura de forma nativa.
+
+O quarto diferencial é a **instalação via PWA**, sem necessidade de loja de aplicativos.
+A solução é instalada diretamente pelo navegador nos dispositivos fornecidos pela BrPec,
+eliminando barreiras de configuração e atualizações manuais.
+
+Por fim, a solução não cobra licença por animal — modelo de precificação dos
+concorrentes que penaliza operações de grande rebanho como a da BrPec.
 
 ## 6.4 Público-Alvo
 
 _a) Segmentação de Mercado (até 250 palavras)_
-Descreva os principais segmentos de mercado a serem atendidos pela aplicação. Utilize bases de dados e fontes confiáveis.\*
+
+O mercado-alvo da solução é composto por fazendas de pecuária de corte localizadas
+em regiões de baixa conectividade, com operações distribuídas em múltiplas unidades
+de campo, os retiros no contexto da Brpec. Esse segmento concentra características específicas que o diferenciam do mercado geral de
+agronegócio digital. 
+
+Do ponto de vista geográfico, o Pantanal sul-mato-grossense abriga aproximadamente
+3.500 propriedades rurais distribuídas em nove municípios, com rebanho estimado em
+3,6 milhões de cabeças bovinas [47]. A região representa 20% do rebanho
+total do estado de Mato Grosso do Sul e tem na pecuária extensiva sua principal
+atividade econômica há mais de 200 anos [48].
+
+Do ponto de vista tecnológico, o segmento é caracterizado por baixa adoção de
+ferramentas digitais de gestão. Segundo o Censo Agropecuário 2017 do IBGE, menos
+de 28% dos estabelecimentos rurais brasileiros possuem acesso à internet, e desses,
+apenas 46% contam com banda larga [49]. Esse cenário é ainda mais restritivo
+no Pantanal, onde a conectividade depende de tecnologias satelitais como o Starlink,
+disponíveis apenas no retiro.
+
+O segmento secundário é composto por coordenadores e gerentes de fazendas que
+necessitam de visibilidade consolidada das operações de campo em tempo real, sem
+depender de relatórios manuais ou planilhas desatualizadas. Ambos os segmentos
+compartilham a necessidade central de rastreabilidade operacional com baixa
+dependência de infraestrutura de rede.
+
+
 
 _b) Perfil do Público-Alvo (até 250 palavras)_
-_Caracterize o público-alvo com dados demográficos, psicográficos e comportamentais, incluindo necessidades específicas. Utilize fontes obrigatórias._
+
+O público-alvo da solução é composto por três perfis de usuários internos da BrPec,
+com características e contextos de uso distintos.
+
+**Capataz de retiro** — principal usuário operacional. Perfil masculino, faixa etária
+entre 35 e 55 anos, residente no retiro durante a semana de trabalho. Opera em campo,
+sem acesso contínuo à internet, em condições adversas de luminosidade e mobilidade.
+Responsável pelo registro diário de nascimentos, mortes, entradas, saídas e
+transferências do rebanho. O nível de escolaridade reflete o padrão da força de
+trabalho rural brasileira: 21% dos trabalhadores rurais são analfabetos e 43% possuem
+apenas ensino fundamental incompleto [49]. Apenas 26,5% da população rural
+maior de 18 anos possui ensino fundamental completo [50]. O WhatsApp é o
+principal canal de comunicação utilizado, indicando familiaridade com smartphones,
+mas não com interfaces de software estruturadas.
+
+**Coordenador do retiro** - usuário intermediário, com maior escolaridade e
+familiaridade digital. Consolida informações dos retiros sob sua supervisão e gera
+relatórios para a sede. Utiliza a aplicação tanto no campo quanto na sede.
+
+**Gerente geral** — usuário estratégico, acessa a aplicação pela sede com
+conectividade estável. Não realiza registros operacionais; acompanha o painel
+consolidado e toma decisões com base nos dados sincronizados.
+
+O baixo letramento digital do capataz justifica as decisões de interface adotadas:
+fluxos simples, linguagem visual direta, botões grandes e suporte a registros por
+áudio, reduzindo a dependência de digitação como meio primário de entrada de dados.
 
 ## 6.5 Posicionamento
 
@@ -5145,16 +5368,35 @@ Acesso em: jun. 2026.
 Abate, Leite e Ovos — 1º trimestre de 2025. Brasília: CNA, 2025. Disponível em:
 https://www.cnabrasil.org.br. Acesso em: jun. 2026.
 
-[41] ABIEC. Brasil bate recorde nas exportações de carne bovina em 2025. São Paulo:
-ABIEC, 2026. Disponível em: https://abiec.com.br. Acesso em: jun. 2026.
-
-[42] UNIÃO EUROPEIA. Regulamento (UE) 2023/1115 — Regulamento Europeu
+[41] UNIÃO EUROPEIA. Regulamento (UE) 2023/1115 — Regulamento Europeu
 Antidesmatamento (EUDR). Bruxelas: Parlamento Europeu e Conselho da UE, 2023.
 Disponível em: https://eur-lex.europa.eu. Acesso em: jun. 2026.
 
-[43] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. Plano Nacional de Identificação de
+[42] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. Plano Nacional de Identificação de
 Bovinos e Búfalos (PNIB). Brasília: MAPA, 2024. Disponível em:
 https://www.gov.br/agricultura. Acesso em: jun. 2026.
+
+[43] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. MAPA fortalece agropecuária pantaneira.
+Brasília: MAPA, 2023. Disponível em: https://www.gov.br/agricultura/pt-br/assuntos/noticias/mapa-fortalece-agropecuaria-pantaneira.
+Acesso em: jun. 2026.
+
+[44] iRancho: https://www.irancho.com.br/perguntas-frequentes/ 
+
+[45] JetBov: https://play.google.com/store/apps/details?id=com.ionicframework.jetbovapp459755
+
+[46] Embrapa Gado de Corte: https://www.embrapa.br/en/gado-de-corte/tecnologias/gestao-da-pecuaria 
+
+[47]FAMASUL — propriedades e rebanho no Pantanal:
+https://al.ms.gov.br/Noticias/138127/audiencia-o-pantanal-e-nosso-valoriza-homem-pantaneiro-e-pede-investimentos
+
+[48] MAPA — pecuária pantaneira:
+https://www.gov.br/agricultura/pt-br/assuntos/noticias/mapa-fortalece-agropecuaria-pantaneira
+
+[49] IBGE — Censo Agropecuário 2017, conectividade e escolaridade rural:
+https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/13719-asi-censo-agro-2006-ibge-revela-retrato-do-brasil-agrario
+
+[50] IPEA — escolaridade população rural:
+https://repositorio.ipea.gov.br/bitstreams/d90c4227-fcf5-4d7c-b4c5-ca7df0b6baa4/download
 
 # <a name="c9"></a>Anexos
 

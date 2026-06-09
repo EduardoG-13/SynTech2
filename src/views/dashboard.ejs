@@ -20,16 +20,7 @@
             <option value="">Todos os retiros</option>
           </select>
           <input type="date" id="filter-data" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;" />
-    <main class="layout" style="padding: 0;">
-
-      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <select id="filter-retiro" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">
-            <option value="">Todos os retiros</option>
-          </select>
-          <input type="date" id="filter-data" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;" />
         </div>
-      </div>
       </div>
 
       <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
@@ -59,18 +50,6 @@
         <div style="position: relative; height: 250px;">
           <canvas id="chart-status"></canvas>
         </div>
-      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
-        <h3>Chamados por retiro</h3>
-        <div style="position: relative; height: 250px;">
-          <canvas id="chart-chamados"></canvas>
-        </div>
-      </div>
-
-      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
-        <h3>Tarefas por status</h3>
-        <div style="position: relative; height: 250px;">
-          <canvas id="chart-status"></canvas>
-        </div>
       </div>
 
 
@@ -80,5 +59,6 @@
   </div>
 </div>
 
+<script>window.DASHBOARD_USUARIO_ID = '<%= usuario_id %>';</script>
 <script src="/public/js/dashboard.js"></script>
 <%- include('partials/footer') %>
