@@ -1,32 +1,63 @@
-<!doctype html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/public/styles.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">US01 -> RF004 -> BR04</p>
-        <h1>Dashboard do Capataz</h1>
-      </div>
-      <a href="/" class="health-link">Início</a>
-    </header>
+<%- include('partials/header') %>
+<link rel="stylesheet" href="/public/css/dashboard.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <main class="layout">
-      <section class="panel form-panel" aria-labelledby="dashboard-title">
-        <div class="section-title">
-          <div>
-            <p class="eyebrow">Visão geral do retiro</p>
-            <h2 id="dashboard-title">Painel de controle</h2>
-          </div>
+<div id="device" class="logged">
+  <%- include('partials/sidebar') %>
+
+  <div id="app">
+    <div class="header-bar" style="margin-top: 0; margin-bottom: 2rem;">
+      <div class="user-avatar">👤</div>
+      <h1>Dashboard</h1>
+      <div class="sub"><%= perfil %></div>
+    </div>
+
+    <main class="layout" style="padding: 0;">
+
+      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <select id="filter-retiro" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">
+            <option value="">Todos os retiros</option>
+          </select>
+          <input type="date" id="filter-data" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;" />
         </div>
-        <p>Área reservada para exibição dos indicadores do retiro do capataz autenticado.</p>
-      </section>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
+        <div class="card" style="flex: 1; text-align: center; padding: 1rem; min-width: 100px;">
+          <span style="font-size: 2rem; font-weight: 700; color: #1A4D2E;" id="stat-alertas">—</span>
+          <p style="font-size: 0.8rem; color: #8A8A7C;">Alertas em aberto</p>
+        </div>
+        <div class="card" style="flex: 1; text-align: center; padding: 1rem; min-width: 100px;">
+          <span style="font-size: 2rem; font-weight: 700; color: #1A4D2E;" id="stat-prioridades">—</span>
+          <p style="font-size: 0.8rem; color: #8A8A7C;">Prioridades</p>
+        </div>
+        <div class="card" style="flex: 1; text-align: center; padding: 1rem; min-width: 100px;">
+          <span style="font-size: 2rem; font-weight: 700; color: #1A4D2E;" id="stat-evolucao">—%</span>
+          <p style="font-size: 0.8rem; color: #8A8A7C;">Evolução</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
+        <h3>Chamados por retiro</h3>
+        <div style="position: relative; height: 250px;">
+          <canvas id="chart-chamados"></canvas>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
+        <h3>Tarefas por status</h3>
+        <div style="position: relative; height: 250px;">
+          <canvas id="chart-status"></canvas>
+        </div>
+      </div>
+
+
     </main>
 
-    <script src="/public/app.js"></script>
-  </body>
-</html>
+    <%- include('partials/bottom-nav') %>
+  </div>
+</div>
+
+<script src="/public/js/dashboard.js"></script>
+<%- include('partials/footer') %>
