@@ -175,3 +175,36 @@ export async function processarFilaSincronizacao() {
 window.sincronizador = {
   processarFilaSincronizacao,
 };
+
+// Ao detectar que o navegador voltou a ficar online, tentar processar a fila
+// e notificar a UI para atualizar o status. Parte 2 (remoção em transação)
+// será implementada posteriormente.
+window.addEventListener('online', async () => {
+  console.log('[Sincronizador] Evento online detectado. Iniciando sincronização automática.');
+
+  try {
+    const resultado = await processarFilaSincronizacao();
+
+    if (resultado && resultado.sucesso) {
+      try {
+        // Dispara evento de aplicativo para que qualquer listener na UI atualize o status
+        window.dispatchEvent(new CustomEvent('brpec:sincronizacaoConcluida', { detail: resultado }));
+      } catch (e) {
+        // ignore
+      }
+
+      try {
+        // sinal simples para UI legada que não escuta o evento
+        localStorage.setItem('brpec_last_sync_status', 'Sincronizado');
+      } catch (e) {
+        // ignore
+      }
+
+      console.log('[Sincronizador] Sincronização automática concluída.');
+    } else {
+      console.warn('[Sincronizador] Sincronização automática não processou itens ou falhou.', resultado);
+    }
+  } catch (erro) {
+    console.error('[Sincronizador] Erro ao executar sincronização automática:', erro);
+  }
+});
