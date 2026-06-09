@@ -5190,10 +5190,60 @@ concorrentes que penaliza operações de grande rebanho como a da BrPec.
 ## 6.4 Público-Alvo
 
 _a) Segmentação de Mercado (até 250 palavras)_
-Descreva os principais segmentos de mercado a serem atendidos pela aplicação. Utilize bases de dados e fontes confiáveis.\*
+
+O mercado-alvo da solução é composto por fazendas de pecuária de corte localizadas
+em regiões de baixa conectividade, com operações distribuídas em múltiplas unidades
+de campo, os retiros no contexto da Brpec. Esse segmento concentra características específicas que o diferenciam do mercado geral de
+agronegócio digital. 
+
+Do ponto de vista geográfico, o Pantanal sul-mato-grossense abriga aproximadamente
+3.500 propriedades rurais distribuídas em nove municípios, com rebanho estimado em
+3,6 milhões de cabeças bovinas [47]. A região representa 20% do rebanho
+total do estado de Mato Grosso do Sul e tem na pecuária extensiva sua principal
+atividade econômica há mais de 200 anos [48].
+
+Do ponto de vista tecnológico, o segmento é caracterizado por baixa adoção de
+ferramentas digitais de gestão. Segundo o Censo Agropecuário 2017 do IBGE, menos
+de 28% dos estabelecimentos rurais brasileiros possuem acesso à internet, e desses,
+apenas 46% contam com banda larga [49]. Esse cenário é ainda mais restritivo
+no Pantanal, onde a conectividade depende de tecnologias satelitais como o Starlink,
+disponíveis apenas no retiro.
+
+O segmento secundário é composto por coordenadores e gerentes de fazendas que
+necessitam de visibilidade consolidada das operações de campo em tempo real, sem
+depender de relatórios manuais ou planilhas desatualizadas. Ambos os segmentos
+compartilham a necessidade central de rastreabilidade operacional com baixa
+dependência de infraestrutura de rede.
+
+
 
 _b) Perfil do Público-Alvo (até 250 palavras)_
-_Caracterize o público-alvo com dados demográficos, psicográficos e comportamentais, incluindo necessidades específicas. Utilize fontes obrigatórias._
+
+O público-alvo da solução é composto por três perfis de usuários internos da BrPec,
+com características e contextos de uso distintos.
+
+**Capataz de retiro** — principal usuário operacional. Perfil masculino, faixa etária
+entre 35 e 55 anos, residente no retiro durante a semana de trabalho. Opera em campo,
+sem acesso contínuo à internet, em condições adversas de luminosidade e mobilidade.
+Responsável pelo registro diário de nascimentos, mortes, entradas, saídas e
+transferências do rebanho. O nível de escolaridade reflete o padrão da força de
+trabalho rural brasileira: 21% dos trabalhadores rurais são analfabetos e 43% possuem
+apenas ensino fundamental incompleto [49]. Apenas 26,5% da população rural
+maior de 18 anos possui ensino fundamental completo [50]. O WhatsApp é o
+principal canal de comunicação utilizado, indicando familiaridade com smartphones,
+mas não com interfaces de software estruturadas.
+
+**Coordenador do retiro** - usuário intermediário, com maior escolaridade e
+familiaridade digital. Consolida informações dos retiros sob sua supervisão e gera
+relatórios para a sede. Utiliza a aplicação tanto no campo quanto na sede.
+
+**Gerente geral** — usuário estratégico, acessa a aplicação pela sede com
+conectividade estável. Não realiza registros operacionais; acompanha o painel
+consolidado e toma decisões com base nos dados sincronizados.
+
+O baixo letramento digital do capataz justifica as decisões de interface adotadas:
+fluxos simples, linguagem visual direta, botões grandes e suporte a registros por
+áudio, reduzindo a dependência de digitação como meio primário de entrada de dados.
 
 ## 6.5 Posicionamento
 
@@ -5335,6 +5385,18 @@ Acesso em: jun. 2026.
 [45] JetBov: https://play.google.com/store/apps/details?id=com.ionicframework.jetbovapp459755
 
 [46] Embrapa Gado de Corte: https://www.embrapa.br/en/gado-de-corte/tecnologias/gestao-da-pecuaria 
+
+[47]FAMASUL — propriedades e rebanho no Pantanal:
+https://al.ms.gov.br/Noticias/138127/audiencia-o-pantanal-e-nosso-valoriza-homem-pantaneiro-e-pede-investimentos
+
+[48] MAPA — pecuária pantaneira:
+https://www.gov.br/agricultura/pt-br/assuntos/noticias/mapa-fortalece-agropecuaria-pantaneira
+
+[49] IBGE — Censo Agropecuário 2017, conectividade e escolaridade rural:
+https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/2013-agencia-de-noticias/releases/13719-asi-censo-agro-2006-ibge-revela-retrato-do-brasil-agrario
+
+[50] IPEA — escolaridade população rural:
+https://repositorio.ipea.gov.br/bitstreams/d90c4227-fcf5-4d7c-b4c5-ca7df0b6baa4/download
 
 # <a name="c9"></a>Anexos
 
