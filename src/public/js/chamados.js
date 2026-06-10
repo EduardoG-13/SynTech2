@@ -1,7 +1,13 @@
 // capturarCoordenadas: realiza leitura da Geolocation API e preenche inputs de latitude/longitude
+function setGpsStatus(message) {
+  const statusElement = document.getElementById('gps-status');
+  if (statusElement) statusElement.textContent = message;
+}
+
 function capturarCoordenadas() {
-  if (!('geolocation' in navigator)) {
+  if (!navigator.geolocation || typeof navigator.geolocation.getCurrentPosition !== 'function') {
     console.warn('Geolocation não suportado pelo navegador.');
+    setGpsStatus('Não foi possível capturar as coordenadas: recurso indisponível.');
     return;
   }
 
@@ -14,10 +20,13 @@ function capturarCoordenadas() {
 
     if (latInput) latInput.value = lat;
     if (lonInput) lonInput.value = lon;
+
+    setGpsStatus(`GPS capturado: ${lat}, ${lon}`);
   };
 
   const onError = (err) => {
     console.warn('Erro obtendo posição:', err);
+    setGpsStatus('Falha ao capturar coordenadas. Verifique as permissões de localização.');
   };
 
   const options = {
@@ -35,7 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
     capturarCoordenadas();
   } catch (e) {
     console.error('Falha ao inicializar captura de coordenadas', e);
+    setGpsStatus('Erro ao inicializar captura de GPS.');
   }
 });
 
-export { capturarCoordenadas };
+if (typeof window !== 'undefined') {
+  window.capturarCoordenadas = capturarCoordenadas;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { capturarCoordenadas };
+}
