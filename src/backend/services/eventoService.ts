@@ -8,9 +8,9 @@ class EventoService {
     data: string;
     categoria: string;
     quantidade: number;
-    peso_nascimento: number;
-    identificacao_mae: string;
-    sexo: string;
+    peso_nascimento?: number;
+    identificacao_mae?: string;
+    sexo?: string;
     geolocalizacao?: string;
   }) {
     // RF013: Validação de campos obrigatórios
