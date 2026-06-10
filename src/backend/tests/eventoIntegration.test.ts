@@ -187,6 +187,87 @@ describe('POST /api/eventos-zootecnicos/obitos', () => {
     expect(registro).toHaveProperty('obito_id');
     expect(registro).toHaveProperty('foto_id');
   });
+
+  it('400 — sem foto_base64: evidência obrigatória para óbito (RN07)', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({
+        capataz_id:           CAPATAZ_ID,
+        retiro_id:            RETIRO_ID,
+        data:                 '2026-06-10',
+        categoria:            'BOVINO',
+        quantidade:           1,
+        identificacao_animal: 'BOV-002',
+        causa_morte:          'Acidente',
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+    expect(res.body.campos_faltantes).toContain('foto_base64');
+  });
+
+  it('400 — payload vazio: todos os campos obrigatórios ausentes', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({});
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
+  it('400 — sem identificacao_animal (RF013)', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({
+        capataz_id:  CAPATAZ_ID,
+        retiro_id:   RETIRO_ID,
+        data:        '2026-06-10',
+        categoria:   'BOVINO',
+        quantidade:  1,
+        causa_morte: 'Doença respiratória',
+        foto_base64: FOTO_BASE64,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+    expect(res.body.campos_faltantes).toContain('identificacao_animal');
+  });
+
+  it('400 — sem causa_morte (RF013)', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({
+        capataz_id:           CAPATAZ_ID,
+        retiro_id:            RETIRO_ID,
+        data:                 '2026-06-10',
+        categoria:            'BOVINO',
+        quantidade:           1,
+        identificacao_animal: 'BOV-003',
+        foto_base64:          FOTO_BASE64,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+    expect(res.body.campos_faltantes).toContain('causa_morte');
+  });
+
+  it('400 — sem data (RF013)', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({
+        capataz_id:           CAPATAZ_ID,
+        retiro_id:            RETIRO_ID,
+        categoria:            'BOVINO',
+        quantidade:           1,
+        identificacao_animal: 'BOV-004',
+        causa_morte:          'Doença respiratória',
+        foto_base64:          FOTO_BASE64,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+    expect(res.body.campos_faltantes).toContain('data');
+  });
 });
 
 export {};
