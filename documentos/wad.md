@@ -5099,52 +5099,38 @@ it('deve lançar erro e não persistir quando a data de agendamento for retroati
 });
 ```
 
-#### 5.1.5.3. Matriz de Cobertura de Testes Unitários
+#### 5.1.5.3. Matriz de Rastreabilidade de Testes Unitários
 
-#### Suite 1 — `tests/unit/tarefaService.test.ts` (13 casos)
+A tabela consolida a rastreabilidade entre cada caso de teste unitário e os Requisitos Funcionais (RF) e Regras de Negócio (RN) verificados. As suites cobertas são `tests/unit/tarefaService.test.ts` (13 casos) e `tests/unit/alertaService.test.ts` (11 casos). Os 4 casos de `cloudSyncService.test.ts` validam resiliência de sincronização e estão detalhados na seção 5.1.5.4.
 
-| ID | Método | Cenário | RN/RF coberta |
-|---|---|---|---|
-| U-T01 | `concluirTarefa` | Dados válidos → retorna `CONCLUIDA` | RF003 |
-| U-T02 | `concluirTarefa` | Tarefa já concluída → lança erro, `concluir` não é chamado | — |
-| U-T03 | `concluirTarefa` | Tarefa pertence a outro capataz → lança erro | RN05 |
-| U-T04 | `anexarEvidencia` | Dados válidos → retorna `evidencia_id` | RF005 |
-| U-T05 | `anexarEvidencia` | Tarefa pertence a outro capataz → lança `RN05` | RN05 |
-| U-T06 | `anexarEvidencia` | `arquivo_base64` > 5 MB → lança `tamanho máximo` | — |
-| U-T07 | `anexarEvidencia` | Base64 com caracteres inválidos → lança erro | — |
-| U-T08 | `anexarEvidencia` | Prefixo `data URI` do browser → normaliza antes de persistir | — |
-| U-T09 | `anexarEvidencia` | `arquivo_base64` vazio → lança erro | — |
-| U-T10 | `anexarEvidencia` | Tipo `TEXTO` sem `arquivo_base64` → salva sem arquivo | — |
-| U-T11 | `criarTarefa` | Dados válidos → cria e retorna registro persistido | RF001 |
-| U-T12 | `criarTarefa` | Data de execução retroativa → não persiste | RN-DATA |
-| U-T13 | `criarTarefa` | Descrição fornecida em branco → não persiste | RN-DESC |
+| Código CT | Nome do Teste | RF Associado | RN Associada | Método Testado | Status Esperado |
+|-----------|---------------|:------------:|:------------:|----------------|:---------------:|
+| CT-UT01 | deve concluir a tarefa e retornar o registro atualizado quando os dados são válidos | RF002 | — | `TarefaService.concluirTarefa` | PASS |
+| CT-UT02 | deve lançar erro e não atualizar quando a tarefa já está concluída | RF002 | — | `TarefaService.concluirTarefa` | PASS |
+| CT-UT03 | deve lançar erro quando a tarefa não pertence ao capataz | RF002 | RN05 | `TarefaService.concluirTarefa` | PASS |
+| CT-UT04 | deve salvar a evidência e retornar evidencia_id quando os dados são válidos | RF005 | RN13 | `TarefaService.anexarEvidencia` | PASS |
+| CT-UT05 | deve lançar erro e não salvar quando a tarefa não pertence ao capataz | RF005 | RN05 | `TarefaService.anexarEvidencia` | PASS |
+| CT-UT06 | deve lançar erro e não salvar quando arquivo_base64 excede 5 MB | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
+| CT-UT07 | deve lançar erro e não salvar quando arquivo_base64 contém caracteres inválidos | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
+| CT-UT08 | deve aceitar e normalizar base64 com prefixo data URI do navegador | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
+| CT-UT09 | deve lançar erro quando arquivo_base64 é string vazia | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
+| CT-UT10 | deve salvar evidência de texto sem arquivo_base64 | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
+| CT-UT11 | deve criar a tarefa e retornar o registro persistido quando os dados são válidos | RF001 | RN01 | `TarefaService.criarTarefa` | PASS |
+| CT-UT12 | deve lançar erro e não persistir quando a data de agendamento for retroativa | RF001 | RN-DATA | `TarefaService.criarTarefa` | PASS |
+| CT-UT13 | deve lançar erro e não persistir quando a descrição for fornecida em branco | RF001 | RN-DESC | `TarefaService.criarTarefa` | PASS |
+| CT-UA01 | deve criar o chamado e retornar o registro persistido quando os dados são válidos | RF006 | RN19, RN26 | `AlertaService.criarAlerta` | PASS |
+| CT-UA02 | deve lançar erro e não persistir quando a descrição for muito curta (≤ 10 caracteres) | RF006 | RN06 | `AlertaService.criarAlerta` | PASS |
+| CT-UA03 | deve lançar erro e não persistir quando a descrição estiver em branco | RF006 | RN06 | `AlertaService.criarAlerta` | PASS |
+| CT-UA04 | deve lançar erro e não persistir quando a descrição estiver ausente | RF006 | RN06 | `AlertaService.criarAlerta` | PASS |
+| CT-UA05 | deve lançar erro e não persistir quando a latitude estiver ausente | RF006 | RN06, RN19 | `AlertaService.criarAlerta` | PASS |
+| CT-UA06 | deve lançar erro e não persistir quando a longitude estiver ausente | RF006 | RN06, RN19 | `AlertaService.criarAlerta` | PASS |
+| CT-UA07 | deve resolver o chamado quando os dados são válidos e o usuário é Tecnico | RF006 | RN-TECNICO | `AlertaService.resolverChamado` | PASS |
+| CT-UA08 | deve lançar ACESSO_NEGADO e não resolver quando o usuário não tiver perfil Tecnico | RF006 | RN-TECNICO | `AlertaService.resolverChamado` | PASS |
+| CT-UA09 | deve lançar ACESSO_NEGADO e não resolver quando o usuário não for encontrado | RF006 | RN-TECNICO | `AlertaService.resolverChamado` | PASS |
+| CT-UA10 | deve lançar CHAMADO_NAO_ENCONTRADO quando o chamado não existir | RF006 | — | `AlertaService.resolverChamado` | PASS |
+| CT-UA11 | deve lançar CHAMADO_JA_RESOLVIDO e não atualizar quando o chamado já foi resolvido | RF006 | RN-STATUS | `AlertaService.resolverChamado` | PASS |
 
-#### Suite 2 — `tests/unit/alertaService.test.ts` (11 casos)
-
-| ID | Método | Cenário | RN coberta |
-|---|---|---|---|
-| U-A01 | `criarAlerta` | Dados válidos → persiste e retorna registro | RF007 |
-| U-A02 | `criarAlerta` | Descrição ≤ 10 caracteres → lança `RN06` | RN06 |
-| U-A03 | `criarAlerta` | Descrição em branco → lança `RN06` | RN06 |
-| U-A04 | `criarAlerta` | Descrição ausente → lança `RN06` | RN06 |
-| U-A05 | `criarAlerta` | Latitude ausente → lança `RN06` | RN06 |
-| U-A06 | `criarAlerta` | Longitude ausente → lança `RN06` | RN06 |
-| U-A07 | `resolverChamado` | Usuário Tecnico, dados válidos → retorna `RESOLVIDO` | RN-TECNICO |
-| U-A08 | `resolverChamado` | Usuário com perfil Capataz → lança `ACESSO_NEGADO` | RN-TECNICO |
-| U-A09 | `resolverChamado` | Usuário não encontrado → lança `ACESSO_NEGADO` | RN-TECNICO |
-| U-A10 | `resolverChamado` | Chamado inexistente → lança `CHAMADO_NAO_ENCONTRADO` | — |
-| U-A11 | `resolverChamado` | Chamado já resolvido → lança `CHAMADO_JA_RESOLVIDO` | RN-STATUS |
-
-#### Suite 3 — `tests/unit/cloudSyncService.test.ts` (4 casos)
-
-Esta suite usa banco SQLite real em memória, mas substitui o `supabasePool` por um mock — abordagem híbrida que testa a lógica de resiliência e controle de fila sem exigir conexão Supabase:
-
-| ID | Cenário | Estado esperado na fila |
-|---|---|---|
-| U-C01 | Pool recusa conexão (offline) → serviço suspende sem modificar fila | `status_envio = PENDENTE`, `tentativas = 0` |
-| U-C02 | Online + tarefa pendente → sincroniza e atualiza flag local | `status_envio = SINCRONIZADO`, `sincronizada = 1` |
-| U-C03 | Online + upsert falha → marca erro e incrementa tentativas | `status_envio = ERRO`, `tentativas = 1` |
-| U-C04 | Online + alerta pendente → sincroniza corretamente | `status_envio = SINCRONIZADO`, `sincronizado = 1` |
+> **Legenda de RN internas ao domínio de serviço:** RN-DATA = data de agendamento não pode ser retroativa; RN-DESC = descrição não pode estar em branco quando informada; RN06 = chamado deve ter descrição com mais de 10 caracteres e coordenadas GPS obrigatórias; RN-TECNICO = somente usuários com perfil Técnico podem resolver chamados; RN-STATUS = chamado já resolvido não pode ser resolvido novamente.
 
 #### 5.1.5.4. Resumo e Resultados
 
