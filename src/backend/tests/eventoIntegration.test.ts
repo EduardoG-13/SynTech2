@@ -270,4 +270,91 @@ describe('POST /api/eventos-zootecnicos/obitos', () => {
   });
 });
 
+// ─────────────────────────────────────────────────────────
+// Persistência: foto Base64 e atualização do inventário
+// ─────────────────────────────────────────────────────────
+describe('POST /api/eventos-zootecnicos/obitos — persistência no banco', () => {
+  it('foto Base64 é persistida na tabela evidencias (RN07)', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({
+        capataz_id:           CAPATAZ_ID,
+        retiro_id:            RETIRO_ID,
+        data:                 '2026-06-10',
+        categoria:            'BOVINO',
+        quantidade:           1,
+        identificacao_animal: 'BOV-PERSIST-001',
+        causa_morte:          'Doença respiratória',
+        foto_base64:          FOTO_BASE64,
+      });
+
+    expect(res.status).toBe(201);
+
+    const { foto_id } = res.body.registro;
+    const evidencia = db
+      .prepare('SELECT * FROM evidencias WHERE id = ?')
+      .get(foto_id) as any;
+
+    expect(evidencia).not.toBeNull();
+    expect(evidencia.arquivo_base64).toBe(FOTO_BASE64);
+    expect(evidencia.tipo).toBe('FOTO');
+  });
+
+  it('movimentacao é registrada no inventário com quantidade e categoria corretos', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({
+        capataz_id:           CAPATAZ_ID,
+        retiro_id:            RETIRO_ID,
+        data:                 '2026-06-10',
+        categoria:            'SUINO',
+        quantidade:           2,
+        identificacao_animal: 'SUI-PERSIST-001',
+        causa_morte:          'Infecção bacteriana',
+        foto_base64:          FOTO_BASE64,
+      });
+
+    expect(res.status).toBe(201);
+
+    const { movimentacao_id } = res.body.registro;
+    const movimentacao = db
+      .prepare('SELECT * FROM movimentacoes WHERE id = ?')
+      .get(movimentacao_id) as any;
+
+    expect(movimentacao).not.toBeNull();
+    expect(movimentacao.retiro_id).toBe(RETIRO_ID);
+    expect(movimentacao.capataz_id).toBe(CAPATAZ_ID);
+    expect(movimentacao.categoria).toBe('SUINO');
+    expect(movimentacao.quantidade).toBe(2);
+  });
+
+  it('registro de obito vincula corretamente movimentacao, foto e causa_morte', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/obitos')
+      .send({
+        capataz_id:           CAPATAZ_ID,
+        retiro_id:            RETIRO_ID,
+        data:                 '2026-06-10',
+        categoria:            'BOVINO',
+        quantidade:           1,
+        identificacao_animal: 'BOV-PERSIST-002',
+        causa_morte:          'Traumatismo',
+        foto_base64:          FOTO_BASE64,
+      });
+
+    expect(res.status).toBe(201);
+
+    const { obito_id, movimentacao_id, foto_id } = res.body.registro;
+    const obito = db
+      .prepare('SELECT * FROM obitos WHERE id = ?')
+      .get(obito_id) as any;
+
+    expect(obito).not.toBeNull();
+    expect(obito.movimentacao_id).toBe(movimentacao_id);
+    expect(obito.foto_id).toBe(foto_id);
+    expect(obito.identificacao_animal).toBe('BOV-PERSIST-002');
+    expect(obito.causa_morte).toBe('Traumatismo');
+  });
+});
+
 export {};
