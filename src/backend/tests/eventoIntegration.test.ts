@@ -61,6 +61,83 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
     expect(registro).toHaveProperty('quantidade', 5);
   });
 
- 
+  it('400 — payload vazio: sem nenhum campo obrigatório', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/nascimentos')
+      .send({});
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
+  it('400 — sem data', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/nascimentos')
+      .send({
+        retiro_id:  RETIRO_ID,
+        categoria:  'BOVINO',
+        quantidade: 2,
+        capataz_id: CAPATAZ_ID,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
+  it('400 — sem retiro_id', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/nascimentos')
+      .send({
+        data:       '2026-06-10',
+        categoria:  'BOVINO',
+        quantidade: 2,
+        capataz_id: CAPATAZ_ID,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
+  it('400 — sem categoria', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/nascimentos')
+      .send({
+        data:       '2026-06-10',
+        retiro_id:  RETIRO_ID,
+        quantidade: 2,
+        capataz_id: CAPATAZ_ID,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
+  it('400 — sem quantidade', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/nascimentos')
+      .send({
+        data:       '2026-06-10',
+        retiro_id:  RETIRO_ID,
+        categoria:  'BOVINO',
+        capataz_id: CAPATAZ_ID,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
+  it('400 — sem capataz_id', async () => {
+    const res = await request(app)
+      .post('/api/eventos-zootecnicos/nascimentos')
+      .send({
+        data:       '2026-06-10',
+        retiro_id:  RETIRO_ID,
+        categoria:  'BOVINO',
+        quantidade: 2,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
 });
 export {};
