@@ -169,6 +169,66 @@ describe('POST /api/sincronizacao/lote — lote misto com tarefas concluídas', 
     expect(res.body).toHaveProperty('erro');
     expect(res.body).toHaveProperty('itens_recebidos', 501);
   });
-  
+
 });
+
+// ─────────────────────────────────────────────────────────
+// GET /api/painel-gerencial — reflexo dos dados sincronizados
+// ─────────────────────────────────────────────────────────
+describe('GET /api/painel-gerencial — dados afetam estatísticas', () => {
+  beforeAll(() => {
+    // Insere tarefas diretamente no SQLite (mesma fonte do painelRepository)
+    const stmt = db.prepare(`
+      INSERT INTO tarefas (id, titulo, status, data_execucao, retiro_id, capataz_id, gerente_id, sincronizada)
+      VALUES (?, ?, ?, ?, ?, ?, ?, 1)
+    `);
+
+    stmt.run('tarefa-painel-001', 'Vacinação lote A',         'CONCLUIDA',   '2026-06-10', RETIRO_ID, CAPATAZ_ID, GERENTE_ID);
+    stmt.run('tarefa-painel-002', 'Pesagem mensal do rebanho', 'CONCLUIDA',   '2026-06-10', RETIRO_ID, CAPATAZ_ID, GERENTE_ID);
+    stmt.run('tarefa-painel-003', 'Inspeção de cercas',        'PENDENTE',    '2026-06-11', RETIRO_ID, CAPATAZ_ID, GERENTE_ID);
+    stmt.run('tarefa-painel-004', 'Controle parasitário',      'EM_ANDAMENTO','2026-06-11', RETIRO_ID, CAPATAZ_ID, GERENTE_ID);
+  });
+
+  it('200 — retorna estrutura completa do painel (RF007)', async () => {
+    const res = await request(app)
+      .get('/api/painel-gerencial')
+      .query({ gerente_id: GERENTE_ID });
+
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveProperty('resumo_tarefas');
+    expect(res.body).toHaveProperty('tarefas_por_retiro');
+    expect(res.body).toHaveProperty('alertas_abertos');
+    expect(res.body).toHaveProperty('total_alertas_abertos');
+    expect(res.body).toHaveProperty('gerado_em');
+  });
+
+  it('200 — resumo_tarefas reflete as 4 tarefas inseridas', async () => {
+    const res = await request(app)
+      .get('/api/painel-gerencial')
+      .query({ gerente_id: GERENTE_ID });
+
+    expect(res.status).toBe(200);
+    const resumo = res.body.resumo_tarefas;
+    expect(resumo.total).toBe(4);
+    expect(resumo.concluidas).toBe(2);
+    expect(resumo.pendentes).toBe(1);
+    expect(resumo.em_andamento).toBe(1);
+  });
+
+  it('200 — tarefas_por_retiro contém o retiro com tarefas inseridas', async () => {
+    const res = await request(app)
+      .get('/api/painel-gerencial')
+      .query({ gerente_id: GERENTE_ID });
+
+    expect(res.status).toBe(200);
+    const retiros: any[] = res.body.tarefas_por_retiro;
+    const retiroSync = retiros.find((r) => r.retiro_id === RETIRO_ID);
+    expect(retiroSync).toBeDefined();
+    expect(retiroSync.tarefas['CONCLUIDA']).toBe(2);
+    expect(retiroSync.tarefas['PENDENTE']).toBe(1);
+    expect(retiroSync.tarefas['EM_ANDAMENTO']).toBe(1);
+  });
+
+});
+
 export {};
