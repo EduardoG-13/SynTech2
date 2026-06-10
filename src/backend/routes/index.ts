@@ -12,15 +12,24 @@ import eventoRoutes from './eventoRoutes';
 import painelRoutes from './painelRoutes';
 import sincronizacaoRoutes from './sincronizacaoRoutes';
 import exportacaoRoutes from './exportacaoRoutes';
+import dadosRoutes from './dadosRoutes';
+import adminRoutes from './adminRoutes';
 
 // Health-check
 router.get('/health', healthController.verificarSaude);
+
+// Dados de apoio para formulários (retiros, capatazes, categorias)
+router.use('/dados', dadosRoutes);
+
+// Administração (Gerente): CRUD de retiros e usuários
+router.use('/admin', adminRoutes);
 
 // Tarefas
 router.use('/tarefas', tarefaRoutes);
 
 // Chamados (Alertas)
 router.use('/chamados', alertaRoutes);
+router.use('/alertas', alertaRoutes);
 
 // Eventos Zootecnicos
 router.use('/eventos-zootecnicos', eventoRoutes);

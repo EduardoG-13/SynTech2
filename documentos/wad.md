@@ -6,7 +6,7 @@
 
 #### Nomes dos integrantes do grupo
 
-- <a href="https://www.linkedin.com/in/filipe-salotti-9ab184310/">Arthur Morais </a>
+- <a href="https://www.linkedin.com/in/arthurriscadomorais/">Arthur Morais </a>
 - <a href="https://www.linkedin.com/in/eduardo-oliveira05/">Eduardo Gabriel de Oliveira</a>
 - <a href="https://www.linkedin.com/in/enzo-santos-bezerra-1904403bb/">Enzo Santos Bezerra</a>
 - <a href="https://www.linkedin.com/in/guilherme-beltrame-18b1b429b/">Guilherme Munhoz Beltrame</a>
@@ -41,7 +41,7 @@
 
 O agronegócio brasileiro desempenha papel central na economia nacional, sendo responsável
 por aproximadamente 25% do PIB e pela geração de empregos em larga escala, especialmente
-em regiões de interior [1]. Nesse contexto, a pecuária demanda elevado nível de
+em regiões de interior [5]. Nesse contexto, a pecuária demanda elevado nível de
 controle operacional, especialmente no registro de atividades de campo e na gestão da
 movimentação do rebanho, fatores diretamente relacionados à produtividade e à qualidade
 da tomada de decisão.
@@ -91,7 +91,7 @@ a transparência das operações e dar suporte à tomada de decisão dos gestore
 
 As 5 forças de Porter são uma metodologia de análise estratégica criada por Michael Porter para avaliar a competitividade e o potencial de lucro de uma indústria. Assim, o objetivo é analisar as principais forças do ambiente externo de uma empresa, e como elas impactam na entrega de valor ao cliente e a rentabilidade do negócio.
 
-O Modelo das 5 Forças de Porter foi aplicado para analisar a estrutura competitiva do setor agropecuário no qual a BrPec Agropecuária está inserida [20], setor marcado por dependência de commodities, capital intensivo, pressão regulatória ambiental crescente.
+O Modelo das 5 Forças de Porter foi aplicado para analisar a estrutura competitiva do setor agropecuário no qual a BrPec Agropecuária está inserida [35], setor marcado por dependência de commodities, capital intensivo, pressão regulatória ambiental crescente.
 
 **Rivalidade entre concorrentes:** A rivalidade é alta. O mercado bovino e de grãos compete por escala, eficiência e acesso a canais de comercialização, dada a limitada diferenciação em commodities. A BrPec disputa com grupos integrados como Bom Futuro (MT), Jacarezinho, ligada a Marcos Molina da Marfrig, e Rio Vermelho (PA), além de fundos de investimento em terras (COMPRERURAL, 2024). Num ambiente de preços de mercado, eficiência de custo e volume são o campo de batalha (PORTER, 2008).
 
@@ -113,23 +113,23 @@ O Modelo das 5 Forças de Porter foi aplicado para analisar a estrutura competit
 </center>
 
 **Rivalidade entre concorrentes**
-Verifica-se que a rivalidade no setor pecuário é focada na eficiência operacional e na redução do custo por arroba. A BrPec compete com grupos capitalizados, como Bom Futuro (MT) e Rio Vermelho (PA). Como o mercado não diferencia o produto primário, conclui-se que a ausência de digitalização dos registros de campo posiciona a corporação em desvantagem competitiva. Logo, o sistema é a ferramenta necessária para gerar dados confiáveis e equiparar a eficiência da operação.
+A concorrência no setor pecuário é concentrada na redução do custo por arroba e no volume de abate. A BrPec disputa posição com grupos capitalizados como Bom Futuro (MT) e Rio Vermelho (PA), que ampliam sua vantagem competitiva por meio de ferramentas de gestão operacional. Em mercados de commodities sem diferenciação do produto primário, a eficiência na captura e no processamento de dados operacionais constitui fonte relevante de ganho de produtividade e comparabilidade de desempenho entre fazendas.
 
 **Ameaça de novos entrantes**
-Observa-se que as barreiras físicas de entrada são altas, representadas por 14 retiros e 130 casas rurais. Contudo, fundos agropecuários terceirizados ingressam no setor suportados por ferramentas de gestão digital consolidadas. Para não sofrer obsolescência tecnológica frente a esses novos agentes, a BrPec precisa implementar o sistema de forma imediata, criando uma barreira de maturidade organizacional e de processos que proteja a sua posição no mercado.
+As barreiras físicas de entrada são elevadas, sustentadas pelo capital intensivo necessário para replicar uma estrutura como a da BrPec, com 14 retiros e 130 casas rurais distribuídos em área extensa. Contudo, fundos agropecuários com suporte tecnológico consolidado ingressam no setor com capacidade de gestão de dados superior, o que reduz a vantagem operacional dos incumbentes que ainda dependem de processos manuais. A maturidade organizacional e digital passa a ser, nesse contexto, uma barreira de entrada tão relevante quanto as barreiras de capital.
 
 **Poder de barganha dos fornecedores**
-Constata-se que a dependência operacional concentra-se principalmente em dois vetores críticos: a infraestrutura satelital da Starlink, que restringe a conectividade a curtas janelas diárias, e os capatazes, mão de obra caracterizada pela baixa familiaridade digital. Essas restrições determinam que a adoção de uma arquitetura estritamente "offline-first" e o desenvolvimento de uma interface de alta usabilidade são requisitos indispensáveis para garantir a coleta dos dados no campo.
+A dependência operacional da BrPec concentra-se em dois vetores críticos: a infraestrutura de conectividade via Starlink, cujo alcance é restrito a janelas diárias nos retiros remotos, e a disponibilidade de mão de obra operacional com perfil adaptado ao trabalho em campo. Essas restrições são determinantes para o desenho de qualquer solução tecnológica voltada à fazenda, que deve operar de forma autônoma mesmo na ausência de conexão contínua.
 
 **Poder de barganha dos clientes**
-Nota-se que o poder dos compradores é evidenciado pela pressão exercida por grandes frigoríficos, como JBS e Minerva, sobre o preço da arroba bovina. A compressão das margens comerciais exige ganhos sistêmicos de eficiência interna, os quais dependem diretamente de dados atualizados. Assim, justifica-se a implementação da solução web para digitalizar os apontamentos na origem, viabilizando o controle preciso do inventário e a otimização do manejo diário.
+A concentração do lado comprador, JBS, Marfrig e Minerva Foods, confere alto poder de precificação ao oligopsônio frigorífico, com pressão estrutural sobre o preço da arroba bovina (INFOMONEY, 2024). Em ambientes de margens comprimidas, a eficiência operacional interna torna-se a principal alavanca de resultado disponível ao produtor, tornando a qualidade e a agilidade dos dados gerenciais um ativo de valor direto.
 
 **Ameaça de substitutos**
-Identifica-se que a conformidade ambiental em biomas sensíveis (como o Pantanal monitorado pelo Ibama) e a rastreabilidade são credenciais essenciais para acessar mercados premium, nichos de alto valor que são menos vulneráveis à substituição por outras proteínas. Portanto, o sistema é a camada tecnológica fundamental que viabiliza essa exigência, registrando a origem, o destino e as evidências fotográficas georreferenciadas de cada movimentação animal.
+A pressão de substituição é moderada e crescente nos mercados interno e externo. Internamente, frango e suíno concorrem com a carne bovina por apresentarem custo de produção estruturalmente inferior; em períodos de retração do poder de compra das famílias, essa substituição se intensifica de forma recorrente (CEPEA, 2023). Proteínas de origem vegetal e alternativas produzidas por fermentação avançam em nichos de maior renda, especialmente entre consumidores sensíveis a posicionamentos ambientais e de saúde. No mercado externo, o Regulamento Europeu Antidesmatamento (EUDR), em vigor a partir de dezembro de 2025, vincula o acesso ao bloco à comprovação de rastreabilidade georreferenciada, o que favorece origens concorrentes com histórico consolidado de conformidade, como Austrália e Nova Zelândia (REHAGRO, 2024). A conformidade ambiental documentada em biomas de alta sensibilidade, como o Pantanal, representa variável estratégica para preservar o acesso a segmentos de maior valor agregado e menor exposição à substituição por outras proteínas.
 
 ### 2.1.2. Análise SWOT da Instituição Parceira (sprint 1)
 
-A análise SWOT é uma ferramenta de planejamento estratégico que avalia quatro dimensões de uma organização: forças (Strengths), fraquezas (Weaknesses), oportunidades (Opportunities) e ameaças (Threats). As duas primeiras referem-se ao ambiente interno da organização, enquanto as duas últimas dizem respeito a fatores externos [19].
+A análise SWOT é uma ferramenta de planejamento estratégico que avalia quatro dimensões de uma organização: forças (Strengths), fraquezas (Weaknesses), oportunidades (Opportunities) e ameaças (Threats). As duas primeiras referem-se ao ambiente interno da organização, enquanto as duas últimas dizem respeito a fatores externos [23].
 
 A seguir, essa ferramenta é aplicada ao posicionamento estratégico da BRPec no contexto do agronegócio brasileiro de pecuária e grãos, especificamente o segmento de produção integrada em larga escala no Pantanal mato-grossense, caracterizado por crescente pressão ESG sobre crédito e certificações, restrições regulatórias à expansão de novas áreas e acirrada competição fundiária com players institucionalizados.
 
@@ -139,7 +139,15 @@ A seguir, essa ferramenta é aplicada ao posicionamento estratégico da BRPec no
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-A leitura integrada dos quadrantes revela que a principal força da BrPec está em sua escala fundiária no Pantanal e no modelo integrado entre grãos e pecuária, atributos que fortalecem sua capacidade produtiva e dificultam a replicação por concorrentes de menor porte no curto prazo. Entre as fraquezas, destacam-se a dependência de registros manuais, a baixa padronização das informações operacionais, as limitações de conectividade nos retiros e os desafios de conformidade ambiental associados à atuação em biomas sensíveis. Como oportunidades, a digitalização dos processos, a rastreabilidade do rebanho, a melhoria da gestão operacional e o acesso a mercados mais exigentes podem ampliar a eficiência e o posicionamento competitivo da empresa. Já as ameaças envolvem o aumento da pressão regulatória ambiental, a concentração de compradores, a intensificação das exigências ESG e o possível encarecimento do custo de capital frente a concorrentes com certificações consolidadas. Dessa forma, a solução proposta atua sobre as principais fragilidades operacionais da BrPec, criando condições para reduzir riscos, aumentar a confiabilidade dos dados e transformar sua escala produtiva em uma vantagem competitiva mais sustentável.
+Entre as **forças**, destacam-se a escala fundiária no Pantanal mato-grossense, o modelo integrado entre grãos e pecuária, combinação que reduz a dependência externa de insumos alimentares e eleva barreiras à replicação por concorrentes de menor porte, e a infraestrutura operacional própria composta por 14 retiros. A integração vertical entre as cadeias de grãos e proteína animal confere resiliência ao modelo de negócio e dificulta a replicação no curto prazo.
+
+As **fraquezas** estruturais residem na dependência de registros manuais via boletas físicas, na baixa padronização das informações operacionais entre retiros e nas limitações de conectividade impostas pela topografia e cobertura satelital, restrita a curtas janelas diárias. A baixa familiaridade digital dos capatazes amplifica o risco de inconsistências nos registros e dificulta a adoção de novas ferramentas sem treinamento específico.
+
+Como **oportunidades**, a digitalização dos processos de campo e a rastreabilidade individual do rebanho criam condições para acesso a linhas de crédito ESG, certificações de conformidade socioambiental e mercados premium de maior valor agregado. O contexto regulatório representado pelo EUDR favorece produtores que investem antecipadamente em documentação de origem, abrindo espaço para posicionamento diferenciado no mercado externo.
+
+As **ameaças** abrangem a pressão regulatória ambiental crescente, o risco reputacional associado a registros em levantamentos de desmatamento no Pantanal (DE OLHO NOS RURALISTAS, 2020) e a iminência do EUDR como barreira de acesso ao mercado europeu. Os próprios limites ecológicos do bioma constituem uma ameaça logística concreta: as cheias sazonais do Pantanal interditam periodicamente estradas e vias de acesso a retiros remotos, o que pode comprometer o escoamento da produção e o reabastecimento de insumos, exigindo planejamento logístico ajustado ao calendário hídrico regional. A concentração do poder de compra nos grandes frigoríficos e o encarecimento do custo de capital para produtores sem certificações ESG consolidadas completam o quadro de pressões externas.
+
+A leitura cruzada dos quadrantes revela que a principal alavanca estratégica da BrPec reside na transformação da escala fundiária, força latente, em vantagem competitiva efetiva, condição que depende da qualidade dos dados operacionais e da rastreabilidade documentada como pré-requisitos para acessar mercados mais exigentes e mitigar riscos reputacionais e regulatórios.
 
 ### 2.1.3. Solução (sprints 1 a 5)
 
@@ -225,9 +233,9 @@ Os benefícios gerados pela adoção do sistema - incluindo a supressão do retr
 
 ### 2.1.5. Matriz de Riscos do Projeto (sprint 1)
 
-A matriz de riscos é uma ferramenta que permite identificar, analisar e priorizar ameaças e oportunidades de um projeto. A classificação é feita com base na probabilidade de ocorrência e no impacto, auxiliando na definição de ações para cada caso [18]. Dessa forma, foi elaborada a matriz de riscos para o desenvolvimento da aplicação web da BrPec Agropecuária S.A, considerando seus principais desafios.
+A matriz de riscos é uma ferramenta que permite identificar, analisar e priorizar ameaças e oportunidades de um projeto. A classificação é feita com base na probabilidade de ocorrência e no impacto, auxiliando na definição de ações para cada caso [36]. Dessa forma, foi elaborada a matriz de riscos para o desenvolvimento da aplicação web da BrPec Agropecuária S.A, considerando seus principais desafios.
 
-Nesse contexto, a figura a seguir apresenta a matriz de riscos elaborada para o projeto, que usa como base os padrões da ISO 31000 e PMBOK [2], na qual são organizadas as principais ameaças e oportunidades identificadas, considerando seus respectivos níveis de impacto e probabilidade.
+Nesse contexto, a figura a seguir apresenta a matriz de riscos elaborada para o projeto, que usa como base os padrões da ISO 31000 e PMBOK [37], na qual são organizadas as principais ameaças e oportunidades identificadas, considerando seus respectivos níveis de impacto e probabilidade.
 
 <center>
   <p><strong>Figura 4</strong> — Matriz de Risco aplicada à BrPec Agropecuária</p>
@@ -375,7 +383,7 @@ A matriz de riscos evidencia que os principais desafios do projeto estão relaci
 
 ## 2.2. Personas (sprint 1)
 
-Personas são, de forma resumida, representaçôes fictícia dos diferentes tipos de usuários. Elas permitem que a ferramenta seja mais eficiente e focada para atender as necessidades reais do cliente [18]. Dessa forma, as Figuras 5, 6 e 7 mostram as personas criadas para o projeto.
+Personas são, de forma resumida, representaçôes fictícia dos diferentes tipos de usuários. Elas permitem que a ferramenta seja mais eficiente e focada para atender as necessidades reais do cliente [36]. Dessa forma, as Figuras 5, 6 e 7 mostram as personas criadas para o projeto.
 
 ### Persona 1: João Pereira
 
@@ -388,7 +396,7 @@ Personas são, de forma resumida, representaçôes fictícia dos diferentes tipo
 #### Informações:
 
 - Nome e sobrenome: João Pereira;
-- Idade: 40 anos [3];
+- Idade: 40 anos [34];
 - Cargo: gerente geral na BrPec Agropecuária S.A.;
 - Estado Civil: Casado;
 - Localização: Miranda-MS;
@@ -398,7 +406,7 @@ Personas são, de forma resumida, representaçôes fictícia dos diferentes tipo
 
 Conseguir manter sua família e garantir educação para seus filhos. Além disso, deseja ser um funcionário de destaque para a BrPec.
 
-#### Interesses [3]:
+#### Interesses [34]:
 
 - Animais;
 - Tecnologias aplicadas ao agronegócio;
@@ -421,7 +429,7 @@ Conseguir manter sua família e garantir educação para seus filhos. Além diss
 - Painel para a criação e gestão de tarefas calendarizadas para os Capatazes;
 - Infomações diariamente atualizadas.
 
-#### Habilidades [5]:
+#### Habilidades [22]:
 
 - Planejamento de atividades operacionais;
 - Monitoramento e controle de metas de produção;
@@ -429,7 +437,7 @@ Conseguir manter sua família e garantir educação para seus filhos. Além diss
 - Gestão de equipes e supervisão de desempenho;
 - Tomada de decisão baseada em indicadores do campo.
 
-#### Familiaridade com Tecnologia [4]
+#### Familiaridade com Tecnologia [11]
 
 
 | Aspecto                 | Nível / Situação                                                                      |
@@ -448,19 +456,19 @@ Informações extras:
 
 - Conectividade: Boa - trabalha em escritório com acesso estável à internet;
 - Meio de comunicação principal: WhatsApp, rádio e telefone com capatazes e coordenadores;
-- Adaptação a novas tecnologias: Moderada a alta - reconhece o valor das ferramentas digitais e está aberto a adotá-las [5];
+- Adaptação a novas tecnologias: Moderada a alta - reconhece o valor das ferramentas digitais e está aberto a adotá-las [22];
 - Dispositivo disponível: Computador e celular.
 
 #### Notas e Justificativas:
 
 **Idade e perfil do cargo:**
-A faixa etária de 40 anos foi baseada no perfil médio do gerente de Produção e Operações Agropecuárias (CBO 1411-15), que aponta 40 anos como idade mais recorrente segundo o Portal Salário a partir de dados do CAGED. Além disso, outras informações sobre o perfil do foram baseadas a partir dessa fonte [3].
+A faixa etária de 40 anos foi baseada no perfil médio do gerente de Produção e Operações Agropecuárias (CBO 1411-15), que aponta 40 anos como idade mais recorrente segundo o Portal Salário a partir de dados do CAGED. Além disso, outras informações sobre o perfil do foram baseadas a partir dessa fonte [34].
 
 **Framework de Competência Digital - DigComp 3.0:**
-Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo [4].
+Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo [11].
 
 **Habilidades do gestor no agronegócio:**
-As habilidades listadas foram baseadas no perfil de profissionais que ocupam cargos de gestão no agronegócio [5].
+As habilidades listadas foram baseadas no perfil de profissionais que ocupam cargos de gestão no agronegócio [22].
 
 #### Biografia:
 
@@ -487,7 +495,7 @@ João se comunica com supervisores e coordenadores frequentemente, mas essa comu
 - Cargo: coordenador na BrPec Agropecuária S.A.;
 - Estado Civil: Solteiro;
 - Localização: Miranda- MS;
-- Escolaridade: Pós-graduado em administração [6].
+- Escolaridade: Pós-graduado em administração [8].
 
 #### Motivações:
 
@@ -522,7 +530,7 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 - Comunicação entre campo e gestão;
 - Tomada de decisão baseada em dados.
 
-#### Familiaridade com Tecnologia [4]:
+#### Familiaridade com Tecnologia [11]:
 
 
 | Aspecto                 | Nível / Situação                                                               |
@@ -547,10 +555,10 @@ Crescer profissionalmente dentro do agronegócio e ser reconhecido pela precisã
 #### Notas e Justificativas:
 
 **Escolaridade do gestor no agronegócio:**
-O Portal CNA Brasil aponta que, para cargos de coordenação técnica no agronegócio, o perfil mais buscado combina forte conhecimento técnico com boas noções de gestão, habilidade de comunicação e liderança [6].
+O Portal CNA Brasil aponta que, para cargos de coordenação técnica no agronegócio, o perfil mais buscado combina forte conhecimento técnico com boas noções de gestão, habilidade de comunicação e liderança [8].
 
 **Framework de Competência Digital - DigComp 3.0:**
-Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo [4].
+Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo [11].
 
 #### Biografia:
 
@@ -571,8 +579,8 @@ Sua rotina começa organizando as boletas vindas dos capatazes. Assim, ele tenta
 #### Informações:
 
 - Nome e sobrenome: Gabriel Galdino;
-- Idade: 33 anos [7];
-- Cargo: capataz na BrPec Agropecuária S.A. [8];
+- Idade: 33 anos [33];
+- Cargo: capataz na BrPec Agropecuária S.A. [4];
 - Estado Civil: Casado;
 - Localização: Aquidauana (MS) – Atua em retiros na região do Pantanal;
 - Escolaridade: Ensino Fundamental completo;
@@ -590,7 +598,7 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 
 #### Necessidades:
 
-- Sistema fácil de usar sem conhecimento técnico prévio, por ter maior dificuldade com tecnologias [9];
+- Sistema fácil de usar sem conhecimento técnico prévio, por ter maior dificuldade com tecnologias [26];
 - Registro rápido de tarefas e ocorrências;
 - Visualização clara das atividades do dia;
 - Funcionamento offline devido à limitação de internet;
@@ -598,7 +606,7 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 
 #### Desafios/dores:
 
-- Baixa familiaridade com tecnologias digitais [9];
+- Baixa familiaridade com tecnologias digitais [26];
 - Dependência de registros manuais e memória;
 - Dificuldade para acompanhar tarefas em tempo real;
 - Dificuldade de comunicação com níveis superiores;
@@ -620,7 +628,7 @@ Garantir o sustento da família e proporcionar uma boa vida para os filhos. Quer
 - Comunicação direta com equipe de vaqueiros;
 - Resiliência devido aos diversos problemas que ocorrem.
 
-#### Familiaridade com Tecnologia [4]:
+#### Familiaridade com Tecnologia [11]:
 
 
 | Aspecto                  | Nível / Situação                                                                      |
@@ -639,22 +647,22 @@ Informações extras:
 
 - Conectividade no campo: Instável ou ausente - sinal de internet limitado ou inexistente nos retiros;
 - Meio de comunicação principal: Rádio, comunicação verbal e anotações;
-- Adaptação a novas tecnologias: Baixa - resistência natural e por pouco contato com dispositivos ao longo da vida [9];
+- Adaptação a novas tecnologias: Baixa - resistência natural e por pouco contato com dispositivos ao longo da vida [26];
 - Dispositivo disponível: Celular.
 
 #### Notas e Justificativas:
 
 **Idade e perfil salarial do capataz:**  
-A faixa etária de 33 anos foi baseada no perfil médio de trabalhadores que ocupam o cargo de capataz na pecuária, conforme levantamento disponível no site consultado [7].
+A faixa etária de 33 anos foi baseada no perfil médio de trabalhadores que ocupam o cargo de capataz na pecuária, conforme levantamento disponível no site consultado [33].
 
 **Descrição do cargo de capataz:**  
-As atribuições descritas, como exemplo a administração de mão de obra ou o controle do rebanho, estão alinhadas com a Classificação Brasileira de Ocupações (CBO), que define formalmente as competências e atividades do capataz na agropecuária [8].
+As atribuições descritas, como exemplo a administração de mão de obra ou o controle do rebanho, estão alinhadas com a Classificação Brasileira de Ocupações (CBO), que define formalmente as competências e atividades do capataz na agropecuária [4].
 
 **Baixa familiaridade com tecnologias digitais na pecuária:**  
-A pesquisa acadêmica publicada na SciELO expõe a dificuldade de adoção de tecnologias por trabalhadores rurais na pecuária. O estudo aponta que características individuais como formação profissional e a posição ocupada dentro da propriedade influenciam diretamente a adoção ou rejeição de tecnologias, sendo a baixa escolaridade um fator determinante para a resistência ao uso de ferramentas digitais no campo [9].
+A pesquisa acadêmica publicada na SciELO expõe a dificuldade de adoção de tecnologias por trabalhadores rurais na pecuária. O estudo aponta que características individuais como formação profissional e a posição ocupada dentro da propriedade influenciam diretamente a adoção ou rejeição de tecnologias, sendo a baixa escolaridade um fator determinante para a resistência ao uso de ferramentas digitais no campo [26].
 
 **Framework de Competência Digital - DigComp 3.0:**
-Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo [4].
+Os níveis de familiaridade com tecnologia foram classificados seguindo o DigComp 3.0, framework europeu de competência digital desenvolvido pelo Joint Research Centre da Comissão Europeia. Ele define quatro níveis de proficiência (Basic, Intermediate, Advanced e Highly Advanced) com base na complexidade das tarefas executadas e no grau de autonomia do indivíduo [11].
 
 #### Biografia:
 
@@ -666,7 +674,7 @@ Comprometido com o sustento da família e com o bom funcionamento do retiro, Gab
 
 ## 2.3. User Stories (sprints 1 a 5)
 
-User Stories são descrições concisas de uma funcionalidade do sistema sob a perspectiva do usuário final. Diferente de requisitos técnicos tradicionais, elas focam no valor de negócio e na necessidade do usuário, servindo como ponto de partida para a implementação técnica. [12]
+User Stories são descrições concisas de uma funcionalidade do sistema sob a perspectiva do usuário final. Diferente de requisitos técnicos tradicionais, elas focam no valor de negócio e na necessidade do usuário, servindo como ponto de partida para a implementação técnica. [7]
 
 
 | Campo                    | Descrição                                                                                                                                                                                |
@@ -1289,6 +1297,78 @@ Para a documentação completa de todos os endpoints (incluindo `GET /tarefas/ho
 
 ### 3.2.1. Diagrama de Arquitetura e Camadas (sprints 3 e 4)
 
+O Sistema BrPec é estruturado sob uma **arquitetura física de três camadas (3-Tier Architecture)**, projetada com base nos princípios do paradigma **Local-First / Offline-First** (KLEPPMANN et al., 2019) [1]. Essa decisão arquitetural é fundamental para mitigar a restrição de conectividade intermitente em ambientes rurais (pastos), garantindo que a operação de campo não dependa de conexões com a internet satelital (Starlink) para funcionar, ao mesmo tempo em que provê consistência eventual global.
+
+#### Arquitetura Física e Fluxo de Sincronização (3-Tier Sync)
+
+O diagrama a seguir detalha a topologia física da rede, os bancos de dados em cada nó e os mecanismos de conectividade do sistema:
+
+```mermaid
+graph TD
+  %% Camada 1: Pasto
+  subgraph Pasto ["Camada 1: Client (Pasto - Operação Offline)"]
+    direction TB
+    A["Dispositivo Móvel do Capataz (PWA)"] --> B[("Armazenamento Local: IndexedDB")]
+    style Pasto fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b
+  end
+
+  %% Camada 2: Sede
+  subgraph Sede ["Camada 2: Server (Sede da Fazenda - Gateway Local)"]
+    direction TB
+    C["Servidor Local (Node.js / Express)"] --> D[("Cache Local: SQLite (brpec.sqlite)")]
+    style Sede fill:#efebe9,stroke:#5d4037,stroke-width:2px,color:#3e2723
+  end
+
+  %% Camada 3: Nuvem
+  subgraph Nuvem ["Camada 3: Nuvem (Central - Consolidação Global)"]
+    direction TB
+    E["Servidor Nuvem (Supabase API)"] --> F[("Banco Central: PostgreSQL (Supabase)")]
+    style Nuvem fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#1b5e20
+  end
+
+  %% Conexões e Fluxo de Dados
+  B -.->|"Sincronização via Wi-Fi Local (Sede)"| C
+  D -.->|"Sincronização Assíncrona via Satélite (Starlink)"| E
+```
+
+<center>
+  <p><strong>Figura 8.1</strong> — Arquitetura de Sincronização em 3 Camadas do BrPec</p>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+##### Detalhamento do Fluxo de Dados, Validação e Justificativas Técnicas:
+
+1. **Camada 1 (Client - Pasto):**
+   - **Contexto Operacional:** No pasto, a latência de rede é infinita e a largura de banda é zero. O Capataz interage com um Progressive Web App (PWA) instalado em seu celular.
+   - **Fluxo de Dados:** Apontamentos zootécnicos e alterações de tarefas são capturados em tempo real. O aplicativo PWA persiste esses registros localmente no **IndexedDB** do navegador.
+   - **Fundamentação Técnica:** O **IndexedDB** (especificação W3C API 3.0) [2] foi selecionado devido à sua capacidade de armazenamento transactional assíncrono de alta capacidade. Ao contrário de tecnologias mais simples como o `localStorage` (síncrono e limitado a 5MB de dados puramente textuais), o IndexedDB permite armazenar estruturas relacionais complexas e metadados de mídias de forma assíncrona, não bloqueando a thread principal da interface do usuário (UI).
+   - **Validação:** A validação nesta camada é estritamente client-side, focando em formatos sintáticos, preenchimento de campos obrigatórios e conformidade visual para evitar erros grosseiros de digitação em campo.
+
+2. **Camada 2 (Server - Sede da Fazenda / Gateway Local):**
+   - **Contexto Operacional:** Quando o Capataz retorna para a sede da fazenda ao fim do expediente, o dispositivo móvel se conecta à rede **Wi-Fi local** e inicia a transferência de dados.
+   - **Fluxo de Sincronização e Padrão Outbox:** O PWA drena os registros acumulados do IndexedDB para o servidor Express local da fazenda. O servidor processa esses dados e os persiste no banco **SQLite** local (`brpec.sqlite`). Para garantir a entrega garantida das movimentações à nuvem sem risco de perda em caso de falha física, aplica-se o padrão de microsserviços **Transactional Outbox** (RICHARDSON, 2018) [3]: os apontamentos zootécnicos e o registro da fila de envio na tabela `sincronizacoes` são salvos de forma atômica no SQLite dentro de uma única transação de banco.
+   - **Fundamentação Técnica:** O **SQLite** (HIPP, 2020) [4] foi adotado como cache relacional local por ser uma engine de banco relacional embutida e *zero-configuration*, eliminando o overhead operacional e o risco de falhas de manutenção inerentes a servidores tradicionais (como PostgreSQL ou MySQL) no ambiente hostil de servidores locais de fazendas. O uso do módulo nativo do Node.js (`node:sqlite`) fornece sub-milissegundos de latência com baixo consumo de memória, garantindo persistência robusta e durável em disco local.
+   - **Validação:** O servidor Express local atua como o principal portão de validação de regras de negócio pecuárias (ex.: verificação zootécnica de idade para nascimentos, checagem se o responsável pertence ao retiro da tarefa). A validação em nível de banco de dados é reforçada por chaves estrangeiras (`PRAGMA foreign_keys = ON;`) e constraints de check no SQLite.
+
+3. **Camada 3 (Nuvem - Central):**
+   - **Contexto Operacional:** A sede da fazenda possui um modem satelital **Starlink** com alta taxa de transferência, porém sujeito a quedas intermitentes por fatores climáticos e obstruções físicas.
+   - **Fluxo de Sincronização e Consistência Eventual:** Um agendador em segundo plano (`cloudSyncService.ts`) monitora a conectividade remota. Quando a conexão satelital é restabelecida, o serviço consome a fila de outbox (`sincronizacoes`) e faz o push dos dados acumulados para a API centralizada do **Supabase (PostgreSQL)** na nuvem. Ao receber uma confirmação de sucesso com status HTTP 200/201, o servidor local atualiza as linhas locais como sincronizadas.
+   - **Fundamentação Técnica:** O modelo de replicação opera sob **Consistência Eventual** (VOGELS, 2009) [5], permitindo que as fazendas continuem operando de forma autônoma e convergindo os estados estruturais com o banco centralizado sem a necessidade de conexões persistentes síncronas de duas fases (2PC), impraticáveis sob redes de satélite. O **PostgreSQL** hospedado no Supabase atua como o banco de dados mestre global, fornecendo capacidades ACID de alta concorrência para consolidação de múltiplos retiros da fazenda em tempo real.
+   - **Validação:** A camada de nuvem valida a consistência relacional global (ex.: unicidade global de UUIDs gerados de forma descentralizada) e restrições globais de negócios consolidados.
+
+---
+
+### Referências Arquiteturais da Seção:
+* [1] KLEPPMANN, Martin et al. **Local-first software: You own your data, in spite of the cloud**. In: Proceedings of the 2019 ACM SIGPLAN International Symposium on New Ideas, New Paradigms, and Reflections on Programming and Software (Onward!). 2019. p. 154-178.
+* [2] W3C. **Indexed Database API 3.0**. W3C Recommendation, 2024. Disponível em: <https://www.w3.org/TR/IndexedDB/>.
+* [3] RICHARDSON, Chris. **Microservices Patterns: With examples in Java**. Manning Publications, 2018.
+* [4] HIPP, Richard D. **SQLite Design Principles and Architecture**. SQLite Library, 2020.
+* [5] VOGELS, Werner. **Eventually Consistent**. ACM Queue, v. 6, n. 6, p. 14-19, 2009.
+
+---
+
+#### Arquitetura Lógica de Software (CSR)
+
 O Sistema BrPec adota o padrão **Arquitetura em Camadas (Layered Architecture)** no estilo **Controller-Service-Repository (CSR)**, organizando o backend em responsabilidades isoladas que se comunicam de forma unidirecional. A escolha desse padrão se justifica por quatro motivos centrais para o projeto: (i) **separação de responsabilidades**, isolando regras de negócio do transporte HTTP e do acesso a dados; (ii) **testabilidade**, já que cada camada pode ser testada de forma independente com mocks das camadas inferiores; (iii) **manutenibilidade**, permitindo evoluir uma camada sem propagar mudanças para as demais; e (iv) **baixo acoplamento com a infraestrutura escolhida** (Supabase + PostgreSQL), de modo que uma eventual troca do provedor de banco ou do framework HTTP impacte apenas a camada correspondente.
 
 A solução é composta por **cinco camadas lógicas** no backend, implementadas em Node.js + Express.js, com persistência em PostgreSQL gerenciado pelo Supabase:
@@ -1557,38 +1637,196 @@ que encapsulam seu comportamento e os relacionamentos que as interligam. Conform
 definido pelo Object Management Group (OMG) na especificação UML 2.5.1, o diagrama
 de classes é o principal artefato de modelagem estrutural da linguagem, sendo empregado
 para visualizar, especificar, construir e documentar os elementos conceituais de um
-sistema de software [14]. A notação utilizada segue as convenções formais consolidadas
+sistema de software [32]. A notação utilizada segue as convenções formais consolidadas
 dessa especificação, diferenciando com precisão os tipos de relacionamento —
 **associação**, **agregação** (losango vazio), **composição** (losango cheio) e
 **herança** (triângulo vazio) —, com multiplicidade explicitada em todas as
 extremidades.
 
 A modelagem segue também as diretrizes consolidadas por Booch, Rumbaugh e Jacobson
-em *The Unified Modeling Language User Guide* [21], obra de referência dos criadores
+em *The Unified Modeling Language User Guide* [3], obra de referência dos criadores
 originais da linguagem, que estabelece o diagrama de classes como o bloco fundamental
 de construção do UML, sendo todos os outros diagramas coleções de classes ou
 representações de relações entre elas. Complementarmente, as boas práticas de
-modelagem estrutural adotadas no projeto baseiam-se em Fowler [15], cuja obra _UML
+modelagem estrutural adotadas no projeto baseiam-se em Fowler [14], cuja obra _UML
 Distilled_ orienta o uso do diagrama de classes como ferramenta de comunicação de
 design orientado a objetos, enfatizando clareza, coesão e rastreabilidade entre modelo
 e requisitos. A estrutura de classes abstratas e a organização das responsabilidades
 entre as entidades seguem ainda os princípios de modelagem de domínio descritos por
-Larman [16], que fundamentam a identificação de classes conceituais abstratas como
+Larman [24], que fundamentam a identificação de classes conceituais abstratas como
 mecanismo para restringir quais classes podem ter instâncias concretas, esclarecendo
 as regras do domínio do problema.
 
 A norma ISO/IEC 19505-2:2012, que publica formalmente a especificação UML como padrão
 internacional, define que o diagrama de classes deve prover uma definição formal dos
 conceitos de modelagem, seus atributos e seus relacionamentos, bem como as regras para
-combiná-los na construção de modelos parciais ou completos [17]. O modelo foi construído
+combiná-los na construção de modelos parciais ou completos [21]. O modelo foi construído
 a partir da análise cruzada dos Requisitos Funcionais (RF), das Regras de Negócio (RN)
 e dos Casos de Uso (UC) definidos nas seções anteriores, garantindo rastreabilidade
 entre as decisões de modelagem e os demais artefatos de engenharia de requisitos do
 projeto.
 
+```mermaid
+%%{init: {'flowchart': {'curve': 'linear'}, 'class': {'curve': 'linear'}}}%%
+classDiagram
+  direction TB
+
+  class Usuario {
+    +String id
+    +String nome
+    +String senha
+    +String perfil
+    +String retiro_id
+    +String criado_em
+    +autenticar()
+  }
+
+  class Retiro {
+    +String id
+    +String nome
+    +String localizacao
+    +String coordenador_id
+    +String criado_em
+    +obterDadosConsolidados()
+  }
+
+  class MovimentacaoBase {
+    <<abstract>>
+    +String id
+    +String capataz_id
+    +String retiro_id
+    +String data
+    +String categoria
+    +Number quantidade
+    +Boolean/Number sincronizado
+    +Boolean/Number validado
+    +String coordenador_id
+    +String criado_em
+    +validarMovimentacao()
+  }
+
+  class Alerta {
+    +String id
+    +String tipo
+    +String descricao
+    +String status
+    +String capataz_id
+    +String retiro_id
+    +Float latitude
+    +Float longitude
+    +String criado_em
+    +Boolean/Number sincronizado
+    +String foto_id
+    +String tecnico_id
+    +registrarResolucao()
+  }
+
+  class Tarefa {
+    +String id
+    +String titulo
+    +String descricao
+    +String status
+    +String data_execucao
+    +String retiro_id
+    +String capataz_id
+    +String gerente_id
+    +String criada_em
+    +String concluida_em
+    +Boolean/Number sincronizada
+    +iniciar()
+    +concluir()
+  }
+
+  class Exportacao {
+    +String id
+    +String coordenador_id
+    +String formato
+    +String filtro_retiro
+    +String filtro_data_inicio
+    +String filtro_data_fim
+    +String gerada_em
+    +gerarRelatorio()
+  }
+
+  class Nascimento {
+    +String id
+    +String movimentacao_id
+    +registrarNascimento()
+  }
+
+  class Obito {
+    +String id
+    +String movimentacao_id
+    +String identificacao_animal
+    +String causa_morte
+    +String foto_id
+    +registrarObito()
+  }
+
+  class Transferencia {
+    +String id
+    +String movimentacao_id
+    +String retiro_origem_id
+    +String retiro_destino_id
+    +registrarTransferencia()
+  }
+
+  class Compravenda {
+    +String id
+    +String movimentacao_id
+    +String tipo_negocio
+    +Float valor_financeiro
+    +registrarCompravenda()
+  }
+
+  class Evidencia {
+    +String id
+    +String tarefa_id
+    +String alerta_id
+    +String movimentacao_id
+    +String tipo
+    +String arquivo_base64
+    +String url_arquivo
+    +String geolocalizacao
+    +Number duracao_segundos
+    +String conteudo
+    +Number tamanho_bytes
+    +String criada_em
+    +Boolean/Number sincronizada
+    +uploadEvidencia()
+  }
+
+  class Sincronizacao {
+    +String id
+    +String entidade_tipo
+    +String entidade_id
+    +String status_envio
+    +Number tentativas
+    +String ultima_tentativa
+    +String criada_em
+    +executarSync()
+  }
+
+  %% Relacionamentos Principais (Simplificados para evitar cruzamentos e poluição visual)
+  Retiro "1" --> "*" Usuario : abriga
+  Usuario "1" --> "*" MovimentacaoBase : insere
+  Usuario "1" --> "*" Alerta : gerencia
+  Usuario "1" --> "*" Tarefa : executa
+  Usuario "1" --> "*" Exportacao : solicita
+
+  Tarefa "1" --> "0..1" Evidencia : possui
+  Alerta "1" --> "0..1" Evidencia : contem
+  MovimentacaoBase "1" --> "0..*" Evidencia : anexa
+
+  %% Herança (Superclasse <|-- Subclasse)
+  MovimentacaoBase <|-- Nascimento : herança
+  MovimentacaoBase <|-- Obito : herança
+  MovimentacaoBase <|-- Transferencia : herança
+  MovimentacaoBase <|-- Compravenda : herança
+```
+
 <center>
-  <p><strong>Figura 10</strong> — Diagrama de Classes do Domínio do Sistema BrPec</p>
-  <img src="./assets/diagramaClasses.jpeg" width="800"/>
+  <p><strong>Figura 10</strong> — Diagrama de Classes do Domínio do Sistema BrPec (Mermaid UML)</p>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -1619,14 +1857,14 @@ abstrato por definição. A classe `Sincronizacao`, por sua vez, foi isolada com
 entidade independente para suportar o requisito não funcional de Confiabilidade
 (RNF — CONF), que determina 0% de perda de dados em falhas de conexão, sem
 sobrecarregar as demais classes com atributos de controle de rede — decisão alinhada
-ao princípio de responsabilidade única descrito por Fowler [15] como critério de
+ao princípio de responsabilidade única descrito por Fowler [14] como critério de
 coesão em modelos orientados a objetos.
 
 A seguir, são detalhados os atributos, tipos de dado e métodos de cada classe
 modelada no diagrama, organizados por camada conceitual. Os tipos adotam a notação
 primitiva do domínio de aplicação, compatível com as tecnologias de persistência
 previstas na arquitetura (SQLite para armazenamento local e banco relacional central).
-Conforme orientam Booch, Rumbaugh e Jacobson [14], cada atributo de uma classe define
+Conforme orientam Booch, Rumbaugh e Jacobson [32], cada atributo de uma classe define
 o seu estado em um dado instante, enquanto os métodos definem o seu comportamento,
 devendo ambos ser especificados com o nível de detalhe adequado à fase de modelagem
 em que o diagrama é produzido.
@@ -1891,286 +2129,165 @@ A Tabela 19 consolida todos os relacionamentos modelados no diagrama, com seus t
 
 O Diagrama de Classes Arquitetural representa a estrutura técnica do backend do sistema BrPec, com foco nas responsabilidades e nos relacionamentos entre as classes concretas distribuídas pelas quatro camadas da arquitetura em camadas adotada: **Controller**, **Service**, **Repository** e **Model**. Diferentemente do Diagrama de Classes do Domínio (seção 3.2.3), que modela os conceitos do negócio e suas relações semânticas, este diagrama evidencia como o código está organizado no servidor Node.js, quais classes dependem de quais e de que forma as requisições HTTP percorrem as camadas até atingir a persistência — conforme o padrão Controller–Service–Repository descrito na seção 3.2.4.
 
-Cada camada possui responsabilidade única e bem delimitada [15][16]:
+Cada camada possui responsabilidade única e bem delimitada [14][24]:
 
 - **Controller:** recebe e valida a requisição HTTP, delega ao Service correspondente e retorna a resposta HTTP ao cliente. Nunca acessa o banco de dados diretamente.
 - **Service:** concentra as regras de negócio (RNs), orquestra chamadas ao Repository e lança exceções de domínio em caso de violações.
 - **Repository:** abstrai o acesso à camada de persistência (SQLite no servidor), expondo métodos de consulta e escrita ao Service por meio de uma interface uniforme.
 - **Model:** representa as entidades persistidas no banco de dados (tabelas SQLite), correspondendo às classes do domínio com seus atributos e tipos de dado.
 
-O diagrama a seguir utiliza a notação UML 2.5.1 [14], com dependências de uso (`..>`) entre Controller → Service e Service → Repository, e associações de composição entre Repository e os Models correspondentes. As classes de mesmo domínio funcional são agrupadas por módulo: **Autenticação**, **Tarefas**, **Eventos Zootécnicos**, **Alertas de Infraestrutura**, **Sincronização** e **Exportação**. 
+O diagrama a seguir utiliza a notação UML 2.5.1 [32], com dependências de uso (`..>`) entre Controller → Service e Service → Repository, e associações de composição entre Repository e os Models correspondentes. As classes de mesmo domínio funcional são agrupadas por módulo: **Autenticação**, **Tarefas**, **Eventos Zootécnicos**, **Alertas de Infraestrutura**, **Sincronização** e **Exportação**. 
 
 ```mermaid
-classDiagram
-    direction TB
+---
+config:
+  theme: neutral
+  flowchart:
+    nodeSpacing: 35
+    rankSpacing: 60
+    curve: basis
+---
+flowchart TD
+    %% CAMADA DE ROTAS
+    subgraph Routes["Camada de Rotas — HTTP Endpoints"]
+        direction LR
+        classDef route fill:#ecfeff,stroke:#22d3ee,color:#036672,font-family:sans-serif;
+        HealthRoutes["HealthRoutes<br/>GET /health"]:::route
+        TarefaRoutes["TarefaRoutes<br/>POST /tarefas<br/>GET /tarefas/hoje<br/>PATCH /tarefas/:id/concluir<br/>POST /tarefas/:id/evidencias"]:::route
+        AlertaRoutes["AlertaRoutes<br/>POST /chamados"]:::route
+        EventoRoutes["EventoRoutes<br/>GET /eventos-zootecnicos<br/>POST /eventos-zootecnicos/nascimentos<br/>POST /eventos-zootecnicos/obitos"]:::route
+        SincronizacaoRoutes["SincronizacaoRoutes<br/>POST /sincronizacao/lote"]:::route
+        ExportacaoRoutes["ExportacaoRoutes<br/>GET /exportacao/csv"]:::route
+        PainelRoutes["PainelRoutes<br/>GET /painel-gerencial"]:::route
+    end
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: MODEL
-    %% ─────────────────────────────────────────
-    namespace Model {
-        class Usuario {
-            +UUID id
-            +String nome
-            +String senha
-            +Enum perfil
-            +UUID retiro_id
-            +DateTime criado_em
-        }
-        class Tarefa {
-            +UUID id
-            +String titulo
-            +String descricao
-            +Enum status
-            +Date data_execucao
-            +UUID retiro_id
-            +UUID capataz_id
-            +UUID gerente_id
-            +DateTime criada_em
-            +DateTime concluida_em
-            +Boolean sincronizada
-        }
-        class Evidencia {
-            +UUID id
-            +UUID tarefa_id
-            +UUID alerta_id
-            +UUID movimentacao_id
-            +Enum tipo
-            +String arquivo_base64
-            +String url_arquivo
-            +String geolocalizacao
-            +Integer duracao_segundos
-            +String conteudo
-            +Integer tamanho_bytes
-            +DateTime criada_em
-            +Boolean sincronizada
-        }
-        class Alerta {
-            +UUID id
-            +Enum tipo
-            +String descricao
-            +Enum status
-            +UUID capataz_id
-            +UUID retiro_id
-            +Decimal latitude
-            +Decimal longitude
-            +DateTime criado_em
-            +Boolean sincronizado
-            +UUID foto_id
-            +UUID tecnico_id
-        }
-        class MovimentacaoBase {
-            +UUID id
-            +UUID capataz_id
-            +UUID retiro_id
-            +Date data
-            +Enum categoria
-            +Integer quantidade
-            +Boolean sincronizado
-            +Boolean validado
-            +UUID coordenador_id
-            +DateTime criado_em
-        }
-        class Nascimento {
-        }
-        class Obito {
-            +String identificacao_animal
-            +String causa_morte
-            +UUID foto_id
-        }
-        class Transferencia {
-            +UUID retiro_origem_id
-            +UUID retiro_destino_id
-        }
-        class Compravenda {
-            +Enum tipo_negocio
-            +Decimal valor_financeiro
-        }
-        class Sincronizacao {
-            +UUID id
-            +String entidade_tipo
-            +UUID entidade_id
-            +Enum status_envio
-            +Integer tentativas
-            +DateTime ultima_tentativa
-            +DateTime criada_em
-        }
-        class Retiro {
-            +UUID id
-            +String nome
-            +String localizacao
-            +UUID coordenador_id
-            +DateTime criado_em
-        }
-        class Exportacao {
-            +UUID id
-            +UUID coordenador_id
-            +Enum formato
-            +UUID filtro_retiro
-            +Date filtro_data_inicio
-            +Date filtro_data_fim
-            +DateTime gerada_em
-        }
-    }
+    %% CAMADA DE CONTROLLERS
+    subgraph Controllers["Camada de Controllers — Apresentação"]
+        direction LR
+        classDef controller fill:#f5f3ff,stroke:#a78bfa,color:#5b21b6,font-family:sans-serif;
+        HealthController["HealthController<br/>+getHealth()"]:::controller
+        TarefaController["TarefaController<br/>+criarTarefa()<br/>+buscarTarefasHoje()<br/>+concluirTarefa()<br/>+anexarEvidencias()"]:::controller
+        AlertaController["AlertaController<br/>+criarAlerta()"]:::controller
+        EventoController["EventoController<br/>+registrarNascimento()<br/>+registrarObito()<br/>+listarEventos()"]:::controller
+        SincronizacaoController["SincronizacaoController<br/>+processarLote()"]:::controller
+        ExportacaoController["ExportacaoController<br/>+exportarCsv()"]:::controller
+        PainelController["PainelController<br/>+obterPainel()"]:::controller
+    end
 
-    MovimentacaoBase <|-- Nascimento
-    MovimentacaoBase <|-- Obito
-    MovimentacaoBase <|-- Transferencia
-    MovimentacaoBase <|-- Compravenda
+    %% CAMADA DE SERVICES
+    subgraph Services["Camada de Services — Regras de Negócio"]
+        direction LR
+        classDef service fill:#f0fdf4,stroke:#4ade80,color:#166534,font-family:sans-serif;
+        HealthService["HealthService<br/>+verificarSaude()"]:::service
+        TarefaService["TarefaService<br/>+criarTarefa()<br/>+buscarTarefasHoje()<br/>+concluirTarefa()<br/>+anexarEvidencia()"]:::service
+        AlertaService["AlertaService<br/>+criarAlerta()"]:::service
+        EventoService["EventoService<br/>+registrarNascimento()<br/>+registrarObito()<br/>+listarEventos()"]:::service
+        SincronizacaoService["SincronizacaoService<br/>+processarLote()"]:::service
+        ExportacaoService["ExportacaoService<br/>+exportarCsv()"]:::service
+        PainelService["PainelService<br/>+obterPainel()"]:::service
+    end
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: REPOSITORY
-    %% ─────────────────────────────────────────
-    namespace Repository {
-        class UsuarioRepository {
-            +buscarPorId(id) Usuario
-        }
-        class TarefaRepository {
-            +criar(dados) Tarefa
-            +buscarPorId(id) Tarefa
-            +buscarTarefasHoje(capataz_id, data) Tarefa[]
-            +concluir(id, capataz_id, data_conclusao) Tarefa
-            +salvarEvidencia(tarefa_id, tipo, arquivo_base64, geolocalizacao) UUID
-        }
-        class AlertaRepository {
-            +criar(alerta) Alerta
-            +buscarPorId(id) Alerta
-            +buscarUsuarioPorId(id) Usuario
-            +listar(status) Alerta[]
-            +resolver(id, tecnico_id, solucao, foto_base64) Alerta
-        }
-        class EventoRepository {
-            +criarNascimento(evento) MovimentacaoBase
-            +criarObito(evento) Object
-            +listarTodos(filtros) Object
-            +buscarMovimentacaoPorId(id) MovimentacaoBase
-        }
-        class ExportacaoRepository {
-            +consultarMovimentacoesConsolidadas(filtros) Array
-            +registrarExportacao(coordenador_id, formato, filtro_retiro, filtro_data_inicio, filtro_data_fim) UUID
-        }
-        class HealthRepository {
-            +verificarConexao() Object
-        }
-        class PainelRepository {
-            +obterMetricasTarefas(gerente_id) Array
-            +obterTarefasPorRetiro(gerente_id) Array
-            +obterAlertasAbertos() Alerta[]
-            +obterConcluidasHoje(gerente_id) Object
-        }
-        class SincronizacaoRepository {
-            +registrar(entidade_tipo, entidade_id, status_envio) UUID
-            +inserirTarefa(tarefa) UUID
-            +inserirAlerta(alerta) UUID
-            +inserirMovimentacao(mov) UUID
-            +inserirEvidencia(ev) UUID
-        }
-    }
+    %% CAMADA DE REPOSITÓRIOS (INTERFACES)
+    subgraph Repositories["Camada de Repositories — Contratos e Interfaces"]
+        direction LR
+        classDef repository fill:#fefce8,stroke:#facc15,color:#854d0e,font-family:sans-serif;
+        IHealthRepository["«interface» IHealthRepository<br/>+verificarConexao()"]:::repository
+        ITarefaRepository["«interface» ITarefaRepository<br/>+criar()<br/>+buscarPorId()<br/>+buscarTarefasHoje()<br/>+concluir()<br/>+salvarEvidencia()"]:::repository
+        ITarefaPgRepository["«interface» ITarefaPgRepository<br/>+salvarOuAtualizar()"]:::repository
+        IAlertaRepository["«interface» IAlertaRepository<br/>+criar()<br/>+buscarPorId()"]:::repository
+        IEventoRepository["«interface» IEventoRepository<br/>+criarNascimento()<br/>+criarObito()<br/>+listarTodos()<br/>+buscarMovimentacaoPorId()"]:::repository
+        ISincronizacaoRepository["«interface» ISincronizacaoRepository<br/>+registrar()<br/>+inserirTarefa()<br/>+inserirAlerta()<br/>+inserirMovimentacao()<br/>+inserirEvidencia()"]:::repository
+        IExportacaoRepository["«interface» IExportacaoRepository<br/>+consultarMovimentacoesConsolidadas()<br/>+registrarExportacao()"]:::repository
+        IPainelRepository["«interface» IPainelRepository<br/>+obterMetricasTarefas()<br/>+obterTarefasPorRetiro()<br/>+obterAlertasAbertos()<br/>+obterConcluidasHoje()"]:::repository
+        IUsuarioRepository["«interface» IUsuarioRepository<br/>+buscarPorId()"]:::repository
+    end
 
-    UsuarioRepository "1" --o "0..*" Usuario
-    TarefaRepository "1" --o "0..*" Tarefa
-    TarefaRepository "1" --o "0..*" Evidencia
-    AlertaRepository "1" --o "0..*" Alerta
-    EventoRepository "1" --o "0..*" MovimentacaoBase
-    SincronizacaoRepository "1" --o "0..*" Sincronizacao
-    ExportacaoRepository "1" --o "0..*" Exportacao
-    PainelRepository "1" --o "0..*" Tarefa
-    PainelRepository "1" --o "0..*" Alerta
+    %% CAMADA DE IMPLEMENTAÇÕES
+    subgraph RepositoryImpls["Camada de Infraestrutura — Repositories Concretos"]
+        direction LR
+        classDef impl fill:#fff7ed,stroke:#fb923c,color:#7c2d12,font-family:sans-serif;
+        HealthRepository["HealthRepository<br/>(SQLite)"]:::impl
+        TarefaRepository["TarefaRepository<br/>(SQLite)"]:::impl
+        TarefaPgRepository["TarefaPgRepository<br/>(Supabase/Pg)"]:::impl
+        AlertaRepository["AlertaRepository<br/>(SQLite)"]:::impl
+        EventoRepository["EventoRepository<br/>(SQLite)"]:::impl
+        SincronizacaoRepository["SincronizacaoRepository<br/>(SQLite)"]:::impl
+        ExportacaoRepository["ExportacaoRepository<br/>(SQLite)"]:::impl
+        PainelRepository["PainelRepository<br/>(SQLite)"]:::impl
+        UsuarioRepository["UsuarioRepository<br/>(SQLite)"]:::impl
+    end
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: SERVICE
-    %% ─────────────────────────────────────────
-    namespace Service {
-        class AlertaService {
-            +criarAlerta(dados) Alerta
-            +listarChamados(status) Alerta[]
-            +resolverChamado(id, tecnico_id, solucao, foto_base64) Alerta
-        }
-        class EventoService {
-            +registrarNascimento(dados) MovimentacaoBase
-            +registrarObito(dados) Object
-            +listarEventos(filtros) Object
-        }
-        class ExportacaoService {
-            +exportarCsv(coordenador_id, filtros) Object
-        }
-        class HealthService {
-            +verificarSaude() Object
-        }
-        class PainelService {
-            +obterPainel(gerente_id) Object
-        }
-        class SincronizacaoService {
-            +processarLote(itens) Object
-        }
-        class TarefaService {
-            +criarTarefa(dados) Tarefa
-            +buscarTarefasHoje(capataz_id) Tarefa[]
-            +concluirTarefa(tarefa_id, capataz_id) Tarefa
-            +anexarEvidencia(tarefa_id, capataz_id, dados) Object
-        }
-        class CloudSyncService {
-            -active: Boolean
-            +sincronizar() void
-            +iniciarAgendador(intervaloMs) NodeJS.Timeout
-        }
-    }
+    %% CAMADA DE BANCOS DE DADOS
+    subgraph Databases["Bancos de Dados — Persistência"]
+        direction LR
+        classDef db fill:#fff1f2,stroke:#fb7185,color:#7f1d1d,font-family:sans-serif;
+        SQLiteDB[("SQLite Local DB<br/>(offline-first)")]:::db
+        PostgresDB[("Supabase Cloud DB<br/>(PostgreSQL)")]:::db
+    end
 
-    AlertaService ..> AlertaRepository : usa
-    EventoService ..> EventoRepository : usa
-    ExportacaoService ..> ExportacaoRepository : usa
-    ExportacaoService ..> UsuarioRepository : valida perfil (Coordenador)
-    HealthService ..> HealthRepository : usa
-    PainelService ..> PainelRepository : usa
-    PainelService ..> UsuarioRepository : valida perfil (Gerente)
-    SincronizacaoService ..> SincronizacaoRepository : usa
-    TarefaService ..> TarefaRepository : usa
-    TarefaService ..> UsuarioRepository : valida vínculo (RN01)
-    CloudSyncService ..> SincronizacaoRepository : usa
-    CloudSyncService ..> TarefaRepository : usa
-    CloudSyncService ..> AlertaRepository : usa
-    CloudSyncService ..> EventoRepository : usa
+    %% Layout horizontal interno (força alinhamento lado a lado)
+    HealthRoutes ~~~ TarefaRoutes ~~~ AlertaRoutes ~~~ EventoRoutes ~~~ SincronizacaoRoutes ~~~ ExportacaoRoutes ~~~ PainelRoutes
+    HealthController ~~~ TarefaController ~~~ AlertaController ~~~ EventoController ~~~ SincronizacaoController ~~~ ExportacaoController ~~~ PainelController
+    HealthService ~~~ TarefaService ~~~ AlertaService ~~~ EventoService ~~~ SincronizacaoService ~~~ ExportacaoService ~~~ PainelService
+    IHealthRepository ~~~ ITarefaRepository ~~~ ITarefaPgRepository ~~~ IAlertaRepository ~~~ IEventoRepository ~~~ ISincronizacaoRepository ~~~ IExportacaoRepository ~~~ IUsuarioRepository ~~~ IPainelRepository
+    HealthRepository ~~~ TarefaRepository ~~~ TarefaPgRepository ~~~ AlertaRepository ~~~ EventoRepository ~~~ SincronizacaoRepository ~~~ ExportacaoRepository ~~~ PainelRepository ~~~ UsuarioRepository
+    SQLiteDB ~~~ PostgresDB
 
-    %% ─────────────────────────────────────────
-    %% CAMADA: CONTROLLER
-    %% ─────────────────────────────────────────
-    namespace Controller {
-        class AlertaController {
-            +POST /api/chamados()
-            +GET /api/chamados()
-            +POST /api/chamados/:id/resolver()
-        }
-        class EventoController {
-            +GET /api/eventos-zootecnicos()
-            +POST /api/eventos-zootecnicos/nascimentos()
-            +POST /api/eventos-zootecnicos/obitos()
-        }
-        class ExportacaoController {
-            +GET /api/exportacao/csv()
-        }
-        class HealthController {
-            +GET /api/health()
-        }
-        class PainelController {
-            +GET /api/painel-gerencial()
-        }
-        class SincronizacaoController {
-            +POST /api/sincronizacao/lote()
-        }
-        class TarefaController {
-            +POST /api/tarefas()
-            +GET /api/tarefas/hoje()
-            +PATCH /api/tarefas/:id/concluir()
-            +POST /api/tarefas/:id/evidencias()
-        }
-    }
+    %% Conexões de Rotas para Controllers
+    HealthRoutes --> HealthController
+    TarefaRoutes --> TarefaController
+    AlertaRoutes --> AlertaController
+    EventoRoutes --> EventoController
+    SincronizacaoRoutes --> SincronizacaoController
+    ExportacaoRoutes --> ExportacaoController
+    PainelRoutes --> PainelController
 
-    AlertaController ..> AlertaService : delega
-    EventoController ..> EventoService : delega
-    ExportacaoController ..> ExportacaoService : delega
-    HealthController ..> HealthService : delega
-    PainelController ..> PainelService : delega
-    SincronizacaoController ..> SincronizacaoService : delega
-    TarefaController ..> TarefaService : delega
+    %% Conexões de Controllers para Services (Dependência de Injeção)
+    HealthController --> HealthService
+    TarefaController --> TarefaService
+    AlertaController --> AlertaService
+    EventoController --> EventoService
+    SincronizacaoController --> SincronizacaoService
+    ExportacaoController --> ExportacaoService
+    PainelController --> PainelService
+
+    %% Conexões de Services para Repositories / Interfaces (Dependência de Injeção)
+    HealthService --> IHealthRepository
+    TarefaService --> ITarefaRepository
+    TarefaService --> ITarefaPgRepository
+    TarefaService --> IUsuarioRepository
+    AlertaService --> IAlertaRepository
+    EventoService --> IEventoRepository
+    SincronizacaoService --> ISincronizacaoRepository
+    ExportacaoService --> IExportacaoRepository
+    ExportacaoService --> IUsuarioRepository
+    PainelService --> IPainelRepository
+    PainelService --> IUsuarioRepository
+
+    %% Implementações das Interfaces pelos Repositórios Concretos (Realization)
+    HealthRepository -.-> IHealthRepository
+    TarefaRepository -.-> ITarefaRepository
+    TarefaPgRepository -.-> ITarefaPgRepository
+    AlertaRepository -.-> IAlertaRepository
+    EventoRepository -.-> IEventoRepository
+    SincronizacaoRepository -.-> ISincronizacaoRepository
+    ExportacaoRepository -.-> IExportacaoRepository
+    PainelRepository -.-> IPainelRepository
+    UsuarioRepository -.-> IUsuarioRepository
+
+    %% Acesso a Banco de Dados por Repositórios Concretos
+    HealthRepository --> SQLiteDB
+    TarefaRepository --> SQLiteDB
+    TarefaPgRepository --> PostgresDB
+    AlertaRepository --> SQLiteDB
+    EventoRepository --> SQLiteDB
+    SincronizacaoRepository --> SQLiteDB
+    ExportacaoRepository --> SQLiteDB
+    PainelRepository --> SQLiteDB
+    UsuarioRepository --> SQLiteDB
+    
+    %% Sincronização offline-first
+    SQLiteDB -.->|sincronização| PostgresDB
 ```
 
 <center>
@@ -2178,7 +2295,7 @@ classDiagram
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
-O diagrama organiza o backend em quatro camadas horizontais bem delimitadas. A camada **Controller** expõe sete grupos de endpoints REST, cada um responsável por um módulo funcional do sistema: tarefas, alertas de infraestrutura, eventos zootécnicos, sincronização em lote, exportação, painel gerencial e health check. Nenhum Controller acessa repositórios ou modelos diretamente — toda lógica é delegada ao Service correspondente via dependência de uso (`..>`), conforme o princípio de responsabilidade única [15].
+O diagrama organiza o backend em quatro camadas horizontais bem delimitadas. A camada **Controller** expõe sete grupos de endpoints REST, cada um responsável por um módulo funcional do sistema: tarefas, alertas de infraestrutura, eventos zootécnicos, sincronização em lote, exportação, painel gerencial e health check. Nenhum Controller acessa repositórios ou modelos diretamente — toda lógica é delegada ao Service correspondente via dependência de uso (`..>`), conforme o princípio de responsabilidade única [14].
 
 A camada **Service** concentra as regras de negócio críticas do sistema. O `TarefaService`, por exemplo, é o único ponto onde a RN01 é aplicada (verificação de que o Capataz pertence ao retiro antes de inserir a tarefa), consultando o `UsuarioRepository` antes de acionar o `TarefaRepository`. O `SincronizacaoService` implementa o processamento de lote descrito na seção 3.2.4, recebendo um array de itens e delegando cada tipo ao método correspondente no `SincronizacaoRepository`; o controle de transação (`BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK`) é realizado diretamente pelo Service via acesso ao objeto `db` do SQLite, garantindo atomicidade por item do lote em caso de falha. O `ExportacaoService` valida o perfil do coordenador via `UsuarioRepository`, consulta as movimentações consolidadas via `ExportacaoRepository` e registra o metadado da exportação, sem expor dados brutos ao Controller.
 
@@ -2190,9 +2307,9 @@ A separação em camadas garante que alterações na tecnologia de persistência
 
 ### 3.2.4. Diagrama de Sequência UML (sprint 3)
 
-O Diagrama de Sequência UML constitui um dos quatro tipos de diagrama de interação previstos pela especificação UML 2.5.1, sendo formalmente classificado como um diagrama comportamental que enfatiza a troca ordenada de mensagens entre participantes ao longo do tempo [13]. Segundo o Object Management Group (OMG), a semântica de uma interação é definida como um par de conjuntos de *traces* — sequências válidas e inválidas de ocorrências de eventos —, de modo que cada diagrama de sequência representa, de forma gráfica, os cenários de comunicação aceitos pelo sistema modelado [13][18]. A notação adotada emprega linhas de vida (*lifelines*) para representar os participantes, setas contínuas para mensagens síncronas e setas tracejadas para retornos, com fragmentos combinados (*combined fragments*) do tipo `alt` para expressar ramificações condicionais no fluxo de execução, conforme as convenções consolidadas por Fowler [15] e detalhadas na norma ISO/IEC 19505-2:2012 [17].
+O Diagrama de Sequência UML constitui um dos quatro tipos de diagrama de interação previstos pela especificação UML 2.5.1, sendo formalmente classificado como um diagrama comportamental que enfatiza a troca ordenada de mensagens entre participantes ao longo do tempo [6]. Segundo o Object Management Group (OMG), a semântica de uma interação é definida como um par de conjuntos de *traces* — sequências válidas e inválidas de ocorrências de eventos —, de modo que cada diagrama de sequência representa, de forma gráfica, os cenários de comunicação aceitos pelo sistema modelado [6][36]. A notação adotada emprega linhas de vida (*lifelines*) para representar os participantes, setas contínuas para mensagens síncronas e setas tracejadas para retornos, com fragmentos combinados (*combined fragments*) do tipo `alt` para expressar ramificações condicionais no fluxo de execução, conforme as convenções consolidadas por Fowler [14] e detalhadas na norma ISO/IEC 19505-2:2012 [21].
 
-No contexto do sistema BrPec, os diagramas de sequência foram elaborados para representar os fluxos operacionais críticos identificados nas User Stories (US01 a US05) e nos Requisitos Funcionais (RF001 a RF015), detalhando a interação entre o ator externo — Gerente ou Capataz — e as camadas internas da arquitetura da aplicação. A estrutura de camadas adotada segue o padrão Controller–Service–Repository, amplamente documentado na literatura de engenharia de software como uma instância concreta da arquitetura em camadas (*layered architecture*) [19], na qual cada componente possui responsabilidade única e bem delimitada:
+No contexto do sistema BrPec, os diagramas de sequência foram elaborados para representar os fluxos operacionais críticos identificados nas User Stories (US01 a US05) e nos Requisitos Funcionais (RF001 a RF015), detalhando a interação entre o ator externo — Gerente ou Capataz — e as camadas internas da arquitetura da aplicação. A estrutura de camadas adotada segue o padrão Controller–Service–Repository, amplamente documentado na literatura de engenharia de software como uma instância concreta da arquitetura em camadas (*layered architecture*) [23], na qual cada componente possui responsabilidade única e bem delimitada:
 
 - **Controller:** recebe a requisição HTTP, valida a presença dos campos obrigatórios e delega o processamento à camada de negócio, sem acessar o banco de dados diretamente;
 - **Service:** aplica as regras de negócio do domínio (RNs) e orquestra as chamadas ao Repository, encapsulando a lógica que determina se a operação será executada localmente ou remotamente;
@@ -2201,7 +2318,7 @@ No contexto do sistema BrPec, os diagramas de sequência foram elaborados para r
 
 Essa separação garante que as regras de negócio permaneçam isoladas das preocupações de transporte HTTP e de persistência, facilitando a manutenção e a evolução do sistema — critério alinhado ao requisito não funcional de Suportabilidade (RNF — SUP), que limita o Tempo Médio de Reparo (MTTR) a 8 horas para defeitos críticos.
 
-Os diagramas subsequentes cobrem tanto operações executadas em ambiente conectado (DS01) quanto fluxos que operam integralmente em modo offline, com sincronização assíncrona posterior (DS02, DS03, DS04). A diferenciação explícita entre os dois modos de operação constitui um requisito estrutural do projeto, visto que os retiros da BrPec dispõem de conectividade Starlink apenas em janelas limitadas (manhã e noite), exigindo que a aplicação funcione como fonte primária de dados localmente e trate a rede como camada de sincronização secundária — paradigma denominado *offline-first* na literatura de sistemas distribuídos [20]. Cada diagrama inclui, ao final, tabela de rastreabilidade que vincula os elementos representados às User Stories, Requisitos Funcionais, Regras de Negócio e Requisitos Não Funcionais correspondentes, assegurando a coerência com os demais artefatos de engenharia de requisitos do projeto.
+Os diagramas subsequentes cobrem tanto operações executadas em ambiente conectado (DS01) quanto fluxos que operam integralmente em modo offline, com sincronização assíncrona posterior (DS02, DS03, DS04). A diferenciação explícita entre os dois modos de operação constitui um requisito estrutural do projeto, visto que os retiros da BrPec dispõem de conectividade Starlink apenas em janelas limitadas (manhã e noite), exigindo que a aplicação funcione como fonte primária de dados localmente e trate a rede como camada de sincronização secundária — paradigma denominado *offline-first* na literatura de sistemas distribuídos [35]. Cada diagrama inclui, ao final, tabela de rastreabilidade que vincula os elementos representados às User Stories, Requisitos Funcionais, Regras de Negócio e Requisitos Não Funcionais correspondentes, assegurando a coerência com os demais artefatos de engenharia de requisitos do projeto.
 
 #### Fundamentação Tecnológica: Persistência Offline e Sincronização
 
@@ -2209,7 +2326,7 @@ Os diagramas de sequência apresentados nesta seção referenciam, de forma reco
 
 **SQLite — Banco de dados relacional do servidor**
 
-O SQLite é um sistema de gerenciamento de banco de dados relacional (*RDBMS*) autocontido (*self-contained*), sem servidor (*serverless*) e de configuração zero (*zero-configuration*) [21]. Diferentemente de sistemas cliente-servidor convencionais — como PostgreSQL ou MySQL —, o SQLite opera como uma biblioteca vinculada diretamente ao processo da aplicação, lendo e gravando o banco de dados como um arquivo único no disco, sem a necessidade de um processo daemon separado [21]. Essa característica o torna particularmente adequado ao contexto da BrPec, em que a infraestrutura de servidor deve ser leve e de fácil implantação, dado que os nós de processamento central operam em ambientes com recursos computacionais limitados.
+O SQLite é um sistema de gerenciamento de banco de dados relacional (*RDBMS*) autocontido (*self-contained*), sem servidor (*serverless*) e de configuração zero (*zero-configuration*) [3]. Diferentemente de sistemas cliente-servidor convencionais — como PostgreSQL ou MySQL —, o SQLite opera como uma biblioteca vinculada diretamente ao processo da aplicação, lendo e gravando o banco de dados como um arquivo único no disco, sem a necessidade de um processo daemon separado [3]. Essa característica o torna particularmente adequado ao contexto da BrPec, em que a infraestrutura de servidor deve ser leve e de fácil implantação, dado que os nós de processamento central operam em ambientes com recursos computacionais limitados.
 
 No escopo da arquitetura do sistema, o SQLite é empregado como banco de dados central do servidor Node.js, persistindo todas as entidades modeladas no Diagrama de Classes (seção 3.2.3): `Usuario`, `Tarefa`, `Evidencia`, `MovimentacaoBase` (nascimentos, óbitos, transferências e compravendas), `Alerta`, `Sincronizacao`, `Retiro` e os registros de exportação. Os diagramas de sequência DS01 (Criar Tarefa) e os fluxos de sincronização dos diagramas DS03 e DS04 representam a interação do Repository com esse banco central por meio de instruções SQL padrão (`INSERT`, `SELECT`, `UPDATE`), garantindo a compatibilidade com o modelo relacional definido nas tabelas de atributos da seção 3.2.3. A escolha pelo SQLite no servidor está alinhada ao requisito não funcional de Desempenho (RNF — DES), que exige latência p95 inferior a 200 ms para operações de leitura e escrita, e ao requisito de Suportabilidade (RNF — SUP), dado que o SQLite dispensa a administração de processos, usuários e permissões de banco de dados, reduzindo a complexidade operacional de manutenção.
 
@@ -2217,7 +2334,7 @@ A escolha pelo SQLite no servidor fundamenta-se em três critérios: (i) suporte
 
 **IndexedDB — Armazenamento local no dispositivo do Capataz**
 
-O IndexedDB é uma API de armazenamento local de baixo nível, padronizada pelo W3C, projetada para a persistência de volumes significativos de dados estruturados no navegador do cliente [22]. Trata-se de um banco de dados transacional não relacional (*NoSQL*), com suporte a índices sobre propriedades de objetos, que opera de forma inteiramente assíncrona para evitar o bloqueio da interface do usuário [22].
+O IndexedDB é uma API de armazenamento local de baixo nível, padronizada pelo W3C, projetada para a persistência de volumes significativos de dados estruturados no navegador do cliente [31]. Trata-se de um banco de dados transacional não relacional (*NoSQL*), com suporte a índices sobre propriedades de objetos, que opera de forma inteiramente assíncrona para evitar o bloqueio da interface do usuário [31].
 
 No sistema BrPec, o IndexedDB é utilizado nos dispositivos móveis dos Capatazes como camada de armazenamento local para as tarefas sincronizadas, evidências (fotos e áudios), registros de eventos zootécnicos e alertas de infraestrutura. Conforme representado nos diagramas DS02, DS03 e DS04, o Repository abstrai o acesso ao IndexedDB por meio da mesma interface exposta ao Service, de modo que as operações de leitura e escrita sejam transparentes à camada de negócio — independentemente de o dispositivo estar online ou offline. A tabela `sincronizacoes`, persistida no IndexedDB, funciona como fila de controle de envio, registrando cada entidade modificada localmente com status `PENDENTE`, `ENVIADO` ou `FALHA`, e o respectivo contador de tentativas de reenvio, conforme previsto nos requisitos RF010, RF011 e RF012.
 
@@ -2225,11 +2342,11 @@ A decisão de adotar o IndexedDB como mecanismo de armazenamento local, em compl
 
 **Service Workers e Background Sync — Sincronização assíncrona** 
 
-O mecanismo de sincronização representado nos diagramas DS03 e DS04 pelo participante `SyncService` é implementado tecnicamente por meio de Service Workers em combinação com a Background Synchronization API [23]. O Service Worker é um script executado pelo navegador em segundo plano, separado do contexto da página web, que permite interceptar requisições de rede, gerenciar o cache da aplicação e executar tarefas assíncronas mesmo quando o usuário não está interagindo ativamente com a interface [23]. 
+O mecanismo de sincronização representado nos diagramas DS03 e DS04 pelo participante `SyncService` é implementado tecnicamente por meio de Service Workers em combinação com a Background Synchronization API [42]. O Service Worker é um script executado pelo navegador em segundo plano, separado do contexto da página web, que permite interceptar requisições de rede, gerenciar o cache da aplicação e executar tarefas assíncronas mesmo quando o usuário não está interagindo ativamente com a interface [42]. 
 
-A Background Sync API estende as capacidades do Service Worker ao permitir que ações diferidas — como o envio de tarefas concluídas ou evidências fotográficas — sejam registradas como eventos de sincronização pendentes e executadas automaticamente pelo navegador assim que uma conexão de rede estável for detectada [23]. No contexto operacional da BrPec, esse comportamento é essencial: o Capataz registra a conclusão de tarefas e anexa evidências durante o período offline, e o SyncService, ativado automaticamente pela reconexão Starlink, percorre a fila de sincronizações pendentes no IndexedDB, transmite os dados ao servidor remoto e atualiza o status local para `ENVIADO` ou incrementa o contador de tentativas em caso de falha, conforme modelado nas ramificações `alt` dos diagramas DS03 e DS04.
+A Background Sync API estende as capacidades do Service Worker ao permitir que ações diferidas — como o envio de tarefas concluídas ou evidências fotográficas — sejam registradas como eventos de sincronização pendentes e executadas automaticamente pelo navegador assim que uma conexão de rede estável for detectada [42]. No contexto operacional da BrPec, esse comportamento é essencial: o Capataz registra a conclusão de tarefas e anexa evidências durante o período offline, e o SyncService, ativado automaticamente pela reconexão Starlink, percorre a fila de sincronizações pendentes no IndexedDB, transmite os dados ao servidor remoto e atualiza o status local para `ENVIADO` ou incrementa o contador de tentativas em caso de falha, conforme modelado nas ramificações `alt` dos diagramas DS03 e DS04.
 
-Esse mecanismo implementa o padrão de *Outbox* [24], no qual toda operação que altera o estado local gera um registro de controle com status `PENDENTE` consumido pelo SyncService ao reconectar, garantindo que nenhuma operação seja perdida mesmo que o dispositivo seja desligado entre o registro e a sincronização (RF012).
+Esse mecanismo implementa o padrão de *Outbox* [43], no qual toda operação que altera o estado local gera um registro de controle com status `PENDENTE` consumido pelo SyncService ao reconectar, garantindo que nenhuma operação seja perdida mesmo que o dispositivo seja desligado entre o registro e a sincronização (RF012).
 
 A combinação dessas três camadas tecnológicas — SQLite no servidor, IndexedDB no cliente e Service Workers para sincronização — materializa a arquitetura *offline-first* exigida pelo contexto operacional do projeto, assegurando o cumprimento dos requisitos não funcionais de Confiabilidade (RNF — CONF: 0% de perda de dados em falhas de conexão), Desempenho (RNF — DES: latência p95 < 200 ms no armazenamento local) e Capacidade (RNF — CAP: sincronização em lote de até 500 eventos pendentes).
 
@@ -2768,7 +2885,7 @@ _Diagrama UML de deployment mostrando nós físicos, artefatos e canais de comun
 
 ### 3.2.7. Padrões de Projeto Aplicados (sprints 3 a 5)
 
-O Sistema BrPec aplica padrões de projeto motivados por **três restrições estruturais** documentadas neste WAD: (i) a **conectividade satelital intermitente** via Starlink, que impõe arquitetura offline-first (seções 1 e 3.1.3); (ii) os **quatro perfis distintos de usuário** — Gerente, Coordenador, Capataz e Técnico — com regras de operação diferentes (seção 2.2); e (iii) a possibilidade de **evolução da camada de persistência**, hoje implementada com `better-sqlite3` para o cache local e `@supabase/supabase-js` para o servidor central (seção 3.2.1). Cada padrão a seguir é apresentado com categoria GoF [29], localização no repositório, necessidade de negócio que atende e princípios SOLID materializados [30].
+O Sistema BrPec aplica padrões de projeto motivados por **três restrições estruturais** documentadas neste WAD: (i) a **conectividade satelital intermitente** via Starlink, que impõe arquitetura offline-first (seções 1 e 3.1.3); (ii) os **quatro perfis distintos de usuário** — Gerente, Coordenador, Capataz e Técnico — com regras de operação diferentes (seção 2.2); e (iii) a possibilidade de **evolução da camada de persistência**, hoje implementada com `better-sqlite3` para o cache local e `@supabase/supabase-js` para o servidor central (seção 3.2.1). Cada padrão a seguir é apresentado com categoria GoF [15], localização no repositório, necessidade de negócio que atende e princípios SOLID materializados [27].
 
 A tabela a seguir consolida os quatro padrões adotados nesta sprint, indicando para cada um a categoria GoF, a pasta/arquivo correspondente no repositório, a necessidade de negócio atendida e os princípios SOLID materializados. O padrão com status "previsto" está planejado para sprint posterior e será implementado conforme as funcionalidades correspondentes forem desenvolvidas.
 
@@ -2779,7 +2896,7 @@ A tabela a seguir consolida os quatro padrões adotados nesta sprint, indicando 
 | # | Padrão              | Categoria         | Localização no repositório                                                                        | Necessidade que atende                                  | SOLID |
 |---|---------------------|-------------------|---------------------------------------------------------------------------------------------------|---------------------------------------------------------|-------|
 | 1 | Repository          | Estrutural        | `src/backend/repositories/` (ex.: `tarefaRepository.ts`)                                         | Isolar a troca de driver/ORM da camada de persistência  | S, D  |
-| 2 | Outbox (Sync Queue) | Arquitetural [31] | Tabela `sincronizacoes` (migration.sql) + `src/backend/services/sincronizacaoService.ts`          | Offline-first: 0% de perda de dados em falha de rede   | S, O  |
+| 2 | Outbox (Sync Queue) | Arquitetural [16] | Tabela `sincronizacoes` (migration.sql) + `src/backend/services/sincronizacaoService.ts`          | Offline-first: 0% de perda de dados em falha de rede   | S, O  |
 | 3 | Singleton           | Criacional        | `src/backend/config/database.ts`                                                                  | Reuso de uma única instância do cliente de banco local  | D     |
 | 4 | Strategy            | Comportamental    | `src/backend/middlewares/permissions/` (previsto para a sprint 5)                                 | Regras de autorização distintas por perfil de usuário   | O, L  |
 
@@ -2793,7 +2910,7 @@ Os padrões 1, 2 e 3 já possuem implementação no repositório, validando a ar
 
 **Localização:** `src/repositories/` (já implementado: `movimentacaoRepository.ts`; demais repositories — `tarefasRepository.ts`, `usuariosRepository.ts`, `retirosRepository.ts` — em desenvolvimento nesta sprint).
 
-**Necessidade que atende:** o backend acessa duas fontes de dados distintas — `better-sqlite3` para o cache local offline e `@supabase/supabase-js` para o servidor central. Sem uma camada que abstraia esse acesso, qualquer evolução (introduzir cache, migrar para um ORM como Prisma, trocar provedor) propagaria mudanças por Controllers e Services. O Repository centraliza o acesso a dados e expõe métodos com semântica de domínio (`movimentacaoRepository.inserir(mov)`), em linha com a definição clássica de Fowler [32]: *"mediates between the domain and data mapping layers"*.
+**Necessidade que atende:** o backend acessa duas fontes de dados distintas — `better-sqlite3` para o cache local offline e `@supabase/supabase-js` para o servidor central. Sem uma camada que abstraia esse acesso, qualquer evolução (introduzir cache, migrar para um ORM como Prisma, trocar provedor) propagaria mudanças por Controllers e Services. O Repository centraliza o acesso a dados e expõe métodos com semântica de domínio (`movimentacaoRepository.inserir(mov)`), em linha com a definição clássica de Fowler [13]: *"mediates between the domain and data mapping layers"*.
 
 **Validação pela equipe:** o padrão foi validado em revisão dedicada na issue [#202](https://git.inteli.edu.br/graduacao/2026-1b/t26/g03/-/issues/202).
 
@@ -2803,7 +2920,7 @@ Os padrões 1, 2 e 3 já possuem implementação no repositório, validando a ar
 
 **Localização:** tabela `sincronizacoes` (migration.sql, seção 3.6.3) + serviço já implementado em `src/backend/services/sincronizacaoService.ts`.
 
-**Necessidade que atende:** é o coração da arquitetura offline-first do BrPec e atende diretamente ao RNF de **integridade da sincronização** ("0% de perda de dados em falhas de conexão", seção 3.1.3, eixo CONF). Quando o capataz conclui uma tarefa sem internet (US03), a operação é gravada no banco local SQLite e enfileirada na tabela `sincronizacoes`. Ao restabelecer comunicação com a Starlink, o `sincronizacaoService` drena a fila e replica as operações no servidor central via Supabase, com idempotência garantida pelo UUID gerado client-side (seção 3.6.3 — Nota Técnica). É a aplicação direta do **Transactional Outbox** [31], padrão consagrado em sistemas distribuídos para garantir entrega eventual sem perda de dados.
+**Necessidade que atende:** é o coração da arquitetura offline-first do BrPec e atende diretamente ao RNF de **integridade da sincronização** ("0% de perda de dados em falhas de conexão", seção 3.1.3, eixo CONF). Quando o capataz conclui uma tarefa sem internet (US03), a operação é gravada no banco local SQLite e enfileirada na tabela `sincronizacoes`. Ao restabelecer comunicação com a Starlink, o `sincronizacaoService` drena a fila e replica as operações no servidor central via Supabase, com idempotência garantida pelo UUID gerado client-side (seção 3.6.3 — Nota Técnica). É a aplicação direta do **Transactional Outbox** [16], padrão consagrado em sistemas distribuídos para garantir entrega eventual sem perda de dados.
 
 **Princípios SOLID:** **S** — a fila tem uma única responsabilidade (garantir entrega eventual); **O** — novos tipos de operação (`INSERT`, `UPDATE`, `DELETE`, futuramente `MERGE`) podem ser adicionados sem alterar o processador.
 
@@ -2811,7 +2928,7 @@ Os padrões 1, 2 e 3 já possuem implementação no repositório, validando a ar
 
 **Localização planejada:** `src/backend/dtos/` (ex.: `CriarTarefaDTO.ts`, `TarefaResponseDTO.ts`), a implementar em sprints futuras conforme os endpoints forem evoluídos.
 
-**Necessidade que atende:** existe uma diferença real entre o que o cliente envia, o que o banco persiste e o que a API devolve. Para a US01, o cliente envia `{titulo, retiro_id, prazo}`; o banco persiste `{id, titulo, retiro_id, autor_id, criado_em, sincronizado_em, deletado_em}` (Migration 003); e a resposta da API expõe `{id, titulo, retiro: {id, nome}, prazo, status}`, sem campos internos como `autor_id`. DTOs evitam que detalhes do schema vazem na API pública e protegem o backend de payloads mal formados, validando entrada na fronteira Controller → Service. O padrão segue a recomendação de Evans [33] de isolar o modelo de domínio da camada de apresentação.
+**Necessidade que atende:** existe uma diferença real entre o que o cliente envia, o que o banco persiste e o que a API devolve. Para a US01, o cliente envia `{titulo, retiro_id, prazo}`; o banco persiste `{id, titulo, retiro_id, autor_id, criado_em, sincronizado_em, deletado_em}` (Migration 003); e a resposta da API expõe `{id, titulo, retiro: {id, nome}, prazo, status}`, sem campos internos como `autor_id`. DTOs evitam que detalhes do schema vazem na API pública e protegem o backend de payloads mal formados, validando entrada na fronteira Controller → Service. O padrão segue a recomendação de Evans [12] de isolar o modelo de domínio da camada de apresentação.
 
 **Princípios SOLID:** **S** — separa "modelo de entrada da API" de "entidade de domínio"; **I** — clientes da API recebem apenas os campos que precisam, sem dependências desnecessárias.
 
@@ -2870,7 +2987,7 @@ Note que o response **omite** campos internos como `criado_em`, `sincronizado_em
 
 **Localização:** `src/backend/config/database.ts` — uma única instância do cliente de banco de dados (SQLite via `better-sqlite3`) reutilizada em todo o backend.
 
-**Necessidade que atende:** evita inicializações redundantes do banco SQLite a cada requisição, garantindo que a mesma conexão e cache em memória do `better-sqlite3` sejam compartilhados por todos os repositories. Vale registrar a crítica de Fowler [32] e da comunidade DDD ao uso indiscriminado do padrão (acoplamento global, dificuldade de teste); aqui o uso é justificado por se tratar de um cliente de infraestrutura sem estado de negócio, e a injeção do cliente nos repositories preserva a testabilidade.
+**Necessidade que atende:** evita inicializações redundantes do banco SQLite a cada requisição, garantindo que a mesma conexão e cache em memória do `better-sqlite3` sejam compartilhados por todos os repositories. Vale registrar a crítica de Fowler [13] e da comunidade DDD ao uso indiscriminado do padrão (acoplamento global, dificuldade de teste); aqui o uso é justificado por se tratar de um cliente de infraestrutura sem estado de negócio, e a injeção do cliente nos repositories preserva a testabilidade.
 
 **Princípios SOLID:** **D** — toda a aplicação depende da mesma abstração de cliente, injetada nos repositories.
 
@@ -2878,7 +2995,7 @@ Note que o response **omite** campos internos como `criado_em`, `sincronizado_em
 
 **Localização planejada:** `src/backend/middlewares/` (autenticação, autorização, validação de payload, tratamento de erros), a implementar ao longo das sprints 4 a 5 conforme os requisitos da seção 3.8 forem desenvolvidos.
 
-**Necessidade que atende:** cada requisição ao backend precisa passar por uma sequência de verificações antes de chegar ao Controller — autenticar o usuário (seção 3.8.1), autorizar a operação (seção 3.8.3), validar o payload contra o DTO esperado e, ao final, tratar exceções de forma uniforme (seção 3.8.4). O Middleware Chain do Express materializa esse pipeline de forma plugável: cada novo cross-cutting concern (logging, métricas, rate-limiting) entra como um novo middleware sem alterar os existentes — instância concreta do padrão Chain of Responsibility [29].
+**Necessidade que atende:** cada requisição ao backend precisa passar por uma sequência de verificações antes de chegar ao Controller — autenticar o usuário (seção 3.8.1), autorizar a operação (seção 3.8.3), validar o payload contra o DTO esperado e, ao final, tratar exceções de forma uniforme (seção 3.8.4). O Middleware Chain do Express materializa esse pipeline de forma plugável: cada novo cross-cutting concern (logging, métricas, rate-limiting) entra como um novo middleware sem alterar os existentes — instância concreta do padrão Chain of Responsibility [15].
 
 **Princípios SOLID:** **S** — cada middleware tem uma responsabilidade isolada; **O** — novos middlewares são plugados na cadeia sem modificar os anteriores.
 
@@ -2886,13 +3003,13 @@ Note que o response **omite** campos internos como `criado_em`, `sincronizado_em
 
 **Localização planejada:** `src/middlewares/permissions/` (ex.: `GerenteStrategy.ts`, `CoordenadorStrategy.ts`, `CapatazStrategy.ts`, `TecnicoStrategy.ts`), invocadas pelo middleware de autorização da seção 3.8.3.
 
-**Necessidade que atende:** os quatro perfis do sistema têm regras de operação fundamentalmente diferentes — o Gerente cria tarefas para qualquer retiro (US01), o Capataz só visualiza tarefas do próprio retiro (US02), o Coordenador exporta dados consolidados (US12) e o Técnico fecha ordens de serviço (US06). Implementar essas regras com `if/else` aninhados no Controller tornaria a manutenção inviável conforme novos perfis ou novas permissões surgissem. O Strategy [29] encapsula cada conjunto de regras em uma classe própria, selecionada em runtime pelo perfil do usuário autenticado.
+**Necessidade que atende:** os quatro perfis do sistema têm regras de operação fundamentalmente diferentes — o Gerente cria tarefas para qualquer retiro (US01), o Capataz só visualiza tarefas do próprio retiro (US02), o Coordenador exporta dados consolidados (US12) e o Técnico fecha ordens de serviço (US06). Implementar essas regras com `if/else` aninhados no Controller tornaria a manutenção inviável conforme novos perfis ou novas permissões surgissem. O Strategy [15] encapsula cada conjunto de regras em uma classe própria, selecionada em runtime pelo perfil do usuário autenticado.
 
 **Princípios SOLID:** **O** — adicionar um quinto perfil significa criar uma nova classe sem alterar o middleware; **L** — todas as strategies são intercambiáveis pela mesma interface (`podeExecutar(acao, recurso)`).
 
 #### Síntese SOLID
 
-Em conjunto, os padrões adotados materializam os cinco princípios SOLID [30]:
+Em conjunto, os padrões adotados materializam os cinco princípios SOLID [27]:
 
 - **S — Single Responsibility:** todas as camadas e padrões (Repository, DTO, Middleware) isolam responsabilidades únicas.
 - **O — Open/Closed:** Outbox, Strategy e Middleware Chain permitem extensão sem modificação do código existente.
@@ -3071,7 +3188,7 @@ O quadro a seguir consolida a relação entre personas, User Stories priorizadas
 
 ## 3.4. Guia de estilos (sprint 3)
 
-Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [22][23].
+Um guia de estilo (style guide) é um documento de referência que centraliza todas as decisões visuais de um produto digital, como cores, tipografia, ícones, espaçamentos, componentes e outros, garantindo consistência em todo o sistema. É tanto um instrumento de comunicação entre designers e desenvolvedores quanto um repositório vivo de decisões de design [31][42].
 
 O Guia de Estilos navegável completo está disponível em: [Figma - SynTech](https://www.figma.com/design/CnhVA41sJORDmEQ1DLbxfY/SynTech?node-id=198-939)
 
@@ -3087,7 +3204,7 @@ A Figura 18 apresenta o guia de estilos completo da plataforma SynTech, consolid
 
 #### Definição
 
-Uma **paleta de cores** é o conjunto definido e limitado de cores que uma marca, produto ou projeto pode utilizar. Ela integra o **guia de estilo** (*style guide*) com o objetivo de garantir consistência visual em todos os materiais: interfaces, documentos, redes sociais, entre outros [34].
+Uma **paleta de cores** é o conjunto definido e limitado de cores que uma marca, produto ou projeto pode utilizar. Ela integra o **guia de estilo** (*style guide*) com o objetivo de garantir consistência visual em todos os materiais: interfaces, documentos, redes sociais, entre outros [41].
 
 > Sem uma paleta definida, cada membro da equipe escolhe cores de forma independente, gerando inconsistência visual. A paleta funciona como a "lei cromática" do projeto.
 
@@ -3116,17 +3233,17 @@ Por fim, as cores semânticas comunicam estados do sistema de forma imediata. O 
 
 #### Justificativa Técnica: Contraste Outdoor (Nível AAA)
 
-A adoção do contraste mínimo de 7:1 para interfaces operadas em ambientes externos sob luz solar direta fundamenta-se na convergência entre engenharia de fatores humanos e acessibilidade, conforme o critério de sucesso 1.4.6 da WCAG (Nível AAA) [24].
+A adoção do contraste mínimo de 7:1 para interfaces operadas em ambientes externos sob luz solar direta fundamenta-se na convergência entre engenharia de fatores humanos e acessibilidade, conforme o critério de sucesso 1.4.6 da WCAG (Nível AAA) [43].
 
-Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [26], a luz incidente nas camadas do display desencadeia o fenômeno conhecido como veiling glare: reflexões que adicionam luminância ao fundo e ao texto, "lavando" as cores e reduzindo drasticamente o contraste percebido. Para compensar essa perda física e garantir legibilidade em campo, a interface precisa partir de uma razão de contraste nativa substancialmente elevada [25]. Nesse contexto, a iluminação extrema impõe ao usuário uma deficiência visual situacional temporária, equiparável, em termos perceptivos, à perda severa de sensibilidade ao contraste [27].
+Em condições de exposição solar direta, que pode ultrapassar 100.000 lux [19], a luz incidente nas camadas do display desencadeia o fenômeno conhecido como veiling glare: reflexões que adicionam luminância ao fundo e ao texto, "lavando" as cores e reduzindo drasticamente o contraste percebido. Para compensar essa perda física e garantir legibilidade em campo, a interface precisa partir de uma razão de contraste nativa substancialmente elevada [20]. Nesse contexto, a iluminação extrema impõe ao usuário uma deficiência visual situacional temporária, equiparável, em termos perceptivos, à perda severa de sensibilidade ao contraste [38].
 
 É exatamente esse cenário que o critério 1.4.6 da WCAG visa cobrir ao exigir a proporção de 7:1. Além do impacto direto na legibilidade, relações inferiores a esse limiar aumentam o tempo de fixação ocular, elevam a taxa de erro na leitura de dados críticos e aceleram a fadiga visual pelo esforço contínuo de acomodação. O patamar de 7:1 é, portanto, o requisito técnico mínimo para preservar a usabilidade em condições adversas de luminosidade.
 
 ### 3.4.2 Tipografia
 
-A escolha tipográfica em interfaces digitais vai além da estética. Fontes sem serifa de traço uniforme apresentam melhor desempenho em telas de baixa resolução e em condições adversas de luminosidade, como a exposição solar direta enfrentada pelos usuários deste projeto [28]. Além disso, o tamanho e o peso das fontes impactam diretamente a acessibilidade da interface: textos com peso insuficiente ou tamanho reduzido comprometem a leitura em ambientes de alta iluminância [25][27].
+A escolha tipográfica em interfaces digitais vai além da estética. Fontes sem serifa de traço uniforme apresentam melhor desempenho em telas de baixa resolução e em condições adversas de luminosidade, como a exposição solar direta enfrentada pelos usuários deste projeto [2]. Além disso, o tamanho e o peso das fontes impactam diretamente a acessibilidade da interface: textos com peso insuficiente ou tamanho reduzido comprometem a leitura em ambientes de alta iluminância [20][38].
 
-A tipografia da solução utiliza a família **Inter**, disponível gratuitamente via Google Fonts, projetada especificamente para interfaces digitais e com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade [28].
+A tipografia da solução utiliza a família **Inter**, disponível gratuitamente via Google Fonts, projetada especificamente para interfaces digitais e com alto desempenho em tamanhos reduzidos e em condições adversas de luminosidade [2].
 
 <center>
   <p><strong>Figura 19</strong> - Fonte Inter e suas variações</p>
@@ -3146,7 +3263,7 @@ A tipografia da solução utiliza a família **Inter**, disponível gratuitament
 
 #### Escala tipográfica
 
-A escala tipográfica foi definida com base nos critérios de contraste e legibilidade das diretrizes WCAG 2.1, que recomendam tamanhos e pesos mínimos para garantir acessibilidade em diferentes contextos de uso [24]. Para ambientes externos com alta incidência de luz, recomenda-se priorizar pesos a partir de 500 (Medium) e tamanhos a partir de 16px no corpo do texto [27].
+A escala tipográfica foi definida com base nos critérios de contraste e legibilidade das diretrizes WCAG 2.1, que recomendam tamanhos e pesos mínimos para garantir acessibilidade em diferentes contextos de uso [43]. Para ambientes externos com alta incidência de luz, recomenda-se priorizar pesos a partir de 500 (Medium) e tamanhos a partir de 16px no corpo do texto [38].
 
 | Nível | Família | Peso | Tamanho | Uso |
 |---|---|---|---|---|
@@ -3157,7 +3274,7 @@ A escala tipográfica foi definida com base nos critérios de contraste e legibi
 | Label | Inter | 500 | 14px | Labels de formulário e tabelas |
 | Caption | Inter | 400 | 12px | Textos auxiliares e rodapés |
 
-> Tamanho mínimo adotado: **12px**. Nenhum texto funcional da interface utiliza tamanho inferior a esse valor, garantindo legibilidade mesmo em dispositivos móveis sob luz solar direta [24][25].
+> Tamanho mínimo adotado: **12px**. Nenhum texto funcional da interface utiliza tamanho inferior a esse valor, garantindo legibilidade mesmo em dispositivos móveis sob luz solar direta [43][20].
 
 <center>
   <p><strong>Tabela 54</strong> — Escala Tipográfica</p>
@@ -3166,18 +3283,18 @@ A escala tipográfica foi definida com base nos critérios de contraste e legibi
 
 ### 3.4.3 Iconografia e imagens
 #### Iconografia
-A iconografia da solução utiliza a biblioteca **Phosphor Icons**, escolhida por seu traço generoso e alta legibilidade em telas mobile e web sob luz solar direta. Os ícones são aplicados exclusivamente nos estilos **Bold** e **Fill**, que apresentam melhor desempenho em condições de alta iluminância, onde traços finos tendem a desaparecer [27].
+A iconografia da solução utiliza a biblioteca **Phosphor Icons**, escolhida por seu traço generoso e alta legibilidade em telas mobile e web sob luz solar direta. Os ícones são aplicados exclusivamente nos estilos **Bold** e **Fill**, que apresentam melhor desempenho em condições de alta iluminância, onde traços finos tendem a desaparecer [38].
 
-De acordo com Nielsen [22], os ícones podem ser classificados em três categorias segundo seu grau de correspondência com o conceito que representam:
+De acordo com Nielsen [31], os ícones podem ser classificados em três categorias segundo seu grau de correspondência com o conceito que representam:
 
 - **Semelhança** — representam visualmente o objeto ao qual se referem (ex.: folha para natureza, gota para água);
 - **Referência** — estabelecem uma analogia com o conceito representado (ex.: engrenagem para configurações);
 - **Arbitrários** — têm significado definido apenas por convenção (ex.: triângulo de alerta).
 
 
-A biblioteca foi selecionada priorizando ícones de semelhança, categoria que apresenta melhor usabilidade e menor dependência cultural [22]. Ícones arbitrários foram adotados apenas quando já amplamente convencionados — como o símbolo de alerta — evitando ambiguidade para o usuário.
+A biblioteca foi selecionada priorizando ícones de semelhança, categoria que apresenta melhor usabilidade e menor dependência cultural [31]. Ícones arbitrários foram adotados apenas quando já amplamente convencionados — como o símbolo de alerta — evitando ambiguidade para o usuário.
 
-Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizado de forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduz erros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção do usuário pode estar dividida [28].
+Todo ícone funcional da interface é acompanhado de rótulo textual, nunca utilizado de forma isolada em ações críticas. Essa decisão reforça a acessibilidade e reduz erros de interpretação, especialmente em contextos de uso ao ar livre onde a atenção do usuário pode estar dividida [2].
 
 **Atributos de aplicação**
 
@@ -3202,13 +3319,13 @@ Todo ícone funcional da interface é acompanhado de rótulo textual, nunca util
 | <img src="./assets/icones/pessoa.png" width="40"/> | Users Three | 32px | Identificação gerente |
 | <img src="./assets/icones/tag.png" width="40"/> | Tag | 32px | Classificação da evolução |
 
-> Tamanho mínimo adotado: **24px**. Nenhum ícone funcional da interface utiliza tamanho inferior a esse valor, garantindo identificação visual mesmo em dispositivos móveis sob luz solar direta [25][27].
+> Tamanho mínimo adotado: **24px**. Nenhum ícone funcional da interface utiliza tamanho inferior a esse valor, garantindo identificação visual mesmo em dispositivos móveis sob luz solar direta [20][38].
 
 ---
 
 #### Imagens
 
-No guia de estilo, a seção de imagens define quais assets visuais estáticos fazem parte da identidade do produto e como devem ser aplicados. Diferentemente dos ícones, que são elementos funcionais da interface, como os da biblioteca Phosphor Icons, as imagens são representações visuais da marca em si [35].
+No guia de estilo, a seção de imagens define quais assets visuais estáticos fazem parte da identidade do produto e como devem ser aplicados. Diferentemente dos ícones, que são elementos funcionais da interface, como os da biblioteca Phosphor Icons, as imagens são representações visuais da marca em si [39].
 
 No caso desta solução, o único asset de imagem utilizado é o **logotipo da SynTech**, a plataforma web do projeto. Ele deve ser tratado como elemento protegido da identidade visual: sua proporção não deve ser alterada e sua aplicação se limita ao cabeçalho da plataforma, garantindo reconhecimento consistente da marca ao longo de toda a experiência do usuário.
 
@@ -3857,7 +3974,7 @@ sqlite3 brpec.db < migration.sql
 
 <h3>Nota Técnica — Estratégia de UUID para criação e atualização offline</h3>
 
-**Contexto:** Como evidenciado nas User Stories US03, US08 e US09, o sistema prevê criação e atualização de registros em ambiente sem conexão, com sincronização posterior via API. Assim, existe a possibilidade de ocorrerem conflitos de IDs se cada dispositivo depender de identificadores sequenciais emitidos pelo servidor. Para evitar conflito de PKs ao sincronizar com o ambiente central, adota-se UUID versão 7 como identificador primário das entidades criadas localmente [10].
+**Contexto:** Como evidenciado nas User Stories US03, US08 e US09, o sistema prevê criação e atualização de registros em ambiente sem conexão, com sincronização posterior via API. Assim, existe a possibilidade de ocorrerem conflitos de IDs se cada dispositivo depender de identificadores sequenciais emitidos pelo servidor. Para evitar conflito de PKs ao sincronizar com o ambiente central, adota-se UUID versão 7 como identificador primário das entidades criadas localmente [25].
 
 **Justificativa:** IDs sequenciais dependem de coordenação com o servidor, já UUIDs são usados para nomear informações de forma única em sistemas sem precisar de uma autoridade central. São essenciais em sistemas distribuídos e sua probabilidade de duplicidade é quase zero, eliminando conflito na sincronização. Assim, utilizaremos a versão 7 do UUID por uma questão de ordenação cronológica e melhor performance de índices no banco.
 
@@ -4666,33 +4783,51 @@ A resiliência de rede é um pilar crítico no BrPec. Utiliza-se um mecanismo de
 
 ## 3.9. Matriz de Rastreabilidade (RTM) (sprints 3 a 5)
 
-A RTM rastreia cada User Story do BrPec da persona até a evidência de teste, atravessando Requisito Funcional (RF), Regra de Negócio (RN), endpoint, tela e caso de teste automatizado. Esta versão consolida os fluxos centrais já implementados e testados na sprint 3 — sem lacunas: cada linha possui endpoint funcional em `src/backend/`, tela correspondente e teste automatizado com evidência de execução.
+A matriz a seguir consolida a rastreabilidade entre Requisitos Funcionais (RF),
+Regras de Negócio (RN) e a implementação correspondente no backend da BrPec.
+Uma linha por combinação RF + RN, sem células vazias na trilha principal.
 
+<div align="center">
+  <p><strong>Tabela 19</strong> — Matriz RTM BrPec</p>
+</div>
 
-
-| Persona | US | RF | RN | Endpoint | Tela | Teste |
-| ------- | ---- | ----- | ---------------- | ---------------------------------------- | --------------------- | ------------ |
-| João (Gerente) | US01 | RF001 | RN01 | `POST /tarefas` | Nova O.S. | C1-C4 |
-| Gabriel (Capataz) | US02 | RF002, RF003 | RN02, RN05 | `GET /tarefas/hoje` | Lista de Tarefas | H1-H3 |
-| Gabriel (Capataz) | US03 | RF002 | RN02 | `PATCH /tarefas/:id/concluir` | Concluir Tarefa | K1-K3 |
-| Gabriel (Capataz) | US04 | RF005 | RN13, RN15 | `POST /tarefas/:id/evidencias` | Concluir Tarefa | E1-E3 |
-| Gabriel (Capataz) | US05 | RF005 | RN13 | `POST /tarefas/:id/evidencias` | Concluir Tarefa | E1-E3 |
-| Gabriel (Capataz) | US06 | RF006 | RN19, RN21, RN26 | `POST /chamados` | Painel Infraestrutura | AL1-AL2 |
-| João (Gerente) / Marcos (Coordenador) | US07 | RF007 | RN08, RN21 | `GET /painel-gerencial` | Dashboard | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Gabriel (Capataz) | US08 | RF008 | RN27 | `POST /eventos-zootecnicos/nascimentos` | Registrar Nascimento | N1-N2 |
-| Gabriel (Capataz) | US09 | RF009 | RN27, RN28 | `POST /eventos-zootecnicos/obitos` | Registrar Óbito | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Gabriel (Capataz) | US10 | RF013 | RN28 | `POST /eventos-zootecnicos/obitos` | Registrar Óbito | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Marcos (Coordenador) | US11 | RF014 | — | `GET /eventos-zootecnicos` | Lista de Boletas | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Marcos (Coordenador) | US12 | RF015 | — | `GET /exportacao/csv` | Tela Exportação | pending - Integration tests planned for next phase (Sprint 4/5) |
-
-<center>
-  <p><strong>Tabela 65</strong> — Matriz de Rastreabilidade (RTM)</p>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
-**Legenda dos testes:** os códigos da coluna Teste referenciam casos automatizados em `src/backend/tests/`: **C1-C4** (criar tarefa — `uc01-planejar-tarefas.test.ts`), **H1-H3** (buscar tarefas do dia), **K1-K3** (concluir tarefa), **E1-E3** (anexar evidência) e na suíte `outros-endpoints.test.ts`: **AL1-AL2** (criar chamado) e **N1-N2** (registrar nascimento). A evidência de execução (saída do Jest com todos os testes passando) está registrada em `documentos/assets/jest.png`.
-
-**Cadeia de rastreabilidade:** cada fluxo central da sprint 3 está completo da ponta a ponta — Persona → User Story → RF (seção 3.1.1) → RN (seção 3.1.2) → Endpoint (seção 3.1.4) → Tela (seção 3.3) → Teste automatizado com evidência. As User Stories cujos endpoints não foram testados nesta fase (US07, US09-US12) estão marcadas como `pending` com a devida justificativa técnica de planejamento, preservando a integridade da cadeia de rastreabilidade.
+| Persona     | Necessidade                                              | RN    | RF    | Implementação                                                                          | Evidência                                                                        |
+|-------------|----------------------------------------------------------|-------|-------|----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| Gerente     | Criar tarefa e associar a um retiro                      | RN01  | RF001 | `POST /tarefas` · `src/controllers/tarefaController.js` · `create()`                  | `test/tarefas.test.js` · `it('cria tarefa vinculada a retiro')` · Network 201    |
+| Capataz     | Visualizar tarefas do dia sem internet                   | RN02  | RF002 | `GET /tarefas/hoje` · `src/controllers/tarefaController.js` · `getHoje()`             | `test/tarefas.test.js` · `it('retorna tarefas do dia')` · Network 200            |
+| Capataz     | Ver apenas tarefas do seu retiro                         | RN05  | RF002 | `GET /tarefas/hoje` · filtro por `capataz_id` no Repository                           | `test/tarefas.test.js` · `it('filtra por retiro do capataz')` · Network 200      |
+| Capataz     | Acessar tarefas previamente sincronizadas offline        | RN06  | RF002 | IndexedDB (Local) · `src/service-worker.js` · `cacheFirst()`                          | `test/offline.test.js` · `it('acessa tarefas offline')` · cache hit              |
+| Capataz     | Tarefas do dia disponíveis após sincronia prévia         | RN07  | RF002 | IndexedDB (Local) · `src/service-worker.js` · `cacheFirst()`                          | `test/offline.test.js` · `it('tarefas disponiveis apos sincronia')` · cache hit  |
+| Capataz     | Interface simples com botões visíveis                    | RN12  | RF002 | IndexedDB (Local) · componentes CSS em `src/frontend/capataz/`                        | `test/ui.test.js` · `it('exibe botoes visiveis ao capataz')` · screenshot        |
+| Capataz     | Armazenar tarefas localmente após sincronização          | RN03  | RF003 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('armazena tarefas localmente')` · IndexedDB populated  |
+| Capataz     | Salvar conclusão offline até próxima sincronização       | RN08  | RF003 | `PATCH /tarefas/:id/concluir` · `src/controllers/tarefaController.js`                 | `test/tarefas.test.js` · `it('conclui tarefa com timestamp')` · Network 200      |
+| Gerente     | Ver status atualizado após sincronização                 | RN09  | RF003 | `PATCH /tarefas/:id/concluir` · `src/repositories/tarefaRepository.js`                | `test/tarefas.test.js` · `it('atualiza status para gerente')` · Network 200      |
+| Capataz     | Ver mensagem quando não houver tarefas offline           | RN04  | RF004 | IndexedDB (Local) · `src/frontend/capataz/tarefas.js` · estado vazio                  | `test/ui.test.js` · `it('exibe mensagem sem tarefas offline')` · screenshot      |
+| Capataz     | Fotos vinculadas à tarefa correspondente                 | RN10  | RF004 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('vincula foto a tarefa')` · IndexedDB populated        |
+| Capataz     | Fotos offline enviadas ao reconectar                     | RN11  | RF004 | IndexedDB (Local) · `src/sync/syncService.js` · `drenarFila()`                        | `test/sync.test.js` · `it('envia fotos ao reconectar')` · Network 201            |
+| Capataz     | Interface simples para anexar fotos                      | RN12  | RF004 | IndexedDB (Local) · `src/frontend/capataz/tarefas.js` · botão upload                  | `test/ui.test.js` · `it('exibe botao de foto visivel')` · screenshot             |
+| Capataz     | Áudio vinculado a uma tarefa existente                   | RN13  | RF005 | `POST /tarefas/:id/evidencias` · `src/controllers/evidenciaController.js`             | `test/evidencias.test.js` · `it('anexa audio base64')` · Network 201             |
+| Capataz     | Gravar áudio curto para complementar tarefa              | RN14  | RF005 | `POST /tarefas/:id/evidencias` · `src/controllers/evidenciaController.js`             | `test/evidencias.test.js` · `it('grava audio curto')` · Network 201              |
+| Capataz     | Armazenar áudio localmente quando offline                | RN15  | RF005 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('armazena audio offline')` · IndexedDB populated       |
+| Capataz     | Enviar áudio ao reconectar                               | RN16  | RF005 | IndexedDB (Local) · `src/sync/syncService.js` · `drenarFila()`                        | `test/sync.test.js` · `it('envia audio ao reconectar')` · Network 201            |
+| Capataz     | Confirmação após áudio salvo ou sincronizado             | RN17  | RF005 | IndexedDB (Local) · `src/frontend/capataz/tarefas.js` · toast de confirmação          | `test/ui.test.js` · `it('exibe toast apos audio salvo')` · screenshot            |
+| Capataz     | Áudio disponível nos detalhes da tarefa                  | RN18  | RF005 | `GET /tarefas/hoje` · `src/repositories/tarefaRepository.js` · join evidências        | `test/tarefas.test.js` · `it('retorna audio nos detalhes')` · Network 200        |
+| Capataz     | GPS capturado automaticamente ao criar alerta            | RN19  | RF006 | `POST /chamados` · `src/controllers/alertaController.js` · `create()`                 | `test/chamados.test.js` · `it('captura GPS no alerta')` · Network 201            |
+| Capataz     | Alerta enviado imediatamente se há conexão               | RN20  | RF006 | `POST /chamados` · `src/controllers/alertaController.js` · `create()`                 | `test/chamados.test.js` · `it('envia alerta com conexao')` · Network 201         |
+| Capataz     | Alerta salvo localmente se sem conexão                   | RN21  | RF006 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('salva alerta offline')` · IndexedDB populated         |
+| Capataz     | Confirmação após envio bem-sucedido do alerta            | RN22  | RF006 | `src/frontend/capataz/chamados.js` · toast confirmação                                | `test/ui.test.js` · `it('exibe confirmacao apos alerta enviado')` · screenshot   |
+| Capataz     | Informado que alerta foi salvo localmente                | RN23  | RF006 | `src/frontend/capataz/chamados.js` · estado offline                                   | `test/ui.test.js` · `it('informa salvo localmente')` · screenshot                |
+| Capataz     | Coordenadas GPS imutáveis após registro                  | RN24  | RF006 | `POST /chamados` · campo `coordenadas` somente leitura no Repository                  | `test/chamados.test.js` · `it('coordenadas imutaveis')` · Network 201            |
+| Capataz     | Data e hora exatas registradas no alerta                 | RN25  | RF006 | `POST /chamados` · `CURRENT_TIMESTAMP` no SQLite · `src/repositories/alertaRepository.js` | `test/chamados.test.js` · `it('registra timestamp')` · Network 201          |
+| Capataz     | Alerta associado ao retiro do capataz                    | RN26  | RF006 | `POST /chamados` · `retiro_id` obrigatório · `src/controllers/alertaController.js`    | `test/chamados.test.js` · `it('vincula alerta ao retiro')` · Network 201         |
+| Gerente     | Painel com status de tarefas por retiro                  | RN08  | RF007 | `GET /painel-gerencial` · `src/controllers/painelController.js` · `getMetricas()`     | `test/painel.test.js` · `it('retorna metricas por retiro')` · Network 200        |
+| Gerente     | Status atualizado após sincronização no painel           | RN09  | RF007 | `GET /painel-gerencial` · `src/repositories/painelRepository.js` · agregação          | `test/painel.test.js` · `it('painel reflete status atualizado')`
+| Coordenador | Visualizar movimentações sincronizadas por retiro         | RN28  | RF014 | `GET /eventos-zootecnicos` · `src/controllers/eventoController.js` · `listar()` | `test/eventos.test.js` · `it('lista movimentacoes por retiro')` · Network 200     |
+| Coordenador | Filtrar movimentações por retiro ou tipo de evento        | RN28  | RF014 | `GET /eventos-zootecnicos` · filtro por `retiro_id` e `tipo` no Repository      | `test/eventos.test.js` · `it('filtra por retiro e tipo')` · Network 200           |
+| Coordenador | Ver detalhes e fotos de uma movimentação específica       | RN10  | RF014 | `GET /eventos-zootecnicos` · join com tabela `evidencias` no Repository          | `test/eventos.test.js` · `it('retorna detalhes com foto')` · Network 200          |
+| Coordenador | Ver óbito vinculado ao retiro do capataz após sincronia   | RN09  | RF014 | `GET /eventos-zootecnicos` · `src/controllers/eventoController.js`               | `test/eventos.test.js` · `it('lista eventos no painel')` · Network 200            |
+| Coordenador | Exportar movimentações filtradas por data e retiro em CSV | RN28  | RF015 | `GET /exportacao/csv` · `src/controllers/exportacaoController.js` · RFC 4180    | `test/exportacao.test.js` · `it('gera csv com filtro de data e retiro')` · Network 200 · arquivo .csv |
+| Coordenador | Arquivo CSV com acentuação e formatação compatível        | RN28  | RF015 | `GET /exportacao/csv` · encoding Windows-1252 · `src/services/exportacaoService.js` | `test/exportacao.test.js` · `it('gera csv valido RFC 4180')` · Network 200 · arquivo .csv |
 
 # <a name="c4"></a>4. Desenvolvimento da Aplicação Web
 
@@ -5017,31 +5152,39 @@ _Posicione aqui o relatório dos testes SUS realizados._
 
 ## 6.1 Resumo Executivo
 
-O Brasil é o maior exportador mundial de carne bovina, com um rebanho de 238,2 milhões
-de cabeças e receita de exportação de US$ 18,03 bilhões em 2025. Apesar dessa escala,
-a gestão operacional de grande parte das fazendas ainda depende de registros manuais em
-papel, um gargalo que compromete a qualidade das informações e a velocidade das decisões.
+O Brasil é o maior exportador mundial de carne bovina, com receita de exportação de
+US$ 18,03 bilhões em 2025 [1] e crescente pressão por rastreabilidade de
+origem nos principais mercados internacionais. Apesar dessa escala, a gestão operacional
+de grande parte das fazendas ainda depende de registros manuais em papel um gargalo
+que compromete a qualidade das informações e a velocidade das decisões.
 
 É nesse contexto que se insere a solução desenvolvida para a BrPec Agropecuária S.A.,
-empresa com 14 retiros operacionais no Pantanal sul-mato-grossense. O fluxo de informações
-entre o campo e o escritório ocorre hoje por meio de boletas físicas preenchidas pelos
-capatazes, que depois são redigitadas manualmente em planilhas na sede. Esse processo
-gera inconsistências nos registros, atrasos de horas ou dias no repasse de informações
-críticas, como mortes de animais, e retrabalho constante para a equipe de coordenação.
+empresa com 14 retiros operacionais no Pantanal sul-mato-grossense. A região concentra
+64,5% do bioma pantaneiro no Mato Grosso do Sul [28], onde propriedades são
+extensas e retiros estão geograficamente dispersos, sem acesso a telecomunicações
+convencionais. O fluxo de informações entre o campo e o escritório ocorre por meio de
+boletas físicas preenchidas pelos capatazes, redigitadas manualmente em planilhas na
+sede. Esse processo gera inconsistências nos registros, atrasos de horas ou dias no
+repasse de informações críticas — como mortes de animais — e retrabalho constante para
+a equipe de coordenação.
 
-A aplicação web desenvolvida digitaliza o registro das movimentações do rebanho,
-nascimentos, mortes, compras, vendas e transferências entre retiros, com funcionamento
-offline obrigatório, resolvendo diretamente a limitação de conectividade dos retiros,
-onde o acesso à internet ocorre apenas em janelas via Starlink. Os dados são coletados
-no campo por dispositivos móveis fornecidos pela própria BrPec e sincronizados
-automaticamente quando a conexão está disponível.
+A aplicação web progressiva (PWA) desenvolvida digitaliza o registro das movimentações
+do rebanho — nascimentos, mortes, compras, vendas e transferências entre retiros —,
+com funcionamento offline nativo. Para isso, adota SQLite como banco de dados local
+no dispositivo, desvinculando o registro de dados da disponibilidade de rede. Os dados
+são sincronizados automaticamente com o servidor durante as janelas de conectividade
+via Starlink, eliminando a dependência de conexão contínua como pré-requisito
+operacional.
+
+Os principais diferenciais competitivos da solução são: interface adaptada ao perfil
+de baixa escolaridade digital dos capatazes, operação offline nativa via SQLite,
+eliminação da etapa de redigitação e rastreabilidade completa das movimentações em
+tempo real.
 
 O objetivo estratégico do projeto é reduzir erros operacionais, aumentar a velocidade
 de atualização das informações e dar aos gestores uma visão confiável e atualizada das
-operações de campo, tornando a BrPec mais competitiva em um setor que avança
-rapidamente em direção à digitalização.
-
-
+operações de campo — tornando a BrPec mais competitiva em um setor que avança
+rapidamente em direção à digitalização e à rastreabilidade compulsória [40].
 
 
 ## 6.2 Análise de Mercado
@@ -5051,18 +5194,18 @@ _a) Visão Geral do Setor_
 O Brasil ocupa posição de destaque na pecuária bovina mundial. Em 2024, o rebanho 
 nacional atingiu 238,2 milhões de cabeças, segundo a Pesquisa da Pecuária Municipal 
 do IBGE — segundo maior da série histórica, superando em 12% a própria população 
-brasileira [36]. No mesmo ano, o abate chegou ao recorde de 39,7 milhões de 
+brasileira [18]. No mesmo ano, o abate chegou ao recorde de 39,7 milhões de 
 cabeças, com produção de 10,2 milhões de toneladas em equivalente carcaça, conforme 
-dados do Ministério da Agricultura e Pecuária [37]. 
+dados do Ministério da Agricultura e Pecuária [30]. 
 
 No plano das exportações, o setor registrou em 2024 o envio de 2,87 milhões de 
 toneladas de carne bovina, crescimento de 25,5% em relação ao ano anterior, gerando 
-receita de US$ 12,83 bilhões [37]. Em 2025, os resultados superaram esses 
+receita de US$ 12,83 bilhões [30]. Em 2025, os resultados superaram esses 
 números: foram exportadas 3,50 milhões de toneladas, alta de 20,9%, com receita de 
 US$ 18,03 bilhões — o maior desempenho já registrado na série histórica, segundo a 
-Associação Brasileira das Indústrias Exportadoras de Carnes [38]. Com isso, 
+Associação Brasileira das Indústrias Exportadoras de Carnes [1]. Com isso, 
 o Brasil consolidou-se em 2025 como o maior produtor mundial de carne bovina, 
-ultrapassando os Estados Unidos pela primeira vez [36].
+ultrapassando os Estados Unidos pela primeira vez [18].
 
 Do ponto de vista regulatório, o regulamento antidesmatamento da União Europeia, 
 previsto para entrar em vigor a partir de 2026, aumenta as exigências de rastreabilidade 
@@ -5076,12 +5219,12 @@ O rebanho bovino brasileiro encerrou 2024 com 238,2 milhões de cabeças, segund
 Pesquisa da Pecuária Municipal do IBGE — o segundo maior da série histórica iniciada
 em 1974 (IBGE, 2025). O volume de abate acompanhou essa escala: foram 39,27 milhões
 de cabeças abatidas em 2024, alta de 15,2% em relação ao ano anterior, com produção
-de 10,2 milhões de toneladas de carne em equivalente carcaça [39] [43].
+de 10,2 milhões de toneladas de carne em equivalente carcaça [17] [29].
 Em 2025, o crescimento continuou: somente no primeiro trimestre foram abatidas
 9,87 milhões de cabeças, recorde histórico para o período, com alta de 5,5% sobre
-igual trimestre de 2024 [40].
+igual trimestre de 2024 [9].
 
-A tabela abaixo resume a evolução do abate nos últimos anos:
+A tabela abaixo resume a evolução do abate nos últimos anos [39]:
 
 | Ano  | Cabeças abatidas (milhões) | Variação anual |
 |------|---------------------------|----------------|
@@ -5090,14 +5233,14 @@ A tabela abaixo resume a evolução do abate nos últimos anos:
 | 2024 | 39,27                     | +15,2%         |
 | 2025 (projeção) | ~42,5            | +8,2%          |
 
-[39].
+[17].
 
 No plano das exportações, o Brasil embarcou 2,87 milhões de toneladas em 2024
 (+25,5% vs. 2023), gerando US$ 12,83 bilhões em receita (MAPA, 2024). Em 2025,
 esses números foram superados: 3,50 milhões de toneladas exportadas (+20,9%),
 com receita de US$ 18,03 bilhões (+40,1%), consolidando o país como maior
 exportador mundial de carne bovina (ABIEC, 2026). Para 2026, a ABIEC projeta
-crescimento adicional de 12% nas exportações totais [41].
+crescimento adicional de 12% nas exportações totais [1].
 
 | Ano  | Volume exportado (milhões de ton.) | Receita (US$ bilhões) | Variação receita |
 |------|------------------------------------|-----------------------|-----------------|
@@ -5106,14 +5249,14 @@ crescimento adicional de 12% nas exportações totais [41].
 | 2025 | 3,50                               | 18,03                 | +40,1%          |
 | 2026 | ~3,92 (proj.)                      | ~20,5 (proj.)         | ~+12%           |
 
-[41] [43]
+[1] [29]
 
 Além do crescimento em volume, o setor enfrenta uma pressão crescente por
 rastreabilidade. O Regulamento Europeu Antidesmatamento (EUDR) exige que produtos
 bovinos exportados à União Europeia comprovem origem livre de desmatamento,
 prazo previsto para o segundo semestre de 2026 (EUDR, 2023). No plano doméstico,
 o Plano Nacional de Identificação de Bovinos (PNIB) estabelece como meta a
-rastreabilidade individual de todo o rebanho nacional até 2032 [43].
+rastreabilidade individual de todo o rebanho nacional até 2032 [29].
 
 Esse cenário abre mercado direto para soluções de gestão digital de campo: fazendas
 que registram movimentações de rebanho de forma estruturada e rastreável passam a
@@ -5128,26 +5271,168 @@ _Identifique e analise tendências relevantes (tecnológicas, comportamentais e 
 ## 6.3 Análise da Concorrência
 
 _a) Principais Concorrentes (até 250 palavras)_
-_Liste os concorrentes diretos e indiretos, destacando suas principais características e posicionamento no mercado._
+
+O mercado de software para gestão pecuária no Brasil conta com soluções voltadas
+principalmente para fazendas com infraestrutura tecnológica já estabelecida.
+
+**iRancho** é um sistema ERP focado em pecuária de corte com aplicativo de campo
+offline, integração com balanças e brincos eletrônicos e, desde 2026, um ecossistema
+de IA por voz para registro sem digitação. Os planos são cobrados por faixa de rebanho, o que eleva o custo para operações de grande escala [44].
+
+**JetBov** é um aplicativo de gestão de pasto com coleta offline de dados zootécnicos
+e sincronização automática ao reconectar. Focado em indicadores de ganho de peso,
+reprodução e controle de piquetes, seu perfil de usuário pressupõe familiaridade com
+ambientes digitais [45].
+
+**Aegro** é uma plataforma de gestão rural ampla, com suporte a múltiplas culturas e
+pecuária, funcionalidade offline e integração contábil. Posicionado para produtores com
+gestão financeira complexa, apresenta curva de aprendizado mais longa [46].
+
+Nenhuma das soluções comerciais identificadas foi projetada para o modelo operacional
+de retiros geograficamente dispersos, com usuários de baixa escolaridade digital e
+conectividade dependente de janelas fixas de Starlink. 
 
 _b) Vantagens Competitivas da Aplicação Web (até 250 palavras)_
-_Descreva os diferenciais da sua aplicação em relação aos concorrentes, sem necessidade de citação de fontes._
+
+A solução desenvolvida para a BrPec se diferencia dos concorrentes por um conjunto de
+características construídas especificamente para o contexto operacional da empresa.
+
+O primeiro diferencial é a **interface adaptada ao perfil dos usuários**. Enquanto os
+sistemas concorrentes pressupõem familiaridade com ambientes digitais, a aplicação foi
+projetada para capatazes com baixa escolaridade digital, com fluxos simples, poucos
+passos por tarefa e linguagem visual direta.
+
+O segundo diferencial é o **offline nativo via SQLite**. Os dados são gravados
+localmente no dispositivo durante o trabalho de campo e sincronizados automaticamente
+com o servidor — via fila de sincronização (sync_queue) — nas janelas de conectividade
+disponíveis. Não há dependência de conexão contínua em nenhuma etapa do registro.
+
+O terceiro diferencial é a **aderência ao modelo de retiros**. A arquitetura da solução
+foi construída sobre o fluxo real da BrPec: registro de nascimentos, mortes, compras,
+vendas e transferências entre retiros, com rastreabilidade por unidade operacional.
+Nenhum concorrente oferece essa estrutura de forma nativa.
+
+O quarto diferencial é a **instalação via PWA**, sem necessidade de loja de aplicativos.
+A solução é instalada diretamente pelo navegador nos dispositivos fornecidos pela BrPec,
+eliminando barreiras de configuração e atualizações manuais.
+
+Por fim, a solução não cobra licença por animal — modelo de precificação dos
+concorrentes que penaliza operações de grande rebanho como a da BrPec.
 
 ## 6.4 Público-Alvo
 
 _a) Segmentação de Mercado (até 250 palavras)_
-Descreva os principais segmentos de mercado a serem atendidos pela aplicação. Utilize bases de dados e fontes confiáveis.\*
+
+O mercado-alvo da solução é composto por fazendas de pecuária de corte localizadas
+em regiões de baixa conectividade, com operações distribuídas em múltiplas unidades
+de campo, os retiros no contexto da Brpec. Esse segmento concentra características específicas que o diferenciam do mercado geral de
+agronegócio digital. 
+
+Do ponto de vista geográfico, o Pantanal sul-mato-grossense abriga aproximadamente
+3.500 propriedades rurais distribuídas em nove municípios, com rebanho estimado em
+3,6 milhões de cabeças bovinas [47]. A região representa 20% do rebanho
+total do estado de Mato Grosso do Sul e tem na pecuária extensiva sua principal
+atividade econômica há mais de 200 anos [48].
+
+Do ponto de vista tecnológico, o segmento é caracterizado por baixa adoção de
+ferramentas digitais de gestão. Segundo o Censo Agropecuário 2017 do IBGE, menos
+de 28% dos estabelecimentos rurais brasileiros possuem acesso à internet, e desses,
+apenas 46% contam com banda larga [49]. Esse cenário é ainda mais restritivo
+no Pantanal, onde a conectividade depende de tecnologias satelitais como o Starlink,
+disponíveis apenas no retiro.
+
+O segmento secundário é composto por coordenadores e gerentes de fazendas que
+necessitam de visibilidade consolidada das operações de campo em tempo real, sem
+depender de relatórios manuais ou planilhas desatualizadas. Ambos os segmentos
+compartilham a necessidade central de rastreabilidade operacional com baixa
+dependência de infraestrutura de rede.
+
+
 
 _b) Perfil do Público-Alvo (até 250 palavras)_
-_Caracterize o público-alvo com dados demográficos, psicográficos e comportamentais, incluindo necessidades específicas. Utilize fontes obrigatórias._
+
+O público-alvo da solução é composto por três perfis de usuários internos da BrPec,
+com características e contextos de uso distintos.
+
+**Capataz de retiro** — principal usuário operacional. Perfil masculino, faixa etária
+entre 35 e 55 anos, residente no retiro durante a semana de trabalho. Opera em campo,
+sem acesso contínuo à internet, em condições adversas de luminosidade e mobilidade.
+Responsável pelo registro diário de nascimentos, mortes, entradas, saídas e
+transferências do rebanho. O nível de escolaridade reflete o padrão da força de
+trabalho rural brasileira: 21% dos trabalhadores rurais são analfabetos e 43% possuem
+apenas ensino fundamental incompleto [49]. Apenas 26,5% da população rural
+maior de 18 anos possui ensino fundamental completo [50]. O WhatsApp é o
+principal canal de comunicação utilizado, indicando familiaridade com smartphones,
+mas não com interfaces de software estruturadas.
+
+**Coordenador do retiro** - usuário intermediário, com maior escolaridade e
+familiaridade digital. Consolida informações dos retiros sob sua supervisão e gera
+relatórios para a sede. Utiliza a aplicação tanto no campo quanto na sede.
+
+**Gerente geral** — usuário estratégico, acessa a aplicação pela sede com
+conectividade estável. Não realiza registros operacionais; acompanha o painel
+consolidado e toma decisões com base nos dados sincronizados.
+
+O baixo letramento digital do capataz justifica as decisões de interface adotadas:
+fluxos simples, linguagem visual direta, botões grandes e suporte a registros por
+áudio, reduzindo a dependência de digitação como meio primário de entrada de dados.
 
 ## 6.5 Posicionamento
 
 _a) Proposta de Valor Única (até 250 palavras)_
-_Defina de maneira clara o que torna a sua aplicação única e valiosa para o mercado._
+A BrPec opera hoje com um fluxo de informações inteiramente manual: capatazes
+registram movimentações do rebanho em boletas de papel, que são recolhidas e
+redigitadas em planilhas Excel na sede pelo coordenador. Esse processo gera atrasos
+de horas ou dias na atualização dos dados, inconsistências entre registros de entrada
+e saída de animais e retrabalho constante, tudo isso em uma operação distribuída em
+14 retiros sem conectividade contínua.
+
+A proposta de valor da solução desenvolvida é direta: eliminar o papel como meio de
+registro e a redigitação como etapa de processamento, substituindo ambos por um
+fluxo digital único, coletado no campo e sincronizado automaticamente com o servidor
+nas janelas de conectividade disponíveis.
+
+Para o capataz, o valor está na simplicidade: uma interface projetada para baixo
+letramento digital, com poucos passos por tarefa e suporte a áudio, que não exige
+treinamento extenso nem familiaridade prévia com sistemas.
+
+Para o coordenador, o valor está na eliminação do retrabalho: os dados chegam
+estruturados, sem necessidade de transcrição manual, prontos para consolidação e
+análise.
+
+Para o gerente, o valor está na confiabilidade: em vez de aguardar o ciclo
+de recolhimento e redigitação das boletas, as informações do rebanho — nascimentos,
+mortes, transferências — passam a estar disponíveis no painel assim que o retiro
+sincroniza. A tomada de decisão deixa de depender de dados defasados e passa a
+refletir a realidade operacional do dia.
 
 _b) Estratégia de Diferenciação (até 250 palavras)_
-_Explique como sua aplicação se destacará da concorrência, evidenciando a lógica por trás do posicionamento._
+
+A estratégia de diferenciação da solução se apoia em três eixos que os concorrentes
+de mercado não endereçam de forma combinada.
+
+O primeiro eixo é a **aderência ao contexto operacional**. Sistemas como iRancho [44] e JetBov[45] oferecem funcionalidades offline, mas foram projetados para um perfil de
+usuário com maior familiaridade digital e para fazendas com infraestrutura mais
+consolidada. A solução da BrPec foi construída sobre o fluxo real da operação,
+os tipos de registro, a estrutura de retiros, o perfil dos capatazes, o que
+elimina a necessidade de adaptação do processo ao sistema. 
+
+O segundo eixo é a **simplicidade como requisito técnico**. A interface não é
+simplificada por limitação, mas por decisão de projeto: cada tela foi desenhada
+para o perfil de menor familiaridade digital, garantindo que o usuário mais
+limitado consiga operar sem auxílio. Isso aumenta a taxa de adoção e reduz erros
+de preenchimento na origem.
+
+O terceiro eixo é a **arquitetura offline-first com SQLite**. Diferentemente de
+soluções que degradam funcionalidades sem internet, a aplicação opera com
+capacidade plena sem conexão. Os dados são gravados localmente e sincronizados
+via fila estruturada (sync_queue) nas janelas de Starlink, sem perda de registros
+e sem intervenção manual do usuário.
+
+A combinação desses três eixos posiciona a solução não como uma alternativa
+genérica de gestão pecuária, mas como uma ferramenta construída especificamente
+para o problema da BrPec, o que representa uma barreira de replicação que
+produtos de prateleira não conseguem superar.
 
 ## 6.6 Estratégia de Marketing
 
@@ -5173,107 +5458,91 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 
 # <a name="c8"></a>8. Referências (sprints 1 a 5)
 
-[1] CEPEA. PIB do Agronegócio Brasileiro. Disponível em: https://www.cepea.esalq.usp.br. Acesso em: 29 abr. 2026.
+[1] ABIEC. Brasil bate recorde nas exportações de carne bovina em 2025. São Paulo: ABIEC, 2026. Disponível em: https://abiec.com.br/brasil-bate-recorde-nas-exportacoes-de-carne-bovina-em-2025/. Acesso em: jun. 2026.
 
-[2] REVISTA DE GESTÃO E PROJETOS — GeP. Gestão de riscos em projetos: uma análise comparativa da norma ISO 31000 e o Guia PMBOK®, 2012. Revista de Gestão e Projetos — GeP, São Paulo, v. 4, n. 3, p. 46–72, set./dez. 2013. Disponível em: https://www.bibliotecadeseguranca.com.br/wp-content/uploads/2020/05/gerenciamento-de-riscos-em-projetos-uma-comparacao-entre-o-pmbok-e-a-iso-31000.pdf. Acesso em: 29 abr. 2026.
+[2] BABICH, Nick. Principles of Typography in UI Design. UX Planet, 2016. Disponível em: https://uxplanet.org/principles-of-typography-in-ui-design-bc28f1f9666d. Acesso em: 19 maio 2026.
 
-[3] PORTAL SALÁRIO. gerente de Produção e Operações Agropecuárias - Salário 2026, Piso Salarial. 2026. Disponível em: https://www.salario.com.br/profissao/gerente-de-producao-e-operacoes-agropecuarias-cbo-141115/. Acesso em: 28 abr. 2026.
+[3] BOOCH, Grady; RUMBAUGH, James; JACOBSON, Ivar. The Unified Modeling Language User Guide. 2. ed. Boston: Addison-Wesley Professional, 2005. 494 p. ISBN 978-0-321-26797-9.
 
-[4] COSGROVE, J.; CACHIA, R. DigComp 3.0: European Digital Competence Framework. 5. ed. Luxembourg: Publications Office of the European Union, 2025. Disponível em: https://data.europa.eu/doi/10.2760/0001149. Acesso em: 28 abr. 2026.
+[4] BRASIL. Ministério do Trabalho e Emprego. Classificação Brasileira de Ocupações (CBO): capataz na Agropecuária - CBO 6210-05. [S.d.]. Disponível em: https://www.mtecbo.gov.br. Acesso em: 28 abr. 2026.
 
-[5] IPOG. Gestão do Agronegócio: como está o mercado de trabalho?. Disponível em: https://blog.ipog.edu.br/gestao-e-negocios/gestao-do-agronegocio/. [S.d.]. Acesso em: 28 abr. 2026.
+[5] CEPEA. PIB do Agronegócio Brasileiro. Disponível em: https://www.cepea.esalq.usp.br. Acesso em: 29 abr. 2026.
 
-[6] CONFEDERAÇÃO DA AGRICULTURA E PECUÁRIA DO BRASIL. Conheça as 4 carreiras mais quentes do agronegócio brasileiro. CNA Brasil, [S.d.]. Disponível em: https://www.cnabrasil.org.br/noticias/conheca-as-4-carreiras-mais-quentes-do-agronegocio-brasileiro. Acesso em: 28 abr. 2026.
+[6] CHEN, Peter Pin-Shan. The entity-relationship model: toward a unified view of data. ACM Transactions on Database Systems, v. 1, n. 1, p. 9–36, 1976.
 
-[7] PORTAL SALÁRIO. capataz na Pecuária - Salário 2026, Piso Salarial. 2026. Disponível em: https://www.salario.com.br/profissao/capataz-na-pecuaria-cbo-620115/. Acesso em: 28 abr. 2026.
+[7] COHN, Mike. User Stories Applied: For Agile Software Development. Boston: Addison-Wesley, 2004.
 
-[8] BRASIL. Ministério do Trabalho e Emprego. Classificação Brasileira de Ocupações (CBO): capataz na Agropecuária - CBO 6210-05. [S.d.]. Disponível em: https://www.mtecbo.gov.br. Acesso em: 28 abr. 2026.
+[8] CONFEDERAÇÃO DA AGRICULTURA E PECUÁRIA DO BRASIL. Conheça as 4 carreiras mais quentes do agronegócio brasileiro. CNA Brasil, [S.d.]. Disponível em: https://www.cnabrasil.org.br/noticias/conheca-as-4-carreiras-mais-quentes-do-agronegocio-brasileiro. Acesso em: 28 abr. 2026.
 
-[9] MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026.
+[9] CONFEDERAÇÃO DA AGRICULTURA E PECUÁRIA DO BRASIL. Pesquisa Trimestral do Abate, Leite e Ovos — 1º trimestre de 2025. Brasília: CNA, 2025. Disponível em: https://www.cnabrasil.org.br. Acesso em: jun. 2026.
 
-[10] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
+[10] COOPER, Alan; REIMANN, Robert; CRONIN, David; NOESSEL, Christopher. About Face: The Essentials of Interaction Design. 4. ed. Indianapolis: John Wiley & Sons, 2014. ISBN 978-1-118-76657-6.
 
-[11] COOPER, Alan; REIMANN, Robert; CRONIN, David; NOESSEL, Christopher. About Face: The Essentials of Interaction Design. 4. ed. Indianapolis: John Wiley & Sons, 2014. ISBN 978-1-118-76657-6.
+[11] COSGROVE, J.; CACHIA, R. DigComp 3.0: European Digital Competence Framework. 5. ed. Luxembourg: Publications Office of the European Union, 2025. Disponível em: https://data.europa.eu/doi/10.2760/0001149. Acesso em: 28 abr. 2026.
 
-[12] COHN, Mike. User Stories Applied: For Agile Software Development. Boston: Addison-Wesley, 2004.
+[12] EVANS, Eric. Domain-Driven Design: Tackling Complexity in the Heart of Software. Boston: Addison-Wesley, 2003. ISBN 978-0-321-12521-7.
 
-[13] CHEN, Peter Pin-Shan. The entity-relationship model: toward a unified view of data. ACM Transactions on Database Systems, v. 1, n. 1, p. 9–36, 1976.
+[13] FOWLER, Martin. Patterns of Enterprise Application Architecture. Boston: Addison-Wesley, 2002. ISBN 978-0-321-12742-6.
 
-[14] OBJECT MANAGEMENT GROUP. Unified Modeling Language Specification: Version 2.5.1. Needham, MA: OMG, 2017. Disponível em: https://www.omg.org/spec/UML/2.5.1. Acesso em: mai. 2026.
+[14] FOWLER, Martin. UML Distilled: A Brief Guide to the Standard Object Modeling Language. 3. ed. Boston: Addison-Wesley Professional, 2004. 175 p. ISBN 978-0-321-19368-1.
 
-[15] FOWLER, Martin. UML Distilled: A Brief Guide to the Standard Object Modeling Language. 3. ed. Boston: Addison-Wesley Professional, 2004. 175 p. ISBN 978-0-321-19368-1.
+[15] GAMMA, Erich; HELM, Richard; JOHNSON, Ralph; VLISSIDES, John. Design Patterns: Elements of Reusable Object-Oriented Software. Boston: Addison-Wesley, 1994. ISBN 978-0-201-63361-0.
 
-[16] LARMAN, Craig. Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development. 3. ed. Upper Saddle River: Prentice Hall, 2004. 736 p. ISBN 978-0-131-48906-6.
+[16] HOHPE, Gregor; WOOLF, Bobby. Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions. Boston: Addison-Wesley, 2003. ISBN 978-0-321-20068-6.
 
-[17] INTERNATIONAL ORGANIZATION FOR STANDARDIZATION. ISO/IEC 19505-2:2012: Information technology — Object Management Group Unified Modeling Language (OMG UML) — Part 2: Superstructure. Genebra: ISO, 2012. Disponível em: https://www.iso.org/standard/52854.html. Acesso em: mai. 2026.
+[17] IBGE. Estatísticas da Produção Pecuária — Resultados do 4º trimestre de 2024. Rio de Janeiro: IBGE, 2025. Disponível em: https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/42899-abate-de-bovinos-atinge-recorde-em-2024. Acesso em: jun. 2026.
 
-[18] PROJECT MANAGEMENT INSTITUTE. Um guia do conhecimento em gerenciamento de projetos (Guia PMBOK). 7. ed. Newtown Square: PMI, 2021. ISBN 978-1-62825-664-2.
+[18] IBGE. Pesquisa da Pecuária Municipal 2024. Rio de Janeiro: IBGE, 2025. Disponível em: https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9107-producao-da-pecuaria-municipal.html. Acesso em: jun. 2026.
 
-[19] KOTLER, Philip; KELLER, Kevin Lane. Administração de marketing. 14. ed. São Paulo: Pearson Education do Brasil, 2012. ISBN 978-85-430-0199-4.
+[19] ILLUMINATING ENGINEERING SOCIETY. The Lighting Handbook. 10. ed. New York: IES, 2011.
 
-[20] PORTER, Michael E. Competitive Strategy: Techniques for Analyzing 
-Industries and Competitors. New York: Free Press, 2008. ISBN 978-0-7432-7275-4.
+[20] INTERNATIONAL ORGANIZATION FOR STANDARDIZATION. ISO 9241-303:2011: Ergonomics of human-system interaction — Part 303: Requirements for electronic visual displays. Genebra: ISO, 2011.
 
-[21] BOOCH, Grady; RUMBAUGH, James; JACOBSON, Ivar. The Unified Modeling Language User Guide. 2. ed. Boston: Addison-Wesley Professional, 2005. 494 p. ISBN 978-0-321-26797-9.
+[21] INTERNATIONAL ORGANIZATION FOR STANDARDIZATION. ISO/IEC 19505-2:2012: Information technology — Object Management Group Unified Modeling Language (OMG UML) — Part 2: Superstructure. Genebra: ISO, 2012. Disponível em: https://www.iso.org/standard/52854.html. Acesso em: mai. 2026.
 
-[22] NIELSEN NORMAN GROUP. Design Systems vs. Style Guides. 2024. Disponível em: https://www.nngroup.com/articles/design-systems-vs-style-guides/. Acesso em: 18 maio 2026.
+[22] IPOG. Gestão do Agronegócio: como está o mercado de trabalho?. [S.d.]. Disponível em: https://blog.ipog.edu.br/gestao-e-negocios/gestao-do-agronegocio/. Acesso em: 28 abr. 2026.
 
-[23] UXPIN. Design System vs. Pattern Library vs. Style Guide vs. Component Library. 2026. Disponível em: https://www.uxpin.com/studio/blog/design-systems-vs-pattern-libraries-vs-style-guides-whats-difference/. Acesso em: 18 maio 2026.
+[23] KOTLER, Philip; KELLER, Kevin Lane. Administração de marketing. 14. ed. São Paulo: Pearson Education do Brasil, 2012. ISBN 978-85-430-0199-4.
 
-[24] W3C. WCAG 2.1 - Success Criterion 1.4.6: Contrast (Enhanced). Disponível em: https://www.w3.org/TR/WCAG21/#contrast-enhanced.
+[24] LARMAN, Craig. Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development. 3. ed. Upper Saddle River: Prentice Hall, 2004. 736 p. ISBN 978-0-131-48906-6.
 
-[25] ISO 9241-303:2011. Ergonomics of human-system interaction — Part 303: Requirements for electronic visual displays.
+[25] LEACH, P. et al. RFC 9562: Universally Unique IDentifiers (UUID). Internet Engineering Task Force, 2024. Disponível em: https://www.rfc-editor.org/rfc/rfc9562. Acesso em: 07 mai. 2026.
 
-[26] IES. The Lighting Handbook (10th Ed.). Seções de visualização sob alta iluminância.
+[26] MACHADO, João Guilherme de Camargo Ferraz; NANTES, José Flávio Diniz. Adoção da tecnologia da informação em organizações rurais: o caso da pecuária de corte. Gestão & Produção, São Carlos, v. 18, n. 3, p. 555-570, 2011. Disponível em: https://www.scielo.br/j/gp/a/cwVwLsPgq8FBq5kvgXZPpLQ/. Acesso em: 28 abr. 2026.
 
-[27] SNAITH, M.; TORNQVIST, K. Situational Visual Impairment: Designing interfaces for outdoor and mobile usage. JMHCI, v. 12, 2020.
+[27] MARTIN, Robert C. Clean Architecture: A Craftsman’s Guide to Software Structure and Design. Boston: Prentice Hall, 2017. ISBN 978-0-134-49416-6.
 
-[28] BABICH, Nick. Principles of Typography in UI Design. UX Planet, 2016. Disponível em: https://uxplanet.org/principles-of-typography-in-ui-design-bc28f1f9666d. Acesso em: 19 maio 2026.
+[28] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. MAPA fortalece agropecuária pantaneira. Brasília: MAPA, 2023. Disponível em: https://www.gov.br/agricultura/pt-br/assuntos/noticias/mapa-fortalece-agropecuaria-pantaneira. Acesso em: jun. 2026.
 
-[29] GAMMA, Erich; HELM, Richard; JOHNSON, Ralph; VLISSIDES, John. Design Patterns: Elements of Reusable Object-Oriented Software. Boston: Addison-Wesley, 1994. ISBN 978-0-201-63361-0.
+[29] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. Plano Nacional de Identificação de Bovinos e Búfalos (PNIB). Brasília: MAPA, 2024. Disponível em: https://www.gov.br/agricultura. Acesso em: jun. 2026.
 
-[30] MARTIN, Robert C. Clean Architecture: A Craftsman's Guide to Software Structure and Design. Boston: Prentice Hall, 2017. ISBN 978-0-134-49416-6.
+[30] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. Produção e exportações de carne bovina 2024. Brasília: MAPA/SCRI, 2024. Disponível em: https://www.gov.br/agricultura. Acesso em: jun. 2026.
 
-[31] HOHPE, Gregor; WOOLF, Bobby. Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions. Boston: Addison-Wesley, 2003. ISBN 978-0-321-20068-6.
+[31] NIELSEN NORMAN GROUP. Design Systems vs. Style Guides. 2024. Disponível em: https://www.nngroup.com/articles/design-systems-vs-style-guides/. Acesso em: 18 maio 2026.
 
-[32] FOWLER, Martin. Patterns of Enterprise Application Architecture. Boston: Addison-Wesley, 2002. ISBN 978-0-321-12742-6.
+[32] OBJECT MANAGEMENT GROUP. Unified Modeling Language Specification: Version 2.5.1. Needham, MA: OMG, 2017. Disponível em: https://www.omg.org/spec/UML/2.5.1. Acesso em: mai. 2026.
 
-[33] EVANS, Eric. Domain-Driven Design: Tackling Complexity in the Heart of Software. Boston: Addison-Wesley, 2003. ISBN 978-0-321-12521-7.
+[33] PORTAL SALÁRIO. Capataz na Pecuária - Salário 2026, Piso Salarial. 2026. Disponível em: https://www.salario.com.br/profissao/capataz-na-pecuaria-cbo-620115/. Acesso em: 28 abr. 2026.
 
-[34] UX QUEST. Guia completo sobre paleta de cores para design de interface e UX. UX Quest, 2026. Disponível em: https://www.uxquest.com.br/blog/paleta-de-cores. Acesso em: 28 maio 2026.
+[34] PORTAL SALÁRIO. Gerente de Produção e Operações Agropecuárias - Salário 2026, Piso Salarial. 2026. Disponível em: https://www.salario.com.br/profissao/gerente-de-producao-e-operacoes-agropecuarias-cbo-141115/. Acesso em: 28 abr. 2026.
 
-[35] SUA IMPRENSA. Guia de estilo da marca: o que é, como fazer e elementos essenciais. Sua Imprensa, 2025. Disponível em: https://suaimprensa.com.br/blog/guia-de-estilo-da-marca/. Acesso em: 28 maio 2026.
+[35] PORTER, Michael E. Competitive Strategy: Techniques for Analyzing Industries and Competitors. New York: Free Press, 2008. ISBN 978-0-7432-7275-4.
 
-[36] IBGE. Pesquisa da Pecuária Municipal 2024. Rio de Janeiro: IBGE, 2025. 
-Disponível em: https://www.ibge.gov.br/estatisticas/economicas/agricultura-e-pecuaria/9107-producao-da-pecuaria-municipal.html. 
-Acesso em: jun. 2026.
+[36] PROJECT MANAGEMENT INSTITUTE. Um guia do conhecimento em gerenciamento de projetos (Guia PMBOK). 7. ed. Newtown Square: PMI, 2021. ISBN 978-1-62825-664-2.
 
-[37] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. Produção e exportações de carne bovina 
-2024. Brasília: MAPA/SCRI, 2024. Disponível em: https://www.gov.br/agricultura. 
-Acesso em: jun. 2026.
+[37] REVISTA DE GESTÃO E PROJETOS — GeP. Gestão de riscos em projetos: uma análise comparativa da norma ISO 31000 e o Guia PMBOK®. Revista de Gestão e Projetos — GeP, São Paulo, v. 4, n. 3, p. 46–72, set./dez. 2013. Disponível em: https://www.bibliotecadeseguranca.com.br/wp-content/uploads/2020/05/gerenciamento-de-riscos-em-projetos-uma-comparacao-entre-o-pmbok-e-a-iso-31000.pdf. Acesso em: 29 abr. 2026.
 
-[38] ABIEC. Brasil bate recorde nas exportações de carne bovina em 2025. São Paulo: 
-ABIEC, 2026. Disponível em: https://abiec.com.br/brasil-bate-recorde-nas-exportacoes-de-carne-bovina-em-2025/. 
-Acesso em: jun. 2026.
+[38] SNAITH, M.; TORNQVIST, K. Situational Visual Impairment: Designing interfaces for outdoor and mobile usage. JMHCI, v. 12, 2020.
 
-[39] IBGE. Estatísticas da Produção Pecuária — Resultados do 4º trimestre de 2024.
-Rio de Janeiro: IBGE, 2025. Disponível em: https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/42899-abate-de-bovinos-atinge-recorde-em-2024.
-Acesso em: jun. 2026.
+[39] SUA IMPRENSA. Guia de estilo da marca: o que é, como fazer e elementos essenciais. Sua Imprensa, 2025. Disponível em: https://suaimprensa.com.br/blog/guia-de-estilo-da-marca/. Acesso em: 28 maio 2026.
 
-[40] CONFEDERAÇÃO DA AGRICULTURA E PECUÁRIA DO BRASIL. Pesquisa Trimestral do
-Abate, Leite e Ovos — 1º trimestre de 2025. Brasília: CNA, 2025. Disponível em:
-https://www.cnabrasil.org.br. Acesso em: jun. 2026.
+[40] UNIÃO EUROPEIA. Regulamento (UE) 2023/1115 — Regulamento Europeu Antidesmatamento (EUDR). Bruxelas: Parlamento Europeu e Conselho da UE, 2023. Disponível em: https://eur-lex.europa.eu. Acesso em: jun. 2026.
 
-[41] ABIEC. Brasil bate recorde nas exportações de carne bovina em 2025. São Paulo:
-ABIEC, 2026. Disponível em: https://abiec.com.br. Acesso em: jun. 2026.
+[41] UX QUEST. Guia completo sobre paleta de cores para design de interface e UX. UX Quest, 2026. Disponível em: https://www.uxquest.com.br/blog/paleta-de-cores. Acesso em: 28 maio 2026.
 
-[42] UNIÃO EUROPEIA. Regulamento (UE) 2023/1115 — Regulamento Europeu
-Antidesmatamento (EUDR). Bruxelas: Parlamento Europeu e Conselho da UE, 2023.
-Disponível em: https://eur-lex.europa.eu. Acesso em: jun. 2026.
+[42] UXPIN. Design System vs. Pattern Library vs. Style Guide vs. Component Library. 2026. Disponível em: https://www.uxpin.com/studio/blog/design-systems-vs-pattern-libraries-vs-style-guides-whats-difference/. Acesso em: 18 maio 2026.
 
-[43] MINISTÉRIO DA AGRICULTURA E PECUÁRIA. Plano Nacional de Identificação de
-Bovinos e Búfalos (PNIB). Brasília: MAPA, 2024. Disponível em:
-https://www.gov.br/agricultura. Acesso em: jun. 2026.
+[43] W3C. WCAG 2.1 — Success Criterion 1.4.6: Contrast (Enhanced). Disponível em: https://www.w3.org/TR/WCAG21/#contrast-enhanced. Acesso em: maio 2026.
 
 # <a name="c9"></a>Anexos
 

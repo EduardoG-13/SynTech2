@@ -1,66 +1,122 @@
 <%- include('partials/header') %>
+<link rel="stylesheet" href="/public/css/tarefas.css" />
 
-<!-- Adicionamos a classe "logged" para indicar que há um usuário ativo -->
 <div id="device" class="logged">
-  
-  <!-- Inclusão da Sidebar Vertical Dinâmica -->
+
   <%- include('partials/sidebar') %>
 
-  <!-- Área Principal de Conteúdo -->
   <div id="app">
-    
-    <!-- Barra superior interna da página com avatar -->
-    <div class="header-bar">
-      <div class="user-avatar">👤</div>
-      <h1>Tarefas</h1>
+
+    <div class="header-bar" style="margin-top: 0; margin-bottom: 2rem;">
+      <div class="user-avatar">🤠</div>
+      <h1>Histórico de Registros</h1>
       <div class="sub"><%= retiro %> (<%= perfil %>)</div>
     </div>
 
-    <div class="content">
-      <!-- Filtros conforme mockup -->
-      <div class="filter-pills">
-        <span class="pill active">Todos</span>
-        <span class="pill">Rebanhos</span>
+    <main class="tarefas-main">
+
+      <!-- Filtro por tipo de boleta (ajuda a achar registros) -->
+      <div class="filter-pills" id="filtros-tarefas">
+        <button class="pill active" data-filtro="todas">Todas</button>
+        <button class="pill" data-filtro="movimentacao">🔄 Movimentação</button>
+        <button class="pill" data-filtro="nascimento">🐄 Nascimento</button>
+        <button class="pill" data-filtro="obito">⚰️ Óbito</button>
       </div>
 
-      <!-- Lista estrutural das Tarefas -->
-      <div class="tarefas-lista">
-        
-        <!-- Exemplo de Card 1 -->
-        <div class="card tarefa-card">
-          <div class="bar-lateral andamento"></div>
+      <!-- Lista de boletas criadas pelo capataz (editáveis) -->
+      <div class="tarefas-lista" id="tarefas-lista">
+
+        <div class="card tarefa-card" data-tipo="movimentacao" onclick="window.location.href='/boleta/1?perfil=<%= perfil %>&retiro=<%= retiro %>'">
+          <div class="bar-lateral concluida"></div>
           <div class="body">
-            <span class="titulo">Consertar Cerca</span>
-            <span class="badge andamento">Em andamento</span>
-            <span class="arrow">›</span>
+            <div class="info">
+              <span class="titulo">🔄 Movimentação — 30 Garrotes</span>
+              <span class="descricao">Saída para o Retiro Cristo</span>
+              <div class="meta">
+                <span class="retiro-tag">📅 09/06/2026</span>
+              </div>
+            </div>
+            <div class="status-area">
+              <span class="badge concluida">✓ Enviado</span>
+              <span class="arrow">✏️</span>
+            </div>
           </div>
         </div>
 
-        <!-- Exemplo de Card 2 -->
-        <div class="card tarefa-card">
-          <div class="bar-lateral pendente"></div>
+        <div class="card tarefa-card" data-tipo="nascimento" onclick="window.location.href='/boleta/2?perfil=<%= perfil %>&retiro=<%= retiro %>'">
+          <div class="bar-lateral concluida"></div>
           <div class="body">
-            <span class="titulo">Movimentação dos rebanhos</span>
-            <span class="badge pendente">Pendente</span>
-            <span class="arrow">›</span>
+            <div class="info">
+              <span class="titulo">🐄 Nascimento — 5 Bezerros</span>
+              <span class="descricao">Raça Nelore</span>
+              <div class="meta">
+                <span class="retiro-tag">📅 08/06/2026</span>
+              </div>
+            </div>
+            <div class="status-area">
+              <span class="badge pendente">⏳ Aguardando envio</span>
+              <span class="arrow">✏️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card tarefa-card" data-tipo="obito" onclick="window.location.href='/boleta/3?perfil=<%= perfil %>&retiro=<%= retiro %>'">
+          <div class="bar-lateral concluida"></div>
+          <div class="body">
+            <div class="info">
+              <span class="titulo">⚰️ Óbito — 1 Vaca</span>
+              <span class="descricao">Causa: Doença</span>
+              <div class="meta">
+                <span class="retiro-tag">📅 07/06/2026</span>
+              </div>
+            </div>
+            <div class="status-area">
+              <span class="badge concluida">✓ Enviado</span>
+              <span class="arrow">✏️</span>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Botão para disparar ações -->
-      <button class="btn" style="margin-top:16px">Nova O.S</button>
-    </div>
+      <div class="tarefas-vazio" id="tarefas-vazio" style="display: none;">
+        <p>Nenhuma boleta encontrada.</p>
+      </div>
 
-    <!-- Navegação inferior visível no mobile -->
-    <div class="bottom-nav">
-      <button class="active"><span><img src="../../public/Icons/home.ico" alt="Home" /></span> Início</button>
-      <button><span>📋</span> Tarefas</button>
-      <button><span>🐂</span> Rebanhos</button>
-      <button onclick="window.location.href='/'"><span><img src="../../public/Icons/configuracao.ico" alt="Home" /></span> Config</button>
-    </div>
+      <button class="btn btn-primario" style="width: 100%; margin-top: 1.5rem;" onclick="window.location.href='/nova-os?perfil=<%= perfil %>&retiro=<%= retiro %>'">
+        ➕ Nova Boleta
+      </button>
+
+    </main>
 
   </div>
 </div>
+
+<script>
+  (function() {
+    const filtros = document.querySelectorAll('#filtros-tarefas .pill');
+    const boletas = document.querySelectorAll('#tarefas-lista .tarefa-card');
+    const vazio = document.getElementById('tarefas-vazio');
+
+    filtros.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        filtros.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        const filtro = btn.dataset.filtro;
+        let visiveis = 0;
+
+        boletas.forEach(function(card) {
+          const tipo = card.dataset.tipo;
+          const mostrar = (filtro === 'todas') || (tipo === filtro);
+          card.style.display = mostrar ? '' : 'none';
+          if (mostrar) visiveis++;
+        });
+
+        vazio.style.display = visiveis === 0 ? 'block' : 'none';
+      });
+    });
+  })();
+</script>
 
 <%- include('partials/footer') %>
