@@ -102,4 +102,35 @@ describe('POST /api/chamados', () => {
     expect(res.status).toBe(400);
     expect(res.body).toHaveProperty('erro');
   });
+
+  it('400 — descrição ausente com demais campos presentes (RN06)', async () => {
+    const res = await request(app)
+      .post('/api/chamados')
+      .send({
+        tipo:       'INFRAESTRUTURA',
+        capataz_id: CAPATAZ_ID,
+        retiro_id:  RETIRO_ID,
+        latitude:   -15.7801,
+        longitude:  -47.9292,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
+  it('400 — descrição com 10 caracteres ou menos (RN06)', async () => {
+    const res = await request(app)
+      .post('/api/chamados')
+      .send({
+        tipo:       'INFRAESTRUTURA',
+        descricao:  'Curta',
+        capataz_id: CAPATAZ_ID,
+        retiro_id:  RETIRO_ID,
+        latitude:   -15.7801,
+        longitude:  -47.9292,
+      });
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
 });
