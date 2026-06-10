@@ -5,7 +5,7 @@
 
   <div id="app">
     <div class="header-bar" style="margin-top: 0; margin-bottom: 2rem;">
-      <div class="user-avatar">👤</div>
+      <div class="user-avatar"><img src="/public/Icons/coordenador.ico" alt="Coordenador" style="width:32px;height:32px;object-fit:contain;" /></div>
       <h1>Boletas</h1>
       <div class="sub"><%= retiro %> (<%= perfil %>)</div>
     </div>
@@ -59,7 +59,7 @@
 
         <div class="card boleta-card" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; cursor: pointer;" onclick="window.location.href='/boleta/1?perfil=<%= perfil %>'">
           <div>
-            <span class="boleta-titulo">🐄 Nascimento - Retiro Acurizal</span>
+            <span class="boleta-titulo"><img class="label-ico" src="/public/Icons/nascimento.ico" alt="" /> Nascimento - Retiro Acurizal</span>
             <span class="boleta-sub" style="display: block; font-size: 0.8rem; color: #8A8A7C;">02/06/2026 - Capataz Rogério</span>
           </div>
           <span class="arrow" style="font-size: 1.5rem; color: #1A4D2E;">›</span>
@@ -67,7 +67,7 @@
 
         <div class="card boleta-card" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; cursor: pointer;" onclick="window.location.href='/boleta/2?perfil=<%= perfil %>'">
           <div>
-            <span class="boleta-titulo">⚰️ Óbito - Retiro Aroeira</span>
+            <span class="boleta-titulo"><img class="label-ico" src="/public/Icons/obto.ico" alt="" /> Óbito - Retiro Aroeira</span>
             <span class="boleta-sub" style="display: block; font-size: 0.8rem; color: #8A8A7C;">01/06/2026 - Capataz Lucas</span>
           </div>
           <span class="arrow" style="font-size: 1.5rem; color: #1A4D2E;">›</span>
@@ -81,10 +81,10 @@
         <p style="font-size: 0.85rem; color: #5c6b5d; margin-bottom: 0.75rem;">Escolha o que incluir e o período.</p>
 
         <div class="export-tipos" style="display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem;">
-          <label><input type="checkbox" class="exp-tipo" value="movimentacao" checked /> 🔄 Movimentações / Transferências</label>
-          <label><input type="checkbox" class="exp-tipo" value="nascimento" checked /> 🐄 Nascimentos</label>
-          <label><input type="checkbox" class="exp-tipo" value="obito" checked /> ⚰️ Óbitos / Mortes</label>
-          <label><input type="checkbox" class="exp-tipo" value="compravenda" checked /> 💰 Compras / Vendas</label>
+          <label><input type="checkbox" class="exp-tipo" value="movimentacao" checked /> <img class="label-ico" src="/public/Icons/movimentacao.ico" alt="" /> Movimentações / Transferências</label>
+          <label><input type="checkbox" class="exp-tipo" value="nascimento" checked /> <img class="label-ico" src="/public/Icons/nascimento.ico" alt="" /> Nascimentos</label>
+          <label><input type="checkbox" class="exp-tipo" value="obito" checked /> <img class="label-ico" src="/public/Icons/obto.ico" alt="" /> Óbitos / Mortes</label>
+          <label><input type="checkbox" class="exp-tipo" value="compravenda" checked /> Compras / Vendas</label>
         </div>
 
         <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">

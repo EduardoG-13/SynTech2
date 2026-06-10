@@ -10,6 +10,7 @@ import { RETIROS } from './config/retiros';
 import routes from './routes/index';
 import viewRoutes from './routes/viewRoutes';
 import authRoutes from './routes/authRoutes';
+import { requireLogin } from './middlewares/authView';
 
 const app = express();
 // Raiz do projeto (g03/) calculada a partir deste arquivo (src/backend/app.ts),
@@ -55,60 +56,67 @@ app.get('/selecionar-categoria-infra', (_req, res) => {
   res.render('selecionar-categoria-infra');
 });
 
-app.get('/dashboard', (req, res) => {
-  const perfil = req.query.perfil || 'Gerente';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('dashboard', { perfil, retiro });
+// ====================================================================
+// Rotas PROTEGIDAS — requireLogin checa sessão + perfil.
+// A query string ?perfil=X é IGNORADA — o perfil vem da sessão (fonte da verdade).
+// ====================================================================
+
+app.get('/dashboard', requireLogin(['Gerente', 'Coordenador']), (_req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('dashboard', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
 });
 
-app.get('/configuracoes', (req, res) => {
-  const perfil = req.query.perfil || 'Gerente';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('configuracoes', { perfil, retiro });
+app.get('/configuracoes', requireLogin(['Gerente']), (_req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('configuracoes', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
 });
 
-app.get('/infraestrutura', (req, res) => {
-  const perfil = req.query.perfil || 'Infraestrutura';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('infraestrutura', { perfil, retiro });
+app.get('/infraestrutura', requireLogin(['Infraestrutura', 'Gerente']), (_req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('infraestrutura', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
 });
 
-app.get('/tarefas', (req, res) => {
-  const perfil = req.query.perfil || 'Capataz';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('tarefas', { perfil, retiro });
+app.get('/tarefas', requireLogin(['Capataz']), (_req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('tarefas', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
 });
 
-app.get('/tarefa/:id', (req, res) => {
-  const perfil = req.query.perfil || 'Capataz';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('detalhe-tarefa', { perfil, retiro, tarefaId: req.params.id });
+app.get('/tarefa/:id', requireLogin(), (req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('detalhe-tarefa', { perfil: u.perfil, retiro: u.retiro_id || 'Geral', tarefaId: req.params.id });
 });
 
-// Histórico de registros (Capataz: boletas | Infra: chamados)
-app.get('/historico', (req, res) => {
-  const perfil = req.query.perfil || 'Capataz';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('historico', { perfil, retiro });
+// Histórico (Capataz: boletas dele | Infra: chamados que executou)
+app.get('/historico', requireLogin(['Capataz', 'Infraestrutura']), (_req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('historico', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
 });
 
 // Detalhe de uma boleta (somente leitura) — Capataz e Coordenador
-app.get('/boleta/:id', (req, res) => {
-  const perfil = req.query.perfil || 'Capataz';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('detalhe-boleta', { perfil, retiro, boletaId: req.params.id });
+app.get('/boleta/:id', requireLogin(['Capataz', 'Coordenador', 'Gerente']), (req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('detalhe-boleta', { perfil: u.perfil, retiro: u.retiro_id || 'Geral', boletaId: req.params.id });
 });
 
-app.get('/nova-os', (req, res) => {
-  const perfil = req.query.perfil || 'Capataz';
-  const retiro = req.query.retiro || 'Geral';
-  res.render('nova-os', { perfil, retiro });
+app.get('/nova-os', requireLogin(['Capataz']), (_req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('nova-os', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
+});
+
+// Tela de sucesso após registrar (resumo do registro vem do localStorage)
+app.get('/sucesso', requireLogin(), (_req, res) => {
+  const u = (res.locals as any).usuarioLogado;
+  res.render('sucesso', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
 });
 
 // Rotas de autenticação
 app.use('/api/auth', authRoutes);
 
 // Service Worker servido na raiz para escopo global do PWA
+app.get('/manifest.json', (_req: Request, res: Response) => {
+  res.sendFile(path.join(projectRoot, 'src/public/manifest.json'));
+});
+
 app.get('/sw.js', (_req: Request, res: Response) => {
   res.sendFile(path.join(projectRoot, 'src/public/sw.js'));
 });
