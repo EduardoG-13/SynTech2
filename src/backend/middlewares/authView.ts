@@ -16,6 +16,7 @@ export interface UsuarioSessao {
   nome: string;
   perfil: 'Gerente' | 'Coordenador' | 'Capataz' | 'Tecnico' | 'Infraestrutura';
   retiro_id?: string | null;
+  is_admin?: boolean;  // true = Gerente ADM master (acessa /configuracoes)
 }
 
 /**
@@ -25,7 +26,7 @@ export interface UsuarioSessao {
  *   app.get('/dashboard', requireLogin(['Gerente', 'Coordenador']), handler);
  *   app.get('/tarefas',  requireLogin(),                            handler);
  */
-export function requireLogin(perfisPermitidos?: string[]) {
+export function requireLogin(perfisPermitidos?: string[], opcoes?: { exigeAdmin?: boolean }) {
   return (req: Request, res: Response, next: NextFunction) => {
     const usuario = (req.session as any)?.usuario as UsuarioSessao | undefined;
 
@@ -44,7 +45,14 @@ export function requireLogin(perfisPermitidos?: string[]) {
       }
     }
 
-    // Injeta o usuário em res.locals para os templates EJS terem acesso direto
+    // Se exigeAdmin=true, só Gerente com is_admin passa
+    if (opcoes?.exigeAdmin && !usuario.is_admin) {
+      return res.status(403).render('acesso-negado', {
+        perfil: usuario.perfil,
+        perfilNecessario: 'Gerente Administrador',
+      });
+    }
+
     (res.locals as any).usuarioLogado = usuario;
     next();
   };

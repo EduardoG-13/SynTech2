@@ -43,7 +43,12 @@ app.get('/', (_req, res) => {
 });
 
 app.get('/selecionar-retiro', (_req, res) => {
-  const retiros = db.prepare('SELECT id, nome FROM retiros ORDER BY nome').all();
+  const retiros = db.prepare(`
+    SELECT r.id, r.nome, u.nome AS capataz
+    FROM retiros r
+    LEFT JOIN usuarios u ON r.capataz_id = u.id
+    ORDER BY r.nome
+  `).all();
   res.render('selecionar-retiro', { retiros });
 });
 
@@ -66,9 +71,9 @@ app.get('/dashboard', requireLogin(['Gerente', 'Coordenador']), (_req, res) => {
   res.render('dashboard', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
 });
 
-app.get('/configuracoes', requireLogin(['Gerente']), (_req, res) => {
+app.get('/configuracoes', requireLogin(['Gerente'], { exigeAdmin: true }), (_req, res) => {
   const u = (res.locals as any).usuarioLogado;
-  res.render('configuracoes', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
+  res.render('configuracoes', { perfil: u.perfil, retiro: u.retiro_id || 'Geral', isAdmin: u.is_admin });
 });
 
 app.get('/infraestrutura', requireLogin(['Infraestrutura', 'Gerente']), (_req, res) => {

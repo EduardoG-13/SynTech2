@@ -26,9 +26,10 @@ export function login(req: Request, res: Response) {
     nome: row.nome,
     perfil: row.perfil,
     retiro_id: row.retiro_id,
+    is_admin: row.is_admin === 1 || row.is_admin === true,
   };
 
-  return res.json({ sucesso: true, perfil: row.perfil });
+  return res.json({ sucesso: true, perfil: row.perfil, is_admin: row.is_admin === 1 });
 }
 
 export function logout(req: Request, res: Response) {
