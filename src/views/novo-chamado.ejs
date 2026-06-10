@@ -36,17 +36,14 @@
             <textarea id="descricao" name="descricao" rows="5" placeholder="Descreva o problema com ao menos 10 caracteres" minlength="10" required></textarea>
           </label>
 
-          <div class="gps-grid">
-            <label for="latitude">
-              Latitude
-              <input id="latitude" name="latitude" type="text" placeholder="-23.123456" required />
-            </label>
-
-            <label for="longitude">
-              Longitude
-              <input id="longitude" name="longitude" type="text" placeholder="-46.123456" required />
-            </label>
+          <div class="gps-status-block">
+            <p><strong>📍 Coordenadas GPS</strong></p>
+            <p id="gps-status" class="gps-status-text">🛰️ Capturando localização...</p>
           </div>
+
+          <!-- Hidden sem required: validação acontece no submit do form via JS -->
+          <input id="latitude" name="latitude" type="hidden" />
+          <input id="longitude" name="longitude" type="hidden" />
 
           <div class="upload-block">
             <span class="upload-label">Foto / evidência</span>
@@ -65,4 +62,5 @@
 
 <%- include('partials/footer') %>
 
+<script src="/public/js/chamados.js"></script>
 <script src="/public/js/novo-chamado-handler.js"></script>
