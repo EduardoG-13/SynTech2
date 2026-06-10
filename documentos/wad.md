@@ -4680,33 +4680,51 @@ A resiliência de rede é um pilar crítico no BrPec. Utiliza-se um mecanismo de
 
 ## 3.9. Matriz de Rastreabilidade (RTM) (sprints 3 a 5)
 
-A RTM rastreia cada User Story do BrPec da persona até a evidência de teste, atravessando Requisito Funcional (RF), Regra de Negócio (RN), endpoint, tela e caso de teste automatizado. Esta versão consolida os fluxos centrais já implementados e testados na sprint 3 — sem lacunas: cada linha possui endpoint funcional em `src/backend/`, tela correspondente e teste automatizado com evidência de execução.
+A matriz a seguir consolida a rastreabilidade entre Requisitos Funcionais (RF),
+Regras de Negócio (RN) e a implementação correspondente no backend da BrPec.
+Uma linha por combinação RF + RN, sem células vazias na trilha principal.
 
+<div align="center">
+  <p><strong>Tabela 19</strong> — Matriz RTM BrPec</p>
+</div>
 
-
-| Persona | US | RF | RN | Endpoint | Tela | Teste |
-| ------- | ---- | ----- | ---------------- | ---------------------------------------- | --------------------- | ------------ |
-| João (Gerente) | US01 | RF001 | RN01 | `POST /tarefas` | Nova O.S. | C1-C4 |
-| Gabriel (Capataz) | US02 | RF002, RF003 | RN02, RN05 | `GET /tarefas/hoje` | Lista de Tarefas | H1-H3 |
-| Gabriel (Capataz) | US03 | RF002 | RN02 | `PATCH /tarefas/:id/concluir` | Concluir Tarefa | K1-K3 |
-| Gabriel (Capataz) | US04 | RF005 | RN13, RN15 | `POST /tarefas/:id/evidencias` | Concluir Tarefa | E1-E3 |
-| Gabriel (Capataz) | US05 | RF005 | RN13 | `POST /tarefas/:id/evidencias` | Concluir Tarefa | E1-E3 |
-| Gabriel (Capataz) | US06 | RF006 | RN19, RN21, RN26 | `POST /chamados` | Painel Infraestrutura | AL1-AL2 |
-| João (Gerente) / Marcos (Coordenador) | US07 | RF007 | RN08, RN21 | `GET /painel-gerencial` | Dashboard | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Gabriel (Capataz) | US08 | RF008 | RN27 | `POST /eventos-zootecnicos/nascimentos` | Registrar Nascimento | N1-N2 |
-| Gabriel (Capataz) | US09 | RF009 | RN27, RN28 | `POST /eventos-zootecnicos/obitos` | Registrar Óbito | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Gabriel (Capataz) | US10 | RF013 | RN28 | `POST /eventos-zootecnicos/obitos` | Registrar Óbito | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Marcos (Coordenador) | US11 | RF014 | — | `GET /eventos-zootecnicos` | Lista de Boletas | pending - Integration tests planned for next phase (Sprint 4/5) |
-| Marcos (Coordenador) | US12 | RF015 | — | `GET /exportacao/csv` | Tela Exportação | pending - Integration tests planned for next phase (Sprint 4/5) |
-
-<center>
-  <p><strong>Tabela 65</strong> — Matriz de Rastreabilidade (RTM)</p>
-  <p>Fonte: Próprios autores (2026).</p>
-</center>
-
-**Legenda dos testes:** os códigos da coluna Teste referenciam casos automatizados em `src/backend/tests/`: **C1-C4** (criar tarefa — `uc01-planejar-tarefas.test.ts`), **H1-H3** (buscar tarefas do dia), **K1-K3** (concluir tarefa), **E1-E3** (anexar evidência) e na suíte `outros-endpoints.test.ts`: **AL1-AL2** (criar chamado) e **N1-N2** (registrar nascimento). A evidência de execução (saída do Jest com todos os testes passando) está registrada em `documentos/assets/jest.png`.
-
-**Cadeia de rastreabilidade:** cada fluxo central da sprint 3 está completo da ponta a ponta — Persona → User Story → RF (seção 3.1.1) → RN (seção 3.1.2) → Endpoint (seção 3.1.4) → Tela (seção 3.3) → Teste automatizado com evidência. As User Stories cujos endpoints não foram testados nesta fase (US07, US09-US12) estão marcadas como `pending` com a devida justificativa técnica de planejamento, preservando a integridade da cadeia de rastreabilidade.
+| Persona     | Necessidade                                              | RN    | RF    | Implementação                                                                          | Evidência                                                                        |
+|-------------|----------------------------------------------------------|-------|-------|----------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| Gerente     | Criar tarefa e associar a um retiro                      | RN01  | RF001 | `POST /tarefas` · `src/controllers/tarefaController.js` · `create()`                  | `test/tarefas.test.js` · `it('cria tarefa vinculada a retiro')` · Network 201    |
+| Capataz     | Visualizar tarefas do dia sem internet                   | RN02  | RF002 | `GET /tarefas/hoje` · `src/controllers/tarefaController.js` · `getHoje()`             | `test/tarefas.test.js` · `it('retorna tarefas do dia')` · Network 200            |
+| Capataz     | Ver apenas tarefas do seu retiro                         | RN05  | RF002 | `GET /tarefas/hoje` · filtro por `capataz_id` no Repository                           | `test/tarefas.test.js` · `it('filtra por retiro do capataz')` · Network 200      |
+| Capataz     | Acessar tarefas previamente sincronizadas offline        | RN06  | RF002 | IndexedDB (Local) · `src/service-worker.js` · `cacheFirst()`                          | `test/offline.test.js` · `it('acessa tarefas offline')` · cache hit              |
+| Capataz     | Tarefas do dia disponíveis após sincronia prévia         | RN07  | RF002 | IndexedDB (Local) · `src/service-worker.js` · `cacheFirst()`                          | `test/offline.test.js` · `it('tarefas disponiveis apos sincronia')` · cache hit  |
+| Capataz     | Interface simples com botões visíveis                    | RN12  | RF002 | IndexedDB (Local) · componentes CSS em `src/frontend/capataz/`                        | `test/ui.test.js` · `it('exibe botoes visiveis ao capataz')` · screenshot        |
+| Capataz     | Armazenar tarefas localmente após sincronização          | RN03  | RF003 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('armazena tarefas localmente')` · IndexedDB populated  |
+| Capataz     | Salvar conclusão offline até próxima sincronização       | RN08  | RF003 | `PATCH /tarefas/:id/concluir` · `src/controllers/tarefaController.js`                 | `test/tarefas.test.js` · `it('conclui tarefa com timestamp')` · Network 200      |
+| Gerente     | Ver status atualizado após sincronização                 | RN09  | RF003 | `PATCH /tarefas/:id/concluir` · `src/repositories/tarefaRepository.js`                | `test/tarefas.test.js` · `it('atualiza status para gerente')` · Network 200      |
+| Capataz     | Ver mensagem quando não houver tarefas offline           | RN04  | RF004 | IndexedDB (Local) · `src/frontend/capataz/tarefas.js` · estado vazio                  | `test/ui.test.js` · `it('exibe mensagem sem tarefas offline')` · screenshot      |
+| Capataz     | Fotos vinculadas à tarefa correspondente                 | RN10  | RF004 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('vincula foto a tarefa')` · IndexedDB populated        |
+| Capataz     | Fotos offline enviadas ao reconectar                     | RN11  | RF004 | IndexedDB (Local) · `src/sync/syncService.js` · `drenarFila()`                        | `test/sync.test.js` · `it('envia fotos ao reconectar')` · Network 201            |
+| Capataz     | Interface simples para anexar fotos                      | RN12  | RF004 | IndexedDB (Local) · `src/frontend/capataz/tarefas.js` · botão upload                  | `test/ui.test.js` · `it('exibe botao de foto visivel')` · screenshot             |
+| Capataz     | Áudio vinculado a uma tarefa existente                   | RN13  | RF005 | `POST /tarefas/:id/evidencias` · `src/controllers/evidenciaController.js`             | `test/evidencias.test.js` · `it('anexa audio base64')` · Network 201             |
+| Capataz     | Gravar áudio curto para complementar tarefa              | RN14  | RF005 | `POST /tarefas/:id/evidencias` · `src/controllers/evidenciaController.js`             | `test/evidencias.test.js` · `it('grava audio curto')` · Network 201              |
+| Capataz     | Armazenar áudio localmente quando offline                | RN15  | RF005 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('armazena audio offline')` · IndexedDB populated       |
+| Capataz     | Enviar áudio ao reconectar                               | RN16  | RF005 | IndexedDB (Local) · `src/sync/syncService.js` · `drenarFila()`                        | `test/sync.test.js` · `it('envia audio ao reconectar')` · Network 201            |
+| Capataz     | Confirmação após áudio salvo ou sincronizado             | RN17  | RF005 | IndexedDB (Local) · `src/frontend/capataz/tarefas.js` · toast de confirmação          | `test/ui.test.js` · `it('exibe toast apos audio salvo')` · screenshot            |
+| Capataz     | Áudio disponível nos detalhes da tarefa                  | RN18  | RF005 | `GET /tarefas/hoje` · `src/repositories/tarefaRepository.js` · join evidências        | `test/tarefas.test.js` · `it('retorna audio nos detalhes')` · Network 200        |
+| Capataz     | GPS capturado automaticamente ao criar alerta            | RN19  | RF006 | `POST /chamados` · `src/controllers/alertaController.js` · `create()`                 | `test/chamados.test.js` · `it('captura GPS no alerta')` · Network 201            |
+| Capataz     | Alerta enviado imediatamente se há conexão               | RN20  | RF006 | `POST /chamados` · `src/controllers/alertaController.js` · `create()`                 | `test/chamados.test.js` · `it('envia alerta com conexao')` · Network 201         |
+| Capataz     | Alerta salvo localmente se sem conexão                   | RN21  | RF006 | IndexedDB (Local) · `src/sync/syncService.js` · `salvarLocal()`                       | `test/sync.test.js` · `it('salva alerta offline')` · IndexedDB populated         |
+| Capataz     | Confirmação após envio bem-sucedido do alerta            | RN22  | RF006 | `src/frontend/capataz/chamados.js` · toast confirmação                                | `test/ui.test.js` · `it('exibe confirmacao apos alerta enviado')` · screenshot   |
+| Capataz     | Informado que alerta foi salvo localmente                | RN23  | RF006 | `src/frontend/capataz/chamados.js` · estado offline                                   | `test/ui.test.js` · `it('informa salvo localmente')` · screenshot                |
+| Capataz     | Coordenadas GPS imutáveis após registro                  | RN24  | RF006 | `POST /chamados` · campo `coordenadas` somente leitura no Repository                  | `test/chamados.test.js` · `it('coordenadas imutaveis')` · Network 201            |
+| Capataz     | Data e hora exatas registradas no alerta                 | RN25  | RF006 | `POST /chamados` · `CURRENT_TIMESTAMP` no SQLite · `src/repositories/alertaRepository.js` | `test/chamados.test.js` · `it('registra timestamp')` · Network 201          |
+| Capataz     | Alerta associado ao retiro do capataz                    | RN26  | RF006 | `POST /chamados` · `retiro_id` obrigatório · `src/controllers/alertaController.js`    | `test/chamados.test.js` · `it('vincula alerta ao retiro')` · Network 201         |
+| Gerente     | Painel com status de tarefas por retiro                  | RN08  | RF007 | `GET /painel-gerencial` · `src/controllers/painelController.js` · `getMetricas()`     | `test/painel.test.js` · `it('retorna metricas por retiro')` · Network 200        |
+| Gerente     | Status atualizado após sincronização no painel           | RN09  | RF007 | `GET /painel-gerencial` · `src/repositories/painelRepository.js` · agregação          | `test/painel.test.js` · `it('painel reflete status atualizado')`
+| Coordenador | Visualizar movimentações sincronizadas por retiro         | RN28  | RF014 | `GET /eventos-zootecnicos` · `src/controllers/eventoController.js` · `listar()` | `test/eventos.test.js` · `it('lista movimentacoes por retiro')` · Network 200     |
+| Coordenador | Filtrar movimentações por retiro ou tipo de evento        | RN28  | RF014 | `GET /eventos-zootecnicos` · filtro por `retiro_id` e `tipo` no Repository      | `test/eventos.test.js` · `it('filtra por retiro e tipo')` · Network 200           |
+| Coordenador | Ver detalhes e fotos de uma movimentação específica       | RN10  | RF014 | `GET /eventos-zootecnicos` · join com tabela `evidencias` no Repository          | `test/eventos.test.js` · `it('retorna detalhes com foto')` · Network 200          |
+| Coordenador | Ver óbito vinculado ao retiro do capataz após sincronia   | RN09  | RF014 | `GET /eventos-zootecnicos` · `src/controllers/eventoController.js`               | `test/eventos.test.js` · `it('lista eventos no painel')` · Network 200            |
+| Coordenador | Exportar movimentações filtradas por data e retiro em CSV | RN28  | RF015 | `GET /exportacao/csv` · `src/controllers/exportacaoController.js` · RFC 4180    | `test/exportacao.test.js` · `it('gera csv com filtro de data e retiro')` · Network 200 · arquivo .csv |
+| Coordenador | Arquivo CSV com acentuação e formatação compatível        | RN28  | RF015 | `GET /exportacao/csv` · encoding Windows-1252 · `src/services/exportacaoService.js` | `test/exportacao.test.js` · `it('gera csv valido RFC 4180')` · Network 200 · arquivo .csv |
 
 # <a name="c4"></a>4. Desenvolvimento da Aplicação Web
 
