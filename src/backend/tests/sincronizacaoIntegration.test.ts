@@ -236,7 +236,15 @@ describe('GET /api/painel-gerencial — dados afetam estatísticas', () => {
     expect(res.status).toBe(400);
     expect(res.body).toHaveProperty('erro');
   });
+  
+it('403 — gerente_id pertence a perfil Capataz (ACESSO_NEGADO)', async () => {
+    const res = await request(app)
+      .get('/api/painel-gerencial')
+      .query({ gerente_id: CAPATAZ_ID });
 
+    expect(res.status).toBe(403);
+    expect(res.body).toHaveProperty('erro');
+  });
 });
 
 export {};
