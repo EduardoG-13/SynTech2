@@ -229,6 +229,14 @@ describe('GET /api/painel-gerencial — dados afetam estatísticas', () => {
     expect(retiroSync.tarefas['EM_ANDAMENTO']).toBe(1);
   });
 
+  it('400 — sem gerente_id na query string', async () => {
+    const res = await request(app)
+      .get('/api/painel-gerencial');
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
 });
 
 export {};
