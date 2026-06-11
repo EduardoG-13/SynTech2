@@ -12,9 +12,20 @@
 import request from 'supertest';
 import app from '../app';
 import { inicializarBanco } from '../config/initDb';
+import db from '../config/database';
 
-beforeAll(() => {
+let agent: any;
+
+beforeAll(async () => {
   inicializarBanco();
+  
+  // Create user for login if doesn't exist, though migration might have one
+  db.prepare(
+    'INSERT OR IGNORE INTO usuarios (id, nome, senha, perfil, retiro_id, is_admin) VALUES (?, ?, ?, ?, ?, ?)'
+  ).run('gerente-test', 'Gerente Teste', require('bcryptjs').hashSync('hash', 10), 'Gerente', null, 1);
+  
+  agent = request.agent(app);
+  await agent.post('/api/auth/login').send({ usuario: 'Gerente Teste', senha: 'hash', perfil: 'Gerente' });
 });
 
 describe('View Routes — EJS Template Rendering', () => {
@@ -36,7 +47,7 @@ describe('View Routes — EJS Template Rendering', () => {
   // ─────────────────────────────────────────────────────────
   describe('GET /dashboard', () => {
     it('retorna 200 e renderiza HTML do dashboard', async () => {
-      const res = await request(app).get('/dashboard');
+      const res = await agent.get('/dashboard');
 
       expect(res.status).toBe(200);
       expect(res.headers['content-type']).toMatch(/text\/html/);
