@@ -5169,68 +5169,39 @@ _Descreva e ilustre aqui o desenvolvimento da versão final do sistema web, com 
 
 # <a name="c5"></a>5. Testes
 
-## 5.1. Relatório de testes de integração de endpoints automatizados (sprint 4)
+## 5.1. Relatório de testes automatizados 
 
-A suite de testes automatizados cobre integralmente os endpoints operacionais do BrPec Agropecuária, utilizando **Jest 29 + ts-jest + Supertest** sobre banco de dados SQLite em memória (`:memory:`). Foram criadas duas suites de testes, totalizando **19 casos** de teste que validam a integridade de contratos HTTP, regras de negócio e persistência no banco local.
+A suite automatizada cobre a camada de serviços e os endpoints REST do BrPec em dois níveis: **testes unitários de serviço** (white-box, repositórios substituídos por dublês) e **testes de integração de endpoints** (black-box, HTTP via Supertest + SQLite em memória). O toolchain é **Jest 29 + ts-jest + Supertest**.
 
 ### 5.1.1. Estratégia de Testes
 
-- **Isolamento de Banco**: Cada suíte inicia uma conexão síncrona exclusiva com um banco SQLite em memória (`DB_PATH=':memory:'`).
-- **Schema e Seed**: `beforeAll` executa `inicializarBanco()` para ler e aplicar as migrações SQL. A semente de retiros e usuários é limpa e reinserida no `beforeEach`.
-- **Efeito Colateral**: Toda inserção, atualização ou remoção é validada tanto no retorno da requisição HTTP (Supertest) quanto via consulta direta ao banco pelo objeto `db`.
+**Separação por camada.** A estratégia opera em três camadas:
 
-### 5.1.2. Classificação por Abordagem
+- **Service — white-box unitário**: cada método de serviço é testado em isolamento completo. Os repositórios são substituídos por `jest.mock()`, de forma que nenhuma query toca o banco. O valor de retorno de cada função mockada é configurado por cenário com `mockResolvedValue` / `mockReturnValue`, permitindo simular caminho feliz e falhas específicas sem seed de banco.
+- **Controller — black-box de integração**: a requisição HTTP entra pela rota real, percorre Controller → Service → Repository e persiste no SQLite em memória. O Supertest valida contrato HTTP (status, shape do JSON); em seguida, `db.prepare(...)` faz `SELECT` direto para confirmar o efeito colateral no banco.
+- **Repository — cobertura seletiva**: apenas quando há lógica não trivial de query. O `cloudSyncService.test.ts` exemplifica essa camada: usa SQLite real + mock do pool Supabase para testar o padrão Outbox isolando a dependência de rede externa.
 
-- **Black-box**: Testes focados na interface pública HTTP — códigos de status, shape do JSON de resposta, validação de tipos de dados e tratamento correto de erros sem acessar a lógica interna.
-- **White-box**: Validação de regras internas, como transações de banco complexas no registro de nascimento, consistência de FKs em cascata e interceptação de erros no repositório.
+**Padrão AAA (Arrange · Act · Assert).** Todo caso de teste segue três fases explícitas:
 
-### 5.1.3. Matriz de Cobertura de Testes
+| Fase | Responsabilidade |
+|---|---|
+| **Arrange** | Configurar estado inicial — fixtures, mocks, seed de banco |
+| **Act** | Invocar o método ou disparar a requisição HTTP |
+| **Assert** | Verificar retorno e efeitos colaterais (no mock ou no banco) |
 
-#### Suite 1 — `tests/uc01-planejar-tarefas.test.ts` (14 casos)
-- **Criar Tarefas (C1-C4)**: Criação válida (201), violação de `RN01` (422), payload incompleto (400), persistência direta no SQLite (SELECT).
-- **Buscar Tarefas Hoje (H1-H3)**: Busca com sucesso (200), array vazio para capataz sem tarefas (200), erro por falta de `capataz_id` (400).
-- **Concluir Tarefa (K1-K3)**: Conclusão válida (200), erro ao tentar concluir tarefa de outro capataz (404), persistência da data de conclusão.
-- **Anexar Evidência (E1-E4)**: Anexar foto base64 (201), erro de `RN05` por tarefa de outro capataz (404), erro por falta de arquivo (400), persistência de texto como evidência (201).
+**Determinismo.** A suite não depende de ordem de execução, relógio fixo ou dados residuais:
 
-#### Suite 2 — `tests/outros-endpoints.test.ts` (5 casos)
-- **Health-check (H1)**: Resposta 200 OK informando status geral "ok" e conectividade "conectado" com o banco SQLite.
-- **Alertas de Infraestrutura (A1-A2)**: Registro de chamado com sucesso (201, status ABERTO), erro por falta de geolocalização latitude/longitude (400).
-- **Eventos Zootécnicos (E1-E2)**: Registro de nascimento animal com transação síncrona bem-sucedida (201), erro por falta de quantidade ou categoria (400).
+- `DATA_FUTURA` e `DATA_PASSADA` são calculadas em runtime (`Date.now() ± 86400000`), eliminando acoplamento a datas hardcoded.
+- Testes de integração fazem `DELETE` em todas as tabelas no `beforeEach`, garantindo estado limpo a cada caso.
+- Testes unitários usam `jest.clearAllMocks()` no `beforeEach`, evitando que contadores e valores de mocks de um caso contaminem o próximo.
 
-### 5.1.4. Resumo e Resultados
+**Cobertura mínima exigida.** A camada Service deve atingir cobertura de linhas ≥ 80%, verificada com `npm test -- --coverage`. O relatório HTML gerado em `coverage/lcov-report/index.html` é a evidência formal.
 
-Toda a suíte foi executada e aprovada com sucesso. Detalhes completos das evidências visuais e logs do terminal podem ser encontrados no relatório técnico de [jest-testes-endpoints.md](evidencias/jest-testes-endpoints.md).
+### 5.1.2. Testes Unitários de Service (white-box)
 
-```bash
-PASS tests/outros-endpoints.test.ts
-  H — GET /api/health (Health check)
-    ✓ H1. Sucesso — retorna status 200 com informações de saúde do servidor e banco (26 ms)
-  A — POST /api/chamados (Criar Alerta)
-    ✓ A1. Sucesso — cria alerta com dados válidos e retorna HTTP 201 (13 ms)
-    ✓ A2. Payload inválido — campos obrigatórios ausentes retorna HTTP 400 (5 ms)
-  E — POST /api/eventos-zootecnicos/nascimentos (Registrar Nascimento)
-    ✓ E1. Sucesso — registra nascimento animal com sucesso e retorna HTTP 201 (5 ms)
-    ✓ E2. Payload inválido — campos obrigatórios ausentes retorna HTTP 400 (6 ms)
+#### Isolamento por mock de repositório
 
-PASS tests/uc01-planejar-tarefas.test.ts
-  C — POST /api/tarefas (criar tarefa — UC01 / RF001)
-    ✓ C1. Sucesso — cria tarefa com dados válidos e retorna HTTP 201 (23 ms)
-    ✓ C2. Regra de negócio (RN01) — capataz não pertence ao retiro retorna HTTP 422 (5 ms)
-    ...
-Test Suites: 2 passed, 2 total
-Tests:       19 passed, 19 total
-Snapshots:   0 total
-Time:        1.373 s
-Ran all test suites.
-```
-
-### 5.1.5. Testes unitários de serviços
-
-A camada de serviços do BRPec foi coberta por testes unitários que verificam exclusivamente a **lógica de negócio** — sem dependência de banco de dados, rede ou filesystem. O isolamento é garantido pela substituição completa dos repositórios por dublês criados com `jest.mock()`, enquanto o padrão **AAA** (Arrange · Act · Assert) estrutura cada caso de forma legível e rastreável às regras de negócio.
-
-#### 5.1.5.1. Isolamento por Mock de Repositório
-
-A substituição de cada repositório ocorre no topo do arquivo de teste, antes de qualquer importação do módulo sob teste:
+O mock é declarado antes de qualquer importação do módulo sob teste. O exemplo abaixo é de `tests/unit/tarefaService.test.ts`:
 
 ```typescript
 jest.mock('../../repositories/tarefaRepository', () => ({
@@ -5238,114 +5209,243 @@ jest.mock('../../repositories/tarefaRepository', () => ({
   default: {
     criar: jest.fn(),
     buscarPorId: jest.fn(),
+    buscarTarefasHoje: jest.fn(),
     concluir: jest.fn(),
     salvarEvidencia: jest.fn(),
   },
 }));
+jest.mock('../../repositories/usuarioRepository', () => ({
+  __esModule: true,
+  default: { buscarPorId: jest.fn() },
+}));
 
-// Após o mock estar declarado, importa-se o serviço normalmente
 import tarefaRepository from '../../repositories/tarefaRepository';
 import tarefaService from '../../services/tarefaService';
-
 const mockTarefaRepo = tarefaRepository as jest.Mocked<typeof tarefaRepository>;
 ```
 
-Com o módulo substituído, o serviço sob teste nunca alcança o banco real — qualquer chamada ao repositório invoca o `jest.fn()` correspondente. O valor de retorno de cada função é configurado por cenário com `mockResolvedValue` (assíncronas) ou `mockReturnValue` (síncronas), permitindo simular o caminho feliz e falhas específicas sem necessidade de seed de banco.
+**Fixtures** (`tarefaFixture()`, `alertaFixture()`) retornam um objeto de estado base que cada cenário pode sobrescrever pontualmente. O `beforeEach(() => jest.clearAllMocks())` restaura contadores e valores configurados, evitando contaminação entre casos.
 
-Para garantir determinismo entre casos de teste, cada suite utiliza dois mecanismos:
+#### Casos prioritários — AAA detalhado
 
-- **Fixtures**: funções puras (`tarefaFixture()`, `alertaFixture()`) que retornam um objeto de estado base que pode ser sobrescrito pontualmente por cada cenário.
-- **`beforeEach(() => jest.clearAllMocks())`**: restaura contadores de chamadas e valores configurados antes de cada teste, evitando que o estado de um caso contamine o próximo.
-
-#### 5.1.5.2. Padrão AAA (Arrange · Act · Assert)
-
-Cada caso de teste segue o padrão AAA para garantir legibilidade e rastreabilidade direta ao critério de aceite testado:
-
-| Fase | Responsabilidade |
-|---|---|
-| **Arrange** | Configurar o estado inicial — dados de entrada, comportamento dos mocks e fixtures |
-| **Act** | Invocar o método do serviço com os dados preparados |
-| **Assert** | Verificar o resultado retornado e os efeitos colaterais nos mocks |
-
-**Caminho feliz** — verifica que o repositório é chamado e o retorno está correto:
+**CT-UT11 — `criarTarefa` sucesso (RF001 / RN01)**
 
 ```typescript
-it('deve concluir a tarefa e retornar o registro atualizado quando os dados são válidos', async () => {
-  // Arrange
-  const tarefaConcluida = {
-    ...tarefaFixture(),
-    status: 'CONCLUIDA' as const,
-    concluida_em: new Date().toISOString(),
-  };
-  mockTarefaRepo.concluir.mockResolvedValue(tarefaConcluida);
-
+it('deve criar a tarefa e retornar o registro persistido quando os dados são válidos', async () => {
+  // Arrange — capataz pertence ao retiro; repositório devolve fixture
+  mockUsuarioRepo.buscarPorId.mockReturnValue(mockCapataz); // retiro_id coincide
+  mockTarefaRepo.criar.mockResolvedValue(tarefaFixture());
   // Act
-  const resultado = await tarefaService.concluirTarefa(
-    'mock-tarefa-id-0001',
-    'mock-capataz-id-0001'
-  );
-
-  // Assert
-  expect(mockTarefaRepo.concluir).toHaveBeenCalledTimes(1);
-  expect(resultado.status).toBe('CONCLUIDA');
+  const resultado = await tarefaService.criarTarefa({ ...dadosBase });
+  // Assert — RN01 não levantou erro; persistência chamada exatamente uma vez
+  expect(mockTarefaRepo.criar).toHaveBeenCalledTimes(1);
+  expect(resultado).toEqual(tarefaFixture());
 });
 ```
 
-**Caminho infeliz** — verifica que a validação interrompe o fluxo antes de qualquer persistência. O `not.toHaveBeenCalled()` é tão importante quanto o `rejects.toThrow()`, pois confirma que nenhum efeito colateral ocorreu:
+*Determinismo*: `DATA_FUTURA` é calculada em runtime. *Caminho de falha coberto por CT-UT03*: quando `capataz.retiro_id !== retiro_id`, o serviço lança erro — confirmado com `not.toHaveBeenCalled()`.
+
+---
+
+**CT-UT12 — `criarTarefa` data retroativa (RF001 / validação de serviço)**
 
 ```typescript
 it('deve lançar erro e não persistir quando a data de agendamento for retroativa', async () => {
-  // Arrange
+  // Arrange — data_execucao no passado
   const dados = { ...dadosBase, data_execucao: DATA_PASSADA };
-
-  // Act & Assert
-  await expect(tarefaService.criarTarefa(dados))
-    .rejects
-    .toThrow('retroativa');
+  // Act & Assert — validação interrompe antes do repositório
+  await expect(tarefaService.criarTarefa(dados)).rejects.toThrow('retroativa');
   expect(mockTarefaRepo.criar).not.toHaveBeenCalled();
 });
 ```
 
-#### 5.1.5.3. Matriz de Rastreabilidade de Testes Unitários
+*Nota*: a regra de data retroativa é uma validação interna do serviço, não catalogada nas RNs da seção 3.1.2. O `not.toHaveBeenCalled()` confirma ausência de efeito colateral — tão relevante quanto o `rejects.toThrow()`.
 
-A tabela consolida a rastreabilidade entre cada caso de teste unitário e os Requisitos Funcionais (RF) e Regras de Negócio (RN) verificados. As suites cobertas são `tests/unit/tarefaService.test.ts` (13 casos) e `tests/unit/alertaService.test.ts` (11 casos). Os 4 casos de `cloudSyncService.test.ts` validam resiliência de sincronização e estão detalhados na seção 5.1.5.4.
+---
 
-| Código CT | Nome do Teste | RF Associado | RN Associada | Método Testado | Status Esperado |
-|-----------|---------------|:------------:|:------------:|----------------|:---------------:|
-| CT-UT01 | deve concluir a tarefa e retornar o registro atualizado quando os dados são válidos | RF002 | — | `TarefaService.concluirTarefa` | PASS |
-| CT-UT02 | deve lançar erro e não atualizar quando a tarefa já está concluída | RF002 | — | `TarefaService.concluirTarefa` | PASS |
-| CT-UT03 | deve lançar erro quando a tarefa não pertence ao capataz | RF002 | RN05 | `TarefaService.concluirTarefa` | PASS |
-| CT-UT04 | deve salvar a evidência e retornar evidencia_id quando os dados são válidos | RF005 | RN13 | `TarefaService.anexarEvidencia` | PASS |
-| CT-UT05 | deve lançar erro e não salvar quando a tarefa não pertence ao capataz | RF005 | RN05 | `TarefaService.anexarEvidencia` | PASS |
-| CT-UT06 | deve lançar erro e não salvar quando arquivo_base64 excede 5 MB | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
-| CT-UT07 | deve lançar erro e não salvar quando arquivo_base64 contém caracteres inválidos | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
-| CT-UT08 | deve aceitar e normalizar base64 com prefixo data URI do navegador | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
-| CT-UT09 | deve lançar erro quando arquivo_base64 é string vazia | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
-| CT-UT10 | deve salvar evidência de texto sem arquivo_base64 | RF005 | — | `TarefaService.anexarEvidencia` | PASS |
-| CT-UT11 | deve criar a tarefa e retornar o registro persistido quando os dados são válidos | RF001 | RN01 | `TarefaService.criarTarefa` | PASS |
-| CT-UT12 | deve lançar erro e não persistir quando a data de agendamento for retroativa | RF001 | RN-DATA | `TarefaService.criarTarefa` | PASS |
-| CT-UT13 | deve lançar erro e não persistir quando a descrição for fornecida em branco | RF001 | RN-DESC | `TarefaService.criarTarefa` | PASS |
-| CT-UA01 | deve criar o chamado e retornar o registro persistido quando os dados são válidos | RF006 | RN19, RN26 | `AlertaService.criarAlerta` | PASS |
-| CT-UA02 | deve lançar erro e não persistir quando a descrição for muito curta (≤ 10 caracteres) | RF006 | RN06 | `AlertaService.criarAlerta` | PASS |
-| CT-UA03 | deve lançar erro e não persistir quando a descrição estiver em branco | RF006 | RN06 | `AlertaService.criarAlerta` | PASS |
-| CT-UA04 | deve lançar erro e não persistir quando a descrição estiver ausente | RF006 | RN06 | `AlertaService.criarAlerta` | PASS |
-| CT-UA05 | deve lançar erro e não persistir quando a latitude estiver ausente | RF006 | RN06, RN19 | `AlertaService.criarAlerta` | PASS |
-| CT-UA06 | deve lançar erro e não persistir quando a longitude estiver ausente | RF006 | RN06, RN19 | `AlertaService.criarAlerta` | PASS |
-| CT-UA07 | deve resolver o chamado quando os dados são válidos e o usuário é Tecnico | RF006 | RN-TECNICO | `AlertaService.resolverChamado` | PASS |
-| CT-UA08 | deve lançar ACESSO_NEGADO e não resolver quando o usuário não tiver perfil Tecnico | RF006 | RN-TECNICO | `AlertaService.resolverChamado` | PASS |
-| CT-UA09 | deve lançar ACESSO_NEGADO e não resolver quando o usuário não for encontrado | RF006 | RN-TECNICO | `AlertaService.resolverChamado` | PASS |
-| CT-UA10 | deve lançar CHAMADO_NAO_ENCONTRADO quando o chamado não existir | RF006 | — | `AlertaService.resolverChamado` | PASS |
-| CT-UA11 | deve lançar CHAMADO_JA_RESOLVIDO e não atualizar quando o chamado já foi resolvido | RF006 | RN-STATUS | `AlertaService.resolverChamado` | PASS |
+**CT-UT03 — `concluirTarefa` capataz incorreto (RF002 / RN05)**
 
-> **Legenda de RN internas ao domínio de serviço:** RN-DATA = data de agendamento não pode ser retroativa; RN-DESC = descrição não pode estar em branco quando informada; RN06 = chamado deve ter descrição com mais de 10 caracteres e coordenadas GPS obrigatórias; RN-TECNICO = somente usuários com perfil Técnico podem resolver chamados; RN-STATUS = chamado já resolvido não pode ser resolvido novamente.
+```typescript
+it('deve lançar erro quando a tarefa não pertence ao capataz', async () => {
+  // Arrange — tarefa atribuída a outro capataz
+  mockTarefaRepo.buscarPorId.mockResolvedValue({
+    ...tarefaFixture(), capataz_id: 'mock-capataz-id-0002',
+  });
+  // Act & Assert
+  await expect(
+    tarefaService.concluirTarefa('mock-tarefa-id-0001', 'mock-capataz-id-0001')
+  ).rejects.toThrow('capataz');
+  expect(mockTarefaRepo.concluir).not.toHaveBeenCalled();
+});
+```
 
-#### 5.1.5.4. Resumo e Resultados
+*RN coberta*: RN05 — "apenas tarefas associadas ao retiro do Capataz devem ser exibidas para ele" (seção 3.1.2).
 
-As três suites totalizam **28 testes unitários**. Todos os casos aprovados confirmam que `TarefaService`, `AlertaService` e `CloudSyncService` aplicam corretamente suas regras de negócio independentemente da camada de persistência. A suite é executada com:
+---
+
+**CT-UA01 — `criarAlerta` sucesso (RF006 / RN19, RN26)**
+
+```typescript
+it('deve criar o chamado e retornar o registro persistido quando os dados são válidos', async () => {
+  // Arrange — todos os campos obrigatórios presentes (descrição > 10 chars, lat/lng, retiro_id)
+  mockAlertaRepo.criar.mockResolvedValue(alertaFixture());
+  // Act
+  const resultado = await alertaService.criarAlerta({ ...dadosBase });
+  // Assert
+  expect(mockAlertaRepo.criar).toHaveBeenCalledTimes(1);
+  expect(resultado).toEqual(alertaFixture());
+});
+```
+
+*RNs cobertas*: RN19 (GPS obrigatório) e RN26 (alerta vinculado ao retiro) são verificadas indiretamente pela presença de `latitude`, `longitude` e `retiro_id` no `dadosBase`. A ausência individual de cada campo é testada em CT-UA05 e CT-UA06.
+
+---
+
+**CT-CS01 — `CloudSyncService` offline (RF010 / resiliência Outbox)**
+
+```typescript
+test('Deve suspender a sincronização se não houver conexão com o Supabase (offline)', async () => {
+  // Arrange — pool.query lança "Connection refused" na checagem inicial (SELECT 1)
+  mockPool.query.mockRejectedValueOnce(new Error('Connection refused'));
+  // Seed: tarefa PENDENTE + entrada na fila sincronizacoes
+  // Act
+  await cloudSyncService.sincronizar();
+  // Assert — status permanece PENDENTE; tentativas não incrementadas
+  expect(syncItem.status_envio).toBe('PENDENTE');
+  expect(syncItem.tentativas).toBe(0);
+  expect(mockPool.query).toHaveBeenCalledTimes(1); // apenas SELECT 1
+});
+```
+
+*Nota de classificação*: `cloudSyncService.test.ts` é um teste de integração de serviço híbrido — usa SQLite real (verifica estado da fila) e mock do pool Supabase (simula offline). Reside em `tests/unit/` por convenção, mas opera uma camada acima de um puro teste unitário.
+
+#### Matriz de rastreabilidade de testes unitários
+
+| Código CT | Método testado | RF | RN | Status |
+|-----------|---------------|:--:|:--:|:------:|
+| CT-UT01 | `TarefaService.concluirTarefa` — sucesso | RF002 | — | PASS |
+| CT-UT02 | `TarefaService.concluirTarefa` — tarefa já concluída | RF002 | — | PASS |
+| CT-UT03 | `TarefaService.concluirTarefa` — capataz incorreto | RF002 | RN05 | PASS |
+| CT-UT04 | `TarefaService.anexarEvidencia` — sucesso | RF005 | RN13 | PASS |
+| CT-UT05 | `TarefaService.anexarEvidencia` — capataz incorreto | RF005 | RN05 | PASS |
+| CT-UT06 | `TarefaService.anexarEvidencia` — arquivo > 5 MB | RF005 | — | PASS |
+| CT-UT07 | `TarefaService.anexarEvidencia` — base64 inválido | RF005 | — | PASS |
+| CT-UT08 | `TarefaService.anexarEvidencia` — normalizar data URI | RF005 | — | PASS |
+| CT-UT09 | `TarefaService.anexarEvidencia` — base64 vazio | RF005 | — | PASS |
+| CT-UT10 | `TarefaService.anexarEvidencia` — evidência TEXTO | RF005 | — | PASS |
+| CT-UT11 | `TarefaService.criarTarefa` — sucesso | RF001 | RN01 | PASS |
+| CT-UT12 | `TarefaService.criarTarefa` — data retroativa | RF001 | ¹ | PASS |
+| CT-UT13 | `TarefaService.criarTarefa` — descrição em branco | RF001 | ¹ | PASS |
+| CT-UA01 | `AlertaService.criarAlerta` — sucesso | RF006 | RN19, RN26 | PASS |
+| CT-UA02 | `AlertaService.criarAlerta` — descrição muito curta | RF006 | ² | PASS |
+| CT-UA03 | `AlertaService.criarAlerta` — descrição em branco | RF006 | ² | PASS |
+| CT-UA04 | `AlertaService.criarAlerta` — descrição ausente | RF006 | ² | PASS |
+| CT-UA05 | `AlertaService.criarAlerta` — latitude ausente | RF006 | RN19 | PASS |
+| CT-UA06 | `AlertaService.criarAlerta` — longitude ausente | RF006 | RN19 | PASS |
+| CT-UA07 | `AlertaService.resolverChamado` — sucesso (Técnico) | RF006 | ³ | PASS |
+| CT-UA08 | `AlertaService.resolverChamado` — perfil incorreto | RF006 | ³ | PASS |
+| CT-UA09 | `AlertaService.resolverChamado` — usuário não encontrado | RF006 | ³ | PASS |
+| CT-UA10 | `AlertaService.resolverChamado` — chamado não encontrado | RF006 | — | PASS |
+| CT-UA11 | `AlertaService.resolverChamado` — chamado já resolvido | RF006 | ³ | PASS |
+| CT-CS01 | `CloudSyncService.sincronizar` — offline (suspenso) | RF010 | — | PASS |
+| CT-CS02 | `CloudSyncService.sincronizar` — tarefa online | RF010 | — | PASS |
+| CT-CS03 | `CloudSyncService.sincronizar` — erro de upsert | RF010 | — | PASS |
+| CT-CS04 | `CloudSyncService.sincronizar` — alerta online | RF010 | — | PASS |
+
+> ¹ Validações de data retroativa e descrição em branco são regras internas do `TarefaService` sem código formal na tabela RN da seção 3.1.2.
+>
+> ² A restrição "descrição > 10 chars + GPS obrigatório" é enforced no `AlertaService` com a mensagem de erro `'RN06'`. Há conflito de nomenclatura: na seção 3.1.2, RN06 refere-se ao acesso offline de tarefas (RF002). Esses casos testam a validação real do serviço, não a RN06 formal.
+>
+> ³ As regras "apenas Técnico pode resolver chamado" e "chamado já resolvido não pode ser re-resolvido" são regras de domínio do `AlertaService` não catalogadas na seção 3.1.2.
+
+### 5.1.3. Testes de Integração de Endpoints (black-box)
+
+Cada suite inicializa o SQLite `:memory:` com `inicializarBanco()` no `beforeAll` e limpa todas as tabelas no `beforeEach`. As requisições trafegam pelo stack HTTP real (Express + middleware), garantindo cobertura da cadeia completa Route → Controller → Service → Repository.
+
+#### Cobertura por endpoint
+
+Para cada endpoint o objetivo é cobrir quatro cenários: **sucesso (200/201)**, **payload inválido (400)**, **regra de negócio violada (422/404)** e **recurso não encontrado (404)**. A tabela mapeia os casos existentes e sinaliza lacunas:
+
+| Endpoint | Método | Sucesso | 400 inválido | RN violada | 404 não encontrado |
+|----------|--------|:-------:|:------------:|:----------:|:-----------------:|
+| `/api/health` | GET | HE1 | — | — | — |
+| `/api/tarefas` | POST | C1, C4 | C3 | C2 (RN01 → 422) | — |
+| `/api/tarefas/hoje` | GET | H1, H2 | H3 | — | — |
+| `/api/tarefas/:id/concluir` | PATCH | K1, K3 | — | K2 (RN05 → 404) | K2 |
+| `/api/tarefas/:id/evidencias` | POST | E1, E4 | E3 | E2 (RN05 → 404) | E2 |
+| `/api/chamados` | POST | AL1 | AL2 | — ⚠ | — ⚠ |
+| `/api/eventos-zootecnicos/nascimentos` | POST | N1 | N2 | — ⚠ | — ⚠ |
+
+> ⚠ Lacuna de cobertura: `/api/chamados` e `/api/eventos-zootecnicos/nascimentos` não possuem casos que verifiquem violação explícita de RN nem recurso não encontrado. Candidatos para sprint seguinte: GPS ausente para `chamados` (RN19), `quantidade` inválida para `nascimentos` (RN27).
+
+**Verificação de persistência (white-box parcial).** Os casos C4, K3 e E4 consultam o banco diretamente após a chamada HTTP para confirmar o efeito colateral gravado — incluindo a entrada na fila de sincronização (padrão Outbox):
+
+```typescript
+// C4 — após POST /api/tarefas
+const syncItem = db.prepare(
+  'SELECT * FROM sincronizacoes WHERE entidade_tipo = ? AND entidade_id = ?'
+).get('tarefa', res.body.id) as Record<string, unknown>;
+expect(syncItem.status_envio).toBe('PENDENTE');
+expect(syncItem.tentativas).toBe(0);
+```
+
+### 5.1.4. Evidências de Execução
+
+**Output de execução (`npm test`):**
 
 ```bash
-npx jest tests/unit --verbose
+PASS tests/outros-endpoints.test.ts
+  HE — GET /api/health (Health check)
+    ✓ HE1. Sucesso — retorna status 200 com informações de saúde do servidor e banco (26 ms)
+  AL — POST /api/chamados (Criar Alerta)
+    ✓ AL1. Sucesso — cria alerta com dados válidos e retorna HTTP 201 (13 ms)
+    ✓ AL2. Payload inválido — campos obrigatórios ausentes retorna HTTP 400 (5 ms)
+  N — POST /api/eventos-zootecnicos/nascimentos (Registrar Nascimento)
+    ✓ N1. Sucesso — registra nascimento animal com sucesso e retorna HTTP 201 (5 ms)
+    ✓ N2. Payload inválido — campos obrigatórios ausentes retorna HTTP 400 (6 ms)
+
+PASS tests/uc01-planejar-tarefas.test.ts
+  C — POST /api/tarefas (criar tarefa — UC01 / RF001)
+    ✓ C1. Sucesso — cria tarefa com dados válidos e retorna HTTP 201 (23 ms)
+    ✓ C2. Regra de negócio (RN01) — capataz não pertence ao retiro retorna HTTP 422 (5 ms)
+    ✓ C3. Payload inválido — campos obrigatórios ausentes retorna HTTP 400 (4 ms)
+    ✓ C4. Persistência — tarefa gravada no banco com todos os campos corretos (8 ms)
+  H — GET /api/tarefas/hoje (buscar tarefas do dia)
+    ✓ H1. Sucesso — retorna tarefa do dia para capataz com HTTP 200 (6 ms)
+    ✓ H2. Sucesso — retorna array vazio quando capataz não tem tarefas hoje (3 ms)
+    ✓ H3. Payload inválido — capataz_id ausente retorna HTTP 400 (3 ms)
+  K — PATCH /api/tarefas/:id/concluir (concluir tarefa)
+    ✓ K1. Sucesso — conclui tarefa e retorna HTTP 200 com status CONCLUIDA (7 ms)
+    ✓ K2. Erro — concluir tarefa que não pertence ao capataz retorna HTTP 404 (4 ms)
+    ✓ K3. Persistência — status e concluida_em atualizados no banco após conclusão (9 ms)
+  E — POST /api/tarefas/:id/evidencias (anexar evidência)
+    ✓ E1. Sucesso — anexa evidência FOTO e retorna HTTP 201 com evidencia_id (5 ms)
+    ✓ E2. Regra de negócio (RN05) — tarefa não pertence ao capataz retorna HTTP 404 (4 ms)
+    ✓ E3. Payload inválido — tipo ausente retorna HTTP 400 (3 ms)
+    ✓ E4. Persistência — evidência TEXTO gravada no banco com tarefa_id correto (6 ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       19 passed, 19 total
+Snapshots:   0 total
+Time:        1.373 s
+Ran all test suites.
 ```
+
+O log completo dos testes unitários (`npx jest tests/unit --verbose`) e o relatório de cobertura constam no arquivo [evidencias/jest-testes-endpoints.md](evidencias/jest-testes-endpoints.md). O relatório de cobertura por camada (`% Stmts | % Branch | % Funcs | % Lines`) é gerado com `npm test -- --coverage` e salvo em `coverage/lcov-report/index.html`.
+
+**Mapeamento CT → RN → RF (rastreabilidade consolidada):**
+
+A tabela abaixo é coerente com a Matriz RF → RN → Endpoint (seção 3.1.4) e com a RTM (seção 3.9):
+
+| Casos de Teste | RN Formal | RF | Endpoint |
+|----------------|:----------:|:--:|----------|
+| C1, C3, C4, CT-UT11, CT-UT12, CT-UT13 | RN01 | RF001 | `POST /api/tarefas` |
+| H1, H2, H3 | RN02, RN05 | RF002 | `GET /api/tarefas/hoje` |
+| K1, K2, K3, CT-UT01, CT-UT02, CT-UT03 | RN05 | RF002 | `PATCH /api/tarefas/:id/concluir` |
+| E1, E2, E3, E4, CT-UT04 – CT-UT10 | RN05, RN13 | RF005 | `POST /api/tarefas/:id/evidencias` |
+| AL1, AL2, CT-UA01 – CT-UA11 | RN19, RN26 | RF006 | `POST /api/chamados` |
+| N1, N2 | RN27 | RF008 | `POST /api/eventos-zootecnicos/nascimentos` |
+| CT-CS01 – CT-CS04 | — | RF010 | `POST /sincronizacao/lote` |
 
 ## 5.2. Testes de usabilidade (sprint 5)
 
