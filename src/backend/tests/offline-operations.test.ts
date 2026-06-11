@@ -1,5 +1,20 @@
 import request from 'supertest';
 import app from '../app';
+import { inicializarBanco } from '../config/initDb';
+import db from '../config/database';
+
+let agent: any;
+
+beforeAll(async () => {
+  inicializarBanco();
+  db.prepare('INSERT OR IGNORE INTO retiros (id, nome, localizacao) VALUES (?, ?, ?)')
+    .run('retiro-1', 'Retiro Teste 1', 'Local 1');
+  db.prepare('INSERT OR IGNORE INTO usuarios (id, nome, senha, perfil, retiro_id) VALUES (?, ?, ?, ?, ?)')
+    .run('cap-offline', 'Capataz Teste', require('bcryptjs').hashSync('hash', 10), 'Capataz', 'retiro-1');
+  
+  agent = request.agent(app);
+  await agent.post('/api/auth/login').send({ usuario: 'Capataz Teste', senha: 'hash', perfil: 'Capataz' });
+});
 
 describe('Front-end Offline Operations - Validação Completa', () => {
   it('serve o script de interceptação offline', async () => {
@@ -36,7 +51,7 @@ describe('Front-end Offline Operations - Validação Completa', () => {
   });
 
   it('inclui os scripts nos templates EJS', async () => {
-    const responseNovaOS = await request(app).get('/nova-os?perfil=Capataz&retiro=retiro-1');
+    const responseNovaOS = await agent.get('/nova-os?perfil=Capataz&retiro=retiro-1');
     expect(responseNovaOS.text).toContain('nova-os-handler.js');
 
     // Note: Você precisa adicionar a rota /chamados/{id}/resolver conforme necessário

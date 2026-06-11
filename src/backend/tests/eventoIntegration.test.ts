@@ -33,6 +33,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         categoria:  'BOVINO',
         quantidade: 3,
         capataz_id: CAPATAZ_ID,
+        identificacao_mae: 'MAE-001',
+        sexo: 'Macho',
+        peso_nascimento: 30
       });
 
     expect(res.status).toBe(201);
@@ -50,6 +53,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         categoria:  'OVINO',
         quantidade: 5,
         capataz_id: CAPATAZ_ID,
+        identificacao_mae: 'MAE-002',
+        sexo: 'Fêmea',
+        peso_nascimento: 5
       });
 
     expect(res.status).toBe(201);
@@ -74,10 +80,13 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
     const res = await request(app)
       .post('/api/eventos-zootecnicos/nascimentos')
       .send({
-        retiro_id:  RETIRO_ID,
+        data:       '2026-06-10',
         categoria:  'BOVINO',
         quantidade: 2,
         capataz_id: CAPATAZ_ID,
+        identificacao_mae: 'MAE-002',
+        sexo: 'Fêmea',
+        peso_nascimento: 5
       });
 
     expect(res.status).toBe(400);
@@ -92,6 +101,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         categoria:  'BOVINO',
         quantidade: 2,
         capataz_id: CAPATAZ_ID,
+        identificacao_mae: 'MAE-002',
+        sexo: 'Fêmea',
+        peso_nascimento: 5
       });
 
     expect(res.status).toBe(400);
@@ -106,6 +118,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         retiro_id:  RETIRO_ID,
         quantidade: 2,
         capataz_id: CAPATAZ_ID,
+        identificacao_mae: 'MAE-002',
+        sexo: 'Fêmea',
+        peso_nascimento: 5
       });
 
     expect(res.status).toBe(400);
@@ -120,6 +135,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         retiro_id:  RETIRO_ID,
         categoria:  'BOVINO',
         capataz_id: CAPATAZ_ID,
+        identificacao_mae: 'MAE-002',
+        sexo: 'Fêmea',
+        peso_nascimento: 5
       });
 
     expect(res.status).toBe(400);
@@ -134,6 +152,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         retiro_id:  RETIRO_ID,
         categoria:  'BOVINO',
         quantidade: 2,
+        identificacao_mae: 'MAE-002',
+        sexo: 'Fêmea',
+        peso_nascimento: 5
       });
 
     expect(res.status).toBe(400);

@@ -116,11 +116,14 @@ describe('N — POST /api/eventos-zootecnicos/nascimentos (Registrar Nascimento)
     const res = await request(app)
       .post('/api/eventos-zootecnicos/nascimentos')
       .send({
-        data: '2026-05-25',
+        data: '2026-06-10',
         retiro_id: RETIRO_A,
         categoria: 'bezerro',
         quantidade: 3,
-        capataz_id: CAPATAZ_A
+        capataz_id: CAPATAZ_A,
+        identificacao_mae: 'MAE-TEST',
+        sexo: 'Macho',
+        peso_nascimento: 32
       });
 
     expect(res.status).toBe(201);
