@@ -245,6 +245,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         categoria: 'BEZERRO',
         quantidade: 3,
         capataz_id: CAPATAZ_ID,
+        identificacao_mae: 'MAE-123',
+        sexo: 'Macho',
+        peso_nascimento: 30
       });
 
     expect(res.status).toBe(201);

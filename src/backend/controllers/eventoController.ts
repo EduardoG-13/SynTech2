@@ -2,7 +2,7 @@ import eventoService from '../services/eventoService';
 
 class EventoController {
   async registrarNascimento(req, res, next): Promise<void> {
-    const { data, retiro_id, categoria, quantidade, capataz_id } = req.body;
+    const { data, retiro_id, categoria, quantidade, capataz_id, identificacao_mae, sexo, peso_nascimento, geolocalizacao } = req.body;
 
     if (!data || !retiro_id || !categoria || !quantidade || !capataz_id) {
       res.status(400).json({
@@ -17,7 +17,11 @@ class EventoController {
         retiro_id,
         categoria,
         quantidade,
-        capataz_id
+        capataz_id,
+        identificacao_mae,
+        sexo,
+        peso_nascimento,
+        geolocalizacao
       });
 
       res.status(201).json({
