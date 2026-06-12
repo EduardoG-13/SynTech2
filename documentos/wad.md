@@ -5399,7 +5399,7 @@ Para cada endpoint o objetivo é cobrir quatro cenários: **sucesso (200/201)**,
 | `/api/health` | GET | HE1 | — | — | — |
 | `/api/tarefas` | POST | C1, C4 | C3 | C2 (RN01 → 422) | — |
 | `/api/tarefas/hoje` | GET | H1, H2 | H3 | — | — |
-| `/api/tarefas/:id/concluir` | PATCH | K1, K3 | — | K2 (RN05 → 404) | K2 |
+| `/api/tarefas/:id/concluir` | PATCH | K1, K3 | K4 | K2 (RN05 → 404) | K2 |
 | `/api/tarefas/:id/evidencias` | POST | E1, E4 | E3 | E2 (RN05 → 404) | E2 |
 | `/api/chamados` | POST | AL1 | AL2 | — ⚠ | — ⚠ |
 | `/api/eventos-zootecnicos/nascimentos` | POST | N1 | N2 | — ⚠ | — ⚠ |
@@ -5445,6 +5445,7 @@ PASS tests/uc01-planejar-tarefas.test.ts
   K — PATCH /api/tarefas/:id/concluir (concluir tarefa)
     ✓ K1. Sucesso — conclui tarefa e retorna HTTP 200 com status CONCLUIDA (7 ms)
     ✓ K2. Erro — concluir tarefa que não pertence ao capataz retorna HTTP 404 (4 ms)
+    ✓ K4. Payload inválido — capataz_id ausente retorna HTTP 400 (3 ms)
     ✓ K3. Persistência — status e concluida_em atualizados no banco após conclusão (9 ms)
   E — POST /api/tarefas/:id/evidencias (anexar evidência)
     ✓ E1. Sucesso — anexa evidência FOTO e retorna HTTP 201 com evidencia_id (5 ms)
@@ -5453,7 +5454,7 @@ PASS tests/uc01-planejar-tarefas.test.ts
     ✓ E4. Persistência — evidência TEXTO gravada no banco com tarefa_id correto (6 ms)
 
 Test Suites: 2 passed, 2 total
-Tests:       19 passed, 19 total
+Tests:       20 passed, 20 total
 Snapshots:   0 total
 Time:        1.373 s
 Ran all test suites.

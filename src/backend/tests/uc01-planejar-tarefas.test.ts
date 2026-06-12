@@ -176,6 +176,18 @@ describe('K — PATCH /api/tarefas/:id/concluir (concluir tarefa)', () => {
     expect(res.status).toBe(404);
   });
 
+  test('K4. Payload inválido — capataz_id ausente retorna HTTP 400', async () => {
+    const criacao = await criarTarefa();
+    const tarefa_id = criacao.body.id as string;
+
+    const res = await request(app)
+      .patch(`/api/tarefas/${tarefa_id}/concluir`)
+      .send({});
+
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty('erro');
+  });
+
   test('K3. Persistência — status e concluida_em atualizados no banco após conclusão', async () => {
     const criacao = await criarTarefa();
     const tarefa_id = criacao.body.id as string;
