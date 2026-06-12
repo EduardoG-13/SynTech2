@@ -59,13 +59,13 @@
   </nav>
 
   <!-- Botão de Configurações que funciona como logout enviando de volta ao login -->
-  <button class="side-config" id="side-config-btn" onclick="window.location.href='/'">
+  <button class="side-config" id="side-config-btn" onclick="fazerLogout()">
     <span><img src="/public/Icons/configuracao.ico" alt="Configurações" /></span> Configurações
   </button>
 
   <script>
     function fazerLogout() {
-      localStorage.removeItem('brpec_sessao');
+      window.authClient.clearSession();
       fetch('/api/auth/logout', { method: 'POST' }).finally(function() {
         window.location.href = '/';
       });

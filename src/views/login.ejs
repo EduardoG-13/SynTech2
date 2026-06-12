@@ -40,6 +40,11 @@
 
 <script>
   (function() {
+    if (!window.authClient.getAccessToken()) {
+      localStorage.removeItem('brpec_sessao');
+      return;
+    }
+
     var sessao = localStorage.getItem('brpec_sessao');
     if (sessao) {
       try {

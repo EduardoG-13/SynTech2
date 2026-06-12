@@ -3,12 +3,13 @@ import swaggerDocument from './config/swagger.json';
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import session from 'express-session';
+import cookieParser from 'cookie-parser';
 import { Request, Response, NextFunction } from 'express';
 import routes from './routes/index';
 import viewRoutes from './routes/viewRoutes';
 import authRoutes from './routes/authRoutes';
 import db from './config/database';
+import { autenticarJWT } from './middleware/authMiddleware';
 
 const app = express();
 const projectRoot = process.cwd();
@@ -21,13 +22,8 @@ app.set('views', path.join(projectRoot, 'src/views'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use('/public', express.static(path.join(projectRoot, 'src/public')));
-app.use(session({
-  secret: 'brpec-syntech-2026',
-  resave: false,
-  saveUninitialized: false,
-  cookie: { maxAge: 365 * 24 * 60 * 60 * 1000 }
-}));
 
 // Rota para documentação da API
 app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -79,7 +75,7 @@ app.get('/sw.js', (_req: Request, res: Response) => {
 });
 
 // Rotas da API
-app.use('/api', routes);
+app.use('/api', autenticarJWT, routes);
 
 // Rotas de views adicionais
 app.use('/', viewRoutes);
