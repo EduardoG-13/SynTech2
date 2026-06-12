@@ -25,6 +25,12 @@ class AlertaService {
     return await alertaRepository.listar(filtros.status, filtros.tipo);
   }
 
+  // Busca por ID com foto, capataz, retiro, técnico (via JOINs).
+  // Usado pela tela de detalhe/resolver — precisa da imagem que o capataz anexou.
+  async obterPorId(id: string) {
+    return await alertaRepository.buscarPorId(id);
+  }
+
   async resolverChamado(
     id: string,
     tecnico_id: string,

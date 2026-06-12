@@ -47,6 +47,8 @@ describe('EventoService — registrarObito', () => {
   });
 
   it('[CT-OB01] deve salvar e retornar o registro quando todos os dados são válidos', async () => {
+    // Arrange — beforeEach configura criarObito com fixture válida
+
     // Act
     const resultado = await eventoService.registrarObito({ ...dadosBase });
 
@@ -62,7 +64,7 @@ describe('EventoService — registrarObito', () => {
 
       // Act & Assert
       await expect(eventoService.registrarObito(dados))
-        .rejects.toThrow('Foto');
+        .rejects.toThrow(/foto da carcaça/i);
       expect(mockEventoRepo.criarObito).not.toHaveBeenCalled();
     });
   });
@@ -74,7 +76,7 @@ describe('EventoService — registrarObito', () => {
 
       // Act & Assert
       await expect(eventoService.registrarObito(dados))
-        .rejects.toThrow('causa_morte');
+        .rejects.toThrow(/causa da morte/i);
       expect(mockEventoRepo.criarObito).not.toHaveBeenCalled();
     });
   });
@@ -86,7 +88,7 @@ describe('EventoService — registrarObito', () => {
 
       // Act & Assert
       await expect(eventoService.registrarObito(dados))
-        .rejects.toThrow('identificacao_animal');
+        .rejects.toThrow(/identificação do animal/i);
       expect(mockEventoRepo.criarObito).not.toHaveBeenCalled();
     });
   });

@@ -68,8 +68,8 @@ class AlertaController {
 
   async obterChamado(req, res, next) {
     try {
-      const chamado = await alertaService.listarChamados({ status: undefined } as any);
-      const c = (chamado as any[]).find((x) => x.id === req.params.id);
+      // Usa buscarPorId — traz a foto anexada pelo capataz, áudio, retiro_nome, capataz_nome etc.
+      const c = await alertaService.obterPorId(req.params.id);
       if (!c) return res.status(404).json({ erro: 'Chamado não encontrado.' });
       return res.json(c);
     } catch (erro) {
