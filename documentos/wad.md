@@ -5169,7 +5169,168 @@ A suíte de testes automatizados utiliza Jest 29 + ts-jest + Supertest sobre ban
 
 ## 4.2. Segunda versão da aplicação web (sprint 4)
 
-_Descreva e ilustre aqui o desenvolvimento da segunda versão do sistema web, com foco no que foi consolidado entre a primeira versão funcional e o sistema operacional integrado. Utilize prints de tela para ilustrar. Indique obrigatoriamente: (a) o que foi implementado, (b) o que não foi concluído, (c) dificuldades técnicas enfrentadas e próximos passos._
+A segunda versão da BrPec foi desenvolvida ao longo da sprint 4, consolidando a integração entre o frontend e o backend REST estabelecido na sprint 3. O sistema evoluiu em duas frentes principais: no frontend, os formulários e telas foram conectados à API real e ganhou a arquitetura offline-first (Service Worker + IndexedDB + sincronização em lote); no backend, foram adicionadas rotas de autenticação JWT, dashboard e renderização server-side via EJS, além de uma significativa expansão da suíte de testes.
+
+### (a) O que foi implementado
+
+#### Frontend — Integração com Backend e Offline-First
+
+O frontend foi refatorado para consumir a API REST real, substituindo os dados estáticos (mock data) por chamadas `fetch()` aos endpoints documentados na seção 3.7. Paralelamente, foi implementada a camada offline-first composta por Service Worker (`src/public/sw.js`), banco local IndexedDB (`src/public/js/db.js`) e interceptador de requisições (`src/public/js/offline-interceptor.js`). Um badge de conectividade (`#onlineStatus`) foi adicionado ao rodapé de todas as telas, exibindo o estado online/offline em tempo real.
+
+**Fluxo de Autenticação:**
+
+- **Tela de login com JWT** — a seleção de perfil agora dispara `POST /api/auth/login`, que retorna um access token (armazenado via `src/public/js/auth-client.js`) e um refresh token em cookie `HttpOnly`. Após o login, o Service Worker recebe uma `postMessage` com o perfil do usuário e pré-cacheia as rotas específicas daquele perfil para funcionamento offline.
+
+<center>
+  <p><strong>Figura 35</strong> — Segunda versão: Tela de login com autenticação JWT real</p>
+  <img src="./assets/image-login-gerente.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Fluxo do Capataz (US02 → US03 → US06):**
+
+- **Tela de lista de tarefas (US02) com dados reais** — os cards de tarefas passaram a ser populados com dados reais consumidos de `GET /api/tarefas/hoje?capataz_id=...`. O badge de conectividade no rodapé exibe o estado da rede, e ao voltar online a fila de operações pendentes é sincronizada automaticamente.
+
+<center>
+  <p><strong>Figura 36</strong> — Segunda versão: Tela de tarefas com dados reais e badge de conectividade</p>
+  <img src="./assets/prints-v2/02-tarefas-online.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de Nova O.S. com suporte offline (US01/RF001)** — o formulário de criação de tarefa agora submete para `POST /api/tarefas` via `fazerRequisicaoComOffline()`. Quando online, retorna HTTP 201 e exibe confirmação. Quando offline, salva automaticamente na store `sync_queue` do IndexedDB com `status: 'PENDENTE'` e exibe feedback "Salvo localmente".
+
+<center>
+  <p><strong>Figura 37</strong> — Segunda versão: Nova O.S. submetendo para backend real (POST /api/tarefas → 201)</p>
+  <img src="./assets/prints-v2/03-nova-os-network.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+- **Tela de chamados com dados reais (US06/RF006)** — a listagem de chamados passou a consumir `GET /api/chamados`, e o formulário de novo chamado (`src/public/js/novo-chamado-handler.js`) captura GPS via `navigator.geolocation` e submete para `POST /api/chamados`. A resolução de chamados (`src/public/js/chamado-resolver-handler.js`) submete para `PUT /api/chamados/:id/resolver`.
+
+<center>
+  <p><strong>Figura 38</strong> — Segunda versão: Tela de chamados com dados reais do banco</p>
+  <img src="./assets/prints-v2/04-chamados-real.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Fluxo do Gerente/Coordenador (US07/RF007):**
+
+- **Dashboard com gráficos Chart.js dinâmicos** — os gráficos de barras ("Chamados por retiro") e rosca ("Tarefas por status"), que na sprint 3 eram renderizados com CSS estático, passaram a ser gerados com a biblioteca **Chart.js** consumindo `GET /api/dashboard/resumo` e `GET /api/dashboard/retiros`. Os filtros de retiro e data disparam novas chamadas à API e atualizam os gráficos em tempo real.
+
+<center>
+  <p><strong>Figura 39</strong> — Segunda versão: Dashboard com gráficos Chart.js populados com dados reais</p>
+  <img src="./assets/prints-v2/05-dashboard-charts.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+**Elementos transversais:**
+
+- **Service Worker (`src/public/sw.js` — `CACHE_NAME: 'brpec-v4'`)** — registrado globalmente, aplica estratégia network-first com fallback para cache em todas as requisições GET. Na instalação, pré-cacheia assets estáticos (CSS, JS, ícones, `manifest.json`). No evento `activate`, limpa caches de versões anteriores.
+- **IndexedDB (`src/public/js/db.js`)** — banco local `brpec_local` com store `sync_queue`, expondo `salvarFila()`, `listarFila()`, `atualizarFila()`, `removerFila()` e `buscarFilaPorId()` para os tipos `tarefa`, `obito`, `nascimento` e `chamado`.
+- **Renderização server-side (EJS)** — as páginas passaram a ser renderizadas no servidor via templates EJS (`src/backend/routes/viewRoutes.ts`), com dados iniciais injetados via `res.render()`, reduzindo o número de chamadas à API na carga inicial.
+
+<center>
+  <p><strong>Figura 40</strong> — Service Worker <code>sw.js</code> registrado e ativo no navegador (DevTools → Application → Service Workers)</p>
+  <img src="./assets/image-service-workers.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+#### Backend — Expansão de Rotas e Autenticação JWT
+
+O backend foi expandido com novos módulos que cobrem autenticação, dashboard, administração e rotas de visualização. A estrutura de pastas passou a ser:
+
+```
+src/backend/
+├── config/          # database.ts, initDb.ts, supabasePool.ts
+├── controllers/     # 9 controllers implementados
+├── services/        # 8 services implementados
+├── repositories/    # 9 repositories implementados
+├── models/          # 7 models implementados
+├── routes/          # 15 arquivos de rotas + index.ts
+├── database/        # migration.sql atualizado (tabela refresh_tokens)
+├── tests/           # 16 suítes de testes automatizados
+└── views/           # templates EJS por perfil
+```
+
+**Estado atual de cada camada após a sprint 4:**
+
+<center>
+  <p><strong>Tabela 21</strong> — Estado da implementação das camadas arquiteturais (sprint 4)</p>
+</center>
+
+| Camada | Adicionado na sprint 4 | Status |
+| --- | --- | --- |
+| Routes | `authRoutes.ts`, `dashboardRoutes.ts`, `adminRoutes.ts`, `boletaRoutes.ts`, `coordenadorRoutes.ts`, `dadosRoutes.ts`, `historicoRoutes.ts`, `viewRoutes.ts` | ✅ Implementada |
+| Controllers | `authController.ts`, `dashboardController.ts` | ✅ Implementada |
+| Services | `authService.ts`, `dashboardService.ts` | ✅ Implementada |
+| Repositories | `usuarioRepository.ts` (expandido com autenticação) | ✅ Implementada |
+| Database | Tabela `refresh_tokens` adicionada ao `migration.sql` | ✅ Implementada |
+| Frontend JS | `auth-client.js`, `dashboard.js`, `chamados.js`, `novo-chamado-handler.js`, `chamado-resolver-handler.js`, `nova-os-handler.js`, `offline-interceptor.js`, `sync.js`, `db.js`, `sw.js` | ✅ Implementada |
+| Testes | 14 novas suítes adicionadas | ✅ Expandida |
+
+<center>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+Os endpoints adicionados na sprint 4 complementam os da sprint 3:
+- `POST /api/auth/login` — autenticação JWT com bcrypt + cookie refresh token `HttpOnly`
+- `POST /api/auth/refresh` — rotação de refresh token
+- `GET /api/dashboard/resumo` — dados consolidados para gráficos (tarefas por status, chamados por retiro)
+- `GET /api/dashboard/retiros` — lista de retiros para filtro do dashboard
+- `POST /api/eventos-zootecnicos/obitos` — registro de óbito com foto Base64 obrigatória (RN07)
+- `POST /api/sincronizacao/lote` — processamento de fila offline em lote (RF011)
+- `GET /api/painel-gerencial` — métricas consolidadas por retiro (RF007)
+
+#### Testes Automatizados
+
+A suíte de testes cresceu de 2 arquivos com 19 casos (sprint 3) para **16 arquivos** com mais de 70 casos, utilizando Jest 29 + ts-jest + Supertest sobre banco SQLite em memória. As principais suítes adicionadas cobrem integração ponta a ponta de cada domínio, autenticação JWT e funcionamento dos scripts frontend:
+
+```bash
+PASS tests/tarefaIntegration.test.ts        (7 casos — GET /api/tarefas/hoje, PATCH concluir)
+PASS tests/alertaIntegration.test.ts        (3 casos — POST /api/chamados)
+PASS tests/eventoIntegration.test.ts        (8 casos — nascimento, óbito, persistência)
+PASS tests/sincronizacaoIntegration.test.ts (9 casos — lote, painel-gerencial)
+PASS tests/offline-operations.test.ts       (6 casos — scripts SW, sync.js, db.js)
+PASS tests/frontend.test.ts                 (2 casos — brpec_local, salvarFila)
+PASS tests/auth-jwt.test.ts                 (4 casos — login, refresh, rota protegida)
+PASS tests/unit/exportacaoService.test.ts   (3 casos — acesso, CSV, total_registros)
+```
+
+<center>
+  <p><strong>Figura 41</strong> — Resultado da execução da suíte de testes completa (sprint 4)</p>
+  <img src="./assets/image-npm-test-passed.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+### (b) O que não foi concluído
+
+1. **Captura real de câmera e microfone:** Os campos de foto e áudio nos formulários de Nova O.S., óbito e chamado ainda não acionam a câmera ou microfone do dispositivo via `getUserMedia`. A foto é enviada como Base64 estático ou omitida; o áudio permanece como placeholder visual.
+
+2. **Autenticação forçada em produção:** A flag `AUTH_ENFORCE_IN_TEST` permite desabilitar a verificação de JWT durante os testes. Em produção, o middleware de autenticação precisa ser habilitado globalmente com tratamento de expiração e logout.
+
+3. **Sincronização offline para óbito e nascimento:** O módulo `sync.js` envia a fila ao endpoint `/api/sincronizacao/lote`, mas o processador do lote ainda não trata os tipos `obito` e `nascimento` com o mesmo nível de validação que `tarefa` e `alerta`, podendo retornar `status: 'ERRO'` mesmo com payload correto.
+
+4. **Painel do Coordenador:** As rotas `coordenadorRoutes.ts` e `boletaRoutes.ts` foram criadas, mas a tela de boletas e o painel do coordenador ainda consomem dados parcialmente estáticos — os filtros por retiro e período não estão conectados ao backend.
+
+5. **Gráficos no painel de infraestrutura:** O painel de chamados da Infraestrutura ainda usa contadores CSS estáticos da sprint 3, sem integração com os dados reais do banco.
+
+### (c) Dificuldades técnicas enfrentadas
+
+1. **Versionamento do cache do Service Worker:** Cada mudança nos assets estáticos exigiu incremento manual do `CACHE_NAME` (atualmente `brpec-v4`) e limpeza do cache anterior no evento `activate`. Sem essa limpeza, o navegador continuava servindo arquivos desatualizados, gerando comportamentos divergentes entre dispositivos.
+
+2. **Escopo de módulos ES no Service Worker:** O SW não suporta `import/export` ES modules nativos. As funções do `sync.js` e `db.js` precisaram ser expostas globalmente via `window.brpecIndexedDb` para serem acessíveis tanto no contexto do SW quanto nos handlers de formulário, criando um acoplamento explícito entre módulos.
+
+3. **Isolamento de banco nos testes de autenticação:** Os testes JWT exigem que a tabela `refresh_tokens` esteja limpa entre casos para garantir determinismo. A solução foi adicionar `db.exec('DELETE FROM refresh_tokens')` no `beforeEach`, o que aumentou a complexidade do setup das suítes.
+
+4. **Migração de SPA para EJS:** A refatoração da renderização client-side para server-side exigiu a reescrita dos templates de página e a criação das view routes. Partes da lógica de estado global que estavam em `app.js` precisaram ser movidas para o servidor, com dados iniciais injetados nos templates via `res.render()`.
+
+### Próximos passos (sprint 5)
+
+- Implementar captura de foto via `<input type="file" accept="image/*" capture="environment">` e conversão para Base64 nos formulários de evidência
+- Ativar `AUTH_ENFORCE_IN_TEST = true` por padrão e implementar renovação automática de token no cliente
+- Completar o processador de lote para os tipos `obito` e `nascimento` com validações equivalentes às de `tarefa`
+- Conectar o painel do Coordenador ao backend real com filtros funcionais por retiro e período
+- Implementar os gráficos dinâmicos no painel de infraestrutura
 
 ## 4.3. Versão final da aplicação web (sprint 5)
 
