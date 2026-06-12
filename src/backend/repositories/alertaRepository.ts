@@ -10,9 +10,9 @@ class AlertaRepository {
       const stmtInsert = db.prepare(`
         INSERT INTO alertas (
           id, tipo, descricao, status, capataz_id,
-          retiro_id, latitude, longitude, sincronizado
+          retiro_id, latitude, longitude, local_referencia, audio_base64, sincronizado
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0)
       `);
       stmtInsert.run(
         id,
@@ -22,15 +22,43 @@ class AlertaRepository {
         alerta.capataz_id,
         alerta.retiro_id,
         alerta.latitude,
-        alerta.longitude
+        alerta.longitude,
+        alerta.local_referencia || null,
+        alerta.audio_base64 || null,
       );
 
-      // Register outbox synchronization entry
+      let fotoId = null;
+      if (alerta.foto_base64) {
+        fotoId = uuidv7();
+        const stmtFoto = db.prepare(`
+          INSERT INTO evidencias (
+            id, alerta_id, tipo, arquivo_base64, sincronizada
+          )
+          VALUES (?, ?, 'FOTO', ?, 0)
+        `);
+        stmtFoto.run(fotoId, id, alerta.foto_base64);
+
+        const stmtUpdateAlerta = db.prepare(`
+          UPDATE alertas
+          SET foto_id = ?
+          WHERE id = ?
+        `);
+        stmtUpdateAlerta.run(fotoId, id);
+      }
+
       const stmtSync = db.prepare(`
         INSERT INTO sincronizacoes (id, entidade_tipo, entidade_id, status_envio, tentativas, ultima_tentativa)
         VALUES (?, 'alerta', ?, 'PENDENTE', 0, null)
       `);
       stmtSync.run(uuidv7(), id);
+
+      if (fotoId) {
+        const stmtSyncFoto = db.prepare(`
+          INSERT INTO sincronizacoes (id, entidade_tipo, entidade_id, status_envio, tentativas, ultima_tentativa)
+          VALUES (?, 'evidencia', ?, 'PENDENTE', 0, null)
+        `);
+        stmtSyncFoto.run(uuidv7(), fotoId);
+      }
 
       db.exec('COMMIT');
       return this.buscarPorId(id);
@@ -52,23 +80,18 @@ class AlertaRepository {
     return row || null;
   }
 
-  async listar(status?: string): Promise<any[]> {
-    if (status) {
-      const stmt = db.prepare(`
-        SELECT *
-        FROM alertas
-        WHERE status = ?
-        ORDER BY criado_em DESC
-      `);
-      return stmt.all(status) as any[];
-    }
-
+  async listar(status?: string, tipo?: string): Promise<any[]> {
+    const conds: string[] = [];
+    const params: any[] = [];
+    if (status) { conds.push('status = ?'); params.push(status); }
+    if (tipo)   { conds.push('LOWER(tipo) = LOWER(?)'); params.push(tipo); }
+    const where = conds.length ? 'WHERE ' + conds.join(' AND ') : '';
     const stmt = db.prepare(`
-      SELECT *
-      FROM alertas
+      SELECT * FROM alertas
+      ${where}
       ORDER BY criado_em DESC
     `);
-    return stmt.all() as any[];
+    return stmt.all(...params) as any[];
   }
 
   async resolver(

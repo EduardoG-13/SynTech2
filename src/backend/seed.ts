@@ -1,5 +1,9 @@
 import db from './config/database';
 import bcrypt from 'bcryptjs';
+import { inicializarBanco } from './config/initDb';
+
+// Garante que as tabelas existem antes de inserir os dados
+inicializarBanco();
 
 const senhaHash = bcrypt.hashSync('123456', 10);
 
@@ -48,9 +52,17 @@ try {
     stmtRetiro.run(retiros[i].id, retiros[i].nome, retiros[i].loc, coordDistribuicao[i]);
   }
 
-  // ==================== GERENTE (único) ====================
-  db.prepare(`INSERT OR IGNORE INTO usuarios (id, nome, senha, perfil, retiro_id) VALUES (?, ?, ?, ?, ?)`)
-    .run('gerente-1', 'admin', senhaHash, 'Gerente', null);
+  // ==================== GERENTE ADM master (único inicial) ====================
+  // Tenta com is_admin; se a coluna ainda não existe (banco antigo sem migration 002), faz sem
+  try {
+    db.prepare(`INSERT OR IGNORE INTO usuarios (id, nome, senha, perfil, retiro_id, is_admin) VALUES (?, ?, ?, ?, ?, 1)`)
+      .run('gerente-1', 'admin', senhaHash, 'Gerente', null);
+  } catch (e) {
+    db.prepare(`INSERT OR IGNORE INTO usuarios (id, nome, senha, perfil, retiro_id) VALUES (?, ?, ?, ?, ?)`)
+      .run('gerente-1', 'admin', senhaHash, 'Gerente', null);
+  }
+  // Garante que o admin tem is_admin=1 mesmo se foi criado antes da migration
+  try { db.prepare("UPDATE usuarios SET is_admin = 1 WHERE id = 'gerente-1'").run(); } catch(e) {}
 
   // ==================== CAPATAZES ====================
   const capatazes = [
@@ -72,6 +84,19 @@ try {
   for (const c of capatazes) {
     db.prepare(`INSERT OR IGNORE INTO usuarios (id, nome, senha, perfil, retiro_id) VALUES (?, ?, ?, ?, ?)`)
       .run(c.id, c.nome, senhaHash, 'Capataz', c.retiro);
+    db.prepare(`UPDATE retiros SET capataz_id = ? WHERE id = ?`).run(c.id, c.retiro);
+  }
+
+  // ==================== INFRA (3 equipes técnicas) ====================
+  // O login simplificado da Infra usa esses IDs (tecnico-hidraulica, etc.)
+  const equipesInfra = [
+    { id: 'tecnico-hidraulica', nome: 'Equipe Hidráulica' },
+    { id: 'tecnico-eletrica',   nome: 'Equipe Elétrica' },
+    { id: 'tecnico-cerca',      nome: 'Equipe Cerca' },
+  ];
+  for (const t of equipesInfra) {
+    db.prepare(`INSERT OR IGNORE INTO usuarios (id, nome, senha, perfil, retiro_id) VALUES (?, ?, ?, ?, NULL)`)
+      .run(t.id, t.nome, senhaHash, 'Tecnico');
   }
 
   console.log('[seed] Seed concluído com sucesso!');

@@ -5,6 +5,8 @@ export interface JwtUserPayload {
   nome: string;
   perfil: string;
   retiro_id: string | null;
+  is_admin?: boolean;
+  categoria?: string;
 }
 
 export interface JwtRefreshPayload extends JwtUserPayload {

@@ -5,8 +5,7 @@ CREATE TABLE IF NOT EXISTS refresh_tokens (
     expires_at DATETIME NOT NULL,
     revoked_at DATETIME,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
-    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    atualizado_em DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX IF NOT EXISTS idx_refresh_tokens_usuario_id

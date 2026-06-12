@@ -42,7 +42,8 @@ export class ViewRoutes {
     this.router.get('/dashboard', (req: Request, res: Response) => {
       const perfil = req.query.perfil || 'Gerente';
       const retiro = req.query.retiro || 'Geral';
-      res.render('dashboard', { title: 'BRPec | Dashboard', perfil, retiro });
+      const usuario_id = (req.session as any)?.usuario?.id ?? null;
+      res.render('dashboard', { title: 'BRPec | Dashboard', perfil, retiro, usuario_id });
     });
     // Listagem de tarefas (antigo / tasks placeholder para testes)
     this.router.get('/tasks', (_req: Request, res: Response) => {
@@ -70,6 +71,17 @@ export class ViewRoutes {
       res.render('nova-os', { perfil, retiro });
     });
 
+    // Novo Chamado de Infraestrutura (US03 / US06)
+    this.router.get('/novo-chamado', (req: Request, res: Response) => {
+      const sess = (req.session as any)?.usuario;
+      if (!sess) return res.redirect('/');
+      const perfil = sess.perfil;
+      const capataz_id = sess.id;
+      const retiro_id = sess.retiro_id || '';
+      const retiro = sess.retiro_id || 'Geral';
+      res.render('novo-chamado', { perfil, retiro, capataz_id, retiro_id });
+    });
+
     // Painel de Infraestrutura (US06/US07)
     this.router.get('/infraestrutura', (req: Request, res: Response) => {
       const perfil = req.query.perfil || 'Infraestrutura';
@@ -77,18 +89,42 @@ export class ViewRoutes {
       res.render('infraestrutura', { perfil, retiro });
     });
 
-    // Registrar resolução de chamado (US06)
+    // Registrar resolução de chamado (US06) — só Infra ou Tecnico
     this.router.get('/chamado/:id/resolver', (req: Request, res: Response) => {
-      const perfil = req.query.perfil || 'Infraestrutura';
-      const retiro = req.query.retiro || 'Geral';
-      res.render('chamado-resolver', { perfil, retiro, chamadoId: req.params.id });
+      const sess = (req.session as any)?.usuario;
+      if (!sess) return res.redirect('/');
+      if (!['Infraestrutura', 'Tecnico'].includes(sess.perfil)) {
+        // Outros perfis veem read-only
+        return res.redirect('/chamado/' + req.params.id);
+      }
+      res.render('chamado-resolver', { perfil: sess.perfil, retiro: sess.retiro_id || 'Geral', chamadoId: req.params.id });
     });
 
-    // Boletas / Movimentações (US11/US12)
+    // Tela read-only de chamado (Gerente, Coordenador, Capataz)
+    this.router.get('/chamado/:id', (req: Request, res: Response) => {
+      const sess = (req.session as any)?.usuario;
+      if (!sess) return res.redirect('/');
+      res.render('chamado-detalhe', { perfil: sess.perfil, retiro: sess.retiro_id || 'Geral', chamadoId: req.params.id });
+    });
+
+    // Boletas / Movimentações — exclusivo do Coordenador (US11/US12)
     this.router.get('/boletas', (req: Request, res: Response) => {
-      const perfil = req.query.perfil || 'Coordenador';
+      const sess = (req.session as any)?.usuario;
+      if (!sess) return res.redirect('/');
+      if (sess.perfil !== 'Coordenador') {
+        return res.status(403).render('acesso-negado', {
+          perfil: sess.perfil,
+          perfilNecessario: 'Coordenador',
+        });
+      }
+      res.render('boletas', { perfil: sess.perfil, retiro: sess.retiro_id || 'Geral' });
+    });
+
+    // Nova boleta zootécnica (US05/RF007)
+    this.router.get('/nova-boleta', (req: Request, res: Response) => {
+      const perfil = req.query.perfil || 'Capataz';
       const retiro = req.query.retiro || 'Geral';
-      res.render('boletas', { perfil, retiro });
+      res.render('nova-boleta', { perfil, retiro });
     });
   }
 }
