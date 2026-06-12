@@ -5281,6 +5281,8 @@ it('deve lançar erro quando a tarefa não pertence ao capataz', async () => {
 
 *RN coberta*: RN05 — "apenas tarefas associadas ao retiro do Capataz devem ser exibidas para ele" (seção 3.1.2).
 
+*Determinismo*: o `capataz_id` divergente (`mock-capataz-id-0002`) é um valor fixo no `mockResolvedValue` do Arrange — não depende de banco, relógio ou estado externo. O `jest.clearAllMocks()` no `beforeEach` garante que o mock do `buscarPorId` configurado aqui não vaze para os demais casos do describe.
+
 ---
 
 **CT-UA01 — `criarAlerta` sucesso (RF006 / RN19, RN26)**
@@ -5299,6 +5301,8 @@ it('deve criar o chamado e retornar o registro persistido quando os dados são v
 
 *RNs cobertas*: RN19 (GPS obrigatório) e RN26 (alerta vinculado ao retiro) são verificadas indiretamente pela presença de `latitude`, `longitude` e `retiro_id` no `dadosBase`. A ausência individual de cada campo é testada em CT-UA05 e CT-UA06.
 
+*Determinismo*: `dadosBase` é um objeto literal declarado no escopo do `describe`, sem nenhum campo calculado em runtime. O `mockResolvedValue(alertaFixture())` é redefinido no `beforeEach` antes de cada caso, de forma que o valor de retorno configurado aqui não interfere nos cenários de falha seguintes.
+
 ---
 
 **CT-CS01 — `CloudSyncService` offline (RF010 / resiliência Outbox)**
@@ -5316,6 +5320,8 @@ test('Deve suspender a sincronização se não houver conexão com o Supabase (o
   expect(mockPool.query).toHaveBeenCalledTimes(1); // apenas SELECT 1
 });
 ```
+
+*Determinismo*: o estado do banco é zerado no `beforeEach` (`DELETE` em todas as tabelas) e o seed de retiro, gerente e capataz é reinserido a cada caso — eliminando dependência de ordem de execução. O `mockPool.query.mockRejectedValueOnce` afeta apenas a primeira chamada do caso corrente; o `jest.clearAllMocks()` restaura o mock antes do próximo teste.
 
 *Nota de classificação*: `cloudSyncService.test.ts` é um teste de integração de serviço híbrido — usa SQLite real (verifica estado da fila) e mock do pool Supabase (simula offline). Reside em `tests/unit/` por convenção, mas opera uma camada acima de um puro teste unitário.
 
