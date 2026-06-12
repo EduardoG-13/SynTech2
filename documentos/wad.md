@@ -5592,7 +5592,7 @@ Tests:       61 passed, 61 total
 | `alertaService.ts` | 82.6 | ✓ | Linhas 16, 23-25: branches de validação de tipo de chamado |
 | `database.ts` | 100 | ✓ | Todos os branches de inicialização cobertos por database.test.ts |
 
-> A métrica `All files` (73.04% lines) inclui arquivos de `config` e `tests/mocks` que não são camada de serviço. Considerando apenas `services/`, a cobertura de linhas é 70.22% — puxada para baixo pelo `cloudSyncService.ts`. Os quatro serviços de domínio (`alerta`, `evento`, `exportacao`, `tarefa`) atendem individualmente à meta de 80% de linhas.
+> A métrica `All files` (88.28% lines) inclui arquivos de `config` e `tests/mocks` que não são camada de serviço. Considerando apenas `services/`, a cobertura de linhas é 91.01% — acima da meta de 80%. O `cloudSyncService.ts` passou de 42.46% para 93.15% após a adição de 11 casos cobrindo os branches do loop Outbox por tipo de entidade (`movimentacao`, `evidencia`, `retiro`, `usuario`). O `database.ts` atingiu 100% de linhas e branches com a inclusão de `database.test.ts`, que exercita os quatro caminhos de inicialização via isolateModules.
 
 **Mapeamento CT → RN → RF (rastreabilidade consolidada):**
 
