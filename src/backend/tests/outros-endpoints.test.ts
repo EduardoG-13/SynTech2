@@ -120,7 +120,10 @@ describe('N — POST /api/eventos-zootecnicos/nascimentos (Registrar Nascimento)
         retiro_id: RETIRO_A,
         categoria: 'bezerro',
         quantidade: 3,
-        capataz_id: CAPATAZ_A
+        capataz_id: CAPATAZ_A,
+        peso_nascimento: 30,
+        identificacao_mae: 'VACA-MOCK',
+        sexo: 'M'
       });
 
     expect(res.status).toBe(201);

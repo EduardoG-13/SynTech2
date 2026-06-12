@@ -24,6 +24,9 @@
       <button data-rota="/dashboard" onclick="window.location.href='/dashboard'">
         <span><img src="/public/Icons/dashboard_analise_dados.ico" alt="Dashboard" /></span> Dashboard
       </button>
+      <button data-rota="/nova-tarefa" onclick="window.location.href='/nova-tarefa'">
+        <span><img src="/public/Icons/tarefas.ico" alt="Nova Tarefa" /></span> Nova Tarefa
+      </button>
       <button data-rota="/infraestrutura" onclick="window.location.href='/infraestrutura'">
         <span><img src="/public/Icons/alerta.ico" alt="Infraestrutura" /></span> Infraestrutura
       </button>
@@ -99,15 +102,19 @@
     // Marca o body com o perfil ativo (CSS usa body[data-perfil="Capataz"] etc.)
     document.body.setAttribute('data-perfil', '<%= perfil %>');
 
-    // Pede ao Service Worker para pré-cachear as rotas desse perfil (uma vez por sessão)
-    if ('serviceWorker' in navigator && !sessionStorage.getItem('brpec_precache_done')) {
-      navigator.serviceWorker.ready.then(function(reg) {
-        if (reg.active) {
-          reg.active.postMessage({ tipo: 'pre-cache-perfil', perfil: '<%= perfil %>' });
-          sessionStorage.setItem('brpec_precache_done', '1');
-        }
-      });
-    }
+    // Pede ao Service Worker para pré-cachear as rotas desse perfil (uma vez por perfil/sessão).
+    // Usa chave por perfil pra re-disparar se o usuário trocar de conta.
+    (function() {
+      var chavePrecache = 'brpec_precache_' + '<%= perfil %>';
+      if ('serviceWorker' in navigator && !sessionStorage.getItem(chavePrecache)) {
+        navigator.serviceWorker.ready.then(function(reg) {
+          if (reg.active) {
+            reg.active.postMessage({ tipo: 'pre-cache-perfil', perfil: '<%= perfil %>' });
+            sessionStorage.setItem(chavePrecache, '1');
+          }
+        });
+      }
+    })();
 
     // Mostra o botão Configurações apenas para Gerente ADM (is_admin = true)
     fetch('/api/auth/me', { credentials: 'same-origin' })

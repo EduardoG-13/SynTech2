@@ -1,5 +1,10 @@
 import request from 'supertest';
 import app from '../app';
+import { inicializarBanco } from '../config/initDb';
+
+beforeAll(() => {
+  inicializarBanco();
+});
 
 describe('Front-end Offline Operations - Validação Completa', () => {
   it('serve o script de interceptação offline', async () => {

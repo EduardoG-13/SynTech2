@@ -53,13 +53,13 @@ class EventoService {
   }) {
     // Validação de campos obrigatórios para óbito
     if (!dados.identificacao_animal) {
-      throw new Error('Informe a identificação do animal.');
+      throw new Error('Informe a identificação do animal (identificacao_animal).');
     }
     if (!dados.causa_morte) {
-      throw new Error('Informe a causa da morte.');
+      throw new Error('Informe a causa da morte (causa_morte).');
     }
     if (!dados.foto_base64) {
-      throw new Error('Para registrar óbito é obrigatório anexar a foto da carcaça.');
+      throw new Error('Para registrar óbito é obrigatório anexar a Foto da carcaça.');
     }
     if (!dados.data) {
       throw new Error('Informe a data do óbito.');

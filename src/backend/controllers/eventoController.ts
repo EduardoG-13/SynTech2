@@ -2,7 +2,7 @@ import eventoService from '../services/eventoService';
 
 class EventoController {
   async registrarNascimento(req, res, next): Promise<void> {
-    const { data, retiro_id, categoria, quantidade, capataz_id } = req.body;
+    const { data, retiro_id, categoria, quantidade, capataz_id, peso_nascimento, identificacao_mae, sexo } = req.body;
 
     if (!data || !retiro_id || !categoria || !quantidade || !capataz_id) {
       res.status(400).json({
@@ -17,7 +17,10 @@ class EventoController {
         retiro_id,
         categoria,
         quantidade,
-        capataz_id
+        capataz_id,
+        peso_nascimento: peso_nascimento !== undefined ? Number(peso_nascimento) : undefined,
+        identificacao_mae,
+        sexo
       });
 
       res.status(201).json({
@@ -25,7 +28,15 @@ class EventoController {
         mensagem: 'Registro de nascimento criado com sucesso',
         registro: nascimento
       });
-    } catch (erro) {
+    } catch (erro: any) {
+      if (erro.message && erro.message.includes('RF013')) {
+        res.status(400).json({ erro: erro.message });
+        return;
+      }
+      if (erro.message && erro.message.includes('RN27')) {
+        res.status(422).json({ erro: erro.message });
+        return;
+      }
       next(erro);
     }
   }

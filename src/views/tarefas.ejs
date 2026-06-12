@@ -2,121 +2,179 @@
 <link rel="stylesheet" href="/public/css/tarefas.css" />
 
 <div id="device" class="logged">
-
   <%- include('partials/sidebar') %>
 
   <div id="app">
-
     <div class="header-bar" style="margin-top: 0; margin-bottom: 2rem;">
       <div class="user-avatar"><img src="/public/Icons/capataz.ico" alt="Capataz" style="width:32px;height:32px;object-fit:contain;" /></div>
-      <h1>Histórico de Registros</h1>
+      <h1>Minhas Tarefas</h1>
       <div class="sub"><%= typeof nome !== 'undefined' ? nome : '' %> · <%= perfil %> · <%= retiro %></div>
     </div>
 
     <main class="tarefas-main">
 
-      <!-- Filtro por tipo de boleta (ajuda a achar registros) -->
-      <div class="filter-pills" id="filtros-tarefas">
-        <button class="pill active" data-filtro="todas">Todas</button>
-        <button class="pill" data-filtro="movimentacao"><img class="label-ico" src="/public/Icons/movimentacao.ico" alt="" /> Movimentação</button>
-        <button class="pill" data-filtro="nascimento"><img class="label-ico" src="/public/Icons/nascimento.ico" alt="" /> Nascimento</button>
-        <button class="pill" data-filtro="obito"><img class="label-ico" src="/public/Icons/obto.ico" alt="" /> Óbito</button>
+      <!-- Filtro Abertas | Concluídas -->
+      <div class="filter-pills" id="filtros-status">
+        <button class="pill active" data-filtro="ABERTA"><img class="ico-md" src="/public/Icons/pendente.ico" alt="" /> Abertas <span class="cont" id="cont-abertas">0</span></button>
+        <button class="pill" data-filtro="CONCLUIDA"><img class="ico-md" src="/public/Icons/concluido.ico" alt="" /> Concluídas <span class="cont" id="cont-concluidas">0</span></button>
       </div>
 
-      <!-- Lista de boletas criadas pelo capataz (lidas do localStorage) -->
-      <div class="tarefas-lista" id="tarefas-lista"></div>
+      <!-- Lista de tarefas (lida da API) -->
+      <div class="tarefas-lista" id="tarefas-lista">
+        <p style="text-align:center; color:#8A8A7C; padding:1rem;">Carregando...</p>
+      </div>
 
       <div class="tarefas-vazio" id="tarefas-vazio" style="display: none;">
-        <p>Nenhuma boleta encontrada.</p>
+        <p>📭 Nenhuma tarefa por aqui ainda.</p>
+        <p style="font-size:0.85rem; margin-top:0.5rem;">As tarefas que o gerente criar para você aparecem aqui.</p>
       </div>
 
-      <button class="btn btn-primario" style="width: 100%; margin-top: 1.5rem;" onclick="window.location.href='/nova-os?perfil=<%= perfil %>&retiro=<%= retiro %>'">
-        ➕ Nova Boleta
+      <!-- Botão fixo flutuante: Nova Boleta -->
+      <button class="btn btn-primario btn-fab" onclick="window.location.href='/nova-os'">
+        <img class="btn-ico" src="/public/Icons/movimentacao.ico" alt="" /> Nova Boleta
       </button>
 
     </main>
-
   </div>
 </div>
 
 <script>
-  (function() {
-    var ICONES = {
-      'movimentacao': 'movimentacao', 'transferencia': 'movimentacao',
-      'nascimento': 'nascimento', 'obito': 'obto',
-      'compravenda': 'movimentacao', 'evolucao': 'movimentacao', 'manejo': 'tarefas'
-    };
-    var ROTULOS = {
-      'movimentacao': 'Movimentação', 'transferencia': 'Transferência',
-      'nascimento': 'Nascimento', 'obito': 'Óbito',
-      'compravenda': 'Compra/Venda', 'evolucao': 'Evolução', 'manejo': 'Manejo'
-    };
+  var STATUS_ATUAL = 'ABERTA';
+  var TAREFAS_ABERTAS = [];
+  var TAREFAS_CONCLUIDAS = [];
 
-    var lista = [];
+  var ROTULOS_OP = {
+    nascimento:    'Nascimento',
+    obito:         'Óbito',
+    transferencia: 'Transferência',
+    compravenda:   'Compra / Venda',
+    evolucao:      'Evolução',
+    manejo:        'Manejo'
+  };
+  var ICOS_OP = {
+    nascimento:    'nascimento',
+    obito:         'obto',
+    transferencia: 'movimentacao',
+    compravenda:   'cedula_dinheiro_bovino',
+    evolucao:      'evolucao',
+    manejo:        'tarefas'
+  };
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('#filtros-status .pill').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#filtros-status .pill').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        STATUS_ATUAL = btn.dataset.filtro;
+        render();
+      });
+    });
+    carregar();
+  });
+
+  function carregar() {
+    Promise.all([
+      fetch('/api/tarefas?status=ABERTA', { credentials: 'same-origin' }).then(function(r) { return r.json(); }),
+      fetch('/api/tarefas?status=CONCLUIDA', { credentials: 'same-origin' }).then(function(r) { return r.json(); }),
+    ]).then(function(resps) {
+      TAREFAS_ABERTAS = (resps[0] && resps[0].tarefas) || [];
+      TAREFAS_CONCLUIDAS = (resps[1] && resps[1].tarefas) || [];
+      document.getElementById('cont-abertas').textContent = TAREFAS_ABERTAS.length;
+      document.getElementById('cont-concluidas').textContent = TAREFAS_CONCLUIDAS.length;
+      render();
+    }).catch(function() {
+      document.getElementById('tarefas-lista').innerHTML =
+        '<p style="color:#D32F2F; text-align:center;">Erro ao carregar tarefas.</p>';
+    });
+  }
+
+  function render() {
+    var lista = STATUS_ATUAL === 'ABERTA' ? TAREFAS_ABERTAS : TAREFAS_CONCLUIDAS;
     var cont = document.getElementById('tarefas-lista');
     var vazio = document.getElementById('tarefas-vazio');
 
-    cont.innerHTML = '<p style="text-align:center; color:#8A8A7C; padding:1rem;">Carregando boletas...</p>';
-
-    fetch('/api/boletas/minhas', { credentials: 'same-origin' })
-      .then(function(r) { return r.json(); })
-      .then(function(rows) {
-        lista = rows || [];
-        render('todas');
-      })
-      .catch(function() {
-        cont.innerHTML = '<p style="color:#D32F2F; text-align:center;">Erro ao carregar boletas.</p>';
-      });
-
-    function render(filtro) {
+    if (!lista.length) {
       cont.innerHTML = '';
-      var visiveis = 0;
-      lista.forEach(function(r) {
-        var tipo = r.operacao || 'manejo';
-        // Filtro "obito"/"nascimento"/"movimentacao" — "movimentacao" engloba transferencia/compravenda/evolucao
-        var grupo = (tipo === 'transferencia' || tipo === 'compravenda' || tipo === 'evolucao') ? 'movimentacao' : tipo;
-        if (filtro !== 'todas' && grupo !== filtro) return;
-
-        var ico = ICONES[tipo] || 'tarefas';
-        var rotulo = ROTULOS[tipo] || 'Registro';
-        var total = (r.animais || []).reduce(function(s,a){return s+(parseInt(a.quantidade)||0);},0);
-        var desc = total ? (total + ' cabeças') : (r.titulo || r.causa || '');
-        var data = r.data || (r.criadoEm || '').slice(0,10);
-        var statusBadge = r.aprovada
-          ? '<span class="badge concluida">✅ Aprovada</span>'
-          : '<span class="badge pendente">⏳ Aguardando coordenador</span>';
-
-        var card = document.createElement('div');
-        card.className = 'card tarefa-card';
-        card.dataset.tipo = grupo;
-        card.onclick = function() { window.location.href = '/boleta/' + r.id; };
-        card.innerHTML =
-          '<div class="bar-lateral ' + (r.aprovada ? 'concluida' : 'pendente') + '"></div>' +
-          '<div class="body">' +
-            '<div class="info">' +
-              '<span class="titulo"><img class="label-ico" src="/public/Icons/' + ico + '.ico" alt="" /> ' + rotulo + '</span>' +
-              '<span class="descricao">' + desc + '</span>' +
-              '<div class="meta"><span class="retiro-tag">📅 ' + data + '</span></div>' +
-            '</div>' +
-            '<div class="status-area">' +
-              statusBadge +
-              '<span class="arrow">›</span>' +
-            '</div>' +
-          '</div>';
-        cont.appendChild(card);
-        visiveis++;
-      });
-      vazio.style.display = visiveis === 0 ? 'block' : 'none';
+      vazio.style.display = 'block';
+      return;
     }
+    vazio.style.display = 'none';
 
-    document.querySelectorAll('#filtros-tarefas .pill').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('#filtros-tarefas .pill').forEach(function(b){b.classList.remove('active');});
-        btn.classList.add('active');
-        render(btn.dataset.filtro);
-      });
-    });
-  })();
+    cont.innerHTML = lista.map(function(t) {
+      var rotuloTipo = ROTULOS_OP[t.tipo_operacao] || 'Tarefa';
+      var icoTipo = ICOS_OP[t.tipo_operacao] || 'tarefas';
+      var dataExec = (t.data_execucao || '').slice(0, 10);
+      var prioridadeClass = 'media';
+      if (t.prioridade === 'alta')  prioridadeClass = 'alta';
+      if (t.prioridade === 'baixa') prioridadeClass = 'baixa';
+
+      var statusBadge = '';
+      if (t.status === 'CONCLUIDA') {
+        statusBadge = '<span class="badge concluida"><img class="ico-sm" src="/public/Icons/concluido.ico" alt="" /> Concluída</span>';
+      } else if (t.status === 'EM_ANDAMENTO') {
+        statusBadge = '<span class="badge andamento">⏳ Em andamento</span>';
+      } else {
+        statusBadge = '<span class="badge pendente">⏳ Pendente</span>';
+      }
+
+      var ehNova = (t.gerente_id && !t.vista_em && t.status !== 'CONCLUIDA');
+      var badgeNova = ehNova
+        ? '<span class="badge nova"><img class="ico-sm" src="/public/Icons/notificacao_dispositivo_movel.ico" alt="" /> NOVA</span>'
+        : '';
+
+      return '<div class="card tarefa-card" onclick="window.location.href=\'/tarefa/' + t.id + '\'">' +
+        '<div class="bar-lateral ' + (t.status === 'CONCLUIDA' ? 'concluida' : 'pendente') + '"></div>' +
+        '<div class="body">' +
+          '<div class="info">' +
+            '<span class="titulo"><img class="label-ico" src="/public/Icons/' + icoTipo + '.ico" alt="" /> ' + (t.titulo || rotuloTipo) + '</span>' +
+            '<span class="descricao">' + rotuloTipo + ' · ' + (t.retiro_nome || '—') + (t.gerente_nome ? ' · por ' + t.gerente_nome : '') + '</span>' +
+            '<div class="meta">' +
+              '<span class="retiro-tag"><img class="ico-sm" src="/public/Icons/calendario_pagina_agenda.ico" alt="" /> ' + dataExec + '</span>' +
+              '<span class="prioridade ' + prioridadeClass + '">● ' + (t.prioridade || 'media').toUpperCase() + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<div class="status-area">' + badgeNova + statusBadge + '<span class="arrow">›</span></div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
 </script>
+
+<style>
+  /* Badge "NOVA" + contador nas pills */
+  .badge.nova {
+    background: #D32F2F;
+    color: #fff;
+    margin-right: 0.25rem;
+  }
+  .filter-pills .pill .cont {
+    background: rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 0 0.4rem;
+    margin-left: 0.25rem;
+    font-size: 0.75rem;
+  }
+  .filter-pills .pill:not(.active) .cont {
+    background: #E6F3EB;
+    color: #1A4D2E;
+  }
+  /* FAB Nova Boleta */
+  .btn-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: auto;
+    z-index: 100;
+    box-shadow: 0 4px 16px rgba(26, 77, 46, 0.3);
+    padding: 1rem 1.5rem;
+    border-radius: 999px;
+  }
+  @media (max-width: 768px) {
+    .btn-fab {
+      bottom: 5rem;
+      right: 1rem;
+    }
+  }
+</style>
 
 <%- include('partials/footer') %>

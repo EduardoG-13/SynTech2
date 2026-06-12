@@ -33,6 +33,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         categoria:  'BOVINO',
         quantidade: 3,
         capataz_id: CAPATAZ_ID,
+        peso_nascimento: 35,
+        identificacao_mae: 'VACA-001',
+        sexo: 'F',
       });
 
     expect(res.status).toBe(201);
@@ -50,6 +53,9 @@ describe('POST /api/eventos-zootecnicos/nascimentos', () => {
         categoria:  'OVINO',
         quantidade: 5,
         capataz_id: CAPATAZ_ID,
+        peso_nascimento: 30,
+        identificacao_mae: 'VACA-002',
+        sexo: 'M',
       });
 
     expect(res.status).toBe(201);
