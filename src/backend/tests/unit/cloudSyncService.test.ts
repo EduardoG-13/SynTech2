@@ -28,17 +28,17 @@ describe('CloudSyncService', () => {
   });
 
   beforeEach(() => {
-    // Clear all tables
+    // Clear all tables (children before parents to respect FK constraints)
     db.exec(`
       DELETE FROM sincronizacoes;
-      DELETE FROM tarefas;
-      DELETE FROM alertas;
       DELETE FROM compravendas;
       DELETE FROM transferencias;
       DELETE FROM obitos;
       DELETE FROM nascimentos;
       DELETE FROM movimentacoes;
+      DELETE FROM alertas;
       DELETE FROM evidencias;
+      DELETE FROM tarefas;
       DELETE FROM usuarios;
       DELETE FROM retiros;
     `);
@@ -338,6 +338,67 @@ describe('CloudSyncService', () => {
       const calls = mockClient.query.mock.calls.map((c: any[]) => c[0]);
       expect(calls).toContain('ROLLBACK');
       expect(mockClient.release).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('evidencia', () => {
+    test('Deve sincronizar evidência vinculada a tarefa com sucesso', async () => {
+      mockPool.query
+        .mockResolvedValueOnce({ rows: [{ '?column?': 1 }] } as any) // SELECT 1
+        .mockResolvedValueOnce({ rowCount: 1, rows: [] } as any);    // upsert
+
+      const job_id = uuidv7();
+      const ev_id = uuidv7();
+      const task_id = uuidv7();
+
+      db.prepare(`
+        INSERT INTO tarefas (id, titulo, status, data_execucao, retiro_id, capataz_id, gerente_id, sincronizada)
+        VALUES (?, 'Tarefa Evidencia', 'PENDENTE', '2026-06-12', ?, ?, ?, 1)
+      `).run(task_id, RETIRO_ID, CAPATAZ_ID, GERENTE_ID);
+
+      db.prepare(`
+        INSERT INTO evidencias (id, tarefa_id, tipo, conteudo, tamanho_bytes, sincronizada)
+        VALUES (?, ?, 'FOTO', 'base64data...', 204800, 0)
+      `).run(ev_id, task_id);
+
+      db.prepare(`
+        INSERT INTO sincronizacoes (id, entidade_tipo, entidade_id, status_envio, tentativas)
+        VALUES (?, 'evidencia', ?, 'PENDENTE', 0)
+      `).run(job_id, ev_id);
+
+      await cloudSyncService.sincronizar();
+
+      const syncItem = db.prepare('SELECT * FROM sincronizacoes WHERE id = ?').get(job_id) as any;
+      expect(syncItem.status_envio).toBe('SINCRONIZADO');
+      expect(syncItem.tentativas).toBe(1);
+      expect((db.prepare('SELECT sincronizada FROM evidencias WHERE id = ?').get(ev_id) as any).sincronizada).toBe(1);
+      expect(mockPool.query).toHaveBeenCalledTimes(2);
+    });
+
+    test('Deve marcar ERRO e não atualizar sincronizada se o upsert falhar', async () => {
+      mockPool.query
+        .mockResolvedValueOnce({ rows: [{ '?column?': 1 }] } as any) // SELECT 1
+        .mockRejectedValueOnce(new Error('Supabase storage error'));   // upsert fails
+
+      const job_id = uuidv7();
+      const ev_id = uuidv7();
+
+      db.prepare(`
+        INSERT INTO evidencias (id, tipo, conteudo, sincronizada)
+        VALUES (?, 'TEXTO', 'Anotação de campo', 0)
+      `).run(ev_id);
+
+      db.prepare(`
+        INSERT INTO sincronizacoes (id, entidade_tipo, entidade_id, status_envio, tentativas)
+        VALUES (?, 'evidencia', ?, 'PENDENTE', 0)
+      `).run(job_id, ev_id);
+
+      await cloudSyncService.sincronizar();
+
+      const syncItem = db.prepare('SELECT * FROM sincronizacoes WHERE id = ?').get(job_id) as any;
+      expect(syncItem.status_envio).toBe('ERRO');
+      expect(syncItem.tentativas).toBe(1);
+      expect((db.prepare('SELECT sincronizada FROM evidencias WHERE id = ?').get(ev_id) as any).sincronizada).toBe(0);
     });
   });
 });
