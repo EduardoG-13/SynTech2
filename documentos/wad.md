@@ -5193,7 +5193,7 @@ O frontend foi refatorado para consumir a API REST real, substituindo os dados e
 
 <center>
   <p><strong>Figura 36</strong> — Segunda versão: Tela de tarefas com dados reais e badge de conectividade</p>
-  <img src="./assets/prints-v2/02-tarefas-online.png" width="800"/>
+  <img src="./assets/image-lista-de-tarefas-capataz.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -5201,7 +5201,7 @@ O frontend foi refatorado para consumir a API REST real, substituindo os dados e
 
 <center>
   <p><strong>Figura 37</strong> — Segunda versão: Nova O.S. submetendo para backend real (POST /api/tarefas → 201)</p>
-  <img src="./assets/prints-v2/03-nova-os-network.png" width="800"/>
+  <img src="./assets/image-nova-os.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -5209,7 +5209,7 @@ O frontend foi refatorado para consumir a API REST real, substituindo os dados e
 
 <center>
   <p><strong>Figura 38</strong> — Segunda versão: Tela de chamados com dados reais do banco</p>
-  <img src="./assets/prints-v2/04-chamados-real.png" width="800"/>
+  <img src="./assets/image-abrir-chamado-capataz.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
@@ -5220,6 +5220,12 @@ O frontend foi refatorado para consumir a API REST real, substituindo os dados e
 <center>
   <p><strong>Figura 39</strong> — Segunda versão: Dashboard com gráficos Chart.js populados com dados reais</p>
   <img src="./assets/prints-v2/05-dashboard-charts.png" width="800"/>
+  <p>Fonte: Próprios autores (2026).</p>
+</center>
+
+<center>
+  <p><strong>Figura 39</strong> — Segunda versão: Dashboard com gráficos Chart.js populados com dados reais - Parte 2</p>
+  <img src="./assets/image-dashboard-gerente-parte2.png" width="800"/>
   <p>Fonte: Próprios autores (2026).</p>
 </center>
 
