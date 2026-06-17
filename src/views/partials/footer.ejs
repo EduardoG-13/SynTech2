@@ -111,8 +111,10 @@
           var perfil = '<%= typeof usuario !== "undefined" ? usuario.perfil : "" %>';
           if (perfil) {
             navigator.serviceWorker.ready.then(function(registration) {
-              if (registration.active) {
-                registration.active.postMessage({ tipo: 'pre-cache-perfil', perfil: perfil });
+              var sw = registration.active || registration.waiting || registration.installing;
+              if (sw) {
+                console.log('[SW] Disparando pre-cache-perfil:', perfil);
+                sw.postMessage({ tipo: 'pre-cache-perfil', perfil: perfil });
               }
             });
           }
