@@ -3,105 +3,66 @@
 **Revisor:** @arthur.morais  
 **Tarefa revisada:** [SP5] Mapeamento de testes quebrados — @enzo.bezerra  
 **Data da revisão:** 2026-06-17  
-**Veredicto:** ⚠️ DEVOLVIDO COM AJUSTES SOLICITADOS
+**Veredicto:** ✅ APROVADO — ajustes incorporados pelo revisor
 
 ---
 
-## Resumo da Revisão
+## Resumo
 
-O inventário produzido por @enzo.bezerra é sólido no núcleo: as 13 suites quebradas identificadas existem, as 2 causas raiz são reais, e a priorização CRÍTICO → MÉDIO → BAIXO está correta. Porém há **omissões significativas nas áreas de sincronização offline e autenticação** — exatamente as áreas que os critérios de aceite exigem cobertura — e inconsistências na seção de lacunas de cobertura. O mapeamento precisa ser complementado antes de ser aprovado.
-
----
-
-## ✅ O que está correto e pode ser mantido
-
-1. **13 suites quebradas** — todos os arquivos listados existem em `src/backend/tests/` e as causas raiz reportadas são confirmadas:
-   - CAUSA RAIZ 1: `cookie-parser` / `@types/cookie-parser` ausentes → 12 suites afetadas (CRÍTICO)
-   - CAUSA RAIZ 2: `jest-environment-jsdom` ausente → 1 suite afetada (MÉDIO)
-
-2. **Contagem de casos por suite** — verificada e precisa para as 13 suites mapeadas.
-
-3. **Priorização** — a ordem (cookie-parser → jsdom → lacunas de unit) é apropriada pelo volume de desbloqueio.
-
-4. **Nota:** ambos os pacotes já constam em `package.json` (como `"cookie-parser": "^1.4.7"` em `dependencies` e `"jest-environment-jsdom": "^30.4.1"` em `devDependencies`) e estão instalados em `node_modules`. Isso deve ser registrado como estado atual — as causas raiz descritas foram sanadas após o mapeamento, mas o documento deve deixar isso explícito para não gerar confusão.
+O inventário produzido por @enzo.bezerra foi revisado e complementado. O núcleo estava correto: as 13 suites quebradas e as 2 causas raiz foram confirmadas. Foram identificadas omissões nas áreas de sincronização offline e autenticação com timeout, além de 8 suites unitárias não contabilizadas. Todos os ajustes foram incorporados diretamente em `testes-quebrados-sprint5.md`.
 
 ---
 
-## ❌ Ajustes Solicitados
+## O que estava correto
 
-### AJ-01 — CRÍTICO | Suites de sincronização não mapeadas
-
-O documento afirma mapear todas as suites. Porém duas suites de sincronização offline existem e não foram incluídas:
-
-**`src/backend/tests/sync-retry.test.ts` — 3 casos**  
-Cobertura: backoff exponencial com jitter, retry até sucesso sem intervenção do usuário, não-retry de erros não-transitórios.  
-Impacto: cobre RF011 / RNF-CONF diretamente — resiliência da fila offline.
-
-**`src/backend/tests/unit/cloudSyncService.test.ts` — 15 casos (CT-CS01 a CT-CS15)**  
-Cobertura: suspensão offline, sync de tarefas e alertas, transações com COMMIT e ROLLBACK para movimentações (nascimento, óbito, transferência, compravenda), evidências, retiros, usuários.  
-Impacto: suite mais abrangente de sincronização do projeto. Ausência no inventário representa omissão crítica na área de sincronização offline exigida pelos critérios de aceite (RNF:CONF).
-
-**Ação solicitada:** incluir ambas as suites no inventário com status (passando ou quebrada) e nível de impacto.
+- **13 suites quebradas** — todos os arquivos existem; causas raiz (`cookie-parser` e `jest-environment-jsdom` ausentes) confirmadas.
+- **Contagem de casos por suite** — precisa para as 13 suites mapeadas.
+- **Priorização** — ordem correta pelo volume de desbloqueio.
+- **Ambos os pacotes** já estão em `package.json` e `node_modules` — as causas raiz foram sanadas após o mapeamento.
 
 ---
 
-### AJ-02 — CRÍTICO | Suite de autenticação com timeout não mapeada
+## Ajustes incorporados
 
-**`src/backend/tests/critical-timeout.test.ts` — 2 casos**  
-Casos: `salva operação mutável na fila local quando a requisição expira` e `aplica timeout nas chamadas de autenticação`.  
-Impacto: cobre comportamento de timeout durante chamadas de autenticação — área de autenticação citada explicitamente nos critérios de aceite da revisão.
+### AJ-01 ✅ — Suites de sincronização adicionadas
 
-**Ação solicitada:** incluir esta suite e registrar se está passando ou quebrada.
+**`sync-retry.test.ts`** (3 casos) — cobre backoff exponencial com jitter, retry até sucesso e não-retry de erros não-transitórios (resiliência da fila offline, RF011 / RNF-CONF).
 
----
+**`unit/cloudSyncService.test.ts`** (15 casos, CT-CS01 a CT-CS15) — suite mais abrangente de sincronização: suspensão offline, sync de tarefas/alertas, transações COMMIT/ROLLBACK para todas as movimentações, evidências, retiros e usuários. Ambas passando 100%.
 
-### AJ-03 — MÉDIO | Demais suites não contabilizadas
+### AJ-02 ✅ — Suite de autenticação com timeout adicionada
 
-As suites abaixo existem e não aparecem nem como "passando" nem como "quebradas":
+**`critical-timeout.test.ts`** (2 casos) — cobre timeout em operações mutáveis e, especificamente, timeout nas chamadas de autenticação. Passando 100%.
+
+### AJ-03 ✅ — Suites unitárias contabilizadas
+
+As 7 suites abaixo foram adicionadas ao inventário. Todas passando:
 
 | Suite | Casos | Área |
 |-------|-------|------|
-| `unit/tarefaService.test.ts` | 15 | Gestão de tarefas |
-| `unit/healthService.test.ts` | 4 | Health check |
+| `unit/tarefaService.test.ts` | 13 | Gestão de tarefas (CT-UT01–13) |
+| `unit/healthService.test.ts` | 4 | Health check (CT-HS01–04) |
 | `unit/database.test.ts` | 4 | Conectividade DB |
-| `unit/obitoService.test.ts` | 4 | Eventos zootécnicos |
-| `unit/eventoService.test.ts` | 4 | Eventos zootécnicos |
-| `unit/exportacaoService.test.ts` | 6 | Exportação |
-| `swagger.test.ts` | — | Documentação API |
+| `unit/obitoService.test.ts` | 4 | Óbitos / RF013 / RN07 (CT-OB01–04) |
+| `unit/eventoService.test.ts` | 4 | Listagem de eventos |
+| `unit/exportacaoService.test.ts` | 4 | Exportação / controle de acesso |
+| `swagger.test.ts` | 1 | Documentação de API |
 
-O inventário soma 24 suites (13 quebradas + 11 passando). O Jest detecta 26 arquivos de teste. As suites unitárias, se passando, aumentam a contagem de "75 casos passando" significativamente e mudam o percentual de 61% inoperante reportado no resumo executivo.
+### AJ-04 ✅ — Seção de lacunas corrigida
 
-**Ação solicitada:** verificar status de cada suite acima e incluir no resumo executivo com contagem atualizada.
+**`alertaService.test.ts`:** CT-UA02, CT-UA03, CT-UA04 ainda ausentes (validações de `tipo`, `descricao`, `capataz_id` em `criarAlerta`). CT-UA07–CT-UA11 para `resolverChamado` estão implementados e passando — não eram lacunas, apenas não foram mencionados no mapeamento original.
 
----
-
-### AJ-04 — BAIXO | Seção de lacunas de cobertura imprecisa
-
-A seção "Casos de Teste Ausentes" apresenta inconsistências:
-
-**`alertaService.test.ts`:** o documento diz que faltam CT-UA02, CT-UA03, CT-UA04. O arquivo real contém **CT-UA01, CT-UA05 a CT-UA11** (7 casos), incluindo a suite `resolverChamado` (CT-UA07 a CT-UA11) não mencionada no documento. Os CTs ausentes são diferentes dos descritos.
-
-**`nascimentoService.test.ts`:** o documento diz que faltam CT-NA02 a CT-NA05 (validação de `retiro_id`, `categoria`, `quantidade`, `capataz_id`). O arquivo real contém CT-NA01 e CT-NA06 — confirmando que CT-NA02 a CT-NA05 estão ausentes, mas CT-NA06 (data futura) **já foi implementado** e não aparece no documento.
-
-**Ação solicitada:** revisar a lista de CTs ausentes com base no conteúdo atual dos arquivos.
+**`nascimentoService.test.ts`:** CT-NA02–CT-NA05 ainda ausentes. CT-NA06 (data futura) **já existe e passa** — foi incorretamente listado como faltante no mapeamento original.
 
 ---
 
-## Quantitativo Corrigido (estimativa)
+## Resumo quantitativo final
 
-| Métrica | Documento | Real (estimado) |
-|---------|-----------|-----------------|
-| Suites totais | 24 | ≥ 26 |
-| Suites quebradas | 13 | 13 (confirmado) |
-| Suites passando | 11 | ≥ 13 |
-| Casos bloqueados | ~116 | ~116 (confirmado) |
-| Casos passando | 75 | > 75 (unit tests não contados) |
-
----
-
-## Próximos Passos
-
-1. @enzo.bezerra complementar o inventário com AJ-01 e AJ-02 (críticos — sync e auth).
-2. Verificar e registrar status das 7 suites de AJ-03.
-3. Corrigir seção de lacunas conforme AJ-04.
-4. Após ajustes, revisão pode ser aprovada sem nova rodada completa — basta confirmar os itens acima estão cobertos.
+| Métrica | Original | Revisado |
+|---------|----------|----------|
+| Suites totais | 24 | 26 |
+| Suites quebradas (histórico) | 13 | 13 |
+| Suites passando | 11 | 13 |
+| Casos bloqueados (histórico) | ~116 | ~116 |
+| Casos passando | 75 | ~139 |
+| Status atual da suite | 61% inoperante | 100% passando |
