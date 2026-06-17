@@ -24,46 +24,30 @@
           <input type="hidden" id="os-operacao" required />
         </div>
 
-        <!-- ===================== TRANSFERÊNCIA ===================== -->
+        <!-- ===================== MOVIMENTAÇÃO ===================== -->
         <div class="card campo dinamico" data-op="transferencia">
-          <label><img class="label-ico" src="/public/Icons/bussola_direcao_guia.ico" alt="" /> Direção da movimentação</label>
+          <label><img class="label-ico" src="/public/Icons/bussola_direcao_guia.ico" alt="" /> Direção</label>
           <div class="toggle-pills">
-            <button type="button" class="pill active" data-tipo="envio"><img class="label-ico" src="/public/Icons/envio_animais_caixa.ico" alt="" /> Estou enviando</button>
-            <button type="button" class="pill" data-tipo="recebimento"><img class="label-ico" src="/public/Icons/entrada_animais_recebimento_compra.ico" alt="" /> Estou recebendo</button>
+            <button type="button" class="pill active" data-tipo="envio"><img class="label-ico" src="/public/Icons/envio_animais_caixa.ico" alt="" /> Saindo</button>
+            <button type="button" class="pill" data-tipo="recebimento"><img class="label-ico" src="/public/Icons/entrada_animais_recebimento_compra.ico" alt="" /> Entrando</button>
           </div>
-          <p class="ajuda">⚠️ A boleta só é aprovada quando os dois retiros registram a mesma quantidade.</p>
         </div>
 
         <div class="card campo dinamico" data-op="transferencia">
-          <label for="os-retiro-origem"><img class="label-ico" src="/public/Icons/localizacao.ico" alt="" /> Retiro de origem (de onde sai)</label>
+          <label for="os-retiro-origem"><img class="label-ico" src="/public/Icons/localizacao.ico" alt="" /> De onde sai</label>
           <select id="os-retiro-origem"></select>
         </div>
 
         <div class="card campo dinamico" data-op="transferencia">
-          <label for="os-retiro-destino"><img class="label-ico" src="/public/Icons/destido.ico" alt="" /> Retiro de destino (para onde vai)</label>
+          <label for="os-retiro-destino"><img class="label-ico" src="/public/Icons/destido.ico" alt="" /> Para onde vai</label>
           <select id="os-retiro-destino"></select>
         </div>
 
         <div class="card campo dinamico" data-op="transferencia">
-          <label><img class="label-ico" src="/public/Icons/caminhao_transporte_gado.ico" alt="" /> Tipo de transporte</label>
+          <label><img class="label-ico" src="/public/Icons/caminhao_transporte_gado.ico" alt="" /> Transporte</label>
           <div class="toggle-pills">
             <button type="button" class="pill active" data-transporte="rodoviario"><img class="label-ico" src="/public/Icons/caminhao_transporte_gado.ico" alt="" /> Caminhão</button>
             <button type="button" class="pill" data-transporte="comitiva"><img class="label-ico" src="/public/Icons/comitiva_peao_a_cavalo.ico" alt="" /> Comitiva</button>
-          </div>
-        </div>
-
-        <div class="card campo dinamico" data-op="transferencia" id="bloco-motorista">
-          <label for="os-motorista"><img class="label-ico" src="/public/Icons/capataz.ico" alt="" /> Motorista / Comissário</label>
-          <input type="text" id="os-motorista" placeholder="Nome de quem leva os animais" />
-          <div class="dois-campos">
-            <div>
-              <label for="os-rgcpf"><img class="label-ico" src="/public/Icons/identidade.ico" alt="" /> RG ou CPF</label>
-              <input type="text" id="os-rgcpf" placeholder="Documento" />
-            </div>
-            <div>
-              <label for="os-placa"><img class="label-ico" src="/public/Icons/Placa_de_carro.ico" alt="" /> Placa</label>
-              <input type="text" id="os-placa" placeholder="Placa do caminhão" />
-            </div>
           </div>
         </div>
 
@@ -77,8 +61,8 @@
         <div class="card campo dinamico" data-op="nascimento obito transferencia compravenda evolucao">
           <div class="dois-campos">
             <div>
-              <label for="os-pasto"><img class="label-ico" src="/public/Icons/Pasto.ico" alt="" /> Nº do pasto <span class="opcional-txt">(opcional)</span></label>
-              <input type="text" id="os-pasto" placeholder="Ex: Pasto 12" />
+              <label for="os-pasto"><img class="label-ico" src="/public/Icons/Pasto.ico" alt="" /> Pasto <span class="opcional-txt">(opcional)</span></label>
+              <input type="text" id="os-pasto" placeholder="Ex: 12" />
             </div>
             <div>
               <label for="os-data"><img class="label-ico" src="/public/Icons/calendario_pagina_agenda.ico" alt="" /> Data</label>
@@ -89,21 +73,21 @@
 
         <!-- ===================== CATEGORIAS + QUANTIDADES (repetível) ===================== -->
         <div class="card campo dinamico" data-op="nascimento obito transferencia compravenda">
-          <label><img class="label-ico" src="/public/Icons/movimentacao.ico" alt="" /> Animais (categoria e quantidade)</label>
+          <label><img class="label-ico" src="/public/Icons/movimentacao.ico" alt="" /> Animais</label>
           <div id="linhas-categoria"></div>
-          <button type="button" class="btn-add" id="btn-add-categoria">➕ Adicionar outra categoria</button>
+          <button type="button" class="btn-add" id="btn-add-categoria">➕ Adicionar categoria</button>
           <div class="total-linha">
-            <span><img class="label-ico" src="/public/Icons/abaco_calculo_total.ico" alt="" /> Total de animais:</span>
+            <span><img class="label-ico" src="/public/Icons/abaco_calculo_total.ico" alt="" /> Total:</span>
             <strong id="total-animais">0</strong>
           </div>
         </div>
 
-        <!-- ===================== EVOLUÇÃO (origem → destino) ===================== -->
+        <!-- ===================== MUDANÇA DE IDADE (de → para) ===================== -->
         <div class="card campo dinamico" data-op="evolucao">
-          <label><img class="label-ico" src="/public/Icons/evolucao.ico" alt="" /> Reclassificação de categoria</label>
-          <p class="ajuda">Ex: bezerro que cresceu e virou garrote.</p>
+          <label><img class="label-ico" src="/public/Icons/evolucao.ico" alt="" /> Mudança de idade</label>
+          <p class="ajuda">Quando o animal cresce e troca de categoria (ex: bezerro → garrote).</p>
           <div id="linhas-evolucao"></div>
-          <button type="button" class="btn-add" id="btn-add-evolucao">➕ Adicionar outra evolução</button>
+          <button type="button" class="btn-add" id="btn-add-evolucao">➕ Adicionar mudança</button>
         </div>
 
         <!-- ===================== NASCIMENTO: raça ===================== -->
@@ -112,14 +96,14 @@
           <input type="text" id="os-raca" placeholder="Ex: Nelore" />
         </div>
 
-        <!-- ===================== ÓBITO: ID do animal + causa ===================== -->
+        <!-- ===================== MORTE: ID do animal + causa ===================== -->
         <div class="card campo dinamico destaque-obito" data-op="obito">
-          <label for="os-brinco"><img class="label-ico" src="/public/Icons/Brinco.ico" alt="" /> Identificação do animal (brinco / RG)</label>
-          <input type="text" id="os-brinco" placeholder="Ex: Brinco 4471" />
+          <label for="os-brinco"><img class="label-ico" src="/public/Icons/Brinco.ico" alt="" /> Brinco</label>
+          <input type="text" id="os-brinco" placeholder="Ex: 4471" />
         </div>
 
         <div class="card campo dinamico destaque-obito" data-op="obito">
-          <label for="os-causa"><img class="label-ico" src="/public/Icons/obto.ico" alt="" /> Causa da morte</label>
+          <label for="os-causa"><img class="label-ico" src="/public/Icons/obto.ico" alt="" /> Causa</label>
           <select id="os-causa"></select>
         </div>
 
@@ -133,14 +117,14 @@
         </div>
 
         <div class="card campo dinamico" data-op="compravenda">
-          <label for="os-valor"><img class="label-ico" src="/public/Icons/cedula_dinheiro_bovino.ico" alt="" /> Valor total (R$)</label>
+          <label for="os-valor"><img class="label-ico" src="/public/Icons/cedula_dinheiro_bovino.ico" alt="" /> Valor (R$)</label>
           <input type="number" id="os-valor" min="0" step="0.01" placeholder="0,00" />
         </div>
 
         <!-- ===================== MANEJO GERAL ===================== -->
         <div class="card campo dinamico" data-op="manejo">
-          <label for="os-titulo"><img class="label-ico" src="/public/Icons/tarefas.ico" alt="" /> Título da tarefa</label>
-          <input type="text" id="os-titulo" placeholder="Ex: Vacinação dos bezerros" />
+          <label for="os-titulo"><img class="label-ico" src="/public/Icons/tarefas.ico" alt="" /> Título</label>
+          <input type="text" id="os-titulo" placeholder="Ex: Vacinação" />
         </div>
 
         <!-- ===================== OBSERVAÇÕES (texto OU áudio) ===================== -->
@@ -201,6 +185,8 @@
   var TIPO_NEGOCIO = 'compra';
   var TIPO_TRANSPORTE = 'rodoviario';
   var CATEGORIAS = [];
+  var CATEGORIAS_NASCIMENTO = [];
+  var gpsAtual = null;  // leitura de GPS mais recente {latitude, longitude}
 
   document.addEventListener('DOMContentLoaded', function() {
     var hoje = new Date().toISOString().split('T')[0];
@@ -212,6 +198,7 @@
     configurarToggles();
     configurarFotoLabel();
     configurarAudio();
+    iniciarGPS();   // começa a capturar GPS já na abertura, pra estar pronto no envio
 
     document.getElementById('btn-add-categoria').addEventListener('click', function() { addLinhaCategoria(); });
     document.getElementById('btn-add-evolucao').addEventListener('click', function() { addLinhaEvolucao(); });
@@ -420,17 +407,21 @@
     document.getElementById('btn-gravar-audio').classList.remove('gravando');
   }
 
-  function optsCategorias() {
+  function optsCategorias(lista) {
+    var fonte = lista || CATEGORIAS;
     return '<option value="">Categoria...</option>' +
-      CATEGORIAS.map(function(c) { return '<option value="' + c + '">' + c + '</option>'; }).join('');
+      fonte.map(function(c) { return '<option value="' + c + '">' + c + '</option>'; }).join('');
   }
 
   // Adiciona uma linha de categoria + quantidade
   function addLinhaCategoria() {
+    // Nascimento: só bezerro/bezerra
+    var op = (document.getElementById('os-operacao') || {}).value;
+    var lista = (op === 'nascimento' && CATEGORIAS_NASCIMENTO.length) ? CATEGORIAS_NASCIMENTO : CATEGORIAS;
     var div = document.createElement('div');
     div.className = 'linha-cat';
     div.innerHTML =
-      '<select class="cat-sel">' + optsCategorias() + '</select>' +
+      '<select class="cat-sel">' + optsCategorias(lista) + '</select>' +
       '<input type="number" class="cat-qtd" min="1" placeholder="Qtd" />' +
       '<button type="button" class="btn-remover">🗑️</button>';
     div.querySelector('.btn-remover').addEventListener('click', function() {
@@ -520,6 +511,7 @@
         preselecionarRetiroLogado(d.retiros);
 
         CATEGORIAS = d.categorias;
+        CATEGORIAS_NASCIMENTO = d.categoriasNascimento || [];
 
         var selCausa = document.getElementById('os-causa');
         selCausa.innerHTML = '<option value="">Selecione a causa</option>' +
@@ -555,9 +547,12 @@
       document.getElementById('btn-enviar').disabled = !op;
 
       // Inicia com uma linha de categoria/evolução
+      // Limpa as linhas antigas pra regenerar com a lista certa (nascimento = só bezerro/bezerra)
       if (['nascimento','obito','transferencia','compravenda'].indexOf(op) >= 0) {
         var cont = document.getElementById('linhas-categoria');
-        if (!cont.children.length) addLinhaCategoria();
+        cont.innerHTML = '';
+        addLinhaCategoria();
+        atualizarTotal();
       }
       if (op === 'evolucao') {
         var ce = document.getElementById('linhas-evolucao');
@@ -661,9 +656,7 @@
       payload.transporte = TIPO_TRANSPORTE;
       payload.retiro_origem = document.getElementById('os-retiro-origem').value;
       payload.retiro_destino = document.getElementById('os-retiro-destino').value;
-      payload.motorista = document.getElementById('os-motorista').value;
-      payload.rgcpf = document.getElementById('os-rgcpf').value;
-      payload.placa = document.getElementById('os-placa').value;
+      // Dados de motorista não são mais solicitados (simplificação do formulário)
     } else if (op === 'compravenda') {
       payload.tipo = TIPO_NEGOCIO;
       payload.retiro = document.getElementById('os-retiro').value;
@@ -720,14 +713,99 @@
         payload.foto_base64 = fotoBase64;
         payload.tem_foto = true;
       }
-      enviarPayload(payload);
+      var temFoto = !!(payload.foto_base64 || payload.tem_foto);
+      var btn = document.getElementById('btn-enviar');
+
+      // Toda foto precisa de localização. Se ainda não temos GPS, avisamos e esperamos.
+      if (temFoto && !gpsAtual) {
+        mostrarMsg('📍 Capturando o GPS da foto... aguarde um instante.', 'info');
+        if (btn) { btn.disabled = true; }
+      }
+
+      capturarGPS(function(coords) {
+        if (btn) { btn.disabled = false; }
+        if (coords) {
+          payload.latitude = coords.latitude;
+          payload.longitude = coords.longitude;
+        } else if (temFoto) {
+          // Requisito: toda foto georreferenciada. Sem GPS, não envia.
+          mostrarMsg('📍 Não consegui pegar o GPS, e toda foto precisa de localização. Ative o GPS do aparelho e tente novamente.', 'erro');
+          return;
+        }
+        enviarPayload(payload);
+      });
     });
   });
+
+  // ===== GPS / Georreferenciação =====
+  // Requisito de rastreabilidade: TODA foto (óbito, manejo) precisa de localização.
+  // Por isso começamos a capturar já na abertura e, no envio com foto, exigimos GPS.
+  function lerGpsCache() {
+    try {
+      var raw = localStorage.getItem('brpec_gps_ultima_pos');
+      if (!raw) return null;
+      var p = JSON.parse(raw);
+      if (p && p.lat && p.lon) return { latitude: parseFloat(p.lat), longitude: parseFloat(p.lon) };
+    } catch (e) {}
+    return null;
+  }
+  function salvarGpsCache(lat, lon) {
+    try {
+      localStorage.setItem('brpec_gps_ultima_pos', JSON.stringify({ lat: lat, lon: lon, timestamp: Date.now() }));
+      localStorage.setItem('brpec_gps_autorizado', 'true');
+    } catch (e) {}
+  }
+
+  // Dispara a captura assim que a tela abre (e mantém a última posição conhecida).
+  function iniciarGPS() {
+    gpsAtual = lerGpsCache();  // usa a última posição enquanto a nova chega
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        gpsAtual = { latitude: pos.coords.latitude, longitude: pos.coords.longitude };
+        salvarGpsCache(pos.coords.latitude, pos.coords.longitude);
+      },
+      function() { /* mantém cache/none; tenta de novo no envio */ },
+      { enableHighAccuracy: true, timeout: 30000, maximumAge: 60000 }
+    );
+  }
+
+  // No envio: devolve a leitura mais recente; se não houver, tenta agora (até 12s)
+  // e cai pra última posição conhecida. cb(null) só quando realmente não há nada.
+  function capturarGPS(cb) {
+    if (gpsAtual) { cb(gpsAtual); return; }
+    if (!navigator.geolocation) { cb(lerGpsCache()); return; }
+    var respondido = false;
+    var timer = setTimeout(function() {
+      if (!respondido) { respondido = true; cb(gpsAtual || lerGpsCache()); }
+    }, 12000);
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        if (respondido) return;
+        respondido = true; clearTimeout(timer);
+        gpsAtual = { latitude: pos.coords.latitude, longitude: pos.coords.longitude };
+        salvarGpsCache(pos.coords.latitude, pos.coords.longitude);
+        cb(gpsAtual);
+      },
+      function() {
+        if (respondido) return;
+        respondido = true; clearTimeout(timer);
+        cb(gpsAtual || lerGpsCache());
+      },
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 }
+    );
+  }
 
   function enviarPayload(payload) {
     var editId = new URLSearchParams(window.location.search).get('edit');
     var url = editId ? '/api/boletas/' + encodeURIComponent(editId) : '/api/boletas';
     var metodo = editId ? 'PUT' : 'POST';
+
+    // Já está sem rede: salva direto no aparelho, sem nem tentar (e sem travar o capataz).
+    if (!navigator.onLine) {
+      salvarBoletaOffline(url, metodo, payload);
+      return;
+    }
 
     fetch(url, {
       method: metodo,
@@ -749,7 +827,35 @@
       window.location.href = '/sucesso';
     })
     .catch(function() {
-      mostrarMsg('❌ Erro de conexão. Tente novamente.', 'erro');
+      // Falha de rede no meio do envio: NÃO perde o registro — guarda local pra sincronizar depois.
+      salvarBoletaOffline(url, metodo, payload);
+    });
+  }
+
+  // Salva a boleta na fila local (IndexedDB). Quando a conexão voltar, o sincronizador
+  // reenvia a requisição original (POST/PUT /api/boletas) automaticamente.
+  function salvarBoletaOffline(url, metodo, payload) {
+    var idb = window.brpecIndexedDb;
+    if (!idb || typeof idb.salvarFila !== 'function') {
+      mostrarMsg('❌ Sem conexão e o aparelho não conseguiu guardar o registro. Tente de novo perto do sinal.', 'erro');
+      return;
+    }
+    idb.salvarFila('boleta', {
+      url: url,
+      metodo: metodo,
+      dados: payload,
+      tentativas: 0,
+      ultimaTentativa: new Date().toISOString(),
+    })
+    .then(function() {
+      try {
+        var resumo = Object.assign({ criadoEm: new Date().toISOString(), _offline: true }, payload);
+        localStorage.setItem('brpec_ultimo_registro', JSON.stringify(resumo));
+      } catch(e) {}
+      window.location.href = '/sucesso?offline=1';
+    })
+    .catch(function() {
+      mostrarMsg('❌ Não foi possível guardar no aparelho. Tente novamente.', 'erro');
     });
   }
 </script>

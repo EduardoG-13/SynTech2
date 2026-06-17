@@ -22,6 +22,7 @@ try {
   const totalUsuarios = (db.prepare('SELECT COUNT(*) AS n FROM usuarios').get() as any).n;
   if (totalUsuarios === 0) {
     console.log('[server] Banco vazio detectado — rodando seed inicial...');
+    // Import dinâmico pra não rodar o IIFE do arquivo no caso normal
     require('./seed');
   } else {
     console.log(`[server] Banco já populado (${totalUsuarios} usuário(s)) — pulando seed.`);

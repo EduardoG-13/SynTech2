@@ -650,6 +650,123 @@ th {
 }
 
 /* =========================================================
+   Indicador de conexão (pill fixo no topo) + Rodapé do app
+   ========================================================= */
+.status-conexao {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.85rem;
+  z-index: 998;              /* abaixo da sidebar (1000) e do overlay (999) no mobile */
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: background 0.2s, opacity 0.2s, transform 0.15s;
+}
+.status-conexao:hover { transform: translateY(1px); }
+
+.status-conexao .status-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+}
+
+/* Online: verde Syntech */
+.status-conexao.online {
+  background: var(--primary-light);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+/* Offline: cinza/vermelho discreto */
+.status-conexao.offline {
+  background: var(--muted);
+}
+.status-conexao.offline .status-dot { background: #ffd5d5; animation: pulso-offline 1.4s ease-in-out infinite; }
+
+/* Há itens aguardando envio: vira âmbar pra chamar atenção */
+.status-conexao.tem-pendencia {
+  background: var(--warning);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.status-conexao.sincronizando { opacity: 0.85; }
+
+.status-conexao .status-pend {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.28);
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+@keyframes pulso-offline {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Capataz: pill um pouco maior pra leitura no campo */
+body[data-perfil="Capataz"] .status-conexao { font-size: 0.9rem; padding: 0.45rem 0.95rem; }
+
+/* ---- Rodapé ---- */
+.app-footer {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding: 1rem 1.5rem;
+}
+.app-footer .footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.app-footer p {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.app-footer .footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.app-footer .app-version {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  padding: 3px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .app-footer .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+}
+
+/* =========================================================
    Ícones .ico inline em labels, botões e títulos (global)
    ========================================================= */
 .label-ico {

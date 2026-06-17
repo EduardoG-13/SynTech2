@@ -66,7 +66,7 @@ describe('Front-end Offline Operations - Validação Completa', () => {
 
     expect(response.text).toContain('/public/js/db.js');
     expect(response.text).toContain('/public/js/offline-interceptor.js');
-    expect(response.text).toContain('onlineStatus');
+    expect(response.text).toContain('status-conexao');
   });
 });
 

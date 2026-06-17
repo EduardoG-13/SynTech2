@@ -24,25 +24,36 @@ export function obterResumo(req: Request, res: Response) {
   const sess = (req.session as any)?.usuario as SessUsuario | undefined;
   if (!sess) return res.status(401).json({ erro: 'Não autenticado.' });
 
+  // Filtro por PERÍODO (de — até). Compatível com o ?data= antigo (vira início=fim).
+  const q = req.query as Record<string, unknown>;
+  const dataUnica  = typeof q.data === 'string' && q.data ? q.data : null;
+  const dataInicio = (typeof q.data_inicio === 'string' && q.data_inicio ? q.data_inicio : null) || dataUnica;
+  const dataFim    = (typeof q.data_fim === 'string' && q.data_fim ? q.data_fim : null) || dataUnica;
+
   const permitidos = retirosVisiveis(sess);
   const filtroRetirosSql = permitidos === null
     ? ''
     : (permitidos.length === 0 ? 'WHERE 1=0' : `WHERE id IN (${permitidos.map(() => '?').join(',')})`);
   const filtroRetirosParams = permitidos === null ? [] : permitidos;
 
-  // Boletas por retiro (top 8) — só os retiros visíveis
+  // Chamados em aberto por retiro — TODOS os retiros visíveis (inclusive os com 0,
+  // pra dar visão completa da fazenda). LEFT JOIN garante retiro sem chamado aparecendo.
   const filtroAlertaPorRetiro = permitidos === null
     ? ''
     : (permitidos.length === 0 ? 'WHERE 1=0' : `WHERE r.id IN (${permitidos.map(() => '?').join(',')})`);
+  const dateJoinConds: string[] = [];
+  const dateJoinParams: any[] = [];
+  if (dataInicio) { dateJoinConds.push('date(a.criado_em) >= ?'); dateJoinParams.push(dataInicio); }
+  if (dataFim)    { dateJoinConds.push('date(a.criado_em) <= ?'); dateJoinParams.push(dataFim); }
+  const dateJoinAlerta = dateJoinConds.length ? ' AND ' + dateJoinConds.join(' AND ') : '';
   const chamadosPorRetiro = db.prepare(`
     SELECT r.nome AS retiro, COUNT(a.id) AS total
     FROM retiros r
-    LEFT JOIN alertas a ON a.retiro_id = r.id AND a.status IN ('ABERTO', 'EM_ANDAMENTO')
+    LEFT JOIN alertas a ON a.retiro_id = r.id AND a.status IN ('ABERTO', 'EM_ANDAMENTO')${dateJoinAlerta}
     ${filtroAlertaPorRetiro}
     GROUP BY r.id, r.nome
-    ORDER BY total DESC
-    LIMIT 8
-  `).all(...filtroRetirosParams) as any[];
+    ORDER BY total DESC, r.nome
+  `).all(...dateJoinParams, ...filtroRetirosParams) as any[];
 
   // Boletas (movimentações) — filtra por retiros visíveis incluindo origem/destino em transferências
   const condMovParams: any[] = [];
@@ -55,6 +66,14 @@ export function obterResumo(req: Request, res: Response) {
       condMov = `WHERE (retiro_id IN (${ph}) OR retiro_origem_id IN (${ph}) OR retiro_destino_id IN (${ph}))`;
       condMovParams.push(...permitidos, ...permitidos, ...permitidos);
     }
+  }
+  if (dataInicio) {
+    condMov += condMov ? ` AND data >= ?` : ` WHERE data >= ?`;
+    condMovParams.push(dataInicio);
+  }
+  if (dataFim) {
+    condMov += condMov ? ` AND data <= ?` : ` WHERE data <= ?`;
+    condMovParams.push(dataFim);
   }
   const totaisBoletas = db.prepare(`
     SELECT
@@ -76,6 +95,14 @@ export function obterResumo(req: Request, res: Response) {
       condAlerta = `WHERE retiro_id IN (${ph})`;
       condAlertaParams.push(...permitidos);
     }
+  }
+  if (dataInicio) {
+    condAlerta += condAlerta ? ` AND date(criado_em) >= ?` : ` WHERE date(criado_em) >= ?`;
+    condAlertaParams.push(dataInicio);
+  }
+  if (dataFim) {
+    condAlerta += condAlerta ? ` AND date(criado_em) <= ?` : ` WHERE date(criado_em) <= ?`;
+    condAlertaParams.push(dataFim);
   }
   const chamadosPorStatus = db.prepare(`
     SELECT
@@ -101,11 +128,45 @@ export function obterResumo(req: Request, res: Response) {
     ).get(...permitidos) as any).n;
   }
 
+  // Boletas por tipo de operação (gráfico de barras)
+  const boletasPorTipo = db.prepare(`
+    SELECT tipo_operacao AS tipo, COUNT(DISTINCT grupo_id) AS total
+    FROM movimentacoes
+    ${condMov}
+    GROUP BY tipo_operacao
+    ORDER BY total DESC
+  `).all(...condMovParams) as any[];
+
+  // Infra/Manutenção como uma "área" extra no mesmo gráfico: quantos chamados de
+  // infra foram abertos no escopo. Mostra de bate-pronto se houve muita manutenção.
+  const totalChamadosInfra = (db.prepare(`
+    SELECT COUNT(*) AS n FROM alertas ${condAlerta}
+  `).get(...condAlertaParams) as any).n;
+  boletasPorTipo.push({ tipo: 'infra', total: totalChamadosInfra });
+
+  // Evolução mensal de boletas — últimos 6 meses (gráfico de linha)
+  const boletasPorMes = db.prepare(`
+    SELECT substr(data, 1, 7) AS mes, COUNT(DISTINCT grupo_id) AS total
+    FROM movimentacoes
+    ${condMov}
+    GROUP BY substr(data, 1, 7)
+    ORDER BY mes DESC
+    LIMIT 6
+  `).all(...condMovParams) as any[];
+  boletasPorMes.reverse(); // ordem cronológica pro gráfico
+
+  // Total de cabeças movimentadas (KPI)
+  const totalCabecas = (db.prepare(`
+    SELECT COALESCE(SUM(quantidade), 0) AS n FROM movimentacoes ${condMov}
+  `).get(...condMovParams) as any).n;
+
   return res.json({
     chamadosPorRetiro,
     boletas: totaisBoletas,
+    boletasPorTipo,
+    boletasPorMes,
     chamados: chamadosPorStatus,
-    totais: { retiros: totalRetiros, capatazes: totalCapatazes },
+    totais: { retiros: totalRetiros, capatazes: totalCapatazes, cabecas: totalCabecas },
     escopo: sess.perfil === 'Gerente' ? 'todos' : 'meus-retiros',
   });
 }

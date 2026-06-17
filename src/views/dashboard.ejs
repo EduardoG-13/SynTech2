@@ -14,43 +14,108 @@
 
     <main class="dashboard-main">
 
-      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-          <select id="filter-retiro" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">
-            <option value="">Todos os retiros</option>
-          </select>
-          <input type="date" id="filter-data" style="flex: 1; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;" />
+      <div class="card db-filtros" style="margin-bottom: 1rem; padding: 1rem;">
+        <div class="db-filtros-linha">
+          <div class="db-filtro-campo" style="flex: 1.4; min-width:160px;">
+            <label class="db-filtro-label">Retiro</label>
+            <select id="filter-retiro" class="db-filtro-input">
+              <option value="">Todos os retiros</option>
+            </select>
+          </div>
+          <div class="db-filtro-campo" style="min-width:140px;">
+            <label class="db-filtro-label">De</label>
+            <input type="date" id="filter-data-inicio" class="db-filtro-input" />
+          </div>
+          <div class="db-filtro-campo" style="min-width:140px;">
+            <label class="db-filtro-label">Até</label>
+            <input type="date" id="filter-data-fim" class="db-filtro-input" />
+          </div>
+          <div class="db-filtro-acoes">
+            <button id="btn-limpar-filtro" class="btn btn-secundario" style="white-space:nowrap;" title="Limpar período">✕ Limpar</button>
+            <button id="btn-exportar-dashboard" class="btn btn-secundario-laranja" style="white-space:nowrap;">
+              <img class="label-ico" src="/public/Icons/sincronizacao.ico" alt="" /> Exportar planilha
+            </button>
+          </div>
         </div>
       </div>
 
-      <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap;">
-        <div class="card" style="flex: 1; text-align: center; padding: 1rem; min-width: 100px;">
-          <span style="font-size: 2rem; font-weight: 700; color: #1A4D2E;" id="stat-alertas">—</span>
-          <p style="font-size: 0.8rem; color: #8A8A7C;">Alertas em aberto</p>
+      <!-- KPIs -->
+      <div class="db-stats" style="margin-bottom: 1rem;">
+        <div class="card db-stat-card" style="padding: 1rem;">
+          <p class="db-stat-card__label">📝 Boletas (total)</p>
+          <div class="db-stat-card__value" id="stat-boletas-total">—</div>
         </div>
-        <div class="card" style="flex: 1; text-align: center; padding: 1rem; min-width: 100px;">
-          <span style="font-size: 2rem; font-weight: 700; color: #1A4D2E;" id="stat-prioridades">—</span>
-          <p style="font-size: 0.8rem; color: #8A8A7C;">Prioridades</p>
+        <div class="card db-stat-card" style="padding: 1rem;">
+          <p class="db-stat-card__label">⏳ Pendentes</p>
+          <div class="db-stat-card__value" id="stat-pendentes">—</div>
         </div>
-        <div class="card" style="flex: 1; text-align: center; padding: 1rem; min-width: 100px;">
-          <span style="font-size: 2rem; font-weight: 700; color: #1A4D2E;" id="stat-evolucao">—%</span>
-          <p style="font-size: 0.8rem; color: #8A8A7C;">Evolução</p>
+        <div class="card db-stat-card" style="padding: 1rem;">
+          <p class="db-stat-card__label">✓ Aprovadas</p>
+          <div class="db-stat-card__value" id="stat-aprovadas">—</div>
+        </div>
+        <div class="card db-stat-card" style="padding: 1rem;">
+          <p class="db-stat-card__label">🐂 Cabeças</p>
+          <div class="db-stat-card__value" id="stat-cabecas">—</div>
+        </div>
+        <div class="card db-stat-card" style="padding: 1rem;">
+          <p class="db-stat-card__label">🛠️ Chamados abertos</p>
+          <div class="db-stat-card__value" id="stat-alertas">—</div>
         </div>
       </div>
 
-      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
-        <h3>Chamados por retiro</h3>
-        <div style="position: relative; height: 250px;">
-          <canvas id="chart-chamados"></canvas>
+      <div class="db-charts" style="margin-bottom: 1rem;">
+        <div class="card" style="padding: 1rem;">
+          <h3>Boletas por tipo</h3>
+          <div class="db-chart-wrap">
+            <canvas id="chart-tipo" role="img" aria-label="Gráfico de barras: boletas por tipo"></canvas>
+          </div>
+        </div>
+        <div class="card" style="padding: 1rem;">
+          <h3>Evolução mensal de boletas</h3>
+          <div class="db-chart-wrap">
+            <canvas id="chart-mes" role="img" aria-label="Gráfico de linha: boletas por mês"></canvas>
+          </div>
         </div>
       </div>
 
-      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
-        <h3>Chamados por status</h3>
-        <div style="position: relative; height: 250px;">
-          <canvas id="chart-status"></canvas>
+      <div class="db-charts" style="margin-bottom: 1rem;">
+        <div class="card" style="padding: 1rem;">
+          <h3>Chamados por retiro</h3>
+          <div class="db-chart-wrap">
+            <canvas id="chart-chamados" role="img" aria-label="Gráfico de barras: chamados em aberto por retiro"></canvas>
+          </div>
+        </div>
+        <div class="card" style="padding: 1rem;">
+          <h3>Chamados por status</h3>
+          <div class="db-chart-wrap db-chart-wrap--donut">
+            <canvas id="chart-status" role="img" aria-label="Gráfico de rosca: chamados por status"></canvas>
+          </div>
         </div>
       </div>
+
+      <% if (perfil === 'Gerente') { %>
+      <!-- Fechamento por período (só Gerente) -->
+      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
+        <h3><img class="label-ico" src="/public/Icons/bloqueado.ico" alt="" /> Fechamento de período</h3>
+        <p style="font-size:0.85rem; color:#5c6b5d; margin-bottom:0.75rem;">
+          Escolha o intervalo (de — até). Todas as boletas do período ficam <strong>travadas</strong> — nem o capataz edita. Use no fim do ciclo contábil.
+        </p>
+        <div style="display:flex; gap:0.5rem; flex-wrap:wrap; align-items:flex-end;">
+          <div>
+            <label style="display:block; font-size:0.75rem; color:#5c6b5d;">De</label>
+            <input type="date" id="fechar-de" style="padding:0.5rem; border:1px solid #ccc; border-radius:8px;" />
+          </div>
+          <div>
+            <label style="display:block; font-size:0.75rem; color:#5c6b5d;">Até</label>
+            <input type="date" id="fechar-ate" style="padding:0.5rem; border:1px solid #ccc; border-radius:8px;" />
+          </div>
+          <button id="btn-fechar-mes" class="btn btn-primario" style="white-space:nowrap;">🔒 Fechar período</button>
+          <button id="btn-planilha-oficial" class="btn btn-secundario-laranja" style="white-space:nowrap;">📑 Planilha oficial (boletas + chamados)</button>
+        </div>
+        <p id="fechar-msg" style="display:none; margin-top:0.5rem; font-weight:600;"></p>
+        <div id="lista-fechamentos" style="margin-top:1rem;"></div>
+      </div>
+      <% } %>
 
       <!-- Lista de retiros: status operacional -->
       <div class="card" style="margin-bottom: 1rem; padding: 1rem;">

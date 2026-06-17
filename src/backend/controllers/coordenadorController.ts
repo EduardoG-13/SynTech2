@@ -184,7 +184,7 @@ function escCsv(v: string | number | null | undefined) {
 }
 
 const HEADERS_PLANILHA = [
-  'Retiro', 'Data', 'Tipo', 'Categoria', 'Quantidade',
+  'Nº Boleta', 'Retiro', 'Data', 'Tipo', 'Categoria', 'Quantidade',
   'Origem', 'Destino', 'Mês-Ano', 'Ano', 'Mês',
   'Causa Morte', 'Obs', 'Fazenda',
 ];
@@ -195,6 +195,7 @@ function linhaParaPlanilha(m: any) {
   const [ano = '', mes = ''] = data ? String(data).split('-') : [];
   const mesAno = (ano && mes) ? `${parseInt(mes)}-${ano}` : '';
   return [
+    m.numero_boleta || '',
     m.retiro_nome || '',
     data,
     ROTULO_TIPO[tipo] || tipo.toUpperCase(),
@@ -232,7 +233,7 @@ export async function exportarCsv(req: Request, res: Response) {
     }
     if (rows.length > 0) {
       const total = rows.reduce((s, m) => s + (Number(m.quantidade) || 0), 0);
-      linhas.push(['TOTAL', '', '', '', total, '', '', '', '', '', '', '', ''].map(escCsv).join(','));
+      linhas.push(['TOTAL', '', '', '', '', total, '', '', '', '', '', '', '', ''].map(escCsv).join(','));
     }
     const csv = '﻿' + linhas.join('\n');  // BOM para Excel detectar UTF-8
     const nomeCsv = f.ids
@@ -254,14 +255,14 @@ export async function exportarCsv(req: Request, res: Response) {
   });
 
   // Cabeçalho de título
-  ws.mergeCells('A1:M1');
+  ws.mergeCells('A1:N1');
   const titulo = ws.getCell('A1');
   titulo.value = 'BRPec — Relatório de Boletas';
   titulo.font = { name: 'Calibri', size: 16, bold: true, color: { argb: 'FF1A4D2E' } };
   titulo.alignment = { vertical: 'middle', horizontal: 'center' };
   ws.getRow(1).height = 28;
 
-  ws.mergeCells('A2:M2');
+  ws.mergeCells('A2:N2');
   const subt = ws.getCell('A2');
   const dt = new Date().toLocaleString('pt-BR');
   subt.value = `Gerado em ${dt} · ${rows.length} registro(s)`;
@@ -287,7 +288,7 @@ export async function exportarCsv(req: Request, res: Response) {
   headerRow.height = 24;
 
   ws.columns = [
-    { width: 22 }, { width: 12 }, { width: 22 }, { width: 26 }, { width: 12 },
+    { width: 16 }, { width: 22 }, { width: 12 }, { width: 22 }, { width: 26 }, { width: 12 },
     { width: 20 }, { width: 20 }, { width: 12 }, { width: 8 }, { width: 8 },
     { width: 24 }, { width: 30 }, { width: 14 },
   ];
@@ -301,7 +302,7 @@ export async function exportarCsv(req: Request, res: Response) {
       cell.font = { name: 'Calibri', size: 10, color: { argb: 'FF1B1B1B' } };
       cell.alignment = {
         vertical: 'middle',
-        horizontal: [5, 9, 10].includes(colNumber) ? 'center' : 'left',
+        horizontal: [6, 10, 11].includes(colNumber) ? 'center' : 'left',
         wrapText: true,
       };
       cell.border = {
@@ -314,14 +315,14 @@ export async function exportarCsv(req: Request, res: Response) {
       }
     });
     // Destaca a coluna "Tipo" em negrito
-    row.getCell(3).font = { name: 'Calibri', size: 10, bold: true, color: { argb: 'FF1A4D2E' } };
+    row.getCell(4).font = { name: 'Calibri', size: 10, bold: true, color: { argb: 'FF1A4D2E' } };
     row.height = 18;
   });
 
   // Rodapé total
   if (rows.length > 0) {
     const totalAnimais = rows.reduce((s, m) => s + (Number(m.quantidade) || 0), 0);
-    const totalRow = ws.addRow(['TOTAL', '', '', '', totalAnimais, '', '', '', '', '', '', '', '']);
+    const totalRow = ws.addRow(['TOTAL', '', '', '', '', totalAnimais, '', '', '', '', '', '', '', '']);
     totalRow.eachCell({ includeEmpty: true }, (cell) => {
       cell.font = { name: 'Calibri', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
       cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2E7D52' } };
@@ -387,7 +388,9 @@ export function exportarBoletaPdf(req: Request, res: Response) {
   const tipo = first.tipo_operacao as string;
   const rotulo = ROTULO_TIPO[tipo] || tipo?.toUpperCase() || 'BOLETA';
   const totalAnimais = rows.reduce((s, m) => s + (Number(m.quantidade) || 0), 0);
-  const filename = `boleta_${rotulo.replace(/\s+/g, '_').toLowerCase()}_${(first.data || '').replace(/-/g, '')}.pdf`;
+  const filename = (first.numero_boleta
+    ? first.numero_boleta
+    : `boleta_${rotulo.replace(/\s+/g, '_').toLowerCase()}_${(first.data || '').replace(/-/g, '')}`) + '.pdf';
 
   res.setHeader('Content-Type', 'application/pdf');
   res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
@@ -403,9 +406,10 @@ export function exportarBoletaPdf(req: Request, res: Response) {
   const LINHA = '#D7DFD3';
 
   // Cabeçalho — barra verde + título
+  const numeroBoleta = first.numero_boleta || ('s/n · ' + String(first.grupo_id || first.id).slice(0, 8));
   doc.rect(48, 48, doc.page.width - 96, 56).fill(VERDE);
   doc.fillColor('#FFFFFF').font('Helvetica-Bold').fontSize(20).text('BRPec', 64, 64);
-  doc.font('Helvetica').fontSize(10).text('Relatório de Boleta', 64, 88);
+  doc.font('Helvetica').fontSize(10).text('Relatório de Boleta · ' + numeroBoleta, 64, 88);
   doc.font('Helvetica-Bold').fontSize(11).text(rotulo, 0, 70, { align: 'right', width: doc.page.width - 64 });
   const dataEmissao = new Date().toLocaleString('pt-BR');
   doc.font('Helvetica').fontSize(8).text(`Emitido em ${dataEmissao}`, 0, 88, { align: 'right', width: doc.page.width - 64 });
@@ -529,7 +533,7 @@ export function exportarBoletaPdf(req: Request, res: Response) {
   const rodapeY = doc.page.height - 40;
   doc.moveTo(48, rodapeY).lineTo(doc.page.width - 48, rodapeY).strokeColor(LINHA).stroke();
   doc.fillColor(CINZA).font('Helvetica').fontSize(8)
-     .text(`BRPec · ID do grupo: ${first.grupo_id || first.id}`, 48, rodapeY + 8, { width: doc.page.width - 96, align: 'left' });
+     .text(`BRPec · Boleta ${numeroBoleta} · ref ${String(first.grupo_id || first.id).slice(0, 8)}`, 48, rodapeY + 8, { width: doc.page.width - 96, align: 'left' });
   doc.text(`Gerado por: ${sess.perfil}`, 48, rodapeY + 8, { width: doc.page.width - 96, align: 'right' });
 
   doc.end();
