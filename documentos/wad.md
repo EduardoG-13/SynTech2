@@ -6623,6 +6623,8 @@ Suponha que você é capataz e percebeu que o bebedouro do curral está quebrado
 
 O teste tem início com o login do Capataz e a seleção do retiro correspondente, etapa em que se espera que o sistema libere o acesso apenas às funções vinculadas ao retiro autenticado. Em seguida, é acessada a opção de criar um novo chamado de infraestrutura, devendo o sistema exibir o formulário com os campos obrigatórios de tipo de problema, retiro e localização (RF006). Na sequência, o tipo de problema é preenchido e a localização é capturada; espera-se que as coordenadas GPS sejam obtidas automaticamente e sejam exibidas como imutáveis, sem permitir edição manual (RN19, RN24). Por fim, ao enviar o chamado, o sistema deve confirmá-lo imediatamente se houver conexão ou, em caso contrário, informar que o registro foi salvo localmente para envio na próxima sincronização (RN20–RN23, RN25, RN26).
 
+
+
 _Posicione aqui as tabelas com enunciados de tarefas, etapas e resultados de testes de usabilidade. Ou utilize um link para seu relatório de testes (mantenha o link sempre público para visualização)._
 
 ### 5.2.2. Relatório de testes SUS (System Usability Scale)
