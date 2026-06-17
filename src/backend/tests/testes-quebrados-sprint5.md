@@ -280,6 +280,22 @@ Resultado da execução da suite unitária (`src/backend/tests/unit/`): **9 suit
 
 Não há testes unitários quebrados. Nenhuma correção é necessária nesta task.
 
+### Suites passando
+
+| Suite | Casos |
+|-------|-------|
+| `src/backend/tests/unit/healthService.test.ts` | 4 |
+| `src/backend/tests/unit/exportacaoService.test.ts` | 4 |
+| `src/backend/tests/unit/obitoService.test.ts` | 4 |
+| `src/backend/tests/unit/nascimentoService.test.ts` | 2 |
+| `src/backend/tests/unit/eventoService.test.ts` | 4 |
+| `src/backend/tests/unit/alertaService.test.ts` | 8 |
+| `src/backend/tests/unit/database.test.ts` | 4 |
+| `src/backend/tests/unit/tarefaService.test.ts` | 13 |
+| `src/backend/tests/unit/cloudSyncService.test.ts` | 15 |
+| `src/backend/tests/initDb.test.ts` | 16 |
+| `src/backend/tests/swagger.test.ts` | 1 |
+
 Os únicos itens identificados dentro de `unit/` pelo mapeamento são casos ausentes (nunca escritos, não quebrados):
 
 | Arquivo | CTs ausentes |
