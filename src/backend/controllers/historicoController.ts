@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import db from '../config/database';
+import { mesEstaFechado } from './gerenteController';
 
 /**
  * historicoController.ts
@@ -79,18 +80,34 @@ export function listarBoletas(req: Request, res: Response) {
     if (!grupos[key]) {
       grupos[key] = {
         id: key,
+        numero_boleta: r.numero_boleta || null,
         operacao: r.tipo_operacao,
         data: r.data,
         retiro_nome: r.retiro_nome,
         capataz_nome: r.capataz_nome,
         aprovada: !!r.aprovado_por_coordenador_id,
+        bloqueada: false,
         criadoEm: r.criado_em,
+        tipo: r.tipo_negocio,
+        retiro_origem_id: r.retiro_origem_id,
+        retiro_destino_id: r.retiro_destino_id,
         animais: [],
       };
     }
     grupos[key].animais.push({ categoria: r.categoria, quantidade: r.quantidade });
   }
-  return res.json(Object.values(grupos));
+  const result = Object.values(grupos);
+  for (const g of result as any[]) {
+    g.bloqueada = mesEstaFechado(g.data);
+    if (g.operacao === 'transferencia' && g.retiro_origem_id && g.retiro_destino_id) {
+       const rowEnvio = db.prepare(`SELECT SUM(quantidade) as qtd FROM movimentacoes WHERE tipo_operacao='transferencia' AND tipo_negocio='envio' AND data=? AND retiro_origem_id=? AND retiro_destino_id=?`).get(g.data, g.retiro_origem_id, g.retiro_destino_id) as any;
+       const rowRec = db.prepare(`SELECT SUM(quantidade) as qtd FROM movimentacoes WHERE tipo_operacao='transferencia' AND (tipo_negocio='recebimento' OR tipo_negocio IS NULL) AND data=? AND retiro_origem_id=? AND retiro_destino_id=?`).get(g.data, g.retiro_origem_id, g.retiro_destino_id) as any;
+       const qEnvio = rowEnvio?.qtd || 0;
+       const qRec = rowRec?.qtd || 0;
+       g.avisoDivergencia = (qEnvio > 0 && qRec > 0 && qEnvio !== qRec);
+    }
+  }
+  return res.json(result);
 }
 
 // GET /api/historico/chamados

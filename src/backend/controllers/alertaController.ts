@@ -72,6 +72,22 @@ class AlertaController {
     }
   }
 
+  async iniciarChamado(req, res, next) {
+    const sess = (req.session as any)?.usuario;
+    if (!sess || !['Infraestrutura', 'Tecnico'].includes(sess.perfil)) {
+      return res.status(403).json({ erro: 'Apenas Infraestrutura/Técnico pode iniciar um chamado.' });
+    }
+    try {
+      const c = await alertaService.obterPorId(req.params.id);
+      if (!c) return res.status(404).json({ erro: 'Chamado não encontrado.' });
+      if (c.status !== 'ABERTO') return res.status(409).json({ erro: 'Chamado já foi iniciado ou resolvido.' });
+      await alertaService.atualizarStatus(req.params.id, 'EM_ANDAMENTO');
+      return res.json({ mensagem: 'Chamado iniciado.', status: 'EM_ANDAMENTO' });
+    } catch (erro) {
+      next(erro);
+    }
+  }
+
   async resolverChamado(req, res, next) {
     // Aceita nomes alternativos vindos do JS antigo (descricaoSolucao, fotoBase64)
     const sess = (req.session as any)?.usuario;

@@ -47,6 +47,16 @@ export function criarBoleta(req: Request, res: Response) {
   const operacao: string = b.operacao;
   if (!operacao) return res.status(400).json({ erro: 'operacao é obrigatória.' });
 
+  // Gerente pode criar em nome de um capataz específico
+  let capatazId = sess.id;
+  if (sess.perfil === 'Gerente' && b.capataz_id) {
+    const cap = db.prepare(
+      `SELECT id FROM usuarios WHERE id = ? AND perfil = 'Capataz'`
+    ).get(String(b.capataz_id)) as any;
+    if (!cap) return res.status(400).json({ erro: 'Capataz não encontrado.' });
+    capatazId = cap.id;
+  }
+
   const grupoId = uuidv7();
   const data = b.data || new Date().toISOString().slice(0, 10);
   const retiro_id = b.retiro || b.retiro_origem || sess.retiro_id;
@@ -55,6 +65,12 @@ export function criarBoleta(req: Request, res: Response) {
   // Validação por tipo
   if (operacao === 'obito' && !b.tem_foto) {
     return res.status(422).json({ erro: 'Para registrar óbito é obrigatório anexar a foto da carcaça.' });
+  }
+  if (operacao === 'abate' && !b.tem_foto) {
+    return res.status(422).json({ erro: 'Para registrar abate é obrigatório anexar a foto.' });
+  }
+  if ((operacao === 'obito' || operacao === 'abate') && Array.isArray(b.animais) && b.animais.length > 1) {
+    return res.status(400).json({ erro: 'Para ' + (operacao === 'obito' ? 'morte' : 'abate') + ', registre apenas uma categoria (mesmo sexo/idade) por boleta. Se houver mortes de categorias diferentes, crie boletas separadas.' });
   }
 
   // Rastreabilidade: TODA foto precisa de georreferência (GPS). Sem coordenadas, recusa.
@@ -67,7 +83,7 @@ export function criarBoleta(req: Request, res: Response) {
 
   // Sem categorias? Manejo aceita; o resto exige
   let animais = Array.isArray(b.animais) ? b.animais : [];
-  if (animais.length === 0 && ['nascimento','obito','transferencia','compravenda'].includes(operacao)) {
+  if (animais.length === 0 && ['nascimento','obito','abate','transferencia','compravenda'].includes(operacao)) {
     return res.status(400).json({ erro: 'Informe ao menos uma categoria com quantidade.' });
   }
   if (animais.length === 0) {
@@ -105,7 +121,7 @@ export function criarBoleta(req: Request, res: Response) {
   for (const a of animais) {
     const movId = uuidv7();
     insertMov.run(
-      movId, sess.id, retiro_id, data, a.categoria || '', parseInt(a.quantidade) || 0,
+      movId, capatazId, retiro_id, data, a.categoria || '', parseInt(a.quantidade) || 0,
       operacao, grupoId, numeroBoleta,
       b.pasto || null, b.observacoes || null, b.observacoes_audio || null, b.tem_foto ? 1 : 0, fotoBase64,
       b.raca || null, b.brinco || null, b.causa || null,

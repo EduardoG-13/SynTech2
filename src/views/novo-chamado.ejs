@@ -7,7 +7,7 @@
 
   <div id="app">
     <div class="header-bar" style="margin-top: 0; margin-bottom: 2rem;">
-      <div class="user-avatar"><img src="/public/Icons/<%= perfil === 'Capataz' ? 'capataz' : 'infra' %>.ico" alt="<%= perfil %>" style="width:32px;height:32px;object-fit:contain;" /></div>
+      <div class="user-avatar"><img src="/public/Icons/<%= perfil === 'Gerente' ? 'gerente' : (perfil === 'Capataz' ? 'capataz' : 'infra') %>.ico" alt="<%= perfil %>" style="width:32px;height:32px;object-fit:contain;" /></div>
       <h1>Abrir Chamado</h1>
       <div class="sub"><%= typeof nome !== 'undefined' ? nome : '' %> · <%= perfil %></div>
     </div>
@@ -44,6 +44,15 @@
           </div>
           <input type="hidden" id="tipo-ocorrencia" name="tipo" required />
         </div>
+
+        <% if (perfil === 'Gerente') { %>
+        <div class="card-resolucao">
+          <label class="label-bold"><img class="label-ico" src="/public/Icons/localizacao.ico" alt="" /> Retiro</label>
+          <select id="chamado-retiro" style="width:100%; padding:0.5rem; border-radius:8px; border:1px solid #ccc;">
+            <option value="">Carregando retiros...</option>
+          </select>
+        </div>
+        <% } %>
 
         <div class="card-resolucao">
           <label class="label-bold" for="descricao"><img class="label-ico" src="/public/Icons/editar.ico" alt="" /> Descreva o problema</label>
@@ -175,5 +184,23 @@
   })();
 </script>
 <script src="/public/js/novo-chamado-handler.js"></script>
+<% if (perfil === 'Gerente') { %>
+<script>
+(function() {
+  var sel = document.getElementById('chamado-retiro');
+  if (!sel) return;
+  fetch('/api/dashboard/retiros', { credentials: 'same-origin' })
+    .then(function(r) { return r.json(); })
+    .then(function(rows) {
+      sel.innerHTML = '<option value="">Selecione o retiro...</option>' +
+        (rows || []).map(function(r) { return '<option value="' + r.id + '">' + r.nome + '</option>'; }).join('');
+    });
+  sel.addEventListener('change', function() {
+    var h = document.getElementById('retiro_id');
+    if (h) h.value = sel.value;
+  });
+})();
+</script>
+<% } %>
 
 <%- include('partials/footer') %>

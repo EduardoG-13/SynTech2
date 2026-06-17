@@ -14,19 +14,23 @@
 
     <main class="tarefas-main">
 
-      <!-- Abas: Boletas | Chamados (Infra só vê Chamados; Capataz só vê Boletas) -->
-      <div class="filter-pills" id="abas-hist">
-        <% if (perfil !== 'Infraestrutura') { %>
+      <!-- Abas: Boletas | Chamados (só exibe se tiver mais de uma aba, ou seja, Gerente e Coordenador) -->
+      <% if (perfil === 'Gerente' || perfil === 'Coordenador') { %>
+        <div class="filter-pills" id="abas-hist" style="margin-bottom: 1rem;">
           <button class="pill active" data-aba="boletas"><img class="ico-md" src="/public/Icons/movimentacao.ico" alt="" /> Boletas</button>
-        <% } %>
-        <% if (perfil !== 'Capataz') { %>
-          <button class="pill <%= perfil === 'Infraestrutura' ? 'active' : '' %>" data-aba="chamados"><img class="ico-md" src="/public/Icons/infra.ico" alt="" /> Chamados</button>
-        <% } %>
-      </div>
+          <button class="pill" data-aba="chamados"><img class="ico-md" src="/public/Icons/infra.ico" alt="" /> Chamados</button>
+        </div>
+      <% } %>
 
       <!-- Filtros (Gerente e Coordenador) -->
       <% if (perfil === 'Gerente' || perfil === 'Coordenador') { %>
         <div class="card-filtros" style="background:#fff; border:1px solid #d7dfd3; border-radius:12px; padding:1rem; margin-bottom:1rem;">
+          <div class="export-datas" style="margin-bottom:0.5rem;">
+            <div class="export-data-field" id="campo-filtro-busca" style="flex:2; min-width:200px;">
+              <label class="export-field-label"><img class="ico-sm" src="/public/Icons/lupa.ico" alt="" /> Pesquisar</label>
+              <input type="text" id="filtro-busca" placeholder="Nº boleta, capataz..." style="width:100%; padding:0.45rem 0.7rem; border:1px solid #ccc; border-radius:8px; font-size:0.9rem;" />
+            </div>
+          </div>
           <div class="export-datas">
             <div class="export-data-field">
               <label class="export-field-label"><img class="ico-sm" src="/public/Icons/localizacao.ico" alt="" /> Retiro</label>
@@ -38,8 +42,10 @@
                 <option value="">Todos</option>
                 <option value="nascimento">Nascimento</option>
                 <option value="obito">Óbito</option>
+                <option value="abate">Abate Interno</option>
                 <option value="transferencia">Transferência</option>
                 <option value="compravenda">Compra/Venda</option>
+                <option value="evolucao">Evolução</option>
                 <option value="manejo">Manejo</option>
               </select>
             </div>
@@ -71,6 +77,23 @@
         </div>
       <% } %>
 
+      <% if (perfil === 'Capataz') { %>
+      <!-- Filtros de status (Capataz) -->
+      <div class="filter-pills" id="filtros-status-capataz" style="margin-bottom:1.5rem; display:flex; gap:0.5rem; overflow-x:auto; padding-bottom:0.5rem; -webkit-overflow-scrolling: touch;">
+        <button class="pill active" data-st="" style="flex: 0 0 auto;">Todos</button>
+        <button class="pill" data-st="pendente" style="flex: 0 0 auto;">⏳ Pendentes</button>
+        <button class="pill" data-st="aprovada" style="flex: 0 0 auto;">✅ Aprovadas</button>
+        <button class="pill" data-st="bloqueada" style="flex: 0 0 auto;">🔒 Bloqueadas</button>
+      </div>
+
+      <div id="tarefas-gerente" style="display:none; margin-bottom:1.5rem;">
+        <h3 style="color:#1A4D2E; font-size:1rem; margin-bottom:0.75rem;"><img class="ico-sm" src="/public/Icons/tarefas.ico" alt="" /> Tarefas do Gerente</h3>
+        <div id="tarefas-gerente-lista" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+      </div>
+
+      <h3 id="titulo-boletas-cap" style="color:#1A4D2E; font-size:1rem; margin-bottom:0.75rem;"><img class="ico-sm" src="/public/Icons/movimentacao.ico" alt="" /> Minhas Boletas</h3>
+      <% } %>
+
       <div class="tarefas-lista" id="hist-lista">
         <p style="text-align:center; color:#8A8A7C; padding:1rem;">Carregando...</p>
       </div>
@@ -92,11 +115,23 @@
       carregarRetiros();
       document.getElementById('btn-aplicar-filtros').addEventListener('click', carregar);
       document.getElementById('btn-limpar-filtros').addEventListener('click', limparFiltros);
+      var campoBusca = document.getElementById('filtro-busca');
+      if (campoBusca) campoBusca.addEventListener('input', filtrarPorBusca);
       var btnXlsx = document.getElementById('btn-exportar-xlsx');
       if (btnXlsx) btnXlsx.addEventListener('click', function() { exportar('xlsx'); });
       var btnCsv = document.getElementById('btn-exportar-csv');
       if (btnCsv) btnCsv.addEventListener('click', function() { exportar('csv'); });
       ajustarFiltrosPorAba();
+    }
+    if (PERFIL === 'Capataz') {
+      carregarTarefasGerente();
+      document.querySelectorAll('#filtros-status-capataz .pill').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('#filtros-status-capataz .pill').forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          filtrarStatusCapataz(btn.dataset.st);
+        });
+      });
     }
     document.querySelectorAll('#abas-hist .pill').forEach(function(btn) {
       btn.addEventListener('click', function() {
@@ -110,14 +145,26 @@
     carregar();
   });
 
+  function filtrarPorBusca() {
+    var termo = (document.getElementById('filtro-busca') || {}).value || '';
+    termo = termo.toLowerCase().trim();
+    var cards = document.querySelectorAll('#hist-lista .tarefa-card');
+    cards.forEach(function(card) {
+      var texto = card.textContent.toLowerCase();
+      card.style.display = (!termo || texto.indexOf(termo) >= 0) ? '' : 'none';
+    });
+  }
+
   // Tipo e Status só fazem sentido pra boletas; aba "Chamados" esconde
   function ajustarFiltrosPorAba() {
     var campoTipo = document.getElementById('campo-filtro-tipo');
     var campoStatus = document.getElementById('campo-filtro-status');
+    var campoBusca = document.getElementById('campo-filtro-busca');
     if (!campoTipo || !campoStatus) return;
     var ehBoletas = ABA_ATIVA === 'boletas';
     campoTipo.style.display = ehBoletas ? '' : 'none';
     campoStatus.style.display = ehBoletas ? '' : 'none';
+    if (campoBusca) campoBusca.style.display = ehBoletas ? '' : 'none';
   }
 
   function limparFiltros() {
@@ -183,34 +230,54 @@
       });
   }
 
+  function filtrarStatusCapataz(st) {
+    var cards = document.querySelectorAll('#hist-lista .tarefa-card');
+    cards.forEach(function(card) {
+      if (!st) { card.style.display = ''; return; }
+      var ds = card.getAttribute('data-status') || '';
+      card.style.display = (ds === st) ? '' : 'none';
+    });
+  }
+
   function renderBoletas(rows) {
-    var ICOS = { nascimento: 'nascimento', obito: 'obto', transferencia: 'movimentacao', compravenda: 'movimentacao', evolucao: 'movimentacao', manejo: 'tarefas' };
-    var ROT = { nascimento: 'Nascimento', obito: 'Óbito', transferencia: 'Transferência', compravenda: 'Compra/Venda', evolucao: 'Evolução', manejo: 'Manejo' };
-    return rows.map(function(r) {
+    var ICOS = { nascimento: 'nascimento', obito: 'obto', abate: 'obto', transferencia: 'movimentacao', compravenda: 'movimentacao', evolucao: 'evolucao', manejo: 'tarefas' };
+    var ROT = { nascimento: 'Nascimento', obito: 'Óbito', abate: 'Abate Interno', transferencia: 'Transferência', compravenda: 'Compra/Venda', evolucao: 'Evolução', manejo: 'Manejo' };
+    return '<div style="display:flex; flex-direction:column; gap:0.75rem;">' + rows.map(function(r) {
       var ico = ICOS[r.operacao] || 'tarefas';
       var rotulo = ROT[r.operacao] || 'Registro';
+      if (r.operacao === 'transferencia') {
+        if (r.tipo === 'recebimento') rotulo = 'Transferência (Entrada)';
+        else rotulo = 'Transferência (Saída)';
+      }
       var data = r.data || (r.criadoEm || '').slice(0,10);
       var total = (r.animais || []).reduce(function(s,a){return s+(parseInt(a.quantidade)||0);},0);
-      var badge = r.aprovada
-        ? '<span class="badge concluida">✅ Aprovada</span>'
-        : '<span class="badge pendente">⏳ Pendente</span>';
-      return '<div class="card tarefa-card" onclick="window.location.href=\'/boleta/' + r.id + '\'">' +
-        '<div class="bar-lateral ' + (r.aprovada ? 'concluida' : 'pendente') + '"></div>' +
+      var statusKey = r.bloqueada ? 'bloqueada' : (r.aprovada ? 'aprovada' : 'pendente');
+      var badge = r.bloqueada
+        ? '<span class="badge concluida" style="background:#666; color:#fff;">🔒 Bloqueada</span>'
+        : r.aprovada
+          ? '<span class="badge concluida">✅ Aprovada</span>'
+          : '<span class="badge pendente">⏳ Pendente</span>';
+
+      var badgeDivergencia = r.avisoDivergencia ? '<span style="background:#D32F2F; color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:4px; font-weight:700; margin-left:0.5rem;" title="Coordenador relatou divergência nesta transferência!">⚠️ DIVERGÊNCIA</span>' : '';
+
+      return '<div class="card tarefa-card" data-status="' + statusKey + '" onclick="window.location.href=\'/boleta/' + r.id + '\'" style="' + (r.avisoDivergencia ? 'border-left:4px solid #D32F2F;' : '') + '">' +
+        '<div class="bar-lateral ' + (r.bloqueada ? 'bloqueada' : (r.aprovada ? 'concluida' : 'pendente')) + '"></div>' +
         '<div class="body">' +
           '<div class="info">' +
-            '<span class="titulo"><img class="label-ico" src="/public/Icons/' + ico + '.ico" alt="" /> ' + rotulo + ' — ' + total + ' cabeças</span>' +
+            '<span class="titulo"><img class="label-ico" src="/public/Icons/' + ico + '.ico" alt="" /> ' + rotulo + ' — ' + total + ' cabeças' + badgeDivergencia + '</span>' +
+            (r.numero_boleta ? '<span class="descricao" style="font-weight:600; color:#1A4D2E;">' + r.numero_boleta + '</span>' : '') +
             '<span class="descricao">' + (r.retiro_nome || '') + ' · ' + (r.capataz_nome || '') + '</span>' +
             '<div class="meta"><span class="retiro-tag">📅 ' + data + '</span></div>' +
           '</div>' +
           '<div class="status-area">' + badge + '<span class="arrow">›</span></div>' +
         '</div>' +
       '</div>';
-    }).join('');
+    }).join('') + '</div>';
   }
 
   function renderChamados(rows) {
     var ICOS = { hidraulica: 'hidraulica', eletrica: 'eletrica', cerca: 'cerca', bebedouro: 'bebedouro' };
-    return rows.map(function(c) {
+    return '<div style="display:flex; flex-direction:column; gap:0.75rem;">' + rows.map(function(c) {
       var ico = ICOS[c.tipo] || 'alerta';
       var statusClasse = c.status === 'RESOLVIDO' ? 'concluida' : (c.status === 'EM_ANDAMENTO' ? 'andamento' : 'pendente');
       var statusLabel = c.status === 'RESOLVIDO' ? 'Resolvido' : (c.status === 'EM_ANDAMENTO' ? 'Em andamento' : 'Aberto');
@@ -228,7 +295,7 @@
           '<div class="status-area"><span class="badge ' + statusClasse + '">' + statusLabel + '</span><span class="arrow">›</span></div>' +
         '</div>' +
       '</div>';
-    }).join('');
+    }).join('') + '</div>';
   }
 
   function exportar(formato) {
@@ -241,9 +308,38 @@
     if (tipoSel && tipoSel.value) {
       p.set('tipos', tipoSel.value);
     } else {
-      p.set('tipos', ['nascimento', 'obito', 'transferencia', 'compravenda', 'manejo'].join(','));
+      p.set('tipos', ['nascimento', 'obito', 'abate', 'transferencia', 'compravenda', 'evolucao', 'manejo'].join(','));
     }
     window.location.href = '/api/coordenador/exportar?' + p.toString();
+  }
+
+  var ICO_TAREFA = { nascimento:'nascimento', obito:'obto', transferencia:'movimentacao', compravenda:'cedula_dinheiro_bovino', evolucao:'evolucao', manejo:'tarefas' };
+  var ROT_TAREFA = { nascimento:'Nascimento', obito:'Óbito', transferencia:'Transferência', compravenda:'Compra/Venda', evolucao:'Evolução', manejo:'Manejo' };
+
+  function carregarTarefasGerente() {
+    fetch('/api/tarefas?status=ABERTA', { credentials: 'same-origin' })
+      .then(function(r) { return r.ok ? r.json() : { tarefas: [] }; })
+      .then(function(d) {
+        var lista = (d && d.tarefas) || [];
+        var bloco = document.getElementById('tarefas-gerente');
+        var cont = document.getElementById('tarefas-gerente-lista');
+        if (!lista.length || !bloco || !cont) return;
+        bloco.style.display = 'block';
+        cont.innerHTML = lista.map(function(t) {
+          var ico = ICO_TAREFA[t.tipo_operacao] || 'tarefas';
+          var rotulo = ROT_TAREFA[t.tipo_operacao] || t.tipo_operacao || 'Tarefa';
+          var ehNova = (t.gerente_id && !t.vista_em && t.status !== 'CONCLUIDA');
+          var badgeNova = ehNova ? '<span style="background:#D32F2F;color:#fff;padding:2px 8px;border-radius:999px;font-size:0.7rem;font-weight:700;margin-left:0.4rem;">NOVA</span>' : '';
+          var prio = t.prioridade ? '<span style="font-size:0.75rem;">● ' + t.prioridade.toUpperCase() + '</span>' : '';
+          return '<div class="card tarefa-card" onclick="window.location.href=\'/tarefa/' + t.id + '\'" style="border-left:4px solid #E8A838;">' +
+            '<div class="body"><div class="info">' +
+              '<span class="titulo"><img class="label-ico" src="/public/Icons/' + ico + '.ico" alt="" /> ' + (t.titulo || rotulo) + ' ' + badgeNova + '</span>' +
+              '<span class="descricao">📋 Tarefa do Gerente · ' + rotulo + ' · ' + (t.retiro_nome || '') + '</span>' +
+              '<div class="meta"><span class="retiro-tag">📅 ' + (t.data_execucao || '') + '</span> ' + prio + '</div>' +
+            '</div><div class="status-area"><span class="badge pendente">⏳ Pendente</span><span class="arrow">›</span></div></div>' +
+          '</div>';
+        }).join('');
+      });
   }
 </script>
 

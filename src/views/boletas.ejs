@@ -26,8 +26,10 @@
               <option value="">Todos os tipos</option>
               <option value="nascimento">Nascimento</option>
               <option value="obito">Óbito</option>
+              <option value="abate">Abate Interno</option>
               <option value="transferencia">Transferência</option>
               <option value="compravenda">Compra/Venda</option>
+              <option value="evolucao">Evolução</option>
               <option value="manejo">Manejo</option>
             </select>
             <input type="date" id="filtro-data-inicio" style="flex: 1; min-width:140px; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;" />
@@ -191,14 +193,46 @@
         '</div>';
       return;
     }
+    var ROT = { nascimento: 'Nascimento', obito: 'Óbito', abate: 'Abate Interno', transferencia: 'Transferência', compravenda: 'Compra/Venda', evolucao: 'Evolução', manejo: 'Manejo' };
+
+    // Identificar divergências em Transferências (Envio vs Recebimento)
+    var transfStats = {};
+    visiveis.forEach(function(b) {
+      if (b.tipo_operacao === 'transferencia') {
+        var key = (b.data || (b.criado_em || '').slice(0,10)) + '_' + b.retiro_origem_id + '_' + b.retiro_destino_id;
+        if (!transfStats[key]) transfStats[key] = { envios: 0, recebimentos: 0, itens: [] };
+        var tipo = (b.tipo === 'recebimento' || b.tipo_negocio === 'recebimento') ? 'recebimento' : 'envio';
+        if (tipo === 'envio') transfStats[key].envios += (b.quantidade || 0);
+        if (tipo === 'recebimento') transfStats[key].recebimentos += (b.quantidade || 0);
+        transfStats[key].itens.push(b);
+      }
+    });
+
+    Object.keys(transfStats).forEach(function(key) {
+      var st = transfStats[key];
+      // Se tivermos as duas pontas da mesma data e origem/destino, e os totais diferem:
+      if (st.envios > 0 && st.recebimentos > 0 && st.envios !== st.recebimentos) {
+        st.itens.forEach(function(b) { b._avisoDivergencia = true; });
+      }
+    });
+
     cont.innerHTML = visiveis.map(function(b) {
       var data = b.data || (b.criado_em || '').slice(0,10);
       var aprovada = !!b.aprovado_por_coordenador_id;
-      return '<div class="card boleta-card" style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem; padding:0.75rem 1rem;">' +
+      
+      var rotulo = ROT[b.tipo_operacao] || 'Registro';
+      if (b.tipo_operacao === 'transferencia') {
+        if (b.tipo === 'recebimento' || b.tipo_negocio === 'recebimento') rotulo = 'Transferência (Entrada)';
+        else rotulo = 'Transferência (Saída)';
+      }
+
+      var badgeDivergencia = b._avisoDivergencia ? '<span style="background:#D32F2F; color:#fff; font-size:0.7rem; padding:2px 6px; border-radius:4px; font-weight:700; margin-left:0.5rem;" title="A quantidade enviada difere da recebida!">⚠️ DIVERGÊNCIA</span>' : '';
+
+      return '<div class="card boleta-card" style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem; padding:0.75rem 1rem;' + (b._avisoDivergencia ? ' border-left:4px solid #D32F2F;' : '') + '">' +
         '<input type="checkbox" class="boleta-check" data-id="' + b.id + '" ' + (aprovada ? 'disabled' : '') + ' />' +
         '<div style="flex:1; cursor:pointer;" onclick="window.location.href=\'/boleta/' + (b.grupo_id || b.id) + '\'">' +
-          '<span class="boleta-titulo">' + (b.categoria || 'Movimentação') + ' — ' + (b.quantidade || 0) + ' cabeças</span>' +
-          '<span style="display:block; font-size:0.8rem; color:#8A8A7C;">📅 ' + data + ' · ' + (b.retiro_nome || '') + ' · ' + (b.capataz_nome || '') + '</span>' +
+          '<span class="boleta-titulo" style="font-weight:600; color:#1A4D2E;">' + rotulo + ' — ' + (b.quantidade || 0) + ' cabeças' + badgeDivergencia + '</span>' +
+          '<span style="display:block; font-size:0.8rem; color:#8A8A7C;">' + (b.categoria ? '🐂 ' + b.categoria + ' · ' : '') + '📅 ' + data + ' · ' + (b.retiro_nome || '') + ' · ' + (b.capataz_nome || '') + '</span>' +
         '</div>' +
         (aprovada
           ? '<span class="badge concluida">✓ Aprovada</span>'

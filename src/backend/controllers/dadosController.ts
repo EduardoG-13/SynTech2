@@ -25,7 +25,9 @@ export function listarCapatazes(_req: Request, res: Response) {
 export function dadosFormNovaOs(_req: Request, res: Response) {
   const retiros = db.prepare('SELECT id, nome FROM retiros ORDER BY nome').all();
   const capatazes = db.prepare(
-    `SELECT id, nome, retiro_id FROM usuarios WHERE perfil = 'Capataz' ORDER BY nome`
+    `SELECT u.id, u.nome, u.retiro_id, r.nome AS retiro_nome
+     FROM usuarios u LEFT JOIN retiros r ON r.id = u.retiro_id
+     WHERE u.perfil = 'Capataz' ORDER BY u.nome`
   ).all();
 
   // Dados de domínio (planilha oficial BRPec)
@@ -49,9 +51,10 @@ export function dadosFormNovaOs(_req: Request, res: Response) {
   const operacoes = [
     { valor: 'nascimento', label: 'Nascimento' },
     { valor: 'obito', label: 'Morte' },
-    { valor: 'transferencia', label: 'Movimentação' },
+    { valor: 'abate', label: 'Abate Interno' },
+    { valor: 'transferencia', label: 'Transferência' },
     { valor: 'compravenda', label: 'Compra / Venda' },
-    { valor: 'evolucao', label: 'Mudança de idade' },
+    { valor: 'evolucao', label: 'Evolução' },
     { valor: 'manejo', label: 'Manejo' },
   ];
 

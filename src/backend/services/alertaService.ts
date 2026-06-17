@@ -27,6 +27,10 @@ class AlertaService {
     return await alertaRepository.buscarPorId(id);
   }
 
+  async atualizarStatus(id: string, status: string) {
+    return await alertaRepository.atualizarStatus(id, status);
+  }
+
   async resolverChamado(
     id: string,
     tecnico_id: string,

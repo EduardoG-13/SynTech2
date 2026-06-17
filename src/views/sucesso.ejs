@@ -57,12 +57,10 @@
 
       // Botões de ação dependem do perfil
       document.getElementById('btn-historico').addEventListener('click', function () {
-        if (PERFIL === 'Infraestrutura') window.location.href = '/historico';
-        else window.location.href = '/tarefas';
+        window.location.href = '/historico';
       });
       document.getElementById('btn-inicio').addEventListener('click', function () {
-        // Cada perfil tem sua home
-        if (PERFIL === 'Capataz') window.location.href = '/tarefas';
+        if (PERFIL === 'Capataz') window.location.href = '/nova-os';
         else if (PERFIL === 'Infraestrutura') window.location.href = '/infraestrutura';
         else if (PERFIL === 'Gerente' || PERFIL === 'Coordenador') window.location.href = '/dashboard';
         else window.location.href = '/';
@@ -110,9 +108,10 @@
       var map = {
         'nascimento': { ico: 'nascimento', label: 'Nascimento' },
         'obito': { ico: 'obto', label: 'Óbito' },
+        'abate': { ico: 'obto', label: 'Abate Interno' },
         'transferencia': { ico: 'movimentacao', label: 'Transferência' },
         'compravenda': { ico: 'movimentacao', label: 'Compra / Venda' },
-        'evolucao': { ico: 'movimentacao', label: 'Evolução' },
+        'evolucao': { ico: 'evolucao', label: 'Evolução' },
         'manejo': { ico: 'tarefas', label: 'Manejo' },
         'chamado': { ico: 'infra', label: 'Chamado de infraestrutura' },
       };

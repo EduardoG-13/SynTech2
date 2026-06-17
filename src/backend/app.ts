@@ -128,8 +128,7 @@ app.get('/infraestrutura', requireLogin(['Infraestrutura', 'Gerente']), (_req, r
 });
 
 app.get('/tarefas', requireLogin(['Capataz']), (_req, res) => {
-  const u = (res.locals as any).usuarioLogado;
-  res.render('tarefas', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
+  res.redirect('/historico');
 });
 
 app.get('/tarefa/:id', requireLogin(), (req, res) => {
@@ -149,15 +148,14 @@ app.get('/boleta/:id', requireLogin(['Capataz', 'Coordenador', 'Gerente']), (req
   res.render('detalhe-boleta', { perfil: u.perfil, retiro: u.retiro_id || 'Geral', boletaId: req.params.id });
 });
 
-app.get('/nova-os', requireLogin(['Capataz']), (req, res) => {
+app.get('/nova-os', requireLogin(['Capataz', 'Gerente']), (req, res) => {
   const u = (res.locals as any).usuarioLogado;
   const tarefaId = (req.query.tarefa as string) || '';
-  res.render('nova-os', { perfil: u.perfil, retiro: u.retiro_id || 'Geral', tarefaId });
+  res.render('nova-os', { perfil: u.perfil, retiro: u.retiro_id || 'Geral', nome: u.nome || '', tarefaId });
 });
 
 app.get('/nova-tarefa', requireLogin(['Gerente']), (_req, res) => {
-  const u = (res.locals as any).usuarioLogado;
-  res.render('nova-tarefa', { perfil: u.perfil, retiro: u.retiro_id || 'Geral' });
+  res.redirect('/novo-chamado');
 });
 
 // Tela de sucesso após registrar (resumo do registro vem do localStorage)

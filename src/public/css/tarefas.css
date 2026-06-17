@@ -90,6 +90,10 @@
   background: #2E7D52;
 }
 
+.bar-lateral.bloqueada {
+  background: #666;
+}
+
 /* Corpo do card */
 .tarefa-card .body {
   display: flex;

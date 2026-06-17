@@ -214,7 +214,6 @@
         setKpi('stat-boletas-total', b.total || 0);
         setKpi('stat-pendentes', b.pendentes || 0);
         setKpi('stat-aprovadas', b.aprovadas || 0);
-        setKpi('stat-cabecas', (d.totais && d.totais.cabecas) || 0);
         setKpi('stat-alertas', (d.chamados && d.chamados.abertos) || 0);
 
         ultimoResumo = d;
@@ -344,8 +343,8 @@
   }
 
   var ROTULO_TIPO = {
-    nascimento: 'Nascimento', obito: 'Morte', transferencia: 'Movimentação',
-    compravenda: 'Compra/Venda', evolucao: 'Mudança idade', manejo: 'Manejo',
+    nascimento: 'Nascimento', obito: 'Morte', abate: 'Abate Interno', transferencia: 'Transferência',
+    compravenda: 'Compra/Venda', evolucao: 'Evolução', manejo: 'Manejo',
     infra: 'Infra / Manutenção',
   };
   // Paleta pra boletas; Infra/Manutenção sai sempre em vermelho pra destacar "problema".

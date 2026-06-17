@@ -111,6 +111,10 @@ class AlertaRepository {
     return stmt.all(...params) as any[];
   }
 
+  async atualizarStatus(id: string, status: string): Promise<void> {
+    db.prepare('UPDATE alertas SET status = ?, sincronizado = 0 WHERE id = ?').run(status, id);
+  }
+
   async resolver(
     id: string,
     tecnico_id: string,

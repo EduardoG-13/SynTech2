@@ -198,9 +198,10 @@
     var TIPOS_META = {
       nascimento: { ico: 'nascimento', label: 'Nascimento' },
       obito: { ico: 'obto', label: 'Óbito' },
+      abate: { ico: 'obto', label: 'Abate Interno' },
       transferencia: { ico: 'movimentacao', label: 'Transferência' },
       compravenda: { ico: 'movimentacao', label: 'Compra/Venda' },
-      evolucao: { ico: 'movimentacao', label: 'Evolução' },
+      evolucao: { ico: 'evolucao', label: 'Evolução' },
       manejo: { ico: 'tarefas', label: 'Manejo' }
     };
 
@@ -317,10 +318,16 @@
 
     function renderBoleta(reg) {
       var meta = TIPOS_META[reg.operacao] || { ico: 'tarefas', label: reg.operacao || 'Boleta' };
+      
+      var labelExibicao = meta.label;
+      if (reg.operacao === 'transferencia') {
+        if (reg.tipo === 'recebimento') labelExibicao = 'Transferência (Entrada)';
+        else labelExibicao = 'Transferência (Saída)';
+      }
 
       // Cabeçalho
       document.getElementById('bol-tipo').innerHTML =
-        '<img class="label-ico" src="/public/Icons/' + meta.ico + '.ico" alt="" /> ' + meta.label;
+        '<img class="label-ico" src="/public/Icons/' + meta.ico + '.ico" alt="" /> ' + labelExibicao;
 
       // Identificador legível (rastreabilidade)
       var numEl = document.getElementById('bol-numero');

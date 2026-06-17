@@ -17,6 +17,16 @@
 
       <form id="form-nova-os">
 
+        <% if (perfil === 'Gerente') { %>
+        <!-- Gerente cria em nome de um capataz -->
+        <div class="card campo" id="bloco-gerente-capataz">
+          <label><img class="label-ico" src="/public/Icons/capataz.ico" alt="" /> Para qual capataz?</label>
+          <select id="os-capataz">
+            <option value="">Selecione o capataz...</option>
+          </select>
+        </div>
+        <% } %>
+
         <!-- 1. Operação (sempre visível) — grid de cards com ícone -->
         <div class="card campo">
           <label><img class="label-ico" src="/public/Icons/tarefas.ico" alt="" /> O que você quer registrar?</label>
@@ -26,20 +36,20 @@
 
         <!-- ===================== MOVIMENTAÇÃO ===================== -->
         <div class="card campo dinamico" data-op="transferencia">
-          <label><img class="label-ico" src="/public/Icons/bussola_direcao_guia.ico" alt="" /> Direção</label>
+          <label><img class="label-ico" src="/public/Icons/bussola_direcao_guia.ico" alt="" /> Eu sou o Retiro de...</label>
           <div class="toggle-pills">
-            <button type="button" class="pill active" data-tipo="envio"><img class="label-ico" src="/public/Icons/envio_animais_caixa.ico" alt="" /> Saindo</button>
-            <button type="button" class="pill" data-tipo="recebimento"><img class="label-ico" src="/public/Icons/entrada_animais_recebimento_compra.ico" alt="" /> Entrando</button>
+            <button type="button" class="pill active" data-tipo="envio"><img class="label-ico" src="/public/Icons/envio_animais_caixa.ico" alt="" /> Origem</button>
+            <button type="button" class="pill" data-tipo="recebimento"><img class="label-ico" src="/public/Icons/entrada_animais_recebimento_compra.ico" alt="" /> Destino</button>
           </div>
         </div>
 
         <div class="card campo dinamico" data-op="transferencia">
-          <label for="os-retiro-origem"><img class="label-ico" src="/public/Icons/localizacao.ico" alt="" /> De onde sai</label>
+          <label for="os-retiro-origem"><img class="label-ico" src="/public/Icons/localizacao.ico" alt="" /> Origem</label>
           <select id="os-retiro-origem"></select>
         </div>
 
         <div class="card campo dinamico" data-op="transferencia">
-          <label for="os-retiro-destino"><img class="label-ico" src="/public/Icons/destido.ico" alt="" /> Para onde vai</label>
+          <label for="os-retiro-destino"><img class="label-ico" src="/public/Icons/destido.ico" alt="" /> Destino</label>
           <select id="os-retiro-destino"></select>
         </div>
 
@@ -52,13 +62,13 @@
         </div>
 
         <!-- ===================== RETIRO (demais operações) ===================== -->
-        <div class="card campo dinamico" data-op="nascimento obito compravenda evolucao manejo">
+        <div class="card campo dinamico" data-op="nascimento obito abate compravenda evolucao manejo">
           <label for="os-retiro"><img class="label-ico" src="/public/Icons/localizacao.ico" alt="" /> Retiro</label>
           <select id="os-retiro"></select>
         </div>
 
         <!-- ===================== Nº DO PASTO + DATA ===================== -->
-        <div class="card campo dinamico" data-op="nascimento obito transferencia compravenda evolucao">
+        <div class="card campo dinamico" data-op="nascimento obito abate transferencia compravenda evolucao">
           <div class="dois-campos">
             <div>
               <label for="os-pasto"><img class="label-ico" src="/public/Icons/Pasto.ico" alt="" /> Pasto <span class="opcional-txt">(opcional)</span></label>
@@ -72,7 +82,7 @@
         </div>
 
         <!-- ===================== CATEGORIAS + QUANTIDADES (repetível) ===================== -->
-        <div class="card campo dinamico" data-op="nascimento obito transferencia compravenda">
+        <div class="card campo dinamico" data-op="nascimento obito abate transferencia compravenda">
           <label><img class="label-ico" src="/public/Icons/movimentacao.ico" alt="" /> Animais</label>
           <div id="linhas-categoria"></div>
           <button type="button" class="btn-add" id="btn-add-categoria">➕ Adicionar categoria</button>
@@ -84,7 +94,7 @@
 
         <!-- ===================== MUDANÇA DE IDADE (de → para) ===================== -->
         <div class="card campo dinamico" data-op="evolucao">
-          <label><img class="label-ico" src="/public/Icons/evolucao.ico" alt="" /> Mudança de idade</label>
+          <label><img class="label-ico" src="/public/Icons/evolucao.ico" alt="" /> Evolução</label>
           <p class="ajuda">Quando o animal cresce e troca de categoria (ex: bezerro → garrote).</p>
           <div id="linhas-evolucao"></div>
           <button type="button" class="btn-add" id="btn-add-evolucao">➕ Adicionar mudança</button>
@@ -93,18 +103,35 @@
         <!-- ===================== NASCIMENTO: raça ===================== -->
         <div class="card campo dinamico" data-op="nascimento">
           <label for="os-raca"><img class="label-ico" src="/public/Icons/nascimento.ico" alt="" /> Raça</label>
-          <input type="text" id="os-raca" placeholder="Ex: Nelore" />
+          <input type="text" id="os-raca" value="NELORE/CRUZADO" />
         </div>
 
         <!-- ===================== MORTE: ID do animal + causa ===================== -->
         <div class="card campo dinamico destaque-obito" data-op="obito">
-          <label for="os-brinco"><img class="label-ico" src="/public/Icons/Brinco.ico" alt="" /> Brinco</label>
+          <label for="os-brinco"><img class="label-ico" src="/public/Icons/Brinco.ico" alt="" /> Brinco <span class="opcional-txt">(opcional — pode não estar na carcaça)</span></label>
           <input type="text" id="os-brinco" placeholder="Ex: 4471" />
         </div>
 
         <div class="card campo dinamico destaque-obito" data-op="obito">
           <label for="os-causa"><img class="label-ico" src="/public/Icons/obto.ico" alt="" /> Causa</label>
           <select id="os-causa"></select>
+        </div>
+
+        <!-- ===================== ABATE INTERNO: brinco + foto obrigatória ===================== -->
+        <div class="card campo dinamico destaque-obito" data-op="abate">
+          <label for="os-brinco-abate"><img class="label-ico" src="/public/Icons/Brinco.ico" alt="" /> Brinco <span class="opcional-txt">(opcional)</span></label>
+          <input type="text" id="os-brinco-abate" placeholder="Ex: 4471" />
+        </div>
+
+        <div class="card campo dinamico destaque-obito" data-op="abate">
+          <label><img class="label-ico" src="/public/Icons/tira_foto.ico" alt="" /> Foto do abate <span class="obrigatorio">* obrigatória</span></label>
+          <div class="upload-foto">
+            <label for="os-foto-abate" class="upload-label">
+              <img class="upload-icon-img" src="/public/Icons/tira_foto.ico" alt="" />
+              <span id="foto-abate-txt">📷 Tirar foto ou escolher do celular</span>
+            </label>
+            <input type="file" id="os-foto-abate" accept="image/*" />
+          </div>
         </div>
 
         <!-- ===================== COMPRA/VENDA ===================== -->
@@ -128,7 +155,7 @@
         </div>
 
         <!-- ===================== OBSERVAÇÕES (texto OU áudio) ===================== -->
-        <div class="card campo dinamico" data-op="nascimento obito transferencia compravenda evolucao manejo">
+        <div class="card campo dinamico" data-op="nascimento obito abate transferencia compravenda evolucao manejo">
           <label for="os-observacoes"><img class="label-ico" src="/public/Icons/editar.ico" alt="" /> Observações</label>
           <textarea id="os-observacoes" rows="3" placeholder="Escreva ou grave um áudio (opcional)"></textarea>
 
@@ -187,6 +214,7 @@
   var CATEGORIAS = [];
   var CATEGORIAS_NASCIMENTO = [];
   var gpsAtual = null;  // leitura de GPS mais recente {latitude, longitude}
+  var RETIRO_LOGADO_ID = null;
 
   document.addEventListener('DOMContentLoaded', function() {
     var hoje = new Date().toISOString().split('T')[0];
@@ -420,10 +448,11 @@
     var lista = (op === 'nascimento' && CATEGORIAS_NASCIMENTO.length) ? CATEGORIAS_NASCIMENTO : CATEGORIAS;
     var div = document.createElement('div');
     div.className = 'linha-cat';
+    var esconderRemover = (op === 'obito' || op === 'abate');
     div.innerHTML =
       '<select class="cat-sel">' + optsCategorias(lista) + '</select>' +
       '<input type="number" class="cat-qtd" min="1" placeholder="Qtd" />' +
-      '<button type="button" class="btn-remover">🗑️</button>';
+      '<button type="button" class="btn-remover"' + (esconderRemover ? ' style="display:none"' : '') + '>🗑️</button>';
     div.querySelector('.btn-remover').addEventListener('click', function() {
       div.remove();
       atualizarTotal();
@@ -470,6 +499,7 @@
   var ICO_OPERACAO = {
     nascimento:    'nascimento',
     obito:         'obto',
+    abate:         'obto',
     transferencia: 'movimentacao',
     compravenda:   'cedula_dinheiro_bovino',
     evolucao:      'evolucao',
@@ -510,6 +540,37 @@
 
         preselecionarRetiroLogado(d.retiros);
 
+        // Gerente: popula seletor de capataz e trava retiro ao capataz selecionado
+        if (PERFIL === 'Gerente') {
+          var selCap = document.getElementById('os-capataz');
+          if (selCap && d.capatazes && d.capatazes.length) {
+            selCap.innerHTML = '<option value="">Selecione o capataz...</option>' +
+              '<option value="eu">Eu mesmo (Gerente)</option>' +
+              d.capatazes.map(function(c) {
+                return '<option value="' + c.id + '" data-retiro="' + (c.retiro_id || '') + '">' + c.nome + ' — ' + (c.retiro_nome || c.retiro_id || '') + '</option>';
+              }).join('');
+            selCap.addEventListener('change', function() {
+              var opt = selCap.options[selCap.selectedIndex];
+              var retiroId = opt ? opt.getAttribute('data-retiro') : '';
+              var isEu = selCap.value === 'eu';
+              RETIRO_LOGADO_ID = isEu ? null : retiroId;
+              ['os-retiro'].forEach(function(id) {
+                var el = document.getElementById(id);
+                if (!el) return;
+                if (isEu) {
+                  el.disabled = false;
+                } else if (retiroId) {
+                  el.value = retiroId;
+                  el.disabled = true;
+                } else {
+                  el.disabled = false;
+                }
+              });
+              atualizarBloqueioRetiroTransfer();
+            });
+          }
+        }
+
         CATEGORIAS = d.categorias;
         CATEGORIAS_NASCIMENTO = d.categoriasNascimento || [];
 
@@ -530,10 +591,37 @@
           || String(r.nome).toLowerCase() === alvo;
     });
     if (!match) return;
-    ['os-retiro', 'os-retiro-origem'].forEach(function(id) {
-      var sel = document.getElementById(id);
-      if (sel) sel.value = match.id;
-    });
+    RETIRO_LOGADO_ID = match.id;
+    
+    var sel = document.getElementById('os-retiro');
+    if (sel) {
+      sel.value = match.id;
+      if (PERFIL === 'Capataz') sel.disabled = true;
+    }
+    atualizarBloqueioRetiroTransfer();
+  }
+
+  function atualizarBloqueioRetiroTransfer() {
+    var selOrigem = document.getElementById('os-retiro-origem');
+    var selDestino = document.getElementById('os-retiro-destino');
+    if (!selOrigem || !selDestino) return;
+    
+    // Se for Gerente e selecionou "Eu mesmo", libera tudo
+    if (PERFIL === 'Gerente' && !RETIRO_LOGADO_ID) {
+      selOrigem.disabled = false;
+      selDestino.disabled = false;
+      return;
+    }
+
+    if (TIPO_TRANSF === 'envio') {
+      if (RETIRO_LOGADO_ID) selOrigem.value = RETIRO_LOGADO_ID;
+      selOrigem.disabled = true;
+      selDestino.disabled = false;
+    } else {
+      if (RETIRO_LOGADO_ID) selDestino.value = RETIRO_LOGADO_ID;
+      selDestino.disabled = true;
+      selOrigem.disabled = false;
+    }
   }
 
   function configurarOperacao() {
@@ -546,9 +634,13 @@
       });
       document.getElementById('btn-enviar').disabled = !op;
 
+      // Óbito/abate: só uma categoria (mesmo sexo/idade), esconde botão "+"
+      var btnAddCat = document.getElementById('btn-add-categoria');
+      if (btnAddCat) btnAddCat.style.display = (op === 'obito' || op === 'abate') ? 'none' : '';
+
       // Inicia com uma linha de categoria/evolução
       // Limpa as linhas antigas pra regenerar com a lista certa (nascimento = só bezerro/bezerra)
-      if (['nascimento','obito','transferencia','compravenda'].indexOf(op) >= 0) {
+      if (['nascimento','obito','abate','transferencia','compravenda'].indexOf(op) >= 0) {
         var cont = document.getElementById('linhas-categoria');
         cont.innerHTML = '';
         addLinhaCategoria();
@@ -567,7 +659,10 @@
         btn.addEventListener('click', function() {
           grupo.querySelectorAll('.pill').forEach(function(b) { b.classList.remove('active'); });
           btn.classList.add('active');
-          if (btn.dataset.tipo) TIPO_TRANSF = btn.dataset.tipo;
+          if (btn.dataset.tipo) {
+            TIPO_TRANSF = btn.dataset.tipo;
+            atualizarBloqueioRetiroTransfer();
+          }
           if (btn.dataset.negocio) TIPO_NEGOCIO = btn.dataset.negocio;
           if (btn.dataset.transporte) {
             TIPO_TRANSPORTE = btn.dataset.transporte;
@@ -592,6 +687,13 @@
       inputMan.addEventListener('change', function() {
         var txt = document.getElementById('foto-manejo-txt');
         if (inputMan.files.length) txt.textContent = '✅ ' + inputMan.files[0].name;
+      });
+    }
+    var inputAbate = document.getElementById('os-foto-abate');
+    if (inputAbate) {
+      inputAbate.addEventListener('change', function() {
+        var txt = document.getElementById('foto-abate-txt');
+        if (inputAbate.files.length) txt.textContent = '✅ ' + inputAbate.files[0].name;
       });
     }
   }
@@ -641,9 +743,34 @@
       }
     }
 
+    if (op === 'abate') {
+      if (!document.getElementById('os-foto-abate').files.length) {
+        mostrarMsg('📷 Para registrar abate é obrigatório anexar a foto.', 'erro');
+        return;
+      }
+    }
+
+    // Reabilita temporariamente selects de retiro (disabled impede leitura do .value em alguns browsers)
+    ['os-retiro', 'os-retiro-origem', 'os-retiro-destino'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.disabled = false;
+    });
+
     var payload = { operacao: op, perfil: PERFIL, data: (document.getElementById('os-data') || {}).value };
 
-    if (['nascimento','obito','transferencia','compravenda'].indexOf(op) >= 0) {
+    // Gerente: envia em nome de um capataz específico ou registra ele mesmo
+    if (PERFIL === 'Gerente') {
+      var selCapGer = document.getElementById('os-capataz');
+      if (selCapGer && selCapGer.value && selCapGer.value !== 'eu') {
+        payload.capataz_id = selCapGer.value;
+      } else if (!selCapGer || !selCapGer.value) {
+        mostrarMsg('👤 Selecione para qual capataz registrar a boleta.', 'erro');
+        return;
+      }
+      // se valor === 'eu', não envia capataz_id → backend usa sess.id
+    }
+
+    if (['nascimento','obito','abate','transferencia','compravenda'].indexOf(op) >= 0) {
       payload.animais = coletarCategorias();
       if (!payload.animais.length) {
         mostrarMsg('🐂 Adicione pelo menos uma categoria com quantidade.', 'erro');
@@ -672,6 +799,12 @@
       payload.causa = document.getElementById('os-causa').value;
       var fotoObito = document.getElementById('os-foto');
       payload.tem_foto = !!(fotoObito && fotoObito.files.length);
+    } else if (op === 'abate') {
+      payload.retiro = document.getElementById('os-retiro').value;
+      payload.pasto = document.getElementById('os-pasto').value;
+      payload.brinco = document.getElementById('os-brinco-abate').value;
+      var fotoAbate = document.getElementById('os-foto-abate');
+      payload.tem_foto = !!(fotoAbate && fotoAbate.files.length);
     } else if (op === 'evolucao') {
       payload.retiro = document.getElementById('os-retiro').value;
       payload.evolucoes = coletarEvolucoes();
@@ -694,6 +827,9 @@
     if (op === 'obito') {
       var fObito = document.getElementById('os-foto');
       if (fObito && fObito.files.length) fotoFile = fObito.files[0];
+    } else if (op === 'abate') {
+      var fAbate = document.getElementById('os-foto-abate');
+      if (fAbate && fAbate.files.length) fotoFile = fAbate.files[0];
     } else if (op === 'manejo') {
       var fManejo = document.getElementById('os-foto-manejo');
       if (fManejo && fManejo.files.length) fotoFile = fManejo.files[0];
