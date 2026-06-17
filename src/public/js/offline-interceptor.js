@@ -119,18 +119,14 @@ async function salvarNaFila(tipo, dados) {
 }
 
 /**
- * Atualizar badge de status online/offline
+ * Notifica a UI (pill de status no topo) que a conexão mudou.
+ * O componente visual fica no footer (escuta 'brpec:conexao' + online/offline).
  */
 function atualizarStatusBadge() {
-  const badge = document.getElementById('onlineStatus');
-  if (badge) {
-    if (isOnline) {
-      badge.textContent = '🟢 Online';
-      badge.style.backgroundColor = '#4CAF50';
-    } else {
-      badge.textContent = '🔴 Offline';
-      badge.style.backgroundColor = '#f44336';
-    }
+  try {
+    window.dispatchEvent(new CustomEvent('brpec:conexao', { detail: { online: isOnline } }));
+  } catch (e) {
+    /* CustomEvent indisponível: o pill ainda reage aos eventos nativos online/offline */
   }
 }
 

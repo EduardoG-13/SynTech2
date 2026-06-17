@@ -38,6 +38,50 @@ function extrairDadosDoItem(item) {
   return item.dados?.dados ?? item.dados ?? null;
 }
 
+// Boletas são polimórficas (N movimentações + numero_boleta/grupo_id gerados no
+// servidor), então NÃO cabem no /lote genérico: reenviamos a requisição ORIGINAL
+// (POST/PUT em /api/boletas), que já executa toda a lógica de criação/edição.
+function ehReplayDireto(item) {
+  const url = item?.dados?.url;
+  return typeof url === 'string' && url.includes('/api/boletas');
+}
+
+async function replayItemDireto(item) {
+  const url = item.dados.url;
+  const metodo = item.dados.metodo || 'POST';
+  const corpo = extrairDadosDoItem(item);
+
+  const resp = await fetch(url, {
+    method: metodo,
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'same-origin',
+    body: corpo ? JSON.stringify(corpo) : null,
+  });
+
+  if (resp.status >= 200 && resp.status < 300) {
+    try {
+      await window.brpecIndexedDb.removerVarios([item.id]);
+    } catch (e) {
+      console.error('[Sincronizador] Falha ao remover boleta sincronizada localmente:', e);
+    }
+    return true;
+  }
+
+  // Mantém PENDENTE para nova tentativa na próxima conexão; apenas registra a tentativa.
+  try {
+    item.dados = {
+      ...item.dados,
+      tentativas: (item.dados.tentativas || 0) + 1,
+      ultimaTentativa: new Date().toISOString(),
+      erroServidor: `HTTP ${resp.status}`,
+    };
+    await window.brpecIndexedDb.atualizarFila(item);
+  } catch (e) {
+    console.error('[Sincronizador] Falha ao registrar tentativa de boleta:', e);
+  }
+  return false;
+}
+
 async function enviarLote(itensPendentes) {
   const itensParaEnviar = itensPendentes.map((item) => ({
     id: item.id,
@@ -163,8 +207,24 @@ export async function processarFilaSincronizacao() {
     let erros = 0;
     const resultados = [];
 
-    for (let i = 0; i < itensPendentes.length; i += MAX_ITEMS_POR_LOTE) {
-      const lote = itensPendentes.slice(i, i + MAX_ITEMS_POR_LOTE);
+    // 1) Replay direto: boletas reenviam a requisição original ao /api/boletas
+    const itensReplay = itensPendentes.filter(ehReplayDireto);
+    const itensLote = itensPendentes.filter((item) => !ehReplayDireto(item));
+
+    for (const item of itensReplay) {
+      processados += 1;
+      try {
+        const ok = await replayItemDireto(item);
+        if (ok) sucessos += 1; else erros += 1;
+      } catch (e) {
+        erros += 1;
+        console.error('[Sincronizador] Erro ao reenviar boleta offline:', e);
+      }
+    }
+
+    // 2) Lote genérico: tarefas, chamados/alertas, movimentações, evidências
+    for (let i = 0; i < itensLote.length; i += MAX_ITEMS_POR_LOTE) {
+      const lote = itensLote.slice(i, i + MAX_ITEMS_POR_LOTE);
       console.log(`[Sincronizador] Enviando lote de ${lote.length} itens para /api/sincronizacao/lote`);
 
       const resultadoLote = await enviarLote(lote);
@@ -177,6 +237,13 @@ export async function processarFilaSincronizacao() {
     console.log(
       `[Sincronizador] Sincronização concluída: processados=${processados}, sucessos=${sucessos}, erros=${erros}`
     );
+
+    // Avisa a UI (pill de status no topo) para recontar a fila
+    try {
+      window.dispatchEvent(new CustomEvent('brpec:sincronizacaoConcluida', {
+        detail: { processados, sucessos, erros },
+      }));
+    } catch (e) { /* ambiente sem window/CustomEvent */ }
 
     return {
       sucesso: true,

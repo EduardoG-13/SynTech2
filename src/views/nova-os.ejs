@@ -186,6 +186,7 @@
   var TIPO_TRANSPORTE = 'rodoviario';
   var CATEGORIAS = [];
   var CATEGORIAS_NASCIMENTO = [];
+  var gpsAtual = null;  // leitura de GPS mais recente {latitude, longitude}
 
   document.addEventListener('DOMContentLoaded', function() {
     var hoje = new Date().toISOString().split('T')[0];
@@ -197,6 +198,7 @@
     configurarToggles();
     configurarFotoLabel();
     configurarAudio();
+    iniciarGPS();   // começa a capturar GPS já na abertura, pra estar pronto no envio
 
     document.getElementById('btn-add-categoria').addEventListener('click', function() { addLinhaCategoria(); });
     document.getElementById('btn-add-evolucao').addEventListener('click', function() { addLinhaEvolucao(); });
@@ -666,30 +668,86 @@
         payload.foto_base64 = fotoBase64;
         payload.tem_foto = true;
       }
-      // Georreferência: captura GPS pra rastreabilidade (não bloqueia se negar)
+      var temFoto = !!(payload.foto_base64 || payload.tem_foto);
+      var btn = document.getElementById('btn-enviar');
+
+      // Toda foto precisa de localização. Se ainda não temos GPS, avisamos e esperamos.
+      if (temFoto && !gpsAtual) {
+        mostrarMsg('📍 Capturando o GPS da foto... aguarde um instante.', 'info');
+        if (btn) { btn.disabled = true; }
+      }
+
       capturarGPS(function(coords) {
+        if (btn) { btn.disabled = false; }
         if (coords) {
           payload.latitude = coords.latitude;
           payload.longitude = coords.longitude;
+        } else if (temFoto) {
+          // Requisito: toda foto georreferenciada. Sem GPS, não envia.
+          mostrarMsg('📍 Não consegui pegar o GPS, e toda foto precisa de localização. Ative o GPS do aparelho e tente novamente.', 'erro');
+          return;
         }
         enviarPayload(payload);
       });
     });
   });
 
-  // Captura GPS com timeout curto; chama cb(null) se falhar/negar (não trava o registro)
+  // ===== GPS / Georreferenciação =====
+  // Requisito de rastreabilidade: TODA foto (óbito, manejo) precisa de localização.
+  // Por isso começamos a capturar já na abertura e, no envio com foto, exigimos GPS.
+  function lerGpsCache() {
+    try {
+      var raw = localStorage.getItem('brpec_gps_ultima_pos');
+      if (!raw) return null;
+      var p = JSON.parse(raw);
+      if (p && p.lat && p.lon) return { latitude: parseFloat(p.lat), longitude: parseFloat(p.lon) };
+    } catch (e) {}
+    return null;
+  }
+  function salvarGpsCache(lat, lon) {
+    try {
+      localStorage.setItem('brpec_gps_ultima_pos', JSON.stringify({ lat: lat, lon: lon, timestamp: Date.now() }));
+      localStorage.setItem('brpec_gps_autorizado', 'true');
+    } catch (e) {}
+  }
+
+  // Dispara a captura assim que a tela abre (e mantém a última posição conhecida).
+  function iniciarGPS() {
+    gpsAtual = lerGpsCache();  // usa a última posição enquanto a nova chega
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        gpsAtual = { latitude: pos.coords.latitude, longitude: pos.coords.longitude };
+        salvarGpsCache(pos.coords.latitude, pos.coords.longitude);
+      },
+      function() { /* mantém cache/none; tenta de novo no envio */ },
+      { enableHighAccuracy: true, timeout: 30000, maximumAge: 60000 }
+    );
+  }
+
+  // No envio: devolve a leitura mais recente; se não houver, tenta agora (até 12s)
+  // e cai pra última posição conhecida. cb(null) só quando realmente não há nada.
   function capturarGPS(cb) {
-    if (!navigator.geolocation) { cb(null); return; }
+    if (gpsAtual) { cb(gpsAtual); return; }
+    if (!navigator.geolocation) { cb(lerGpsCache()); return; }
     var respondido = false;
-    var timer = setTimeout(function() { if (!respondido) { respondido = true; cb(null); } }, 4000);
+    var timer = setTimeout(function() {
+      if (!respondido) { respondido = true; cb(gpsAtual || lerGpsCache()); }
+    }, 12000);
     navigator.geolocation.getCurrentPosition(
       function(pos) {
         if (respondido) return;
         respondido = true; clearTimeout(timer);
-        cb({ latitude: pos.coords.latitude, longitude: pos.coords.longitude });
+        gpsAtual = { latitude: pos.coords.latitude, longitude: pos.coords.longitude };
+        salvarGpsCache(pos.coords.latitude, pos.coords.longitude);
+        cb(gpsAtual);
       },
-      function() { if (!respondido) { respondido = true; clearTimeout(timer); cb(null); } },
-      { enableHighAccuracy: true, timeout: 4000, maximumAge: 60000 }
+      function() {
+        if (respondido) return;
+        respondido = true; clearTimeout(timer);
+        cb(gpsAtual || lerGpsCache());
+      },
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 }
     );
   }
 
@@ -697,6 +755,12 @@
     var editId = new URLSearchParams(window.location.search).get('edit');
     var url = editId ? '/api/boletas/' + encodeURIComponent(editId) : '/api/boletas';
     var metodo = editId ? 'PUT' : 'POST';
+
+    // Já está sem rede: salva direto no aparelho, sem nem tentar (e sem travar o capataz).
+    if (!navigator.onLine) {
+      salvarBoletaOffline(url, metodo, payload);
+      return;
+    }
 
     fetch(url, {
       method: metodo,
@@ -718,7 +782,35 @@
       window.location.href = '/sucesso';
     })
     .catch(function() {
-      mostrarMsg('❌ Erro de conexão. Tente novamente.', 'erro');
+      // Falha de rede no meio do envio: NÃO perde o registro — guarda local pra sincronizar depois.
+      salvarBoletaOffline(url, metodo, payload);
+    });
+  }
+
+  // Salva a boleta na fila local (IndexedDB). Quando a conexão voltar, o sincronizador
+  // reenvia a requisição original (POST/PUT /api/boletas) automaticamente.
+  function salvarBoletaOffline(url, metodo, payload) {
+    var idb = window.brpecIndexedDb;
+    if (!idb || typeof idb.salvarFila !== 'function') {
+      mostrarMsg('❌ Sem conexão e o aparelho não conseguiu guardar o registro. Tente de novo perto do sinal.', 'erro');
+      return;
+    }
+    idb.salvarFila('boleta', {
+      url: url,
+      metodo: metodo,
+      dados: payload,
+      tentativas: 0,
+      ultimaTentativa: new Date().toISOString(),
+    })
+    .then(function() {
+      try {
+        var resumo = Object.assign({ criadoEm: new Date().toISOString(), _offline: true }, payload);
+        localStorage.setItem('brpec_ultimo_registro', JSON.stringify(resumo));
+      } catch(e) {}
+      window.location.href = '/sucesso?offline=1';
+    })
+    .catch(function() {
+      mostrarMsg('❌ Não foi possível guardar no aparelho. Tente novamente.', 'erro');
     });
   }
 </script>

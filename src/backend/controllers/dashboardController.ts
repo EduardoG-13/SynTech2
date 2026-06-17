@@ -24,7 +24,11 @@ export function obterResumo(req: Request, res: Response) {
   const sess = (req.session as any)?.usuario as SessUsuario | undefined;
   if (!sess) return res.status(401).json({ erro: 'Não autenticado.' });
 
-  const filtroData = typeof req.query.data === 'string' && req.query.data ? req.query.data : null;
+  // Filtro por PERÍODO (de — até). Compatível com o ?data= antigo (vira início=fim).
+  const q = req.query as Record<string, unknown>;
+  const dataUnica  = typeof q.data === 'string' && q.data ? q.data : null;
+  const dataInicio = (typeof q.data_inicio === 'string' && q.data_inicio ? q.data_inicio : null) || dataUnica;
+  const dataFim    = (typeof q.data_fim === 'string' && q.data_fim ? q.data_fim : null) || dataUnica;
 
   const permitidos = retirosVisiveis(sess);
   const filtroRetirosSql = permitidos === null
@@ -32,20 +36,23 @@ export function obterResumo(req: Request, res: Response) {
     : (permitidos.length === 0 ? 'WHERE 1=0' : `WHERE id IN (${permitidos.map(() => '?').join(',')})`);
   const filtroRetirosParams = permitidos === null ? [] : permitidos;
 
-  // Boletas por retiro (top 8) — só os retiros visíveis
+  // Chamados em aberto por retiro — TODOS os retiros visíveis (inclusive os com 0,
+  // pra dar visão completa da fazenda). LEFT JOIN garante retiro sem chamado aparecendo.
   const filtroAlertaPorRetiro = permitidos === null
     ? ''
     : (permitidos.length === 0 ? 'WHERE 1=0' : `WHERE r.id IN (${permitidos.map(() => '?').join(',')})`);
-  const dateJoinAlerta = filtroData ? ` AND date(a.criado_em) = ?` : '';
-  const dateJoinParams = filtroData ? [filtroData] : [];
+  const dateJoinConds: string[] = [];
+  const dateJoinParams: any[] = [];
+  if (dataInicio) { dateJoinConds.push('date(a.criado_em) >= ?'); dateJoinParams.push(dataInicio); }
+  if (dataFim)    { dateJoinConds.push('date(a.criado_em) <= ?'); dateJoinParams.push(dataFim); }
+  const dateJoinAlerta = dateJoinConds.length ? ' AND ' + dateJoinConds.join(' AND ') : '';
   const chamadosPorRetiro = db.prepare(`
     SELECT r.nome AS retiro, COUNT(a.id) AS total
     FROM retiros r
     LEFT JOIN alertas a ON a.retiro_id = r.id AND a.status IN ('ABERTO', 'EM_ANDAMENTO')${dateJoinAlerta}
     ${filtroAlertaPorRetiro}
     GROUP BY r.id, r.nome
-    ORDER BY total DESC
-    LIMIT 8
+    ORDER BY total DESC, r.nome
   `).all(...dateJoinParams, ...filtroRetirosParams) as any[];
 
   // Boletas (movimentações) — filtra por retiros visíveis incluindo origem/destino em transferências
@@ -60,9 +67,13 @@ export function obterResumo(req: Request, res: Response) {
       condMovParams.push(...permitidos, ...permitidos, ...permitidos);
     }
   }
-  if (filtroData) {
-    condMov += condMov ? ` AND data = ?` : ` WHERE data = ?`;
-    condMovParams.push(filtroData);
+  if (dataInicio) {
+    condMov += condMov ? ` AND data >= ?` : ` WHERE data >= ?`;
+    condMovParams.push(dataInicio);
+  }
+  if (dataFim) {
+    condMov += condMov ? ` AND data <= ?` : ` WHERE data <= ?`;
+    condMovParams.push(dataFim);
   }
   const totaisBoletas = db.prepare(`
     SELECT
@@ -85,9 +96,13 @@ export function obterResumo(req: Request, res: Response) {
       condAlertaParams.push(...permitidos);
     }
   }
-  if (filtroData) {
-    condAlerta += condAlerta ? ` AND date(criado_em) = ?` : ` WHERE date(criado_em) = ?`;
-    condAlertaParams.push(filtroData);
+  if (dataInicio) {
+    condAlerta += condAlerta ? ` AND date(criado_em) >= ?` : ` WHERE date(criado_em) >= ?`;
+    condAlertaParams.push(dataInicio);
+  }
+  if (dataFim) {
+    condAlerta += condAlerta ? ` AND date(criado_em) <= ?` : ` WHERE date(criado_em) <= ?`;
+    condAlertaParams.push(dataFim);
   }
   const chamadosPorStatus = db.prepare(`
     SELECT
@@ -121,6 +136,13 @@ export function obterResumo(req: Request, res: Response) {
     GROUP BY tipo_operacao
     ORDER BY total DESC
   `).all(...condMovParams) as any[];
+
+  // Infra/Manutenção como uma "área" extra no mesmo gráfico: quantos chamados de
+  // infra foram abertos no escopo. Mostra de bate-pronto se houve muita manutenção.
+  const totalChamadosInfra = (db.prepare(`
+    SELECT COUNT(*) AS n FROM alertas ${condAlerta}
+  `).get(...condAlertaParams) as any).n;
+  boletasPorTipo.push({ tipo: 'infra', total: totalChamadosInfra });
 
   // Evolução mensal de boletas — últimos 6 meses (gráfico de linha)
   const boletasPorMes = db.prepare(`

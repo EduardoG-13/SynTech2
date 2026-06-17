@@ -1,5 +1,5 @@
 /* Service Worker BRPec — offline-first */
-const CACHE_NAME = 'brpec-v11';
+const CACHE_NAME = 'brpec-v16';
 
 // 1) Assets estáticos: cacheados imediatamente na instalação do SW
 const ASSETS_ESTATICOS = [
@@ -7,6 +7,7 @@ const ASSETS_ESTATICOS = [
   '/public/styles.css',
   '/public/app.js',
   '/public/js/db.js',
+  '/public/js/sync.js',
   '/public/js/dashboard.js',
   '/public/js/configuracoes.js',
   '/public/js/chamados.js',

@@ -57,6 +57,14 @@ export function criarBoleta(req: Request, res: Response) {
     return res.status(422).json({ erro: 'Para registrar óbito é obrigatório anexar a foto da carcaça.' });
   }
 
+  // Rastreabilidade: TODA foto precisa de georreferência (GPS). Sem coordenadas, recusa.
+  const temFoto = !!(b.foto_base64 || b.tem_foto);
+  const temGps = b.latitude !== undefined && b.latitude !== null && b.latitude !== '' &&
+                 b.longitude !== undefined && b.longitude !== null && b.longitude !== '';
+  if (temFoto && !temGps) {
+    return res.status(422).json({ erro: 'Toda foto precisa de localização (GPS). Ative o GPS do aparelho e tente novamente.' });
+  }
+
   // Sem categorias? Manejo aceita; o resto exige
   let animais = Array.isArray(b.animais) ? b.animais : [];
   if (animais.length === 0 && ['nascimento','obito','transferencia','compravenda'].includes(operacao)) {

@@ -5,15 +5,40 @@
   var chartDonut  = null;
   var chartTipo   = null;
   var chartMes    = null;
+  var ultimoResumo = null;   // guarda os últimos dados pra re-renderizar no resize
+  var resizeTimer  = null;
+
+  // No celular, gráficos de barra ficam HORIZONTAIS (rótulos legíveis sem cortar/girar)
+  function ehMobile() {
+    return window.matchMedia && window.matchMedia('(max-width: 600px)').matches;
+  }
 
   document.addEventListener('DOMContentLoaded', function () {
     carregarResumo();
     carregarListaRetiros();
 
+    // Re-renderiza ao girar/redimensionar (alterna barras horizontais x verticais)
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        if (ultimoResumo) renderGraficos(ultimoResumo);
+      }, 250);
+    });
+
     var filtroRetiro = document.getElementById('filter-retiro');
-    var filtroData   = document.getElementById('filter-data');
+    var filtroDe     = document.getElementById('filter-data-inicio');
+    var filtroAte    = document.getElementById('filter-data-fim');
     if (filtroRetiro) filtroRetiro.addEventListener('change', carregarResumo);
-    if (filtroData)   filtroData.addEventListener('change',   carregarResumo);
+    if (filtroDe)     filtroDe.addEventListener('change',     carregarResumo);
+    if (filtroAte)    filtroAte.addEventListener('change',    carregarResumo);
+
+    var btnLimpar = document.getElementById('btn-limpar-filtro');
+    if (btnLimpar) btnLimpar.addEventListener('click', function () {
+      if (filtroRetiro) filtroRetiro.value = '';
+      if (filtroDe)     filtroDe.value = '';
+      if (filtroAte)    filtroAte.value = '';
+      carregarResumo();
+    });
 
     var btnExp = document.getElementById('btn-exportar-dashboard');
     if (btnExp) btnExp.addEventListener('click', exportarPlanilha);
@@ -106,18 +131,22 @@
     params.set('formato', 'xlsx');
     params.set('tipos', ['nascimento','obito','transferencia','compravenda','evolucao','manejo'].join(','));
     var retiro = document.getElementById('filter-retiro');
-    var data   = document.getElementById('filter-data');
+    var de     = document.getElementById('filter-data-inicio');
+    var ate    = document.getElementById('filter-data-fim');
     if (retiro && retiro.value) params.set('retiro_id', retiro.value);
-    if (data && data.value)     params.set('data_inicio', data.value), params.set('data_fim', data.value);
+    if (de && de.value)         params.set('data_inicio', de.value);
+    if (ate && ate.value)       params.set('data_fim', ate.value);
     window.location.href = '/api/coordenador/exportar?' + params.toString();
   }
 
   function getFiltros() {
     var retiro = document.getElementById('filter-retiro');
-    var data   = document.getElementById('filter-data');
+    var de     = document.getElementById('filter-data-inicio');
+    var ate    = document.getElementById('filter-data-fim');
     var params = [];
-    if (retiro && retiro.value) params.push('retiro_id=' + encodeURIComponent(retiro.value));
-    if (data   && data.value)   params.push('data='      + encodeURIComponent(data.value));
+    if (retiro && retiro.value) params.push('retiro_id='   + encodeURIComponent(retiro.value));
+    if (de     && de.value)     params.push('data_inicio=' + encodeURIComponent(de.value));
+    if (ate    && ate.value)    params.push('data_fim='    + encodeURIComponent(ate.value));
     return params.length ? '?' + params.join('&') : '';
   }
 
@@ -188,16 +217,21 @@
         setKpi('stat-cabecas', (d.totais && d.totais.cabecas) || 0);
         setKpi('stat-alertas', (d.chamados && d.chamados.abertos) || 0);
 
-        renderBarras(d.chamadosPorRetiro || []);
-        renderDonut(d.chamados || {});
-        renderBoletasPorTipo(d.boletasPorTipo || []);
-        renderBoletasPorMes(d.boletasPorMes || []);
+        ultimoResumo = d;
+        renderGraficos(d);
       })
       .catch(function () {
         ocultarLoader('chart-chamados');
         ocultarLoader('chart-status');
         mostrarErroPainel();
       });
+  }
+
+  function renderGraficos(d) {
+    renderBarras(d.chamadosPorRetiro || []);
+    renderDonut(d.chamados || {});
+    renderBoletasPorTipo(d.boletasPorTipo || []);
+    renderBoletasPorMes(d.boletasPorMes || []);
   }
 
   function renderBarras(rows) {
@@ -237,13 +271,25 @@
         hoverBackgroundColor: '#163f28',
         borderRadius: 6,
       }]},
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
-      }
+      options: opcoesBarra(),
     });
+  }
+
+  // Opções compartilhadas dos gráficos de barra. No mobile vira horizontal
+  // (indexAxis 'y') pra caber os nomes; rótulos nunca somem (autoSkip:false).
+  function opcoesBarra() {
+    var mobile = ehMobile();
+    var eixoValor = { beginAtZero: true, ticks: { precision: 0, font: { size: mobile ? 11 : 12 } } };
+    var eixoCategoria = { ticks: { autoSkip: false, font: { size: mobile ? 11 : 12 }, maxRotation: mobile ? 0 : 40 } };
+    return {
+      indexAxis: mobile ? 'y' : 'x',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: mobile
+        ? { x: eixoValor, y: eixoCategoria }
+        : { y: eixoValor, x: eixoCategoria },
+    };
   }
 
   function renderDonut(c) {
@@ -300,7 +346,10 @@
   var ROTULO_TIPO = {
     nascimento: 'Nascimento', obito: 'Morte', transferencia: 'Movimentação',
     compravenda: 'Compra/Venda', evolucao: 'Mudança idade', manejo: 'Manejo',
+    infra: 'Infra / Manutenção',
   };
+  // Paleta pra boletas; Infra/Manutenção sai sempre em vermelho pra destacar "problema".
+  var PALETA_TIPO = ['#1A4D2E', '#2E7D52', '#A64B00', '#607D8B', '#8E7CC3', '#D4A017'];
 
   function renderBoletasPorTipo(rows) {
     var canvas = document.getElementById('chart-tipo');
@@ -308,20 +357,19 @@
     if (chartTipo) { chartTipo.destroy(); chartTipo = null; }
     var labels = rows.map(function (r) { return ROTULO_TIPO[r.tipo] || r.tipo || '—'; });
     var dados  = rows.map(function (r) { return r.total; });
+    var cores  = rows.map(function (r, i) {
+      return r.tipo === 'infra' ? '#D32F2F' : PALETA_TIPO[i % PALETA_TIPO.length];
+    });
     if (!rows.length) { canvas.style.display = 'none'; return; }
     canvas.style.display = '';
     chartTipo = new Chart(canvas.getContext('2d'), {
       type: 'bar',
       data: { labels: labels, datasets: [{
-        label: 'Boletas', data: dados,
-        backgroundColor: ['#1A4D2E','#2E7D52','#A64B00','#607D8B','#8E7CC3','#D4A017'],
+        label: 'Quantidade', data: dados,
+        backgroundColor: cores,
         borderRadius: 6,
       }]},
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
-      }
+      options: opcoesBarra(),
     });
   }
 

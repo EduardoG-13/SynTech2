@@ -106,17 +106,25 @@
     carregar();
   });
 
+  // Helper: faz fetch e nunca rejeita — devolve fallback se der erro
+  function buscarJson(url, fallback) {
+    return fetch(url, { credentials: 'same-origin' })
+      .then(function(r) { return r.ok ? r.json() : fallback; })
+      .catch(function() { return fallback; });
+  }
+
   function carregar() {
+    // Cada fetch é independente: se um falhar, os outros ainda aparecem.
     Promise.all([
-      fetch('/api/tarefas?status=ABERTA', { credentials: 'same-origin' }).then(function(r) { return r.json(); }),
-      fetch('/api/tarefas?status=CONCLUIDA', { credentials: 'same-origin' }).then(function(r) { return r.json(); }),
-      fetch('/api/boletas/minhas', { credentials: 'same-origin' }).then(function(r) { return r.ok ? r.json() : []; }),
+      buscarJson('/api/tarefas?status=ABERTA', { tarefas: [] }),
+      buscarJson('/api/tarefas?status=CONCLUIDA', { tarefas: [] }),
+      buscarJson('/api/boletas/minhas', []),
     ])
     .then(function(arr) {
       var tarefasAbertas = (arr[0] && arr[0].tarefas) || [];
       var tarefasConcluidas = (arr[1] && arr[1].tarefas) || [];
-      var boletas = (arr[2] || []).map(function(b) {
-        b._item = 'boleta'; // discriminador
+      var boletas = (Array.isArray(arr[2]) ? arr[2] : []).map(function(b) {
+        b._item = 'boleta';
         return b;
       });
       tarefasAbertas.forEach(function(t) { t._item = 'tarefa'; });
@@ -130,10 +138,6 @@
       document.getElementById('cnt-abertas').textContent = ABERTAS.length;
       document.getElementById('cnt-concluidas').textContent = CONCLUIDAS.length;
       renderizar();
-    })
-    .catch(function() {
-      document.getElementById('tarefas-lista').innerHTML =
-        '<p style="color:#D32F2F; text-align:center;">Erro ao carregar.</p>';
     });
   }
 

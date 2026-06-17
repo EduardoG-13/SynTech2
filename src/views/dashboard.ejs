@@ -14,15 +14,28 @@
 
     <main class="dashboard-main">
 
-      <div class="card" style="margin-bottom: 1rem; padding: 1rem;">
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-          <select id="filter-retiro" style="flex: 1; min-width:160px; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;">
-            <option value="">Todos os retiros</option>
-          </select>
-          <input type="date" id="filter-data" style="flex: 1; min-width:140px; padding: 0.5rem; border: 1px solid #ccc; border-radius: 8px;" />
-          <button id="btn-exportar-dashboard" class="btn btn-secundario-laranja" style="white-space:nowrap;">
-            <img class="label-ico" src="/public/Icons/sincronizacao.ico" alt="" /> Exportar planilha
-          </button>
+      <div class="card db-filtros" style="margin-bottom: 1rem; padding: 1rem;">
+        <div class="db-filtros-linha">
+          <div class="db-filtro-campo" style="flex: 1.4; min-width:160px;">
+            <label class="db-filtro-label">Retiro</label>
+            <select id="filter-retiro" class="db-filtro-input">
+              <option value="">Todos os retiros</option>
+            </select>
+          </div>
+          <div class="db-filtro-campo" style="min-width:140px;">
+            <label class="db-filtro-label">De</label>
+            <input type="date" id="filter-data-inicio" class="db-filtro-input" />
+          </div>
+          <div class="db-filtro-campo" style="min-width:140px;">
+            <label class="db-filtro-label">Até</label>
+            <input type="date" id="filter-data-fim" class="db-filtro-input" />
+          </div>
+          <div class="db-filtro-acoes">
+            <button id="btn-limpar-filtro" class="btn btn-secundario" style="white-space:nowrap;" title="Limpar período">✕ Limpar</button>
+            <button id="btn-exportar-dashboard" class="btn btn-secundario-laranja" style="white-space:nowrap;">
+              <img class="label-ico" src="/public/Icons/sincronizacao.ico" alt="" /> Exportar planilha
+            </button>
+          </div>
         </div>
       </div>
 
