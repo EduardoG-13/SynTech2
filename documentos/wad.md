@@ -6618,6 +6618,11 @@ Suponha que você é Gabriel, capataz do retiro Barra Bonita, terminou de transf
 
 O teste tem início com o login de Gabriel, selecionando o perfil Capataz e o retiro Barra Bonita, etapa em que se espera que o sistema o autentique e exiba somente as tarefas do dia vinculadas a esse retiro (RN02, RN05). Em seguida, é aberto o detalhe da tarefa referente à transferência de animais, devendo a tela apresentar a descrição, o retiro e o status atual como "pendente". Na sequência, a tarefa é marcada como concluída e a foto é anexada, estando sem conexão; espera-se que o sistema registre a conclusão e vincule a foto à tarefa, armazenando ambas localmente até a próxima sincronização (RN08, RN10). Por fim, ao restabelecer a conectividade, o status deve ser atualizado para o Gerente e o sistema deve exibir a mensagem de confirmação "Registro sincronizado com sucesso" (RN09, RN11).
 
+Tarefa 2 — Abertura de chamado de infraestrutura
+Suponha que você é capataz e percebeu que o bebedouro do curral está quebrado, comprometendo o acesso de água ao rebanho; utilize o sistema para abrir um chamado de infraestrutura informando o tipo de problema, o retiro e a localização.
+
+O teste tem início com o login do Capataz e a seleção do retiro correspondente, etapa em que se espera que o sistema libere o acesso apenas às funções vinculadas ao retiro autenticado. Em seguida, é acessada a opção de criar um novo chamado de infraestrutura, devendo o sistema exibir o formulário com os campos obrigatórios de tipo de problema, retiro e localização (RF006). Na sequência, o tipo de problema é preenchido e a localização é capturada; espera-se que as coordenadas GPS sejam obtidas automaticamente e sejam exibidas como imutáveis, sem permitir edição manual (RN19, RN24). Por fim, ao enviar o chamado, o sistema deve confirmá-lo imediatamente se houver conexão ou, em caso contrário, informar que o registro foi salvo localmente para envio na próxima sincronização (RN20–RN23, RN25, RN26).
+
 _Posicione aqui as tabelas com enunciados de tarefas, etapas e resultados de testes de usabilidade. Ou utilize um link para seu relatório de testes (mantenha o link sempre público para visualização)._
 
 ### 5.2.2. Relatório de testes SUS (System Usability Scale)
