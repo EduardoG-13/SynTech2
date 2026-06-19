@@ -6609,6 +6609,12 @@ A tabela abaixo é coerente com a Matriz RF → RN → Endpoint (seção 3.1.4) 
 
 ## 5.2. Testes de usabilidade (sprint 5)
 
+Os testes de usabilidade consistem em observar usuários reais executando tarefas representativas em um produto ou sistema, com o objetivo de identificar dificuldades, erros e pontos de fricção na interface antes que cheguem ao ambiente de produção. Segundo a norma ISO 9241-11:2018, usabilidade é definida como a medida em que um produto pode ser utilizado por usuários específicos para atingir objetivos específicos com eficácia, eficiência e satisfação em um dado contexto de uso [55].
+
+A realização de testes com usuários é considerada a forma mais direta de validar decisões de design, pois substitui suposições internas por evidências concretas de comportamento. Problemas que passam despercebidos em revisões internas e inspeções heurísticas tendem a emergir nas primeiras sessões de observação, tornando essa etapa indispensável no ciclo de desenvolvimento centrado no usuário [54].
+
+Nesta sprint, os testes de usabilidade foram conduzidos em duas frentes complementares: testes de guerrilha (seção 5.2.1), voltados à identificação rápida de problemas de navegação e fluxo com participantes recrutados informalmente; e testes SUS (seção 5.2.2), aplicados para mensurar quantitativamente a percepção de usabilidade do sistema por meio de questionário padronizado.
+
 ### 5.2.1. Relatório de testes de guerrilha
 
 
@@ -7125,6 +7131,8 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 [53] KRUG, Steve. Rocket Surgery Made Easy: The Do-It-Yourself Guide to Finding and Fixing Usability Problems. Berkeley: New Riders, 2010. ISBN 978-0-321-65729-5.
 
 [54] NIELSEN, Jakob. Why You Only Need to Test with 5 Users. Nielsen Norman Group, 19 mar. 2000. Disponível em: https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/. Acesso em: jun. 2026.
+
+[55] ISO 9241-11:2018. Ergonomics of human-system interaction — Part 11: Usability: Definitions and concepts. Geneva: International Organization for Standardization, 2018.
 
 # <a name="c9"></a>Anexos
 
