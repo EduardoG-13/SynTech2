@@ -6754,6 +6754,36 @@ A grande maioria dos participantes (85,7%) concordou que o sistema é fácil de 
 
 ---
 
+**Questão 4 — "Eu acho que precisaria de ajuda de uma pessoa técnica para ser capaz de usar este sistema."**
+
+Esta é uma questão de polaridade negativa no SUS: pontuações mais baixas indicam que os participantes se sentem capazes de usar o sistema de forma independente. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 2 |
+| P2 | 4 |
+| P3 | 4 |
+| P4 | 3 |
+| P5 | 1 |
+| P6 | 1 |
+| P7 | 1 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 0 | 0,0% |
+| 4 — Concordo | 2 | 28,6% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 1 | 14,3% |
+| 1 — Discordo totalmente | 3 | 42,9% |
+
+**Média: 2,29 / 5,0**
+
+A maioria dos participantes (57,1%) discordou da necessidade de suporte técnico para operar o sistema. No entanto, dois participantes (28,6%) concordaram com a afirmação, o que representa o ponto de maior divergência identificado até agora no questionário. Considerando que o perfil-alvo da aplicação inclui capatazes com baixa familiaridade digital — conforme descrito nas personas do projeto —, este resultado merece atenção: ainda que a média seja favorável, a presença de usuários que percebem necessidade de auxílio técnico indica oportunidade de melhoria em orientações contextuais e fluxos de onboarding da interface.
+
+---
+
 _Dados brutos coletados via Google Forms:_
 
 "Carimbo de data/hora","Nome de usuário","Eu acho que gostaria de usar este sistema com frequencia.","Eu achei o sistema desnecessariamente complexo.","Eu achei o sistema facil de usar.","Eu acho que precisaria de ajuda de uma pessoa tecnica para ser capaz de usar este sistema.","Eu achei que as varias funcoes neste sistema estao bem integradas.","Eu achei que havia muita inconsistencia neste sistema.","Eu imagino que a maioria das pessoas aprenderia a usar este sistema muito rapidamente.","Eu achei o sistema muito complicado de usar.","Eu me senti muito confiante ao usar o sistema.","Eu precisei aprender muitas coisas novas antes de conseguir usar este sistema."
