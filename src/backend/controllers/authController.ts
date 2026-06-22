@@ -1,10 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import { AppError } from '../utils/AppError';
-import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v7 as uuidv7 } from 'uuid';
-import db from '../config/database';
 import { authConfig, JwtRefreshPayload, JwtUserPayload } from '../config/auth';
+import authService from '../services/authService';
 import {
   buscarRefreshTokenAtivo,
   revogarRefreshToken,
@@ -74,38 +73,20 @@ export function login(req: Request, res: Response, next: NextFunction) {
       throw new AppError(400, 'Campos obrigatórios não preenchidos.');
     }
 
-    const row = db.prepare('SELECT * FROM usuarios WHERE nome = ? AND perfil = ?').get(usuario, perfil) as any;
-
-    if (!row) {
-      throw new AppError(401, 'Usuário não encontrado.');
-    }
-
-    const senhaValida = bcrypt.compareSync(senha, row.senha);
-
-    if (!senhaValida) {
-      throw new AppError(401, 'Senha incorreta.');
-    }
-
-  const usuarioAutenticado: JwtUserPayload = {
-    id: row.id,
-    nome: row.nome,
-    perfil: row.perfil,
-    retiro_id: row.retiro_id,
-    is_admin: row.is_admin === 1 || row.is_admin === true,
-  };
-
-  criarSessao(req, usuarioAutenticado);
-  const { accessToken } = emitirTokens(res, usuarioAutenticado);
+    const usuarioAutenticado = authService.autenticar(usuario, senha, perfil);
+    
+    criarSessao(req, usuarioAutenticado);
+    const { accessToken } = emitirTokens(res, usuarioAutenticado);
 
     return res.json({
       sucesso: true,
-      perfil: row.perfil,
+      perfil: usuarioAutenticado.perfil,
       is_admin: usuarioAutenticado.is_admin,
       usuario: usuarioAutenticado,
       accessToken,
     });
-  } catch (err) {
-    next(err);
+  } catch (error: any) {
+    next(new AppError(401, error.message));
   }
 }
 
@@ -194,30 +175,20 @@ export function loginCapataz(req: Request, res: Response, next: NextFunction) {
       throw new AppError(400, 'retiro_id obrigatório');
     }
 
-  // Busca o capataz responsável pelo retiro (regra: 1 capataz por retiro hoje)
-  const row = db.prepare(
-    `SELECT u.id, u.nome, u.perfil, u.retiro_id
-     FROM usuarios u
-     WHERE u.perfil = 'Capataz' AND u.retiro_id = ?`
-  ).get(retiro_id) as any;
+    const usuarioAutenticado = authService.autenticarCapataz(retiro_id);
 
-    if (!row) {
-      throw new AppError(404, 'Nenhum capataz vinculado a este retiro.');
-    }
+    criarSessao(req, usuarioAutenticado);
+    const { accessToken } = emitirTokens(res, usuarioAutenticado);
 
-  const usuario: JwtUserPayload = {
-    id: row.id,
-    nome: row.nome,
-    perfil: row.perfil,
-    retiro_id: row.retiro_id,
-  };
-
-  criarSessao(req, usuario);
-  const { accessToken } = emitirTokens(res, usuario);
-
-    return res.json({ sucesso: true, perfil: row.perfil, retiro_id: row.retiro_id, usuario, accessToken });
-  } catch (err) {
-    next(err);
+    return res.json({ 
+      sucesso: true, 
+      perfil: usuarioAutenticado.perfil, 
+      retiro_id: usuarioAutenticado.retiro_id, 
+      usuario: usuarioAutenticado, 
+      accessToken 
+    });
+  } catch (error: any) {
+    next(new AppError(404, error.message));
   }
 }
 
@@ -232,18 +203,12 @@ export function loginInfraestrutura(req: Request, res: Response, next: NextFunct
       throw new AppError(400, 'categoria obrigatória');
     }
 
-  const usuario: JwtUserPayload = {
-    id: 'tecnico-' + categoria,
-    nome: 'Técnico ' + categoria,
-    perfil: 'Infraestrutura',
-    retiro_id: null,
-    categoria: categoria,
-  };
+    const usuarioAutenticado = authService.autenticarInfra(categoria);
 
-  criarSessao(req, usuario);
-  const { accessToken } = emitirTokens(res, usuario);
+    criarSessao(req, usuarioAutenticado);
+    const { accessToken } = emitirTokens(res, usuarioAutenticado);
 
-    return res.json({ sucesso: true, perfil: 'Infraestrutura', categoria, usuario, accessToken });
+    return res.json({ sucesso: true, perfil: 'Infraestrutura', categoria, usuario: usuarioAutenticado, accessToken });
   } catch (err) {
     next(err);
   }
