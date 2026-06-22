@@ -6694,6 +6694,36 @@ As respostas variaram entre 3 e 5, sem nenhuma expressão de discordância. A ma
 
 ---
 
+**Questão 2 — "Eu achei o sistema desnecessariamente complexo."**
+
+Esta é uma questão de polaridade negativa no SUS: pontuações mais baixas indicam que os participantes não percebem o sistema como complexo, o que é favorável à usabilidade. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 3 |
+| P2 | 2 |
+| P3 | 2 |
+| P4 | 2 |
+| P5 | 1 |
+| P6 | 1 |
+| P7 | 1 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 0 | 0,0% |
+| 4 — Concordo | 0 | 0,0% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 3 | 42,9% |
+| 1 — Discordo totalmente | 3 | 42,9% |
+
+**Média: 1,71 / 5,0**
+
+Nenhum participante concordou que o sistema é desnecessariamente complexo. A maioria expressiva (85,7%) discordou da afirmação, sendo que 42,9% o fizeram de forma categórica (nota 1). O único respondente neutro (nota 3) também não chegou a confirmar a percepção de complexidade. O resultado indica que a interface foi percebida como simples e direta para o perfil de usuário avaliado.
+
+---
+
 _Dados brutos coletados via Google Forms:_
 
 "Carimbo de data/hora","Nome de usuário","Eu acho que gostaria de usar este sistema com frequencia.","Eu achei o sistema desnecessariamente complexo.","Eu achei o sistema facil de usar.","Eu acho que precisaria de ajuda de uma pessoa tecnica para ser capaz de usar este sistema.","Eu achei que as varias funcoes neste sistema estao bem integradas.","Eu achei que havia muita inconsistencia neste sistema.","Eu imagino que a maioria das pessoas aprenderia a usar este sistema muito rapidamente.","Eu achei o sistema muito complicado de usar.","Eu me senti muito confiante ao usar o sistema.","Eu precisei aprender muitas coisas novas antes de conseguir usar este sistema."
