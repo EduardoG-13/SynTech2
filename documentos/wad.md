@@ -6664,9 +6664,46 @@ O *System Usability Scale* (SUS) é um questionário padronizado de dez itens, d
 
 A principal vantagem do SUS está na sua simplicidade de aplicação e na possibilidade de comparar o resultado obtido com bases de dados de referência de centenas de sistemas avaliados, o que confere contexto objetivo à percepção dos usuários [56]. Complementando os testes de guerrilha — que identificam qualitativamente onde e como os usuários encontram dificuldades —, o SUS quantifica o nível geral de satisfação com a interface, permitindo avaliar se a solução atinge um patamar aceitável de usabilidade para o perfil de usuário do projeto.
 
-_Posicione aqui o relatório dos testes SUS realizados._
+**Questão 1 — "Eu acho que gostaria de usar este sistema com frequência."**
 
+Esta é uma questão de polaridade positiva no SUS: pontuações mais altas indicam maior intenção de uso recorrente. As respostas dos sete participantes foram as seguintes:
 
+| Participante | Resposta |
+|---|---|
+| P1 | 4 |
+| P2 | 3 |
+| P3 | 3 |
+| P4 | 4 |
+| P5 | 4 |
+| P6 | 5 |
+| P7 | 5 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 2 | 28,6% |
+| 4 — Concordo | 3 | 42,9% |
+| 3 — Neutro | 2 | 28,6% |
+| 2 — Discordo | 0 | 0,0% |
+| 1 — Discordo totalmente | 0 | 0,0% |
+
+**Média: 4,0 / 5,0**
+
+As respostas variaram entre 3 e 5, sem nenhuma expressão de discordância. A maioria dos participantes (71,5%) concordou com a afirmação, atribuindo notas 4 ou 5, o que indica percepção de valor suficiente na ferramenta para utilizá-la com regularidade. Os dois respondentes neutros (nota 3) não chegaram a expressar resistência ao uso contínuo, reforçando uma percepção geral positiva quanto à utilidade recorrente da solução.
+
+---
+
+_Dados brutos coletados via Google Forms:_
+
+"Carimbo de data/hora","Nome de usuário","Eu acho que gostaria de usar este sistema com frequencia.","Eu achei o sistema desnecessariamente complexo.","Eu achei o sistema facil de usar.","Eu acho que precisaria de ajuda de uma pessoa tecnica para ser capaz de usar este sistema.","Eu achei que as varias funcoes neste sistema estao bem integradas.","Eu achei que havia muita inconsistencia neste sistema.","Eu imagino que a maioria das pessoas aprenderia a usar este sistema muito rapidamente.","Eu achei o sistema muito complicado de usar.","Eu me senti muito confiante ao usar o sistema.","Eu precisei aprender muitas coisas novas antes de conseguir usar este sistema."
+"2026/06/17 10:46:03 AM GMT-3","gbeltramem@gmail.com","4","3","4","2","4","2","5","2","4","1"
+"2026/06/17 10:57:18 AM GMT-3","gabriel.simoes.marques14@gmail.com","3","2","3","4","3","2","1","3","2","3"
+"2026/06/17 11:04:36 AM GMT-3","rodrigues.ccomp@gmail.com","3","2","4","4","5","2","3","2","4","2"
+"2026/06/17 11:22:34 AM GMT-3","eduardoogabrielloliveiraa@gmail.com","4","2","4","3","5","2","3","2","4","2"
+"2026/06/17 11:25:09 AM GMT-3","gbeltramem@gmail.com","4","1","5","1","5","1","5","1","4","2"
+"2026/06/17 11:40:37 AM GMT-3","davi.tricarico@sou.inteli.edu.br","5","1","5","1","5","1","4","2","4","2"
+"2026/06/17 11:48:42 AM GMT-3","gbeltramem@gmail.com","5","1","5","1","5","2","5","1","5","1"
 
 # <a name="c6"></a>6. Estudo de Mercado e Plano de Marketing (sprint 4)
 
