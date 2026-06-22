@@ -5347,6 +5347,54 @@ As três suites totalizam **28 testes unitários**. Todos os casos aprovados con
 npx jest tests/unit --verbose
 ```
 
+### 5.1.6. Verificação de critérios impeditivos de publicação (vermelho)
+
+Foi realizada, em 22 de junho de 2026, uma auditoria técnica dos critérios impeditivos de publicação definidos para o projeto. Foram considerados como critérios vermelhos: build quebrando, testes automatizados falhando, funcionalidades core inoperantes e deploy ausente. A verificação foi conduzida a partir da execução local dos comandos disponíveis no repositório e da inspeção dos artefatos versionados.
+
+#### 5.1.6.1. Checklist consolidado para o issue
+
+| Critério impeditivo | Status | Evidência verificada | Observação |
+|---|---|---|---|
+| Build quebrando | PASSOU | Foi executado `npm run build`, definido em [`package.json`](../package.json), com conclusão bem-sucedida do `tsc`. | Não foi observado erro de compilação TypeScript. |
+| Testes falhando | PASSOU | Foi executado `npm test`, definido em [`package.json`](../package.json), com resultado `24 passed, 24 total` em suites e `180 passed, 180 total` em testes. | A suíte completa de regressão foi aprovada. |
+| Funcionalidades core inoperantes | PASSOU | Foram aprovadas suites de endpoints, autenticação, sincronização, offline, timeout, retry, contratos RNF e serviços em [`src/backend/tests`](../src/backend/tests). | Os fluxos core cobertos por testes automatizados permaneceram operacionais. |
+| Deploy ausente | FALHOU | Foram inspecionados artefatos de publicação no repositório. Não foram encontrados `Dockerfile`, `docker-compose.yml`, `render.yaml`, `vercel.json`, `netlify.toml`, `fly.toml`, `Procfile`, `railway.json` ou workflows em `.github/workflows`. | Foi identificado apenas suporte local por `npm start` e `npm run build`; recomenda-se priorizar a criação de configuração de deploy e URL pública de homologação. |
+
+#### 5.1.6.2. Evidências de execução
+
+Foi verificado que o build local se encontra íntegro:
+
+```bash
+npm run build
+```
+
+Resultado observado:
+
+```text
+> build
+> tsc
+```
+
+Foi verificado que a suíte completa de testes se encontra íntegra:
+
+```bash
+npm test
+```
+
+Resultado observado:
+
+```text
+Test Suites: 24 passed, 24 total
+Tests:       180 passed, 180 total
+Snapshots:   0 total
+```
+
+Foi verificado que os scripts formais de execução estão declarados no [`package.json`](../package.json), incluindo `test`, `build`, `start` e `dev`. Entretanto, não foi localizado artefato de deploy versionado, tampouco uma URL pública de homologação ou produção no repositório. Dessa forma, o critério "deploy ausente" foi classificado como FALHOU, pois ainda representa um bloqueio de publicação mesmo com build e testes aprovados.
+
+#### 5.1.6.3. Conclusão da auditoria
+
+Conclui-se que a aplicação não apresenta bloqueio por compilação, regressão automatizada ou inoperância das funcionalidades core cobertas por testes. No entanto, a publicação ainda permanece impedida pela ausência de configuração de deploy versionada e evidência de ambiente publicado. Recomenda-se que a correção priorizada seja a criação de um artefato de deploy compatível com a estratégia definida para o projeto, acompanhado de URL de homologação e instruções de operação.
+
 ## 5.2. Testes de usabilidade (sprint 5)
 
 ### 5.2.1. Relatório de testes de guerrilha
@@ -5850,4 +5898,3 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 # <a name="c9"></a>Anexos
 
 _Inclua aqui quaisquer complementos para seu projeto, como diagramas, imagens, tabelas etc. Organize em sub-tópicos utilizando headings menores (use ## ou ### para isso)_
-
