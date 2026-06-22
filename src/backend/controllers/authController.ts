@@ -1,4 +1,5 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { AppError } from '../utils/AppError';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v7 as uuidv7 } from 'uuid';
@@ -65,24 +66,25 @@ function emitirTokens(res: Response, usuario: JwtUserPayload) {
   return { accessToken, refreshToken };
 }
 
-export function login(req: Request, res: Response) {
-  const { usuario, senha, perfil } = req.body;
+export function login(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { usuario, senha, perfil } = req.body;
 
-  if (!usuario || !senha || !perfil) {
-    return res.status(400).json({ sucesso: false, erro: 'Campos obrigatórios não preenchidos.' });
-  }
+    if (!usuario || !senha || !perfil) {
+      throw new AppError(400, 'Campos obrigatórios não preenchidos.');
+    }
 
-  const row = db.prepare('SELECT * FROM usuarios WHERE nome = ? AND perfil = ?').get(usuario, perfil) as any;
+    const row = db.prepare('SELECT * FROM usuarios WHERE nome = ? AND perfil = ?').get(usuario, perfil) as any;
 
-  if (!row) {
-    return res.status(401).json({ sucesso: false, erro: 'Usuário não encontrado.' });
-  }
+    if (!row) {
+      throw new AppError(401, 'Usuário não encontrado.');
+    }
 
-  const senhaValida = bcrypt.compareSync(senha, row.senha);
+    const senhaValida = bcrypt.compareSync(senha, row.senha);
 
-  if (!senhaValida) {
-    return res.status(401).json({ sucesso: false, erro: 'Senha incorreta.' });
-  }
+    if (!senhaValida) {
+      throw new AppError(401, 'Senha incorreta.');
+    }
 
   const usuarioAutenticado: JwtUserPayload = {
     id: row.id,
@@ -95,20 +97,23 @@ export function login(req: Request, res: Response) {
   criarSessao(req, usuarioAutenticado);
   const { accessToken } = emitirTokens(res, usuarioAutenticado);
 
-  return res.json({
-    sucesso: true,
-    perfil: row.perfil,
-    is_admin: usuarioAutenticado.is_admin,
-    usuario: usuarioAutenticado,
-    accessToken,
-  });
+    return res.json({
+      sucesso: true,
+      perfil: row.perfil,
+      is_admin: usuarioAutenticado.is_admin,
+      usuario: usuarioAutenticado,
+      accessToken,
+    });
+  } catch (err) {
+    next(err);
+  }
 }
 
-export function refresh(req: Request, res: Response) {
+export function refresh(req: Request, res: Response, next: NextFunction) {
   const token = req.cookies?.[authConfig.refreshCookieName];
 
   if (!token) {
-    return res.status(401).json({ sucesso: false, erro: 'Refresh token ausente.' });
+    return next(new AppError(401, 'Refresh token ausente.'));
   }
 
   try {
@@ -116,14 +121,14 @@ export function refresh(req: Request, res: Response) {
 
     if (!payload.jti) {
       res.clearCookie(authConfig.refreshCookieName);
-      return res.status(401).json({ sucesso: false, erro: 'Refresh token sem identificador.' });
+      return next(new AppError(401, 'Refresh token sem identificador.'));
     }
 
     const tokenSalvo = buscarRefreshTokenAtivo(payload.jti, token);
 
     if (!tokenSalvo || tokenEstaExpirado(tokenSalvo)) {
       res.clearCookie(authConfig.refreshCookieName);
-      return res.status(401).json({ sucesso: false, erro: 'Refresh token revogado ou expirado.' });
+      return next(new AppError(401, 'Refresh token revogado ou expirado.'));
     }
 
     const usuario: JwtUserPayload = {
@@ -143,27 +148,35 @@ export function refresh(req: Request, res: Response) {
     return res.json({ sucesso: true, accessToken, usuario });
   } catch {
     res.clearCookie(authConfig.refreshCookieName);
-    return res.status(401).json({ sucesso: false, erro: 'Refresh token invalido ou expirado.' });
+    return next(new AppError(401, 'Refresh token invalido ou expirado.'));
   }
 }
 
-export function logout(req: Request, res: Response) {
-  const token = req.cookies?.[authConfig.refreshCookieName];
+export function logout(req: Request, res: Response, next: NextFunction) {
+  try {
+    const token = req.cookies?.[authConfig.refreshCookieName];
 
-  if (token) {
-    revogarRefreshTokenPorToken(token);
+    if (token) {
+      revogarRefreshTokenPorToken(token);
+    }
+
+    res.clearCookie(authConfig.refreshCookieName);
+    req.session.destroy(() => {
+      res.json({ sucesso: true });
+    });
+  } catch (err) {
+    next(err);
   }
-
-  res.clearCookie(authConfig.refreshCookieName);
-  req.session.destroy(() => {
-    res.json({ sucesso: true });
-  });
 }
 
 // GET /api/auth/me — retorna a sessão atual (ou null), usado pra evitar redirect loop no login
-export function me(req: Request, res: Response) {
-  const usuario = (req.session as any)?.usuario;
-  return res.json({ usuario: usuario || null });
+export function me(req: Request, res: Response, next: NextFunction) {
+  try {
+    const usuario = (req.session as any)?.usuario;
+    return res.json({ usuario: usuario || null });
+  } catch (err) {
+    next(err);
+  }
 }
 
 /**
@@ -174,11 +187,12 @@ export function me(req: Request, res: Response) {
  * onde o token assinado garante que a sessão só nasce daquele dispositivo
  * autorizado. Por ora, basta o registro do retiro no servidor.
  */
-export function loginCapataz(req: Request, res: Response) {
-  const { retiro_id } = req.body;
-  if (!retiro_id) {
-    return res.status(400).json({ sucesso: false, erro: 'retiro_id obrigatório' });
-  }
+export function loginCapataz(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { retiro_id } = req.body;
+    if (!retiro_id) {
+      throw new AppError(400, 'retiro_id obrigatório');
+    }
 
   // Busca o capataz responsável pelo retiro (regra: 1 capataz por retiro hoje)
   const row = db.prepare(
@@ -187,9 +201,9 @@ export function loginCapataz(req: Request, res: Response) {
      WHERE u.perfil = 'Capataz' AND u.retiro_id = ?`
   ).get(retiro_id) as any;
 
-  if (!row) {
-    return res.status(404).json({ sucesso: false, erro: 'Nenhum capataz vinculado a este retiro.' });
-  }
+    if (!row) {
+      throw new AppError(404, 'Nenhum capataz vinculado a este retiro.');
+    }
 
   const usuario: JwtUserPayload = {
     id: row.id,
@@ -201,18 +215,22 @@ export function loginCapataz(req: Request, res: Response) {
   criarSessao(req, usuario);
   const { accessToken } = emitirTokens(res, usuario);
 
-  return res.json({ sucesso: true, perfil: row.perfil, retiro_id: row.retiro_id, usuario, accessToken });
+    return res.json({ sucesso: true, perfil: row.perfil, retiro_id: row.retiro_id, usuario, accessToken });
+  } catch (err) {
+    next(err);
+  }
 }
 
 /**
  * Login simples da Infraestrutura: escolhe categoria (hidráulica/elétrica/cerca).
  * Cria sessão com perfil Infraestrutura.
  */
-export function loginInfraestrutura(req: Request, res: Response) {
-  const { categoria } = req.body;
-  if (!categoria) {
-    return res.status(400).json({ sucesso: false, erro: 'categoria obrigatória' });
-  }
+export function loginInfraestrutura(req: Request, res: Response, next: NextFunction) {
+  try {
+    const { categoria } = req.body;
+    if (!categoria) {
+      throw new AppError(400, 'categoria obrigatória');
+    }
 
   const usuario: JwtUserPayload = {
     id: 'tecnico-' + categoria,
@@ -225,5 +243,8 @@ export function loginInfraestrutura(req: Request, res: Response) {
   criarSessao(req, usuario);
   const { accessToken } = emitirTokens(res, usuario);
 
-  return res.json({ sucesso: true, perfil: 'Infraestrutura', categoria, usuario, accessToken });
+    return res.json({ sucesso: true, perfil: 'Infraestrutura', categoria, usuario, accessToken });
+  } catch (err) {
+    next(err);
+  }
 }

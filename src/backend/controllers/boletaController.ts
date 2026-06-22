@@ -1,4 +1,5 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { AppError } from '../utils/AppError';
 import { v7 as uuidv7 } from 'uuid';
 import db from '../config/database';
 
@@ -24,32 +25,33 @@ function enfileirarSync(entidade: string, id: string) {
  * Body: { operacao, data, retiro, animais[{categoria,quantidade}], ... }
  * Cria 1+ rows agrupadas por grupo_id.
  */
-export function criarBoleta(req: Request, res: Response) {
-  const sess = (req.session as any)?.usuario as SessUsuario | undefined;
-  if (!sess) return res.status(401).json({ erro: 'Não autenticado.' });
+export function criarBoleta(req: Request, res: Response, next: NextFunction) {
+  try {
+    const sess = (req.session as any)?.usuario as SessUsuario | undefined;
+    if (!sess) throw new AppError(401, 'Não autenticado.');
 
-  const b = req.body || {};
-  const operacao: string = b.operacao;
-  if (!operacao) return res.status(400).json({ erro: 'operacao é obrigatória.' });
+    const b = req.body || {};
+    const operacao: string = b.operacao;
+    if (!operacao) throw new AppError(400, 'operacao é obrigatória.');
 
-  const grupoId = uuidv7();
-  const data = b.data || new Date().toISOString().slice(0, 10);
-  const retiro_id = b.retiro || b.retiro_origem || sess.retiro_id;
-  if (!retiro_id) return res.status(400).json({ erro: 'retiro é obrigatório.' });
+    const grupoId = uuidv7();
+    const data = b.data || new Date().toISOString().slice(0, 10);
+    const retiro_id = b.retiro || b.retiro_origem || sess.retiro_id;
+    if (!retiro_id) throw new AppError(400, 'retiro é obrigatório.');
 
-  // Validação por tipo
-  if (operacao === 'obito' && !b.tem_foto) {
-    return res.status(422).json({ erro: 'Para registrar óbito é obrigatório anexar a foto da carcaça.' });
-  }
+    // Validação por tipo
+    if (operacao === 'obito' && !b.tem_foto) {
+      throw new AppError(422, 'Para registrar óbito é obrigatório anexar a foto da carcaça.');
+    }
 
-  // Sem categorias? Manejo aceita; o resto exige
-  let animais = Array.isArray(b.animais) ? b.animais : [];
-  if (animais.length === 0 && ['nascimento','obito','transferencia','compravenda'].includes(operacao)) {
-    return res.status(400).json({ erro: 'Informe ao menos uma categoria com quantidade.' });
-  }
-  if (animais.length === 0) {
-    animais = [{ categoria: operacao === 'manejo' ? 'MANEJO' : 'AJUSTE', quantidade: 0 }];
-  }
+    // Sem categorias? Manejo aceita; o resto exige
+    let animais = Array.isArray(b.animais) ? b.animais : [];
+    if (animais.length === 0 && ['nascimento','obito','transferencia','compravenda'].includes(operacao)) {
+      throw new AppError(400, 'Informe ao menos uma categoria com quantidade.');
+    }
+    if (animais.length === 0) {
+      animais = [{ categoria: operacao === 'manejo' ? 'MANEJO' : 'AJUSTE', quantidade: 0 }];
+    }
 
   const insertMov = db.prepare(`
     INSERT INTO movimentacoes (
@@ -91,33 +93,37 @@ export function criarBoleta(req: Request, res: Response) {
     enfileirarSync('movimentacao', movId);
   }
 
-  return res.status(201).json({ grupo_id: grupoId, ids, mensagem: 'Boleta registrada.' });
+    return res.status(201).json({ grupo_id: grupoId, ids, mensagem: 'Boleta registrada.' });
+  } catch (err) {
+    next(err);
+  }
 }
 
 /**
  * PUT /api/boletas/:grupo_id
  * Edita uma boleta (todas as rows do grupo). Só dentro da janela de 30 dias.
  */
-export function atualizarBoleta(req: Request, res: Response) {
-  const sess = (req.session as any)?.usuario as SessUsuario | undefined;
-  if (!sess) return res.status(401).json({ erro: 'Não autenticado.' });
+export function atualizarBoleta(req: Request, res: Response, next: NextFunction) {
+  try {
+    const sess = (req.session as any)?.usuario as SessUsuario | undefined;
+    if (!sess) throw new AppError(401, 'Não autenticado.');
 
-  const grupoId = String(req.params.grupo_id);
-  const existentes = db.prepare(
-    `SELECT * FROM movimentacoes WHERE grupo_id = ? AND capataz_id = ?`
-  ).all(grupoId, sess.id) as any[];
+    const grupoId = String(req.params.grupo_id);
+    const existentes = db.prepare(
+      `SELECT * FROM movimentacoes WHERE grupo_id = ? AND capataz_id = ?`
+    ).all(grupoId, sess.id) as any[];
 
-  if (existentes.length === 0) return res.status(404).json({ erro: 'Boleta não encontrada.' });
+    if (existentes.length === 0) throw new AppError(404, 'Boleta não encontrada.');
 
-  // Janela de 30 dias
-  const criadoEm = new Date(existentes[0].criado_em);
-  const dias = (Date.now() - criadoEm.getTime()) / (1000 * 60 * 60 * 24);
-  if (dias > 30) {
-    return res.status(422).json({ erro: 'Boleta com mais de 30 dias não pode ser editada.' });
-  }
-  if (existentes[0].aprovado_por_coordenador_id) {
-    return res.status(422).json({ erro: 'Boleta já aprovada pelo Coordenador.' });
-  }
+    // Janela de 30 dias
+    const criadoEm = new Date(existentes[0].criado_em);
+    const dias = (Date.now() - criadoEm.getTime()) / (1000 * 60 * 60 * 24);
+    if (dias > 30) {
+      throw new AppError(422, 'Boleta com mais de 30 dias não pode ser editada.');
+    }
+    if (existentes[0].aprovado_por_coordenador_id) {
+      throw new AppError(422, 'Boleta já aprovada pelo Coordenador.');
+    }
 
   // Estratégia mais simples: apaga as rows do grupo e cria de novo
   db.prepare(`DELETE FROM movimentacoes WHERE grupo_id = ? AND capataz_id = ?`).run(grupoId, sess.id);
@@ -158,15 +164,19 @@ export function atualizarBoleta(req: Request, res: Response) {
     enfileirarSync('movimentacao', movId);
   }
 
-  return res.json({ grupo_id: grupoId, mensagem: 'Boleta atualizada.' });
+    return res.json({ grupo_id: grupoId, mensagem: 'Boleta atualizada.' });
+  } catch (err) {
+    next(err);
+  }
 }
 
 /**
  * GET /api/boletas/minhas — lista boletas do capataz logado (agrupadas por grupo_id)
  */
-export function listarMinhas(req: Request, res: Response) {
-  const sess = (req.session as any)?.usuario as SessUsuario | undefined;
-  if (!sess) return res.status(401).json({ erro: 'Não autenticado.' });
+export function listarMinhas(req: Request, res: Response, next: NextFunction) {
+  try {
+    const sess = (req.session as any)?.usuario as SessUsuario | undefined;
+    if (!sess) throw new AppError(401, 'Não autenticado.');
 
   const rows = db.prepare(`
     SELECT m.*, r.nome AS retiro_nome
@@ -211,15 +221,19 @@ export function listarMinhas(req: Request, res: Response) {
     grupos[key].animais.push({ categoria: r.categoria, quantidade: r.quantidade });
   }
 
-  return res.json(Object.values(grupos));
+    return res.json(Object.values(grupos));
+  } catch (err) {
+    next(err);
+  }
 }
 
 /**
  * GET /api/boletas/:grupo_id — detalhe (qualquer perfil autenticado)
  */
-export function obterBoleta(req: Request, res: Response) {
-  const sess = (req.session as any)?.usuario as SessUsuario | undefined;
-  if (!sess) return res.status(401).json({ erro: 'Não autenticado.' });
+export function obterBoleta(req: Request, res: Response, next: NextFunction) {
+  try {
+    const sess = (req.session as any)?.usuario as SessUsuario | undefined;
+    if (!sess) throw new AppError(401, 'Não autenticado.');
 
   const grupoId = String(req.params.grupo_id);
   const rows = db.prepare(`
@@ -239,7 +253,7 @@ export function obterBoleta(req: Request, res: Response) {
     ORDER BY m.criado_em
   `).all(grupoId, grupoId) as any[];
 
-  if (rows.length === 0) return res.status(404).json({ erro: 'Boleta não encontrada.' });
+    if (rows.length === 0) throw new AppError(404, 'Boleta não encontrada.');
 
   const first = rows[0];
   return res.json({
@@ -264,5 +278,8 @@ export function obterBoleta(req: Request, res: Response) {
     aprovado_em: first.aprovado_em,
     aprovado_por_nome: first.aprovado_por_nome || null,
     animais: rows.map(r => ({ categoria: r.categoria, quantidade: r.quantidade })),
-  });
+    });
+  } catch (err) {
+    next(err);
+  }
 }
