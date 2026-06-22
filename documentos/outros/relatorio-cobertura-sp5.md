@@ -5,12 +5,12 @@
 | Métrica | Resultado |
 |---|---|
 | Suites executadas | 26 |
-| Suites passando | 25 |
-| Suites com falha | 1 |
-| Testes passando | 191 |
+| Suites passando | 26 |
+| Suites com falha | 0 |
+| Testes passando | 206 |
 | Testes falhando | 0 |
 
-**Todos os 191 testes passam.** A única suite com falha (`cloudSyncService.test.ts`) não executa por erro de compilação TypeScript pré-existente no arquivo fonte (`Cannot find name 'db'` em `services/cloudSyncService.ts:15`) — não é uma regressão desta sprint.
+**Todas as 26 suites passam. 206 testes passando.** A falha de compilação em `cloudSyncService.ts` (`Cannot find name 'db'`) foi corrigida com a adição do import faltante.
 
 ---
 
@@ -30,7 +30,7 @@
 |---|---|---|---|
 | `sincronizacaoService.ts` | 63.2% | 31.4% | 80.0% |
 | `sincronizacaoRepository.ts` | 40.0% | 24.0% | 66.6% |
-| `cloudSyncService.ts` | — | — | — (falha de compilação) |
+| `cloudSyncService.ts` | 88.5% | 85.0% | 25.0% |
 
 ### Eventos Zootécnicos (`eventos`)
 
@@ -54,5 +54,5 @@
 
 - **Eventos** é a área com melhor cobertura. Service e controller bem testados.
 - **Auth** tem cobertura parcial: `refreshTokenRepository` está bem coberto, mas os fluxos de `refresh`, `loginCapataz` e `loginInfraestrutura` em `authController` não têm testes.
-- **Sync** tem lacunas relevantes: `sincronizacaoRepository` cobre apenas 40% e `cloudSyncService` não compila para teste.
+- **Sync** tem lacunas relevantes: `sincronizacaoRepository` cobre apenas 40%. `cloudSyncService` agora compila e está com 88.5% de statements.
 - **`boletaService.ts`** (área crítica da sprint): 3.8% de cobertura, sem testes dedicados.
