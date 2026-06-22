@@ -11,7 +11,7 @@ import { RETIROS } from './config/retiros';
 import routes from './routes/index';
 import viewRoutes from './routes/viewRoutes';
 import authRoutes from './routes/authRoutes';
-import { autenticarJWT } from './middleware/authMiddleware';
+import { autenticarJWT } from './middlewares/authMiddleware';
 import { requireLogin } from './middlewares/authView';
 
 const app = express();
@@ -30,8 +30,12 @@ app.use(express.json({ limit: '25mb' }));
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 app.use(cookieParser());
 app.use('/public', express.static(path.join(projectRoot, 'src/public')));
+const sessionSecret = process.env.SESSION_SECRET;
+if (!sessionSecret && process.env.NODE_ENV === 'production') {
+  throw new Error('SESSION_SECRET precisa ser definido em producao');
+}
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'brpec-syntech-2026',
+  secret: sessionSecret || 'brpec-syntech-dev',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 365 * 24 * 60 * 60 * 1000 }
@@ -142,10 +146,8 @@ app.use('/api', autenticarJWT, routes);
 // Rotas de views adicionais
 app.use('/', viewRoutes);
 
-// Error handler global
-app.use((erro: Error, _req: Request, res: Response, _next: NextFunction) => {
-  console.error(erro);
-  res.status(500).json({ erro: 'Erro interno do servidor' });
-});
+import { errorHandler } from './middlewares/errorHandler';
+app.use(errorHandler);
+
 
 export default app;

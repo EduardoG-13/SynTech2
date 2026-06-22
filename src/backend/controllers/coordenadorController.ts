@@ -184,7 +184,7 @@ function escCsv(v: string | number | null | undefined) {
 }
 
 const HEADERS_PLANILHA = [
-  'Retiro', 'Data', 'Tipo', 'Categoria', 'Quantidade',
+  'Nº Boleta', 'Retiro', 'Data', 'Tipo', 'Categoria', 'Quantidade',
   'Origem', 'Destino', 'Mês-Ano', 'Ano', 'Mês',
   'Causa Morte', 'Obs', 'Fazenda',
 ];
@@ -195,6 +195,7 @@ function linhaParaPlanilha(m: any) {
   const [ano = '', mes = ''] = data ? String(data).split('-') : [];
   const mesAno = (ano && mes) ? `${parseInt(mes)}-${ano}` : '';
   return [
+    m.numero_boleta || '',
     m.retiro_nome || '',
     data,
     ROTULO_TIPO[tipo] || tipo.toUpperCase(),
@@ -232,7 +233,7 @@ export async function exportarCsv(req: Request, res: Response) {
     }
     if (rows.length > 0) {
       const total = rows.reduce((s, m) => s + (Number(m.quantidade) || 0), 0);
-      linhas.push(['TOTAL', '', '', '', total, '', '', '', '', '', '', '', ''].map(escCsv).join(','));
+      linhas.push(['TOTAL', '', '', '', '', total, '', '', '', '', '', '', '', ''].map(escCsv).join(','));
     }
     const csv = '﻿' + linhas.join('\n');  // BOM para Excel detectar UTF-8
     const nomeCsv = f.ids
@@ -254,14 +255,14 @@ export async function exportarCsv(req: Request, res: Response) {
   });
 
   // Cabeçalho de título
-  ws.mergeCells('A1:M1');
+  ws.mergeCells('A1:N1');
   const titulo = ws.getCell('A1');
   titulo.value = 'BRPec — Relatório de Boletas';
   titulo.font = { name: 'Calibri', size: 16, bold: true, color: { argb: 'FF1A4D2E' } };
   titulo.alignment = { vertical: 'middle', horizontal: 'center' };
   ws.getRow(1).height = 28;
 
-  ws.mergeCells('A2:M2');
+  ws.mergeCells('A2:N2');
   const subt = ws.getCell('A2');
   const dt = new Date().toLocaleString('pt-BR');
   subt.value = `Gerado em ${dt} · ${rows.length} registro(s)`;
@@ -287,7 +288,7 @@ export async function exportarCsv(req: Request, res: Response) {
   headerRow.height = 24;
 
   ws.columns = [
-    { width: 22 }, { width: 12 }, { width: 22 }, { width: 26 }, { width: 12 },
+    { width: 16 }, { width: 22 }, { width: 12 }, { width: 22 }, { width: 26 }, { width: 12 },
     { width: 20 }, { width: 20 }, { width: 12 }, { width: 8 }, { width: 8 },
     { width: 24 }, { width: 30 }, { width: 14 },
   ];
@@ -301,7 +302,7 @@ export async function exportarCsv(req: Request, res: Response) {
       cell.font = { name: 'Calibri', size: 10, color: { argb: 'FF1B1B1B' } };
       cell.alignment = {
         vertical: 'middle',
-        horizontal: [5, 9, 10].includes(colNumber) ? 'center' : 'left',
+        horizontal: [6, 10, 11].includes(colNumber) ? 'center' : 'left',
         wrapText: true,
       };
       cell.border = {
@@ -314,14 +315,14 @@ export async function exportarCsv(req: Request, res: Response) {
       }
     });
     // Destaca a coluna "Tipo" em negrito
-    row.getCell(3).font = { name: 'Calibri', size: 10, bold: true, color: { argb: 'FF1A4D2E' } };
+    row.getCell(4).font = { name: 'Calibri', size: 10, bold: true, color: { argb: 'FF1A4D2E' } };
     row.height = 18;
   });
 
   // Rodapé total
   if (rows.length > 0) {
     const totalAnimais = rows.reduce((s, m) => s + (Number(m.quantidade) || 0), 0);
-    const totalRow = ws.addRow(['TOTAL', '', '', '', totalAnimais, '', '', '', '', '', '', '', '']);
+    const totalRow = ws.addRow(['TOTAL', '', '', '', '', totalAnimais, '', '', '', '', '', '', '', '']);
     totalRow.eachCell({ includeEmpty: true }, (cell) => {
       cell.font = { name: 'Calibri', size: 11, bold: true, color: { argb: 'FFFFFFFF' } };
       cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2E7D52' } };
