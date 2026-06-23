@@ -1,7 +1,7 @@
 <!-- Indicador de conexão — fixo no TOPO, visível em todas as telas logadas -->
 <div id="status-conexao" class="status-conexao online" role="status" aria-live="polite" title="Status de conexão. Toque para sincronizar.">
   <span class="status-dot"></span>
-  <span id="status-conexao-txt">Online</span>
+  <span id="onlineStatus">Online</span>
   <span id="status-conexao-pend" class="status-pend" style="display:none;"></span>
 </div>
 
@@ -31,7 +31,7 @@
     function iniciarStatusConexao() {
       var pill = document.getElementById('status-conexao');
       if (!pill) return;
-      var txt = document.getElementById('status-conexao-txt');
+      var txt = document.getElementById('onlineStatus');
       var pend = document.getElementById('status-conexao-pend');
 
       // Conta itens ainda não enviados na fila local (IndexedDB)
