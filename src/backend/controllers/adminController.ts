@@ -1,137 +1,170 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { AppError } from '../utils/AppError';
 import adminService from '../services/adminService';
 
 // ==================== RETIROS ====================
 
-export function listarRetiros(_req: Request, res: Response) {
+export function listarRetiros(_req: Request, res: Response, next: NextFunction) {
   try {
     const retiros = adminService.listarRetiros();
     return res.json(retiros);
   } catch (error: any) {
-    return res.status(500).json({ erro: error.message });
+    next(error);
   }
 }
 
-export function criarRetiro(req: Request, res: Response) {
+export function criarRetiro(req: Request, res: Response, next: NextFunction) {
   try {
     const id = adminService.criarRetiro(req.body);
     return res.status(201).json({ id, mensagem: 'Retiro criado com sucesso.' });
   } catch (error: any) {
-    return res.status(400).json({ erro: error.message });
+    next(new AppError(400, error.message));
   }
 }
 
-export function atualizarRetiro(req: Request, res: Response) {
+export function atualizarRetiro(req: Request, res: Response, next: NextFunction) {
   const id = String(req.params.id);
   try {
     adminService.atualizarRetiro(id, req.body);
     return res.json({ mensagem: 'Retiro atualizado com sucesso.' });
   } catch (error: any) {
     if (error.message === 'Retiro não encontrado.') {
-      return res.status(404).json({ erro: error.message });
+      return next(new AppError(404, error.message));
     }
-    return res.status(400).json({ erro: error.message });
+    next(new AppError(400, error.message));
   }
 }
 
-export function excluirRetiro(req: Request, res: Response) {
+export function excluirRetiro(req: Request, res: Response, next: NextFunction) {
   const id = String(req.params.id);
   try {
     adminService.excluirRetiro(id);
     return res.json({ mensagem: 'Retiro excluído com sucesso.' });
   } catch (error: any) {
     if (error.message === 'Retiro não encontrado.') {
-      return res.status(404).json({ erro: error.message });
+      return next(new AppError(404, error.message));
     }
-    return res.status(400).json({ erro: error.message });
+    next(new AppError(400, error.message));
   }
 }
 
 // ==================== USUÁRIOS ====================
 
-export function listarUsuarios(req: Request, res: Response) {
+export function listarUsuarios(req: Request, res: Response, next: NextFunction) {
   const perfil = req.query.perfil ? String(req.query.perfil) : undefined;
   try {
     const usuarios = adminService.listarUsuarios(perfil);
     return res.json(usuarios);
   } catch (error: any) {
-    return res.status(500).json({ erro: error.message });
+    next(error);
   }
 }
 
-export function criarUsuario(req: Request, res: Response) {
+export function criarUsuario(req: Request, res: Response, next: NextFunction) {
   try {
     const id = adminService.criarUsuario(req.body);
     return res.status(201).json({ id, mensagem: 'Usuário criado com sucesso.' });
   } catch (error: any) {
     if (error.message.includes('Já existe')) {
-      return res.status(409).json({ erro: error.message });
+      return next(new AppError(409, error.message));
     }
-    return res.status(400).json({ erro: error.message });
+    next(new AppError(400, error.message));
   }
 }
 
-export function atualizarUsuario(req: Request, res: Response) {
+export function atualizarUsuario(req: Request, res: Response, next: NextFunction) {
   const id = String(req.params.id);
   try {
     adminService.atualizarUsuario(id, req.body);
     return res.json({ mensagem: 'Usuário atualizado com sucesso.' });
   } catch (error: any) {
-    if (error.message === 'Usuário não encontrado.') return res.status(404).json({ erro: error.message });
-    if (error.message.includes('Não é possível remover')) return res.status(422).json({ erro: error.message });
-    return res.status(400).json({ erro: error.message });
+    if (error.message === 'Usuário não encontrado.') return next(new AppError(404, error.message));
+    if (error.message.includes('Não é possível remover')) return next(new AppError(422, error.message));
+    next(new AppError(400, error.message));
   }
 }
 
-export function excluirUsuario(req: Request, res: Response) {
+export function excluirUsuario(req: Request, res: Response, next: NextFunction) {
   const id = String(req.params.id);
   try {
     adminService.excluirUsuario(id);
     return res.json({ mensagem: 'Usuário excluído com sucesso.' });
   } catch (error: any) {
-    if (error.message === 'Usuário não encontrado.') return res.status(404).json({ erro: error.message });
-    if (error.message.includes('Não é possível excluir')) return res.status(422).json({ erro: error.message });
-    return res.status(400).json({ erro: error.message });
+    if (error.message === 'Usuário não encontrado.') return next(new AppError(404, error.message));
+    if (error.message.includes('Não é possível excluir')) return next(new AppError(422, error.message));
+    next(new AppError(400, error.message));
   }
 }
 
 // ==================== EXCLUSÃO DE REGISTROS (admin only) ====================
 
-export function excluirBoleta(req: Request, res: Response) {
+export function excluirBoleta(req: Request, res: Response, next: NextFunction) {
   const idOuGrupo = String(req.params.grupo_id);
   try {
     const linhas = adminService.excluirBoleta(idOuGrupo);
     return res.json({ mensagem: 'Boleta excluída com sucesso.', linhas_apagadas: linhas });
   } catch (error: any) {
     if (error.message === 'Boleta não encontrada.') {
-      return res.status(404).json({ erro: error.message });
+      return next(new AppError(404, error.message));
     }
-    return res.status(400).json({ erro: error.message });
+    next(new AppError(400, error.message));
   }
 }
 
-export function excluirChamado(req: Request, res: Response) {
+export function excluirChamado(req: Request, res: Response, next: NextFunction) {
   const id = String(req.params.id);
   try {
     adminService.excluirChamado(id);
     return res.json({ mensagem: 'Chamado excluído com sucesso.' });
   } catch (error: any) {
     if (error.message === 'Chamado não encontrado.') {
-      return res.status(404).json({ erro: error.message });
+      return next(new AppError(404, error.message));
     }
-    return res.status(400).json({ erro: error.message });
+    next(new AppError(400, error.message));
   }
 }
 
-export function excluirTarefa(req: Request, res: Response) {
+export function excluirTarefa(req: Request, res: Response, next: NextFunction) {
   const id = String(req.params.id);
   try {
     adminService.excluirTarefa(id);
     return res.json({ mensagem: 'Tarefa excluída com sucesso.' });
   } catch (error: any) {
     if (error.message === 'Tarefa não encontrada.') {
-      return res.status(404).json({ erro: error.message });
+      return next(new AppError(404, error.message));
     }
-    return res.status(400).json({ erro: error.message });
+    next(new AppError(400, error.message));
   }
+}
+
+// ==================== DISPOSITIVOS (login automático por aparelho) ====================
+
+/**
+ * GET /api/admin/dispositivos
+ * Lista os dispositivos vinculados (aparelhos que entram automático em um retiro).
+ */
+export function listarDispositivos(_req: Request, res: Response) {
+  const rows = db.prepare(`
+    SELECT d.id, d.device_token, d.apelido, d.criado_em, d.ultimo_acesso, d.revogado_em,
+           r.nome AS retiro_nome, u.nome AS capataz_nome
+    FROM dispositivos d
+    LEFT JOIN retiros  r ON r.id = d.retiro_id
+    LEFT JOIN usuarios u ON u.id = d.capataz_id
+    ORDER BY d.revogado_em IS NOT NULL, d.ultimo_acesso DESC
+  `).all();
+  return res.json(rows);
+}
+
+/**
+ * DELETE /api/admin/dispositivos/:id
+ * Revoga um dispositivo (ex: tablet trocou de retiro). Ele volta a pedir
+ * seleção de retiro no próximo acesso.
+ */
+export function revogarDispositivo(req: Request, res: Response) {
+  const id = String(req.params.id);
+  const existe = db.prepare('SELECT id FROM dispositivos WHERE id = ?').get(id);
+  if (!existe) return res.status(404).json({ erro: 'Dispositivo não encontrado.' });
+
+  db.prepare("UPDATE dispositivos SET revogado_em = datetime('now') WHERE id = ?").run(id);
+  return res.json({ mensagem: 'Dispositivo revogado. Vai pedir seleção de retiro no próximo acesso.' });
 }

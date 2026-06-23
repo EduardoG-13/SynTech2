@@ -6657,53 +6657,570 @@ Conclui-se que a aplicação não apresenta bloqueio por compilação, regressã
 
 ## 5.2. Testes de usabilidade (sprint 5)
 
+Os testes de usabilidade consistem em observar usuários reais executando tarefas representativas em um produto ou sistema, com o objetivo de identificar dificuldades, erros e pontos de fricção na interface antes que cheguem ao ambiente de produção. Segundo a norma ISO 9241-11:2018, usabilidade é definida como a medida em que um produto pode ser utilizado por usuários específicos para atingir objetivos específicos com eficácia, eficiência e satisfação em um dado contexto de uso [55].
+
+A realização de testes com usuários é considerada a forma mais direta de validar decisões de design, pois substitui suposições internas por evidências concretas de comportamento. Problemas que passam despercebidos em revisões internas e inspeções heurísticas tendem a emergir nas primeiras sessões de observação, tornando essa etapa indispensável no ciclo de desenvolvimento centrado no usuário [54].
+
+Nesta sprint, os testes de usabilidade foram conduzidos em duas frentes complementares: testes de guerrilha (seção 5.2.1), voltados à identificação rápida de problemas de navegação e fluxo com participantes recrutados informalmente; e testes SUS (seção 5.2.2), aplicados para mensurar quantitativamente a percepção de usabilidade do sistema por meio de questionário padronizado.
+
 ### 5.2.1. Relatório de testes de guerrilha
 
-Link para a planilha dos testes de Guerrilha: https://docs.google.com/spreadsheets/d/1qdGcS9gtkIaFlHcXa6VoyoqdvRIejTfKeiD6Zggm5aI/edit?usp=sharing
 
-_Posicione aqui as tabelas com enunciados de tarefas, etapas e resultados de testes de usabilidade. Ou utilize um link para seu relatório de testes (mantenha o link sempre público para visualização)._
+Os testes de guerrilha (*guerrilla usability testing*) são uma modalidade de avaliação de usabilidade de baixo custo na qual participantes são recrutados de forma rápida e oportunista em ambientes cotidianos como corredores, cafeterias ou espaços de coworking para realizarem tarefas representativas em um protótipo ou produto real, sem a necessidade de laboratório especializado ou processo formal de recrutamento [53]. Cada sessão costuma durar entre 10 e 20 minutos, e a literatura de usabilidade indica que cinco a oito participantes são suficientes para identificar a maioria dos problemas críticos de uma interface [54].
+
+A principal importância dessa abordagem está na capacidade de gerar retroalimentação qualitativa rápida sobre dificuldades reais de uso ainda em fases iniciais do desenvolvimento, quando ajustes são menos custosos. Por envolverem pessoas reais em contexto natural, os testes de guerrilha expõem problemas de navegação, nomenclatura e fluxo que costumam passar despercebidos em revisões internas e inspeções heurísticas [53]. Para este projeto, o método foi adotado para validar os principais fluxos da aplicação junto a participantes que representam os perfis de Capataz, Gerente e Coordenador definidos nas personas do sistema, complementando as avaliações técnicas realizadas nas etapas anteriores.
+
+[Link para a planilha dos testes de Guerrilha:] (https://docs.google.com/spreadsheets/d/1qdGcS9gtkIaFlHcXa6VoyoqdvRIejTfKeiD6Zggm5aI/edit?usp=sharing) 
+#### Perfil dos Participantes
+
+Os testes foram conduzidos com **6 participantes**, todos estudantes de graduação recrutados por conveniência entre colegas de faculdade dos integrantes do grupo. Os perfis de sistema (Capataz, Gerente e Coordenador) foram atribuídos como cenários de tarefa durante a sessão, nenhum participante ocupa esses cargos na BrPec e nem em outra agropecuária. O principal critério de diversidade adotado foi a familiaridade com o contexto agropecuário: Gregory cresceu em propriedade rural, enquanto os demais não têm experiência com o setor.
+
+| Participante | Perfil de experiência |
+|---|---|
+| Gregory | Experiência com ambiente rural (cresceu em fazenda, pai tem propriedade) |
+| Gabriel | Sem experiência com agronegócio |
+| Gabriel Cristino | Sem experiência com agronegócio |
+| Fernanda | Sem experiência com agronegócio |
+| Davi | Sem experiência com agronegócio |
+| Rafael | Sem experiência com agronegócio |
+
+A distribuição por perfil testado foi a seguinte:
+
+| Perfil de sistema testado | Tarefas | Participantes |
+|---|---|---|
+| Capataz | 1 e 2 | Gregory, Gabriel, Gabriel Cristino, Fernanda, Davi, Rafael (6) |
+| Gerente | 3 e 4 | Fernanda, Davi, Rafael (3) |
+| Coordenador | 5 e 6 | Gregory, Gabriel Cristino, Fernanda, Davi, Rafael (5) |
+
+Cada participante executou entre 1 e 5 tarefas conforme a disponibilidade na sessão. Nenhum recebeu instruções sobre o sistema antes da interação — o contato com a interface foi o primeiro de cada um.
+
+# Resultados por Tarefa
+ 
+---
+ 
+## 1. Capataz — Concluir Tarefa com Foto
+ 
+**Cenário:** Suponha que você é Gabriel, capataz do retiro Barra Bonita, terminou de transferir alguns animais para outro retiro, utilize o sistema para marcar a tarefa como concluída e anexar uma foto como evidência do serviço realizado.
+ 
+### Etapas
+ 
+| Etapa | Descrição | Expectativa |
+|---|---|---|
+| 1 | Fazer login selecionando o perfil Capataz e o retiro Barra Bonita | Sistema autentica Gabriel e exibe somente as tarefas do dia vinculadas ao retiro Barra Bonita (RN02, RN05). |
+| 2 | Abrir o detalhe da tarefa de transferência de animais | Tela exibe a descrição da tarefa, o retiro e o status atual. |
+| 3 | Marcar a tarefa como concluída e anexar a foto. | O sistema registra a conclusão e salva tudo localmente no dispositivo até a sincronização (RN08, RN10). |
+| 4 | Informações referentes à tarefa vão para o Coordenador e Gerente. | O status da tarefa é atualizado para o Coordenador e o sistema exibe mensagem de confirmação (RN09, RN11). |
+ 
+### Resultados
+ 
+| # | Nome | Perfil do Participante | Resultado | Etapa 1 | Etapa 2 | Etapa 3 | Etapa 4 | Heurística(s) Relacionada(s) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Gregory | Tem experiência com fazenda (cresceu em uma, pai tem propriedade). |  Não conseguiu | Sistema exibe as tarefas do dia vinculadas ao retiro. | Tela exibe a descrição da tarefa, o retiro e o status atual. | Marcou a tarefa como concluída e anexou a foto. | O registro não apareceu para o Gerente nem para o próprio Capataz. | H1 - Visibilidade do status do sistema; H3 - Controle e liberdade do usuário |
+| 2 | Gabriel | Sem experiência com agronegócio. |  Conseguiu com dificuldade | Sistema exibe as tarefas do dia vinculadas ao retiro. | Tela exibe a descrição da tarefa, o retiro e o status atual. | Marcou a tarefa como concluída e anexou a foto. | O registro não apareceu para o Gerente nem para o próprio Capataz. | H1 - Visibilidade do status do sistema; H3 - Controle e liberdade do usuário |
+| 3 | Gabriel Cristino | Sem experiência com agronegócio. |  Sucesso | Sistema exibe as tarefas do dia vinculadas ao retiro. | Tela exibe a descrição da tarefa, o retiro e o status atual. | Marcou a tarefa como concluída e anexou a foto. | O status da tarefa é atualizado para o Coordenador e o sistema exibe mensagem de confirmação. | H1 - Visibilidade do status do sistema; H3 - Controle e liberdade do usuário |
+| 4 | Fernanda | Sem experiência com agronegócio. |  Sucesso | Sistema exibe as tarefas do dia vinculadas ao retiro. | Tela exibe a descrição da tarefa, o retiro e o status atual. | Marcou a tarefa como concluída e anexou a foto. | O status da tarefa é atualizado para o Coordenador e o sistema exibe mensagem de confirmação. | H1 - Visibilidade do status do sistema; H3 - Controle e liberdade do usuário |
+| 5 | Davi | Sem experiência com agronegócio. |  Sucesso | Sistema exibe as tarefas do dia vinculadas ao retiro. | Tela exibe a descrição da tarefa, o retiro e o status atual. | Marcou a tarefa como concluída e anexou a foto. | O status da tarefa é atualizado para o Coordenador e o sistema exibe mensagem de confirmação. | H1 - Visibilidade do status do sistema; H3 - Controle e liberdade do usuário |
+| 6 | Rafael | Sem experiência com agronegócio. |  Sucesso | Sistema exibe as tarefas do dia vinculadas ao retiro. | Tela exibe a descrição da tarefa, o retiro e o status atual. | Marcou a tarefa como concluída e anexou a foto. | O status da tarefa é atualizado para o Coordenador e o sistema exibe mensagem de confirmação. | H1 - Visibilidade do status do sistema; H3 - Controle e liberdade do usuário |
+ 
+---
+ 
+## 2. Capataz — Abrir Chamado de Infraestrutura
+ 
+**Cenário:** Suponha que você é capataz e percebeu que o bebedouro do curral está quebrado, comprometendo o acesso de água ao rebanho, utilize o sistema para abrir um chamado de infraestrutura informando o tipo de problema, o retiro e a localização.
+ 
+### Etapas
+ 
+| Etapa | Descrição | Expectativa |
+|---|---|---|
+| 1 | Fazer login com o perfil Capataz e selecionar o retiro correspondente | Sistema autentica o Capataz e libera o acesso apenas às funções vinculadas ao retiro selecionado. |
+| 2 | Acessar a opção de criar um novo chamado/alerta de infraestrutura | Formulário é exibido com os campos obrigatórios (tipo de problema, retiro, localização) (RF006). |
+| 3 | Preencher o tipo de problema (ex.: hidráulica) e o retiro | O sistema captura automaticamente as coordenadas GPS e as exibe como imutáveis, sem permitir edição manual (RN19, RN24). |
+| 4 | Enviar o chamado | Se houver conexão, o alerta é enviado imediatamente com mensagem de confirmação; se offline, o sistema informa que o registro foi salvo localmente e será enviado na próxima sincronização (RN20–RN23, RN25, RN26). |
+ 
+### Resultados
+ 
+| # | Nome | Perfil do Participante | Resultado | Etapa 1 | Etapa 2 | Etapa 3 | Etapa 4 | Heurística(s) Relacionada(s) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Fernanda | Sem experiência com agronegócio. | Não conseguiu | Sistema autentica o Capataz e libera o acesso apenas às funções vinculadas ao retiro selecionado. | Formulário exibido com os campos obrigatórios (tipo de problema, retiro, localização). | Sistema captura automaticamente as coordenadas GPS e as exibe como imutáveis. | Alerta não foi enviado — erro 400 (independente da categoria do chamado de infraestrutura). | H5 - Prevenção de erros; H9 - Diagnóstico e recuperação de erros |
+| 2 | Gabriel Cristino | Sem experiência com agronegócio. | Não conseguiu | Sistema autentica o Capataz e libera o acesso apenas às funções vinculadas ao retiro selecionado. | Formulário exibido com os campos obrigatórios (tipo de problema, retiro, localização). | Sistema captura automaticamente as coordenadas GPS e as exibe como imutáveis. | Alerta não foi enviado — erro 400 (independente da categoria do chamado de infraestrutura). | H5 - Prevenção de erros; H9 - Diagnóstico e recuperação de erros |
+| 3 | Davi | Sem experiência com agronegócio. | Não conseguiu | Sistema autentica o Capataz e libera o acesso apenas às funções vinculadas ao retiro selecionado. | Formulário exibido com os campos obrigatórios (tipo de problema, retiro, localização). | Sistema captura automaticamente as coordenadas GPS e as exibe como imutáveis. | Alerta não foi enviado — erro 400 (independente da categoria do chamado de infraestrutura). | H5 - Prevenção de erros; H9 - Diagnóstico e recuperação de erros |
+ 
+---
+ 
+## 3. Gerente — Criar Tarefa Calendarizada
+ 
+**Cenário:** Suponha que você é o gerente geral e precisa que o capataz de um retiro específico verifique as cercas na próxima segunda-feira, utilize o sistema para criar essa tarefa calendarizada e associá-la ao retiro correto.
+ 
+### Etapas
+ 
+| Etapa | Descrição | Expectativa |
+|---|---|---|
+| 1 | Fazer login com o perfil Gerente | Fazer login com o perfil Gerente. |
+| 2 | Selecionar a opção de criar nova OS/tarefa | Formulário de criação de tarefa é exibido, com campos de descrição, data e retiro (RF001). |
+| 3 | Preencher "verificar as cercas", definir a data de segunda-feira e associar a um único retiro | O sistema exige obrigatoriamente o vínculo a um único retiro, não permitindo associação a múltiplos retiros (RN01). |
+| 4 | Salvar a tarefa | A tarefa fica registrada como calendarizada e fica disponível para o Capataz responsável pelo retiro assim que o dispositivo dele sincronizar (CR2 da US01). |
+ 
+### Resultados
+ 
+| # | Nome | Perfil do Participante | Resultado | Etapa 1 | Etapa 2 | Etapa 3 | Etapa 4 | Heurística(s) Relacionada(s) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Fernanda | Sem experiência com agronegócio. | Não conseguiu | Fez login com o perfil Gerente. | Formulário de criação de tarefa exibido com campos de descrição, data e retiro. | O sistema exigiu obrigatoriamente o vínculo a um retiro. | A tarefa não foi encontrada, apesar de registrada. | H4 - Consistência e padrões; H1 - Visibilidade do status do sistema |
+| 2 | Davi | Sem experiência com agronegócio. | Sucesso | Fez login com o perfil Gerente. | Formulário de criação de tarefa exibido com campos de descrição, data e retiro. | O sistema exigiu obrigatoriamente o vínculo a um retiro. | A tarefa fica registrada e disponível para o Capataz responsável pelo retiro. | H4 - Consistência e padrões; H1 - Visibilidade do status do sistema |
+| 3 | Rafael | Sem experiência com agronegócio. | Sucesso | Fez login com o perfil Gerente. | Formulário de criação de tarefa exibido com campos de descrição, data e retiro. | O sistema exigiu obrigatoriamente o vínculo a um retiro. | A tarefa fica registrada e disponível para o Capataz responsável pelo retiro. | H4 - Consistência e padrões; H1 - Visibilidade do status do sistema |
+ 
+---
+ 
+## 4. Gerente — Consultar Tela de Infraestrutura
+ 
+**Cenário:** Suponha que você é o gerente geral e quer saber quantos chamados de infraestrutura estão abertos antes de priorizar a equipe de manutenção, utilize o sistema para acessar a tela de infraestrutura e consultar o status de cada chamado registrado pelos capatazes.
+ 
+### Etapas
+ 
+| Etapa | Descrição | Expectativa |
+|---|---|---|
+| 1 | Fazer login com o perfil Gerente | Sistema autentica o Gerente e dá acesso ao dashboard principal. |
+| 2 | Navegar até a tela/painel de infraestrutura | Lista de chamados é exibida com o status de cada um (RF007). |
+| 3 | Filtrar/observar os chamados pelo status "aberto" | Somente os chamados com status ABERTO permanecem visíveis na listagem, permitindo contar quantos aguardam atendimento. |
+| 4 | Abrir um chamado específico para conferir detalhes | Sistema exibe Capataz que abriu, retiro, data/hora e descrição do problema, permitindo ao Gerente priorizar a equipe de manutenção. |
+ 
+### Resultados
+ 
+| # | Nome | Perfil do Participante | Resultado | Etapa 1 | Etapa 2 | Etapa 3 | Etapa 4 | Heurística(s) Relacionada(s) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Fernanda | Sem experiência com agronegócio. | Sucesso | Sistema autentica o Gerente e dá acesso ao dashboard principal. | Lista de chamados exibida com o status de cada um (RF007). | Somente os chamados com status ABERTO permanecem visíveis na listagem. | Sistema exibe Capataz que abriu, retiro, data/hora e descrição do problema. | H1 - Visibilidade do status do sistema; H6 - Reconhecimento em vez de lembrança |
+| 2 | Davi | Sem experiência com agronegócio. | Sucesso | Sistema autentica o Gerente e dá acesso ao dashboard principal. | Lista de chamados exibida com o status de cada um (RF007). | Somente os chamados com status ABERTO permanecem visíveis na listagem. | Sistema exibe Capataz que abriu, retiro, data/hora e descrição do problema. | H1 - Visibilidade do status do sistema; H6 - Reconhecimento em vez de lembrança |
+| 3 | Rafael | Sem experiência com agronegócio. | Sucesso | Sistema autentica o Gerente e dá acesso ao dashboard principal. | Lista de chamados exibida com o status de cada um (RF007). | Somente os chamados com status ABERTO permanecem visíveis na listagem. | Sistema exibe Capataz que abriu, retiro, data/hora e descrição do problema. | H1 - Visibilidade do status do sistema; H6 - Reconhecimento em vez de lembrança |
+ 
+---
+ 
+## 5. Coordenador — Visualizar Movimentação Zootécnica
+ 
+**Cenário:** Suponha que você é o coordenador e foi notificado de que um capataz registrou o nascimento de bezerros em um retiro, utilize o sistema para visualizar essa movimentação zootécnica e validar as informações antes da consolidação.
+ 
+### Etapas
+ 
+| Etapa | Descrição | Expectativa |
+|---|---|---|
+| 1 | Fazer login com o perfil Coordenador e acessar o painel de movimentações zootécnicas | Sistema autentica o Coordenador e exibe a listagem completa dos registros sincronizados, com tipo de evento, retiro de origem, data e Capataz responsável (CR1). |
+| 2 | Aplicar filtro por retiro ou tipo de evento para localizar o nascimento registrado | Listagem é atualizada exibindo somente os registros que atendem aos critérios selecionados. |
+| 3 | Abrir o detalhe da movimentação | Sistema apresenta todas as informações do registro, incluindo evidências fotográficas anexadas pelo Capataz, quando aplicável (CR3). |
+| 4 | Validar o registro antes da consolidação | Dados estão íntegros e disponíveis sem necessidade de redigitação manual, prontos para consolidação final. |
+ 
+### Resultados
+ 
+| # | Nome | Perfil do Participante | Resultado | Etapa 1 | Etapa 2 | Etapa 3 | Etapa 4 | Heurística(s) Relacionada(s) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Gregory | Tem experiência com fazenda (cresceu em uma, pai tem propriedade). | Sucesso | Fez login com o perfil Coordenador e acessou o painel de movimentações zootécnicas. | Listagem atualizada exibindo os registros que atendem aos critérios selecionados. | Sistema apresenta todas as informações do registro, incluindo evidências fotográficas quando aplicável. | Dados íntegros e disponíveis sem necessidade de redigitação manual, prontos para consolidação final. | H1 - Visibilidade do status do sistema; H6 - Reconhecimento em vez de lembrança |
+| 2 | Gabriel Cristino | Sem experiência com agronegócio. | Sucesso | Fez login com o perfil Coordenador e acessou o painel de movimentações zootécnicas. | Listagem atualizada exibindo os registros que atendem aos critérios selecionados. | Sistema apresenta todas as informações do registro, incluindo evidências fotográficas quando aplicável. | Dados íntegros e disponíveis sem necessidade de redigitação manual, prontos para consolidação final. | H1 - Visibilidade do status do sistema; H6 - Reconhecimento em vez de lembrança |
+| 3 | Davi | Sem experiência com agronegócio. | Sucesso | Fez login com o perfil Coordenador e acessou o painel de movimentações zootécnicas. | Listagem atualizada exibindo os registros que atendem aos critérios selecionados. | Sistema apresenta todas as informações do registro, incluindo evidências fotográficas quando aplicável. | Dados íntegros e disponíveis sem necessidade de redigitação manual, prontos para consolidação final. | H1 - Visibilidade do status do sistema; H6 - Reconhecimento em vez de lembrança |
+| 4 | Rafael | Sem experiência com agronegócio. | Sucesso | Fez login com o perfil Coordenador e acessou o painel de movimentações zootécnicas. | Listagem atualizada exibindo os registros que atendem aos critérios selecionados. | Sistema apresenta todas as informações do registro, incluindo evidências fotográficas quando aplicável. | Dados íntegros e disponíveis sem necessidade de redigitação manual, prontos para consolidação final. | H1 - Visibilidade do status do sistema; H6 - Reconhecimento em vez de lembrança |
+ 
+---
+ 
+## 6. Coordenador — Exportar Dados Consolidados em CSV
+ 
+**Cenário:** Suponha que você é o coordenador e precisa enviar os dados consolidados de movimentações do mês para os controles centrais da empresa, utilize o sistema para exportar esses registros em formato CSV.
+ 
+### Etapas
+ 
+| Etapa | Descrição | Expectativa |
+|---|---|---|
+| 1 | Fazer login com o perfil Coordenador e acessar a lista de boletas/movimentações | Sistema autentica o Coordenador e exibe todos os registros disponíveis para exportação. |
+| 2 | Aplicar filtros de período, retiro e tipo de evento | Listagem é atualizada refletindo exclusivamente os registros que atendem aos parâmetros definidos. |
+| 3 | Acionar o botão de exportação e selecionar o formato CSV | Sistema gera o arquivo com colunas padronizadas contendo data, retiro, tipo de evento, categoria animal, quantidade e Capataz responsável (RF015). |
+| 4 | Baixar o arquivo gerado | Conteúdo reflete estritamente os dados já validados estruturalmente no banco, eliminando redigitação manual e assegurando a integridade das informações enviadas aos controles da empresa (RN28). |
+ 
+### Resultados
+ 
+| # | Nome | Perfil do Participante | Resultado | Etapa 1 | Etapa 2 | Etapa 3 | Etapa 4 | Heurística(s) Relacionada(s) |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Gabriel Cristino | Sem experiência com agronegócio. | Sucesso | Fez login corretamente e todos os registros foram exibidos. | Listagem atualizada refletindo os registros que atendem aos parâmetros definidos. | Sistema gerou arquivo com colunas padronizadas (data, retiro, tipo de evento, categoria animal, quantidade, Capataz). | Conteúdo refletiu os dados validados no banco, eliminando redigitação manual. | H3 - Controle e liberdade do usuário; H7 - Flexibilidade e eficiência de uso |
+| 2 | Fernanda | Sem experiência com agronegócio. | Sucesso | Fez login corretamente e todos os registros foram exibidos. | Listagem atualizada refletindo os registros que atendem aos parâmetros definidos. | Sistema gerou arquivo com colunas padronizadas (data, retiro, tipo de evento, categoria animal, quantidade, Capataz). | Conteúdo refletiu os dados validados no banco, eliminando redigitação manual. | H3 - Controle e liberdade do usuário; H7 - Flexibilidade e eficiência de uso |
+| 3 | Rafael | Sem experiência com agronegócio. | Sucesso | Fez login corretamente e todos os registros foram exibidos. | Listagem atualizada refletindo os registros que atendem aos parâmetros definidos. | Sistema gerou arquivo com colunas padronizadas (data, retiro, tipo de evento, categoria animal, quantidade, Capataz). | Conteúdo refletiu os dados validados no banco, eliminando redigitação manual. | H3 - Controle e liberdade do usuário; H7 - Flexibilidade e eficiência de uso |
+
+
+---
+
+#### Síntese dos Resultados
+
+Ao todo foram realizadas 22 sessões de teste distribuídas entre os três perfis de sistema. O quadro abaixo consolida a taxa de conclusão por tarefa:
+
+| Tarefa | Perfil | Sessões | Sucesso pleno | Com dificuldade | Não concluiu |
+|---|---|---|---|---|---|
+| 1 — Concluir tarefa com foto | Capataz | 6 | 4 | 1 | 1 |
+| 2 — Abrir chamado de infraestrutura | Capataz | 3 | 0 | 0 | 3 |
+| 3 — Criar tarefa calendarizada | Gerente | 3 | 2 | 0 | 1 |
+| 4 — Consultar tela de infraestrutura | Gerente | 3 | 3 | 0 | 0 |
+| 5 — Visualizar movimentação zootécnica | Coordenador | 4 | 4 | 0 | 0 |
+| 6 — Exportar dados em CSV | Coordenador | 3 | 3 | 0 | 0 |
+
+Os fluxos do **Coordenador** foram os mais estáveis, com 100% de conclusão em ambas as tarefas. Os fluxos do **Gerente** apresentaram resultado misto: a consulta de infraestrutura (Tarefa 4) foi concluída por todos, mas a criação de tarefa (Tarefa 3) falhou para um participante por ausência de feedback visual após o cadastro. Os fluxos do **Capataz** concentraram os problemas mais críticos: a Tarefa 2 resultou em falha total para todos os participantes devido a um erro HTTP 400 na submissão do chamado de infraestrutura, independente da categoria selecionada; na Tarefa 1, dois participantes encontraram dificuldade ou não conseguiram concluir por falta de confirmação de que o registro havia sido sincronizado.
+
+As heurísticas mais recorrentes nas falhas foram **H1 (Visibilidade do status do sistema)**, ausência de confirmação após ações críticas, e **H9 (Diagnóstico e recuperação de erros)**, erros de backend exibidos sem mensagem orientativa ao usuário. Esses achados orientam os ajustes prioritários antes dos testes SUS: correção do endpoint de chamados de infraestrutura e adição de feedback explícito de confirmação nos fluxos do Capataz e do Gerente.
+
+#### Lista de Melhorias Identificadas
+
+Os achados dos testes de guerrilha foram compilados e priorizados segundo a **escala de severidade de Nielsen**: 0 — Sem importância; 1 — Cosmético; 2 — Simples; 3 — Grave; 4 — Catastrófico. Problemas com severidade 3 ou 4 devem ser corrigidos antes da entrega.
+
+| # | Problema | Área | Severidade | Participante(s) / Tarefa | Melhoria Sugerida |
+|---|---|---|---|---|---|
+| 1 | Endpoint de chamados de infraestrutura retorna HTTP 400 independente dos dados enviados, impedindo qualquer submissão | Funcional | 4 — Catastrófico | Fernanda, Gabriel Cristino, Davi / Tarefa 2 | Corrigir validação e mapeamento do payload no backend; retornar status 2xx e mensagem de sucesso ao usuário |
+| 2 | Ausência de confirmação de sincronização após conclusão de tarefa com foto: o registro não aparece imediatamente para Gerente nem para o Capataz, sem indicação visual de que foi salvo | UX | 3 — Grave | Gregory (falha), Gabriel (dificuldade) / Tarefa 1 | Exibir toast ou snackbar de confirmação após sincronização bem-sucedida; indicar estado pendente enquanto o upload de foto estiver em andamento |
+| 3 | Ausência de feedback visual após criação de tarefa calendarizada: participante não localiza a tarefa recém-registrada e interpreta como falha no cadastro | UX | 3 — Grave | Fernanda / Tarefa 3 | Exibir confirmação (modal ou snackbar) ao salvar tarefa calendarizada e redirecionar ou destacar o item criado na lista |
+
+Não foram observadas ocorrências de severidade 0 (sem importância), 1 (cosmético) ou 2 (simples) durante as sessões. O problema catastrófico (severidade 4) e os dois graves (severidade 3) devem ser corrigidos antes dos testes SUS para garantir que os participantes consigam concluir as tarefas e que os resultados reflitam a usabilidade real da interface, e não falhas funcionais.
 
 ### 5.2.2. Relatório de testes SUS (System Usability Scale)
 
-_Posicione aqui o relatório dos testes SUS realizados._
+O *System Usability Scale* (SUS) é um questionário padronizado de dez itens, desenvolvido por John Brooke em 1986, amplamente utilizado para medir a percepção subjetiva de usabilidade de sistemas interativos [56]. Cada item é respondido em uma escala Likert de 1 a 5, e as respostas são combinadas em uma fórmula que produz um escore final entre 0 e 100. Apesar de a escala ser numérica, o escore não representa uma porcentagem. Sua interpretação deve ser feita por comparação com dados de referência e escalas adjetivas próprias do SUS, como a proposta por Bangor, Kortum e Miller [57].
+
+A principal vantagem do SUS está na sua simplicidade de aplicação e na possibilidade de comparar o resultado obtido com bases de dados de referência de centenas de sistemas avaliados, o que confere contexto objetivo à percepção dos usuários [56]. Complementando os testes de guerrilha — que identificam qualitativamente onde e como os usuários encontram dificuldades —, o SUS quantifica o nível geral de satisfação com a interface, permitindo avaliar se a solução atinge um patamar aceitável de usabilidade para o perfil de usuário do projeto.
+
+**Questão 1 — "Eu acho que gostaria de usar este sistema com frequência."**
+
+Esta é uma questão de polaridade positiva no SUS: pontuações mais altas indicam maior intenção de uso recorrente. As respostas dos sete participantes foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 4 |
+| P2 | 3 |
+| P3 | 3 |
+| P4 | 4 |
+| P5 | 4 |
+| P6 | 5 |
+| P7 | 5 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 2 | 28,6% |
+| 4 — Concordo | 3 | 42,9% |
+| 3 — Neutro | 2 | 28,6% |
+| 2 — Discordo | 0 | 0,0% |
+| 1 — Discordo totalmente | 0 | 0,0% |
+
+**Média: 4,0 / 5,0**
+
+As respostas variaram entre 3 e 5, sem nenhuma expressão de discordância. A maioria dos participantes (71,4%) concordou com a afirmação, atribuindo notas 4 ou 5, o que indica percepção de valor suficiente na ferramenta para utilizá-la com regularidade. Os dois respondentes neutros (nota 3) não chegaram a expressar resistência ao uso contínuo, reforçando uma percepção geral positiva quanto à utilidade recorrente da solução.
+
+---
+
+**Questão 2 — "Eu achei o sistema desnecessariamente complexo."**
+
+Esta é uma questão de polaridade negativa no SUS: pontuações mais baixas indicam que os participantes não percebem o sistema como complexo, o que é favorável à usabilidade. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 3 |
+| P2 | 2 |
+| P3 | 2 |
+| P4 | 2 |
+| P5 | 1 |
+| P6 | 1 |
+| P7 | 1 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 0 | 0,0% |
+| 4 — Concordo | 0 | 0,0% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 3 | 42,9% |
+| 1 — Discordo totalmente | 3 | 42,9% |
+
+**Média: 1,71 / 5,0**
+
+Nenhum participante concordou que o sistema é desnecessariamente complexo. A maioria expressiva (85,7%) discordou da afirmação, sendo que 42,9% o fizeram de forma categórica (nota 1). O único respondente neutro (nota 3) também não chegou a confirmar a percepção de complexidade. O resultado indica que a interface foi percebida como simples e direta para o perfil de usuário avaliado.
+
+---
+
+**Questão 3 — "Eu achei o sistema fácil de usar."**
+
+Esta é uma questão de polaridade positiva no SUS: pontuações mais altas indicam maior percepção de facilidade de uso. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 4 |
+| P2 | 3 |
+| P3 | 4 |
+| P4 | 4 |
+| P5 | 5 |
+| P6 | 5 |
+| P7 | 5 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 3 | 42,9% |
+| 4 — Concordo | 3 | 42,9% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 0 | 0,0% |
+| 1 — Discordo totalmente | 0 | 0,0% |
+
+**Média: 4,29 / 5,0**
+
+A grande maioria dos participantes (85,7%) concordou que o sistema é fácil de usar, com 42,9% expressando concordância total. O único respondente neutro (nota 3) não chegou a contradizer a percepção de facilidade. A ausência de discordância e a média de 4,29 posicionam esta questão como uma das mais bem avaliadas do questionário, indicando que os fluxos e a interface foram percebidos como intuitivos pelo perfil de usuário testado.
+
+---
+
+**Questão 4 — "Eu acho que precisaria de ajuda de uma pessoa técnica para ser capaz de usar este sistema."**
+
+Esta é uma questão de polaridade negativa no SUS: pontuações mais baixas indicam que os participantes se sentem capazes de usar o sistema de forma independente. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 2 |
+| P2 | 4 |
+| P3 | 4 |
+| P4 | 3 |
+| P5 | 1 |
+| P6 | 1 |
+| P7 | 1 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 0 | 0,0% |
+| 4 — Concordo | 2 | 28,6% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 1 | 14,3% |
+| 1 — Discordo totalmente | 3 | 42,9% |
+
+**Média: 2,29 / 5,0**
+
+A maioria dos participantes (57,1%) discordou da necessidade de suporte técnico para operar o sistema. No entanto, dois participantes (28,6%) concordaram com a afirmação, o que representa o ponto de maior divergência identificado até agora no questionário. Considerando que o perfil-alvo da aplicação inclui capatazes com baixa familiaridade digital — conforme descrito nas personas do projeto —, este resultado merece atenção: ainda que a média seja favorável, a presença de usuários que percebem necessidade de auxílio técnico indica oportunidade de melhoria em orientações contextuais e fluxos de onboarding da interface.
+
+---
+
+**Questão 5 — "Eu achei que as várias funções neste sistema estão bem integradas."**
+
+Esta é uma questão de polaridade positiva no SUS: pontuações mais altas indicam que os participantes percebem coerência e integração entre as funcionalidades do sistema. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 4 |
+| P2 | 3 |
+| P3 | 5 |
+| P4 | 5 |
+| P5 | 5 |
+| P6 | 5 |
+| P7 | 5 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 5 | 71,4% |
+| 4 — Concordo | 1 | 14,3% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 0 | 0,0% |
+| 1 — Discordo totalmente | 0 | 0,0% |
+
+**Média: 4,57 / 5,0**
+
+Esta questão obteve a maior média registrada até o momento no questionário. Cinco dos sete participantes (71,4%) concordaram plenamente que as funções do sistema estão bem integradas, e nenhum expressou discordância. O resultado indica que os fluxos entre os diferentes perfis de usuário — Capataz, Gerente e Coordenador — e entre os módulos da aplicação foram percebidos como coesos e consistentes, o que é especialmente relevante em um sistema com operação offline e sincronização assíncrona.
+
+---
+
+**Questão 6 — "Eu achei que havia muita inconsistência neste sistema."**
+
+Esta é uma questão de polaridade negativa no SUS: pontuações mais baixas indicam que os participantes não percebem inconsistências na interface. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 2 |
+| P2 | 2 |
+| P3 | 2 |
+| P4 | 2 |
+| P5 | 1 |
+| P6 | 1 |
+| P7 | 2 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 0 | 0,0% |
+| 4 — Concordo | 0 | 0,0% |
+| 3 — Neutro | 0 | 0,0% |
+| 2 — Discordo | 5 | 71,4% |
+| 1 — Discordo totalmente | 2 | 28,6% |
+
+**Média: 1,71 / 5,0**
+
+Esta questão apresenta o resultado mais homogêneo de todo o questionário: todos os sete participantes discordaram da afirmação, sem nenhuma resposta neutra ou de concordância. O resultado reforça o que a Q5 já indicava — os participantes perceberam o sistema como coerente e consistente em seus diferentes fluxos e módulos, o que é um indicador robusto de qualidade na padronização da interface.
+
+---
+
+**Questão 7 — "Eu imagino que a maioria das pessoas aprenderia a usar este sistema muito rapidamente."**
+
+Esta é uma questão de polaridade positiva no SUS: pontuações mais altas indicam que os participantes percebem o sistema como de rápida curva de aprendizado. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 5 |
+| P2 | 1 |
+| P3 | 3 |
+| P4 | 3 |
+| P5 | 5 |
+| P6 | 4 |
+| P7 | 5 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 3 | 42,9% |
+| 4 — Concordo | 1 | 14,3% |
+| 3 — Neutro | 2 | 28,6% |
+| 2 — Discordo | 0 | 0,0% |
+| 1 — Discordo totalmente | 1 | 14,3% |
+
+**Média: 3,71 / 5,0**
+
+Esta questão apresenta a maior dispersão de respostas do questionário até o momento. A maioria (57,1%) concordou que o sistema seria aprendido rapidamente, e dois participantes permaneceram neutros. No entanto, um participante (P2) discordou totalmente da afirmação, configurando o único caso de discordância categórica em uma questão positiva ao longo de todo o SUS. Esse resultado, somado à divergência observada na Q4, indica que a percepção de aprendizabilidade não foi uniforme entre os participantes. O SUS, isoladamente, não permite atribuir essa variação ao grau de familiaridade digital; essa hipótese exigiria dados qualitativos adicionais sobre cada participante.
+
+---
+
+**Questão 8 — "Eu achei o sistema muito complicado de usar."**
+
+Esta é uma questão de polaridade negativa no SUS: pontuações mais baixas indicam que os participantes não percebem o sistema como complicado. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 2 |
+| P2 | 3 |
+| P3 | 2 |
+| P4 | 2 |
+| P5 | 1 |
+| P6 | 2 |
+| P7 | 1 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 0 | 0,0% |
+| 4 — Concordo | 0 | 0,0% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 4 | 57,1% |
+| 1 — Discordo totalmente | 2 | 28,6% |
+
+**Média: 1,86 / 5,0**
+
+Nenhum participante concordou que o sistema é complicado de usar. A grande maioria (85,7%) discordou ativamente da afirmação, e o único respondente neutro (P2, nota 3) é o mesmo que atribuiu discordância total na Q7. Isso demonstra que P2 apresentou uma percepção menos favorável em diferentes itens, mas não permite atribuir causalidade sem evidência qualitativa complementar. O resultado agregado é consistente com os dados das Q2 e Q6, consolidando a percepção de que o sistema não foi considerado complexo ou complicado pela maioria do grupo avaliado.
+
+---
+
+**Questão 9 — "Eu me senti muito confiante ao usar o sistema."**
+
+Esta é uma questão de polaridade positiva no SUS: pontuações mais altas indicam que os participantes se sentiram seguros e à vontade durante o uso. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 4 |
+| P2 | 2 |
+| P3 | 4 |
+| P4 | 4 |
+| P5 | 4 |
+| P6 | 4 |
+| P7 | 5 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 1 | 14,3% |
+| 4 — Concordo | 5 | 71,4% |
+| 3 — Neutro | 0 | 0,0% |
+| 2 — Discordo | 1 | 14,3% |
+| 1 — Discordo totalmente | 0 | 0,0% |
+
+**Média: 3,86 / 5,0**
+
+A maioria expressiva dos participantes (85,7%) concordou que se sentiu confiante ao usar o sistema, com cinco deles atribuindo nota 4 — o que indica uma concordância consistente, ainda que não categórica. O único ponto de atenção é P2 (nota 2), que novamente destoa do grupo, padrão já observado nas Q7 e Q8. A ausência de respostas neutras nesta questão é relevante: os participantes polarizaram entre confiança e desconfiança, sem ambiguidade, o que sugere que a interface transmite clareza suficiente para a maioria, mas pode gerar insegurança em usuários com menor experiência digital.
+
+---
+
+**Questão 10 — "Eu precisei aprender muitas coisas novas antes de conseguir usar este sistema."**
+
+Esta é uma questão de polaridade negativa no SUS: pontuações mais baixas indicam que os participantes não precisaram de esforço de aprendizado significativo para começar a usar o sistema. As respostas foram as seguintes:
+
+| Participante | Resposta |
+|---|---|
+| P1 | 1 |
+| P2 | 3 |
+| P3 | 2 |
+| P4 | 2 |
+| P5 | 2 |
+| P6 | 2 |
+| P7 | 1 |
+
+A distribuição das respostas é apresentada a seguir:
+
+| Escala | Frequência | Proporção |
+|---|---|---|
+| 5 — Concordo totalmente | 0 | 0,0% |
+| 4 — Concordo | 0 | 0,0% |
+| 3 — Neutro | 1 | 14,3% |
+| 2 — Discordo | 4 | 57,1% |
+| 1 — Discordo totalmente | 2 | 28,6% |
+
+**Média: 1,86 / 5,0**
+
+Nenhum participante concordou que precisou aprender muitas coisas novas para usar o sistema. A maioria (85,7%) discordou ativamente, e o único neutro (P2, nota 3) mantém o padrão já identificado nas questões anteriores. O resultado encerra o questionário com uma percepção positiva de familiaridade imediata com a interface, indicando que os elementos de navegação e interação adotados foram suficientemente reconhecíveis para os participantes, sem exigir aprendizado de novos padrões de uso.
+
+---
+
+**Escore SUS consolidado**
+
+A tabela a seguir apresenta o escore individual calculado para cada participante, obtido pela fórmula padrão do SUS: para cada questão de polaridade positiva (ímpares), a contribuição é `resposta − 1`; para cada questão de polaridade negativa (pares), a contribuição é `5 − resposta`. A soma das dez contribuições é multiplicada por 2,5, resultando em um escore entre 0 e 100.
+
+| Participante | Escore SUS |
+|---|---|
+| P1 | 77,5 |
+| P2 | 45,0 |
+| P3 | 67,5 |
+| P4 | 72,5 |
+| P5 | 92,5 |
+| P6 | 90,0 |
+| P7 | 97,5 |
+| **Média** | **77,5** |
+
+Na escala adjetiva de Bangor, Kortum e Miller [57], o escore médio de **77,5** situa a avaliação geral na categoria **"Bom"**. Seis dos sete participantes obtiveram escores iguais ou superiores a 67,5, enquanto P2 apresentou o menor resultado (45,0). A amplitude observada, de 45,0 a 97,5, evidencia heterogeneidade entre as percepções individuais. O resultado de P2 deve permanecer no cálculo consolidado: não há critério estatístico previamente definido que justifique tratá-lo como *outlier* ou descartá-lo da análise.
+
+O resultado geral indica que a solução desenvolvida atinge um nível de usabilidade percebida compatível com produtos digitais bem avaliados, com margem de melhoria concentrada em fluxos de onboarding e orientação contextual para usuários com menor experiência digital — aspecto coerente com o perfil de capataz descrito nas personas do projeto.
+
+---
+
+#### Triangulação com os testes de guerrilha
+
+A leitura integrada dos testes de guerrilha e do SUS revela padrões consistentes que se reforçam mutuamente, permitindo uma interpretação mais robusta dos dados do que cada método ofereceria isoladamente.
+
+**Tarefa 2 e as questões de suporte técnico (Q4) e aprendizabilidade (Q7).** A Tarefa 2 — abertura de chamado de infraestrutura pelo Capataz — resultou em 100% de falha entre os três participantes, todos impedidos por um erro HTTP 400 sem mensagem orientativa ao usuário (H9). Esse incidente é o principal candidato a explicar por que Q4 ("precisaria de ajuda de uma pessoa técnica") registrou a maior taxa de concordância do questionário (28,6%) e por que Q7 ("maioria aprenderia rapidamente") obteve a média mais baixa entre as questões positivas (3,71) e o único caso de discordância total. Participantes que encontraram uma falha funcional sem diagnóstico claro tendem a atribuir a dificuldade a complexidade do sistema, e não ao bug — o que infla artificialmente a percepção de necessidade de suporte técnico e reduz a confiança na aprendizabilidade.
+
+**Fluxos do Coordenador e a percepção de integração (Q5).** As Tarefas 5 e 6 — visualização de movimentação zootécnica e exportação em CSV pelo Coordenador — registraram 100% de conclusão com sucesso pleno, sem ocorrências de dificuldade ou falha. Esse resultado tem correspondência direta na Q5 ("as várias funções estão bem integradas"), que obteve a maior média de todo o questionário (4,57) e a maior concentração de respostas máximas (71,4%). A coerência entre os fluxos do Coordenador e a percepção de integração sugere que a arquitetura de informação desse perfil — acesso a dados consolidados, filtros e exportação — foi a mais clara e fluida para os participantes.
+
+**H1 (ausência de confirmação) e a confiança percebida (Q9).** A heurística mais recorrente nos testes de guerrilha foi H1 — visibilidade do status do sistema — manifestada na falta de feedback após sincronização (Tarefa 1) e após criação de tarefa calendarizada (Tarefa 3). A Q9 do SUS ("senti muito confiante ao usar o sistema") registrou a única discordância (P2, nota 2) entre as questões positivas com média acima de 3,5. A ausência de confirmações visuais em ações críticas é uma das causas mais documentadas de baixa confiança percebida, e a correlação entre as falhas de H1 no guerrilha e a nota de Q9 reforça esse diagnóstico.
+
 
 # <a name="c6"></a>6. Estudo de Mercado e Plano de Marketing (sprint 4)
 
 ## 6.1 Resumo Executivo
 
-O Brasil é o maior exportador mundial de carne bovina, com receita de exportação de
-US$ 18,03 bilhões em 2025 [1] e crescente pressão por rastreabilidade de
-origem nos principais mercados internacionais. Apesar dessa escala, a gestão operacional
-de grande parte das fazendas ainda depende de registros manuais em papel um gargalo
-que compromete a qualidade das informações e a velocidade das decisões.
+O Brasil é o maior exportador mundial de carne bovina, com receita de exportação deUS$ 18,03 bilhões em 2025 [1] e crescente pressão por rastreabilidade de origem nos principais mercados internacionais. Apesar dessa escala, a gestão operacional de grande parte das fazendas ainda depende de registros manuais em papel um gargalo que compromete a qualidade das informações e a velocidade das decisões.
 
-É nesse contexto que se insere a solução desenvolvida para a BrPec Agropecuária S.A.,
-empresa com 14 retiros operacionais no Pantanal sul-mato-grossense. A região concentra
-64,5% do bioma pantaneiro no Mato Grosso do Sul [28], onde propriedades são
-extensas e retiros estão geograficamente dispersos, sem acesso a telecomunicações
-convencionais. O fluxo de informações entre o campo e o escritório ocorre por meio de
-boletas físicas preenchidas pelos capatazes, redigitadas manualmente em planilhas na
-sede. Esse processo gera inconsistências nos registros, atrasos de horas ou dias no
-repasse de informações críticas — como mortes de animais — e retrabalho constante para
-a equipe de coordenação.
+É nesse contexto que se insere a solução desenvolvida para a BrPec Agropecuária S.A., empresa com 14 retiros operacionais no Pantanal sul-mato-grossense. A região concentra 64,5% do bioma pantaneiro no Mato Grosso do Sul [28], onde propriedades são extensas e retiros estão geograficamente dispersos, sem acesso a telecomunicações convencionais. O fluxo de informações entre o campo e o escritório ocorre por meio de boletas físicas preenchidas pelos capatazes, redigitadas manualmente em planilhas na sede. Esse processo gera inconsistências nos registros, atrasos de horas ou dias no repasse de informações críticas — como mortes de animais — e retrabalho constante para a equipe de coordenação.
 
-A aplicação web progressiva (PWA) desenvolvida digitaliza o registro das movimentações
-do rebanho — nascimentos, mortes, compras, vendas e transferências entre retiros —,
-com funcionamento offline nativo. Para isso, adota SQLite como banco de dados local
-no dispositivo, desvinculando o registro de dados da disponibilidade de rede. Os dados
-são sincronizados automaticamente com o servidor durante as janelas de conectividade
-via Starlink, eliminando a dependência de conexão contínua como pré-requisito
-operacional.
+A aplicação web progressiva (PWA) desenvolvida digitaliza o registro das movimentações do rebanho — nascimentos, mortes, compras, vendas e transferências entre retiros —, com funcionamento offline nativo. Para isso, adota SQLite como banco de dados local no dispositivo, desvinculando o registro de dados da disponibilidade de rede. Os dados são sincronizados automaticamente com o servidor durante as janelas de conectividade via Starlink, eliminando a dependência de conexão contínua como pré-requisito operacional.
 
-Os principais diferenciais competitivos da solução são: interface adaptada ao perfil
-de baixa escolaridade digital dos capatazes, operação offline nativa via SQLite,
-eliminação da etapa de redigitação e rastreabilidade completa das movimentações em
-tempo real.
+Os principais diferenciais competitivos da solução são: interface adaptada ao perfil de baixa escolaridade digital dos capatazes, operação offline nativa via SQLite, eliminação da etapa de redigitação e rastreabilidade completa das movimentações em tempo real.
 
-O objetivo estratégico do projeto é reduzir erros operacionais, aumentar a velocidade
-de atualização das informações e dar aos gestores uma visão confiável e atualizada das
-operações de campo — tornando a BrPec mais competitiva em um setor que avança
-rapidamente em direção à digitalização e à rastreabilidade compulsória [40].
+O objetivo estratégico do projeto é reduzir erros operacionais, aumentar a velocidade de atualização das informações e dar aos gestores uma visão confiável e atualizada das operações de campo — tornando a BrPec mais competitiva em um setor que avança rapidamente em direção à digitalização e à rastreabilidade compulsória [40].
 
 
 ## 6.2 Análise de Mercado
@@ -7156,6 +7673,16 @@ _Relacione também quaisquer outras ideias que o grupo tenha para melhorias futu
 [51] ANATEL. Serviço de Comunicação Multimídia (SCM): acessos por tecnologia de acesso. Brasília: Anatel, 2024. Disponível em: https://informacoes.anatel.gov.br/paineis/acesso-a-internet-banda-larga. Acesso em: jun. 2026.
 
 [52] DISTRITO. Agtech Report Brasil 2024. São Paulo: Distrito, 2024. Disponível em: https://distrito.me/agtech-report/. Acesso em: jun. 2026.
+
+[53] KRUG, Steve. Rocket Surgery Made Easy: The Do-It-Yourself Guide to Finding and Fixing Usability Problems. Berkeley: New Riders, 2010. ISBN 978-0-321-65729-5.
+
+[54] NIELSEN, Jakob. Why You Only Need to Test with 5 Users. Nielsen Norman Group, 19 mar. 2000. Disponível em: https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/. Acesso em: jun. 2026.
+
+[55] ISO 9241-11:2018. Ergonomics of human-system interaction — Part 11: Usability: Definitions and concepts. Geneva: International Organization for Standardization, 2018.
+
+[56] BROOKE, John. SUS: A 'Quick and Dirty' Usability Scale. In: JORDAN, P. W. et al. (eds.). Usability Evaluation in Industry. London: Taylor & Francis, 1996. p. 189–194.
+
+[57] BANGOR, Aaron; KORTUM, Philip; MILLER, James. Determining What Individual SUS Scores Mean: Adding an Adjective Rating Scale. Journal of Usability Studies, v. 4, n. 3, p. 114–123, 2009.
 
 # <a name="c9"></a>Anexos
 
