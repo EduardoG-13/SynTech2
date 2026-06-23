@@ -159,6 +159,7 @@
 <script>
   var PERFIL = '<%= perfil %>';
   var ABA_ATIVA = (PERFIL === 'Infraestrutura') ? 'chamados' : 'boletas';
+  var buscaTimer = null;
 
   document.addEventListener('DOMContentLoaded', function() {
     if (PERFIL === 'Gerente' || PERFIL === 'Coordenador') {
@@ -166,7 +167,11 @@
       document.getElementById('btn-aplicar-filtros').addEventListener('click', carregar);
       document.getElementById('btn-limpar-filtros').addEventListener('click', limparFiltros);
       var campoBusca = document.getElementById('filtro-busca');
-      if (campoBusca) campoBusca.addEventListener('input', filtrarPorBusca);
+      if (campoBusca) campoBusca.addEventListener('input', function() {
+        filtrarPorBusca();
+        clearTimeout(buscaTimer);
+        buscaTimer = setTimeout(carregar, 350);
+      });
       var btnXlsx = document.getElementById('btn-exportar-xlsx');
       if (btnXlsx) btnXlsx.addEventListener('click', function() { exportar('xlsx'); });
       var btnCsv = document.getElementById('btn-exportar-csv');
@@ -224,6 +229,8 @@
     ['filtro-data-ini', 'filtro-data-fim'].forEach(function(id) {
       var el = document.getElementById(id); if (el) el.value = '';
     });
+    var busca = document.getElementById('filtro-busca');
+    if (busca) busca.value = '';
     carregar();
   }
 
@@ -245,11 +252,13 @@
     var status = document.getElementById('filtro-status');
     var ini = document.getElementById('filtro-data-ini');
     var fim = document.getElementById('filtro-data-fim');
+    var busca = document.getElementById('filtro-busca');
     if (ret && ret.value) p.set('retiro_id', ret.value);
     if (tipo && tipo.value && ABA_ATIVA === 'boletas') p.set('tipo', tipo.value);
     if (status && status.value && ABA_ATIVA === 'boletas') p.set('status', status.value);
     if (ini && ini.value) p.set('data_inicio', ini.value);
     if (fim && fim.value) p.set('data_fim', fim.value);
+    if (busca && busca.value.trim() && ABA_ATIVA === 'boletas') p.set('busca', busca.value.trim());
     return p.toString();
   }
 
@@ -275,6 +284,7 @@
         }
         if (tituloCap) tituloCap.style.display = 'flex';
         cont.innerHTML = ABA_ATIVA === 'boletas' ? renderBoletas(rows) : renderChamados(rows);
+        filtrarPorBusca();
       })
       .catch(function() {
         cont.innerHTML = '<p style="color:#D32F2F; text-align:center; font-size:0.9rem;">Erro ao carregar.</p>';
