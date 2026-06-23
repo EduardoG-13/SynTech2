@@ -29,8 +29,39 @@
           dispEl.style.display = aba === 'dispositivos' ? 'block' : 'none';
           if (aba === 'dispositivos') carregarDispositivos();
         }
+        var auditEl = document.getElementById('conteudo-auditoria');
+        if (auditEl) {
+          auditEl.style.display = aba === 'auditoria' ? 'block' : 'none';
+          if (aba === 'auditoria') carregarAuditoria();
+        }
       });
     });
+  }
+
+  function carregarAuditoria() {
+    var cont = document.getElementById('lista-auditoria-admin');
+    if (!cont) return;
+    cont.innerHTML = '<p style="color:#8A8A7C;">Carregando...</p>';
+    fetch('/api/admin/auditoria?limite=200', { credentials: 'same-origin' })
+      .then(tratarResposta)
+      .then(function (rows) {
+        if (!rows || !rows.length) {
+          cont.innerHTML = '<p style="color:#8A8A7C;">Nenhum registro de auditoria encontrado.</p>';
+          return;
+        }
+        cont.innerHTML = rows.map(function (r) {
+          var quando = (r.criado_em || '').slice(0, 16).replace('T', ' ');
+          var status = r.status_http ? ('HTTP ' + r.status_http) : 'sem status';
+          return '<div class="lista-item" style="padding:0.65rem 0.8rem; border:1px solid #e5e5e0; border-radius:10px; margin-bottom:0.45rem;">' +
+            '<div><strong>' + (r.acao || 'ação') + '</strong> · ' + (r.entidade_tipo || 'sistema') + ' · ' + status + '</div>' +
+            '<small style="color:#5C6B5D;">' + (quando || '-') + ' · ' + (r.usuario_nome || 'usuário não identificado') + ' · ' + (r.perfil || '-') + '</small>' +
+            '<div style="font-size:0.78rem; color:#8A8A7C; margin-top:0.25rem; word-break:break-word;">' + (r.rota || '') + '</div>' +
+          '</div>';
+        }).join('');
+      })
+      .catch(function () {
+        cont.innerHTML = '<p style="color:#C0392B;">Erro ao carregar auditoria.</p>';
+      });
   }
 
   // ---------- Dispositivos ----------

@@ -599,6 +599,13 @@
       }
     }
 
+    var obsTexto = ((document.getElementById('os-observacoes') || {}).value || '').trim();
+    var exigeDetalhamento = ['obito', 'transferencia', 'compravenda', 'evolucao', 'manejo'].indexOf(op) >= 0;
+    if (exigeDetalhamento && !obsTexto && !audioBase64) {
+      mostrarMsg('Informe o detalhamento do registro por texto ou audio antes de salvar.', 'erro');
+      return;
+    }
+
     var payload = { operacao: op, perfil: PERFIL, data: (document.getElementById('os-data') || {}).value };
 
     if (['nascimento','obito','transferencia','compravenda'].indexOf(op) >= 0) {
@@ -639,7 +646,7 @@
       var fmInput = document.getElementById('os-foto-manejo');
       payload.tem_foto = !!(fmInput && fmInput.files.length);
     }
-    payload.observacoes = (document.getElementById('os-observacoes') || {}).value || '';
+    payload.observacoes = obsTexto;
     payload.observacoes_audio = audioBase64 || ''; // áudio em base64 (data URL) para salvar no banco
 
     // Lê a foto (óbito ou manejo) como base64 antes de enviar
@@ -697,6 +704,26 @@
     var editId = new URLSearchParams(window.location.search).get('edit');
     var url = editId ? '/api/boletas/' + encodeURIComponent(editId) : '/api/boletas';
     var metodo = editId ? 'PUT' : 'POST';
+
+    if (window.fazerRequisicaoComOffline) {
+      window.fazerRequisicaoComOffline(url, { metodo: metodo, dados: payload, tipo: 'boleta' })
+        .then(function(res) {
+          if (!res.sucesso && !res.offline) {
+            mostrarMsg('Erro ao salvar boleta: ' + (res.mensagem || 'tente novamente.'), 'erro');
+            return;
+          }
+          try {
+            var dados = res.dados || {};
+            var resumo = Object.assign({ id: dados.grupo_id || res.idFila || editId || '', criadoEm: new Date().toISOString(), offline: !!res.offline }, payload);
+            localStorage.setItem('brpec_ultimo_registro', JSON.stringify(resumo));
+          } catch(e) {}
+          window.location.href = '/sucesso';
+        })
+        .catch(function() {
+          mostrarMsg('Nao foi possivel guardar no aparelho. Tente novamente.', 'erro');
+        });
+      return;
+    }
 
     fetch(url, {
       method: metodo,

@@ -31,7 +31,8 @@ class AlertaService {
     id: string,
     tecnico_id: string,
     solucao: string,
-    foto_base64: string
+    foto_base64: string,
+    audio_base64 = ''
   ) {
     const usuario = await alertaRepository.buscarUsuarioPorId(tecnico_id);
     // Aceita tanto 'Tecnico' (modelo antigo) quanto 'Infraestrutura' (novo perfil de sessão)
@@ -52,7 +53,11 @@ class AlertaService {
       throw new Error('CHAMADO_JA_RESOLVIDO');
     }
 
-    return alertaRepository.resolver(id, tecnico_id, solucao, foto_base64);
+    if (!solucao && !audio_base64) {
+      throw new Error('DETALHAMENTO_OBRIGATORIO: informe texto ou audio para a solucao');
+    }
+
+    return alertaRepository.resolver(id, tecnico_id, solucao, foto_base64, audio_base64);
   }
 }
 

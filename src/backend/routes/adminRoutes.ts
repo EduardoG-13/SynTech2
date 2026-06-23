@@ -5,6 +5,7 @@ import {
   excluirBoleta, excluirChamado, excluirTarefa,
   listarDispositivos, revogarDispositivo,
 } from '../controllers/adminController';
+import { listarAuditoria } from '../controllers/auditoriaController';
 
 const router = Router();
 
@@ -45,5 +46,7 @@ router.delete('/tarefas/:id', excluirTarefa);
 // Dispositivos (login automático por aparelho)
 router.get('/dispositivos', listarDispositivos);
 router.delete('/dispositivos/:id', revogarDispositivo);
+
+router.get('/auditoria', listarAuditoria);
 
 export default router;
