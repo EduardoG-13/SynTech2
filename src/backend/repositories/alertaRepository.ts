@@ -111,6 +111,38 @@ class AlertaRepository {
     return stmt.all(...params) as any[];
   }
 
+  async iniciar(id: string, tecnico_id: string): Promise<any | null> {
+    db.exec('BEGIN TRANSACTION');
+    try {
+      const stmtAlerta = db.prepare(`
+        UPDATE alertas
+        SET status = 'EM_ANDAMENTO',
+            tecnico_id = ?,
+            sincronizado = 0
+        WHERE id = ?
+          AND status = 'ABERTO'
+      `);
+      const info = stmtAlerta.run(tecnico_id, id);
+
+      if ((info as any).changes === 0) {
+        db.exec('ROLLBACK');
+        return this.buscarPorId(id);
+      }
+
+      const stmtSyncAl = db.prepare(`
+        INSERT INTO sincronizacoes (id, entidade_tipo, entidade_id, status_envio, tentativas, ultima_tentativa)
+        VALUES (?, 'alerta', ?, 'PENDENTE', 0, null)
+      `);
+      stmtSyncAl.run(uuidv7(), id);
+
+      db.exec('COMMIT');
+      return this.buscarPorId(id);
+    } catch (erro) {
+      db.exec('ROLLBACK');
+      throw erro;
+    }
+  }
+
   async resolver(
     id: string,
     tecnico_id: string,

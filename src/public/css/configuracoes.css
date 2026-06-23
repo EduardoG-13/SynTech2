@@ -16,6 +16,10 @@
 }
 
 .config-abas .aba {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
   flex: 1;
   background: #fff;
   border: 2px solid #d7dfd3;
@@ -160,18 +164,42 @@
 }
 
 .btn-edit, .btn-del {
-  border: none;
+  border: 1px solid transparent;
   border-radius: 8px;
   padding: 0.5rem 0.65rem;
   cursor: pointer;
   font-size: 1rem;
   min-height: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #1A4D2E;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
-.btn-edit { background: #E6F3EB; }
-.btn-edit:hover { background: #d4eadd; }
-.btn-del { background: #FCE8E8; }
-.btn-del:hover { background: #f8d0d0; }
+.btn-edit {
+  background: #DCEFE5;
+  border-color: #A8CDB7;
+  color: #0F5132;
+}
+
+.btn-edit:hover {
+  background: #C9E5D6;
+  border-color: #2E7D52;
+  transform: translateY(-1px);
+}
+
+.btn-del {
+  background: #FDE1E1;
+  border-color: #F4B4B4;
+  color: #B42318;
+}
+
+.btn-del:hover {
+  background: #F9CACA;
+  border-color: #D32F2F;
+  transform: translateY(-1px);
+}
 
 /* Badge de perfil */
 .badge-perfil {

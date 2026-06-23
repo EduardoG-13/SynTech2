@@ -68,6 +68,35 @@ class AlertaController {
     }
   }
 
+  async iniciarChamado(req, res, next) {
+    const sess = (req.session as any)?.usuario;
+    const tecnico_id = req.body?.tecnico_id || sess?.id;
+
+    try {
+      const chamado = await alertaService.iniciarChamado(req.params.id, tecnico_id);
+      return res.status(200).json({
+        id: chamado.id,
+        status: chamado.status,
+        mensagem: 'Chamado iniciado com sucesso',
+        chamado
+      });
+    } catch (erro: any) {
+      if (erro.message?.includes('ACESSO_NEGADO')) {
+        return next(new AppError(403, erro.message));
+      }
+
+      if (erro.message === 'CHAMADO_NAO_ENCONTRADO') {
+        return next(new AppError(404, erro.message));
+      }
+
+      if (erro.message === 'CHAMADO_JA_RESOLVIDO') {
+        return next(new AppError(409, erro.message));
+      }
+
+      next(erro);
+    }
+  }
+
   async resolverChamado(req, res, next) {
     // Aceita nomes alternativos vindos do JS antigo (descricaoSolucao, fotoBase64)
     const sess = (req.session as any)?.usuario;

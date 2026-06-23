@@ -10,6 +10,18 @@ import { listarAuditoria } from '../controllers/auditoriaController';
 const router = Router();
 
 /**
+ * Auditoria: qualquer Gerente pode consultar os registros do sistema.
+ * As mutações administrativas continuam restritas ao Gerente Administrador.
+ */
+function apenasGerente(req: Request, res: Response, next: NextFunction) {
+  const usuario = (req.session as any)?.usuario;
+  if (!usuario || usuario.perfil !== 'Gerente') {
+    return res.status(403).json({ erro: 'Acesso restrito ao Gerente.' });
+  }
+  next();
+}
+
+/**
  * Middleware de proteção: apenas Gerente ADMINISTRADOR (is_admin=1) acessa rotas admin.
  * Gerente comum (is_admin=0) é bloqueado.
  */
@@ -23,6 +35,8 @@ function apenasGerenteAdmin(req: Request, res: Response, next: NextFunction) {
   }
   next();
 }
+
+router.get('/auditoria', apenasGerente, listarAuditoria);
 
 router.use(apenasGerenteAdmin);
 
@@ -46,7 +60,5 @@ router.delete('/tarefas/:id', excluirTarefa);
 // Dispositivos (login automático por aparelho)
 router.get('/dispositivos', listarDispositivos);
 router.delete('/dispositivos/:id', revogarDispositivo);
-
-router.get('/auditoria', listarAuditoria);
 
 export default router;
