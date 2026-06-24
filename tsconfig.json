@@ -7,10 +7,10 @@
     "noImplicitAny": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "types": ["node", "jest"],
+    "types": ["node"],
     "skipLibCheck": true,
     "outDir": "dist"
   },
   "include": ["src/backend/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["node_modules", "dist", "src/backend/tests"]
 } 
