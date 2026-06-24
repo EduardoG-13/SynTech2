@@ -24,13 +24,60 @@
     var recognition = null;
     var ativo = false;
     var solicitado = false;
+    var modoAtual = 'indisponivel';
 
     function indisponivel() {
       escreverStatus(
         statusEl,
-        'Transcrição local indisponível neste navegador. O áudio será salvo normalmente.',
+        'Transcrição indisponível neste navegador ou sem internet. O áudio será salvo normalmente.',
         'aviso',
       );
+    }
+
+    function criarBase() {
+      var rec = new Recognition();
+      rec.lang = lang;
+      rec.continuous = true;
+      rec.interimResults = true;
+      rec.maxAlternatives = 1;
+      return rec;
+    }
+
+    function configurarCallbacks(rec) {
+      rec.onresult = function (event) {
+        var finais = [];
+        for (var i = event.resultIndex; i < event.results.length; i += 1) {
+          var resultado = event.results[i];
+          if (resultado && resultado.isFinal && resultado[0] && resultado[0].transcript) {
+            finais.push(resultado[0].transcript);
+          }
+        }
+        if (finais.length) {
+          anexarTexto(textarea, finais.join(' '));
+          escreverStatus(statusEl, 'Transcrição adicionada ao texto. Revise antes de salvar.', 'ok');
+        }
+      };
+
+      rec.onerror = function () {
+        var complemento = modoAtual === 'local' ? 'localmente' : 'pelo navegador';
+        escreverStatus(statusEl, 'Não foi possível transcrever ' + complemento + '. O áudio será salvo normalmente.', 'aviso');
+      };
+
+      rec.onend = function () {
+        ativo = false;
+      };
+
+      return rec;
+    }
+
+    function prepararOnline() {
+      if (!navigator.onLine) {
+        indisponivel();
+        return null;
+      }
+
+      modoAtual = 'online';
+      return configurarCallbacks(criarBase());
     }
 
     async function preparar() {
@@ -39,18 +86,14 @@
         return null;
       }
 
-      var rec = new Recognition();
-      rec.lang = lang;
-      rec.continuous = true;
-      rec.interimResults = true;
-      rec.maxAlternatives = 1;
+      var rec = criarBase();
 
       if (!('processLocally' in rec)) {
-        indisponivel();
-        return null;
+        return prepararOnline();
       }
 
       rec.processLocally = true;
+      modoAtual = 'local';
 
       if (typeof Recognition.available === 'function') {
         try {
@@ -61,8 +104,7 @@
           });
 
           if (disponibilidade === 'unavailable') {
-            indisponivel();
-            return null;
+            return prepararOnline();
           }
 
           if (
@@ -80,29 +122,7 @@
         }
       }
 
-      rec.onresult = function (event) {
-        var finais = [];
-        for (var i = event.resultIndex; i < event.results.length; i += 1) {
-          var resultado = event.results[i];
-          if (resultado && resultado.isFinal && resultado[0] && resultado[0].transcript) {
-            finais.push(resultado[0].transcript);
-          }
-        }
-        if (finais.length) {
-          anexarTexto(textarea, finais.join(' '));
-          escreverStatus(statusEl, 'Transcrição adicionada ao texto. Revise antes de salvar.', 'ok');
-        }
-      };
-
-      rec.onerror = function () {
-        escreverStatus(statusEl, 'Não foi possível transcrever localmente. O áudio será salvo normalmente.', 'aviso');
-      };
-
-      rec.onend = function () {
-        ativo = false;
-      };
-
-      return rec;
+      return configurarCallbacks(rec);
     }
 
     return {
@@ -115,9 +135,13 @@
         try {
           recognition.start();
           ativo = true;
-          escreverStatus(statusEl, 'Transcrição local experimental ativa. Fale com calma e revise o texto.', 'info');
+          if (modoAtual === 'local') {
+            escreverStatus(statusEl, 'Transcrição local experimental ativa. Fale com calma e revise o texto.', 'info');
+          } else {
+            escreverStatus(statusEl, 'Transcrição online experimental ativa. Sem internet, o áudio continua salvo.', 'info');
+          }
         } catch (erro) {
-          escreverStatus(statusEl, 'Não foi possível iniciar a transcrição local. O áudio será salvo normalmente.', 'aviso');
+          escreverStatus(statusEl, 'Não foi possível iniciar a transcrição. O áudio será salvo normalmente.', 'aviso');
         }
       },
 

@@ -37,7 +37,7 @@ describe('Front-end offline IndexedDB setup', () => {
     expect(response.status).toBe(200);
     expect(response.text).toContain('window.brpecTranscricaoLocal');
     expect(response.text).toContain('processLocally');
-    expect(response.text).toContain('Transcrição local indisponível neste navegador');
+    expect(response.text).toContain('Transcrição indisponível neste navegador ou sem internet');
   });
 
 });
