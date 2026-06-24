@@ -1,7 +1,7 @@
 {
   "scripts": {
     "prepare": "node -e \"try { require('child_process').execSync('husky', { stdio: 'inherit' }); } catch (e) { console.log('[prepare] husky indisponivel (ok em producao):', e.message); }\"",
-    "postinstall": "tsc",
+    "postinstall": "tsc && mkdir -p dist/database && cp src/backend/database/*.sql dist/database/ 2>/dev/null || true && cp -r src/backend/database/migrations dist/database/ 2>/dev/null || true",
     "test": "jest --forceExit",
     "dev": "nodemon --exec ts-node src/backend/server.ts",
     "start": "node dist/server.js",
