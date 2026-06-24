@@ -18,7 +18,9 @@ import { auditoriaMiddleware } from './middlewares/auditoriaMiddleware';
 const app = express();
 // Raiz do projeto (g03/) calculada a partir deste arquivo (src/backend/app.ts),
 // funciona independente de onde o servidor é executado (raiz ou src/backend)
-const projectRoot = path.resolve(__dirname, '../../');
+const projectRoot = __dirname.includes('dist') 
+  ? path.resolve(__dirname, '../') 
+  : path.resolve(__dirname, '../../');
 
 // View engine
 app.set('view engine', 'ejs');
